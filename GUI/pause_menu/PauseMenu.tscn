@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyr4d637h6ono"]
+
+[ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
+[ext_resource type="FontFile" uid="uid://bs3nosvkt8t0l" path="res://GUI/fonts/OMORI_GAME2.ttf" id="2_dfhdr"]
+[ext_resource type="Texture2D" uid="uid://beuue5mgapph3" path="res://Items/sprites/items.png" id="3_dfhdr"]
+[ext_resource type="PackedScene" uid="uid://bnvj41ww8lhj0" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="4_laftm"]
+[ext_resource type="Script" uid="uid://dvclsk7ha4rgn" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="4_mc7vq"]
+[ext_resource type="Resource" uid="uid://1fwl7lk326j" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="5_408tb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laftm"]
+atlas = ExtResource("3_dfhdr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mc7vq"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_laftm")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_xyt8q")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.178555, 0.178555, 2.40654e-08, 0.784314)
+
+[node name="paused" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -440.0
+offset_top = 66.0
+offset_right = -261.0
+offset_bottom = 117.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_dfhdr")
+theme_override_font_sizes/font_size = 50
+text = "{ paused }"
+
+[node name="ItemDescription" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -440.0
+offset_top = 270.0
+offset_right = -50.0
+offset_bottom = 321.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_dfhdr")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 158.0
+offset_right = 536.0
+offset_bottom = 246.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mc7vq")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("4_mc7vq")
+data = ExtResource("5_408tb")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = 146.0
+offset_right = -36.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button_Save" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dfhdr")
+theme_override_font_sizes/font_size = 64
+text = "Save"
+
+[node name="Button_load" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dfhdr")
+theme_override_font_sizes/font_size = 64
+text = "Load"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
+max_polyphony = 4

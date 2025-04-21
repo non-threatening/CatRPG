@@ -1,0 +1,3 @@
+
+
+Hurtbox collsion should default to Mask 3, not 9

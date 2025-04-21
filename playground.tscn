@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://c26e5qs51phrq"]
+
+[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_o00ia"]
+[ext_resource type="PackedScene" uid="uid://7y3rydpf6bjk" path="res://Props/Plants/Plant.tscn" id="4_7ekl8"]
+[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="4_is3ju"]
+[ext_resource type="PackedScene" uid="uid://bin63ynm0s2ot" path="res://Enemies/Slime/Slime.tscn" id="5_4bqqs"]
+[ext_resource type="PackedScene" uid="uid://560xltvvxujl" path="res://Tile Maps/lab_outline.tscn" id="5_o00ia"]
+[ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="6_ynsuh"]
+[ext_resource type="Resource" uid="uid://d1hal3jqnbjc1" path="res://Items/potion.tres" id="7_v7dth"]
+[ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="10_h1jm5"]
+[ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="10_pio1y"]
+[ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="10_te8jg"]
+[ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="11_pio1y"]
+
+[node name="Playground" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_o00ia")
+
+[node name="Lab Outline" parent="." instance=ExtResource("5_o00ia")]
+z_index = -1
+
+[node name="Plants" type="Node" parent="."]
+
+[node name="Plant" parent="Plants" instance=ExtResource("4_7ekl8")]
+position = Vector2(836, 596)
+
+[node name="Plant2" parent="Plants" instance=ExtResource("4_7ekl8")]
+position = Vector2(902, 572)
+
+[node name="Plant3" parent="Plants" instance=ExtResource("4_7ekl8")]
+position = Vector2(1134, 218)
+
+[node name="Plant5" parent="Plants" instance=ExtResource("4_7ekl8")]
+position = Vector2(1002, 552)
+
+[node name="Slime" parent="." instance=ExtResource("5_4bqqs")]
+position = Vector2(159, 594)
+
+[node name="Slime2" parent="." instance=ExtResource("5_4bqqs")]
+position = Vector2(159, 594)
+
+[node name="Slime3" parent="." instance=ExtResource("5_4bqqs")]
+position = Vector2(159, 594)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_is3ju")]
+position = Vector2(774, 734)
+
+[node name="ItemPickup2" parent="." instance=ExtResource("6_ynsuh")]
+position = Vector2(1057.42, 214.598)
+item_data = ExtResource("7_v7dth")
+
+[node name="ItemPickup4" parent="." instance=ExtResource("6_ynsuh")]
+position = Vector2(303.054, 214.389)
+item_data = ExtResource("10_h1jm5")
+
+[node name="TreasureChest2" parent="." instance=ExtResource("11_pio1y")]
+position = Vector2(385, 214)
+item_data = ExtResource("10_te8jg")
+
+[node name="TreasureChest3" parent="." instance=ExtResource("11_pio1y")]
+position = Vector2(188, 212)
+item_data = ExtResource("7_v7dth")
+quantity = 3
+
+[node name="LevelTransition" parent="." instance=ExtResource("10_pio1y")]
+position = Vector2(800, 100)
+level = "uid://pucwglkmup3m"
+size = 5
+side = 1
+
+[node name="ItemPickup" parent="." instance=ExtResource("6_ynsuh")]
+position = Vector2(1259, 302)
+item_data = ExtResource("10_h1jm5")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("6_ynsuh")]
+position = Vector2(1226, 216)
+item_data = ExtResource("10_h1jm5")
+
+[node name="ItemPickup5" parent="." instance=ExtResource("6_ynsuh")]
+position = Vector2(1304, 349)
+item_data = ExtResource("10_h1jm5")
