@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bng4h21j3iths"]
+[gd_scene load_steps=13 format=4 uid="uid://bng4h21j3iths"]
 
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_umoo4"]
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_ux7ia"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cpugykfww2auk" path="res://interactables/dungeon/PresurePlate.tscn" id="5_swvnj"]
 [ext_resource type="PackedScene" uid="uid://bsbk6o0lgbqfb" path="res://interactables/dungeon/BarredDoor.tscn" id="6_m3xjo"]
 [ext_resource type="PackedScene" uid="uid://c7qujggerj22o" path="res://interactables/dungeon/PushableStatue.tscn" id="7_4dhgi"]
+[ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="9_gxo4t"]
+[ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="10_gmq4b"]
+[ext_resource type="Resource" uid="uid://d1hal3jqnbjc1" path="res://Items/potion.tres" id="11_0vvle"]
+[ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="12_n8j0c"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_ux7ia")
@@ -41,6 +45,20 @@ position = Vector2(552, 88)
 
 [node name="PushableStatue" parent="." instance=ExtResource("7_4dhgi")]
 position = Vector2(408, 176)
+
+[node name="TreasureChest" parent="." instance=ExtResource("9_gxo4t")]
+position = Vector2(1016, 128)
+item_data = ExtResource("10_gmq4b")
+
+[node name="TreasureChest2" parent="." instance=ExtResource("9_gxo4t")]
+position = Vector2(944, 136)
+item_data = ExtResource("11_0vvle")
+quantity = 5
+
+[node name="TreasureChest3" parent="." instance=ExtResource("9_gxo4t")]
+position = Vector2(864, 136)
+item_data = ExtResource("12_n8j0c")
+quantity = 3
 
 [connection signal="activated" from="PresurePlate" to="BarredDoor" method="open_door"]
 [connection signal="deactivated" from="PresurePlate" to="BarredDoor" method="close_door"]

@@ -25,15 +25,15 @@ position = Vector2(544, 88)
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_bbxeb")]
 position = Vector2(576, 520)
-level = "uid://pucwglkmup3m"
+level = "uid://bng4h21j3iths"
 target_transition_area = "LevelTransition2"
 center_player = true
 side = 3
 
 [node name="LevelTransition2" parent="." instance=ExtResource("4_bbxeb")]
 position = Vector2(576, 112)
-level = "uid://pucwglkmup3m"
-target_transition_area = "LevelTransition2"
+level = "uid://cbsyitoishkr0"
+target_transition_area = "LevelTransition4"
 side = 2
 
 [node name="ItemPickup" parent="." instance=ExtResource("6_3jn7v")]

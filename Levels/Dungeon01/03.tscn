@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://vmelqpt1g37"]
+[gd_scene load_steps=10 format=4 uid="uid://vmelqpt1g37"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_0vfq5"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_mnmuo"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bin63ynm0s2ot" path="res://Enemies/Slime/Slime.tscn" id="6_ax5fs"]
 [ext_resource type="PackedScene" uid="uid://b1n6sy5wqrqy5" path="res://GeneralNodes/ItemDropper/ItemDropper.tscn" id="7_0xeq1"]
 [ext_resource type="Resource" uid="uid://csj7808b8skod" path="res://Items/key_dungeon.tres" id="8_j5ba4"]
+[ext_resource type="PackedScene" uid="uid://d20repjnfc352" path="res://Enemies/Goblin/goblin.tscn" id="9_j5ba4"]
 
 [node name="03" type="Node2D"]
 script = ExtResource("1_0vfq5")
@@ -21,15 +22,14 @@ position = Vector2(696, 319)
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_ax5fs")]
 position = Vector2(576, 520)
-level = "uid://pucwglkmup3m"
-target_transition_area = "LevelTransition2"
+level = "uid://cbsyitoishkr0"
 center_player = true
 side = 3
 
 [node name="LevelTransition2" parent="." instance=ExtResource("4_ax5fs")]
 position = Vector2(576, 112)
-level = "uid://pucwglkmup3m"
-target_transition_area = "LevelTransition2"
+level = "uid://cbsyitoishkr0"
+target_transition_area = "LevelTransition4"
 side = 2
 
 [node name="EnemyCounter" parent="." instance=ExtResource("5_yxc4f")]
@@ -51,5 +51,8 @@ target_transition_area = "LevelTransition3"
 [node name="ItemDropper" parent="." instance=ExtResource("7_0xeq1")]
 position = Vector2(821, 321)
 item_data = ExtResource("8_j5ba4")
+
+[node name="Goblin" parent="." instance=ExtResource("9_j5ba4")]
+position = Vector2(122, 119)
 
 [connection signal="enemies_defeated" from="EnemyCounter" to="ItemDropper" method="drop_item"]
