@@ -964,4 +964,4 @@ position = Vector2(0, -6)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
 modulate = Color(0.911, 0.596, 0.993, 0.265)
-polygon = PackedVector2Array(-64, -58, 0, -98, 64, -58, 128, 198, 0, 262, -128, 198)
+polygon = PackedVector2Array(-64, -58, 0, -98, 64, -58, 128, 134, 0, 326, -128, 134)
