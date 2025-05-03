@@ -12,11 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="10_q6j84"]
 [ext_resource type="Script" uid="uid://f64sh3qypsw" path="res://Player/Scripts/states/state_stun.gd" id="11_606se"]
 [ext_resource type="Script" uid="uid://bu3onimwydj4g" path="res://Player/Scripts/PlayerCamera.gd" id="11_hfp0w"]
+[ext_resource type="Shader" uid="uid://cuk8338ffbisy" path="res://Shaders/outline_shader/pixel_outline_shader.gdshader" id="13_o28un"]
 [ext_resource type="PackedScene" uid="uid://c3ovyjwujdxmf" path="res://GeneralNodes/HitBox/hit_box.tscn" id="13_urp6f"]
 [ext_resource type="Texture2D" uid="uid://d2irx1av6hy6p" path="res://Player/Sprites/Cat_sprite_b49672.png" id="14_b1ygp"]
 [ext_resource type="AudioStream" uid="uid://c8px2y4w638w1" path="res://Player/Audio/hit_player.wav" id="14_bwjto"]
 [ext_resource type="Script" uid="uid://cvt3bp8tg6cp7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
-[ext_resource type="Shader" uid="uid://b4d5u50y4e3og" path="res://Player/player.gdshader" id="14_o28un"]
 [ext_resource type="Script" uid="uid://cp5m17gdo2qko" path="res://Items/abilities.gd" id="17_pisgm"]
 [ext_resource type="PackedScene" uid="uid://c0jsono37lv7x" path="res://GeneralNodes/ItemMagnet/ItemMagnet.tscn" id="18_b1ygp"]
 
@@ -1046,13 +1046,10 @@ _data = {
 &"default": SubResource("Animation_q13i1")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o28un"]
-radius = 80.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o28un"]
-shader = ExtResource("14_o28un")
-shader_parameter/color = Color(0.619546, 0.403472, 0.282831, 1)
-shader_parameter/eye_color = Color(3, 3, 3, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n471f"]
+shader = ExtResource("13_o28un")
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
 
 [sub_resource type="Animation" id="Animation_xqcul"]
 length = 0.001
@@ -1293,6 +1290,9 @@ radius = 27.0417
 radius = 15.0
 height = 62.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_o28un"]
+radius = 80.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 16
 motion_mode = 1
@@ -1370,19 +1370,9 @@ libraries = {
 [node name="Abilities" type="Node" parent="."]
 script = ExtResource("17_pisgm")
 
-[node name="ItemMagnet" parent="." instance=ExtResource("18_b1ygp")]
-visible = false
-position = Vector2(-1, -27)
-magnet_strength = 2.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet"]
-position = Vector2(1, 28)
-shape = SubResource("CircleShape2D_o28un")
-debug_color = Color(0.164706, 0.678431, 0.596078, 0.0941176)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
-material = SubResource("ShaderMaterial_o28un")
+material = SubResource("ShaderMaterial_n471f")
 position = Vector2(0, -1)
 texture = ExtResource("14_b1ygp")
 hframes = 3
@@ -1430,3 +1420,13 @@ position = Vector2(3.73541e-07, -4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bwjto")
 debug_color = Color(0, 0.6, 0.7, 0.105)
+
+[node name="ItemMagnet" parent="." instance=ExtResource("18_b1ygp")]
+visible = false
+position = Vector2(-1, -27)
+magnet_strength = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet"]
+position = Vector2(1, 28)
+shape = SubResource("CircleShape2D_o28un")
+debug_color = Color(0.164706, 0.678431, 0.596078, 0.0941176)
