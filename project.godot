@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="RPGC"
-run/main_scene="uid://pucwglkmup3m"
+run/main_scene="uid://f6hapagaurf5"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,6 +26,10 @@ SceneTransition="*res://GUI/scene_transition/scene_transition.tscn"
 SaveManager="*res://00_Globals/global_save_manager.gd"
 PauseMenu="*res://GUI/pause_menu/PauseMenu.tscn"
 DialogSystem="*res://GUI/dialog_system/dialog_system.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/BurstParticles2D/plugin.cfg")
 
 [gui]
 

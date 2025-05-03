@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://v5dboj6jx3yw"]
+[gd_scene load_steps=47 format=3 uid="uid://v5dboj6jx3yw"]
 
 [ext_resource type="Script" uid="uid://dlqf7lyw00h77" path="res://Enemies/Scripts/enemy.gd" id="1_845vs"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_nwpu3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="14_802uj"]
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="15_y0n4n"]
 [ext_resource type="Texture2D" uid="uid://dalyj6duug8yd" path="res://Enemies/Slime/destroy.png" id="17_h4j8q"]
+[ext_resource type="Script" uid="uid://bai3apwyf33vo" path="res://Enemies/Scripts/states/enemy_state_chase.gd" id="17_y1860"]
 [ext_resource type="PackedScene" uid="uid://danwl1nkjj72k" path="res://Enemies/vision_area.tscn" id="18_l3q7r"]
 [ext_resource type="Script" uid="uid://i7xrqc11pora" path="res://Enemies/Scripts/states/enemy_state_flee.gd" id="18_t7gqc"]
 
@@ -933,7 +934,7 @@ next_state = NodePath("../Idle")
 
 [node name="Stun" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1cb36")
-next_state = NodePath("../Flee")
+next_state = NodePath("../Chase")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("12_eur6s")
@@ -943,6 +944,11 @@ drops = Array[ExtResource("13_7fl77")]([SubResource("Resource_ts4pi"), SubResour
 script = ExtResource("18_t7gqc")
 vision_area = NodePath("../../VisionArea")
 next_state = NodePath("../Idle")
+
+[node name="Chase" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("17_y1860")
+state_aggro_duration = 5.0
+ignore_flee = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 4

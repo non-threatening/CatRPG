@@ -11,6 +11,8 @@ class_name EnemyStateChase extends EnemyState
 @export var state_aggro_duration : float = 0.5
 @export var next_state : EnemyState
 
+@export var ignore_flee : bool = false
+
 var _timer : float = 0.0
 var _direction : Vector2
 var _can_see_player : bool = false
@@ -68,7 +70,9 @@ func _on_player_enter() -> void:
 	if( 
 			state_machine.current_state is EnemyStateStun
 			or state_machine.current_state is EnemyStateDestroy
+			or ignore_flee == true
 	):
+		print("true")
 		return
 	state_machine.change_state( self )
 	pass
