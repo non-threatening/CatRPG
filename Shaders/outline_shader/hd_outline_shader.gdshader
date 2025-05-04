@@ -8,18 +8,18 @@ uniform float alpha_threshold : hint_range(0.0, 0.9) = 0.5;
 float has_solid_neighbor( sampler2D texture_sample, vec2 uv_coord, vec2 pixel_size ) {
 	vec2 offset = outline_thickness * pixel_size;
 	float sum_alpha = 0.0;
-	
+
 	sum_alpha += texture( texture_sample, uv_coord + vec2( 1.0, 0.0 ) * offset ).a;
 	sum_alpha += texture( texture_sample, uv_coord + vec2( -1.0, 0.0 ) * offset ).a;
 	sum_alpha += texture( texture_sample, uv_coord + vec2( 0.0, 1.0 ) * offset ).a;
 	sum_alpha += texture( texture_sample, uv_coord + vec2( 0.0, -1.0 ) * offset ).a;
-	
+	//
 	// Diagonal, less weight
 	sum_alpha += texture( texture_sample, uv_coord + vec2( 1.0, 0.0 ) * offset ).a;
 	sum_alpha += texture( texture_sample, uv_coord + vec2( -1.0, 0.0 ) * offset ).a;
 	sum_alpha += texture( texture_sample, uv_coord + vec2( 0.0, 1.0 ) * offset ).a;
 	sum_alpha += texture( texture_sample, uv_coord + vec2( 0.0, -1.0 ) * offset ).a;
-					
+
 	return smoothstep( 0.0, 1.0, sum_alpha);
 }
 
@@ -38,5 +38,5 @@ void fragment() {
 
 
 
-	
+
 

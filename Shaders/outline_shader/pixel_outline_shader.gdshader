@@ -9,10 +9,11 @@ float is_solid( float value ) {
 
 float has_solid_neighbor( sampler2D texture_sample, vec2 uv_coord, vec2 pixel_size ) {
 	vec2 offset = outline_thickness * pixel_size;
-	float sum_alpha = texture( texture_sample, uv_coord + vec2( 1.0, 0.0 ) * offset ).a +
-					texture( texture_sample, uv_coord + vec2( -1.0, 0.0 ) * offset ).a +
-					texture( texture_sample, uv_coord + vec2( 0.0, 1.0 ) * offset ).a +
-					texture( texture_sample, uv_coord + vec2( 0.0, -1.0 ) * offset ).a;
+	float sum_alpha = 
+			texture( texture_sample, uv_coord + vec2( 1.0, 0.0 ) * offset ).a +
+			texture( texture_sample, uv_coord + vec2( -1.0, 0.0 ) * offset ).a +
+			texture( texture_sample, uv_coord + vec2( 0.0, 1.0 ) * offset ).a +
+			texture( texture_sample, uv_coord + vec2( 0.0, -1.0 ) * offset ).a;
 	return is_solid( sum_alpha );
 }
 

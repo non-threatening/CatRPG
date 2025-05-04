@@ -44,7 +44,7 @@ side = 2
 
 [node name="Npc" parent="." instance=ExtResource("7_ntt8e")]
 position = Vector2(337, 156)
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 npc_resource = ExtResource("8_ngmh3")
 
 [node name="NpcBehaviorWander" parent="Npc" instance=ExtResource("8_ug5ku")]
@@ -73,7 +73,7 @@ metadata/_custom_type_script = "uid://bvrkfaitsu01p"
 
 [node name="Npc2" parent="." instance=ExtResource("7_ntt8e")]
 position = Vector2(772, 297.927)
-scale = Vector2(2.5, 2.5)
+scale = Vector2(3.5, 3.5)
 npc_resource = ExtResource("10_h1fhx")
 
 [node name="NpcBehaviorPatrol" parent="Npc2" instance=ExtResource("11_8vfny")]
@@ -84,19 +84,15 @@ position = Vector2(-102, 9.073)
 
 [node name="PatrolLocation4" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(1, 1, 0, 1)
-position = Vector2(5, -126.927)
+position = Vector2(104.571, 18.878)
 
 [node name="PatrolLocation5" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(-144, -111.927)
+position = Vector2(61.4286, -10.8363)
 
 [node name="PatrolLocation2" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(0, 1, 1, 1)
 position = Vector2(2.99994, -7.92685)
-
-[node name="PatrolLocation3" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
-modulate = Color(0, 0, 1, 1)
-position = Vector2(-83, -174.927)
 
 [node name="DialogInteraction" parent="Npc2" instance=ExtResource("10_5ak8t")]
 

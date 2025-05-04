@@ -11,6 +11,7 @@ var attacking : bool = false
 
 @onready var walk : State = $"../Walk"
 @onready var idle : State = $"../Idle"
+@onready var charge_attack: State = $"../ChargeAttack"
 @onready var hurt_box : HurtBox = %AttackHurtBox
 
 
@@ -19,7 +20,7 @@ var attacking : bool = false
 func enter() -> void:
 	player.update_animation("attack")
 	attack_anim.play( "attack_" + player.anim_direction() )
-	animation_player.animation_finished.connect( EndAttack )
+	animation_player.animation_finished.connect( _end_attack )
 	
 	audio.stream = attack_sound
 	audio.pitch_scale = randf_range( 0.9, 1.1 )
@@ -35,7 +36,7 @@ func enter() -> void:
 	
 ## When the player exits
 func exit() -> void:
-	animation_player.animation_finished.disconnect( EndAttack )
+	animation_player.animation_finished.disconnect( _end_attack )
 	attacking = false
 	
 	await get_tree().create_timer( 0.1 ).timeout
@@ -66,5 +67,28 @@ func handle_input( _event: InputEvent ) -> State:
 
 
 
-func EndAttack( _newAnimName : String ) -> void:
+func _end_attack( _newAnimName : String ) -> void:
+	if Input.is_action_pressed("attack"):
+		state_machine.change_state( charge_attack )
 	attacking = false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
