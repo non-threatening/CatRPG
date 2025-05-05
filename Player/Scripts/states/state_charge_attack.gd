@@ -117,7 +117,7 @@ func get_spin_frame() -> float:
 			return interval * 4 ## The fourth frame
 		_:
 			return interval * 6 ## frame facing right
-	pass
+
 	
 	
 func charge_complete() -> void:

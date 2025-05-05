@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dw0mcd4jqrtcp" path="res://interactables/dialog/sprites/dialog_interactable.png" id="1_ls8k1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ea8i5"]
-size = Vector2(150, 100)
+size = Vector2(100, 70)
 
 [sub_resource type="Animation" id="Animation_4cr4e"]
 length = 0.001
@@ -132,6 +132,7 @@ script = ExtResource("1_ea8i5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ea8i5")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -52)
