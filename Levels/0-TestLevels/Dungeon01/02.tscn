@@ -34,7 +34,6 @@ position = Vector2(544, 88)
 position = Vector2(576, 520)
 level = "uid://bng4h21j3iths"
 target_transition_area = "LevelTransition2"
-center_player = true
 side = 3
 
 [node name="LevelTransition2" parent="." instance=ExtResource("4_bbxeb")]
@@ -48,7 +47,7 @@ position = Vector2(230.296, 235.592)
 item_data = ExtResource("7_m2303")
 
 [node name="LevelTransition3" parent="." instance=ExtResource("4_bbxeb")]
-position = Vector2(1128, 288)
+position = Vector2(1080, 288)
 level = "uid://vmelqpt1g37"
 target_transition_area = "LevelTransition3"
 side = 1

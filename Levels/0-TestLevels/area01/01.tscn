@@ -37,9 +37,9 @@ level = "uid://c26e5qs51phrq"
 size = 4
 
 [node name="LevelTransition2" parent="." instance=ExtResource("5_pwydo")]
-position = Vector2(620, -11)
+position = Vector2(626, -13)
 level = "uid://bng4h21j3iths"
-center_player = true
+size = 1
 side = 2
 
 [node name="Npc" parent="." instance=ExtResource("7_ntt8e")]

@@ -22,9 +22,8 @@ tile_map_data = PackedByteArray("AAAQAAAAAQAEAAUAAAAQAAEAAQAEAAYAAAAQAAIAAQAEAAc
 position = Vector2(696, 319)
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_ax5fs")]
-position = Vector2(576, 520)
+position = Vector2(576, 528)
 level = "uid://cbsyitoishkr0"
-center_player = true
 side = 3
 
 [node name="LevelTransition2" parent="." instance=ExtResource("4_ax5fs")]
