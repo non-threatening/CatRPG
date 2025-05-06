@@ -65,18 +65,24 @@ func get_offset() -> Vector2:
 	if side == SIDE.LEFT or side == SIDE.RIGHT:
 		if center_player == true:
 			offset.y = 0
+			print("L or R")
 		else:
+			print("right")
 			offset.y = player_pos.y - global_position.y
-			offset.x = 50
+			offset.x = 16
 			if side == SIDE.LEFT:
+				print("left")
 				offset.x *= -1
 	else:
 		if center_player == true:
 			offset.x = 0
+			print("T or B")
 		else:
+			print("bottom")
 			offset.x = player_pos.x - global_position.x
-			offset.y = 50
+			offset.y = 16
 			if side == SIDE.TOP:
+				print("top")
 				offset.y *= -1
 	return offset
 
