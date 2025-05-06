@@ -49,12 +49,14 @@ func _physics_process( _delta: float ) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	
-	## TESTING DEATH
 	if event.is_action_pressed("test"):
-		update_hp( -99 )
-		player_damaged.emit( %AttackHurtBox )
-	pass
+		## Testing Death
+		#update_hp( -99 )
+		#player_damaged.emit( %AttackHurtBox )
+		
+		## Testing cameraShake
+		PlayerManager.shake_camera()
+		pass
 
 
 
