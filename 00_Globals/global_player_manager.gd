@@ -4,8 +4,9 @@ const PLAYER = preload("res://Player/player.tscn")
 const INVETORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/player_inventory.tres")
 
 @warning_ignore("unused_signal")
-signal interact_pressed ##(x) Only want dectection button to work when idle or walking, and within the area of interactables
+signal interact_pressed ##(x) Only want dectection button to work when idle or walking, and within the area of interactables, activated from interactables
 
+var interact_handled : bool = true # currently interacting with something
 var player : Player
 var player_spawned : bool = false
 
@@ -52,5 +53,10 @@ func play_audio( _audio : AudioStream ) -> void:
 	player.audio.stream = _audio
 	player.audio.play()
 	
+
+## will emit this signal if in state that allows interactio
+func interact() -> void:
+	interact_handled = false
+	interact_pressed.emit() 
 	
 	

@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://7y3rydpf6bjk"]
+[gd_scene load_steps=7 format=3 uid="uid://7y3rydpf6bjk"]
 
 [ext_resource type="Script" uid="uid://cu8y0qpgv4qwy" path="res://Props/Plants/plant.gd" id="1_g4eov"]
-[ext_resource type="Texture2D" uid="uid://disyce2416juf" path="res://Props/Sprites/Props.png" id="1_ysktj"]
+[ext_resource type="Texture2D" uid="uid://bicu8rrmlxkwk" path="res://Props/Sprites/Props.png" id="1_ysktj"]
 [ext_resource type="PackedScene" uid="uid://c3ovyjwujdxmf" path="res://GeneralNodes/HitBox/hit_box.tscn" id="2_n387i"]
+[ext_resource type="PackedScene" uid="uid://dmgx3mwihecmn" path="res://interactables/throwable/throwable.tscn" id="4_w3sfv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3r5co"]
 size = Vector2(26, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oun8e"]
+size = Vector2(32, 28)
 
 [node name="Plant" type="Node2D"]
 script = ExtResource("1_g4eov")
@@ -32,3 +36,9 @@ collision_mask = 0
 position = Vector2(1, 4)
 shape = SubResource("RectangleShape2D_3r5co")
 debug_color = Color(0.598911, 0.492499, 0.625015, 0.42)
+
+[node name="Throwable" parent="." instance=ExtResource("4_w3sfv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Throwable"]
+shape = SubResource("RectangleShape2D_oun8e")
+debug_color = Color(0.644785, 0.523035, 0.00659372, 0)

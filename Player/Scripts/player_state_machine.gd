@@ -3,6 +3,7 @@ class_name PlayerStateMachine extends Node
 var states : Array[ State ]
 var prev_state : State
 var current_state : State
+var next_state : State
 
 
 
@@ -54,6 +55,8 @@ func Initialize( _player : Player ) -> void:
 func change_state( new_state : State ) -> void:
 	if new_state == null || new_state == current_state:
 		return
+	
+	next_state = new_state
 		
 	if current_state:	
 		current_state.exit()

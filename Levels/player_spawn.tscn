@@ -7,7 +7,7 @@
 script = ExtResource("1_lyuil")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 0.192157, 0.658824)
+modulate = Color(0.995046, 0.912558, 0.955507, 0.658824)
 position = Vector2(0, -60)
 texture = ExtResource("2_lyuil")
 hframes = 3

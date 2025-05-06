@@ -1,6 +1,6 @@
 class_name HurtBox extends Area2D
-## Passes all vars through hit_box to enemy/plant or whatever 
 
+signal did_damage
 
 @export var damage : int = 1
 
@@ -12,5 +12,6 @@ func _ready() -> void:
 	
 func _area_entered( a : Area2D ) -> void:
 	if a is HitBox:
+		did_damage.emit()
 		a.take_damage( self ) ## This cause damage every enter...
 		pass

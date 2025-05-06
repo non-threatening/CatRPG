@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://pucwglkmup3m"]
+[gd_scene load_steps=19 format=4 uid="uid://pucwglkmup3m"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
@@ -17,7 +17,6 @@
 [ext_resource type="Resource" uid="uid://vqbsoke2pd8b" path="res://npc/00_npcs/Moozer.tres" id="12_swrua"]
 [ext_resource type="Script" uid="uid://c8lujimhxkark" path="res://interactables/dialog/scripts/dialog_choice.gd" id="16_oir6p"]
 [ext_resource type="Script" uid="uid://c5oelxgr7kvjh" path="res://interactables/dialog/scripts/dialog_branch.gd" id="17_rclfq"]
-[ext_resource type="PackedScene" uid="uid://7y3rydpf6bjk" path="res://Props/Plants/Plant.tscn" id="18_rclfq"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://Props/pot/pot.tscn" id="19_huo8l"]
 
 [node name="02" type="Node2D"]
@@ -82,15 +81,15 @@ position = Vector2(152.857, -37.122)
 
 [node name="PatrolLocation" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-106.571, 82.5923)
+position = Vector2(-165.714, 61.4077)
 
 [node name="PatrolLocation4" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(1, 1, 0, 1)
-position = Vector2(-53.4286, 89.7351)
+position = Vector2(-154.286, 37.9791)
 
 [node name="PatrolLocation5" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(-216.571, -48.8363)
+position = Vector2(-196.857, 16.5506)
 
 [node name="PatrolLocation2" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(0, 1, 1, 1)
@@ -138,18 +137,6 @@ script = ExtResource("11_eysub")
 text = "Ok, shit."
 metadata/_custom_type_script = "uid://bvrkfaitsu01p"
 
-[node name="Plant" parent="." instance=ExtResource("18_rclfq")]
-position = Vector2(936, 0)
-
-[node name="Plant2" parent="." instance=ExtResource("18_rclfq")]
-position = Vector2(895, -1)
-
-[node name="Plant3" parent="." instance=ExtResource("18_rclfq")]
-position = Vector2(846, 0)
-
-[node name="Plant4" parent="." instance=ExtResource("18_rclfq")]
-position = Vector2(803, -1)
-
 [node name="LevelTransition3" parent="." instance=ExtResource("5_pwydo")]
 position = Vector2(1436, 319)
 level = "uid://cbsyitoishkr0"
@@ -159,4 +146,8 @@ side = 1
 
 [node name="Pot" parent="." instance=ExtResource("19_huo8l")]
 position = Vector2(1086, 193)
+scale = Vector2(1.5, 1.5)
+
+[node name="Pot2" parent="." instance=ExtResource("19_huo8l")]
+position = Vector2(1049, 193)
 scale = Vector2(1.5, 1.5)

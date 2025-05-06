@@ -41,14 +41,3 @@ void fragment() {
 	COLOR.rgb = mix( outline_color.rgb, COLOR.rgb, alpha_blend_factor );
 	COLOR.a = max( COLOR.a, outline_mask );
 }
-
-
-
-
-
-
-
-
-
-
-
