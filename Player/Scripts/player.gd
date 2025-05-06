@@ -23,10 +23,9 @@ var max_hp : int = 6
 @onready var held_item: Node2D = $Sprite2D/HeldItem
 @onready var carry: State_Carry = $StateMachine/Carry
 
+@onready var idle: State_Idle = $StateMachine/Idle
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerManager.player = self
 	state_machine.Initialize(self)
@@ -35,7 +34,7 @@ func _ready() -> void:
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process( _delta: float ) -> void:
 	direction = Vector2(
 		Input.get_axis("left", "right"),
@@ -43,8 +42,20 @@ func _process( _delta: float ) -> void:
 	).normalized()
 	pass
 
+
+
 func _physics_process( _delta: float ) -> void:
 	move_and_slide()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	
+	## TESTING DEATH
+	if event.is_action_pressed("test"):
+		update_hp( -99 )
+		player_damaged.emit( %AttackHurtBox )
+	pass
+
 
 
 
@@ -82,12 +93,14 @@ func anim_direction() -> String:
 func _take_damage( hurt_box : HurtBox ) -> void:
 	if invulnerable == true:
 		return
-	update_hp( -hurt_box.damage )
+		
 	if hp > 0:
+		update_hp( -hurt_box.damage )
 		player_damaged.emit( hurt_box )
-	else:
-		player_damaged.emit( hurt_box )
-		update_hp(99)
+		
+	#else:
+		#player_damaged.emit( hurt_box )
+		##update_hp(99)
 	pass
 	
 	
@@ -112,8 +125,7 @@ func pickup_item( _t : Throwable ) -> void:
 	carry.throwable = _t
 	pass
 	
-	
-	
-	
-	
-	
+func revive_player() -> void:
+	print("revived")
+	update_hp( 99 )
+	state_machine.change_state( idle )
