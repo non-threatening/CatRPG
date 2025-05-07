@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://r2kdkfki8m1"]
+[gd_scene load_steps=8 format=4 uid="uid://r2kdkfki8m1"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_0eny7"]
 [ext_resource type="AudioStream" uid="uid://xot5s58xou2q" path="res://Levels/Audio/example_music_01.ogg" id="2_gc23w"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="4_3gt8q"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="6_hr13v"]
 [ext_resource type="PackedScene" uid="uid://dnc71x27vcp3m" path="res://Props/Torches/torch_dungeon.tscn" id="6_mn8mo"]
+[ext_resource type="PackedScene" uid="uid://co1mwctarrili" path="res://Levels/0-TestLevels/Dungeon01/dark_wizard/energy_orb.tscn" id="7_s2x5s"]
 
 [node name="02" type="Node2D"]
 script = ExtResource("1_0eny7")
@@ -48,3 +49,19 @@ position = Vector2(-1, 0)
 color = Color(0.306, 0.36, 0.324, 1)
 energy = 0.8
 blend_mode = 2
+
+[node name="EnergyOrb" parent="." instance=ExtResource("7_s2x5s")]
+position = Vector2(120, 120)
+speed = 500.0
+
+[node name="EnergyOrb2" parent="." instance=ExtResource("7_s2x5s")]
+position = Vector2(1016, 104)
+speed = 500.0
+
+[node name="EnergyOrb3" parent="." instance=ExtResource("7_s2x5s")]
+position = Vector2(1024, 504)
+speed = 500.0
+
+[node name="EnergyOrb4" parent="." instance=ExtResource("7_s2x5s")]
+position = Vector2(128, 512)
+speed = 500.0
