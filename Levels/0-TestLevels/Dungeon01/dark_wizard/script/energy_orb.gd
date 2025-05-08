@@ -1,7 +1,7 @@
 class_name Energy_Orb extends Node2D
 
 
-@export var speed : float = 200
+@export var speed : float = 500
 
 @export var shoot_audio : AudioStream
 @export var hit_audio : AudioStream

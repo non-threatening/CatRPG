@@ -57,6 +57,7 @@ script = ExtResource("1_q1tu1")
 catch_audio = ExtResource("2_sj23e")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_j6qed")]
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -17)

@@ -46,7 +46,8 @@ func enter() -> void:
 	
 ## When the player exits
 func exit() -> void:
-	charge_attack_hurt_box.monitoring = false
+	#charge_attack_hurt_box.monitoring = false
+	charge_attack_hurt_box.set_deferred( "monitoring", false )
 	spin_effect_sprite_2d.visible = false
 	gpu_particles_2d.emitting = false
 	pass

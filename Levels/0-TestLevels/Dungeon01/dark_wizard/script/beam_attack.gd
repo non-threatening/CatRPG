@@ -1,4 +1,4 @@
-class_name Attack extends Node2D
+class_name BeamAttack extends Node2D
 
 @export var use_timer : bool = false
 @export var time_between_attacks : float = 3.0
