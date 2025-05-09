@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5p00v0ot4ayk"
-path="res://.godot/imported/boss-hp.png-197a96ced55c0f88e676a471ca60493d.ctex"
+path="res://.godot/imported/boss-hp.png-27f87b8de827cf90df7653b8464143fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/0-TestLevels/Dungeon01/dark_wizard/sprites/boss-hp.png"
-dest_files=["res://.godot/imported/boss-hp.png-197a96ced55c0f88e676a471ca60493d.ctex"]
+source_file="res://GUI/player_hud/boss-hp.png"
+dest_files=["res://.godot/imported/boss-hp.png-27f87b8de827cf90df7653b8464143fb.ctex"]
 
 [params]
 

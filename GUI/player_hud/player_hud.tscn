@@ -1,87 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcpyr1vq1ulx3"]
+[gd_scene load_steps=12 format=3 uid="uid://bcpyr1vq1ulx3"]
 
 [ext_resource type="Script" uid="uid://poj3adf5jpou" path="res://GUI/player_hud/player_hud.gd" id="1_oghrr"]
 [ext_resource type="PackedScene" uid="uid://dkynksfn5v5fw" path="res://GUI/player_hud/heart_gui.tscn" id="2_alx7a"]
+[ext_resource type="Texture2D" uid="uid://c5p00v0ot4ayk" path="res://GUI/player_hud/boss-hp.png" id="3_4b3j6"]
+[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="4_yhjvm"]
 
 [sub_resource type="FontVariation" id="FontVariation_alx7a"]
 spacing_glyph = 15
-
-[sub_resource type="Animation" id="Animation_alx7a"]
-resource_name = "show_game_over"
-length = 4.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FadeToBlack:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Label:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(3, 4),
-"transitions": PackedFloat32Array(1, 0.5),
-"update": 0,
-"values": [Vector2(597.5, 300), Vector2(597.5, 270)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("VBoxContainer:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(3, 4),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(510, 422), Vector2(510, 459)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("VBoxContainer:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(3, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Label:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(3, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_oghrr"]
 length = 0.001
@@ -234,12 +159,97 @@ tracks/5/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_alx7a"]
+resource_name = "show_game_over"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(597.5, 300), Vector2(597.5, 270)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(510, 422), Vector2(510, 459)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4b3j6"]
 _data = {
 &"RESET": SubResource("Animation_oghrr"),
 &"fade_to_black": SubResource("Animation_4b3j6"),
 &"show_game_over": SubResource("Animation_alx7a")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sysqg"]
+atlas = ExtResource("3_4b3j6")
+region = Rect2(9, 40, 14, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxq5y"]
+atlas = ExtResource("3_4b3j6")
+region = Rect2(40, 40, 15, 15)
 
 [node name="PlayerHud" type="CanvasLayer"]
 layer = 2
@@ -256,9 +266,9 @@ mouse_filter = 2
 
 [node name="HFlowContainer" type="HFlowContainer" parent="Control"]
 layout_mode = 0
-offset_left = 1585.0
+offset_left = 1535.0
 offset_top = 122.0
-offset_right = 1856.0
+offset_right = 1906.0
 offset_bottom = 243.0
 theme_override_constants/h_separation = 0
 alignment = 1
@@ -384,6 +394,62 @@ color = Color(0, 0, 0, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_4b3j6")
 }
+
+[node name="BossUI" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -159.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/BossUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 61.0
+offset_right = 150.0
+offset_bottom = 125.0
+grow_horizontal = 2
+value = 80.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_sysqg")
+texture_progress = SubResource("AtlasTexture_rxq5y")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/BossUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.0
+offset_top = 31.0
+offset_right = 155.0
+offset_bottom = 148.0
+grow_horizontal = 2
+texture = ExtResource("3_4b3j6")
+region_rect = Rect2(0, 0, 64, 30)
+patch_margin_left = 18
+patch_margin_right = 11
+axis_stretch_horizontal = 1
+
+[node name="Label" type="Label" parent="Control/BossUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_right = 110.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_yhjvm")
+theme_override_font_sizes/font_size = 64
+text = "BOSS NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Effects"
