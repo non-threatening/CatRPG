@@ -60,7 +60,7 @@ func _ready() -> void:
 	
 	
 	
-func _process(delta: float) -> void:
+func _process( _delta: float ) -> void:
 	hand_01_up.position == hand_01.position
 	hand_01_up.frame = hand_01.frame + 4
 	hand_02_up.position == hand_02.position

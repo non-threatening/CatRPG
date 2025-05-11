@@ -10,3 +10,4 @@ monitorable = false
 script = ExtResource("1_7xow2")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_yfefd")]
+collision_mask = 272

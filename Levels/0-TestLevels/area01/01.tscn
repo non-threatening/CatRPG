@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://pucwglkmup3m"]
+[gd_scene load_steps=28 format=4 uid="uid://pucwglkmup3m"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
@@ -17,7 +17,36 @@
 [ext_resource type="Resource" uid="uid://vqbsoke2pd8b" path="res://npc/00_npcs/Moozer.tres" id="12_swrua"]
 [ext_resource type="Script" uid="uid://c8lujimhxkark" path="res://interactables/dialog/scripts/dialog_choice.gd" id="16_oir6p"]
 [ext_resource type="Script" uid="uid://c5oelxgr7kvjh" path="res://interactables/dialog/scripts/dialog_branch.gd" id="17_rclfq"]
+[ext_resource type="Script" uid="uid://dg0s8a2v71b6h" path="res://_0_Testing/BurstParticles2D/BurstParticles2D.gd" id="19_4gh42"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://Props/pot/pot.tscn" id="19_huo8l"]
+[ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://_0_Testing/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="20_1xyfj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mn1uy"]
+
+[sub_resource type="Gradient" id="Gradient_j0q7a"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.128205, 0.584615, 1)
+colors = PackedColorArray(0.670039, 0.470735, 0.542787, 0, 0.72549, 0.807843, 0.917647, 0.85098, 0.721569, 0.435294, 0.690196, 0.639216, 1, 0.223529, 0, 0.180392)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_svifw"]
+gradient = SubResource("Gradient_j0q7a")
+
+[sub_resource type="Curve" id="Curve_5adnx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.173709, 0.527273), 3.03538, 2.28391, 1, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_c8171"]
+_limits = [0.0, 34.85, 0.0, 1.0]
+_data = [Vector2(0, 3.485), 0.0, 3.84848, 0, 0, Vector2(0.278768, 22.1773), 32.2923, 32.2923, 0, 0, Vector2(1, 34.85), 6.70619, 6.70619, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_31yvb"]
+_data = [Vector2(0, 0.654545), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_kr4tu"]
+_data = [Vector2(0, 1), 0.0, -4.45364, 0, 1, Vector2(0.187793, 0.163636), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.201471, 0.0, 1, 0]
+point_count = 3
 
 [node name="02" type="Node2D"]
 script = ExtResource("1_4t7i1")
@@ -73,7 +102,6 @@ metadata/_custom_type_script = "uid://bvrkfaitsu01p"
 
 [node name="Npc2" parent="." instance=ExtResource("7_ntt8e")]
 position = Vector2(145, 434)
-scale = Vector2(3.5, 3.5)
 npc_resource = ExtResource("10_h1fhx")
 
 [node name="NpcBehaviorPatrol" parent="Npc2" instance=ExtResource("11_8vfny")]
@@ -81,19 +109,14 @@ position = Vector2(152.857, -37.122)
 
 [node name="PatrolLocation" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-165.714, 61.4077)
-
-[node name="PatrolLocation4" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(-154.286, 37.9791)
-
-[node name="PatrolLocation5" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(-196.857, 16.5506)
 
 [node name="PatrolLocation2" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(-200.571, 52.3066)
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-85.9999, 92.5506)
+
+[node name="PatrolLocation3" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-114.286, -8.30657)
 
 [node name="DialogInteraction" parent="Npc2" instance=ExtResource("10_5ak8t")]
 
@@ -151,3 +174,24 @@ scale = Vector2(1.5, 1.5)
 [node name="Pot2" parent="." instance=ExtResource("19_huo8l")]
 position = Vector2(1049, 193)
 scale = Vector2(1.5, 1.5)
+
+[node name="Ring" type="Node2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.12549)
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_mn1uy")
+position = Vector2(0.000976563, 0)
+script = ExtResource("19_4gh42")
+repeat = true
+texture = ExtResource("20_1xyfj")
+image_scale = 0.1
+gradient = SubResource("GradientTexture1D_svifw")
+angle_degrees = 360.0
+share_material = true
+randomly_flip_rotation = true
+distance_randomness = 0.667
+global_offset = true
+angle_curve = SubResource("Curve_5adnx")
+scale_curve = SubResource("Curve_c8171")
+y_scale_curve = SubResource("Curve_31yvb")
+color_offset_curve = SubResource("Curve_kr4tu")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://d20repjnfc352"]
+[gd_scene load_steps=44 format=3 uid="uid://d20repjnfc352"]
 
 [ext_resource type="Script" uid="uid://dlqf7lyw00h77" path="res://Enemies/Scripts/enemy.gd" id="1_3sugd"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_nbun1"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dalyj6duug8yd" path="res://Enemies/Slime/destroy.png" id="16_8jyw4"]
 [ext_resource type="Script" uid="uid://bai3apwyf33vo" path="res://Enemies/Scripts/states/enemy_state_chase.gd" id="16_p257j"]
 [ext_resource type="PackedScene" uid="uid://danwl1nkjj72k" path="res://Enemies/vision_area.tscn" id="17_r3i0u"]
+[ext_resource type="PackedScene" uid="uid://ckv0vcfluyvx2" path="res://Enemies/pathfinder.tscn" id="19_l2k1h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkpye"]
 radius = 12.0416
@@ -774,7 +775,6 @@ script = ExtResource("1_3sugd")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_nbun1")]
 position = Vector2(-1, -7)
-collision_mask = 258
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1, 2)
@@ -845,6 +845,7 @@ drops = Array[ExtResource("13_yfeuu")]([SubResource("Resource_ts4pi"), SubResour
 script = ExtResource("16_p257j")
 vision_area = NodePath("../../VisionArea")
 attack_area = NodePath("../../Sprite2D/AttackHurtBox")
+state_aggro_duration = 5.0
 next_state = NodePath("../Idle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -866,4 +867,7 @@ libraries = {
 position = Vector2(0, -6)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
+modulate = Color(0.807843, 0.00784314, 0.541176, 0.160784)
 polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
+
+[node name="Pathfinder" parent="." instance=ExtResource("19_l2k1h")]
