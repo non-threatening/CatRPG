@@ -102,21 +102,8 @@ metadata/_custom_type_script = "uid://bvrkfaitsu01p"
 
 [node name="Npc2" parent="." instance=ExtResource("7_ntt8e")]
 position = Vector2(145, 434)
+scale = Vector2(3.5, 3.5)
 npc_resource = ExtResource("10_h1fhx")
-
-[node name="NpcBehaviorPatrol" parent="Npc2" instance=ExtResource("11_8vfny")]
-position = Vector2(152.857, -37.122)
-
-[node name="PatrolLocation" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
-modulate = Color(1, 0, 0, 1)
-
-[node name="PatrolLocation2" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(-85.9999, 92.5506)
-
-[node name="PatrolLocation3" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(-114.286, -8.30657)
 
 [node name="DialogInteraction" parent="Npc2" instance=ExtResource("10_5ak8t")]
 
@@ -159,6 +146,19 @@ metadata/_custom_type_script = "uid://c5oelxgr7kvjh"
 script = ExtResource("11_eysub")
 text = "Ok, shit."
 metadata/_custom_type_script = "uid://bvrkfaitsu01p"
+
+[node name="NpcBehaviorPatrol" parent="Npc2" instance=ExtResource("11_8vfny")]
+
+[node name="PatrolLocation" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
+modulate = Color(1, 0, 0, 1)
+
+[node name="PatrolLocation2" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(189.714, -18.8571)
+
+[node name="PatrolLocation3" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(189.143, -102.286)
 
 [node name="LevelTransition3" parent="." instance=ExtResource("5_pwydo")]
 position = Vector2(1436, 319)

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://bbu7abb38x6fi"]
+
+[ext_resource type="Script" uid="uid://dq0va4fqx8vqt" path="res://Quests/scripts/quest_reward_item.gd" id="1_as8ic"]
+[ext_resource type="Script" uid="uid://dye0hqq1nc0yq" path="res://Quests/scripts/quest_resource.gd" id="2_rappu"]
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="2_y712v"]
+[ext_resource type="Resource" uid="uid://d1hal3jqnbjc1" path="res://Items/potion.tres" id="3_hfe6c"]
+
+[sub_resource type="Resource" id="Resource_0bykk"]
+script = ExtResource("1_as8ic")
+item = ExtResource("2_y712v")
+quantity = 100
+metadata/_custom_type_script = "uid://dq0va4fqx8vqt"
+
+[sub_resource type="Resource" id="Resource_smh67"]
+script = ExtResource("1_as8ic")
+item = ExtResource("3_hfe6c")
+quantity = 5
+metadata/_custom_type_script = "uid://dq0va4fqx8vqt"
+
+[resource]
+script = ExtResource("2_rappu")
+title = "Find lost thing"
+description = "Go and find the thing for npc2"
+steps = Array[String](["find the thing", "Bring it Back"])
+reward_xp = 200
+reward_items = Array[ExtResource("1_as8ic")]([SubResource("Resource_0bykk"), SubResource("Resource_smh67")])
+metadata/_custom_type_script = "uid://dye0hqq1nc0yq"

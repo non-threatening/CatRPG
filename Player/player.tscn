@@ -39,7 +39,7 @@ shader = ExtResource("13_o28un")
 shader_parameter/outline_color = Color(0.94902, 0.184314, 0.2, 0.768627)
 shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(0.400209, 0.190692, 0.131933, 1)
+shader_parameter/cover_color = Color(0.832143, 0.57512, 0.798049, 1)
 shader_parameter/eye_color = Color(3, 3, 2, 1)
 
 [sub_resource type="Animation" id="Animation_xqcul"]
@@ -3179,7 +3179,7 @@ _data = {
 size = Vector2(50, 25.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pisgm"]
-size = Vector2(54, 26)
+size = Vector2(80, 26)
 
 [sub_resource type="Animation" id="Animation_pylmc"]
 length = 0.001
@@ -3446,11 +3446,11 @@ script = ExtResource("11_hfp0w")
 max_polyphony = 6
 
 [node name="Interactions" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -7)
 script = ExtResource("10_4cvxe")
 
 [node name="Area2D" type="Area2D" parent="Interactions"]
+visible = false
 position = Vector2(0, 16)
 collision_layer = 4
 collision_mask = 0
@@ -3462,6 +3462,7 @@ shape = SubResource("RectangleShape2D_dkpta")
 debug_color = Color(0.282353, 0.807843, 0.313726, 0)
 
 [node name="PushArea" type="Area2D" parent="Interactions"]
+position = Vector2(-1, 7)
 collision_layer = 0
 collision_mask = 16
 monitorable = false

@@ -17,7 +17,9 @@ var current_save : Dictionary = {
 	},
 	items = [],
 	persistance = [],
-	quests = [],
+	quests = [ #{ title = "not found ", is_complete = false, completed_steps = ['']  } 
+		
+	],
 }
 
 
@@ -27,6 +29,7 @@ func save_game() -> void:
 	update_player_data()
 	update_scene_path()
 	update_item_data()
+	update_quest_data()
 	var file := FileAccess.open( SAVE_PATH + "save.sav", FileAccess.WRITE )
 	var save_json = JSON.stringify( current_save )
 	file.store_line( save_json )
@@ -53,6 +56,7 @@ func load_game() -> void:
 	PlayerManager.set_player_position( Vector2( current_save.player.pos_x, current_save.player.pos_y ) )
 	PlayerManager.set_health( current_save.player.hp, current_save.player.max_hp )
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
+	QuestManager.current_quests = current_save.quests
 	
 	await  LevelManager.level_loaded
 	
@@ -80,6 +84,11 @@ func update_scene_path() -> void:
 func update_item_data() -> void:
 	current_save.items = PlayerManager.INVETORY_DATA.get_save_data()
 	
+
+func update_quest_data() -> void:
+	current_save.quests = QuestManager.current_quests
+	
+
 	
 func add_persistant_value( value : String ) -> void:
 	if check_persistant_value( value ) == false:
