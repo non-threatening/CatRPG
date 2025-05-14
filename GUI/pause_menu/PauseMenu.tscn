@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=15 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="FontFile" uid="uid://bs3nosvkt8t0l" path="res://GUI/fonts/OMORI_GAME2.ttf" id="2_dfhdr"]
@@ -11,6 +11,19 @@
 [ext_resource type="PackedScene" uid="uid://fumnr0rdrlri" path="res://GUI/pause_menu/quests/quest_item.tscn" id="8_uh56w"]
 [ext_resource type="FontFile" uid="uid://bx1bk1gkkhcgw" path="res://GUI/fonts/Snake.ttf" id="10_ai8h2"]
 [ext_resource type="PackedScene" uid="uid://dv5cvhdkwibjq" path="res://GUI/pause_menu/quests/quest_step_item.tscn" id="11_ybaie"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybaie"]
+bg_color = Color(0, 0.048, 0.24, 0.784314)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 36
+corner_radius_top_right = 36
+corner_radius_bottom_right = 36
+corner_radius_bottom_left = 36
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_laftm"]
 atlas = ExtResource("3_dfhdr")
@@ -46,7 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.178555, 0.178555, 2.40654e-08, 0.784314)
+color = Color(1, 0, 0, 0.141176)
 
 [node name="paused" type="Label" parent="Control"]
 layout_mode = 1
@@ -78,6 +91,7 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_16eqs")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ybaie")
 tab_alignment = 1
 current_tab = 1
 
