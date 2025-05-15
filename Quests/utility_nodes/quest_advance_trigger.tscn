@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://caynyujiuvbj3" path="res://Quests/utility_nodes/icons/quest_advance.png" id="2_efafc"]
 
 [node name="QuestAdvanceTrigger" type="Node2D"]
+z_index = 4
 script = ExtResource("1_b7agk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
