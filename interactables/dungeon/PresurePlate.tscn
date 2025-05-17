@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dge6x70cjvhjp" path="res://interactables/dungeon/dungeon_props.png" id="2_pexqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pexqu"]
-size = Vector2(10, 11.25)
+size = Vector2(10, 12)
 
 [node name="PresurePlate" type="Node2D"]
 script = ExtResource("1_3ybj1")

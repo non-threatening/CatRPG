@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://pucwglkmup3m"]
+[gd_scene load_steps=34 format=4 uid="uid://pucwglkmup3m"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
@@ -7,7 +7,9 @@
 [ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Shaders/grass001.tres" id="5_31yvb"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="5_pwydo"]
 [ext_resource type="AudioStream" uid="uid://xot5s58xou2q" path="res://Levels/Audio/example_music_01.ogg" id="6_1de0a"]
+[ext_resource type="Texture2D" uid="uid://b4nn7kelrpot5" path="res://Tile Maps/Sprites/Grass-01.png" id="6_1j6q0"]
 [ext_resource type="Shader" uid="uid://bh26fn50skl4i" path="res://Levels/0-TestLevels/fog01.gdshader" id="7_c8171"]
+[ext_resource type="Texture2D" uid="uid://bs0c213ehn6i7" path="res://Tile Maps/Sprites/dungeon_entrance.png" id="7_gs60u"]
 [ext_resource type="PackedScene" uid="uid://dajuqkayd03fp" path="res://npc/npc.tscn" id="7_ntt8e"]
 [ext_resource type="Resource" uid="uid://b2r5gwajlcj05" path="res://npc/00_npcs/npc_01.tres" id="8_ngmh3"]
 [ext_resource type="PackedScene" uid="uid://dul2wk6yslbpi" path="res://npc/npc_behavior_wander.tscn" id="8_ug5ku"]
@@ -20,13 +22,495 @@
 [ext_resource type="Script" uid="uid://c8lujimhxkark" path="res://interactables/dialog/scripts/dialog_choice.gd" id="16_oir6p"]
 [ext_resource type="Resource" uid="uid://bbu7abb38x6fi" path="res://Quests/find_lost_thing.tres" id="17_5adnx"]
 [ext_resource type="Script" uid="uid://c5oelxgr7kvjh" path="res://interactables/dialog/scripts/dialog_branch.gd" id="17_rclfq"]
-[ext_resource type="Script" uid="uid://dg0s8a2v71b6h" path="res://_0_Testing/BurstParticles2D/BurstParticles2D.gd" id="19_4gh42"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://Props/pot/pot.tscn" id="19_huo8l"]
-[ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://_0_Testing/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="20_1xyfj"]
 [ext_resource type="PackedScene" uid="uid://cpugykfww2auk" path="res://interactables/dungeon/PresurePlate.tscn" id="21_1xyfj"]
 [ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="22_mn1uy"]
 [ext_resource type="Resource" uid="uid://bgguf46pqvlda" path="res://Quests/long_quest.tres" id="23_svifw"]
 [ext_resource type="PackedScene" uid="uid://cj6o15jnqj0u0" path="res://Quests/utility_nodes/quest_activated_switch.tscn" id="27_kr4tu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i3id2"]
+texture = ExtResource("6_1j6q0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 0
+4:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 0
+5:0/0/terrains_peering_bit/right_side = 0
+5:0/0/terrains_peering_bit/bottom_side = 0
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 0
+6:0/0/terrains_peering_bit/right_side = 0
+6:0/0/terrains_peering_bit/bottom_side = 0
+6:0/0/terrains_peering_bit/left_side = 0
+7:0/0 = 0
+7:0/0/terrain_set = 0
+7:0/0/terrain = 0
+7:0/0/terrains_peering_bit/bottom_side = 0
+7:0/0/terrains_peering_bit/left_side = 0
+8:0/0 = 0
+8:0/0/terrain_set = 0
+8:0/0/terrain = 0
+8:0/0/terrains_peering_bit/right_side = 0
+8:0/0/terrains_peering_bit/bottom_side = 0
+8:0/0/terrains_peering_bit/bottom_left_corner = 0
+8:0/0/terrains_peering_bit/left_side = 0
+8:0/0/terrains_peering_bit/top_left_corner = 0
+8:0/0/terrains_peering_bit/top_side = 0
+9:0/0 = 0
+9:0/0/terrain_set = 0
+9:0/0/terrain = 0
+9:0/0/terrains_peering_bit/right_side = 0
+9:0/0/terrains_peering_bit/bottom_right_corner = 0
+9:0/0/terrains_peering_bit/bottom_side = 0
+9:0/0/terrains_peering_bit/left_side = 0
+10:0/0 = 0
+10:0/0/terrain_set = 0
+10:0/0/terrain = 0
+10:0/0/terrains_peering_bit/right_side = 0
+10:0/0/terrains_peering_bit/bottom_side = 0
+10:0/0/terrains_peering_bit/bottom_left_corner = 0
+10:0/0/terrains_peering_bit/left_side = 0
+11:0/0 = 0
+11:0/0/terrain_set = 0
+11:0/0/terrain = 0
+11:0/0/terrains_peering_bit/right_side = 0
+11:0/0/terrains_peering_bit/bottom_side = 0
+11:0/0/terrains_peering_bit/left_side = 0
+11:0/0/terrains_peering_bit/top_side = 0
+11:0/0/terrains_peering_bit/top_right_corner = 0
+12:0/0 = 0
+12:0/0/terrain_set = 0
+12:0/0/terrain = 0
+12:0/0/terrains_peering_bit/right_side = 0
+12:0/0/terrains_peering_bit/bottom_right_corner = 0
+12:0/0/terrains_peering_bit/bottom_side = 0
+13:0/0 = 0
+13:0/0/terrain_set = 0
+13:0/0/terrain = 0
+13:0/0/terrains_peering_bit/right_side = 0
+13:0/0/terrains_peering_bit/bottom_right_corner = 0
+13:0/0/terrains_peering_bit/bottom_side = 0
+13:0/0/terrains_peering_bit/bottom_left_corner = 0
+13:0/0/terrains_peering_bit/left_side = 0
+13:0/0/terrains_peering_bit/top_side = 0
+14:0/0 = 0
+14:0/0/terrain_set = 0
+14:0/0/terrain = 0
+14:0/0/terrains_peering_bit/right_side = 0
+14:0/0/terrains_peering_bit/bottom_right_corner = 0
+14:0/0/terrains_peering_bit/bottom_side = 0
+14:0/0/terrains_peering_bit/bottom_left_corner = 0
+14:0/0/terrains_peering_bit/left_side = 0
+15:0/0 = 0
+15:0/0/terrain_set = 0
+15:0/0/terrain = 0
+15:0/0/terrains_peering_bit/bottom_side = 0
+15:0/0/terrains_peering_bit/bottom_left_corner = 0
+15:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+4:1/0/terrain = 0
+4:1/0/terrains_peering_bit/bottom_side = 0
+4:1/0/terrains_peering_bit/top_side = 0
+5:1/0 = 0
+5:1/0/terrain_set = 0
+5:1/0/terrain = 0
+5:1/0/terrains_peering_bit/right_side = 0
+5:1/0/terrains_peering_bit/bottom_side = 0
+5:1/0/terrains_peering_bit/top_side = 0
+6:1/0 = 0
+6:1/0/terrain_set = 0
+6:1/0/terrain = 0
+6:1/0/terrains_peering_bit/right_side = 0
+6:1/0/terrains_peering_bit/bottom_side = 0
+6:1/0/terrains_peering_bit/left_side = 0
+6:1/0/terrains_peering_bit/top_side = 0
+7:1/0 = 0
+7:1/0/terrain_set = 0
+7:1/0/terrain = 0
+7:1/0/terrains_peering_bit/bottom_side = 0
+7:1/0/terrains_peering_bit/left_side = 0
+7:1/0/terrains_peering_bit/top_side = 0
+8:1/0 = 0
+8:1/0/terrain_set = 0
+8:1/0/terrain = 0
+8:1/0/terrains_peering_bit/right_side = 0
+8:1/0/terrains_peering_bit/bottom_right_corner = 0
+8:1/0/terrains_peering_bit/bottom_side = 0
+8:1/0/terrains_peering_bit/top_side = 0
+9:1/0 = 0
+9:1/0/terrain_set = 0
+9:1/0/terrain = 0
+9:1/0/terrains_peering_bit/right_side = 0
+9:1/0/terrains_peering_bit/bottom_right_corner = 0
+9:1/0/terrains_peering_bit/bottom_side = 0
+9:1/0/terrains_peering_bit/bottom_left_corner = 0
+9:1/0/terrains_peering_bit/left_side = 0
+9:1/0/terrains_peering_bit/top_side = 0
+9:1/0/terrains_peering_bit/top_right_corner = 0
+10:1/0 = 0
+10:1/0/terrain_set = 0
+10:1/0/terrain = 0
+10:1/0/terrains_peering_bit/right_side = 0
+10:1/0/terrains_peering_bit/bottom_right_corner = 0
+10:1/0/terrains_peering_bit/bottom_side = 0
+10:1/0/terrains_peering_bit/bottom_left_corner = 0
+10:1/0/terrains_peering_bit/left_side = 0
+10:1/0/terrains_peering_bit/top_left_corner = 0
+10:1/0/terrains_peering_bit/top_side = 0
+11:1/0 = 0
+11:1/0/terrain_set = 0
+11:1/0/terrain = 0
+11:1/0/terrains_peering_bit/bottom_side = 0
+11:1/0/terrains_peering_bit/bottom_left_corner = 0
+11:1/0/terrains_peering_bit/left_side = 0
+11:1/0/terrains_peering_bit/top_side = 0
+12:1/0 = 0
+12:1/0/terrain_set = 0
+12:1/0/terrain = 0
+12:1/0/terrains_peering_bit/right_side = 0
+12:1/0/terrains_peering_bit/bottom_right_corner = 0
+12:1/0/terrains_peering_bit/bottom_side = 0
+12:1/0/terrains_peering_bit/top_side = 0
+12:1/0/terrains_peering_bit/top_right_corner = 0
+13:1/0 = 0
+13:1/0/terrain_set = 0
+13:1/0/terrain = 0
+13:1/0/terrains_peering_bit/right_side = 0
+13:1/0/terrains_peering_bit/bottom_right_corner = 0
+13:1/0/terrains_peering_bit/bottom_side = 0
+13:1/0/terrains_peering_bit/bottom_left_corner = 0
+13:1/0/terrains_peering_bit/left_side = 0
+13:1/0/terrains_peering_bit/top_side = 0
+13:1/0/terrains_peering_bit/top_right_corner = 0
+14:1/0 = 0
+14:1/0/terrain_set = 0
+15:1/0 = 0
+15:1/0/terrain_set = 0
+15:1/0/terrain = 0
+15:1/0/terrains_peering_bit/right_side = 0
+15:1/0/terrains_peering_bit/bottom_side = 0
+15:1/0/terrains_peering_bit/bottom_left_corner = 0
+15:1/0/terrains_peering_bit/left_side = 0
+15:1/0/terrains_peering_bit/top_left_corner = 0
+15:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:2/0/terrain_set = 0
+4:2/0/terrain = 0
+4:2/0/terrains_peering_bit/top_side = 0
+5:2/0 = 0
+5:2/0/terrain_set = 0
+5:2/0/terrain = 0
+5:2/0/terrains_peering_bit/right_side = 0
+5:2/0/terrains_peering_bit/top_side = 0
+6:2/0 = 0
+6:2/0/terrain_set = 0
+6:2/0/terrain = 0
+6:2/0/terrains_peering_bit/right_side = 0
+6:2/0/terrains_peering_bit/left_side = 0
+6:2/0/terrains_peering_bit/top_side = 0
+7:2/0 = 0
+7:2/0/terrain_set = 0
+7:2/0/terrain = 0
+7:2/0/terrains_peering_bit/left_side = 0
+7:2/0/terrains_peering_bit/top_side = 0
+8:2/0 = 0
+8:2/0/terrain_set = 0
+8:2/0/terrain = 0
+8:2/0/terrains_peering_bit/right_side = 0
+8:2/0/terrains_peering_bit/bottom_side = 0
+8:2/0/terrains_peering_bit/top_side = 0
+8:2/0/terrains_peering_bit/top_right_corner = 0
+9:2/0 = 0
+9:2/0/terrain_set = 0
+9:2/0/terrain = 0
+9:2/0/terrains_peering_bit/right_side = 0
+9:2/0/terrains_peering_bit/bottom_right_corner = 0
+9:2/0/terrains_peering_bit/bottom_side = 0
+9:2/0/terrains_peering_bit/left_side = 0
+9:2/0/terrains_peering_bit/top_left_corner = 0
+9:2/0/terrains_peering_bit/top_side = 0
+9:2/0/terrains_peering_bit/top_right_corner = 0
+10:2/0 = 0
+10:2/0/terrain_set = 0
+10:2/0/terrain = 0
+10:2/0/terrains_peering_bit/right_side = 0
+10:2/0/terrains_peering_bit/bottom_side = 0
+10:2/0/terrains_peering_bit/bottom_left_corner = 0
+10:2/0/terrains_peering_bit/left_side = 0
+10:2/0/terrains_peering_bit/top_left_corner = 0
+10:2/0/terrains_peering_bit/top_side = 0
+10:2/0/terrains_peering_bit/top_right_corner = 0
+11:2/0 = 0
+11:2/0/terrain_set = 0
+11:2/0/terrain = 0
+11:2/0/terrains_peering_bit/bottom_side = 0
+11:2/0/terrains_peering_bit/left_side = 0
+11:2/0/terrains_peering_bit/top_left_corner = 0
+11:2/0/terrains_peering_bit/top_side = 0
+12:2/0 = 0
+12:2/0/terrain_set = 0
+12:2/0/terrain = 0
+12:2/0/terrains_peering_bit/right_side = 0
+12:2/0/terrains_peering_bit/bottom_right_corner = 0
+12:2/0/terrains_peering_bit/bottom_side = 0
+12:2/0/terrains_peering_bit/left_side = 0
+12:2/0/terrains_peering_bit/top_side = 0
+12:2/0/terrains_peering_bit/top_right_corner = 0
+13:2/0 = 0
+13:2/0/terrain_set = 0
+13:2/0/terrain = 0
+13:2/0/terrains_peering_bit/right_side = 0
+13:2/0/terrains_peering_bit/bottom_right_corner = 0
+13:2/0/terrains_peering_bit/bottom_side = 0
+13:2/0/terrains_peering_bit/bottom_left_corner = 0
+13:2/0/terrains_peering_bit/left_side = 0
+13:2/0/terrains_peering_bit/top_left_corner = 0
+13:2/0/terrains_peering_bit/top_side = 0
+13:2/0/terrains_peering_bit/top_right_corner = 0
+14:2/0 = 0
+14:2/0/terrain_set = 0
+14:2/0/terrain = 0
+14:2/0/terrains_peering_bit/right_side = 0
+14:2/0/terrains_peering_bit/bottom_right_corner = 0
+14:2/0/terrains_peering_bit/bottom_side = 0
+14:2/0/terrains_peering_bit/left_side = 0
+14:2/0/terrains_peering_bit/top_left_corner = 0
+14:2/0/terrains_peering_bit/top_side = 0
+15:2/0 = 0
+15:2/0/terrain_set = 0
+15:2/0/terrain = 0
+15:2/0/terrains_peering_bit/bottom_side = 0
+15:2/0/terrains_peering_bit/bottom_left_corner = 0
+15:2/0/terrains_peering_bit/left_side = 0
+15:2/0/terrains_peering_bit/top_left_corner = 0
+15:2/0/terrains_peering_bit/top_side = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+4:3/0/terrain_set = 0
+4:3/0/terrain = 0
+5:3/0 = 0
+5:3/0/terrain_set = 0
+5:3/0/terrain = 0
+5:3/0/terrains_peering_bit/right_side = 0
+6:3/0 = 0
+6:3/0/terrain_set = 0
+6:3/0/terrain = 0
+6:3/0/terrains_peering_bit/right_side = 0
+6:3/0/terrains_peering_bit/left_side = 0
+7:3/0 = 0
+7:3/0/terrain_set = 0
+7:3/0/terrain = 0
+7:3/0/terrains_peering_bit/left_side = 0
+8:3/0 = 0
+8:3/0/terrain_set = 0
+8:3/0/terrain = 0
+8:3/0/terrains_peering_bit/right_side = 0
+8:3/0/terrains_peering_bit/bottom_side = 0
+8:3/0/terrains_peering_bit/bottom_left_corner = 0
+8:3/0/terrains_peering_bit/left_side = 0
+8:3/0/terrains_peering_bit/top_side = 0
+9:3/0 = 0
+9:3/0/terrain_set = 0
+9:3/0/terrain = 0
+9:3/0/terrains_peering_bit/right_side = 0
+9:3/0/terrains_peering_bit/left_side = 0
+9:3/0/terrains_peering_bit/top_side = 0
+9:3/0/terrains_peering_bit/top_right_corner = 0
+10:3/0 = 0
+10:3/0/terrain_set = 0
+10:3/0/terrain = 0
+10:3/0/terrains_peering_bit/right_side = 0
+10:3/0/terrains_peering_bit/left_side = 0
+10:3/0/terrains_peering_bit/top_left_corner = 0
+10:3/0/terrains_peering_bit/top_side = 0
+11:3/0 = 0
+11:3/0/terrain_set = 0
+11:3/0/terrain = 0
+11:3/0/terrains_peering_bit/right_side = 0
+11:3/0/terrains_peering_bit/bottom_right_corner = 0
+11:3/0/terrains_peering_bit/bottom_side = 0
+11:3/0/terrains_peering_bit/left_side = 0
+11:3/0/terrains_peering_bit/top_side = 0
+12:3/0 = 0
+12:3/0/terrain_set = 0
+12:3/0/terrain = 0
+12:3/0/terrains_peering_bit/right_side = 0
+12:3/0/terrains_peering_bit/top_side = 0
+12:3/0/terrains_peering_bit/top_right_corner = 0
+13:3/0 = 0
+13:3/0/terrain_set = 0
+13:3/0/terrain = 0
+13:3/0/terrains_peering_bit/right_side = 0
+13:3/0/terrains_peering_bit/left_side = 0
+13:3/0/terrains_peering_bit/top_left_corner = 0
+13:3/0/terrains_peering_bit/top_side = 0
+13:3/0/terrains_peering_bit/top_right_corner = 0
+14:3/0 = 0
+14:3/0/terrain_set = 0
+14:3/0/terrain = 0
+14:3/0/terrains_peering_bit/right_side = 0
+14:3/0/terrains_peering_bit/bottom_side = 0
+14:3/0/terrains_peering_bit/left_side = 0
+14:3/0/terrains_peering_bit/top_left_corner = 0
+14:3/0/terrains_peering_bit/top_side = 0
+14:3/0/terrains_peering_bit/top_right_corner = 0
+15:3/0 = 0
+15:3/0/terrain_set = 0
+15:3/0/terrain = 0
+15:3/0/terrains_peering_bit/left_side = 0
+15:3/0/terrains_peering_bit/top_left_corner = 0
+15:3/0/terrains_peering_bit/top_side = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, -16, 16, 16, 16, 16, 5.0101)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, -16, 16, 16, 16, 16, 5.0101)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, -16, 16, 16, 16, 16, 5.0101)
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.21212, -11.4747, 13.0909, -4.68687, 11.798, 7.27273, 6.9495, 16, -16, 16, -16, 9.85859)
+8:4/0 = 0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.21212, -11.4747, -13.0909, -4.68687, -11.798, 7.27273, -6.9495, 16, 16, 16, 16, 9.85859)
+9:4/0 = 0
+10:4/0 = 0
+10:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -12.4444, -13.0909, -16, 16)
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+14:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 12.4444, -13.0909, 16, 16)
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, 8.88889, -16, -9.53535, 16)
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, -8.88889, -16, 9.53535, 16)
+6:5/0 = 0
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 7.59596, -16, -4.0404, 16, -16, 16)
+8:5/0 = 0
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -7.59596, -16, 4.0404, 16, 16, 16)
+9:5/0 = 0
+10:5/0 = 0
+10:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+14:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -6.30303, -16, -16, -2.10101)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:6/0 = 0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, -16, 16, -16, -16, 6.30303, -16, 16, -2.10101)
+6:6/0 = 0
+7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -3.71717, -16, -6.62626, 0.161615, -16, 16)
+8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 3.71717, -16, 6.62626, 0.161615, 16, 16)
+9:6/0 = 0
+9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+10:6/0 = 0
+10:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:6/0 = 0
+11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, -16, 16, 16, 16, 16, 5.0101)
+12:6/0 = 0
+12:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, -16, 16, 16, 16, 16, 5.0101)
+13:6/0 = 0
+13:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, -16, 16, 16, 16, 16, 5.0101)
+14:6/0 = 0
+14:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+15:6/0 = 0
+0:7/0 = 0
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.33333, 16, 16, 16, 16, -16, 5.0101, -16)
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.33333, 16, -16, 16, -16, -16, -5.0101, -16)
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+10:7/0 = 0
+10:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -5.9798, 10.5051)
+11:7/0 = 0
+11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+12:7/0 = 0
+12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+13:7/0 = 0
+13:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:7/0 = 0
+14:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -16, 5.9798, 10.5051)
+15:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03fwb"]
+texture = ExtResource("7_gs60u")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8r24n"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Path"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_i3id2")
+sources/1 = SubResource("TileSetAtlasSource_03fwb")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c8171"]
 noise_type = 2
@@ -42,33 +526,6 @@ shader = ExtResource("7_c8171")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_31yvb")
 shader_parameter/density = 0.2
 shader_parameter/speed = Vector2(-0.01, 0.01)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mn1uy"]
-
-[sub_resource type="Gradient" id="Gradient_j0q7a"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.128205, 0.584615, 1)
-colors = PackedColorArray(0.670039, 0.470735, 0.542787, 0, 0.72549, 0.807843, 0.917647, 0.85098, 0.721569, 0.435294, 0.690196, 0.639216, 1, 0.223529, 0, 0.180392)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_svifw"]
-gradient = SubResource("Gradient_j0q7a")
-
-[sub_resource type="Curve" id="Curve_5adnx"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.173709, 0.527273), 3.03538, 2.28391, 1, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_c8171"]
-_limits = [0.0, 34.85, 0.0, 1.0]
-_data = [Vector2(0, 3.485), 0.0, 3.84848, 0, 0, Vector2(0.278768, 22.1773), 32.2923, 32.2923, 0, 0, Vector2(1, 34.85), 6.70619, 6.70619, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_31yvb"]
-_data = [Vector2(0, 0.654545), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Curve" id="Curve_kr4tu"]
-_data = [Vector2(0, 1), 0.0, -4.45364, 0, 1, Vector2(0.187793, 0.163636), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.201471, 0.0, 1, 0]
-point_count = 3
 
 [node name="02" type="Node2D"]
 script = ExtResource("1_4t7i1")
@@ -87,8 +544,28 @@ offset_top = -57.0
 offset_right = 1463.0
 offset_bottom = 770.0
 
+[node name="QuestActivatedSwitch4" parent="." instance=ExtResource("27_kr4tu")]
+position = Vector2(588, -17)
+scale = Vector2(3, 3)
+remove_when_activaed = true
+free_on_remove = true
+react_to_global_signal = true
+linked_quest = ExtResource("17_5adnx")
+settings_summary = "UPDATE QUEST:
+Quest: Find lost thing
+Checking if player has quest"
+
+[node name="Layer1" type="TileMapLayer" parent="QuestActivatedSwitch4"]
+use_parent_material = true
+position = Vector2(-196, 5)
+scale = Vector2(0.333333, 0.333333)
+tile_map_data = PackedByteArray("AAATAP7/AAANAAcAAAASAP7/AAANAAcAAAAUAP7/AAANAAcAAAAUAP3/AAANAAcAAAATAP3/AAANAAcAAAASAP3/AAANAAcAAAAUAPz/AAANAAYAAAATAPz/AAANAAYAAAASAPz/AAANAAYAAAA=")
+tile_set = SubResource("TileSet_8r24n")
+rendering_quadrant_size = 32
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = 1
+visible = false
 follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -100,7 +577,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_22ele")]
-position = Vector2(1228, 164)
+position = Vector2(487, 368)
 
 [node name="LevelTransition" parent="." instance=ExtResource("5_pwydo")]
 position = Vector2(-126, 123)
@@ -147,57 +624,6 @@ position = Vector2(145, 434)
 scale = Vector2(3.5, 3.5)
 npc_resource = ExtResource("10_h1fhx")
 
-[node name="DialogInteraction" parent="Npc2" instance=ExtResource("10_5ak8t")]
-
-[node name="DialogText" type="Node" parent="Npc2/DialogInteraction"]
-script = ExtResource("11_eysub")
-text = "Do you want to do some crazy ass quest?"
-npc_info = ExtResource("10_h1fhx")
-metadata/_custom_type_script = "uid://bvrkfaitsu01p"
-
-[node name="DialogChoice" type="Node" parent="Npc2/DialogInteraction"]
-script = ExtResource("16_oir6p")
-npc_info = ExtResource("10_h1fhx")
-metadata/_custom_type_script = "uid://c8lujimhxkark"
-
-[node name="DialogBranch" type="Node" parent="Npc2/DialogInteraction/DialogChoice"]
-script = ExtResource("17_rclfq")
-text = "I totally do, awesome"
-npc_info = ExtResource("10_h1fhx")
-metadata/_custom_type_script = "uid://c5oelxgr7kvjh"
-
-[node name="QuestAdvanceTrigger" parent="Npc2/DialogInteraction/DialogChoice/DialogBranch" instance=ExtResource("22_mn1uy")]
-signal_name = "selected"
-linked_quest = ExtResource("17_5adnx")
-settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
-Step: 0 - N/A
-Complete: false"
-
-[node name="DialogText" type="Node" parent="Npc2/DialogInteraction/DialogChoice/DialogBranch"]
-script = ExtResource("11_eysub")
-text = "Great, here's the deal, you fat dink!"
-npc_info = ExtResource("10_h1fhx")
-metadata/_custom_type_script = "uid://bvrkfaitsu01p"
-
-[node name="DialogText2" type="Node" parent="Npc2/DialogInteraction/DialogChoice/DialogBranch"]
-script = ExtResource("11_eysub")
-text = "You have to go through there and get the thing!"
-npc_info = ExtResource("10_h1fhx")
-metadata/_custom_type_script = "uid://bvrkfaitsu01p"
-
-[node name="DialogBranch2" type="Node" parent="Npc2/DialogInteraction/DialogChoice"]
-script = ExtResource("17_rclfq")
-text = "No... Are you stupid ?"
-npc_info = ExtResource("10_h1fhx")
-metadata/_custom_type_script = "uid://c5oelxgr7kvjh"
-
-[node name="DialogText" type="Node" parent="Npc2/DialogInteraction/DialogChoice/DialogBranch2"]
-script = ExtResource("11_eysub")
-text = "Ok, shit."
-npc_info = ExtResource("10_h1fhx")
-metadata/_custom_type_script = "uid://bvrkfaitsu01p"
-
 [node name="NpcBehaviorPatrol" parent="Npc2" instance=ExtResource("11_8vfny")]
 
 [node name="PatrolLocation" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
@@ -210,6 +636,83 @@ position = Vector2(189.714, -18.8571)
 [node name="PatrolLocation3" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(189.143, -102.286)
+
+[node name="QuestActivatedSwitch" parent="Npc2" instance=ExtResource("27_kr4tu")]
+remove_when_activaed = true
+react_to_global_signal = true
+linked_quest = ExtResource("17_5adnx")
+settings_summary = "UPDATE QUEST:
+Quest: Find lost thing
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="Npc2/QuestActivatedSwitch" instance=ExtResource("10_5ak8t")]
+
+[node name="DialogText" type="Node" parent="Npc2/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_eysub")
+text = "Do you want to do some crazy ass quest?"
+npc_info = ExtResource("10_h1fhx")
+metadata/_custom_type_script = "uid://bvrkfaitsu01p"
+
+[node name="DialogChoice" type="Node" parent="Npc2/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("16_oir6p")
+npc_info = ExtResource("10_h1fhx")
+metadata/_custom_type_script = "uid://c8lujimhxkark"
+
+[node name="DialogBranch" type="Node" parent="Npc2/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("17_rclfq")
+text = "I totally do, awesome"
+npc_info = ExtResource("10_h1fhx")
+metadata/_custom_type_script = "uid://c5oelxgr7kvjh"
+
+[node name="QuestAdvanceTrigger" parent="Npc2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch" instance=ExtResource("22_mn1uy")]
+position = Vector2(151, 420)
+scale = Vector2(3, 3)
+signal_name = "selected"
+linked_quest = ExtResource("17_5adnx")
+settings_summary = "UPDATE QUEST:
+Quest: Find lost thing
+Step: 0 - N/A
+Complete: false"
+
+[node name="DialogText" type="Node" parent="Npc2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_eysub")
+text = "Great, here's the deal, you fat dink!"
+npc_info = ExtResource("10_h1fhx")
+metadata/_custom_type_script = "uid://bvrkfaitsu01p"
+
+[node name="DialogText2" type="Node" parent="Npc2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_eysub")
+text = "You have to go through there and get the thing!"
+npc_info = ExtResource("10_h1fhx")
+metadata/_custom_type_script = "uid://bvrkfaitsu01p"
+
+[node name="DialogBranch2" type="Node" parent="Npc2/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("17_rclfq")
+text = "No... Are you stupid ?"
+npc_info = ExtResource("10_h1fhx")
+metadata/_custom_type_script = "uid://c5oelxgr7kvjh"
+
+[node name="DialogText" type="Node" parent="Npc2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("11_eysub")
+text = "Ok, shit."
+npc_info = ExtResource("10_h1fhx")
+metadata/_custom_type_script = "uid://bvrkfaitsu01p"
+
+[node name="QuestActivatedSwitch2" parent="Npc2" instance=ExtResource("27_kr4tu")]
+position = Vector2(0, -19.7143)
+react_to_global_signal = true
+linked_quest = ExtResource("17_5adnx")
+settings_summary = "UPDATE QUEST:
+Quest: Find lost thing
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="Npc2/QuestActivatedSwitch2" instance=ExtResource("10_5ak8t")]
+
+[node name="DialogText" type="Node" parent="Npc2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("11_eysub")
+text = "Thanks dude, then thing is in that hole hole up there"
+npc_info = ExtResource("10_h1fhx")
+metadata/_custom_type_script = "uid://bvrkfaitsu01p"
 
 [node name="LevelTransition3" parent="." instance=ExtResource("5_pwydo")]
 position = Vector2(1436, 319)
@@ -225,27 +728,6 @@ scale = Vector2(1.5, 1.5)
 [node name="Pot2" parent="." instance=ExtResource("19_huo8l")]
 position = Vector2(1049, 193)
 scale = Vector2(1.5, 1.5)
-
-[node name="Ring" type="Node2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.12549)
-show_behind_parent = true
-material = SubResource("CanvasItemMaterial_mn1uy")
-position = Vector2(0.000976563, 0)
-script = ExtResource("19_4gh42")
-repeat = true
-texture = ExtResource("20_1xyfj")
-image_scale = 0.1
-gradient = SubResource("GradientTexture1D_svifw")
-angle_degrees = 360.0
-share_material = true
-randomly_flip_rotation = true
-distance_randomness = 0.667
-global_offset = true
-angle_curve = SubResource("Curve_5adnx")
-scale_curve = SubResource("Curve_c8171")
-y_scale_curve = SubResource("Curve_31yvb")
-color_offset_curve = SubResource("Curve_kr4tu")
 
 [node name="PresurePlate" parent="." instance=ExtResource("21_1xyfj")]
 position = Vector2(1229, 263)

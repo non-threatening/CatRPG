@@ -19,6 +19,11 @@ func get_value() -> void:
 	data_loaded.emit( value )
 	pass
 	
+	
+func remove_value() -> void:
+	SaveManager.remove_persistant_value( _get_name() )
+	pass
+	
 
 func _get_name() -> String:
 	## e.g. "res://levels/area01/01.tscn" + /treasure_chest/PersistantDataHandler

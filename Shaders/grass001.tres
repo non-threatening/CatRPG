@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://dco25tfrip36b" path="res://Shaders/grass001.gdshader" id="1_pg2pf"]
 
 [sub_resource type="Gradient" id="Gradient_pg2pf"]
-colors = PackedColorArray(0.439108, 0.442321, 0.135202, 1, 0.218722, 0.452881, 0.0302232, 1)
+colors = PackedColorArray(0.23724, 0.24, 0.0744, 1, 0.122125, 0.25, 0.0175, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_svkfw"]
 noise_type = 2

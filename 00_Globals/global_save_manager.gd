@@ -96,6 +96,12 @@ func add_persistant_value( value : String ) -> void:
 	pass
 	
 	
+func remove_persistant_value( value : String ) -> void:
+	var p = current_save.persistance as Array
+	p.erase( value )
+	pass
+	
+	
 
 func check_persistant_value( value : String ) -> bool: # if persistant value exists, it's open
 	var p = current_save.persistance as Array

@@ -116,10 +116,9 @@ offset_left = 1000.0
 offset_top = 388.0
 offset_right = 1136.0
 offset_bottom = 459.0
+theme_override_colors/font_color = Color(0.0862745, 0.0941176, 0.243137, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_constants/shadow_outline_size = 16
-theme_override_font_sizes/font_size = 62
+theme_override_font_sizes/font_size = 64
 text = "NAME"
 
 [node name="PortraitSprite" type="Sprite2D" parent="DialogUI"]

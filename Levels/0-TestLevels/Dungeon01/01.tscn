@@ -43,7 +43,8 @@ scale = Vector2(3, 3)
 position = Vector2(552, 88)
 
 [node name="PushableStatue" parent="." instance=ExtResource("7_4dhgi")]
-position = Vector2(408, 176)
+position = Vector2(432, 168)
+persistent_location = Vector2(288, 168)
 
 [node name="TreasureChest" parent="." instance=ExtResource("9_gxo4t")]
 position = Vector2(1016, 128)

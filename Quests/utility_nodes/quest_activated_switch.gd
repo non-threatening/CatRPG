@@ -14,15 +14,17 @@ signal is_activated_changed( v : bool )
 
 @export var check_type : CheckType = CheckType.HAS_QUEST : set = _set_check_type
 @export var remove_when_activaed : bool = false
+@export var free_on_remove : bool = false
 @export var react_to_global_signal : bool = false # Update quest things in real time
 
-var is_activaed : bool = false
+var is_activated : bool = false
 
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	$Sprite2D.queue_free()
+	if has_node("Sprite2D"):
+		$Sprite2D.queue_free()
 	if react_to_global_signal == true:
 		QuestManager.quest_updated.connect( _on_quest_updated )
 	check_is_activated()
@@ -75,9 +77,9 @@ func check_is_activated() -> void:
 	
 	
 func set_is_activated( _v :bool ) -> void:
-	is_activaed = _v
+	is_activated = _v
 	is_activated_changed.emit( _v )
-	if is_activaed == true:
+	if is_activated == true:
 		if remove_when_activaed == true:
 			hide_children()
 		else: 
@@ -99,15 +101,10 @@ func show_children() -> void:
 func hide_children() -> void:
 	for c in get_children():
 			c.set_deferred( "visible", false )
-			c.set_deferred( "process_mode", Node.PROCESS_MODE_INHERIT )
+			c.set_deferred( "process_mode", Node.PROCESS_MODE_DISABLED )
+			if free_on_remove:
+				c.queue_free()
 
-
-#func get_previous_step() -> String:
-	#if quest_step <= get_step_count() and quest_step > 1:
-		#return linked_quest.steps[ quest_step - 2 ]
-	#else:
-		#return "N/A"
-			
 
 func _on_quest_updated( _q : Dictionary ) -> void:
 	check_is_activated()
