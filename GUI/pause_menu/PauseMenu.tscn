@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=16 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="FontFile" uid="uid://bs3nosvkt8t0l" path="res://GUI/fonts/OMORI_GAME2.ttf" id="2_dfhdr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://1fwl7lk326j" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="5_408tb"]
 [ext_resource type="Script" uid="uid://d1slohvycmh0m" path="res://GUI/pause_menu/quests_ui.gd" id="8_rlqlv"]
 [ext_resource type="PackedScene" uid="uid://fumnr0rdrlri" path="res://GUI/pause_menu/quests/quest_item.tscn" id="8_uh56w"]
+[ext_resource type="PackedScene" uid="uid://dm0ac3qyce012" path="res://GUI/pause_menu/stats/stats.tscn" id="8_vbpxr"]
 [ext_resource type="FontFile" uid="uid://bx1bk1gkkhcgw" path="res://GUI/fonts/Snake.ttf" id="10_ai8h2"]
 [ext_resource type="PackedScene" uid="uid://dv5cvhdkwibjq" path="res://GUI/pause_menu/quests/quest_step_item.tscn" id="11_ybaie"]
 
@@ -102,10 +103,10 @@ metadata/_tab_index = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Inventory"]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 86.0
-offset_right = 857.0
-offset_bottom = 382.0
+offset_left = 56.0
+offset_top = 96.0
+offset_right = 777.0
+offset_bottom = 392.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mc7vq")
 
 [node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/PanelContainer"]
@@ -132,8 +133,17 @@ offset_bottom = 454.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_dfhdr")
 theme_override_font_sizes/font_size = 36
+text = "ITEM DESCRIPTION"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Stats" parent="Control/TabContainer/Inventory" instance=ExtResource("8_vbpxr")]
+visible = false
+layout_mode = 0
+offset_left = 992.0
+offset_top = 96.0
+offset_right = 1713.0
+offset_bottom = 416.0
 
 [node name="Quests" type="Control" parent="Control/TabContainer"]
 layout_mode = 2

@@ -1,12 +1,8 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://crjtt5htayopl"]
-
-[ext_resource type="FontFile" uid="uid://bx1bk1gkkhcgw" path="res://GUI/fonts/Snake.ttf" id="1_ecvxi"]
+[gd_resource type="Theme" format=3 uid="uid://crjtt5htayopl"]
 
 [resource]
 Label/colors/font_outline_color = Color(0.475803, 0.406988, 0, 1)
 Label/constants/outline_size = 5
-Label/font_sizes/font_size = 64
-Label/fonts/font = ExtResource("1_ecvxi")
+Label/font_sizes/font_size = 42
 TabContainer/colors/font_outline_color = Color(1, 1, 1, 1)
 TabContainer/font_sizes/font_size = 64
-TabContainer/fonts/font = ExtResource("1_ecvxi")

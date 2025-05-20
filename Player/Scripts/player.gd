@@ -12,6 +12,15 @@ var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
 
+var level : int = 1
+var xp : int = 0
+
+var attack : int = 1 :
+	set( v ): 
+		attack = v
+		update_damage_values()
+var defense : int = 1
+
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
@@ -31,6 +40,8 @@ func _ready() -> void:
 	state_machine.Initialize(self)
 	hit_box.damaged.connect( _take_damage )
 	update_hp(99)
+	update_damage_values()
+	#PlayerManager.player_leveled_up.connect( update_damage_values )
 	pass
 
 
@@ -50,14 +61,8 @@ func _physics_process( _delta: float ) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("test"):
-		## Testing Death
-		#update_hp( -99 )
-		#player_damaged.emit( %AttackHurtBox )
-		
-		## Testing cameraShake
 		PlayerManager.shake_camera()
 		pass
-
 
 
 
@@ -97,12 +102,14 @@ func _take_damage( hurt_box : HurtBox ) -> void:
 		return
 		
 	if hp > 0:
-		update_hp( -hurt_box.damage )
+		var dmg : int = hurt_box.damage
+		
+		if dmg > 0:
+			dmg = clampi( dmg - defense, 1, dmg )
+		
+		update_hp( -dmg )
 		player_damaged.emit( hurt_box )
 		
-	#else:
-		#player_damaged.emit( hurt_box )
-		##update_hp(99)
 	pass
 	
 	
@@ -131,3 +138,8 @@ func revive_player() -> void:
 	print("revived")
 	update_hp( 99 )
 	state_machine.change_state( idle )
+
+
+func update_damage_values() -> void:
+	%AttackHurtBox.damage = attack
+	%ChargeAttackHurtBox.damage = attack * 2

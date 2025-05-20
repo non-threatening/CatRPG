@@ -6,12 +6,15 @@ const INVETORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/pl
 signal camera_shook( trauma : float )
 @warning_ignore("unused_signal")
 signal interact_pressed ##(x) Only want dectection button to work when idle or walking, and within the area of interactables, activated from interactables
+signal player_leveled_up
 
 var interact_handled : bool = true # currently interacting with something
 var player : Player
 var player_spawned : bool = false
 
-var xp : int = 0
+var level_requirments = [ 0, 50, 100, 200, 400, 800, 1500, 3000, 6000, 12000, 25000 ]
+
+
 
 func _ready() -> void:
 	add_player_instance()
@@ -32,8 +35,13 @@ func set_health( hp: int, max_hp: int) -> void:
 
 
 func reward_xp( _xp : int ) -> void:
-	xp += _xp
-	print( str( "XP: ", xp ) )
+	player.xp += _xp
+	## do a chekc for level advancement
+	if player.xp >= level_requirments[ player.level ]:
+		player.level += 1
+		player.attack += 1
+		player.defense += 1
+		player_leveled_up.emit()
 	pass
 
 
@@ -69,4 +77,4 @@ func interact() -> void:
 	
 	
 func shake_camera( trauma : float = 1 ) -> void:
-	camera_shook.emit( trauma )
+	camera_shook.emit( clampi( trauma, 0, 3) )

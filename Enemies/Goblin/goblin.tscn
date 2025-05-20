@@ -772,6 +772,8 @@ _data = {
 collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_3sugd")
+hp = 2
+xp_reward = 50
 
 [node name="HurtBox" parent="." instance=ExtResource("2_nbun1")]
 position = Vector2(-1, -7)
