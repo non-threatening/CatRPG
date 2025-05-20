@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1n6sy5wqrqy5"]
+[gd_scene load_steps=5 format=3 uid="uid://b1n6sy5wqrqy5"]
 
 [ext_resource type="Script" uid="uid://dkh5sq2tvflu" path="res://GeneralNodes/ItemDropper/item_dropper.gd" id="1_ncqb6"]
 [ext_resource type="AudioStream" uid="uid://cgk0n3gase0ry" path="res://GeneralNodes/ItemDropper/dungeon_discovery.wav" id="2_j17rb"]
 [ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="2_ojlm4"]
+[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="2_yvwri"]
 
 [node name="ItemDropper" type="Node2D"]
 script = ExtResource("1_ncqb6")
@@ -14,7 +15,9 @@ offset_left = -40.0
 offset_top = -48.0
 offset_right = 39.0
 offset_bottom = -16.0
-theme_override_constants/outline_size = 12
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_yvwri")
+theme_override_font_sizes/font_size = 16
 text = "Item Drop"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

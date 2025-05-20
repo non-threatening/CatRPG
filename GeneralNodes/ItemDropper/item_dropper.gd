@@ -1,6 +1,8 @@
 @tool
 class_name ItemDropper extends Node
 
+signal drop_collected
+
 const PICKUP = preload("res://Items/item_pickup/ItemPickup.tscn") ## create instance of item dropping
 
 @export var item_data : ItemData : set = _set_item_data
@@ -36,6 +38,7 @@ func drop_item() -> void:
 	
 
 func _on_drop_pickup() -> void:
+	drop_collected.emit()
 	has_dropped_data.set_value()
 	
 	

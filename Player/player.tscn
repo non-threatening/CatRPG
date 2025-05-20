@@ -39,7 +39,7 @@ shader = ExtResource("13_o28un")
 shader_parameter/outline_color = Color(0.94902, 0.184314, 0.2, 0.768627)
 shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(0.832143, 0.57512, 0.798049, 1)
+shader_parameter/cover_color = Color(0.78573, 0.330389, 0.110671, 1)
 shader_parameter/eye_color = Color(3, 3, 2, 1)
 
 [sub_resource type="Animation" id="Animation_xqcul"]
@@ -3308,7 +3308,7 @@ libraries = {
 autoplay = "no_attack"
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
-modulate = Color(0.103, 0.054, 0.475, 0.243)
+modulate = Color(0.034, 0.014, 0.242, 0.326)
 show_behind_parent = true
 position = Vector2(0, 45)
 scale = Vector2(1.125, 0.9375)
@@ -3446,6 +3446,7 @@ script = ExtResource("11_hfp0w")
 max_polyphony = 6
 
 [node name="Interactions" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -7)
 script = ExtResource("10_4cvxe")
 
