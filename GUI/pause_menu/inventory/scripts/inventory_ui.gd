@@ -4,8 +4,16 @@ const INVENTORY_SLOT = preload("res://GUI/pause_menu/inventory/inventory_slot.ts
 
 var focus_index : int = 0
 
-
 @export var data : InventoryData
+
+@onready var inventory_slot_armor: InventorySlot = %InventorySlot_Armor
+@onready var inventory_slot_collar: InventorySlot = %InventorySlot_Collar
+@onready var inventory_slot_weapon: InventorySlot = %InventorySlot_Weapon
+@onready var inventory_slot_rfid_chip: InventorySlot = %InventorySlot_RFID_Chip
+
+
+
+
 
 
 
@@ -19,19 +27,31 @@ func _ready() -> void:
 
 func clear_inventory() -> void:
 	for c in get_children():
-		c.queue_free()
+		c.set_slot_data( null )
 		
 
-func update_inventory( i : int = 0 ) -> void:
+func update_inventory( apply_focus : bool = true ) -> void:
 	clear_inventory()
-	for s in data.slots:
-		var new_slot = INVENTORY_SLOT.instantiate()
-		add_child( new_slot )
-		new_slot.slot_data = s
-		new_slot.focus_entered.connect( item_focused )
+	
+	var inventory_slots : Array[ SlotData ] = data.inventory_slots()
+	
+	for i in inventory_slots.size():
+		var slot : InventorySlot = get_child( i )
+		slot.set_slot_data( inventory_slots[ i ] )
+	
+	
+	## Equipmetn slots
+	var e_slots : Array[ SlotData ] = data.equipment_slots()
+	inventory_slot_armor.set_slot_data( e_slots[ 0 ] )
+	inventory_slot_collar.set_slot_data( e_slots[ 1 ] )
+	inventory_slot_weapon.set_slot_data( e_slots[ 2 ] )
+	inventory_slot_rfid_chip.set_slot_data( e_slots[ 3 ] )
 		
-	await get_tree().process_frame
-	get_child( i ).grab_focus()
+		
+	if apply_focus:
+		get_child( 0 ).grab_focus()
+	
+	
 	
 func item_focused() -> void:
 	for i in get_child_count():

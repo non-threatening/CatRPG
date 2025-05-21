@@ -34,7 +34,7 @@ void fragment() {
 	}
 	vec4 cover_eye_mix = output_color;
 
-	COLOR = cover_eye_mix;
+	COLOR = cover_eye_mix * cover_color;
 
 	float outline_mask = has_solid_neighbor( TEXTURE, UV, TEXTURE_PIXEL_SIZE );
 	float alpha_blend_factor = smoothstep( 0.0, alpha_threshold, COLOR.a );

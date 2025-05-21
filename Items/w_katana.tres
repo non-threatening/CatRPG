@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EquipableItemData" load_steps=7 format=3 uid="uid://csuyu64brou7t"]
+
+[ext_resource type="Script" uid="uid://c5fpu6ww87ydn" path="res://Items/item_effects/item_effect.gd" id="1_y8yd3"]
+[ext_resource type="Script" uid="uid://cvk6jyli0bvd0" path="res://Items/scripts/equipable_item_modifier.gd" id="2_ruas2"]
+[ext_resource type="Script" uid="uid://bluvqvcg0ko5j" path="res://Items/scripts/equipable_item_data.gd" id="3_inskq"]
+[ext_resource type="Texture2D" uid="uid://c0ryvmifyacll" path="res://Items/sprites/gear.png" id="4_ruas2"]
+
+[sub_resource type="Resource" id="Resource_ruas2"]
+script = ExtResource("2_ruas2")
+type = 1
+value = 5
+metadata/_custom_type_script = "uid://cvk6jyli0bvd0"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inskq"]
+atlas = ExtResource("4_ruas2")
+region = Rect2(64, 0, 32, 32)
+
+[resource]
+script = ExtResource("3_inskq")
+type = 0
+modifiers = Array[ExtResource("2_ruas2")]([SubResource("Resource_ruas2")])
+name = "Katana"
+description = "Standard ass Katana"
+texture = SubResource("AtlasTexture_inskq")
+effects = Array[ExtResource("1_y8yd3")]([])
+metadata/_custom_type_script = "uid://bluvqvcg0ko5j"

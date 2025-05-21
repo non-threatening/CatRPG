@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://pucwglkmup3m"]
+[gd_scene load_steps=40 format=4 uid="uid://pucwglkmup3m"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
@@ -28,6 +28,10 @@
 [ext_resource type="Resource" uid="uid://bgguf46pqvlda" path="res://Quests/long_quest.tres" id="23_svifw"]
 [ext_resource type="Script" uid="uid://2ncrdyssejq5" path="res://Quests/utility_nodes/quest_activated_switch.gd" id="25_kytmn"]
 [ext_resource type="PackedScene" uid="uid://cj6o15jnqj0u0" path="res://Quests/utility_nodes/quest_activated_switch.tscn" id="27_kr4tu"]
+[ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="29_gs60u"]
+[ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="30_egubj"]
+[ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="31_s5a4g"]
+[ext_resource type="Resource" uid="uid://csuyu64brou7t" path="res://Items/w_katana.tres" id="32_kvvsh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i3id2"]
 texture = ExtResource("6_1j6q0")
@@ -593,7 +597,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_22ele")]
-position = Vector2(487, 368)
+position = Vector2(1029, 162)
 
 [node name="LevelTransition" parent="." instance=ExtResource("5_pwydo")]
 position = Vector2(-126, 123)
@@ -607,7 +611,7 @@ size = 1
 side = 2
 
 [node name="Npc" parent="." instance=ExtResource("7_ntt8e")]
-position = Vector2(337, 156)
+position = Vector2(240, 560)
 scale = Vector2(4, 4)
 npc_resource = ExtResource("8_ngmh3")
 
@@ -636,7 +640,7 @@ npc_info = ExtResource("8_ngmh3")
 metadata/_custom_type_script = "uid://bvrkfaitsu01p"
 
 [node name="Npc2" parent="." instance=ExtResource("7_ntt8e")]
-position = Vector2(145, 434)
+position = Vector2(366, 32)
 scale = Vector2(3.5, 3.5)
 npc_resource = ExtResource("10_h1fhx")
 
@@ -647,11 +651,11 @@ modulate = Color(1, 0, 0, 1)
 
 [node name="PatrolLocation2" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(1, 1, 0, 1)
-position = Vector2(189.714, -18.8571)
+position = Vector2(4.85715, 27.7143)
 
 [node name="PatrolLocation3" parent="Npc2/NpcBehaviorPatrol" instance=ExtResource("12_5ak8t")]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(189.143, -102.286)
+position = Vector2(38.8572, -1.52588e-05)
 
 [node name="QuestActivatedSwitch" parent="Npc2" instance=ExtResource("27_kr4tu")]
 remove_when_activaed = true
@@ -791,11 +795,11 @@ size = 7
 side = 1
 
 [node name="Pot" parent="." instance=ExtResource("19_huo8l")]
-position = Vector2(1086, 193)
+position = Vector2(1245, 712)
 scale = Vector2(1.5, 1.5)
 
 [node name="Pot2" parent="." instance=ExtResource("19_huo8l")]
-position = Vector2(1049, 193)
+position = Vector2(1208, 712)
 scale = Vector2(1.5, 1.5)
 
 [node name="PresurePlate" parent="." instance=ExtResource("21_1xyfj")]
@@ -864,3 +868,11 @@ Quest: Long Quest
 Checking if quest is complete"
 
 [node name="Pot" parent="QuestActivatedSwitch3" instance=ExtResource("19_huo8l")]
+
+[node name="ItemPickup" parent="." instance=ExtResource("29_gs60u")]
+position = Vector2(1133, 204)
+item_data = ExtResource("30_egubj")
+
+[node name="TreasureChest" parent="." instance=ExtResource("31_s5a4g")]
+position = Vector2(1137, 100)
+item_data = ExtResource("32_kvvsh")

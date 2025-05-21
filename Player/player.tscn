@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bpcvp55f33q1s"]
+[gd_scene load_steps=93 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
@@ -35,13 +35,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1l381"]
 radius = 22.0227
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n471f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbimk"]
 shader = ExtResource("13_o28un")
-shader_parameter/outline_color = Color(0.94902, 0.184314, 0.2, 0.768627)
+shader_parameter/outline_color = Color(0.891291, 4.18738e-06, 8.66354e-07, 1)
 shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(0.996078, 0.501961, 1, 0.556863)
-shader_parameter/eye_color = Color(3, 3, 2, 1)
+shader_parameter/cover_color = Color(1, 0.547124, 0.994953, 1)
+shader_parameter/eye_color = Color(3, 2, 1, 1)
 
 [sub_resource type="Animation" id="Animation_xqcul"]
 length = 0.001
@@ -368,6 +368,14 @@ _data = {
 &"RESET": SubResource("Animation_sm0op"),
 &"spin": SubResource("Animation_8viyr")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n471f"]
+shader = ExtResource("13_o28un")
+shader_parameter/outline_color = Color(0.94902, 0.184314, 0.2, 0.768627)
+shader_parameter/outline_thickness = 0.0
+shader_parameter/alpha_threshold = 0.5
+shader_parameter/cover_color = Color(0.996078, 0.501961, 1, 0.556863)
+shader_parameter/eye_color = Color(3, 3, 2, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_76lrf"]
 load_path = "res://.godot/imported/SprtieTest_002_Colors_Enlarged_128.png-fe33fa56af9df09f3a7ece52218ad075.ctex"
@@ -3451,6 +3459,7 @@ wall_min_slide_angle = 0.174533
 script = ExtResource("1_t577b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2, 10)
 scale = Vector2(1.98626, 1.25303)
 shape = SubResource("CircleShape2D_1l381")
@@ -3458,7 +3467,7 @@ debug_color = Color(0.415, 0.502, 0.879, 0.419)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
-material = SubResource("ShaderMaterial_n471f")
+material = SubResource("ShaderMaterial_bbimk")
 position = Vector2(0, -26)
 texture = ExtResource("14_o28un")
 hframes = 3
@@ -3485,6 +3494,7 @@ texture = ExtResource("4_svx73")
 
 [node name="AttackHurtBox" parent="Sprite2D" instance=ExtResource("10_q6j84")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-2, 73)
 scale = Vector2(1.33333, 1.33333)
 collision_mask = 256
@@ -3497,6 +3507,7 @@ debug_color = Color(0.988235, 0, 0.294118, 0)
 
 [node name="ChargeAttackHurtBox" parent="Sprite2D" instance=ExtResource("10_q6j84")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, 27)
 collision_mask = 256
 monitoring = false
@@ -3514,6 +3525,7 @@ lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_gpjlu")
 
 [node name="HitBox" parent="Sprite2D" instance=ExtResource("13_urp6f")]
+visible = false
 position = Vector2(-3, 24)
 rotation = 1.5708
 collision_layer = 2
@@ -3525,6 +3537,7 @@ shape = SubResource("CapsuleShape2D_bwjto")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="SpinEffectSprite2D" type="Sprite2D" parent="Sprite2D"]
+visible = false
 show_behind_parent = true
 position = Vector2(1, 23)
 scale = Vector2(1.51562, 1.51562)
@@ -3612,6 +3625,7 @@ script = ExtResource("11_hfp0w")
 max_polyphony = 6
 
 [node name="Interactions" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -7)
 script = ExtResource("10_4cvxe")
 
@@ -3647,6 +3661,7 @@ libraries = {
 script = ExtResource("17_pisgm")
 
 [node name="ItemMagnet" parent="." instance=ExtResource("18_b1ygp")]
+visible = false
 position = Vector2(-6, -24)
 scale = Vector2(0.831355, 0.831355)
 magnet_strength = 2.0

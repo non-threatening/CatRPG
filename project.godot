@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RPGC"
-run/main_scene="uid://vmelqpt1g37"
+run/main_scene="uid://pucwglkmup3m"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

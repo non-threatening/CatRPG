@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=24 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="FontFile" uid="uid://bs3nosvkt8t0l" path="res://GUI/fonts/OMORI_GAME2.ttf" id="2_dfhdr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnvj41ww8lhj0" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="4_laftm"]
 [ext_resource type="Script" uid="uid://dvclsk7ha4rgn" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="4_mc7vq"]
 [ext_resource type="Resource" uid="uid://1fwl7lk326j" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="5_408tb"]
+[ext_resource type="Texture2D" uid="uid://c0ryvmifyacll" path="res://Items/sprites/gear.png" id="8_mnpje"]
 [ext_resource type="Script" uid="uid://d1slohvycmh0m" path="res://GUI/pause_menu/quests_ui.gd" id="8_rlqlv"]
 [ext_resource type="PackedScene" uid="uid://fumnr0rdrlri" path="res://GUI/pause_menu/quests/quest_item.tscn" id="8_uh56w"]
 [ext_resource type="PackedScene" uid="uid://dm0ac3qyce012" path="res://GUI/pause_menu/stats/stats.tscn" id="8_vbpxr"]
@@ -40,6 +41,31 @@ texture_margin_left = 14.0
 texture_margin_top = 14.0
 texture_margin_right = 14.0
 texture_margin_bottom = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yxpl"]
+atlas = ExtResource("8_mnpje")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mnpje"]
+load_path = "res://.godot/imported/gear.png-05ec228c6bd652f530ec253f570f43fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtmg6"]
+atlas = SubResource("CompressedTexture2D_mnpje")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hio0w"]
+load_path = "res://.godot/imported/gear.png-05ec228c6bd652f530ec253f570f43fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_320ax"]
+atlas = SubResource("CompressedTexture2D_hio0w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1v4th"]
+load_path = "res://.godot/imported/gear.png-05ec228c6bd652f530ec253f570f43fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iygof"]
+atlas = SubResource("CompressedTexture2D_1v4th")
+region = Rect2(16, 16, 16, 16)
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -101,11 +127,12 @@ layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Inventory"]
+custom_minimum_size = Vector2(680, 545)
 layout_mode = 0
-offset_left = 56.0
-offset_top = 96.0
-offset_right = 777.0
-offset_bottom = 392.0
+offset_left = 120.0
+offset_top = 114.0
+offset_right = 824.0
+offset_bottom = 659.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mc7vq")
 
 [node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/PanelContainer"]
@@ -123,25 +150,138 @@ layout_mode = 2
 [node name="InventorySlot3" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
 layout_mode = 2
 
-[node name="ItemDescription" type="Label" parent="Control/TabContainer/Inventory"]
+[node name="InventorySlot4" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
 layout_mode = 2
-offset_left = 146.0
-offset_top = 418.0
-offset_right = 847.0
-offset_bottom = 454.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_dfhdr")
-theme_override_font_sizes/font_size = 36
-text = "ITEM DESCRIPTION"
-horizontal_alignment = 1
-autowrap_mode = 2
+
+[node name="InventorySlot5" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/TabContainer/Inventory"]
+custom_minimum_size = Vector2(680, 280)
+layout_mode = 0
+offset_left = 959.0
+offset_top = 378.0
+offset_right = 1656.0
+offset_bottom = 658.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mc7vq")
+
+[node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/PanelContainer2"]
+layout_mode = 2
+columns = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_3yxpl")
+stretch_mode = 3
+
+[node name="InventorySlot_Armor" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer" instance=ExtResource("4_laftm")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_gtmg6")
+stretch_mode = 3
+
+[node name="InventorySlot_Collar" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer" instance=ExtResource("4_laftm")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_320ax")
+stretch_mode = 3
+
+[node name="InventorySlot_Weapon" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer" instance=ExtResource("4_laftm")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_iygof")
+stretch_mode = 3
+
+[node name="InventorySlot_RFID_Chip" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer" instance=ExtResource("4_laftm")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Stats" parent="Control/TabContainer/Inventory" instance=ExtResource("8_vbpxr")]
 layout_mode = 0
-offset_left = 992.0
-offset_top = 96.0
-offset_right = 1713.0
-offset_bottom = 416.0
+offset_left = 1229.0
+offset_top = 114.0
+offset_right = 1657.0
+offset_bottom = 318.0
+
+[node name="ItemDescription" type="Label" parent="Control/TabContainer/Inventory"]
+layout_mode = 2
+offset_left = 448.0
+offset_top = 727.0
+offset_right = 1344.0
+offset_bottom = 763.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "ITEM DESCRIPTION"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Quests" type="Control" parent="Control/TabContainer"]
 visible = false

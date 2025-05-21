@@ -1,9 +1,11 @@
 class_name Stats extends PanelContainer
 
-@onready var level: Label = $VBoxContainer/HBoxContainer/Level
-@onready var xp: Label = $VBoxContainer/HBoxContainer2/XP
-@onready var attack: Label = $VBoxContainer/HBoxContainer3/Attack
-@onready var defense: Label = $VBoxContainer/HBoxContainer4/Defense
+@onready var level: Label = %Level
+@onready var xp: Label = %XP
+@onready var attack: Label = %Attack
+@onready var defense: Label = %Defense
+@onready var attack_change: Label = %Attack_change
+@onready var defense_change: Label = %Defense_change
 
 
 
