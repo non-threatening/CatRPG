@@ -771,7 +771,6 @@ npc_info = ExtResource("10_h1fhx")
 metadata/_custom_type_script = "uid://bvrkfaitsu01p"
 
 [node name="QuestAdvanceTrigger" parent="Npc2/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction2" instance=ExtResource("22_mn1uy")]
-scale = Vector2(1, 1)
 signal_name = "finished"
 linked_quest = ExtResource("17_5adnx")
 quest_step = 3

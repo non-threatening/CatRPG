@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bpcvp55f33q1s"]
+[gd_scene load_steps=92 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://c3gwp3c3cjfxs" path="res://Player/Audio/throw.wav" id="22_76lrf"]
 [ext_resource type="Script" uid="uid://brqohad66u14w" path="res://Player/Scripts/states/state_death.gd" id="23_efx54"]
 [ext_resource type="AudioStream" uid="uid://ne6q0acunx70" path="res://Player/Audio/exhausted.wav" id="24_755ss"]
+[ext_resource type="AudioStream" uid="uid://bsd4g0cistw3p" path="res://Player/Audio/level_up_jingle.wav" id="29_bbimk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1l381"]
 radius = 22.0227
@@ -39,7 +40,7 @@ shader = ExtResource("13_o28un")
 shader_parameter/outline_color = Color(0.94902, 0.184314, 0.2, 0.768627)
 shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(0.78573, 0.330389, 0.110671, 1)
+shader_parameter/cover_color = Color(0.996078, 0.501961, 1, 0.556863)
 shader_parameter/eye_color = Color(3, 3, 2, 1)
 
 [sub_resource type="Animation" id="Animation_xqcul"]
@@ -3207,6 +3208,54 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27, -96)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_pbfsw"]
 resource_name = "damaged"
@@ -3249,6 +3298,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, 10.0, 0.0, 10.0, 0.0, 10.0, 0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_q13i1"]
 resource_name = "default"
@@ -3264,16 +3325,124 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_iyprq"]
+resource_name = "level_up"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.6, 1.5, 0.8, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(-2, 2, 0.5),
+"update": 0,
+"values": [Vector2(-27, -50), Vector2(-27, -86), Vector2(-27, -76)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.90719,
+"start_offset": 0.0,
+"stream": ExtResource("29_bbimk")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5tmop"]
 _data = {
 &"RESET": SubResource("Animation_pylmc"),
 &"damaged": SubResource("Animation_pbfsw"),
-&"default": SubResource("Animation_q13i1")
+&"default": SubResource("Animation_q13i1"),
+&"level_up": SubResource("Animation_iyprq")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o28un"]
 radius = 80.0
+
+[sub_resource type="Gradient" id="Gradient_f4lon"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ynux"]
+gradient = SubResource("Gradient_f4lon")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d30e8"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
+gravity = Vector3(0, -250, 0)
+scale_max = 4.0
+color = Color(0.81, 0.7398, 0.3888, 1)
+color_ramp = SubResource("GradientTexture1D_8ynux")
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 16
@@ -3308,7 +3477,7 @@ libraries = {
 autoplay = "no_attack"
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
-modulate = Color(0.034, 0.014, 0.242, 0.326)
+modulate = Color(0.0352941, 0.0156863, 0.243137, 0.913725)
 show_behind_parent = true
 position = Vector2(0, 45)
 scale = Vector2(1.125, 0.9375)
@@ -3328,7 +3497,6 @@ debug_color = Color(0.988235, 0, 0.294118, 0)
 
 [node name="ChargeAttackHurtBox" parent="Sprite2D" instance=ExtResource("10_q6j84")]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0, 27)
 collision_mask = 256
 monitoring = false
@@ -3337,7 +3505,7 @@ damage = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ChargeAttackHurtBox"]
 position = Vector2(-1.12171, 30.4589)
 shape = SubResource("CapsuleShape2D_n471f")
-debug_color = Color(0.988235, 0, 0.294118, 0.203922)
+debug_color = Color(0.99, 0, 0.297, 0)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D/ChargeAttackHurtBox"]
 position = Vector2(0, 24)
@@ -3346,7 +3514,6 @@ lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_gpjlu")
 
 [node name="HitBox" parent="Sprite2D" instance=ExtResource("13_urp6f")]
-visible = false
 position = Vector2(-3, 24)
 rotation = 1.5708
 collision_layer = 2
@@ -3358,7 +3525,6 @@ shape = SubResource("CapsuleShape2D_bwjto")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="SpinEffectSprite2D" type="Sprite2D" parent="Sprite2D"]
-visible = false
 show_behind_parent = true
 position = Vector2(1, 23)
 scale = Vector2(1.51562, 1.51562)
@@ -3446,12 +3612,10 @@ script = ExtResource("11_hfp0w")
 max_polyphony = 6
 
 [node name="Interactions" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -7)
 script = ExtResource("10_4cvxe")
 
 [node name="Area2D" type="Area2D" parent="Interactions"]
-visible = false
 position = Vector2(0, 16)
 collision_layer = 4
 collision_mask = 0
@@ -3472,7 +3636,7 @@ script = ExtResource("14_lfmf2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/PushArea"]
 position = Vector2(0, 30)
 shape = SubResource("RectangleShape2D_pisgm")
-debug_color = Color(0.87386, 0.25932, 0.584394, 0.42)
+debug_color = Color(0.87, 0.261, 0.5858, 0)
 
 [node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -3483,7 +3647,6 @@ libraries = {
 script = ExtResource("17_pisgm")
 
 [node name="ItemMagnet" parent="." instance=ExtResource("18_b1ygp")]
-visible = false
 position = Vector2(-6, -24)
 scale = Vector2(0.831355, 0.831355)
 magnet_strength = 2.0
@@ -3491,4 +3654,23 @@ magnet_strength = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet"]
 position = Vector2(1, 28)
 shape = SubResource("CircleShape2D_o28un")
-debug_color = Color(0.164706, 0.678431, 0.596078, 0.0941176)
+debug_color = Color(0.1632, 0.68, 0.593867, 0)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -27.0
+offset_top = -96.0
+offset_right = 29.0
+offset_bottom = -79.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+text = "Level UP"
+horizontal_alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.25
+process_material = SubResource("ParticleProcessMaterial_d30e8")

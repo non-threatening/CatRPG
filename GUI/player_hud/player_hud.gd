@@ -16,7 +16,7 @@ var hearts : Array[ HeartGUI ] = []
 @onready var boss_hp_bar: TextureProgressBar = $Control/BossUI/TextureProgressBar
 @onready var boss_label: Label = $Control/BossUI/Label
 
-@onready var notification : NotificationUI = $Control/NotificationControl
+@onready var notificationUI : NotificationUI = $Control/NotificationControl
 
 
 func _ready() -> void:
@@ -132,5 +132,5 @@ func update_boss_hp( hp : int, max_hp : int ) -> void:
 
 ##can queue notifictions from anywhere globaly
 func queue_notification( _title : String, _message : String ) -> void:
-	notification.add_notification_to_queue( _title, _message )
+	notificationUI.add_notification_to_queue( _title, _message )
 	pass

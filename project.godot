@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RPGC"
-run/main_scene="uid://pucwglkmup3m"
+run/main_scene="uid://vmelqpt1g37"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -27,6 +27,7 @@ SaveManager="*res://00_Globals/global_save_manager.gd"
 PauseMenu="*res://GUI/pause_menu/PauseMenu.tscn"
 DialogSystem="*res://GUI/dialog_system/dialog_system.tscn"
 QuestManager="*res://Quests/scripts/global_quest_manager.gd"
+EffectManager="*res://00_Globals/global_effect_manager.gd"
 
 [display]
 
