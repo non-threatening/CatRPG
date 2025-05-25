@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EquipableItemData" load_steps=8 format=3 uid="uid://b6b1kcavta3in"]
+[gd_resource type="Resource" script_class="EquipableItemData" load_steps=9 format=3 uid="uid://b6b1kcavta3in"]
 
 [ext_resource type="Script" uid="uid://c5fpu6ww87ydn" path="res://Items/item_effects/item_effect.gd" id="1_dhhdw"]
 [ext_resource type="Script" uid="uid://cvk6jyli0bvd0" path="res://Items/scripts/equipable_item_modifier.gd" id="2_bff3e"]
 [ext_resource type="Script" uid="uid://bluvqvcg0ko5j" path="res://Items/scripts/equipable_item_data.gd" id="3_a4otj"]
 [ext_resource type="Texture2D" uid="uid://c0ryvmifyacll" path="res://Items/sprites/gear.png" id="4_ik6pu"]
+[ext_resource type="Texture2D" uid="uid://brue80se23sf1" path="res://Player/Sprites/player_sprite_ninja_suit.png" id="4_xdgd3"]
 
 [sub_resource type="Resource" id="Resource_ruas2"]
 script = ExtResource("2_bff3e")
@@ -25,6 +26,7 @@ region = Rect2(128, 0, 32, 32)
 script = ExtResource("3_a4otj")
 type = 2
 modifiers = Array[ExtResource("2_bff3e")]([SubResource("Resource_ruas2"), SubResource("Resource_dhhdw")])
+sprite_texture = ExtResource("4_xdgd3")
 name = "Tunic"
 description = "Second hand gimp suit"
 texture = SubResource("AtlasTexture_inskq")
