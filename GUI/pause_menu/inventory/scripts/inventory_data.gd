@@ -42,16 +42,6 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 	return false
 
 
-#func remove_item( item : ItemData, count : int = 1 ) -> void:
-	#for s in slots:
-		#if s:
-			#if s.item_data == item:
-				#s.quantity -= count
-				#if s.quantity == 0:
-					#
-				#return
-	#pass
-
 
 func connect_slots() -> void:
 	for s in slots:
@@ -121,11 +111,70 @@ func use_item( item : ItemData, count : int = 1 ) -> bool:
 	
 	
 	
+func equip_item( slot: SlotData ) -> void:
+	if slot == null or not slot.item_data is EquipableItemData:
+		return
+	var item : EquipableItemData = slot.item_data
+	var slot_index : int = slots.find( slot )
+	var equipment_index : int = slots.size() - equipment_slot_count
+	#WEAPON, COLLAR, ARMOR, RFID_CHIP
+	match item.type:
+		EquipableItemData.Type.ARMOR:
+			equipment_index += 0
+			pass
+		EquipableItemData.Type.WEAPON:
+			equipment_index += 2
+			pass
+		EquipableItemData.Type.COLLAR:
+			equipment_index += 1
+			pass
+		EquipableItemData.Type.RFID_CHIP:
+			equipment_index += 3
 	
+	var unequiped_slot : SlotData = slots[ equipment_index ]
 	
+	# swap items
+	slots[ slot_index ] = unequiped_slot
+	slots[ equipment_index] = slot
 	
+	equipment_changed.emit()
+	PauseMenu.focused_item_changed( unequiped_slot )
+	pass
 	
+
+
+func get_attack_bonus() -> int:
+	return get_equipment_bonus( EquipableItemModifier.Type.ATTACK )
+
+func get_attack_bonus_dif( item : EquipableItemData ) -> int:
+	var before : int = get_attack_bonus()
+	var after : int = get_equipment_bonus( EquipableItemModifier.Type.ATTACK, item )
+	return after - before
+
 	
+func get_defense_bonus() -> int:
+	return get_equipment_bonus( EquipableItemModifier.Type.DEFENSE )
+
+func get_defense_bonus_dif( item : EquipableItemData ) -> int:
+	var before : int = get_defense_bonus()
+	var after : int = get_equipment_bonus( EquipableItemModifier.Type.DEFENSE, item )
+	return after - before
+
+
+func get_equipment_bonus( bonus_type: EquipableItemModifier.Type, compare : EquipableItemData = null ) -> int:
+	var bonus : int = 0
+	for s in equipment_slots():
+		if s == null:
+			continue
+		var e : EquipableItemData = s.item_data
+		if compare:
+			if e.type == compare.type:
+				e = compare
+		for m in e.modifiers:
+			if m:
+				if m.type == bonus_type:
+					bonus += m.value
+	return bonus
 	
 	
 	

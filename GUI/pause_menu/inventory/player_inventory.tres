@@ -11,7 +11,7 @@ item_data = ExtResource("3_6kbrr")
 quantity = 1
 metadata/_custom_type_script = "uid://djrie0d27synv"
 
-[sub_resource type="Resource" id="Resource_18tpa"]
+[sub_resource type="Resource" id="Resource_6kbrr"]
 script = ExtResource("2_x61lb")
 item_data = ExtResource("4_d33ra")
 quantity = 1
@@ -19,5 +19,5 @@ metadata/_custom_type_script = "uid://djrie0d27synv"
 
 [resource]
 script = ExtResource("1_o6sn5")
-slots = Array[ExtResource("2_x61lb")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, SubResource("Resource_0w5vp"), SubResource("Resource_18tpa"), null, null])
+slots = Array[ExtResource("2_x61lb")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, SubResource("Resource_0w5vp"), null, SubResource("Resource_6kbrr"), null])
 metadata/_custom_type_script = "uid://dc703es2if44x"
