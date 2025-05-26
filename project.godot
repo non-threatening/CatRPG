@@ -41,6 +41,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
+[global_group]
+
+tilemaps="tilemaps with footstep sounds and stuff"
+
 [gui]
 
 theme/custom_font="uid://cta00yqut7wdq"
