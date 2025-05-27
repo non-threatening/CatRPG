@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cjkxhlwvtqyqh"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cjkxhlwvtqyqh"]
 
+[ext_resource type="FontFile" uid="uid://cta00yqut7wdq" path="res://GUI/fonts/FtCairove-aYEjg.otf" id="1_01dym"]
 [ext_resource type="FontFile" uid="uid://bx1bk1gkkhcgw" path="res://GUI/fonts/Snake.ttf" id="1_xww3l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xww3l"]
@@ -77,7 +78,9 @@ Label/colors/font_outline_color = Color(0.475803, 0.406988, 0, 1)
 Label/constants/outline_size = 5
 Label/font_sizes/font_size = 64
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_1nlgx")
-RichTextLabel/constants/line_separation = -30
-RichTextLabel/font_sizes/bold_font_size = 96
-RichTextLabel/font_sizes/normal_font_size = 64
+RichTextLabel/font_sizes/bold_font_size = 48
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/bold_font = ExtResource("1_01dym")
+RichTextLabel/fonts/mono_font = ExtResource("1_01dym")
+RichTextLabel/fonts/normal_font = ExtResource("1_01dym")
 VBoxContainer/constants/separation = 10

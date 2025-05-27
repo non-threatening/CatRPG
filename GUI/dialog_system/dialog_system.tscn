@@ -104,11 +104,18 @@ offset_bottom = -137.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogUI/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="DialogUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 60
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogUI/PanelContainer/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "Example [b]Text[/b] [color=red]RED[/color]. A thing is hilarious, funny guy ist dabei"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NameLabel" type="Label" parent="DialogUI"]
 layout_mode = 0

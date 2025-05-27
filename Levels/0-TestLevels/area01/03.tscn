@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cbsyitoishkr0"]
+[gd_scene load_steps=13 format=4 uid="uid://cbsyitoishkr0"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_ryupc"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="2_koc1c"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="4_ut76y"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="5_koc1c"]
 [ext_resource type="PackedScene" uid="uid://v5dboj6jx3yw" path="res://Enemies/Cockroach/cockroach.tscn" id="6_tpye1"]
+[ext_resource type="PackedScene" uid="uid://cq1k6a1hmnptr" path="res://Levels/level_transition_interact.tscn" id="8_7hw7r"]
+[ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="10_nwc50"]
+[ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="11_a4xaw"]
+[ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="12_7vnyu"]
 
 [node name="03" type="Node2D"]
 script = ExtResource("1_ryupc")
@@ -45,11 +49,17 @@ target_transition_area = "LevelTransition3"
 size = 3
 
 [node name="LevelTransition4" parent="." instance=ExtResource("5_koc1c")]
-position = Vector2(1267, 738)
+position = Vector2(1264, 728)
 level = "uid://vmelqpt1g37"
 target_transition_area = "LevelTransition2"
 size = 4
 side = 3
+
+[node name="LevelTransitionShop" parent="." instance=ExtResource("8_7hw7r")]
+position = Vector2(1241, 464)
+level = "uid://tig8saj78vln"
+center_player = true
+side = 2
 
 [node name="Roach Floder" type="Node" parent="."]
 
@@ -70,3 +80,11 @@ position = Vector2(606, 372)
 
 [node name="Cockroach14" parent="Roach Floder" instance=ExtResource("6_tpye1")]
 position = Vector2(364, 406)
+
+[node name="ItemPickup" parent="." instance=ExtResource("10_nwc50")]
+position = Vector2(1520, 536)
+item_data = ExtResource("11_a4xaw")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("10_nwc50")]
+position = Vector2(1520, 680)
+item_data = ExtResource("12_7vnyu")

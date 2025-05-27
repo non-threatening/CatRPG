@@ -3,17 +3,14 @@ class_name InventoryUI extends Control
 const INVENTORY_SLOT = preload("res://GUI/pause_menu/inventory/inventory_slot.tscn")
 
 var focus_index : int = 0
+var hovered_item : InventorySlotUI
 
 @export var data : InventoryData
 
-@onready var inventory_slot_armor: InventorySlot = %InventorySlot_Armor
-@onready var inventory_slot_collar: InventorySlot = %InventorySlot_Collar
-@onready var inventory_slot_weapon: InventorySlot = %InventorySlot_Weapon
-@onready var inventory_slot_rfid_chip: InventorySlot = %InventorySlot_RFID_Chip
-
-
-
-
+@onready var inventory_slot_armor: InventorySlotUI = %InventorySlot_Armor
+@onready var inventory_slot_collar: InventorySlotUI = %InventorySlot_Collar
+@onready var inventory_slot_weapon: InventorySlotUI = %InventorySlot_Weapon
+@onready var inventory_slot_rfid_chip: InventorySlotUI = %InventorySlot_RFID_Chip
 
 
 
@@ -36,9 +33,10 @@ func update_inventory( apply_focus : bool = true ) -> void:
 	
 	var inventory_slots : Array[ SlotData ] = data.inventory_slots()
 	
-	for i in inventory_slots.size():
-		var slot : InventorySlot = get_child( i )
+	for i in inventory_slots.size(): # populate the data
+		var slot : InventorySlotUI = get_child( i )
 		slot.set_slot_data( inventory_slots[ i ] )
+		connect_item_signals( slot )
 	
 	
 	## Equipmetn slots
@@ -66,7 +64,32 @@ func on_inventory_changed() -> void:
 	update_inventory( false )
 	
 	
+func connect_item_signals( item : InventorySlotUI ) -> void:
+	if not item.button_up.is_connected( _on_item_drop ):
+		item.button_up.connect( _on_item_drop.bind( item ) )
 	
+	if not item.mouse_entered.is_connected( _on_item_mouse_entered ):
+		item.mouse_entered.connect( _on_item_mouse_entered.bind( item ) )
 	
+	if not item.mouse_exited.is_connected( _on_item_mouse_exited ):
+		item.mouse_exited.connect( _on_item_mouse_exited )
+	pass
 	
-	
+
+
+func _on_item_drop( item : InventorySlotUI ) -> void:
+	if item == null or item == hovered_item or hovered_item == null:
+		return
+	data.swap_items_by_index( item.get_index(), hovered_item.get_index() )
+	update_inventory( false ) #false to not apply focus
+	pass
+
+
+func _on_item_mouse_entered( item : InventorySlotUI ) -> void:
+	hovered_item = item
+	#print("hovered", item.name)
+	pass
+
+func _on_item_mouse_exited() -> void:
+	hovered_item = null
+	pass
