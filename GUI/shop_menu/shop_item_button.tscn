@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl304u63rcs4w"]
+
+[ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://Themes/PauseMenu.tres" id="1_bfbb1"]
+[ext_resource type="FontFile" uid="uid://e4klhr6oxrqa" path="res://GUI/fonts/SelfWritten-Regular-SVG.ttf" id="2_rm5x1"]
+[ext_resource type="Texture2D" uid="uid://beuue5mgapph3" path="res://Items/sprites/items.png" id="4_wcyy0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62ogg"]
+atlas = ExtResource("4_wcyy0")
+region = Rect2(0, 0, 32, 32)
+
+[node name="ShopItemButton" type="Button"]
+custom_minimum_size = Vector2(880, 144)
+offset_right = 1024.0
+offset_bottom = 144.0
+theme = ExtResource("1_bfbb1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 48.0
+offset_right = 736.0
+offset_bottom = 100.0
+text = "LABEL BUTt and a whole lot of text -___- To sEe WHat'S"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="PriceLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 56.0
+offset_right = 864.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_rm5x1")
+text = "196,03 w"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 136.0
+texture = SubResource("AtlasTexture_62ogg")
+stretch_mode = 3

@@ -18,7 +18,8 @@ var dialog_items : Array[ DialogItem ]
 var dialog_item_index : int = 0
 
 @onready var dialog_ui : Control = $DialogUI
-@onready var content: RichTextLabel = $DialogUI/PanelContainer/RichTextLabel
+#@onready var content: RichTextLabel = $DialogUI/PanelContainer/RichTextLabel
+@onready var content: RichTextLabel = $DialogUI/PanelContainer/MarginContainer/RichTextLabel
 @onready var name_label: Label = $DialogUI/NameLabel
 @onready var portrait_sprite: DialogPortrait = $DialogUI/PortraitSprite
 @onready var dialog_progress_indicator: PanelContainer = $DialogUI/DialogProgressIndicator
@@ -79,7 +80,10 @@ func show_dialog( _items : Array[ DialogItem ] ) -> void:
 	dialog_item_index = 0
 	get_tree().paused = true
 	await get_tree().process_frame
-	start_dialog()
+	if dialog_items.size() == 0:
+		hide_dialog()
+	else:
+		start_dialog()
 	pass
 	
 	
