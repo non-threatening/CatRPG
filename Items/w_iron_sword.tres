@@ -19,10 +19,11 @@ region = Rect2(32, 0, 32, 32)
 [resource]
 script = ExtResource("3_c65fy")
 type = 0
-modifiers = Array[ExtResource("2_50xaj")]([SubResource("Resource_ruas2")])
+modifiers = Array[ExtResource("2_50xaj")]([SubResource("Resource_ruas2"), null, null, null, null, null, null, null, null, null, null, null])
 sprite_texture = ExtResource("4_inskq")
 name = "Iron Sword"
 description = "Standard ass item"
 texture = SubResource("AtlasTexture_inskq")
+cost = 50
 effects = Array[ExtResource("1_dchiq")]([])
 metadata/_custom_type_script = "uid://bluvqvcg0ko5j"

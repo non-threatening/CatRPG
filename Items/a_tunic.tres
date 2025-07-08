@@ -19,5 +19,6 @@ name = "Tunic"
 description = "Standard ass Tunic
 super nice"
 texture = SubResource("AtlasTexture_inskq")
+cost = 100
 effects = Array[ExtResource("1_0snw1")]([])
 metadata/_custom_type_script = "uid://bluvqvcg0ko5j"

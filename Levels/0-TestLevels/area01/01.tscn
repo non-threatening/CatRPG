@@ -548,6 +548,7 @@ func quest_complete() -> void:
 "
 
 [node name="02" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_4t7i1")
 music = ExtResource("6_1de0a")
 

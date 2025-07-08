@@ -30,5 +30,6 @@ sprite_texture = ExtResource("4_xdgd3")
 name = "Tunic"
 description = "Second hand gimp suit"
 texture = SubResource("AtlasTexture_inskq")
+cost = 250
 effects = Array[ExtResource("1_dhhdw")]([])
 metadata/_custom_type_script = "uid://bluvqvcg0ko5j"

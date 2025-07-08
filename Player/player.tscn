@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://bpcvp55f33q1s"]
+[gd_scene load_steps=100 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://c3gwp3c3cjfxs" path="res://Player/Audio/throw.wav" id="22_76lrf"]
 [ext_resource type="Script" uid="uid://brqohad66u14w" path="res://Player/Scripts/states/state_death.gd" id="23_efx54"]
 [ext_resource type="AudioStream" uid="uid://ne6q0acunx70" path="res://Player/Audio/exhausted.wav" id="24_755ss"]
+[ext_resource type="Script" uid="uid://yxttc1bkcbek" path="res://Player/Scripts/states/state_dash.gd" id="27_c6x0f"]
 [ext_resource type="AudioStream" uid="uid://bsd4g0cistw3p" path="res://Player/Audio/level_up_jingle.wav" id="29_bbimk"]
 [ext_resource type="PackedScene" uid="uid://ccodbacsl6vdt" path="res://GeneralNodes/footstep_audio_2d/footstep_audio_2d.tscn" id="34_j2n6q"]
 
@@ -2584,6 +2585,127 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_f4lon"]
+resource_name = "dash_down"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_8ynux"]
+resource_name = "dash_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 5.36442e-07)]
+}
+
+[sub_resource type="Animation" id="Animation_d30e8"]
+resource_name = "dash_side"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, -4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3pjbc"]
 _data = {
 &"RESET": SubResource("Animation_qytke"),
@@ -2603,6 +2725,9 @@ _data = {
 &"charge_walk_down": SubResource("Animation_hshwv"),
 &"charge_walk_side": SubResource("Animation_gpjlu"),
 &"charge_walk_up": SubResource("Animation_8mwp6"),
+&"dash_down": SubResource("Animation_f4lon"),
+&"dash_side": SubResource("Animation_d30e8"),
+&"dash_up": SubResource("Animation_8ynux"),
 &"death": SubResource("Animation_qs4pp"),
 &"idle_down": SubResource("Animation_eh1c6"),
 &"idle_side": SubResource("Animation_76jjn"),
@@ -3061,6 +3186,11 @@ throw_audio = ExtResource("22_76lrf")
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("23_efx54")
 exhaust_audio = ExtResource("24_755ss")
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource("27_c6x0f")
+move_speed = 2500.0
+dash_audio = ExtResource("10_gpjlu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 editor_draw_limits = true

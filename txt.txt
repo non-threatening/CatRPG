@@ -1,3 +1,1 @@
-
-
-Hurtbox collsion should default to Mask 3, not 9
+Give each speach bubble a different look for each character

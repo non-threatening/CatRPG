@@ -123,7 +123,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -334.0
 offset_top = 80.0
-offset_right = -132.0
+offset_right = -62.0
 offset_bottom = 168.0
 grow_horizontal = 0
 
@@ -137,11 +137,12 @@ texture = SubResource("AtlasTexture_t0q3b")
 stretch_mode = 3
 
 [node name="GemsLabel" type="Label" parent="Control/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_lv53b")
-text = "999,99"
+text = "1234567890"
 vertical_alignment = 2
 
 [node name="Control" type="Control" parent="Control/PanelContainer/HBoxContainer"]
@@ -243,7 +244,7 @@ offset_top = 46.0
 offset_right = 366.0
 offset_bottom = 86.0
 theme_override_font_sizes/font_size = 36
-text = "Price"
+text = "Cost	"
 autowrap_mode = 3
 
 [node name="Price" type="Label" parent="Control/DetailsPanel/Control"]
@@ -263,10 +264,10 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 254.0
 offset_top = 102.0
-offset_right = 374.0
+offset_right = 489.0
 offset_bottom = 142.0
 theme_override_font_sizes/font_size = 36
-text = "In Stock"
+text = "Already have"
 autowrap_mode = 3
 
 [node name="StockCount" type="Label" parent="Control/DetailsPanel/Control"]

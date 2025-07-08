@@ -24,5 +24,6 @@ sprite_texture = ExtResource("4_50xaj")
 name = "Katana"
 description = "Standard ass Katana"
 texture = SubResource("AtlasTexture_inskq")
+cost = 150
 effects = Array[ExtResource("1_y8yd3")]([])
 metadata/_custom_type_script = "uid://bluvqvcg0ko5j"
