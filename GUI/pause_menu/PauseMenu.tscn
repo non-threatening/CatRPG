@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=31 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="FontFile" uid="uid://bs3nosvkt8t0l" path="res://GUI/fonts/OMORI_GAME2.ttf" id="2_dfhdr"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bnvj41ww8lhj0" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="4_laftm"]
 [ext_resource type="Script" uid="uid://dvclsk7ha4rgn" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="4_mc7vq"]
 [ext_resource type="Resource" uid="uid://1fwl7lk326j" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="5_408tb"]
+[ext_resource type="Script" uid="uid://d3avo2oc26t6w" path="res://GUI/pause_menu/inventory/scripts/gear_item_button.gd" id="6_320ax"]
+[ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="6_hio0w"]
+[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="8_gtmg6"]
 [ext_resource type="Texture2D" uid="uid://c0ryvmifyacll" path="res://Items/sprites/gear.png" id="8_mnpje"]
 [ext_resource type="Script" uid="uid://d1slohvycmh0m" path="res://GUI/pause_menu/quests_ui.gd" id="8_rlqlv"]
 [ext_resource type="PackedScene" uid="uid://fumnr0rdrlri" path="res://GUI/pause_menu/quests/quest_item.tscn" id="8_uh56w"]
@@ -29,6 +32,22 @@ texture_margin_left = 14.0
 texture_margin_top = 14.0
 texture_margin_right = 14.0
 texture_margin_bottom = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v4th"]
+atlas = ExtResource("6_hio0w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awacl"]
+atlas = ExtResource("6_hio0w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wmam"]
+atlas = ExtResource("6_hio0w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1w5p"]
+atlas = ExtResource("6_hio0w")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3yxpl"]
 atlas = ExtResource("8_mnpje")
@@ -108,20 +127,116 @@ grow_vertical = 2
 theme = ExtResource("3_16eqs")
 theme_override_styles/panel = ExtResource("4_3yxpl")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="Ability Container" type="PanelContainer" parent="Control/TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 276.0
+offset_bottom = 657.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mc7vq")
+
+[node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/Ability Container"]
+layout_mode = 2
+
+[node name="InventorySlot" type="Button" parent="Control/TabContainer/Inventory/Ability Container/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "This is boomerrang. Later, this will be a bird friend"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/Ability Container/GridContainer/InventorySlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_1v4th")
+stretch_mode = 3
+
+[node name="InventorySlot2" type="Button" parent="Control/TabContainer/Inventory/Ability Container/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "Grappling hook thing... can't think of a use right now.. Maybe a late game abilit with magents or something."
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/Ability Container/GridContainer/InventorySlot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_awacl")
+stretch_mode = 3
+
+[node name="InventorySlot3" type="Button" parent="Control/TabContainer/Inventory/Ability Container/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "Harness or a collar.. Maybe this is where the bird friends live;)"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/Ability Container/GridContainer/InventorySlot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5wmam")
+stretch_mode = 3
+
+[node name="ArrowCountLabel" type="Label" parent="Control/TabContainer/Inventory/Ability Container/GridContainer/InventorySlot3"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_gtmg6")
+theme_override_font_sizes/font_size = 48
+text = "99"
+
+[node name="InventorySlot4" type="Button" parent="Control/TabContainer/Inventory/Ability Container/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "BOMB!"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/Ability Container/GridContainer/InventorySlot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_d1w5p")
+stretch_mode = 3
+
+[node name="BombCountLabel" type="Label" parent="Control/TabContainer/Inventory/Ability Container/GridContainer/InventorySlot4"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_gtmg6")
+theme_override_font_sizes/font_size = 48
+text = "99"
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Inventory"]
 custom_minimum_size = Vector2(680, 545)
 layout_mode = 0
-offset_left = 120.0
-offset_top = 114.0
-offset_right = 824.0
-offset_bottom = 659.0
+offset_left = 380.0
+offset_top = 112.0
+offset_right = 1060.0
+offset_bottom = 657.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mc7vq")
 
 [node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/PanelContainer"]
@@ -191,17 +306,16 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="Control/TabContainer/Inventory"]
-custom_minimum_size = Vector2(680, 280)
 layout_mode = 0
-offset_left = 959.0
-offset_top = 378.0
-offset_right = 1656.0
-offset_bottom = 658.0
+offset_left = 1152.0
+offset_top = 377.0
+offset_right = 1696.0
+offset_bottom = 657.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mc7vq")
 
 [node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/PanelContainer2"]
 layout_mode = 2
-columns = 5
+columns = 4
 
 [node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
 custom_minimum_size = Vector2(128, 128)
@@ -214,6 +328,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 stretch_mode = 3
@@ -239,6 +354,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TextureRect4" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 stretch_mode = 3
@@ -255,10 +371,10 @@ layout_mode = 2
 
 [node name="Stats" parent="Control/TabContainer/Inventory" instance=ExtResource("8_vbpxr")]
 layout_mode = 0
-offset_left = 1229.0
-offset_top = 114.0
-offset_right = 1657.0
-offset_bottom = 318.0
+offset_left = 1217.0
+offset_top = 112.0
+offset_right = 1645.0
+offset_bottom = 316.0
 
 [node name="ItemDescription" type="Label" parent="Control/TabContainer/Inventory"]
 layout_mode = 2
@@ -273,6 +389,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Quests" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("8_rlqlv")
 metadata/_tab_index = 1
