@@ -44,7 +44,7 @@ shader = ExtResource("13_o28un")
 shader_parameter/outline_color = Color(0.891291, 4.18738e-06, 8.66354e-07, 1)
 shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(1, 0.547124, 0.994953, 1)
+shader_parameter/cover_color = Color(0.4, 0.272, 0.321067, 1)
 shader_parameter/eye_color = Color(3, 2, 1, 1)
 
 [sub_resource type="Animation" id="Animation_xqcul"]
@@ -3260,6 +3260,7 @@ text = "Level UP"
 horizontal_alignment = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -1)
 emitting = false
 amount = 100
 lifetime = 0.75

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cbsyitoishkr0"]
+[gd_scene load_steps=14 format=4 uid="uid://cbsyitoishkr0"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_ryupc"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="2_koc1c"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="10_nwc50"]
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="11_a4xaw"]
 [ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="12_7vnyu"]
+[ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="16_uhh5g"]
 
 [node name="03" type="Node2D"]
 script = ExtResource("1_ryupc")
@@ -88,3 +89,7 @@ item_data = ExtResource("11_a4xaw")
 [node name="ItemPickup2" parent="." instance=ExtResource("10_nwc50")]
 position = Vector2(1520, 680)
 item_data = ExtResource("12_7vnyu")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("10_nwc50")]
+position = Vector2(759, 267)
+item_data = ExtResource("16_uhh5g")

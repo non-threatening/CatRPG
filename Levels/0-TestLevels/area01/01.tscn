@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://pucwglkmup3m"]
+[gd_scene load_steps=42 format=4 uid="uid://pucwglkmup3m"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
@@ -32,6 +32,7 @@
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="30_egubj"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="31_s5a4g"]
 [ext_resource type="Resource" uid="uid://csuyu64brou7t" path="res://Items/w_katana.tres" id="32_kvvsh"]
+[ext_resource type="Shader" uid="uid://rau322rwm5hw" path="res://Maps/Enviroment/Plants/grass_blade.gdshader" id="32_l661h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i3id2"]
 texture = ExtResource("6_1j6q0")
@@ -547,6 +548,14 @@ func quest_complete() -> void:
 	pass
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvvsh"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
 [node name="02" type="Node2D"]
 position = Vector2(1, 0)
 script = ExtResource("1_4t7i1")
@@ -875,5 +884,6 @@ position = Vector2(1133, 204)
 item_data = ExtResource("30_egubj")
 
 [node name="TreasureChest" parent="." instance=ExtResource("31_s5a4g")]
+material = SubResource("ShaderMaterial_kvvsh")
 position = Vector2(1137, 100)
 item_data = ExtResource("32_kvvsh")
