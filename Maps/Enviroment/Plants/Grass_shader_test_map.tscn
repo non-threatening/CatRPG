@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://ly7wguh1ufuy"]
+
+[ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="1_kc5b1"]
+[ext_resource type="PackedScene" uid="uid://biuvt1eo6nfpj" path="res://Maps/Enviroment/Plants/grass_blade.tscn" id="2_o3la6"]
+[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="4_ryqvc"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+material = ExtResource("1_kc5b1")
+offset_top = -1.0
+offset_right = 1280.0
+offset_bottom = 799.0
+
+[node name="GrassBlade2" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(418, 285)
+
+[node name="GrassBlade3" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(476, 244)
+
+[node name="GrassBlade4" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(379, 282)
+
+[node name="GrassBlade5" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(439, 261)
+
+[node name="GrassBlade6" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(536, 284)
+
+[node name="GrassBlade7" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(564, 284)
+
+[node name="GrassBlade8" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(596, 286)
+
+[node name="GrassBlade9" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(630, 288)
+
+[node name="GrassBlade10" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(494, 412)
+
+[node name="GrassBlade11" parent="ColorRect" instance=ExtResource("2_o3la6")]
+position = Vector2(427, 222)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_ryqvc")]
+position = Vector2(461, 343)

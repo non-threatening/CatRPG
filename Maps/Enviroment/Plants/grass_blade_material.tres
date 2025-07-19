@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8wk3o78s8x4v"]
+
+[ext_resource type="Shader" uid="uid://rau322rwm5hw" path="res://Maps/Enviroment/Plants/grass_blade.gdshader" id="1_iwrue"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_iwrue")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0

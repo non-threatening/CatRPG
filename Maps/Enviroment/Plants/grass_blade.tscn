@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://biuvt1eo6nfpj"]
+
+[ext_resource type="Script" uid="uid://e063vaw5kf1g" path="res://Maps/Enviroment/Plants/grass_blade.gd" id="1_523p5"]
+[ext_resource type="Material" uid="uid://c8wk3o78s8x4v" path="res://Maps/Enviroment/Plants/grass_blade_material.tres" id="2_4jomc"]
+[ext_resource type="Texture2D" uid="uid://c76k2yhi6uxim" path="res://Maps/Enviroment/Plants/Sprites/grass_blades3.png" id="3_fpr34"]
+
+[node name="GrassBlade" type="Node2D"]
+
+[node name="GrassBlades" type="Sprite2D" parent="."]
+material = ExtResource("2_4jomc")
+rotation = 3.14159
+texture = ExtResource("3_fpr34")
+script = ExtResource("1_523p5")

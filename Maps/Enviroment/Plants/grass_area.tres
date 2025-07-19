@@ -1,9 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://t7e014hmcmxq"]
 
-[ext_resource type="Shader" uid="uid://dco25tfrip36b" path="res://Shaders/grass001.gdshader" id="1_pg2pf"]
+[ext_resource type="Shader" uid="uid://dco25tfrip36b" path="res://Maps/Enviroment/Plants/grass_area.gdshader" id="1_pg2pf"]
 
 [sub_resource type="Gradient" id="Gradient_pg2pf"]
-colors = PackedColorArray(0.23724, 0.24, 0.0744, 1, 0.122125, 0.25, 0.0175, 1)
+offsets = PackedFloat32Array(0, 0.574324, 1)
+colors = PackedColorArray(0.23724, 0.24, 0.0744, 1, 0.122125, 0.25, 0.0175, 1, 0.2139, 0.3, 0.054, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_svkfw"]
 noise_type = 2

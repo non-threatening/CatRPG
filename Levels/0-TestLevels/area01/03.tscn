@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="2_koc1c"]
 [ext_resource type="Script" uid="uid://dlck23nlhp02u" path="res://Tile Maps/LevelTileMap.gd" id="3_jvg0d"]
 [ext_resource type="PackedScene" uid="uid://dnilke48josac" path="res://Tile Maps/shop_tilemap_layer.tscn" id="4_dp88w"]
-[ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Shaders/grass001.tres" id="4_ph2wi"]
+[ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="4_ph2wi"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="4_ut76y"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="5_koc1c"]
 [ext_resource type="PackedScene" uid="uid://v5dboj6jx3yw" path="res://Enemies/Cockroach/cockroach.tscn" id="6_tpye1"]

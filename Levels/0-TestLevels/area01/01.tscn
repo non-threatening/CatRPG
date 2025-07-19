@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
 [ext_resource type="Script" uid="uid://dlck23nlhp02u" path="res://Tile Maps/LevelTileMap.gd" id="2_chooo"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="3_22ele"]
-[ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Shaders/grass001.tres" id="5_31yvb"]
+[ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="5_31yvb"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="5_pwydo"]
 [ext_resource type="AudioStream" uid="uid://xot5s58xou2q" path="res://Levels/Audio/example_music_01.ogg" id="6_1de0a"]
 [ext_resource type="Texture2D" uid="uid://b4nn7kelrpot5" path="res://Tile Maps/Sprites/Grass-01.png" id="6_1j6q0"]
