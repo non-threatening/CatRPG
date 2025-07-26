@@ -13,12 +13,10 @@ func _init() -> void:
 
 func inventory_slots() -> Array[ SlotData ]:
 	return slots.slice( 0, -equipment_slot_count )
-	pass
-	
 
+	
 func equipment_slots() -> Array[ SlotData ]:
 	return slots.slice( -equipment_slot_count, slots.size() )
-	pass
 	
 
 

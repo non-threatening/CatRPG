@@ -22,13 +22,6 @@ func _ready() -> void:
 	visible = false
 	state = State.INACTIVE
 	player = PlayerManager.player
-	_set_random_color()
-	
-
-func _set_random_color() -> void:
-	var new_color = Color.from_hsv(randf_range( 0, 1 ), 1.0, 1.0, 1.0)
-	sprite.material.set_shader_parameter( "new_color", new_color )
-	pass
 
 
 func _physics_process(delta: float) -> void:
@@ -38,12 +31,13 @@ func _physics_process(delta: float) -> void:
 		if speed <= 0:
 			state = State.RETURN
 			update_animation()
+			## TODO: only update animation when it changes
 		pass
 	elif state == State.RETURN:
-		direction = global_position.direction_to( player.global_position )
+		direction = global_position.direction_to( player.global_position + Vector2( 0, -40 ) )
 		speed += acceleration * delta
 		position += direction * speed * delta
-		if global_position.distance_to( player.global_position ) <= 10: # Remove it when it's close to the player, it's caught
+		if global_position.distance_to( player.global_position ) <= 45: # Remove it when it's close to the player, it's caught
 			PlayerManager.play_audio( catch_audio )
 			queue_free() 
 		pass
@@ -66,6 +60,7 @@ func throw( throw_direction : Vector2 ) -> void:
 
 
 func update_animation() -> void:
+	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame # wait an extra frame to process Return state and change direction
 	var direction_id : int = int( round( ( direction * 0.1 ).angle() / TAU * DIR_4.size() ) )

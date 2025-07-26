@@ -4,7 +4,7 @@ const BOOMERANG = preload("res://Player/boomerang.tscn")
 const BIRD = preload("res://Player/bird_friend.tscn")
 
 var abilities : Array[ String ] = [
-	"BOOMERANG", "BIRD", "BOW", "BOMB"
+	"BIRD", "BOOMERANG", "BOW", "BOMB"
 	]
 
 var selected_ability = 0
@@ -25,9 +25,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability"):
 		match selected_ability:
 			0:
-				boomerang_ability()
-			1:
 				bird_ability()
+			1:
+				boomerang_ability()
 			2:
 				print("Bow")
 			3:
@@ -41,14 +41,15 @@ func toggle_ability() -> void:
 	selected_ability = wrapi( selected_ability + 1, 0, 4 )
 	PlayerHud.update_ability_ui( selected_ability )
 	pass
-	
+
+
 func bird_ability() -> void:
-	if bird_instance != null: # Do we have a boomerang? Limits number of boomerangs to 1
+	if bird_instance != null:
 		return
 	
 	var _b = BIRD.instantiate() as BirdFriend
 	player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
-	_b.global_position = player.global_position
+	_b.global_position = player.global_position + Vector2( 0, -50 )
 	
 	var throw_direction = player.direction
 	if throw_direction == Vector2.ZERO:

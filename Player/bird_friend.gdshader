@@ -7,12 +7,12 @@ void vertex() {
 }
 
 void fragment() {
-	vec4 input_color = texture( TEXTURE, UV );
-	if (input_color.rgb == vec3(1,1,1) ) {
-		COLOR.rgb = new_color.rgb;
-	}
-	
-	
+	//vec4 input_color = texture( TEXTURE, UV );
+	//if ( input_color.r > 0.75 && input_color.g > 0.75 && input_color.b > 0.75 && input_color.a > 0.2) {
+		//COLOR.rgb = new_color.rgb * COLOR.rgb;
+	//}
+
+
 }
 
 //void light() {
