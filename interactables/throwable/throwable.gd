@@ -6,7 +6,7 @@ class_name Throwable extends Area2D
 @export var throw_starting_height : float = 49
 
 var picked_up : bool = false
-var throwable : Node2D
+var prop : Node2D
 var throw_direction : Vector2
 var object_sprite : Sprite2D
 var vertical_velocity : float = 0
@@ -14,18 +14,19 @@ var ground_height : float = 0
 var animation_player : AnimationPlayer
 
 @onready var hurt_box: HurtBox = $HurtBox
-
+@onready var wall_detect: Area2D = $WallDetect
 
 
 func _ready() -> void:
 	area_entered.connect( _on_area_enter )
 	area_exited.connect( _on_area_exit )
-	throwable = get_parent()
-	setup_hurt_box()
+	prop = get_parent()
+	setup_collision_boxes()
 	
-	object_sprite = throwable.get_node( "Sprite2D" )
+	#object_sprite = prop.get_node( "Sprite2D" )
+	object_sprite = prop.find_child( "Sprite2D" )
 	ground_height = object_sprite.position.y
-	animation_player = throwable.find_child( "AnimationPlayer" )
+	animation_player = prop.find_child( "AnimationPlayer" )
 	
 	set_physics_process( false )
 	
@@ -34,9 +35,9 @@ func _ready() -> void:
 func _physics_process( delta: float ) -> void:
 	object_sprite.position.y += vertical_velocity * delta
 	if object_sprite.position.y >= ground_height:
-		destroy()
+		hit_ground()
 	vertical_velocity += gravity_strength * delta
-	throwable.position += throw_direction * throw_speed * delta
+	prop.position += throw_direction * throw_speed * delta
 	pass
 
 
@@ -46,12 +47,12 @@ func player_interact() -> void:
 		return
 	if picked_up == false:
 		PlayerManager.interact_handled == true
-		disable_collisions( throwable )
-		if throwable.get_parent():
-			throwable.get_parent().remove_child( throwable )
-		PlayerManager.player.held_item.add_child( throwable ) # make it throwable
-		throwable.position = Vector2.ZERO # 
-		PlayerManager.player.pickup_item( self ) # pick up the throwable node
+		disable_collisions( prop )
+		if prop.get_parent():
+			prop.get_parent().remove_child( prop )
+		PlayerManager.player.held_item.add_child( prop ) # make it prop
+		prop.position = Vector2.ZERO # 
+		PlayerManager.player.pickup_item( self ) # pick up the prop node
 		area_entered.disconnect( _on_area_enter )
 		area_exited.disconnect( _on_area_exit )
 		pass
@@ -59,25 +60,29 @@ func player_interact() -> void:
 
 
 func throw() -> void:
-	throwable.get_parent().remove_child( throwable ) # remove from player
-	PlayerManager.player.get_parent().call_deferred( "add_child", throwable ) #Add it to scene tree
-	throwable.position = PlayerManager.player.position
+	prop.get_parent().remove_child( prop ) # remove from player
+	PlayerManager.player.get_parent().call_deferred( "add_child", prop ) #Add it to scene tree
+	prop.position = PlayerManager.player.position
 	object_sprite.position.y = -throw_starting_height
 	vertical_velocity = -throw_height_strength
 	set_physics_process( true )
 	hurt_box.set_deferred( "monitoring", true )
-	hurt_box.did_damage.connect( destroy )
+	hurt_box.did_damage.connect( did_damage )
+	wall_detect.body_entered.connect( _on_body_entered )
+	
+	#wall_detect.set_deferred( "monitoring", true )
 	pass
 
 
 func drop() -> void:
-	throwable.get_parent().remove_child( throwable ) # remove from player
-	PlayerManager.player.get_parent().call_deferred( "add_child", throwable ) #Add it to scene tree
-	throwable.position = PlayerManager.player.position
+	prop.get_parent().call_deferred( "remove_child", prop ) # remove from player
+	PlayerManager.player.get_parent().call_deferred( "add_child", prop ) #Add it to scene tree
+	prop.position = PlayerManager.player.position
 	object_sprite.position.y = -50
 	vertical_velocity = -200 	# TODO: Make export var for differnt weghts, ballons
 	throw_speed = 100
 	set_physics_process( true )
+	wall_detect.body_entered.connect( _on_body_entered )
 
 
 
@@ -86,7 +91,7 @@ func destroy() -> void:
 	if animation_player:
 		animation_player.play("destroy")
 		await animation_player.animation_finished
-	throwable.queue_free()
+	prop.queue_free()
 	pass
 
 
@@ -110,9 +115,15 @@ func _on_area_enter( _a : Area2D ) -> void:
 func _on_area_exit( _a : Area2D ) -> void:
 	PlayerManager.interact_pressed.disconnect( player_interact)
 	pass
+	
+	
+func _on_body_entered( _n : Node2D) -> void:
+	if _n is TileMapLayer: ##! Only destroys on tilemaps objects
+		did_damage()
+	pass
 
 
-func setup_hurt_box() -> void:
+func setup_collision_boxes() -> void:
 	hurt_box.monitoring = false
 	## get the collisionshape from the instance and use it for this HurtBox
 	for c in get_children():
@@ -120,4 +131,15 @@ func setup_hurt_box() -> void:
 			var _col : CollisionShape2D = c.duplicate()
 			hurt_box.add_child( _col )
 			_col.debug_color = Color( 1, 0, 0, 1 ) #add a debug color to see it's different
+			var _col_2 : CollisionShape2D = c.duplicate()
+			wall_detect.add_child( _col_2 )
+	pass
+
+
+func hit_ground() -> void: ## To override in objects inherriting, lke Bomb 
+	destroy()
+
+
+func did_damage() -> void:
+	destroy()
 	pass
