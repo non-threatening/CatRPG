@@ -11,11 +11,6 @@ var next_state : State = null
 var effect_timer : float = 0
 
 
-
-
-
-
-
 func enter() -> void:
 	player.invulnerable = true
 	player.update_animation( "dash" )
@@ -28,7 +23,6 @@ func enter() -> void:
 		player.audio.play()
 	effect_timer = 0
 	pass
-	
 	
 	
 func exit() -> void:
@@ -55,8 +49,7 @@ func handle_input( _event: InputEvent ) -> State:
 	return null
 
 
-func _on_animation_finished( anim_name : String ) -> void:
-	print(anim_name)
+func _on_animation_finished( _anim_name : String ) -> void:
 	next_state = idle
 	pass
 
@@ -65,14 +58,19 @@ func spawn_effect() -> void:
 	var effect : Node2D = Node2D.new()
 	player.get_parent().add_child( effect )
 	effect.global_position = player.global_position - Vector2( 0, 0.1 )
-	effect.modulate = Color( 1.5, 0.2, 1.25, 0.75 ) ## Currently no effect
+	#effect.modulate = Color( 1.5, 0.2, 1.25, 0.75 ) ## Currently no effect
+
+	#await get_tree().process_frame
+	#effect.material.set_shader_parameter( "shader_parameter/cover_color", Color( 1.5, 0.2, 1.25, 0.75 ) )
+	
 	
 	var sprite_copy : Sprite2D = player.sprite.duplicate()
 	effect.add_child( sprite_copy )
 	
 	var tween : Tween = create_tween()
 	tween.set_ease( Tween.EASE_OUT )
-	tween.tween_property( effect, "modulate", Color( 1,1,1,0.0 ), 0.2 ) ##TODO: No effect because of Material Shader..
+	#tween.tween_property(effect, 'material:shader_parameter/cover_color', Color( 1.5, 0.2, 1.25, 0.75 ), 0.2)
+	tween.tween_property( effect, "modulate", Color( 1,0,1, 0.1 ), 0.2 ) ##TODO: No effect because of Material Shader..
 	#tween.tween_property( effect, "ShaderParameter/color..." )
 	tween.chain().tween_callback( effect.queue_free )
 	pass

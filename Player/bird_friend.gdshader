@@ -7,10 +7,11 @@ void vertex() {
 }
 
 void fragment() {
-	//vec4 input_color = texture( TEXTURE, UV );
-	//if ( input_color.r > 0.75 && input_color.g > 0.75 && input_color.b > 0.75 && input_color.a > 0.2) {
-		//COLOR.rgb = new_color.rgb * COLOR.rgb;
-	//}
+	vec4 input_color = texture( TEXTURE, UV );
+	// isolate blue pen
+	if ( input_color.r > 0.01 && input_color.g > 0.01 && input_color.b > 0.1 && input_color.a > 0.5) {
+		COLOR.rgb = new_color.rgb * input_color.rgb;
+	}
 
 
 }

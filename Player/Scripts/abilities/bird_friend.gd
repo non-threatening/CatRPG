@@ -1,6 +1,6 @@
 class_name BirdFriend extends Node2D
 
-enum State { INACTIVE, THROW, RETURN }
+enum State { INACTIVE, THROW, RETURN, PERCHED }
 
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 
@@ -39,14 +39,23 @@ func _physics_process(delta: float) -> void:
 		position += direction * speed * delta
 		if global_position.distance_to( player.global_position ) <= 45: # Remove it when it's close to the player, it's caught
 			PlayerManager.play_audio( catch_audio )
-			queue_free() 
+			state = State.PERCHED	
+		pass
+		
+	elif state == State.PERCHED:
+		perched()
 		pass
 	
 	var speed_ratio = speed / max_speed
 	audio.pitch_scale = speed_ratio * 0.85 + 1.0
 	animation_player.speed_scale = 1 + ( speed_ratio * 0.25 )
 	pass
-	
+
+
+func perched() -> void:
+	print("perched")
+	queue_free() 
+
 	
 func throw( throw_direction : Vector2 ) -> void:
 	#print(throw_direction)
