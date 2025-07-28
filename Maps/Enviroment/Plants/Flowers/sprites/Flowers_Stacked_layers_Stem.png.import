@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c76k2yhi6uxim"
-path="res://.godot/imported/grass_blades3.png-1aeda2febe8d1fef1a718d61c9fd14da.ctex"
+uid="uid://ddn55rmeynqpa"
+path="res://.godot/imported/Flowers_Stacked_layers_Stem.png-24e1d014bb26159b328dba073fe9e375.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Maps/Enviroment/Plants/Sprites/grass_blades3.png"
-dest_files=["res://.godot/imported/grass_blades3.png-1aeda2febe8d1fef1a718d61c9fd14da.ctex"]
+source_file="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_Stacked_layers_Stem.png"
+dest_files=["res://.godot/imported/Flowers_Stacked_layers_Stem.png-24e1d014bb26159b328dba073fe9e375.ctex"]
 
 [params]
 

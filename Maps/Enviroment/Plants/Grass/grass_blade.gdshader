@@ -1,13 +1,15 @@
 shader_type canvas_item;
 
-uniform float x = 18.0;
+uniform float x = 20.0;
 uniform float y = 8.0;
 uniform vec4 new_color: source_color;
 uniform float time_scale = 1.0;
 
 void vertex() {
-	VERTEX.x += sin( UV.y * TIME * time_scale ) * x;
-	VERTEX.y += sin( UV.y * TIME * ( time_scale * time_scale ) ) * y;
+	if ( VERTEX.y < 20.0 ) {
+		VERTEX.x += sin( TIME * time_scale ) * x;
+		VERTEX.y += sin( TIME * ( time_scale * 1.25 ) ) * y;
+	}
 }
 
 void fragment() {

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bll4i550rlr37"]
+
+[ext_resource type="Material" uid="uid://ct1qgfawmdse2" path="res://Maps/Enviroment/Plants/Flowers/flower.tres" id="1_qyvkd"]
+[ext_resource type="Texture2D" uid="uid://bwlh7y57y6pjl" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_Stacked_layers_Stem_2.png" id="2_s7pb4"]
+[ext_resource type="Script" uid="uid://btat3ybgx0y38" path="res://Maps/Enviroment/Plants/Flowers/flower.gd" id="2_sd35e"]
+
+[sub_resource type="Gradient" id="Gradient_s7pb4"]
+colors = PackedColorArray(0, 0, 0, 0.392157, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qyvkd"]
+gradient = SubResource("Gradient_s7pb4")
+width = 42
+height = 21
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Flower" type="Node2D"]
+y_sort_enabled = true
+metadata/_edit_horizontal_guides_ = [-15.0]
+
+[node name="Flower" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = ExtResource("1_qyvkd")
+position = Vector2(0, -20)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_s7pb4")
+script = ExtResource("2_sd35e")
+
+[node name="ShadowSprite" type="Sprite2D" parent="Flower"]
+position = Vector2(0, 52)
+rotation = -3.14159
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_qyvkd")
