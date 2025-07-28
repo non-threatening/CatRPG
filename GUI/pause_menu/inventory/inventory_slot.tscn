@@ -1,17 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnvj41ww8lhj0"]
+[gd_scene load_steps=4 format=3 uid="uid://bnvj41ww8lhj0"]
 
 [ext_resource type="Script" uid="uid://cwrcj6vlrioi5" path="res://GUI/pause_menu/inventory/scripts/inventory_slot_ui.gd" id="1_d72hl"]
 [ext_resource type="Texture2D" uid="uid://beuue5mgapph3" path="res://Items/sprites/items.png" id="1_eqhwg"]
-[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="3_fvlqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d72hl"]
 atlas = ExtResource("1_eqhwg")
 region = Rect2(0, 0, 32, 32)
 
 [node name="InventorySlot" type="Button"]
-custom_minimum_size = Vector2(128, 128)
-offset_right = 128.0
-offset_bottom = 128.0
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
 script = ExtResource("1_d72hl")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -19,6 +18,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_d72hl")
@@ -28,9 +31,10 @@ stretch_mode = 3
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = -8.0
+offset_right = -8.0
 offset_bottom = 57.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_fvlqd")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4svovlem0t6c"]
 
 [ext_resource type="Script" uid="uid://csgnp4jndvlh2" path="res://00_Globals/global_effects/damage_text.gd" id="1_f0h8x"]
-[ext_resource type="FontFile" uid="uid://6x5w4er26o2k" path="res://GUI/fonts/GOODDP__.TTF" id="2_f0h8x"]
+[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="2_f0h8x"]
 
 [node name="DamageText" type="Node2D"]
 z_index = 10

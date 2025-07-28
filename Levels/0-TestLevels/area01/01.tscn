@@ -32,7 +32,7 @@
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="30_egubj"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="31_s5a4g"]
 [ext_resource type="Resource" uid="uid://csuyu64brou7t" path="res://Items/w_katana.tres" id="32_kvvsh"]
-[ext_resource type="Shader" uid="uid://rau322rwm5hw" path="res://Maps/Enviroment/Plants/grass_blade.gdshader" id="32_l661h"]
+[ext_resource type="Shader" uid="uid://rau322rwm5hw" path="res://Maps/Enviroment/Plants/Grass/grass_blade.gdshader" id="32_l661h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i3id2"]
 texture = ExtResource("6_1j6q0")

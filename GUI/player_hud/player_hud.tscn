@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://poj3adf5jpou" path="res://GUI/player_hud/player_hud.gd" id="1_oghrr"]
 [ext_resource type="PackedScene" uid="uid://dkynksfn5v5fw" path="res://GUI/player_hud/heart_gui.tscn" id="2_alx7a"]
-[ext_resource type="Theme" uid="uid://cjkxhlwvtqyqh" path="res://GUI/dialog_system/theme_dialog_choice.tres" id="2_sysqg"]
+[ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://GUI/pause_menu/PauseMenuControl_theme.tres" id="2_terqw"]
 [ext_resource type="Texture2D" uid="uid://c5p00v0ot4ayk" path="res://GUI/player_hud/boss-hp.png" id="3_4b3j6"]
 [ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="4_5bkpt"]
 [ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="4_yhjvm"]
-[ext_resource type="FontFile" uid="uid://xhiw16xhl076" path="res://GUI/fonts/Abaddon Bold.ttf" id="5_scbx3"]
 [ext_resource type="Script" uid="uid://c1bq8ta118edn" path="res://GUI/player_hud/notifications.gd" id="7_5bkpt"]
 [ext_resource type="AudioStream" uid="uid://sksn752uya8u" path="res://GUI/player_hud/notification.wav" id="8_scbx3"]
+[ext_resource type="StyleBox" uid="uid://ct7neug04nuq3" path="res://GUI/StyleBoxBluePanel.tres" id="9_terqw"]
 
 [sub_resource type="Gradient" id="Gradient_rxq5y"]
 offsets = PackedFloat32Array(0, 0.436975, 0.731092)
@@ -394,56 +394,76 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("2_sysqg")
+theme = ExtResource("2_terqw")
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Control"]
+[node name="Hearts" type="HFlowContainer" parent="Control"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 122.0
-offset_right = 372.0
-offset_bottom = 243.0
+offset_top = 24.0
+offset_right = 371.0
+offset_bottom = 145.0
 theme_override_constants/h_separation = 0
 alignment = 1
 
-[node name="Heart" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 layout_mode = 2
 
-[node name="Heart2" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart2" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 layout_mode = 2
 
-[node name="Heart3" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart3" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 layout_mode = 2
 
-[node name="Heart4" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart4" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart5" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart6" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart7" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 visible = false
 layout_mode = 2
 
-[node name="Heart5" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart8" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 visible = false
 layout_mode = 2
 
-[node name="Heart6" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart9" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 visible = false
 layout_mode = 2
 
-[node name="Heart7" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart10" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 visible = false
 layout_mode = 2
 
-[node name="Heart8" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart11" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 visible = false
 layout_mode = 2
 
-[node name="Heart9" parent="Control/HFlowContainer" instance=ExtResource("2_alx7a")]
+[node name="Heart12" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
+[node name="Heart13" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
+[node name="Heart14" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
+[node name="Heart15" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 visible = false
 layout_mode = 2
 
 [node name="Abilities" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 102.0
-offset_top = 45.0
-offset_right = 166.0
-offset_bottom = 109.0
+offset_left = 64.0
+offset_top = 88.0
+offset_right = 128.0
+offset_bottom = 152.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Abilities"]
 layout_mode = 0
@@ -490,8 +510,8 @@ offset_top = 46.0
 offset_right = 64.0
 offset_bottom = 87.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_scbx3")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_yhjvm")
+theme_override_font_sizes/font_size = 42
 text = "99"
 horizontal_alignment = 1
 
@@ -513,8 +533,8 @@ offset_top = 46.0
 offset_right = 64.0
 offset_bottom = 87.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_scbx3")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_yhjvm")
+theme_override_font_sizes/font_size = 42
 text = "99"
 horizontal_alignment = 1
 
@@ -543,10 +563,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -362.5
-offset_top = -270.0
-offset_right = 655.5
-offset_bottom = -91.0
+offset_left = -42.5
+offset_top = -130.0
+offset_right = 975.5
+offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("FontVariation_alx7a")
@@ -560,10 +580,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -81.0
-offset_right = 450.0
-offset_bottom = 303.0
+offset_left = -130.0
+offset_top = 59.0
+offset_right = 770.0
+offset_bottom = 443.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -653,10 +673,10 @@ vertical_alignment = 1
 [node name="NotificationControl" type="Control" parent="Control"]
 process_mode = 3
 anchors_preset = 0
-offset_left = 243.0
-offset_top = 188.0
-offset_right = 243.0
-offset_bottom = 188.0
+offset_left = 200.0
+offset_top = 320.0
+offset_right = 200.0
+offset_bottom = 320.0
 mouse_filter = 2
 script = ExtResource("7_5bkpt")
 
@@ -664,22 +684,32 @@ script = ExtResource("7_5bkpt")
 layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
-offset_right = 1400.0
-offset_bottom = 320.0
+offset_right = 896.0
+offset_bottom = 264.0
+theme_override_styles/panel = ExtResource("9_terqw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/NotificationControl/PanelContainer"]
+[node name="VBoxContainer" type="Button" parent="Control/NotificationControl/PanelContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/NotificationControl/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1250, 0)
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 96
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 748.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 32
 text = "Notification Type"
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="Control/NotificationControl/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1250, 0)
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
+offset_left = 48.0
+offset_top = 56.0
+offset_right = 752.0
+offset_bottom = 144.0
 text = "Notification Message"
 autowrap_mode = 2
 

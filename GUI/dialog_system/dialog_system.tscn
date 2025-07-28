@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://dpqqsa3gldfhp"]
 
 [ext_resource type="Script" uid="uid://dml58rj231xou" path="res://GUI/dialog_system/scripts/dialog_system.gd" id="1_5yhxf"]
+[ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://GUI/pause_menu/PauseMenuControl_theme.tres" id="2_dwuo2"]
 [ext_resource type="Texture2D" uid="uid://dyo68lol7mtgu" path="res://npc/sprites/portraits/npc_portrait_01.png" id="5_umqd7"]
 [ext_resource type="Script" uid="uid://dhbbh83o77i7c" path="res://GUI/dialog_system/scripts/dialog_portrait.gd" id="6_onhof"]
 [ext_resource type="AudioStream" uid="uid://dppicop8bwemo" path="res://GUI/dialog_system/audio/voice_blip.wav" id="6_vyuf5"]
-[ext_resource type="Theme" uid="uid://cjkxhlwvtqyqh" path="res://GUI/dialog_system/theme_dialog_choice.tres" id="9_onhof"]
 
 [sub_resource type="Gradient" id="Gradient_8tyrm"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -76,7 +76,7 @@ offset_top = 292.0
 offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("9_onhof")
+theme = ExtResource("2_dwuo2")
 
 [node name="TextureRect" type="TextureRect" parent="DialogUI"]
 modulate = Color(0, 0, 0, 0.403)
@@ -85,8 +85,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 632.0
-offset_top = -515.0
+offset_left = 328.0
+offset_top = -691.0
+offset_right = -304.0
+offset_bottom = -176.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("GradientTexture2D_vyuf5")
@@ -98,10 +100,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -920.0
-offset_top = -323.0
-offset_right = -131.0
-offset_bottom = -137.0
+offset_left = -1224.0
+offset_top = -499.0
+offset_right = -435.0
+offset_bottom = -313.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -120,17 +122,17 @@ vertical_alignment = 1
 
 [node name="NameLabel" type="Label" parent="DialogUI"]
 layout_mode = 0
-offset_left = 1000.0
-offset_top = 388.0
-offset_right = 1136.0
-offset_bottom = 459.0
+offset_left = 696.0
+offset_top = 212.0
+offset_right = 893.0
+offset_bottom = 283.0
 theme_override_colors/font_color = Color(0.0862745, 0.0941176, 0.243137, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "NAME"
 
 [node name="PortraitSprite" type="Sprite2D" parent="DialogUI"]
-position = Vector2(864, 500)
+position = Vector2(560, 324)
 scale = Vector2(2.35, 2.35)
 texture = ExtResource("5_umqd7")
 hframes = 4
@@ -148,10 +150,10 @@ bus = &"Effects"
 [node name="DialogProgressIndicator" type="PanelContainer" parent="DialogUI"]
 self_modulate = Color(0.407077, 0.490116, 0.338819, 1)
 layout_mode = 0
-offset_left = 1664.0
-offset_top = 652.0
-offset_right = 1803.0
-offset_bottom = 723.0
+offset_left = 760.0
+offset_top = 244.0
+offset_right = 899.0
+offset_bottom = 315.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vyuf5")
 
 [node name="Label" type="Label" parent="DialogUI/DialogProgressIndicator"]
@@ -168,10 +170,10 @@ autoplay = "default"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DialogUI"]
 layout_mode = 0
-offset_left = 1192.0
-offset_top = 172.0
-offset_right = 1712.0
-offset_bottom = 380.0
+offset_left = 632.0
+offset_top = -204.0
+offset_right = 1152.0
+offset_bottom = 4.0
 alignment = 1
 
 [node name="Button" type="Button" parent="DialogUI/VBoxContainer"]

@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cx2atibx8ka7l"]
+[gd_scene load_steps=11 format=3 uid="uid://cx2atibx8ka7l"]
 
 [ext_resource type="Texture2D" uid="uid://beuue5mgapph3" path="res://Items/sprites/items.png" id="1_b3iil"]
-[ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://Themes/PauseMenu.tres" id="1_mswg8"]
+[ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://GUI/pause_menu/PauseMenuControl_theme.tres" id="1_mswg8"]
 [ext_resource type="Script" uid="uid://dhcu2p536408e" path="res://GUI/shop_menu/shop_menu.gd" id="1_pd5r6"]
 [ext_resource type="StyleBox" uid="uid://ct7neug04nuq3" path="res://GUI/StyleBoxBluePanel.tres" id="2_ejil7"]
 [ext_resource type="PackedScene" uid="uid://bl304u63rcs4w" path="res://GUI/shop_menu/shop_item_button.tscn" id="3_dt4po"]
-[ext_resource type="FontFile" uid="uid://e4klhr6oxrqa" path="res://GUI/fonts/SelfWritten-Regular-SVG.ttf" id="4_lv53b"]
-[ext_resource type="FontFile" uid="uid://bmpgrlfmw44uf" path="res://GUI/fonts/Caveat-Bold.ttf" id="5_t0q3b"]
+[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="7_pd5r6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0q3b"]
 atlas = ExtResource("1_b3iil")
@@ -73,21 +72,6 @@ _data = {
 &"not_enough_gems": SubResource("Animation_lv53b")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_laftm"]
-atlas = ExtResource("1_b3iil")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mswg8"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-texture = SubResource("AtlasTexture_laftm")
-texture_margin_left = 14.0
-texture_margin_top = 14.0
-texture_margin_right = 14.0
-texture_margin_bottom = 14.0
-
 [node name="ShopMenu" type="CanvasLayer"]
 script = ExtResource("1_pd5r6")
 
@@ -112,8 +96,8 @@ theme = ExtResource("1_mswg8")
 layout_mode = 0
 offset_left = 72.0
 offset_top = 64.0
-offset_right = 1850.0
-offset_bottom = 1029.0
+offset_right = 1220.0
+offset_bottom = 720.0
 theme_override_styles/panel = ExtResource("2_ejil7")
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
@@ -121,9 +105,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -334.0
+offset_left = 306.0
 offset_top = 80.0
-offset_right = -62.0
+offset_right = 590.0
 offset_bottom = 168.0
 grow_horizontal = 0
 
@@ -141,7 +125,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("4_lv53b")
+theme_override_fonts/font = ExtResource("7_pd5r6")
+theme_override_font_sizes/font_size = 48
 text = "1234567890"
 vertical_alignment = 2
 
@@ -156,14 +141,15 @@ libraries = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 0
-offset_left = 112.0
+offset_left = 128.0
 offset_top = 192.0
-offset_right = 1032.0
-offset_bottom = 848.0
+offset_right = 648.0
+offset_bottom = 640.0
 follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer"]
+custom_minimum_size = Vector2(450, 384)
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
@@ -173,7 +159,6 @@ theme_override_constants/margin_bottom = 16
 [node name="ShopItemContainer" type="VBoxContainer" parent="Control/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 16
 
 [node name="ShopItemButton" parent="Control/ScrollContainer/MarginContainer/ShopItemContainer" instance=ExtResource("3_dt4po")]
 layout_mode = 2
@@ -187,17 +172,14 @@ layout_mode = 2
 [node name="ShopItemButton4" parent="Control/ScrollContainer/MarginContainer/ShopItemContainer" instance=ExtResource("3_dt4po")]
 layout_mode = 2
 
-[node name="ShopItemButton5" parent="Control/ScrollContainer/MarginContainer/ShopItemContainer" instance=ExtResource("3_dt4po")]
-layout_mode = 2
-
 [node name="DetailsPanel" type="PanelContainer" parent="Control"]
-custom_minimum_size = Vector2(640, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 0
-offset_left = 1152.0
+offset_left = 640.0
 offset_top = 192.0
-offset_right = 1792.0
-offset_bottom = 832.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_mswg8")
+offset_right = 1152.0
+offset_bottom = 640.0
+theme_override_styles/panel = ExtResource("2_ejil7")
 
 [node name="Control" type="Control" parent="Control/DetailsPanel"]
 layout_mode = 2
@@ -208,8 +190,8 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_left = 30.0
 offset_top = 30.0
-offset_right = 94.0
-offset_bottom = 94.0
+offset_right = 62.0
+offset_bottom = 62.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_t0q3b")
 stretch_mode = 3
@@ -217,10 +199,11 @@ stretch_mode = 3
 [node name="ItemName" type="Label" parent="Control/DetailsPanel/Control"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 206.0
-offset_right = 566.0
-offset_bottom = 257.0
+offset_left = 64.0
+offset_top = 184.0
+offset_right = 464.0
+offset_bottom = 217.0
+theme_override_font_sizes/font_size = 32
 text = "Item Name"
 clip_text = true
 text_overrun_behavior = 3
@@ -228,22 +211,20 @@ text_overrun_behavior = 3
 [node name="ItemDescription" type="Label" parent="Control/DetailsPanel/Control"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 294.0
-offset_right = 566.0
-offset_bottom = 451.0
-theme_override_font_sizes/font_size = 36
-text = "Item Description. All the speed he took, all the turns he’d taken and the dripping chassis of a junked console."
+offset_left = 64.0
+offset_top = 240.0
+offset_right = 474.0
+offset_bottom = 397.0
+text = "Item Description. All the speed he took, all the turns he’d taken and the dripping chassis of a junked console. Item Description. All the speed he took, all the turns he’d taken and the dripping "
 autowrap_mode = 3
 
 [node name="PriceLabel" type="Label" parent="Control/DetailsPanel/Control"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 254.0
-offset_top = 46.0
-offset_right = 366.0
-offset_bottom = 86.0
-theme_override_font_sizes/font_size = 36
+offset_left = 256.0
+offset_top = 56.0
+offset_right = 368.0
+offset_bottom = 96.0
 text = "Cost	"
 autowrap_mode = 3
 
@@ -251,22 +232,22 @@ autowrap_mode = 3
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 182.0
-offset_top = 38.0
+offset_top = 42.0
 offset_right = 294.0
-offset_bottom = 84.0
-theme_override_fonts/font = ExtResource("5_t0q3b")
-theme_override_font_sizes/font_size = 36
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("7_pd5r6")
+theme_override_font_sizes/font_size = 42
 text = "999"
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="StockLabel" type="Label" parent="Control/DetailsPanel/Control"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 254.0
-offset_top = 102.0
-offset_right = 489.0
-offset_bottom = 142.0
-theme_override_font_sizes/font_size = 36
+offset_left = 256.0
+offset_top = 104.0
+offset_right = 408.0
+offset_bottom = 144.0
 text = "Already have"
 autowrap_mode = 3
 
@@ -274,29 +255,31 @@ autowrap_mode = 3
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 182.0
-offset_top = 94.0
+offset_top = 90.0
 offset_right = 294.0
-offset_bottom = 140.0
-theme_override_fonts/font = ExtResource("5_t0q3b")
-theme_override_font_sizes/font_size = 36
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("7_pd5r6")
+theme_override_font_sizes/font_size = 42
 text = "999"
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="CloseButton" type="Button" parent="Control"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1504.0
-offset_top = 896.0
-offset_right = 1793.0
-offset_bottom = 992.0
+offset_left = 936.0
+offset_top = 656.0
+offset_right = 1225.0
+offset_bottom = 752.0
 theme = ExtResource("1_mswg8")
 text = "CLOSE"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 175.0
-offset_top = 109.0
-offset_right = 249.0
-offset_bottom = 126.0
+offset_left = 136.0
+offset_top = 96.0
+offset_right = 431.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 48
 text = "Shopkeeper"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RPGC"
-run/main_scene="uid://f6hapagaurf5"
+run/main_scene="uid://ly7wguh1ufuy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -46,7 +46,7 @@ tilemaps="tilemaps with footstep sounds and stuff"
 
 [gui]
 
-theme/custom_font="uid://cta00yqut7wdq"
+theme/custom_font="uid://vwuhvwliixns"
 
 [input]
 

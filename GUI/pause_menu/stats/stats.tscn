@@ -1,32 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm0ac3qyce012"]
+[gd_scene load_steps=3 format=3 uid="uid://dm0ac3qyce012"]
 
-[ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://Themes/PauseMenu.tres" id="1_4uu01"]
-[ext_resource type="Texture2D" uid="uid://beuue5mgapph3" path="res://Items/sprites/items.png" id="1_i4iqc"]
+[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="2_4uu01"]
 [ext_resource type="Script" uid="uid://bcuoha562oxwp" path="res://GUI/pause_menu/stats/stats.gd" id="3_mwf8o"]
-[ext_resource type="FontFile" uid="uid://e4klhr6oxrqa" path="res://GUI/fonts/SelfWritten-Regular-SVG.ttf" id="6_i640c"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_laftm"]
-atlas = ExtResource("1_i4iqc")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mc7vq"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-texture = SubResource("AtlasTexture_laftm")
-texture_margin_left = 14.0
-texture_margin_top = 14.0
-texture_margin_right = 14.0
-texture_margin_bottom = 14.0
-expand_margin_left = 64.0
 
 [node name="Stats" type="PanelContainer"]
 offset_left = 64.0
 offset_right = 448.0
 offset_bottom = 256.0
-theme = ExtResource("1_4uu01")
-theme_override_styles/panel = SubResource("StyleBoxTexture_mc7vq")
 script = ExtResource("3_mwf8o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -46,7 +26,7 @@ text = "Level:  "
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_i640c")
+theme_override_fonts/font = ExtResource("2_4uu01")
 text = "1"
 horizontal_alignment = 2
 
@@ -63,7 +43,7 @@ text = "XP:  "
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_i640c")
+theme_override_fonts/font = ExtResource("2_4uu01")
 text = "1"
 horizontal_alignment = 2
 
@@ -80,7 +60,7 @@ text = "Attack:  "
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_i640c")
+theme_override_fonts/font = ExtResource("2_4uu01")
 text = "1"
 horizontal_alignment = 2
 
@@ -88,7 +68,7 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_i640c")
+theme_override_fonts/font = ExtResource("2_4uu01")
 text = "+1"
 horizontal_alignment = 1
 
@@ -105,7 +85,7 @@ text = "Defense:  "
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_i640c")
+theme_override_fonts/font = ExtResource("2_4uu01")
 text = "1"
 horizontal_alignment = 2
 
@@ -113,6 +93,6 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_i640c")
+theme_override_fonts/font = ExtResource("2_4uu01")
 text = "+1"
 horizontal_alignment = 1

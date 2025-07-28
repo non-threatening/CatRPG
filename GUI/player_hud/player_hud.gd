@@ -5,14 +5,14 @@ extends CanvasLayer
 
 var hearts : Array[ HeartGUI ] = []
 
-
 @onready var game_over : Control = $Control/GameOver
 @onready var continue_button: Button = $Control/GameOver/VBoxContainer/ContinueButton
 @onready var title_button: Button = $Control/GameOver/VBoxContainer/TitleButton
 @onready var animation_player: AnimationPlayer = $Control/GameOver/AnimationPlayer
 @onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
-@onready var abilities: Control = $Control/Abilities
+@onready var control: Control = $Control
+
 @onready var ability_items: HBoxContainer = $Control/Abilities/HBoxContainer
 @onready var arrow_count_label: Label = %ArrowCountLabel
 @onready var bomb_count_label: Label = %BombCountLabel
@@ -26,7 +26,7 @@ var hearts : Array[ HeartGUI ] = []
 
 
 func _ready() -> void:
-	for child in $Control/HFlowContainer.get_children():
+	for child in $Control/Hearts.get_children():
 		if child is HeartGUI:
 			hearts.append( child )
 			child.visible = false
@@ -42,8 +42,10 @@ func _ready() -> void:
 	
 	update_ability_ui( 0 )
 	
-	PauseMenu.shown.connect( _on_show_pause )
-	PauseMenu.hidden.connect( _on_hide_pause )
+	PauseMenu.shown.connect( _on_show_menu )
+	PauseMenu.hidden.connect( _on_hide_menu )
+	ShopMenu.shown.connect( _on_show_menu )
+	ShopMenu.hidden.connect( _on_hide_menu )
 	pass
 	
 	
@@ -169,11 +171,11 @@ func update_bomb_count( count : int ) -> void:
 	
 
 
-func _on_show_pause() -> void:
-	abilities.visible = false
+func _on_show_menu() -> void:
+	control.visible = false
 	pass
 
 
-func _on_hide_pause() -> void:
-	abilities.visible = true
+func _on_hide_menu() -> void:
+	control.visible = true
 	pass

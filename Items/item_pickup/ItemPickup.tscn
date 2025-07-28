@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ii2b5gvv4utb"]
+[gd_scene load_steps=13 format=3 uid="uid://ii2b5gvv4utb"]
 
 [ext_resource type="Script" uid="uid://cy6eloboq1jjc" path="res://Items/item_pickup/item_pickup.gd" id="1_ib4el"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="2_iu3ir"]
 [ext_resource type="AudioStream" uid="uid://co0nsphnunane" path="res://Items/item_pickup/item_pickup.wav" id="2_vggup"]
+[ext_resource type="Shader" uid="uid://bkqm4tb0ry7p5" path="res://Items/item_pickup/ItemPickup.gdshader" id="4_m27qk"]
+[ext_resource type="Texture2D" uid="uid://bnviobmca7lp0" path="res://Items/sprites/flute.png" id="5_y6ru5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vggup"]
 radius = 19.6469
@@ -44,6 +46,14 @@ _data = {
 &"default": SubResource("Animation_iu3ir")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vl3s"]
+shader = ExtResource("4_m27qk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me7sg"]
+atlas = ExtResource("5_y6ru5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0re3"]
+
 [node name="ItemPickup" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 16
@@ -57,8 +67,10 @@ shape = SubResource("CircleShape2D_vggup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_vggup")
+debug_color = Color(0.897462, 0.166028, 0.663217, 0.42)
 
 [node name="Shadow_Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 0.501961)
 position = Vector2(0, 14)
 texture = ExtResource("2_iu3ir")
@@ -73,3 +85,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_m27qk")
 }
 autoplay = "default"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_2vl3s")
+texture = SubResource("AtlasTexture_me7sg")
+process_material = SubResource("ShaderMaterial_g0re3")

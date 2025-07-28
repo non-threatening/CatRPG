@@ -54,5 +54,4 @@ func _set_item_data( value : ItemData ) -> void:
 func _update_texture() -> void:
 	if item_data and sprite_2d:
 		sprite_2d.texture = item_data.texture
-		#_update_texture()
 	pass

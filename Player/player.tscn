@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://bpcvp55f33q1s"]
+[gd_scene load_steps=101 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
@@ -39,12 +39,58 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1l381"]
 radius = 15.0
 
+[sub_resource type="Shader" id="Shader_c6x0f"]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : source_color = vec4( 0.5, 0.0, 0.0, 1.0 );
+uniform float outline_thickness : hint_range( 0.0, 15.0 ) = 0.0;
+uniform float alpha_threshold : hint_range(0.0, 0.9) = 0.5;
+
+uniform vec4 cover_color : source_color = vec4(1.0);
+uniform vec4 eye_color : source_color = vec4(1.0);
+
+
+float has_solid_neighbor( sampler2D texture_sample, vec2 uv_coord, vec2 pixel_size ) {
+	vec2 offset = outline_thickness * pixel_size;
+	float sum_alpha = 0.0;
+
+	sum_alpha += texture( texture_sample, uv_coord + vec2( 1.0, 0.0 ) * offset ).a;
+	sum_alpha += texture( texture_sample, uv_coord + vec2( -1.0, 0.0 ) * offset ).a;
+	sum_alpha += texture( texture_sample, uv_coord + vec2( 0.0, 1.0 ) * offset ).a;
+	sum_alpha += texture( texture_sample, uv_coord + vec2( 0.0, -1.0 ) * offset ).a;
+	//
+	// Diagonal, less weight
+	sum_alpha += texture( texture_sample, uv_coord + vec2( 1.0, 0.0 ) * offset ).a;
+	sum_alpha += texture( texture_sample, uv_coord + vec2( -1.0, 0.0 ) * offset ).a;
+	sum_alpha += texture( texture_sample, uv_coord + vec2( 0.0, 1.0 ) * offset ).a;
+	sum_alpha += texture( texture_sample, uv_coord + vec2( 0.0, -1.0 ) * offset ).a;
+
+	return smoothstep( 0.0, 1.0, sum_alpha);
+}
+
+void fragment() {
+	vec4 input_color = texture( TEXTURE, UV );
+	vec4 output_color = vec4( input_color.r, input_color.g, input_color.b, input_color.a );
+	if ( output_color.r > 0.8 && output_color.g < 0.75 && output_color.b < 0.75 ) {
+		output_color = vec4( eye_color ); // output_color is the eye isolated
+	}
+	vec4 cover_eye_mix = output_color;
+
+	COLOR = cover_eye_mix * cover_color;
+
+	float outline_mask = has_solid_neighbor( TEXTURE, UV, TEXTURE_PIXEL_SIZE );
+	float alpha_blend_factor = smoothstep( 0.0, alpha_threshold, COLOR.a );
+	COLOR.rgb = mix( outline_color.rgb, COLOR.rgb, alpha_blend_factor );
+	COLOR.a = max( COLOR.a, outline_mask );
+}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bbimk"]
-shader = ExtResource("13_o28un")
+shader = SubResource("Shader_c6x0f")
 shader_parameter/outline_color = Color(0.891291, 4.18738e-06, 8.66354e-07, 1)
 shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(0.4, 0.272, 0.321067, 1)
+shader_parameter/cover_color = Color(0.5, 0.35, 0.4075, 0.372549)
 shader_parameter/eye_color = Color(3, 2, 1, 1)
 
 [sub_resource type="Animation" id="Animation_xqcul"]
@@ -375,7 +421,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n471f"]
 shader = ExtResource("13_o28un")
-shader_parameter/outline_color = Color(0.94902, 0.184314, 0.2, 0.768627)
+shader_parameter/outline_color = Color(0.5, 0, 0, 1)
 shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.5
 shader_parameter/cover_color = Color(0.996078, 0.501961, 1, 0.556863)
@@ -3026,19 +3072,21 @@ debug_color = Color(0.415, 0.502, 0.879, 0.419)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
 material = SubResource("ShaderMaterial_bbimk")
-position = Vector2(0, -26)
+position = Vector2(0, -41)
 texture = ExtResource("14_o28un")
 hframes = 3
 vframes = 4
 script = ExtResource("4_i4o1l")
 
 [node name="Sprite2D_Weapon_Below" type="Sprite2D" parent="Sprite2D"]
+visible = false
 show_behind_parent = true
 texture = ExtResource("4_m0h3t")
 hframes = 16
 vframes = 16
 
 [node name="Sprite2D_Weapon_Above" type="Sprite2D" parent="Sprite2D"]
+visible = false
 texture = ExtResource("4_m0h3t")
 hframes = 16
 vframes = 16
@@ -3114,11 +3162,11 @@ libraries = {
 }
 
 [node name="HeldItem" type="Node2D" parent="Sprite2D"]
+visible = false
 show_behind_parent = true
 position = Vector2(0, 75)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/HeldItem"]
-visible = false
 position = Vector2(0, -9)
 texture = ExtResource("9_8mwp6")
 hframes = 16
@@ -3126,11 +3174,10 @@ vframes = 3
 frame = 4
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
-modulate = Color(0.035, 0.016, 0.243, 0.486)
+modulate = Color(0.0354, 0.0168, 0.24, 0.141176)
 show_behind_parent = true
-position = Vector2(2, 38)
-rotation = 1.5708
-scale = Vector2(2.38937, 3.93824)
+position = Vector2(1, 53)
+scale = Vector2(3.125, 3.56287)
 texture = ExtResource("4_svx73")
 
 [node name="Sprite2D_death" type="Sprite2D" parent="."]
@@ -3143,6 +3190,7 @@ vframes = 4
 frame = 4
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D_death"]
+visible = false
 modulate = Color(0.103, 0.054, 0.475, 0.243)
 show_behind_parent = true
 position = Vector2(0, 45)
@@ -3202,8 +3250,7 @@ script = ExtResource("11_hfp0w")
 max_polyphony = 6
 
 [node name="Interactions" type="Node2D" parent="."]
-visible = false
-position = Vector2(0, -7)
+position = Vector2(0, -15)
 script = ExtResource("10_4cvxe")
 
 [node name="Area2D" type="Area2D" parent="Interactions"]
@@ -3238,7 +3285,6 @@ libraries = {
 script = ExtResource("17_pisgm")
 
 [node name="ItemMagnet" parent="." instance=ExtResource("18_b1ygp")]
-visible = false
 position = Vector2(-6, -24)
 scale = Vector2(0.831355, 0.831355)
 magnet_strength = 2.0
@@ -3260,6 +3306,7 @@ text = "Level UP"
 horizontal_alignment = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 emitting = false
 amount = 100
