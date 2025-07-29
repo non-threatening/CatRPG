@@ -23,8 +23,8 @@ var attack : int = 1 :
 var defense : int = 1
 var defense_bonus : int = 0
 
-var arrow_count : int = 2
-var bomb_count : int = 10
+var arrow_count : int = 25 : set = _set_arrow_count
+var bomb_count : int = 10 : set = _set_bomb_count
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
@@ -37,6 +37,9 @@ var bomb_count : int = 10
 @onready var carry: State_Carry = $StateMachine/Carry
 
 @onready var idle: State_Idle = $StateMachine/Idle
+
+
+@onready var bird_friend: Sprite2D = $Sprite2D/BirdFriend
 
 
 func _ready() -> void:
@@ -162,3 +165,22 @@ func _on_player_leveled_up() -> void:
 func _on_equipment_changed() -> void:
 	update_damage_values()
 	defense_bonus = PlayerManager.INVETORY_DATA.get_defense_bonus()
+
+
+func _set_arrow_count( value : int ) -> void:
+	arrow_count = value
+	PlayerHud.update_arrow_count( value )
+	pass
+
+
+func _set_bomb_count( value : int ) -> void:
+	bomb_count = value
+	PlayerHud.update_bomb_count( value )
+	pass
+	
+
+func show_bird_friend() -> void:
+	bird_friend.visible = true
+	
+func hide_bird_friend() -> void:
+	bird_friend.visible = false

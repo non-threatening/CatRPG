@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cbsyitoishkr0"]
+[gd_scene load_steps=19 format=4 uid="uid://cbsyitoishkr0"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_ryupc"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="2_koc1c"]
@@ -11,11 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://cq1k6a1hmnptr" path="res://Levels/level_transition_interact.tscn" id="8_7hw7r"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="10_nwc50"]
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="11_a4xaw"]
-[ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="12_7vnyu"]
+[ext_resource type="Resource" uid="uid://c3t8tcbq6u5iy" path="res://Items/arrow.tres" id="12_qhrc2"]
+[ext_resource type="Resource" uid="uid://b1fxn3sbeb2ea" path="res://Items/bomb.tres" id="13_dvxcx"]
 [ext_resource type="PackedScene" uid="uid://b0mbc3get8pug" path="res://interactables/bomb/bomb.tscn" id="14_7vnyu"]
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="14_dvxcx"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="15_k64fe"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="16_qhrc2"]
-[ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="16_uhh5g"]
+[ext_resource type="PackedScene" uid="uid://bejbrfw00gn63" path="res://interactables/arrow/arrow.tscn" id="17_qhrc2"]
 
 [node name="03" type="Node2D"]
 script = ExtResource("1_ryupc")
@@ -88,14 +90,22 @@ position = Vector2(364, 406)
 [node name="ItemPickup" parent="." instance=ExtResource("10_nwc50")]
 position = Vector2(1520, 536)
 item_data = ExtResource("11_a4xaw")
+item_count = 0
 
 [node name="ItemPickup2" parent="." instance=ExtResource("10_nwc50")]
-position = Vector2(1520, 680)
-item_data = ExtResource("12_7vnyu")
+position = Vector2(645, 203)
+item_data = ExtResource("12_qhrc2")
+item_count = 4
 
 [node name="ItemPickup3" parent="." instance=ExtResource("10_nwc50")]
 position = Vector2(759, 267)
-item_data = ExtResource("16_uhh5g")
+item_data = ExtResource("13_dvxcx")
+item_count = 5
+
+[node name="ItemPickup4" parent="." instance=ExtResource("10_nwc50")]
+position = Vector2(578, 281)
+item_data = ExtResource("14_dvxcx")
+item_count = 5
 
 [node name="Flower" parent="." instance=ExtResource("15_k64fe")]
 position = Vector2(798, 375)
@@ -104,4 +114,22 @@ position = Vector2(798, 375)
 position = Vector2(272, 497)
 
 [node name="Bomb" parent="." instance=ExtResource("14_7vnyu")]
-position = Vector2(653, 429)
+position = Vector2(7, 36)
+
+[node name="Flower2" parent="." instance=ExtResource("15_k64fe")]
+position = Vector2(834, 377)
+
+[node name="Flower3" parent="." instance=ExtResource("15_k64fe")]
+position = Vector2(875, 381)
+
+[node name="Arrow" parent="." instance=ExtResource("17_qhrc2")]
+position = Vector2(554, 373)
+
+[node name="Arrow2" parent="." instance=ExtResource("17_qhrc2")]
+position = Vector2(425, 366)
+
+[node name="Arrow3" parent="." instance=ExtResource("17_qhrc2")]
+position = Vector2(15, 367)
+
+[node name="Arrow4" parent="." instance=ExtResource("17_qhrc2")]
+position = Vector2(192, 367)

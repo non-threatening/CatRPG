@@ -29,6 +29,7 @@ DialogSystem="*res://GUI/dialog_system/dialog_system.tscn"
 QuestManager="*res://Quests/scripts/global_quest_manager.gd"
 EffectManager="*res://00_Globals/global_effect_manager.gd"
 ShopMenu="*res://GUI/shop_menu/shop_menu.tscn"
+Questify="*res://addons/questify/quest_manager.gd"
 
 [display]
 
@@ -38,7 +39,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/questify/plugin.cfg")
 
 [global_group]
 
@@ -146,3 +147,9 @@ switch_ability={
 2d_physics/layer_3="PlayerInteract"
 2d_physics/layer_5="Walls"
 2d_physics/layer_9="Enemy"
+
+[questify]
+
+general/update_polling=true
+general/update_interval=0.5
+general/add_quests_to_pot_generation=false

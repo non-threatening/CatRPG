@@ -18,6 +18,7 @@ var state
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
+
 func _ready() -> void:
 	visible = false
 	state = State.INACTIVE
@@ -54,17 +55,18 @@ func _physics_process(delta: float) -> void:
 
 func perched() -> void:
 	print("perched")
+	player.show_bird_friend()
 	queue_free() 
 
 	
 func throw( throw_direction : Vector2 ) -> void:
-	#print(throw_direction)
 	direction = throw_direction
 	speed = max_speed
 	state = State.THROW
 	update_animation()
 	PlayerManager.play_audio( catch_audio ) ## Plays in PlayerManager node
 	visible = true
+	player.hide_bird_friend()
 	pass
 
 

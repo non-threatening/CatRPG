@@ -4,14 +4,23 @@ class_name State_Lift extends State
 
 @onready var carry : State = $"../Carry"
 
+var start_anim_late : bool = false
+
+
 
 func enter() -> void:
 	player.update_animation( "lift" )
+	if start_anim_late == true:
+		player.animation_player.seek( 0.25 )
 	player.animation_player.animation_finished.connect( _state_complete )
 	player.audio.stream = lift_audio
 	player.audio.play()
 	pass
 	
+
+func exit() -> void:
+	start_anim_late = false
+	pass
 	
 	
 func process( _delta : float ) -> State:

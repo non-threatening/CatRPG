@@ -2,7 +2,7 @@ class_name State_Idle extends State
 
 @onready var walk : State = $"../Walk"
 @onready var attack : State = $"../Attack"
-@onready var dash: Dash = $"../Dash"
+@onready var dash: State_Dash = $"../Dash"
 
 
 ## What happens when the player enters this State?

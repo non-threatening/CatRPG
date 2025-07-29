@@ -1,4 +1,4 @@
-class_name Dash extends State
+class_name State_Dash extends State
 
 @export var move_speed : float = 1800.0
 @export var effect_delay : float = 0.025
