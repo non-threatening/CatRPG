@@ -35,11 +35,12 @@ var bomb_count : int = 10 : set = _set_bomb_count
 @onready var lift: State_Lift = $StateMachine/Lift
 @onready var held_item: Node2D = $Sprite2D/HeldItem
 @onready var carry: State_Carry = $StateMachine/Carry
-
 @onready var idle: State_Idle = $StateMachine/Idle
 
+@onready var bird_friend_sprite: Sprite2D = $Sprite2D/BirdFriendSprite
 
-@onready var bird_friend: Sprite2D = $Sprite2D/BirdFriend
+@onready var actionable_finder: Area2D = $Direction/ActionableFinder
+#var input_vector: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
@@ -53,6 +54,8 @@ func _ready() -> void:
 	#PlayerManager.player_leveled_up.connect( update_damage_values )
 	pass
 
+var wait_time: float = 1.0
+var time: float = 0.0
 
 
 func _process( _delta: float ) -> void:
@@ -60,6 +63,14 @@ func _process( _delta: float ) -> void:
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
 	).normalized()
+	
+## Bird Friend Head
+	if bird_friend_sprite.visible == true:
+		time += _delta
+		if time >= wait_time:
+			time -= wait_time
+			bird_friend_sprite.frame = randi() % 2
+			wait_time = randi_range( 1, 5 )
 	pass
 
 
@@ -70,7 +81,15 @@ func _physics_process( _delta: float ) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("test"):
-		PlayerManager.shake_camera()
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			actionables[0].action()
+			#input_vector = Vector2.ZERO
+			return
+		
+		#PlayerManager.shake_camera()
+		#DialogueManager.show_example_dialogue_balloon(load("res://Dialogue/Testing_in_GrassSh.dialogue"), "start")
+		#return
 		pass
 
 
@@ -88,6 +107,8 @@ func set_direction() -> bool:
 	cardinal_direction = new_dir
 	DirectionChanged.emit( new_dir )
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	
+	bird_friend_sprite_animation( new_dir )
 	return true
 	
 
@@ -179,8 +200,27 @@ func _set_bomb_count( value : int ) -> void:
 	pass
 	
 
+func bird_friend_sprite_animation( new_dir : Vector2 ):
+	print( "bf: ", anim_direction(), " - ", new_dir )
+	match new_dir:
+		Vector2.DOWN:
+			bird_friend_sprite.position = Vector2( 3, -19 )
+			bird_friend_sprite.show_behind_parent = false
+		Vector2.UP:
+			bird_friend_sprite.position = Vector2( -8, 0 )
+			bird_friend_sprite.show_behind_parent = true
+		Vector2.LEFT:
+			bird_friend_sprite.position = Vector2( -17, -6.0 )
+		Vector2.RIGHT:
+			bird_friend_sprite.position = Vector2( -17, -6.0 )
+		_:
+			print( "= 0")
+	pass
+#
+#
 func show_bird_friend() -> void:
-	bird_friend.visible = true
+	bird_friend_sprite.visible = true
 	
+
 func hide_bird_friend() -> void:
-	bird_friend.visible = false
+	bird_friend_sprite.visible = false

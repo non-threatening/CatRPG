@@ -32,17 +32,15 @@ func _physics_process(delta: float) -> void:
 		if speed <= 0:
 			state = State.RETURN
 			update_animation()
-			## TODO: only update animation when it changes
+			## TODO: only update animation after state changes
 		pass
 	elif state == State.RETURN:
 		direction = global_position.direction_to( player.global_position + Vector2( 0, -40 ) )
 		speed += acceleration * delta
 		position += direction * speed * delta
-		if global_position.distance_to( player.global_position ) <= 45: # Remove it when it's close to the player, it's caught
+		if global_position.distance_to( player.global_position ) <= 45: 
 			PlayerManager.play_audio( catch_audio )
-			state = State.PERCHED	
-		pass
-		
+			state = State.PERCHED		
 	elif state == State.PERCHED:
 		perched()
 		pass

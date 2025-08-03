@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8s1kdamuhbpn"
-path="res://.godot/imported/Crow_Outline-384x148.png-d48887246d42daed3504f0bf25d6fbbd.ctex"
+uid="uid://b3gyfk4grcgyo"
+path="res://.godot/imported/perched_test.png-93b6337beb26075cd657106fd9cc51a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/Crow_Outline-384x148.png"
-dest_files=["res://.godot/imported/Crow_Outline-384x148.png-d48887246d42daed3504f0bf25d6fbbd.ctex"]
+source_file="res://Player/BirdFriend/sprites/perched_test.png"
+dest_files=["res://.godot/imported/perched_test.png-93b6337beb26075cd657106fd9cc51a0.ctex"]
 
 [params]
 

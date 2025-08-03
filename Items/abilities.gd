@@ -1,7 +1,7 @@
 class_name PlayerAbilities extends Node
 
 const BOOMERANG = preload("res://Player/boomerang.tscn")
-const BIRD = preload("res://Player/bird_friend.tscn")
+const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
 const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 
 var abilities : Array[ String ] = [
@@ -12,6 +12,7 @@ var selected_ability = 0
 var player : Player
 var boomerang_instance : Boomerang = null
 var bird_instance : BirdFriend = null
+
 
 @onready var state_machine: PlayerStateMachine = $"../StateMachine"
 @onready var lift: State_Lift = $"../StateMachine/Lift"
