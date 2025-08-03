@@ -7,6 +7,10 @@ uniform float alpha_threshold : hint_range(0.0, 0.9) = 0.5;
 uniform vec4 cover_color : source_color = vec4(1.0);
 uniform vec4 eye_color : source_color = vec4(1.0);
 
+uniform float x = 0.5;
+uniform float y = 1.0;
+uniform float time_scale = 2.666;
+
 
 float has_solid_neighbor( sampler2D texture_sample, vec2 uv_coord, vec2 pixel_size ) {
 	vec2 offset = outline_thickness * pixel_size;
@@ -25,6 +29,15 @@ float has_solid_neighbor( sampler2D texture_sample, vec2 uv_coord, vec2 pixel_si
 
 	return smoothstep( 0.0, 1.0, sum_alpha);
 }
+
+
+void vertex() {
+	if ( VERTEX.y < 20.0 ) {
+		VERTEX.x += sin( TIME * time_scale ) * x;
+		VERTEX.y += sin( TIME * ( time_scale * 1.25 ) ) * y;
+	}
+}
+
 
 void fragment() {
 	vec4 input_color = texture( TEXTURE, UV );

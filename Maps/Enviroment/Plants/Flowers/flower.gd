@@ -7,44 +7,49 @@ var images : Array[ String ]
 var images_full = []
 
 func _ready() -> void:
-	_get_pngs( png_dir )
+	_get_pngs()
+	
+	images_full = images.duplicate()
+	images.shuffle()
+	get_shuffled_flower()
+	
 	_set_time_scale()
 	_set_random_scale()
 	_set_random_color()
 	_set_random_motion_amount()
-	
-	images_full = images.duplicate()
-	images.shuffle()
-	
-	get_flower()
+	pass
 
 
-func _get_pngs( path ):
-	
-	var dir = DirAccess.open( path )
+func _get_pngs():
+	var dir = DirAccess.open( png_dir )
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if (file_name.get_extension() == "png"):
+##TODO: wierd work around to get pngs to load in exported game
+			if (file_name.get_extension() == "import"):
+				file_name = file_name.replace('.import', '')
 				images.append( file_name )
 			file_name = dir.get_next()
-	
 
 
-func _change_sprite( file : String ):
-	var texture = load( png_dir + file )
-	sprite.texture = texture
+#func _get_pngs( path ):
+	#var dir = DirAccess.open( path )
+	#if dir:
+		#dir.list_dir_begin()
+		#var file_name = dir.get_next()
+		#while file_name != "":
+			#if (file_name.get_extension() == "png"):
+				#images.append( file_name )
+			#file_name = dir.get_next()
 
-
-func get_flower():
+func get_shuffled_flower():
 	if images.is_empty():
-		# Fill the flowers array again and shuffle it.
 		images = images_full.duplicate()
 		images.shuffle()
 	var random_flower = images.pop_front()
-	_change_sprite( random_flower )
-
+	var texture = load( png_dir + random_flower )
+	sprite.texture = texture
 
 
 func _set_time_scale() -> void:
@@ -54,7 +59,9 @@ func _set_time_scale() -> void:
 
 func _set_random_scale() -> void:
 	var rand = randf_range( 0.48, 0.82 )
-	var new_scale = Vector2( rand, rand ) 
+	var new_scale = Vector2( rand, rand )
+	var flip = randi() % 2
+	sprite.flip_h = flip
 	sprite.scale = new_scale
 
 
@@ -64,7 +71,6 @@ func _set_random_color() -> void:
 		color_range1, 
 		randf_range( 0.7, 0.9 ), 
 		randf_range( 0.8, 1.0 )
-	
 	)
 	sprite.material.set_shader_parameter( "color1", color1 )
 

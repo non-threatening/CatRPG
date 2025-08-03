@@ -1,0 +1,29 @@
+~ start
+
+Nathan: Hi Coco.
+if Shortcuts.is_quest_active("get_thing") and Shortcuts.get_quest_property(1,"apple_count") == Shortcuts.get_quest_property(1,"needed_apple"):
+	Coco: I have 5 apples.
+	- Give to Nathan
+		Coco: Here you go.
+		Nathan: Thanks.
+		do Shortcuts.complete_quest("get_thing")
+		
+	- Keep it
+		Coco: But they're mine.
+		Nathan: Fair enough.
+		
+elif Shortcuts.is_quest_completed("get_thing"):
+	Nathan: Thanks again for the apples.
+	
+else:
+	if Shortcuts.is_quest_active("get_thing"):
+		Nathan: How many apples have you found?
+		Coco: {{Shortcuts.get_quest_property(1,"apple_count")}}!
+	else:
+		Nathan: I sure wish I had an apple. Apparently there's an apple tree around here somewhere.
+		Help Nathan?
+		- Yes
+			do Shortcuts.start_quest("get_thing")
+		- No
+			=> END
+=> END

@@ -1,20 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc7f06w1326e"]
+[gd_scene load_steps=7 format=3 uid="uid://bc7f06w1326e"]
 
-[ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="1_etgwk"]
+[ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees.tres" id="1_etgwk"]
 [ext_resource type="Texture2D" uid="uid://y1iucyw3p8ky" path="res://Maps/Enviroment/Plants/Trees/sprites/tree.png" id="1_omv7f"]
 [ext_resource type="Script" uid="uid://dg2utqdot7mxt" path="res://Maps/Enviroment/Plants/Trees/trees.gd" id="2_t8ti7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_owtef"]
-shader = ExtResource("1_etgwk")
-shader_parameter/center = Vector2(0.6, 0.6)
-shader_parameter/size = 0.279
-shader_parameter/squishness = Vector2(1, 1)
-shader_parameter/color1 = Color(0.231483, 0.85, 0.221, 1)
-shader_parameter/color2 = Color(0.492525, 0.99, 0.3267, 1)
-shader_parameter/color3 = Color(0.412, 1, 0.02, 1)
-shader_parameter/step1 = 1.0
-shader_parameter/step2 = 0.535
-shader_parameter/step3 = 0.098
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8ti7"]
 size = Vector2(41, 90)
@@ -33,12 +21,12 @@ fill_to = Vector2(1, 0.5)
 
 [node name="Trees" type="StaticBody2D"]
 collision_layer = 16
+metadata/_edit_horizontal_guides_ = [-60.0]
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_owtef")
-position = Vector2(16, -165)
-rotation = 3.14159
+material = ExtResource("1_etgwk")
+position = Vector2(-12, -165)
 texture = ExtResource("1_omv7f")
 script = ExtResource("2_t8ti7")
 

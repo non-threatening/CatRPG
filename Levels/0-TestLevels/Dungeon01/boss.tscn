@@ -17,8 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://7v10i5tusfq2" path="res://Levels/0-TestLevels/Dungeon01/dark_wizard/audio/boss_destroy.wav" id="8_hr13v"]
 [ext_resource type="PackedScene" uid="uid://b1n6sy5wqrqy5" path="res://GeneralNodes/ItemDropper/ItemDropper.tscn" id="12_v24pb"]
 [ext_resource type="Resource" uid="uid://bo3v255ny60ee" path="res://Items/the_thing.tres" id="13_gm8iu"]
-[ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="14_7km15"]
-[ext_resource type="Resource" uid="uid://bbu7abb38x6fi" path="res://Quests/find_lost_thing.tres" id="15_e2cmj"]
+[ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests_old/utility_nodes/quest_advance_trigger.tscn" id="14_7km15"]
+[ext_resource type="Resource" uid="uid://bbu7abb38x6fi" path="res://Quests_old/find_lost_thing.tres" id="15_e2cmj"]
 
 [sub_resource type="Gradient" id="Gradient_gc23w"]
 offsets = PackedFloat32Array(0.0859375, 0.535156, 1)
@@ -875,7 +875,7 @@ signal_name = "drop_collected"
 linked_quest = ExtResource("15_e2cmj")
 quest_step = 2
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Step: 2 - find the thing!
 Complete: false"
 

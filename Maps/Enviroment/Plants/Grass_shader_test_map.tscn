@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=24 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="1_kc5b1"]
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_sq0g3"]
@@ -8,9 +8,35 @@
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="4_ryqvc"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="5_87v0s"]
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="6_i0vpj"]
+[ext_resource type="Shader" uid="uid://skvfd1mlofa5" path="res://Maps/Enviroment/Plants/electric_treasure.gdshader" id="6_jafpe"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="7_i0vpj"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="10_7lr6h"]
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="11_jafpe"]
+[ext_resource type="Texture2D" uid="uid://bu6gnfb43tsgq" path="res://Player/BirdFriend/sprites/Crow_384x148.png" id="13_yfni2"]
+[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="14_6wye2"]
+[ext_resource type="Resource" uid="uid://bqtihvfyr3yyt" path="res://Dialogue/Conversations/Testing_in_GrassSh.dialogue" id="15_oxdia"]
+[ext_resource type="PackedScene" uid="uid://dajuqkayd03fp" path="res://npc/npc.tscn" id="16_crvoo"]
+[ext_resource type="Texture2D" uid="uid://dbvgg5qwy3w25" path="res://npc/sprites/portraits/portrait_placeholder.png" id="17_nut02"]
+[ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="18_t5npb"]
+[ext_resource type="Texture2D" uid="uid://db1m2rdjmtb5n" path="res://npc/sprites/npc_sprite_02.png" id="19_xnmyp"]
+[ext_resource type="Resource" uid="uid://dphysl62omv8w" path="res://Dialogue/Conversations/get_thing_quest.dialogue" id="20_nut02"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yfni2"]
+shader = ExtResource("6_jafpe")
+shader_parameter/line_width = 0.0
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjts2"]
+radius = 64.0312
+
+[sub_resource type="Resource" id="Resource_cwgr4"]
+script = ExtResource("18_t5npb")
+npc_name = "Quest Guy"
+sprite = ExtResource("19_xnmyp")
+portrait = ExtResource("17_nut02")
+dialog_audio_pitch = 1.0
+metadata/_custom_type_script = "uid://bmpteubp4v57k"
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -32,11 +58,13 @@ offset_bottom = 800.0
 position = Vector2(408, 690)
 
 [node name="TreasureChest" parent="." instance=ExtResource("5_87v0s")]
+material = SubResource("ShaderMaterial_yfni2")
 position = Vector2(1231, 377)
 item_data = ExtResource("6_i0vpj")
 
 [node name="Grass" type="Node2D" parent="."]
 y_sort_enabled = true
+position = Vector2(-74, 2)
 
 [node name="GrassBlade2" parent="Grass" instance=ExtResource("2_o3la6")]
 position = Vector2(576, 663)
@@ -87,19 +115,19 @@ position = Vector2(1002, 286)
 y_sort_enabled = true
 
 [node name="Flower2" parent="Flowers" instance=ExtResource("2_h11ci")]
-position = Vector2(624, 618)
+position = Vector2(904, 618)
 
 [node name="Flower3" parent="Flowers" instance=ExtResource("2_h11ci")]
-position = Vector2(342, 620)
+position = Vector2(622, 620)
 
 [node name="Flower4" parent="Flowers" instance=ExtResource("2_h11ci")]
-position = Vector2(527, 589)
+position = Vector2(807, 589)
 
 [node name="Flower5" parent="Flowers" instance=ExtResource("2_h11ci")]
-position = Vector2(548, 590)
+position = Vector2(828, 590)
 
 [node name="Flower6" parent="Flowers" instance=ExtResource("2_h11ci")]
-position = Vector2(503, 607)
+position = Vector2(783, 607)
 
 [node name="Flower7" parent="Flowers" instance=ExtResource("2_h11ci")]
 position = Vector2(756, 524)
@@ -176,18 +204,57 @@ position = Vector2(681, 615)
 [node name="Flower31" parent="Flowers" instance=ExtResource("2_h11ci")]
 position = Vector2(598, 632)
 
-[node name="Trees" parent="." instance=ExtResource("7_i0vpj")]
-position = Vector2(630, 418)
+[node name="Flower32" parent="Flowers" instance=ExtResource("2_h11ci")]
+position = Vector2(804, 519)
 
-[node name="Trees2" parent="." instance=ExtResource("7_i0vpj")]
-position = Vector2(361, 541)
+[node name="Flower33" parent="Flowers" instance=ExtResource("2_h11ci")]
+position = Vector2(848, 530)
 
-[node name="Trees3" parent="." instance=ExtResource("7_i0vpj")]
-position = Vector2(732, 352)
+[node name="Flower34" parent="Flowers" instance=ExtResource("2_h11ci")]
+position = Vector2(882, 518)
 
-[node name="Trees4" parent="." instance=ExtResource("7_i0vpj")]
-position = Vector2(924, 326)
+[node name="Flower35" parent="Flowers" instance=ExtResource("2_h11ci")]
+position = Vector2(923, 520)
+
+[node name="Flower36" parent="Flowers" instance=ExtResource("2_h11ci")]
+position = Vector2(967, 518)
 
 [node name="ItemPickup" parent="." instance=ExtResource("10_7lr6h")]
 position = Vector2(591, 573)
 item_data = ExtResource("11_jafpe")
+
+[node name="Trees" parent="." instance=ExtResource("7_i0vpj")]
+position = Vector2(668, 436)
+
+[node name="Trees2" parent="." instance=ExtResource("7_i0vpj")]
+position = Vector2(328, 503)
+
+[node name="Trees3" parent="." instance=ExtResource("7_i0vpj")]
+position = Vector2(459, 207)
+
+[node name="Npctester" type="StaticBody2D" parent="."]
+position = Vector2(1005, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Npctester"]
+position = Vector2(5, -27)
+scale = Vector2(-1, 1)
+texture = ExtResource("13_yfni2")
+hframes = 3
+frame = 2
+
+[node name="Actionable" parent="Npctester" instance=ExtResource("14_6wye2")]
+dialogue_resource = ExtResource("15_oxdia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npctester/Actionable"]
+shape = SubResource("CircleShape2D_xjts2")
+
+[node name="Npc" parent="." instance=ExtResource("16_crvoo")]
+position = Vector2(958, 663)
+npc_resource = SubResource("Resource_cwgr4")
+
+[node name="Actionable" parent="Npc" instance=ExtResource("14_6wye2")]
+position = Vector2(1, -2)
+dialogue_resource = ExtResource("20_nut02")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Actionable"]
+shape = SubResource("CircleShape2D_xjts2")

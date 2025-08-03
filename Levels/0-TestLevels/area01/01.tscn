@@ -20,14 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://brbte5cqgjuvx" path="res://npc/patrol_location.tscn" id="12_5ak8t"]
 [ext_resource type="Resource" uid="uid://vqbsoke2pd8b" path="res://npc/00_npcs/Moozer.tres" id="12_swrua"]
 [ext_resource type="Script" uid="uid://c8lujimhxkark" path="res://interactables/dialog/scripts/dialog_choice.gd" id="16_oir6p"]
-[ext_resource type="Resource" uid="uid://bbu7abb38x6fi" path="res://Quests/find_lost_thing.tres" id="17_5adnx"]
+[ext_resource type="Resource" uid="uid://bbu7abb38x6fi" path="res://Quests_old/find_lost_thing.tres" id="17_5adnx"]
 [ext_resource type="Script" uid="uid://c5oelxgr7kvjh" path="res://interactables/dialog/scripts/dialog_branch.gd" id="17_rclfq"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://Props/pot/pot.tscn" id="19_huo8l"]
 [ext_resource type="PackedScene" uid="uid://cpugykfww2auk" path="res://interactables/dungeon/PresurePlate.tscn" id="21_1xyfj"]
-[ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="22_mn1uy"]
-[ext_resource type="Resource" uid="uid://bgguf46pqvlda" path="res://Quests/long_quest.tres" id="23_svifw"]
-[ext_resource type="Script" uid="uid://2ncrdyssejq5" path="res://Quests/utility_nodes/quest_activated_switch.gd" id="25_kytmn"]
-[ext_resource type="PackedScene" uid="uid://cj6o15jnqj0u0" path="res://Quests/utility_nodes/quest_activated_switch.tscn" id="27_kr4tu"]
+[ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests_old/utility_nodes/quest_advance_trigger.tscn" id="22_mn1uy"]
+[ext_resource type="Resource" uid="uid://bgguf46pqvlda" path="res://Quests_old/long_quest.tres" id="23_svifw"]
+[ext_resource type="Script" uid="uid://2ncrdyssejq5" path="res://Quests_old/utility_nodes/quest_activated_switch.gd" id="25_kytmn"]
+[ext_resource type="PackedScene" uid="uid://cj6o15jnqj0u0" path="res://Quests_old/utility_nodes/quest_activated_switch.tscn" id="27_kr4tu"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="29_gs60u"]
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="30_egubj"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="31_s5a4g"]
@@ -582,7 +582,7 @@ free_on_remove = true
 react_to_global_signal = true
 linked_quest = ExtResource("17_5adnx")
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Checking if player has quest"
 
 [node name="Layer1" type="TileMapLayer" parent="QuestActivatedSwitch4"]
@@ -672,7 +672,7 @@ remove_when_activaed = true
 react_to_global_signal = true
 linked_quest = ExtResource("17_5adnx")
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Checking if player has quest"
 
 [node name="DialogInteraction" parent="Npc2/QuestActivatedSwitch" instance=ExtResource("10_5ak8t")]
@@ -700,7 +700,7 @@ scale = Vector2(3, 3)
 signal_name = "selected"
 linked_quest = ExtResource("17_5adnx")
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Step: 0 - N/A
 Complete: false"
 
@@ -736,7 +736,7 @@ react_to_global_signal = true
 linked_quest = ExtResource("17_5adnx")
 quest_complete = true
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Checking if quest is complete"
 metadata/_custom_type_script = "uid://2ncrdyssejq5"
 
@@ -745,7 +745,7 @@ position = Vector2(0, -19.7143)
 react_to_global_signal = true
 linked_quest = ExtResource("17_5adnx")
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Checking if player has quest"
 
 [node name="QuestActivatedSwitch2" parent="Npc2/QuestActivatedSwitch3/QuestActivatedSwitch2" instance=ExtResource("27_kr4tu")]
@@ -755,7 +755,7 @@ react_to_global_signal = true
 linked_quest = ExtResource("17_5adnx")
 quest_step = 3
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Check if player is on step: bring it back"
 
 [node name="DialogInteraction" parent="Npc2/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2" instance=ExtResource("10_5ak8t")]
@@ -772,7 +772,7 @@ react_to_global_signal = true
 linked_quest = ExtResource("17_5adnx")
 quest_step = 3
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Check if player is on step: bring it back"
 
 [node name="DialogInteraction2" parent="Npc2/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch" instance=ExtResource("10_5ak8t")]
@@ -790,7 +790,7 @@ linked_quest = ExtResource("17_5adnx")
 quest_step = 3
 quest_complete = true
 settings_summary = "UPDATE QUEST:
-Quest: Find lost thing
+Quest2: Find lost thing
 Step: 3 - bring it back
 Complete: true"
 
@@ -820,7 +820,7 @@ scale = Vector2(2, 2)
 signal_name = "activated"
 linked_quest = ExtResource("23_svifw")
 settings_summary = "UPDATE QUEST:
-Quest: Long Quest
+Quest2: Long Quest
 Step: 0 - N/A
 Complete: false"
 
@@ -830,7 +830,7 @@ scale = Vector2(2, 2)
 react_to_global_signal = true
 linked_quest = ExtResource("23_svifw")
 settings_summary = "UPDATE QUEST:
-Quest: Long Quest
+Quest2: Long Quest
 Checking if player has quest"
 
 [node name="PresurePlate2" parent="QuestActivatedSwitch" instance=ExtResource("21_1xyfj")]
@@ -840,7 +840,7 @@ signal_name = "activated"
 linked_quest = ExtResource("23_svifw")
 quest_step = 1
 settings_summary = "UPDATE QUEST:
-Quest: Long Quest
+Quest2: Long Quest
 Step: 1 - step 1
 Complete: false"
 
@@ -852,7 +852,7 @@ react_to_global_signal = true
 linked_quest = ExtResource("23_svifw")
 quest_step = 2
 settings_summary = "UPDATE QUEST:
-Quest: Long Quest
+Quest2: Long Quest
 Check if player is on step: step 2"
 
 [node name="PresurePlate3" parent="QuestActivatedSwitch2" instance=ExtResource("21_1xyfj")]
@@ -863,7 +863,7 @@ linked_quest = ExtResource("23_svifw")
 quest_step = 2
 quest_complete = true
 settings_summary = "UPDATE QUEST:
-Quest: Long Quest
+Quest2: Long Quest
 Step: 2 - step 2
 Complete: true"
 
@@ -874,7 +874,7 @@ check_type = 3
 react_to_global_signal = true
 linked_quest = ExtResource("23_svifw")
 settings_summary = "UPDATE QUEST:
-Quest: Long Quest
+Quest2: Long Quest
 Checking if quest is complete"
 
 [node name="Pot" parent="QuestActivatedSwitch3" instance=ExtResource("19_huo8l")]

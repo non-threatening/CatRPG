@@ -27,7 +27,7 @@ func _on_visible_changed() -> void:
 	if visible == true:
 		QuestManager.sort_quests()
 		for q in QuestManager.current_quests:
-			var quest_data : Quest = QuestManager.find_quest_by_title( q.title )
+			var quest_data : Quest2 = QuestManager.find_quest_by_title( q.title )
 			if quest_data == null:
 				continue
 			var new_q_item : QuestItem = QUEST_ITEM.instantiate()
@@ -38,7 +38,7 @@ func _on_visible_changed() -> void:
 	pass
 
 
-func update_quest_details( q : Quest ) -> void:
+func update_quest_details( q : Quest2 ) -> void:
 	## clear quest details
 	clear_quest_details()
 	

@@ -25,11 +25,22 @@ PlayerManager="*res://00_Globals/global_player_manager.gd"
 SceneTransition="*res://GUI/scene_transition/scene_transition.tscn"
 SaveManager="*res://00_Globals/global_save_manager.gd"
 PauseMenu="*res://GUI/pause_menu/PauseMenu.tscn"
-DialogSystem="*res://GUI/dialog_system/dialog_system.tscn"
-QuestManager="*res://Quests/scripts/global_quest_manager.gd"
+DialogSystem="*res://GUI/dialog_system_old/dialog_system.tscn"
+QuestManager="*res://Quests_old/scripts/global_quest_manager.gd"
 EffectManager="*res://00_Globals/global_effect_manager.gd"
 ShopMenu="*res://GUI/shop_menu/shop_menu.tscn"
-Questify="*res://addons/questify/quest_manager.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+QuestSystem="*res://addons/quest_system/quest_manager.gd"
+Shortcuts="*res://Dialogue/quest_system_shortcuts.gd"
+
+[debug]
+
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/standalone_expression=0
+
+[dialogue_manager]
+
+runtime/balloon_path="res://Dialogue/SpeachBubbles/balloon.tscn"
 
 [display]
 
@@ -39,7 +50,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/questify/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
 
 [global_group]
 
@@ -140,16 +151,15 @@ switch_ability={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/QuestTest.dialogue", "res://Dialogue/Conversations/test.dialogue", "res://Dialogue/Conversations/Testing_in_GrassSh.dialogue", "res://Dialogue/Conversations/get_thing_quest.dialogue")
+
 [layer_names]
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="PlayerHurt"
 2d_physics/layer_3="PlayerInteract"
+2d_physics/layer_4="Dialog Actionables"
 2d_physics/layer_5="Walls"
 2d_physics/layer_9="Enemy"
-
-[questify]
-
-general/update_polling=true
-general/update_interval=0.5
-general/add_quests_to_pot_generation=false

@@ -1,0 +1,20 @@
+~ start
+
+Bird Person: Hi wierd ass cat
+if DialogTestState.apple_status == "has"
+	Player: I have an apple
+	- Give to Player
+		set DialogTestState.apple_status = "gave"
+		Player:
+			Here you go
+		Bird Person:
+			Thanks dick
+	- Keep it
+		Player: It's mine
+		Bird Person: Fair enough
+elif DialogTestState.apple_status == "gave"
+	Bird Person: That apple was fucked.
+else:
+	Bird Person: Sure wish I had an apple 
+
+=> END

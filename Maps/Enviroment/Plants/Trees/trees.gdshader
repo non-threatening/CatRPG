@@ -14,6 +14,11 @@ uniform float step1 : hint_range(0.0,1.0) = 0.0;
 uniform float step2 : hint_range(0.0,1.0) = 0.24;
 uniform float step3 : hint_range(0.0,1.0) = 0.281;
 
+uniform float amplitude = 0.1;
+uniform float frequency = 1.0;
+uniform float speed = 1.0;
+
+
 void fragment() {
 	vec4 input_color = texture( TEXTURE, UV );
 	if ( input_color.r > 0.01 && input_color.g > 0.01 && input_color.b > 0.05 && input_color.a > 0.5) {
@@ -21,5 +26,11 @@ void fragment() {
 		vec4 color = mix(color1, color2, smoothstep(step1*size, step2*size, dist));
 		color = mix(color, color3, smoothstep(step2*size, step3*size, dist));
 		COLOR = color * input_color.rgba;
+	}
+}
+
+void vertex() {
+	if ( VERTEX.y < -60.0 ) {
+    	VERTEX.y += sin(UV.x * frequency + TIME * speed) * amplitude;
 	}
 }

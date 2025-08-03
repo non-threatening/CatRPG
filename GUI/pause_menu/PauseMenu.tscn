@@ -414,7 +414,7 @@ theme_override_constants/separation = 5
 [node name="TitleLabel" type="Label" parent="Control/TabContainer/Quests/VBoxContainer"]
 custom_minimum_size = Vector2(350, 10)
 layout_mode = 2
-text = "Quest Title"
+text = "Quest2 Title"
 autowrap_mode = 2
 
 [node name="DescriptionLabel" type="Label" parent="Control/TabContainer/Quests/VBoxContainer"]

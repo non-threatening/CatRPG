@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bqtihvfyr3yyt"
+path="res://.godot/imported/Testing_in_GrassSh.dialogue-1ef4b8e32a0f7729924429b479e2647e.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/Testing_in_GrassSh.dialogue"
+dest_files=["res://.godot/imported/Testing_in_GrassSh.dialogue-1ef4b8e32a0f7729924429b479e2647e.tres"]
+
+[params]
+
+defaults=true
