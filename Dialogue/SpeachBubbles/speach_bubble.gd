@@ -62,6 +62,15 @@ func _ready() -> void:
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
+	
+	## pause / unpause
+	get_tree().paused = true
+	DialogueManager.dialogue_ended.connect( _unpause )
+
+
+func _unpause( _t ) -> void:
+	get_tree().paused = false
+	pass
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -85,6 +94,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
+	
 
 
 ## Apply any changes to the bubble given a new [DialogueLine].

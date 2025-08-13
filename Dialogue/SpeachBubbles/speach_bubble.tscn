@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_t1jep"]
 
 [node name="SpeachBubble" type="CanvasLayer"]
+process_mode = 3
 layer = 100
 script = ExtResource("1_suubk")
 
