@@ -23,6 +23,8 @@ var current_save : Dictionary = {
 	persistance = [],
 	quests = [ #{ title = "not found ", is_complete = false, completed_steps = ['']  } 
 	],
+	quest_data = [],
+	pool_state = []
 }
 
 
@@ -66,7 +68,18 @@ func load_game() -> void:
 	p.defense = current_save.player.defense
 	
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
-	QuestManager.current_quests = current_save.quests
+	
+	var quests: Array[Quest]
+	for quest in DirAccess.get_files_at("res://Quest/"):
+		var quest_path = "res://Quest/" + quest
+		var quest_resource = load(quest_path)
+		if quest_resource is Quest:
+			quests.append(quest_resource)
+		QuestSystem.restore_pool_state_from_dict(current_save["pool_state"], quests)
+		QuestSystem.deserialize_quests(current_save["quest_data"])
+	
+	
+	
 	
 	await  LevelManager.level_loaded
 	
@@ -101,7 +114,10 @@ func update_item_data() -> void:
 	
 
 func update_quest_data() -> void:
-	current_save.quests = QuestManager.current_quests
+	var quest_data = QuestSystem.serialize_quests("Active")
+	var pool_state = QuestSystem.pool_state_as_dict()
+	current_save.quest_data = quest_data 
+	current_save.pool_state = pool_state
 	
 
 	

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StepsQuest" load_steps=6 format=3 uid="uid://dcrh3vi1npayn"]
 
-[ext_resource type="Script" uid="uid://bg1xfpds23ws2" path="res://Quest/steps_quest.gd" id="2_qwtcv"]
+[ext_resource type="Script" uid="uid://bg1xfpds23ws2" path="res://Quest/quest_scripts/steps_quest.gd" id="2_qwtcv"]
 [ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quest/scripts/quest_step.gd" id="3_5eyy4"]
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="3_hkd18"]
 
