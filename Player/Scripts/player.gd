@@ -201,7 +201,6 @@ func _set_bomb_count( value : int ) -> void:
 	
 
 func bird_friend_sprite_animation( new_dir : Vector2 ):
-	print( "bf: ", anim_direction(), " - ", new_dir )
 	match new_dir:
 		Vector2.DOWN:
 			bird_friend_sprite.position = Vector2( 3, -19 )

@@ -395,8 +395,8 @@ shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.5
 shader_parameter/cover_color = Color(0.996078, 0.501961, 1, 0.556863)
 shader_parameter/eye_color = Color(3, 3, 2, 1)
-shader_parameter/x = 3.0
-shader_parameter/y = 3.0
+shader_parameter/x = 0.5
+shader_parameter/y = 1.0
 shader_parameter/time_scale = 2.666
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_76lrf"]
@@ -3351,7 +3351,6 @@ debug_color = Color(0.988235, 0, 0.294118, 0)
 
 [node name="ChargeAttackHurtBox" parent="Sprite2D" instance=ExtResource("10_q6j84")]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0, 27)
 collision_mask = 256
 monitoring = false
@@ -3381,7 +3380,6 @@ shape = SubResource("CapsuleShape2D_bwjto")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="SpinEffectSprite2D" type="Sprite2D" parent="Sprite2D"]
-visible = false
 show_behind_parent = true
 position = Vector2(1, 23)
 scale = Vector2(1.51562, 1.51562)
@@ -3431,7 +3429,6 @@ vframes = 4
 frame = 4
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D_death"]
-visible = false
 modulate = Color(0.103, 0.054, 0.475, 0.243)
 show_behind_parent = true
 position = Vector2(0, 45)
@@ -3552,7 +3549,6 @@ text = "Level UP"
 horizontal_alignment = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
 position = Vector2(0, -1)
 emitting = false
 amount = 100

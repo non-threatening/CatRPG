@@ -47,7 +47,8 @@ func _physics_process(delta: float) -> void:
 	
 	var speed_ratio = speed / max_speed
 	audio.pitch_scale = speed_ratio * 0.85 + 1.0
-	animation_player.speed_scale = 1 + ( speed_ratio * 0.25 )
+	#animation_player.speed_scale = 1 + ( speed_ratio * 0.25 )
+	animation_player.speed_scale = 1 + ( speed_ratio * 0.2 )
 	pass
 
 
