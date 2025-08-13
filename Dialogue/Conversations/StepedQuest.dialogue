@@ -1,0 +1,72 @@
+~ start
+
+do Shortcuts.update_quest("steps_quest")
+
+if not Shortcuts.is_quest_active("steps_quest")
+	Weird Guy: Hey, I'm some weird dude, lol
+	Cat: ...
+	Weird Guy: Do you want to do some weird ass quest where you get me some shit?
+	- Yeah sure
+		do Shortcuts.start_quest("steps_quest")
+	- No, lol, go fuck yourself
+		Weird Guy: lame.
+
+
+#	Give the gimpsuit if you got it
+elif Shortcuts.get_quest_property( 100, "gimpsuit_given" ) == false:
+	Cat: Meow {{ Shortcuts.get_quest_property( 100, "step_list[0].completed" ) }}
+
+	if Shortcuts.get_quest_property( 100, "gimpsuit_got" ) == true:
+		Weird Guy: Nice Gimp suit !!!
+		Weird Guy: Can I have it ?
+		- Ok, here
+			do QuestSystem.set_quest_property( 100, "gimpsuit_given", true )
+			do Shortcuts.update_quest("steps_quest")
+		- It's my Gimpsuit now fucker!
+
+
+
+
+
+
+
+
+#if Shortcuts.is_quest_active("steps_quest") and Shortcuts.get_quest_property("amount_in_inventory") >= Shortcuts.get_quest_property("needed_amount"):
+#	do gimpsuit_got == true
+#	Weird Guy: Did you get the gimp suit?
+#else
+#	Weird Guy: Where gimp suit?
+
+elif Shortcuts.is_quest_completed("steps_quest"):
+	Weird Guy: ?
+	Cat: Yeah
+
+	
+
+#match Shortcuts.is_quest_active("steps_quest")
+#	when true
+#		Weird Guy: Hey, I'm some weird dude, lol
+#		Cat: ...
+#	
+#	else
+#		Weird Guy: Thanks for the second hand gimp suit
+		
+
+#	if Shortcuts.is_quest_active("get_more_gems"):
+#		Bird Guy: How many gems have you found?
+#		Coco: {{Shortcuts.get_quest_property(3,"amount_in_inventory")}}!
+#	else:
+#		Bird Guy: I sure wish I had an apple. Apparently there's an apple tree around here somewhere.
+#		Help Bird Guy?
+#		- Yes
+#			do Shortcuts.start_quest("get_more_gems")
+#		- No
+
+
+
+#if Shortcuts.is_quest_active("get_gems") and Shortcuts.get_quest_property(1,"amount_in_inventory") >= Shortcuts.get_quest_property(1,"needed_amount"):
+#	Coco: I have {{Shortcuts.get_quest_property(1,"amount_in_inventory")}} gems.
+
+
+
+=> END

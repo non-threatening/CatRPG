@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="GetAppleQuest" load_steps=2 format=3 uid="uid://cjv1tqikg3rfk"]
+[gd_resource type="Resource" script_class="QuestExtend" load_steps=3 format=3 uid="uid://cjv1tqikg3rfk"]
 
-[ext_resource type="Script" uid="uid://citrs6fbd3b45" path="res://Quest/get_thing_quest.gd" id="1_jf8pk"]
+[ext_resource type="Script" uid="uid://crfmdxd2x510f" path="res://Quest/scripts/quest_extend.gd" id="1_a70v0"]
+[ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quest/scripts/quest_step.gd" id="2_3f0nm"]
 
 [resource]
-script = ExtResource("1_jf8pk")
-id = 1
-quest_name = "Get Apple"
-quest_description = "Nathan'd like to have an apple. Help him to find one."
-quest_objective = "Give Nathan an apple."
+script = ExtResource("1_a70v0")
+xp_reward = 100
+steps = Array[ExtResource("2_3f0nm")]([])
+id = 2
+quest_name = ""
+quest_description = ""
+quest_objective = ""

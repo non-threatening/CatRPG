@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsrcagysegr3h"]
+
+[ext_resource type="Script" uid="uid://cjtrqpfm7i362" path="res://GUI/pause_menu/quest/quest_summary.gd" id="1_7tgkt"]
+
+[node name="QuestSummary" type="Button"]
+custom_minimum_size = Vector2(280, 80)
+script = ExtResource("1_7tgkt")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 512.0
+offset_bottom = 32.0
+text = "Quest2 Title"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="DescriptionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 488.0
+offset_bottom = 94.0
+text = "quest step 1/5"
+clip_text = true
+text_overrun_behavior = 3

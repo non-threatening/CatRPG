@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GetMoreGems" load_steps=4 format=3 uid="uid://bqkx6oir4u7ju"]
+
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="1_hdt63"]
+[ext_resource type="Script" uid="uid://qkb0lqdbnik5" path="res://Quest/get_more_gems.gd" id="2_hdt63"]
+[ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quest/scripts/quest_step.gd" id="3_lo4ds"]
+
+[resource]
+script = ExtResource("2_hdt63")
+needed_amount = 6
+quest_item = ExtResource("1_hdt63")
+xp_reward = 300
+steps = Array[ExtResource("3_lo4ds")]([])
+id = 3
+quest_name = "Get more Gems"
+quest_description = "Walk around and get a bunch of gems"
+quest_objective = "get gems for that bird"
+metadata/_custom_type_script = "uid://crfmdxd2x510f"

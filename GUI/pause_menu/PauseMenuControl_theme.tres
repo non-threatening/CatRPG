@@ -53,6 +53,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_mshh3")
 Button/styles/normal = SubResource("StyleBoxFlat_2sjd8")
 Label/font_sizes/font_size = 24
 TabContainer/colors/font_outline_color = Color(1, 1, 1, 1)
-TabContainer/font_sizes/font_size = 36
+TabContainer/font_sizes/font_size = 32
 TabContainer/styles/panel = ExtResource("1_acws1")
 VBoxContainer/constants/separation = 12

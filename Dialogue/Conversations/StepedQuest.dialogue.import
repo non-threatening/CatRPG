@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cwppo2fvp6tr7"
+path="res://.godot/imported/StepedQuest.dialogue-7a49adc3f5856eba8d806afd7e44c3c8.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/StepedQuest.dialogue"
+dest_files=["res://.godot/imported/StepedQuest.dialogue-7a49adc3f5856eba8d806afd7e44c3c8.tres"]
+
+[params]
+
+defaults=true

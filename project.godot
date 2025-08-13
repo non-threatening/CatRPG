@@ -40,7 +40,8 @@ gdscript/warnings/standalone_expression=0
 
 [dialogue_manager]
 
-runtime/balloon_path="res://Dialogue/SpeachBubbles/balloon.tscn"
+runtime/balloon_path="res://Dialogue/SpeachBubbles/speach_bubble.tscn"
+editor/wrap_long_lines=true
 
 [display]
 
@@ -153,7 +154,7 @@ switch_ability={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/QuestTest.dialogue", "res://Dialogue/Conversations/test.dialogue", "res://Dialogue/Conversations/Testing_in_GrassSh.dialogue", "res://Dialogue/Conversations/get_thing_quest.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/QuestTest.dialogue", "res://Dialogue/Conversations/test.dialogue", "res://Dialogue/Conversations/Testing_in_GrassSh.dialogue", "res://Dialogue/Conversations/get_thing_quest.dialogue", "res://Dialogue/Conversations/StepedQuest.dialogue", "res://Dialogue/Conversations/get_more_gems.dialogue", "res://Dialogue/Conversations/get_gems_quest.dialogue")
 
 [layer_names]
 

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="GetGemsQuest" load_steps=8 format=3 uid="uid://c7pmp7xkulkfh"]
+
+[ext_resource type="Script" uid="uid://bbhrcj7cvv5es" path="res://Quest/get_gems_quest.gd" id="2_3xv0l"]
+[ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quest/scripts/quest_step.gd" id="3_3xv0l"]
+[ext_resource type="Script" uid="uid://sxajhos6jxp5" path="res://Quest/scripts/steps/gather_item.gd" id="4_8itun"]
+[ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="4_c22p5"]
+[ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="5_c22p5"]
+
+[sub_resource type="Resource" id="Resource_c22p5"]
+script = ExtResource("4_8itun")
+quest_item = ExtResource("4_c22p5")
+needed_amount = 1
+title = "Find a second hand gimp suit in the bushes."
+completed = false
+metadata/_custom_type_script = "uid://sxajhos6jxp5"
+
+[sub_resource type="Resource" id="Resource_grbsj"]
+script = ExtResource("4_8itun")
+quest_item = ExtResource("5_c22p5")
+needed_amount = 4
+title = "Get apples"
+completed = false
+metadata/_custom_type_script = "uid://sxajhos6jxp5"
+
+[resource]
+script = ExtResource("2_3xv0l")
+needed_amount = 1
+quest_item = ExtResource("4_c22p5")
+xp_reward = 250
+steps = Array[ExtResource("3_3xv0l")]([SubResource("Resource_c22p5"), SubResource("Resource_grbsj")])
+id = 1
+quest_name = "Get Gems"
+quest_description = "Walk around and get a bunch of gems"
+quest_objective = "get gems for that bird"
+metadata/_custom_type_script = "uid://crfmdxd2x510f"

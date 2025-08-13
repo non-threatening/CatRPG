@@ -1,0 +1,45 @@
+~ start
+do Shortcuts.update_quest("get_gems")
+
+Bird Guy: Hi Coco.
+
+if Shortcuts.is_quest_active("get_gems") and Shortcuts.get_quest_property(1,"amount_in_inventory") >= Shortcuts.get_quest_property(1,"needed_amount"):
+	Coco: I have {{Shortcuts.get_quest_property(1,"amount_in_inventory")}} gems.
+	
+	- Give to Bird Guy
+		Coco: Here you go.
+		Bird Guy: Thanks dick.
+		do Shortcuts.complete_quest("get_gems")		
+		
+	- Keep it
+		Coco: But they're mine.
+		Bird Guy: Fair enough.
+		
+elif Shortcuts.is_quest_completed("get_gems"):
+	Bird Guy: Thanks again for the gems.
+	Coco: {{Shortcuts.get_quest_property(1,"amount_in_inventory")}}!
+
+else:
+	if Shortcuts.is_quest_active("get_gems"):
+		Bird Guy: How many gems have you found?
+		Coco: {{Shortcuts.get_quest_property(1,"amount_in_inventory")}}!
+	else:
+		Bird Guy: I sure wish I had an apple. Apparently there's an apple tree around here somewhere.
+		Help Bird Guy?
+		- Yes
+			do Shortcuts.start_quest("get_gems")
+		- No
+			=> END
+=> END
+
+#---------------------------------------------------------
+
+~ pick_apple
+
+Coco: It's an apple tree.
+if Shortcuts.is_quest_active("get_gems") and Shortcuts.get_quest_property(1,"amount_in_inventory") < Shortcuts.get_quest_property(1,"needed_amount"):
+	Coco: I'll just take one.
+	do Shortcuts.update_quest("get_gems")
+elif Shortcuts.is_quest_active("get_gems") and Shortcuts.get_quest_property(1,"amount_in_inventory") == Shortcuts.get_quest_property(1,"needed_amount"):
+	Coco: I already have enough gems.
+=> END

@@ -1,15 +1,22 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=9 format=3 uid="uid://1fwl7lk326j"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=11 format=3 uid="uid://1fwl7lk326j"]
 
 [ext_resource type="Script" uid="uid://dc703es2if44x" path="res://GUI/pause_menu/inventory/scripts/inventory_data.gd" id="1_o6sn5"]
 [ext_resource type="Script" uid="uid://djrie0d27synv" path="res://GUI/pause_menu/inventory/scripts/slot_data.gd" id="2_x61lb"]
 [ext_resource type="Resource" uid="uid://rkrroqce3e18" path="res://Items/a_tunic.tres" id="3_6kbrr"]
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="3_d33ra"]
+[ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="4_0w5vp"]
 [ext_resource type="Resource" uid="uid://ddkg50r2itvpi" path="res://Items/w_iron_sword.tres" id="4_d33ra"]
 
 [sub_resource type="Resource" id="Resource_18tpa"]
 script = ExtResource("2_x61lb")
 item_data = ExtResource("3_d33ra")
 quantity = 40
+metadata/_custom_type_script = "uid://djrie0d27synv"
+
+[sub_resource type="Resource" id="Resource_oga8p"]
+script = ExtResource("2_x61lb")
+item_data = ExtResource("4_0w5vp")
+quantity = 3
 metadata/_custom_type_script = "uid://djrie0d27synv"
 
 [sub_resource type="Resource" id="Resource_0w5vp"]
@@ -26,5 +33,5 @@ metadata/_custom_type_script = "uid://djrie0d27synv"
 
 [resource]
 script = ExtResource("1_o6sn5")
-slots = Array[ExtResource("2_x61lb")]([SubResource("Resource_18tpa"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, SubResource("Resource_0w5vp"), null, SubResource("Resource_6kbrr"), null])
+slots = Array[ExtResource("2_x61lb")]([SubResource("Resource_18tpa"), SubResource("Resource_oga8p"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, SubResource("Resource_0w5vp"), null, SubResource("Resource_6kbrr"), null])
 metadata/_custom_type_script = "uid://dc703es2if44x"

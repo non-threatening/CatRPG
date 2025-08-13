@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://nced8eb1v3q7"]
+
+[ext_resource type="Script" uid="uid://cmio55eh72mqx" path="res://GUI/pause_menu/quest/list_summary.gd" id="1_2w73i"]
+
+[node name="ListSummary" type="Button"]
+custom_minimum_size = Vector2(450, 48)
+offset_right = 450.0
+offset_bottom = 56.0
+theme_override_constants/align_to_largest_stylebox = 0
+script = ExtResource("1_2w73i")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 40.0
+text = "Quest2 Title"
+clip_text = true
+text_overrun_behavior = 3
