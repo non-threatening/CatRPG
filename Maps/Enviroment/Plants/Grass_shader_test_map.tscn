@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=34 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="1_kc5b1"]
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_sq0g3"]
@@ -12,14 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="7_i0vpj"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="10_7lr6h"]
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="11_jafpe"]
+[ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="12_nut02"]
 [ext_resource type="Texture2D" uid="uid://bu6gnfb43tsgq" path="res://Player/BirdFriend/sprites/Crow_384x148.png" id="13_yfni2"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="14_6wye2"]
-[ext_resource type="Resource" uid="uid://bqtihvfyr3yyt" path="res://Dialogue/Conversations/Testing_in_GrassSh.dialogue" id="15_oxdia"]
+[ext_resource type="Shader" uid="uid://btj07hvby1q3q" path="res://materials/color_replace/color_replace.gdshader" id="14_xnmyp"]
 [ext_resource type="PackedScene" uid="uid://dajuqkayd03fp" path="res://npc/npc.tscn" id="16_crvoo"]
 [ext_resource type="Texture2D" uid="uid://dbvgg5qwy3w25" path="res://npc/sprites/portraits/portrait_placeholder.png" id="17_nut02"]
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="18_t5npb"]
-[ext_resource type="Texture2D" uid="uid://db1m2rdjmtb5n" path="res://npc/sprites/npc_sprite_02.png" id="19_xnmyp"]
-[ext_resource type="Resource" uid="uid://dphysl62omv8w" path="res://Dialogue/Conversations/get_thing_quest.dialogue" id="20_nut02"]
+[ext_resource type="Resource" uid="uid://3358n637v4ks" path="res://get_gems_quest.dialogue" id="19_crvoo"]
+[ext_resource type="Resource" uid="uid://cwppo2fvp6tr7" path="res://Dialogue/Conversations/StepedQuest.dialogue" id="20_xnmyp"]
+[ext_resource type="Shader" uid="uid://b2o32xd6mdvfk" path="res://materials/shadow_electric.gdshader" id="21_t5npb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yfni2"]
 shader = ExtResource("6_jafpe")
@@ -27,16 +29,49 @@ shader_parameter/line_width = 0.0
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xjts2"]
-radius = 64.0312
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwgr4"]
+shader = ExtResource("14_xnmyp")
+shader_parameter/target_color = Color(0.215686, 0.109804, 0.00392157, 1)
+shader_parameter/replace_color = Color(0.0647343, 0.243964, 1, 1)
+shader_parameter/tolerance = 0.139
 
 [sub_resource type="Resource" id="Resource_cwgr4"]
 script = ExtResource("18_t5npb")
 npc_name = "Quest Guy"
-sprite = ExtResource("19_xnmyp")
+sprite = ExtResource("13_yfni2")
 portrait = ExtResource("17_nut02")
 dialog_audio_pitch = 1.0
 metadata/_custom_type_script = "uid://bmpteubp4v57k"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjts2"]
+radius = 64.0312
+
+[sub_resource type="Gradient" id="Gradient_xnmyp"]
+offsets = PackedFloat32Array(0, 0.708154)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cwgr4"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q5fwb"]
+color_ramp = SubResource("Gradient_xnmyp")
+noise = SubResource("FastNoiseLite_cwgr4")
+
+[sub_resource type="Gradient" id="Gradient_5k6dy"]
+offsets = PackedFloat32Array(0.145923, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_716o7"]
+frequency = 0.0296
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_insof"]
+color_ramp = SubResource("Gradient_5k6dy")
+noise = SubResource("FastNoiseLite_716o7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8q7qm"]
+shader = ExtResource("21_t5npb")
+shader_parameter/noise = SubResource("NoiseTexture2D_q5fwb")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_insof")
+shader_parameter/brightness = 2.5
+shader_parameter/time_scale = 0.25
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -55,12 +90,13 @@ offset_right = 1280.0
 offset_bottom = 800.0
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_ryqvc")]
-position = Vector2(408, 690)
+position = Vector2(666, 692)
 
 [node name="TreasureChest" parent="." instance=ExtResource("5_87v0s")]
 material = SubResource("ShaderMaterial_yfni2")
-position = Vector2(1231, 377)
+position = Vector2(516, 582)
 item_data = ExtResource("6_i0vpj")
+quantity = 3
 
 [node name="Grass" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -223,7 +259,12 @@ position = Vector2(967, 518)
 position = Vector2(591, 573)
 item_data = ExtResource("11_jafpe")
 
+[node name="ItemPickup2" parent="." instance=ExtResource("10_7lr6h")]
+position = Vector2(707, 509)
+item_data = ExtResource("12_nut02")
+
 [node name="Trees" parent="." instance=ExtResource("7_i0vpj")]
+material = SubResource("ShaderMaterial_cwgr4")
 position = Vector2(668, 436)
 
 [node name="Trees2" parent="." instance=ExtResource("7_i0vpj")]
@@ -232,29 +273,32 @@ position = Vector2(328, 503)
 [node name="Trees3" parent="." instance=ExtResource("7_i0vpj")]
 position = Vector2(459, 207)
 
-[node name="Npctester" type="StaticBody2D" parent="."]
-position = Vector2(1005, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Npctester"]
-position = Vector2(5, -27)
-scale = Vector2(-1, 1)
-texture = ExtResource("13_yfni2")
-hframes = 3
-frame = 2
-
-[node name="Actionable" parent="Npctester" instance=ExtResource("14_6wye2")]
-dialogue_resource = ExtResource("15_oxdia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Npctester/Actionable"]
-shape = SubResource("CircleShape2D_xjts2")
-
-[node name="Npc" parent="." instance=ExtResource("16_crvoo")]
-position = Vector2(958, 663)
+[node name="Npc2" parent="." instance=ExtResource("16_crvoo")]
+position = Vector2(815, 663)
 npc_resource = SubResource("Resource_cwgr4")
 
-[node name="Actionable" parent="Npc" instance=ExtResource("14_6wye2")]
+[node name="Actionable" parent="Npc2" instance=ExtResource("14_6wye2")]
 position = Vector2(1, -2)
-dialogue_resource = ExtResource("20_nut02")
+dialogue_resource = ExtResource("20_xnmyp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Actionable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2/Actionable"]
 shape = SubResource("CircleShape2D_xjts2")
+
+[node name="Npc3" parent="." instance=ExtResource("16_crvoo")]
+position = Vector2(213, 633)
+npc_resource = SubResource("Resource_cwgr4")
+
+[node name="Actionable" parent="Npc3" instance=ExtResource("14_6wye2")]
+position = Vector2(1, -2)
+dialogue_resource = ExtResource("19_crvoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc3/Actionable"]
+shape = SubResource("CircleShape2D_xjts2")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8q7qm")
+offset_left = 881.0
+offset_top = 272.0
+offset_right = 1256.0
+offset_bottom = 554.0
+color = Color(0.43, 0.829, 1, 1)

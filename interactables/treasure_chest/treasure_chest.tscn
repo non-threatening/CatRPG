@@ -1,10 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://cl2lkcvct4h4i"]
+[gd_scene load_steps=16 format=3 uid="uid://cl2lkcvct4h4i"]
 
 [ext_resource type="Script" uid="uid://ck8ltochbbo0f" path="res://interactables/treasure_chest/treasure_chest.gd" id="1_xsc6d"]
+[ext_resource type="Shader" uid="uid://btj07hvby1q3q" path="res://materials/color_replace/color_replace.gdshader" id="2_0epee"]
 [ext_resource type="Texture2D" uid="uid://wiimkrtixagf" path="res://interactables/treasure_chest/treasure-chest.png" id="2_x87k5"]
 [ext_resource type="Texture2D" uid="uid://beuue5mgapph3" path="res://Items/sprites/items.png" id="3_fjmvg"]
 [ext_resource type="AudioStream" uid="uid://dpit41htjj5we" path="res://interactables/treasure_chest/treasure-open.wav" id="4_x87k5"]
 [ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="5_fjmvg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_icwpr"]
+shader = ExtResource("2_0epee")
+shader_parameter/target_color = Color(0.643137, 0.392157, 0.309804, 1)
+shader_parameter/replace_color = Color(0, 0.113333, 0.68, 1)
+shader_parameter/tolerance = 0.417
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pkedb"]
 atlas = ExtResource("3_fjmvg")
@@ -202,6 +209,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_xsc6d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_icwpr")
 position = Vector2(0, -11)
 texture = ExtResource("2_x87k5")
 hframes = 2

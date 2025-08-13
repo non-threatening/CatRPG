@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bph8i6qn2wbk7"]
+
+[ext_resource type="Texture2D" uid="uid://b1w34lfwpwoq7" path="res://materials/color_change/Gunpowder.png" id="1_sr5uu"]
+
+[sub_resource type="Shader" id="Shader_jiwk3"]
+code = "shader_type canvas_item;
+
+uniform sampler2D grayscaleImage : filter_nearest;
+uniform vec4 lowColor : source_color;
+uniform vec4 midColor : source_color;
+uniform vec4 highColor : source_color;
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	vec4 grayscaleTexture = textureLod(grayscaleImage, UV, 0.0);
+	float grayscaleValue = grayscaleTexture.r;
+	float alphaValue = grayscaleTexture.a;
+	
+	vec4 color = mix(lowColor, midColor, grayscaleValue);
+	color = mix(color, highColor, pow(grayscaleValue, 1.0));
+	
+	color.a *= alphaValue;
+	
+	COLOR = color;
+	
+}
+
+"
+
+[resource]
+shader = SubResource("Shader_jiwk3")
+shader_parameter/grayscaleImage = ExtResource("1_sr5uu")
+shader_parameter/lowColor = Color(0, 0, 0, 1)
+shader_parameter/midColor = Color(0.962745, 0.814456, 0.393952, 1)
+shader_parameter/highColor = Color(0.89, 0, 0.8455, 1)

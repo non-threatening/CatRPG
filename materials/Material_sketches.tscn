@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://bc5m40knwaatk"]
+
+[ext_resource type="Material" uid="uid://bph8i6qn2wbk7" path="res://materials/color_change/color_change.tres" id="1_vhhmc"]
+[ext_resource type="Texture2D" uid="uid://b1w34lfwpwoq7" path="res://materials/color_change/Gunpowder.png" id="2_bxb2f"]
+[ext_resource type="Material" uid="uid://bqab3b8rkqyd" path="res://materials/color_replace/color_replace.tres" id="3_xdoli"]
+[ext_resource type="Texture2D" uid="uid://wiimkrtixagf" path="res://interactables/treasure_chest/treasure-chest.png" id="4_lc8wg"]
+[ext_resource type="Texture2D" uid="uid://deedgn2nkas38" path="res://materials/cat_silouette.png" id="5_rpojx"]
+[ext_resource type="Material" uid="uid://dseieaacosrk5" path="res://materials/electric_cat_outline.tres" id="6_aklwg"]
+
+[sub_resource type="Gradient" id="Gradient_xdoli"]
+offsets = PackedFloat32Array(0.490566, 1)
+colors = PackedColorArray(0, 0.266666, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lc8wg"]
+gradient = SubResource("Gradient_xdoli")
+width = 128
+height = 128
+
+[sub_resource type="Shader" id="Shader_jiwk3"]
+code = "shader_type canvas_item;
+
+uniform sampler2D grayscaleImage : filter_nearest;
+uniform vec4 lowColor : source_color;
+uniform vec4 midColor : source_color;
+uniform vec4 highColor : source_color;
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	vec4 grayscaleTexture = textureLod(grayscaleImage, UV, 0.0);
+	float grayscaleValue = grayscaleTexture.r;
+	float alphaValue = grayscaleTexture.a;
+	
+	vec4 color = mix(lowColor, midColor, grayscaleValue);
+	color = mix(color, highColor, pow(grayscaleValue, 1.0));
+	
+	color.a *= alphaValue;
+	
+	COLOR = color;
+	
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rpojx"]
+shader = SubResource("Shader_jiwk3")
+shader_parameter/grayscaleImage = ExtResource("2_bxb2f")
+shader_parameter/lowColor = Color(0, 0, 0, 1)
+shader_parameter/midColor = Color(0.0500001, 1, 0, 1)
+shader_parameter/highColor = Color(0, 0.88, 0.396, 1)
+
+[node name="MaterialSketches" type="Node2D"]
+
+[node name="ColorChange" type="Sprite2D" parent="."]
+material = ExtResource("1_vhhmc")
+texture = SubResource("GradientTexture2D_lc8wg")
+
+[node name="ColorChange2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rpojx")
+position = Vector2(79, 2)
+texture = SubResource("GradientTexture2D_lc8wg")
+
+[node name="ColorReplace" type="Sprite2D" parent="."]
+material = ExtResource("3_xdoli")
+position = Vector2(216, -27)
+scale = Vector2(2, 2)
+texture = ExtResource("4_lc8wg")
+hframes = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-200, -33)
+texture = ExtResource("5_rpojx")
+
+[node name="Catlectric" type="Sprite2D" parent="."]
+material = ExtResource("6_aklwg")
+position = Vector2(-370, -99)
+texture = SubResource("GradientTexture2D_lc8wg")

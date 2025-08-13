@@ -11,8 +11,6 @@ var notification_queue : Array
 func _ready() -> void:
 	panel_container.visible = false
 	animation_player.animation_finished.connect( notification_animation_finished )
-	
-	
 
 
 func add_notification_to_queue( _title : String, _message : String ) -> void:
@@ -28,6 +26,7 @@ func add_notification_to_queue( _title : String, _message : String ) -> void:
 
 func display_notification() -> void:
 	var _n = notification_queue.pop_front()
+	print("notification: ", _n)
 	if _n == null:
 		return
 	title_label.text = _n.title

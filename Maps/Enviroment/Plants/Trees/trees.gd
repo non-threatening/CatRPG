@@ -55,7 +55,6 @@ func _change_sprite( file : String ):
 #
 func _set_random_color() -> void:
 	var color_range : float = fmod( randf_range( (150.0/360.0), 1.0 ) + 40.0/360.0, 1.0 )
-	print(color_range)
 	var color1 = Color.from_hsv(
 		color_range, 
 		randf_range( 0.8, 1.0 ), 
@@ -77,7 +76,6 @@ func _set_random_motion_amount() -> void:
 	var x = randf_range( 6.0, 9.0 )
 	var y = randf_range( 500, 900.0 )
 	var z = randf_range( 0.4, 0.6 )
-	print("x: ", x, " y: ", y, " z: ", z)
 	sprite.material.set_shader_parameter( "amplitude", x )
 	sprite.material.set_shader_parameter( "frequency", y )
 	sprite.material.set_shader_parameter( "speed", z)

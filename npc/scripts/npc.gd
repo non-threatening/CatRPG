@@ -9,6 +9,8 @@ var direction : Vector2 = Vector2.DOWN
 var direction_name : String = "down"
 var do_behavior : bool = true
 
+@export var h_frames : int = 3 : set = _set_h_frames
+
 @export var npc_resource : NPCResource : set = _set_npc_resourse
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -17,6 +19,7 @@ var do_behavior : bool = true
 
 func _ready() -> void:
 	setup_npc()
+	sprite.hframes = h_frames
 	if Engine.is_editor_hint():
 		return
 	gather_interactables()
@@ -78,7 +81,6 @@ func update_direction_name() -> void:
 		direction_name = "side"
 	
 
-	
 
 func setup_npc() -> void:
 	if npc_resource:
@@ -87,10 +89,15 @@ func setup_npc() -> void:
 	pass
 
 
-
 func _set_npc_resourse( _npc : NPCResource ) -> void:
 	npc_resource = _npc
 	setup_npc()
+	
+	
+func _set_h_frames( value : int ) -> void:
+	h_frames = value
+	sprite.hframes = h_frames
+	pass
 
 
 

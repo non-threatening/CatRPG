@@ -146,7 +146,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.14902)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -19)
 texture = ExtResource("2_nhy3c")
-hframes = 15
+hframes = 3
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0.0980392, 0.0509804, 0.458824, 0.537255)
