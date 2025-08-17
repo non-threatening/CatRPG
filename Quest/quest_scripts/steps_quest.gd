@@ -16,33 +16,30 @@ var amount_in_inventory: int = 0
 
 
 func update(_args: Dictionary = {}) -> void:
-	## Step 1
-	amount_in_inventory = get_item_quantity( quest_item )
+	
+	## Step 1: When we have it
+	amount_in_inventory = Shortcuts.get_item_quantity( quest_item )
 	if amount_in_inventory >= needed_amount:
 		if step_list[0].meets_condition() == true:
 			gimpsuit_got = true
+	else:
+		return
 	
-	## Step 2
+	## Step 2: After it's been given
 	if step_list[0].completed == true:
-		if gimpsuit_given == true:
-			PlayerManager.INVETORY_DATA.use_item( quest_item, needed_amount )
-
+		if gimpsuit_given == true:	##in dialogue
+			if step_list[1].meets_condition() == true:
+				PlayerManager.INVETORY_DATA.use_item( quest_item, needed_amount )
+				Shortcuts.complete_quest( "steps_quest" )
+	else:
+		return
+		
 	updated.emit()
-
-
 
 
 func complete(_args: Dictionary = {}) -> void:
 	##TODO: Reward system for items, xp
 	#PlayerManager.INVETORY_DATA.use_item( quest_item, needed_amount )
-	print("COMPLETED")
-	completed.emit()
+	print("COMPLETED in .gd")
+	#completed.emit()
 	pass
-
-	
-func get_item_quantity( item : ItemData) -> int:
-	return PlayerManager.INVETORY_DATA.get_item_held_quantity( item )
-	
-#func give_gimpsuit() -> void:
-	#print("give the gimp")
-	#PlayerManager.INVETORY_DATA.use_item( quest_item, needed_amount )

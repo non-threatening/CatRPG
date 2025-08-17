@@ -1,6 +1,7 @@
 class_name InventoryData extends Resource
 
-signal equipment_changed 
+signal equipment_changed
+signal item_added_to_inventory
 
 @export var slots : Array[ SlotData ]
 var equipment_slot_count : int = 4
@@ -25,8 +26,9 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 		if s:
 			if s.item_data == item:
 				s.quantity += count
+				print("existing thing", item)
+				item_added_to_inventory.emit()
 				return true
-	
 	for i in inventory_slots().size():
 		if slots[ i ] == null:
 			var new = SlotData.new()
@@ -34,8 +36,9 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 			new.quantity = count
 			slots[ i ] = new
 			new.changed.connect( slot_changed )
+			item_added_to_inventory.emit()
+			print("new thing")	
 			return true
-			
 	print( "inventory was full ;(" )
 	return false
 
@@ -45,7 +48,7 @@ func connect_slots() -> void:
 	for s in slots:
 		if s:
 			s.changed.connect( slot_changed )
-			
+			print("connect_slots")
 			
 func slot_changed():
 	for s in slots:

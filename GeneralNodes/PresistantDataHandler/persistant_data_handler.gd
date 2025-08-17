@@ -26,5 +26,4 @@ func remove_value() -> void:
 	
 
 func _get_name() -> String:
-	## e.g. "res://levels/area01/01.tscn" + /treasure_chest/PersistantDataHandler
 	return get_tree().current_scene.scene_file_path + "/" + get_parent().name + "/" + name

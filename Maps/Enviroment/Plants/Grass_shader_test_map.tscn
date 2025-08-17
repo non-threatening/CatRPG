@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=26 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="1_kc5b1"]
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_sq0g3"]
@@ -13,15 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="10_7lr6h"]
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="11_jafpe"]
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="12_nut02"]
+[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="13_t5npb"]
 [ext_resource type="Texture2D" uid="uid://bu6gnfb43tsgq" path="res://Player/BirdFriend/sprites/Crow_384x148.png" id="13_yfni2"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="14_6wye2"]
 [ext_resource type="Shader" uid="uid://btj07hvby1q3q" path="res://materials/color_replace/color_replace.gdshader" id="14_xnmyp"]
 [ext_resource type="PackedScene" uid="uid://dajuqkayd03fp" path="res://npc/npc.tscn" id="16_crvoo"]
 [ext_resource type="Texture2D" uid="uid://dbvgg5qwy3w25" path="res://npc/sprites/portraits/portrait_placeholder.png" id="17_nut02"]
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="18_t5npb"]
-[ext_resource type="Resource" uid="uid://3358n637v4ks" path="res://Dialogue/Conversations/get_gems_quest.dialogue" id="19_crvoo"]
 [ext_resource type="Resource" uid="uid://cwppo2fvp6tr7" path="res://Dialogue/Conversations/StepedQuest.dialogue" id="20_xnmyp"]
-[ext_resource type="Shader" uid="uid://b2o32xd6mdvfk" path="res://materials/shadow_electric.gdshader" id="21_t5npb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yfni2"]
 shader = ExtResource("6_jafpe")
@@ -45,33 +44,6 @@ metadata/_custom_type_script = "uid://bmpteubp4v57k"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjts2"]
 radius = 64.0312
-
-[sub_resource type="Gradient" id="Gradient_xnmyp"]
-offsets = PackedFloat32Array(0, 0.708154)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cwgr4"]
-noise_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q5fwb"]
-color_ramp = SubResource("Gradient_xnmyp")
-noise = SubResource("FastNoiseLite_cwgr4")
-
-[sub_resource type="Gradient" id="Gradient_5k6dy"]
-offsets = PackedFloat32Array(0.145923, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_716o7"]
-frequency = 0.0296
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_insof"]
-color_ramp = SubResource("Gradient_5k6dy")
-noise = SubResource("FastNoiseLite_716o7")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8q7qm"]
-shader = ExtResource("21_t5npb")
-shader_parameter/noise = SubResource("NoiseTexture2D_q5fwb")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_insof")
-shader_parameter/brightness = 2.5
-shader_parameter/time_scale = 0.25
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -263,6 +235,8 @@ item_data = ExtResource("11_jafpe")
 position = Vector2(707, 509)
 item_data = ExtResource("12_nut02")
 
+[node name="PersistantDataHandler" parent="ItemPickup2" instance=ExtResource("13_t5npb")]
+
 [node name="Trees" parent="." instance=ExtResource("7_i0vpj")]
 material = SubResource("ShaderMaterial_cwgr4")
 position = Vector2(668, 436)
@@ -283,22 +257,3 @@ dialogue_resource = ExtResource("20_xnmyp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2/Actionable"]
 shape = SubResource("CircleShape2D_xjts2")
-
-[node name="Npc3" parent="." instance=ExtResource("16_crvoo")]
-position = Vector2(213, 633)
-npc_resource = SubResource("Resource_cwgr4")
-
-[node name="Actionable" parent="Npc3" instance=ExtResource("14_6wye2")]
-position = Vector2(1, -2)
-dialogue_resource = ExtResource("19_crvoo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc3/Actionable"]
-shape = SubResource("CircleShape2D_xjts2")
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_8q7qm")
-offset_left = 881.0
-offset_top = 272.0
-offset_right = 1256.0
-offset_bottom = 554.0
-color = Color(0.43, 0.829, 1, 1)

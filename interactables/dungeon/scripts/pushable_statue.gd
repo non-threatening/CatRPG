@@ -32,8 +32,8 @@ func _physics_process( _delta: float ) -> void:
 			on_target = true
 			persistant_data_handler.set_value()
 		elif ( x_is_on == false or y_is_on == false ) and on_target == true:
-			on_target = false
 			persistant_data_handler.remove_value()
+			on_target = false
 		pass
 	pass
 

@@ -126,6 +126,11 @@ func get_available_quests() -> Array[Quest]:
 ## Returns all the active quests (quests in the active pool)
 func get_active_quests() -> Array[Quest]:
 	return active.get_all_quests()
+	
+
+func get_completed_quests() -> Array[Quest]:
+	print("trifged")
+	return completed.get_all_quests()
 
 
 ## Returns true if the given quest is inside the available pool,

@@ -7,6 +7,7 @@ const LIST_SUMMARY : PackedScene = preload( "res://GUI/pause_menu/quest/list_sum
 @onready var quest_list_container: VBoxContainer = $ScrollContainer2/QuestList/VBoxContainer
 
 
+
 func _ready() -> void:
 	clear_quest_details()	
 	visibility_changed.connect( _on_visible_changed )
@@ -29,6 +30,16 @@ func _on_visible_changed() -> void:
 			new_q_item.initialize( q.quest_objective, q.quest_description )
 			
 			new_q_item.focus_entered.connect( update_quest_details.bind( q.step_list ) )
+		
+		
+		var completed_quests = QuestSystem.get_completed_quests()
+		print("comp ",completed_quests)
+		for cq: Quest in completed_quests:
+			print("cq ", cq)
+			var new_cq_item : QuestSummary = QUEST_SUMMARY.instantiate()
+			quest_item_container.add_child( new_cq_item )
+			new_cq_item.initialize( cq.quest_objective, cq.quest_description )
+
 
 
 func update_quest_details( thing ) -> void:

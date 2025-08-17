@@ -1,14 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0u3mmda127cd"]
+[gd_scene load_steps=7 format=3 uid="uid://c0u3mmda127cd"]
 
 [ext_resource type="Script" uid="uid://bm4oe7er3ffwr" path="res://Dialogue/SpeachBubbles/speach_bubble.gd" id="1_suubk"]
-[ext_resource type="Theme" uid="uid://cjkxhlwvtqyqh" path="res://GUI/dialog_system_old/theme_dialog_choice.tres" id="2_tr0jp"]
+[ext_resource type="Theme" uid="uid://bpsv0tvfru4e2" path="res://Dialogue/SpeachBubbles/speach_bubble.tres" id="2_suubk"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_l6g6q"]
+[ext_resource type="Texture2D" uid="uid://b8mukr7afp5o4" path="res://Dialogue/SpeachBubbles/blured_panel_white.png" id="3_tr0jp"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_t1jep"]
+[ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeachBubbles/portraits/cat.png" id="6_l6g6q"]
 
 [node name="SpeachBubble" type="CanvasLayer"]
 process_mode = 3
 layer = 100
 script = ExtResource("1_suubk")
+
+[node name="Portrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 250)
+offset_left = 312.0
+offset_top = 224.0
+offset_right = 562.0
+offset_bottom = 474.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_l6g6q")
 
 [node name="Bubble" type="Control" parent="."]
 unique_name_in_owner = true
@@ -20,7 +32,7 @@ offset_left = 1.0
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_tr0jp")
+theme = ExtResource("2_suubk")
 
 [node name="MarginContainer" type="MarginContainer" parent="Bubble"]
 layout_mode = 1
@@ -28,20 +40,25 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 122.0
-offset_top = -292.0
-offset_right = -122.0
-offset_bottom = -73.0
+offset_left = 255.0
+offset_top = -372.0
+offset_right = -257.0
+offset_bottom = -95.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="Bubble/MarginContainer"]
+[node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer"]
+self_modulate = Color(0, 0, 0, 0.870588)
 clip_children = 2
 layout_mode = 2
-mouse_filter = 1
+texture = ExtResource("3_tr0jp")
 
 [node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer"]
 layout_mode = 2
+offset_left = 80.0
+offset_top = 44.0
+offset_right = 704.0
+offset_bottom = 200.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2

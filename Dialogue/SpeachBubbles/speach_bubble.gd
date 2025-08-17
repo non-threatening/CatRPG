@@ -7,6 +7,11 @@ extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
+@onready var panel_container: TextureRect = $Bubble/MarginContainer/PanelContainer
+
+@onready var portrait: TextureRect = %Portrait
+
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -52,6 +57,10 @@ var mutation_cooldown: Timer = Timer.new()
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
 
+@onready var margin_container: MarginContainer = $Bubble/MarginContainer
+
+
+
 func _ready() -> void:
 	bubble.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
@@ -66,7 +75,6 @@ func _ready() -> void:
 	## pause / unpause
 	get_tree().paused = true
 	DialogueManager.dialogue_ended.connect( _unpause )
-
 
 func _unpause( _t ) -> void:
 	get_tree().paused = false
@@ -94,8 +102,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
-	
-
+	  
 
 ## Apply any changes to the bubble given a new [DialogueLine].
 func apply_dialogue_line() -> void:
@@ -107,6 +114,32 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+
+
+	var portrait_path : String = "res://Dialogue/SpeachBubbles/portraits/%s.png" % dialogue_line.character.to_lower()
+	print( "pp ", portrait_path )
+	if ResourceLoader.exists( portrait_path ):
+		portrait.texture = load( portrait_path )
+	else:
+		portrait.texture = null
+
+
+	if not dialogue_line.character.to_lower() == "narrator":
+		margin_container.position.y = 428
+		%DialogueLabel.horizontal_alignment = 0
+	match dialogue_line.character.to_lower():
+		"narrator":
+			margin_container.position.y = 128
+			character_label.text = ""
+			%DialogueLabel.horizontal_alignment = 1
+		"cat":
+			print("Cat")
+		"bird friend":
+			print("BF")
+		_:
+			pass
+
+
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

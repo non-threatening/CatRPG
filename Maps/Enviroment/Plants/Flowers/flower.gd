@@ -27,6 +27,7 @@ func _get_pngs():
 		var file_name = dir.get_next()
 		while file_name != "":
 ##TODO: wierd work around to get pngs to load in exported game
+			#if ResourceLoader.exists(file_name.get_extension() == "png"):
 			if (file_name.get_extension() == "import"):
 				file_name = file_name.replace('.import', '')
 				images.append( file_name )

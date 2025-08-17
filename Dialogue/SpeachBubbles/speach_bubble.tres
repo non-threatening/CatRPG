@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cjkxhlwvtqyqh"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bpsv0tvfru4e2"]
 
-[ext_resource type="FontFile" uid="uid://cta00yqut7wdq" path="res://GUI/fonts/FtCairove-aYEjg.otf" id="1_01dym"]
+[ext_resource type="StyleBox" uid="uid://d1wbkvmemp48" path="res://Dialogue/SpeachBubbles/style_box_speach_bubble.tres" id="1_j64s0"]
+[ext_resource type="FontFile" uid="uid://cta00yqut7wdq" path="res://GUI/fonts/FtCairove-aYEjg.otf" id="1_vv877"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xww3l"]
 content_margin_top = 3.0
@@ -48,9 +49,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtbja"]
-bg_color = Color(0.503535, 0.572908, 0.910979, 1)
-
 [resource]
 Button/colors/font_color = Color(0.796967, 0.892724, 0.94664, 1)
 Button/colors/font_focus_color = Color(0.646, 0.838533, 0.95, 1)
@@ -63,10 +61,10 @@ Button/styles/pressed = SubResource("StyleBoxFlat_bki1q")
 Label/colors/font_outline_color = Color(0.475803, 0.406988, 0, 1)
 Label/constants/outline_size = 5
 Label/font_sizes/font_size = 64
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_gtbja")
+PanelContainer/styles/panel = ExtResource("1_j64s0")
 RichTextLabel/font_sizes/bold_font_size = 48
 RichTextLabel/font_sizes/normal_font_size = 32
-RichTextLabel/fonts/bold_font = ExtResource("1_01dym")
-RichTextLabel/fonts/bold_italics_font = ExtResource("1_01dym")
-RichTextLabel/fonts/italics_font = ExtResource("1_01dym")
+RichTextLabel/fonts/bold_font = ExtResource("1_vv877")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_vv877")
+RichTextLabel/fonts/italics_font = ExtResource("1_vv877")
 VBoxContainer/constants/separation = 10

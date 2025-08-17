@@ -1,8 +1,7 @@
 class_name QuestSummary extends Button
 	
-
-@onready var title_label: Label = $TitleLabel
-@onready var description_label: Label = $DescriptionLabel
+@onready var title_label: Label = $VBoxContainer/TitleLabel
+@onready var description_label: RichTextLabel = $VBoxContainer/DescriptionLabel
 
 
 func initialize( objective : String, description : String ) -> void:

@@ -21,8 +21,8 @@ var current_save : Dictionary = {
 	},
 	items = [],
 	persistance = [],
-	quests = [ #{ title = "not found ", is_complete = false, completed_steps = ['']  } 
-	],
+	#quests = [ #{ title = "not found ", is_complete = false, completed_steps = ['']  } 
+	#],
 	quest_data = [],
 	pool_state = []
 }

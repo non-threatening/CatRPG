@@ -16,7 +16,7 @@ func complete_quest(quest_name: String) -> void:
 
 func update_quest(quest_name: String) -> void:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)
-	PlayerHud.queue_notification( "Updating Quest", quest_name )
+	#PlayerHud.queue_notification( "Updating Quest", quest_name )
 	if quest == null: return
 	QuestSystem.update_quest(quest)
 
@@ -33,3 +33,6 @@ func is_quest_active(quest_name: String) -> bool:
 	
 func get_quest_property(id: int, quest_property: String) -> Variant:
 	return QuestSystem.get_quest_property(id, quest_property)
+	
+func get_item_quantity( item : ItemData) -> int:
+	return PlayerManager.INVETORY_DATA.get_item_held_quantity( item )

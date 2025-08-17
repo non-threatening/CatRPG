@@ -8,4 +8,4 @@ const Bubble = preload("res://Dialogue/SpeachBubbles/speach_bubble.tscn")
 func action() -> void:
 	var bubble: Node = Bubble.instantiate()
 	get_tree().current_scene.add_child(bubble)
-	bubble.start(dialogue_resource, dialogue_start)
+	bubble.start( dialogue_resource, dialogue_start )

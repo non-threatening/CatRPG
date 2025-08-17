@@ -20,7 +20,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	interact_area.area_entered.connect( _on_area_enter )
-	interact_area.area_exited.connect( _on_area_exit )
+	interact_area.area_exited.disconnect( _on_area_exit )
 	persistant_data_is_open.data_loaded.connect( set_chest_state )
 	set_chest_state()
 	pass
@@ -32,9 +32,6 @@ func set_chest_state() -> void:
 		animation_player.play("opened")
 	else:
 		animation_player.play("closed")
-
-
-
 
 
 func player_interact() -> void:
@@ -50,6 +47,7 @@ func player_interact() -> void:
 		push_error("No Items: ", name)
 	pass
 
+
 func _on_area_enter( _a : Area2D ) -> void:
 	PlayerManager.interact_pressed.connect( player_interact )
 	pass
@@ -58,7 +56,6 @@ func _on_area_enter( _a : Area2D ) -> void:
 func _on_area_exit( _a : int ) -> void:
 	PlayerManager.interact_pressed.disconnect( player_interact )
 	pass
-
 
 
 func _set_item_data( value : ItemData ) -> void:
@@ -71,8 +68,6 @@ func _set_quantity( value : int ) -> void:
 	quantity = value
 	_update_label()
 	pass
-	
-	
 	
 	
 func _update_texture() -> void:

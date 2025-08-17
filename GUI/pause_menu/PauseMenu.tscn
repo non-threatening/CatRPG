@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=27 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="Shader" uid="uid://dijfe1uuswhgp" path="res://GUI/pause_menu/blinker.gdshader" id="3_3yxpl"]
@@ -12,10 +12,8 @@
 [ext_resource type="Script" uid="uid://d3avo2oc26t6w" path="res://GUI/pause_menu/inventory/scripts/gear_item_button.gd" id="6_320ax"]
 [ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="6_hio0w"]
 [ext_resource type="Texture2D" uid="uid://c0ryvmifyacll" path="res://Items/sprites/gear.png" id="8_mnpje"]
-[ext_resource type="Script" uid="uid://d1slohvycmh0m" path="res://GUI/pause_menu/quests_ui.gd" id="8_rlqlv"]
-[ext_resource type="PackedScene" uid="uid://fumnr0rdrlri" path="res://GUI/pause_menu/quests/quest_item.tscn" id="8_uh56w"]
 [ext_resource type="PackedScene" uid="uid://dm0ac3qyce012" path="res://GUI/pause_menu/stats/stats.tscn" id="8_vbpxr"]
-[ext_resource type="PackedScene" uid="uid://dv5cvhdkwibjq" path="res://GUI/pause_menu/quests/quest_step_item.tscn" id="11_ybaie"]
+[ext_resource type="Texture2D" uid="uid://b1ijog8w1q21f" path="res://Dialogue/SpeachBubbles/blured_panel.png" id="12_3yxpl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtmg6"]
 shader = ExtResource("3_3yxpl")
@@ -113,59 +111,12 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
-
-[node name="Quest" type="Control" parent="Control/TabContainer"]
-layout_mode = 2
-script = ExtResource("4_3yxpl")
-metadata/_tab_index = 0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quest"]
-layout_mode = 0
-offset_left = 62.0
-offset_top = 72.0
-offset_right = 526.0
-offset_bottom = 547.0
-follow_focus = true
-scroll_vertical_custom_step = 100.0
-horizontal_scroll_mode = 0
-
-[node name="QuestList" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer"]
-custom_minimum_size = Vector2(450, 384)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList"]
-custom_minimum_size = Vector2(448, 0)
-layout_mode = 2
-
-[node name="QuestSummary" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer" instance=ExtResource("5_hio0w")]
-layout_mode = 2
-
-[node name="ScrollContainer2" type="ScrollContainer" parent="Control/TabContainer/Quest"]
-layout_mode = 0
-offset_left = 628.0
-offset_top = 69.0
-offset_right = 1092.0
-offset_bottom = 544.0
-follow_focus = true
-scroll_vertical_custom_step = 100.0
-horizontal_scroll_mode = 0
-
-[node name="QuestList" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer2"]
-custom_minimum_size = Vector2(450, 384)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList"]
-custom_minimum_size = Vector2(448, 0)
-layout_mode = 2
-
-[node name="ListSummary" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
-layout_mode = 2
+current_tab = 1
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 0
 
 [node name="Ability Container" type="PanelContainer" parent="Control/TabContainer/Inventory"]
 layout_mode = 0
@@ -417,83 +368,68 @@ text = "ITEM DESCRIPTION"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Quests" type="Control" parent="Control/TabContainer"]
-visible = false
+[node name="Quest" type="Control" parent="Control/TabContainer"]
 layout_mode = 2
-script = ExtResource("8_rlqlv")
-metadata/_tab_index = 2
+script = ExtResource("4_3yxpl")
+metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quests"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quest"]
 layout_mode = 0
 offset_left = 62.0
 offset_top = 72.0
 offset_right = 526.0
-offset_bottom = 456.0
+offset_bottom = 547.0
 follow_focus = true
 scroll_vertical_custom_step = 100.0
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/TabContainer/Quests/ScrollContainer"]
+[node name="QuestList" type="TextureRect" parent="Control/TabContainer/Quest/ScrollContainer"]
+custom_minimum_size = Vector2(450, 384)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_3yxpl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList"]
+custom_minimum_size = Vector2(448, 0)
+layout_mode = 2
+offset_right = 450.0
+offset_bottom = 384.0
+theme_override_constants/separation = 24
+
+[node name="QuestSummary" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer" instance=ExtResource("5_hio0w")]
+layout_mode = 2
+
+[node name="QuestSummary2" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer" instance=ExtResource("5_hio0w")]
+layout_mode = 2
+
+[node name="QuestSummary3" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer" instance=ExtResource("5_hio0w")]
+layout_mode = 2
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Control/TabContainer/Quest"]
+layout_mode = 0
+offset_left = 628.0
+offset_top = 69.0
+offset_right = 1092.0
+offset_bottom = 544.0
+follow_focus = true
+scroll_vertical_custom_step = 100.0
+horizontal_scroll_mode = 0
+
+[node name="QuestList" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer2"]
 custom_minimum_size = Vector2(450, 384)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList"]
 custom_minimum_size = Vector2(448, 0)
 layout_mode = 2
 
-[node name="QuestItem" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("8_uh56w")]
-custom_minimum_size = Vector2(280, 80)
-layout_mode = 2
-
-[node name="QuestItem2" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("8_uh56w")]
-custom_minimum_size = Vector2(280, 80)
-layout_mode = 2
-
-[node name="QuestItem3" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("8_uh56w")]
-custom_minimum_size = Vector2(280, 80)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quests"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 1
-offset_left = 630.0
-offset_top = 72.0
-offset_right = 1062.0
-offset_bottom = 452.0
-theme_override_constants/separation = 5
-
-[node name="TitleLabel" type="Label" parent="Control/TabContainer/Quests/VBoxContainer"]
-custom_minimum_size = Vector2(350, 10)
-layout_mode = 2
-text = "Quest2 Title"
-autowrap_mode = 2
-
-[node name="DescriptionLabel" type="Label" parent="Control/TabContainer/Quests/VBoxContainer"]
-modulate = Color(1, 1, 1, 0.666)
-custom_minimum_size = Vector2(350, 10)
-layout_mode = 2
-text = "quest description"
-autowrap_mode = 2
-
-[node name="QuestStepItem" parent="Control/TabContainer/Quests/VBoxContainer" instance=ExtResource("11_ybaie")]
-layout_mode = 2
-
-[node name="QuestStepItem2" parent="Control/TabContainer/Quests/VBoxContainer" instance=ExtResource("11_ybaie")]
-layout_mode = 2
-
-[node name="QuestStepItem3" parent="Control/TabContainer/Quests/VBoxContainer" instance=ExtResource("11_ybaie")]
-layout_mode = 2
-
-[node name="QuestStepItem4" parent="Control/TabContainer/Quests/VBoxContainer" instance=ExtResource("11_ybaie")]
-layout_mode = 2
-
-[node name="QuestStepItem5" parent="Control/TabContainer/Quests/VBoxContainer" instance=ExtResource("11_ybaie")]
+[node name="ListSummary" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
 layout_mode = 2
 
 [node name="System" type="Control" parent="Control/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/System"]
 layout_mode = 1

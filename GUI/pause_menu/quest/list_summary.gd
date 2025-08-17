@@ -2,15 +2,20 @@ class_name ListSummary extends Button
 
 var quest : Quest
 
-@onready var title_label: Label = $TitleLabel
+@onready var title_label: RichTextLabel = $TitleLabel
 
 
 func initialize( objective : String, completed : bool ) -> void:
-	title_label.text = objective
+	
+	var s : String = "[s]"
+	
+	
 	if completed == false:
+		title_label.text = objective
 		title_label.modulate.a = 1.0
 	else:
-		title_label.modulate.a = 0.2
+		title_label.text = s + objective + s
+		title_label.modulate.a = 0.666
 		 
 	#if q_state.is_complete:
 		#description_label.text = "Complete"

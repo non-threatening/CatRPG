@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cdg71unoleefe"]
+
+[ext_resource type="Shader" uid="uid://h3o53wd5hdq3" path="res://materials/panel_blur.gdshader" id="1_44npf"]
+
+[resource]
+shader = ExtResource("1_44npf")
+shader_parameter/radius = 0.15
+shader_parameter/softness = 0.38
+shader_parameter/intensity = 2.0
+shader_parameter/contrast = 2.2
+shader_parameter/vignette_color = Color(1, 1, 1, 1)

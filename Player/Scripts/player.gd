@@ -51,11 +51,18 @@ func _ready() -> void:
 	update_damage_values()
 	PlayerManager.player_leveled_up.connect( _on_player_leveled_up )
 	PlayerManager.INVETORY_DATA.equipment_changed.connect( _on_equipment_changed )
-	#PlayerManager.player_leveled_up.connect( update_damage_values )
+	PlayerManager.INVETORY_DATA.item_added_to_inventory.connect( _item_added )
 	pass
 
 var wait_time: float = 1.0
 var time: float = 0.0
+
+
+func _item_added() -> void:
+	var quests = QuestSystem.get_active_quests()
+	for q: Quest in quests:
+		if q.quest_name:
+			Shortcuts.update_quest( q.quest_name )
 
 
 func _process( _delta: float ) -> void:
