@@ -62,7 +62,7 @@ func serialize() -> Dictionary:
 func deserialize(data: Dictionary) -> void:
 	if "steps" in data.keys():
 		for step in data.steps:
-			steps[step].deserialize(data.steps[step])
+			steps[ int(step) ].deserialize(data.steps[step])
 	data.erase("steps")
 	for key in data.keys():
 		set(key, data[key])

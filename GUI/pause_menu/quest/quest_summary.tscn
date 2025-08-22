@@ -4,10 +4,9 @@
 [ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://GUI/pause_menu/PauseMenuControl_theme.tres" id="1_xgsjx"]
 
 [node name="QuestSummary" type="Button"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(280, 80)
-offset_right = 440.0
-offset_bottom = 128.0
+custom_minimum_size = Vector2(280, 110)
+offset_right = 432.0
+offset_bottom = 100.0
 size_flags_horizontal = 3
 theme = ExtResource("1_xgsjx")
 script = ExtResource("1_7tgkt")
@@ -20,16 +19,19 @@ offset_right = 448.0
 offset_bottom = 121.0
 theme_override_constants/separation = 6
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+[node name="TitleLabel" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
 text = "Quest2 Title"
-clip_text = true
-text_overrun_behavior = 3
+fit_content = true
+scroll_active = false
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="VBoxContainer"]
 visibility_layer = 257
 custom_minimum_size = Vector2(432, 0)
 layout_mode = 2
+bbcode_enabled = true
 text = "quest. the description of the quest. the description of the quest. the description of the quest. 
 "
 fit_content = true

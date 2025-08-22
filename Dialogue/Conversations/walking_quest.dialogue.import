@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dwyai16xaes5c"
+path="res://.godot/imported/walking_quest.dialogue-2f844b52cb3f55340cd8b31593a45d19.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/walking_quest.dialogue"
+dest_files=["res://.godot/imported/walking_quest.dialogue-2f844b52cb3f55340cd8b31593a45d19.tres"]
+
+[params]
+
+defaults=true

@@ -1,15 +1,15 @@
 class_name InventorySlotUI extends Button
 
-
 var slot_data : SlotData : set = set_slot_data
 var click_pos : Vector2 = Vector2.ZERO
 var dragging : bool = false
 var drag_texture : Control
 var drag_threshold : float = 32.0
 
+@onready var inventory_slot: InventorySlotUI = $"."
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var label: Label = $Label
-
+@onready var label_2: Label = $Label2
 
 
 func _ready() -> void:
@@ -35,10 +35,12 @@ func _process( _delta: float ) -> void:
 func set_slot_data( value: SlotData ) -> void:
 	slot_data = value
 	if slot_data == null:
-		texture_rect.texture = null
-		label.text = ""
+		inventory_slot.hide()
 		return
+	inventory_slot.show()	
 	texture_rect.texture = slot_data.item_data.texture
+	label_2.text = slot_data.item_data.name
+	print(slot_data.item_data.name)
 	
 	if slot_data.item_data is EquipableItemData:
 		label.text = ""
@@ -49,17 +51,12 @@ func set_slot_data( value: SlotData ) -> void:
 
 func item_focused() -> void:
 	PauseMenu.focused_item_changed( slot_data )
-	#if slot_data != null:
-		#if slot_data.item_data != null:
-			#PauseMenu.update_item_description( slot_data.item_data.description )
-	pass
+
 	
 func item_unfocused() -> void:
 	PauseMenu.update_item_description( "" )
-	pass
 	
 	
-
 func item_pressed() -> void:
 	if slot_data and outside_drag_threshold() == false:
 		if slot_data.item_data:
@@ -87,15 +84,12 @@ func on_button_down() -> void:
 	drag_texture.z_index = 10
 	drag_texture.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child( drag_texture )
-	#drag_texture.modulate = Color.RED
-	pass
 	
 	
 func on_button_up() -> void:
 	dragging = false
 	if drag_texture:
 		drag_texture.free()
-	pass
 
 
 func outside_drag_threshold() -> bool:

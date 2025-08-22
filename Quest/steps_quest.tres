@@ -1,20 +1,8 @@
-[gd_resource type="Resource" script_class="StepsQuest" load_steps=6 format=3 uid="uid://dcrh3vi1npayn"]
+[gd_resource type="Resource" script_class="StepsQuest" load_steps=4 format=3 uid="uid://dcrh3vi1npayn"]
 
 [ext_resource type="Script" uid="uid://bg1xfpds23ws2" path="res://Quest/quest_scripts/steps_quest.gd" id="2_qwtcv"]
 [ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quest/scripts/quest_step.gd" id="3_5eyy4"]
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="3_hkd18"]
-
-[sub_resource type="Resource" id="Resource_5eyy4"]
-script = ExtResource("3_5eyy4")
-title = "get the gimp suit"
-completed = false
-metadata/_custom_type_script = "uid://cvm36y7b4aids"
-
-[sub_resource type="Resource" id="Resource_qyfai"]
-script = ExtResource("3_5eyy4")
-title = "give the gimpsuit"
-completed = false
-metadata/_custom_type_script = "uid://cvm36y7b4aids"
 
 [resource]
 script = ExtResource("2_qwtcv")
@@ -22,9 +10,9 @@ needed_amount = 1
 quest_item = ExtResource("3_hkd18")
 gimpsuit_got = false
 gimpsuit_given = false
-step_list = Array[ExtResource("3_5eyy4")]([SubResource("Resource_5eyy4"), SubResource("Resource_qyfai")])
+steps = Array[ExtResource("3_5eyy4")]([])
 id = 100
 quest_name = "steps_quest"
 quest_description = "Get a second hand gimp suit for that weird guy."
-quest_objective = "give 'gimp suit to guy"
+quest_objective = "Give gimp suit to guy"
 metadata/_custom_type_script = "uid://d20o527a4y4ee"

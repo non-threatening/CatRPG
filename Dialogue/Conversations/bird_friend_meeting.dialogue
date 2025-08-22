@@ -1,0 +1,14 @@
+~ start
+Bird Friend: [[Hi|Hello|Howdy]], this is some dialogue. [#happy]
+Cat: Hi [#happy]
+Cat: Wooooooooooooo
+Bird Friend: I've lost my second hand Gimp Suit. Could you look around for a one. [#happy]
+- Totaly, I <3 second hand gimp suits.
+	do Shortcuts.start_quest("a_gimp_suit_for_bird_friend") 
+	Bird Friend: nice.
+- Suck it ass taster
+	Bird Friend: I am your father.
+
+- End the conversation => END
+Narrator: For more information see the online documentation.
+=> END

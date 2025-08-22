@@ -77,14 +77,9 @@ func load_game() -> void:
 			quests.append(quest_resource)
 		QuestSystem.restore_pool_state_from_dict(current_save["pool_state"], quests)
 		QuestSystem.deserialize_quests(current_save["quest_data"])
-	
-	
-	
-	
+		
 	await  LevelManager.level_loaded
-	
 	game_loaded.emit()
-	
 	pass
 
 
@@ -107,46 +102,32 @@ func update_scene_path() -> void:
 		if c is Level :
 			p = c.scene_file_path
 	current_save.scene_path = p
-	
-	
+
+
 func update_item_data() -> void:
 	current_save.items = PlayerManager.INVETORY_DATA.get_save_data()
-	
+
 
 func update_quest_data() -> void:
 	var quest_data = QuestSystem.serialize_quests("Active")
 	var pool_state = QuestSystem.pool_state_as_dict()
 	current_save.quest_data = quest_data 
 	current_save.pool_state = pool_state
-	
 
-	
+
 func add_persistant_value( value : String ) -> void:
 	if check_persistant_value( value ) == false:
 		current_save.persistance.append( value )
 	pass
-	
-	
+
+
 func remove_persistant_value( value : String ) -> void:
 	var p = current_save.persistance as Array
 	p.erase( value )
 	pass
-	
-	
+
+
 
 func check_persistant_value( value : String ) -> bool: # if persistant value exists, it's open
 	var p = current_save.persistance as Array
 	return p.has( value ) ## .has is a bool if exisits in Array
-
-
-
-
-
-
-
-
-
-
-
-	
-	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=26 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="Shader" uid="uid://dijfe1uuswhgp" path="res://GUI/pause_menu/blinker.gdshader" id="3_3yxpl"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="6_hio0w"]
 [ext_resource type="Texture2D" uid="uid://c0ryvmifyacll" path="res://Items/sprites/gear.png" id="8_mnpje"]
 [ext_resource type="PackedScene" uid="uid://dm0ac3qyce012" path="res://GUI/pause_menu/stats/stats.tscn" id="8_vbpxr"]
-[ext_resource type="Texture2D" uid="uid://b1ijog8w1q21f" path="res://Dialogue/SpeachBubbles/blured_panel.png" id="12_3yxpl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtmg6"]
 shader = ExtResource("3_3yxpl")
@@ -79,7 +78,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.26, 0, 0.00433327, 0.501961)
+color = Color(0.14, 0, 0.0023333, 0.556863)
 
 [node name="paused" type="Label" parent="Control"]
 material = SubResource("ShaderMaterial_gtmg6")
@@ -111,19 +110,18 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="Ability Container" type="PanelContainer" parent="Control/TabContainer/Inventory"]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 112.0
-offset_right = 276.0
-offset_bottom = 657.0
+offset_left = -228.0
+offset_top = 26.0
+offset_right = -80.0
+offset_bottom = 571.0
 
 [node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/Ability Container"]
 layout_mode = 2
@@ -213,172 +211,190 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "99"
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Inventory"]
-custom_minimum_size = Vector2(336, 268)
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Inventory"]
+custom_minimum_size = Vector2(340, 0)
 layout_mode = 0
-offset_left = 380.0
-offset_top = 112.0
-offset_right = 716.0
-offset_bottom = 380.0
+offset_left = 68.0
+offset_top = 85.0
+offset_right = 420.0
+offset_bottom = 485.0
 
-[node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Inventory/ScrollContainer"]
+custom_minimum_size = Vector2(336, 268)
 layout_mode = 2
-columns = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer"]
+layout_mode = 2
 script = ExtResource("4_mc7vq")
 data = ExtResource("5_408tb")
 
-[node name="InventorySlot" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot2" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot2" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot3" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot3" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot4" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot4" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot5" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot5" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot6" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot6" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot7" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot7" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot8" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot8" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot9" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot9" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot10" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot10" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot11" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot11" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot12" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot12" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot13" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot13" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot14" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot14" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot15" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot15" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot16" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot16" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot17" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot17" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot18" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot18" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot19" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot19" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="InventorySlot20" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot20" parent="Control/TabContainer/Inventory/ScrollContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_laftm")]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="Control/TabContainer/Inventory"]
 layout_mode = 0
-offset_left = 736.0
-offset_top = 340.0
-offset_right = 1280.0
-offset_bottom = 620.0
+offset_left = 764.0
+offset_top = 112.0
+offset_right = 1084.0
+offset_bottom = 544.0
 
-[node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/PanelContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Inventory/PanelContainer2"]
 layout_mode = 2
-columns = 4
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_3yxpl")
 stretch_mode = 3
 
-[node name="InventorySlot_Armor" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot_Armor" parent="Control/TabContainer/Inventory/PanelContainer2/VBoxContainer" instance=ExtResource("4_laftm")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+[node name="TextureRect5" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/VBoxContainer"]
 visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-stretch_mode = 3
-
-[node name="TextureRect5" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_gtmg6")
 stretch_mode = 3
 
-[node name="InventorySlot_Collar" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot_Collar" parent="Control/TabContainer/Inventory/PanelContainer2/VBoxContainer" instance=ExtResource("4_laftm")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureRect3" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_320ax")
 stretch_mode = 3
 
-[node name="InventorySlot_Weapon" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot_Weapon" parent="Control/TabContainer/Inventory/PanelContainer2/VBoxContainer" instance=ExtResource("4_laftm")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="TextureRect4" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
+[node name="TextureRect6" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/VBoxContainer"]
 visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-stretch_mode = 3
-
-[node name="TextureRect6" type="TextureRect" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_iygof")
 stretch_mode = 3
 
-[node name="InventorySlot_RFID_Chip" parent="Control/TabContainer/Inventory/PanelContainer2/GridContainer" instance=ExtResource("4_laftm")]
+[node name="InventorySlot_RFID_Chip" parent="Control/TabContainer/Inventory/PanelContainer2/VBoxContainer" instance=ExtResource("4_laftm")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
 [node name="Stats" parent="Control/TabContainer/Inventory" instance=ExtResource("8_vbpxr")]
 layout_mode = 0
-offset_left = 1217.0
-offset_top = 112.0
-offset_right = 1645.0
-offset_bottom = 316.0
+offset_left = 484.0
+offset_top = 85.0
+offset_right = 684.0
+offset_bottom = 289.0
 
 [node name="ItemDescription" type="Label" parent="Control/TabContainer/Inventory"]
 layout_mode = 2
-offset_left = 388.0
-offset_top = 409.0
-offset_right = 716.0
-offset_bottom = 533.0
+offset_left = 60.0
+offset_top = 533.0
+offset_right = 404.0
+offset_bottom = 657.0
 grow_horizontal = 2
 text = "ITEM DESCRIPTION"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Quest" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("4_3yxpl")
 metadata/_tab_index = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quest"]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 72.0
-offset_right = 526.0
-offset_bottom = 547.0
+offset_left = 84.0
+offset_top = 61.0
+offset_right = 548.0
+offset_bottom = 536.0
 follow_focus = true
 scroll_vertical_custom_step = 100.0
 horizontal_scroll_mode = 0
@@ -387,30 +403,40 @@ horizontal_scroll_mode = 0
 custom_minimum_size = Vector2(450, 384)
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("12_3yxpl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList"]
 custom_minimum_size = Vector2(448, 0)
 layout_mode = 2
-offset_right = 450.0
-offset_bottom = 384.0
-theme_override_constants/separation = 24
+offset_right = 448.0
+offset_bottom = 348.0
 
-[node name="QuestSummary" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer" instance=ExtResource("5_hio0w")]
+[node name="QuestSumContainer" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestSummary" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer/QuestSumContainer" instance=ExtResource("5_hio0w")]
+custom_minimum_size = Vector2(280, 150)
 layout_mode = 2
 
-[node name="QuestSummary2" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer" instance=ExtResource("5_hio0w")]
+[node name="QuestSumContainer2" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestSummary" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer/QuestSumContainer2" instance=ExtResource("5_hio0w")]
+custom_minimum_size = Vector2(280, 150)
 layout_mode = 2
 
-[node name="QuestSummary3" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer" instance=ExtResource("5_hio0w")]
+[node name="spacer" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="Control/TabContainer/Quest"]
 layout_mode = 0
-offset_left = 628.0
-offset_top = 69.0
-offset_right = 1092.0
-offset_bottom = 544.0
+offset_left = 612.0
+offset_top = 61.0
+offset_right = 1076.0
+offset_bottom = 536.0
 follow_focus = true
 scroll_vertical_custom_step = 100.0
 horizontal_scroll_mode = 0
@@ -424,6 +450,42 @@ custom_minimum_size = Vector2(448, 0)
 layout_mode = 2
 
 [node name="ListSummary" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary2" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary3" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary4" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary5" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary6" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary7" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary8" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary9" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary10" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary11" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary12" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
+layout_mode = 2
+
+[node name="ListSummary13" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
 layout_mode = 2
 
 [node name="System" type="Control" parent="Control/TabContainer"]

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="BaseQuestResource" load_steps=5 format=3 uid="uid://cv1gxg7lomu62"]
+
+[ext_resource type="Script" uid="uid://cfvjrsna3s1xa" path="res://Quest/scripts/base_quest.gd" id="1_ch6qy"]
+[ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quest/scripts/quest_step.gd" id="2_cq7qh"]
+
+[sub_resource type="Resource" id="Resource_ch6qy"]
+script = ExtResource("2_cq7qh")
+title = "Find the gimp suit in the bushes over there."
+completed = false
+metadata/_custom_type_script = "uid://cvm36y7b4aids"
+
+[sub_resource type="Resource" id="Resource_cq7qh"]
+script = ExtResource("2_cq7qh")
+title = "Bring the gimp suit to the bird."
+completed = false
+metadata/_custom_type_script = "uid://cvm36y7b4aids"
+
+[resource]
+script = ExtResource("1_ch6qy")
+steps = Array[ExtResource("2_cq7qh")]([SubResource("Resource_ch6qy"), SubResource("Resource_cq7qh")])
+id = 102
+quest_name = "a_gimp_suit_for_bird_friend"
+quest_description = "Find a gimp suit hidden in the bushes and bring it back to Bird Friend."
+quest_objective = "Get Bird Friend a Gimpsuit"
+metadata/_custom_type_script = "uid://cfvjrsna3s1xa"

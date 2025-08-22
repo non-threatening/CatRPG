@@ -16,7 +16,6 @@ func complete_quest(quest_name: String) -> void:
 
 func update_quest(quest_name: String) -> void:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)
-	#PlayerHud.queue_notification( "Updating Quest", quest_name )
 	if quest == null: return
 	QuestSystem.update_quest(quest)
 

@@ -116,28 +116,30 @@ func apply_dialogue_line() -> void:
 	character_label.text = tr(dialogue_line.character, "dialogue")
 
 
-	var portrait_path : String = "res://Dialogue/SpeachBubbles/portraits/%s.png" % dialogue_line.character.to_lower()
-	print( "pp ", portrait_path )
+
+	#only change charactr when a new character appears ???
+	# Or use tags, maybe better.. if cat use [1]
+	var emotion : String = ""
+	if not dialogue_line.tags.is_empty():
+		emotion = dialogue_line.tags[0]
+	var portrait_path : String = "res://Dialogue/SpeachBubbles/portraits/%s.png" % ( dialogue_line.character.to_lower() + emotion )
+	print( "pp ", portrait_path)
 	if ResourceLoader.exists( portrait_path ):
 		portrait.texture = load( portrait_path )
 	else:
 		portrait.texture = null
 
+	#resource.get_next_dialogue_line(next_id, temporary_game_states)
 
+#	Narrator or not
 	if not dialogue_line.character.to_lower() == "narrator":
 		margin_container.position.y = 428
 		%DialogueLabel.horizontal_alignment = 0
-	match dialogue_line.character.to_lower():
-		"narrator":
-			margin_container.position.y = 128
-			character_label.text = ""
-			%DialogueLabel.horizontal_alignment = 1
-		"cat":
-			print("Cat")
-		"bird friend":
-			print("BF")
-		_:
-			pass
+	else:
+		margin_container.position.y = 128
+		character_label.text = ""
+		%DialogueLabel.horizontal_alignment = 1
+		
 
 
 
