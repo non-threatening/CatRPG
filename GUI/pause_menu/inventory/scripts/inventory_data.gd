@@ -43,6 +43,28 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 	return false
 
 
+func add_item_quest_reward( item : ItemData, count : int = 1 ) -> bool:
+	for s in slots:
+		if s:
+			if s.item_data == item:
+				s.quantity += count
+				print("existing thing2", item)
+				#item_added_to_inventory.emit()
+				return true
+	for i in inventory_slots().size():
+		if slots[ i ] == null:
+			var new = SlotData.new()
+			new.item_data = item
+			new.quantity = count
+			slots[ i ] = new
+			new.changed.connect( slot_changed )
+			#item_added_to_inventory.emit()
+			print("new thing2")	
+			return true
+	print( "inventory was full ;(" )
+	return false
+
+
 
 func connect_slots() -> void:
 	for s in slots:

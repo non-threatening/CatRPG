@@ -29,9 +29,11 @@ func is_quest_active(quest_name: String) -> bool:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)
 	if quest == null: return false
 	return QuestSystem.is_quest_active(quest)
+
 	
 func get_quest_property(id: int, quest_property: String) -> Variant:
 	return QuestSystem.get_quest_property(id, quest_property)
-	
+
+
 func get_item_quantity( item : ItemData) -> int:
 	return PlayerManager.INVETORY_DATA.get_item_held_quantity( item )

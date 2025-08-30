@@ -42,13 +42,10 @@ func _on_drop_pickup() -> void:
 	has_dropped_data.set_value()
 	
 	
-	
 func _on_data_loaded() -> void:
 	has_dropped = has_dropped_data.value
 	pass
 	
-
-
 
 func _set_item_data( value : ItemData ) -> void:
 	item_data = value

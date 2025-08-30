@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://bpcvp55f33q1s"]
+[gd_scene load_steps=115 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
@@ -37,10 +37,16 @@
 [ext_resource type="Script" uid="uid://yxttc1bkcbek" path="res://Player/Scripts/states/state_dash.gd" id="27_c6x0f"]
 [ext_resource type="AudioStream" uid="uid://bsd4g0cistw3p" path="res://Player/Audio/level_up_jingle.wav" id="29_bbimk"]
 [ext_resource type="Script" uid="uid://c5qgvpcwm1prf" path="res://Player/Scripts/states/state_bow.gd" id="29_qs4pp"]
+[ext_resource type="Script" uid="uid://cmbg0jclkcxjw" path="res://Player/Scripts/states/state_grapple.gd" id="31_8ynux"]
+[ext_resource type="AudioStream" uid="uid://ce4tlj7lvl8vb" path="res://Player/Audio/grapple_fire.wav" id="32_ie76m"]
+[ext_resource type="AudioStream" uid="uid://bo6xwae0cne6h" path="res://Player/Audio/grapple_stick.wav" id="33_dy65m"]
 [ext_resource type="PackedScene" uid="uid://ccodbacsl6vdt" path="res://GeneralNodes/footstep_audio_2d/footstep_audio_2d.tscn" id="34_j2n6q"]
+[ext_resource type="AudioStream" uid="uid://j8xkn1lu8038" path="res://Player/Audio/grapple_clang.wav" id="34_maysp"]
+[ext_resource type="Texture2D" uid="uid://b4vhkw38nugvr" path="res://Player/Sprites/grapple.png" id="39_f4lon"]
+[ext_resource type="AudioStream" uid="uid://b8hbhokgsn50x" path="res://Player/Audio/grapple_chain.wav" id="44_dy65m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1l381"]
-radius = 15.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyprq"]
+size = Vector2(36.249, 13.5671)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iyprq"]
 radius = 61.2944
@@ -52,8 +58,8 @@ shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.0
 shader_parameter/cover_color = Color(0.62, 0.434, 0.5797, 1)
 shader_parameter/eye_color = Color(3, 1, 3, 1)
-shader_parameter/x = 0.5
-shader_parameter/y = 1.0
+shader_parameter/x = 0.8
+shader_parameter/y = 1.2
 shader_parameter/time_scale = 2.666
 
 [sub_resource type="Animation" id="Animation_xqcul"]
@@ -3009,10 +3015,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dkpta"]
-size = Vector2(50, 25.5)
+size = Vector2(90, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pisgm"]
-size = Vector2(80, 26)
+size = Vector2(80, 38)
 
 [sub_resource type="Animation" id="Animation_pylmc"]
 length = 0.001
@@ -3276,34 +3282,39 @@ scale_max = 4.0
 color = Color(0.81, 0.7398, 0.3888, 1)
 color_ramp = SubResource("GradientTexture1D_8ynux")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy65m"]
+size = Vector2(21, 27)
+
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 16
+collision_mask = 24
 motion_mode = 1
 wall_min_slide_angle = 0.174533
 script = ExtResource("1_t577b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-2, 10)
+position = Vector2(-1, -9.5)
 scale = Vector2(1.98626, 1.25303)
-shape = SubResource("CircleShape2D_1l381")
+shape = SubResource("RectangleShape2D_iyprq")
 debug_color = Color(0.415, 0.502, 0.879, 0.419)
 
 [node name="Direction" type="Marker2D" parent="."]
+visible = false
+position = Vector2(6, -56)
 
 [node name="ActionableFinder" type="Area2D" parent="Direction"]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder"]
-position = Vector2(1, 24)
+position = Vector2(1, 21)
 shape = SubResource("CircleShape2D_iyprq")
 debug_color = Color(0, 0.65, 0.205833, 0.121569)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
 material = SubResource("ShaderMaterial_iyprq")
-position = Vector2(1, -8)
+position = Vector2(0, -64)
 texture = ExtResource("14_o28un")
 hframes = 3
 vframes = 4
@@ -3480,6 +3491,12 @@ dash_audio = ExtResource("10_gpjlu")
 [node name="Bow" type="Node" parent="StateMachine"]
 script = ExtResource("29_qs4pp")
 
+[node name="Grapple" type="Node" parent="StateMachine"]
+script = ExtResource("31_8ynux")
+grapple_fire_audio = ExtResource("32_ie76m")
+grapple_stick_audio = ExtResource("33_dy65m")
+grapple_bounce_audio = ExtResource("34_maysp")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 editor_draw_limits = true
 script = ExtResource("11_hfp0w")
@@ -3490,32 +3507,36 @@ script = ExtResource("11_hfp0w")
 max_polyphony = 6
 
 [node name="Interactions" type="Node2D" parent="."]
-visible = false
-position = Vector2(0, -15)
+position = Vector2(0, -25)
 script = ExtResource("10_4cvxe")
 
 [node name="Area2D" type="Area2D" parent="Interactions"]
-position = Vector2(0, 16)
+visible = false
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
-position = Vector2(0, 29.25)
+position = Vector2(7, 3.5)
 shape = SubResource("RectangleShape2D_dkpta")
 debug_color = Color(0.282353, 0.807843, 0.313726, 0)
 
 [node name="PushArea" type="Area2D" parent="Interactions"]
-position = Vector2(-1, 7)
+visible = false
 collision_layer = 0
 collision_mask = 16
 monitorable = false
 script = ExtResource("14_lfmf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/PushArea"]
-position = Vector2(0, 30)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_pisgm")
 debug_color = Color(0.87, 0.261, 0.5858, 0)
+
+[node name="GrappleRayCast2D" type="RayCast2D" parent="Interactions"]
+unique_name_in_owner = true
+target_position = Vector2(0, 200)
+collision_mask = 16
 
 [node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -3526,13 +3547,11 @@ libraries = {
 script = ExtResource("17_pisgm")
 
 [node name="ItemMagnet" parent="." instance=ExtResource("18_b1ygp")]
-visible = false
-position = Vector2(-6, -24)
+position = Vector2(0, -42)
 scale = Vector2(0.831355, 0.831355)
-magnet_strength = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet"]
-position = Vector2(1, 28)
+position = Vector2(-5.84126e-06, 1.20286)
 shape = SubResource("CircleShape2D_o28un")
 debug_color = Color(0.1632, 0.68, 0.593867, 0)
 
@@ -3548,6 +3567,7 @@ text = "Level UP"
 horizontal_alignment = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 emitting = false
 amount = 100
@@ -3557,3 +3577,42 @@ explosiveness = 0.25
 process_material = SubResource("ParticleProcessMaterial_d30e8")
 
 [node name="FootstepAudio2D" parent="." instance=ExtResource("34_j2n6q")]
+
+[node name="GrappleHook" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GrappleHook"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -26.0
+offset_right = 16.0
+offset_bottom = 29.0
+grow_horizontal = 2
+texture = ExtResource("39_f4lon")
+patch_margin_top = 16
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Control" type="Control" parent="GrappleHook/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GrappleHurtBox" parent="GrappleHook/NinePatchRect/Control" instance=ExtResource("10_q6j84")]
+position = Vector2(0, -5)
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrappleHook/NinePatchRect/Control/GrappleHurtBox"]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_dy65m")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GrappleHook"]
+stream = ExtResource("44_dy65m")

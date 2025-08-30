@@ -51,10 +51,10 @@ func show_menu( items : Array[ ItemData ], dialog_triggered : bool = true ) -> v
 	#if dialog_triggered:
 		#await DialogSystem.finished
 	enable_menu()
-	update_gems()
 	populate_item_list( items )
 	shop_item_container.get_child( 0 ).grab_focus()
 	play_audio( OPEN_SHOP )
+	update_gems()
 	shown.emit()
 	pass
 	

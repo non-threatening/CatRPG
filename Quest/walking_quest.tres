@@ -1,35 +1,38 @@
-[gd_resource type="Resource" script_class="BaseQuestResource" load_steps=7 format=3 uid="uid://b22sak1mr2g77"]
+[gd_resource type="Resource" script_class="BaseQuestResource" load_steps=8 format=3 uid="uid://b22sak1mr2g77"]
 
+[ext_resource type="Script" uid="uid://bvqtnrn5xgsi0" path="res://Items/scripts/item_data.gd" id="1_jd147"]
 [ext_resource type="Script" uid="uid://cfvjrsna3s1xa" path="res://Quest/scripts/base_quest.gd" id="1_nvjpd"]
 [ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quest/scripts/quest_step.gd" id="2_jd147"]
 
 [sub_resource type="Resource" id="Resource_nvjpd"]
 script = ExtResource("2_jd147")
-title = "Pass flower one."
+title = "Got Flower One"
 completed = false
 metadata/_custom_type_script = "uid://cvm36y7b4aids"
 
 [sub_resource type="Resource" id="Resource_jd147"]
 script = ExtResource("2_jd147")
-title = "Flower 2"
+title = "Flower two"
 completed = false
 metadata/_custom_type_script = "uid://cvm36y7b4aids"
 
 [sub_resource type="Resource" id="Resource_v882s"]
 script = ExtResource("2_jd147")
-title = "flower 3"
+title = "Flower three"
 completed = false
 metadata/_custom_type_script = "uid://cvm36y7b4aids"
 
 [sub_resource type="Resource" id="Resource_u46x5"]
 script = ExtResource("2_jd147")
-title = "flower 4"
+title = "Flower four"
 completed = false
 metadata/_custom_type_script = "uid://cvm36y7b4aids"
 
 [resource]
 script = ExtResource("1_nvjpd")
 steps = Array[ExtResource("2_jd147")]([SubResource("Resource_nvjpd"), SubResource("Resource_jd147"), SubResource("Resource_v882s"), SubResource("Resource_u46x5")])
+reward = Dictionary[ExtResource("1_jd147"), int]({})
+xp = 5
 id = 101
 quest_name = "Walking Quest"
 quest_description = "Walk past a number of flowers in any order"

@@ -1,11 +1,13 @@
 @icon("res://addons/quest_system/assets/quest_resource.svg")
-extends Quest
-class_name BaseQuestResource
+class_name BaseQuestResource extends Quest
 
 signal step_updated(step: QuestStep)
 
+const INVETORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/player_inventory.tres")
+
 @export var steps: Array[QuestStep]
-#@export var rewards: Array[Item]
+@export var reward: Dictionary[ ItemData, int ]
+@export var xp : int = 0
 
 
 func start(_args: Dictionary = {}) -> void:
@@ -13,6 +15,7 @@ func start(_args: Dictionary = {}) -> void:
 		step.ready()
 		step.updated.connect(_update_step.bind(step))
 	started.emit()
+
 
 func get_quest_step(index: int) -> QuestStep:
 	if index > steps.size():
@@ -31,9 +34,16 @@ func complete_step(index: int) -> Error:
 func complete(_args: Dictionary = {}) -> void:
 	for step in steps:
 		if not step.meets_condition(): break
-	#if !rewards.is_empty():
-		#for item: Item in rewards:
-			#Globals.inventory.add_item(item, Globals.inventory.get_first_empty_index())
+	if xp > 0:
+		PlayerManager.reward_xp( xp )
+	if !reward.is_empty():
+		for key in reward:
+			var value = reward[key]
+			INVETORY_DATA.add_item_quest_reward( key, value )
+			if value > 1:
+				PlayerHud.queue_notification( "You've got", str(NumberToWords.to_words(value).capitalize(), " ", key.name, "s") )
+			else:
+				PlayerHud.queue_notification( "You've got", str(NumberToWords.to_words(value).capitalize(), " ", key.name) )
 	completed.emit()
 
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dapkfj2yffrtm"]
+
+[ext_resource type="Script" uid="uid://b6y5e4xa1tnut" path="res://Maps/Enviroment/generators/generate_flowers.gd" id="1_bwp76"]
+
+[node name="GenerateFlowers" type="Node2D"]
+script = ExtResource("1_bwp76")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]

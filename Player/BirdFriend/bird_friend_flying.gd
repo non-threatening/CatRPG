@@ -10,9 +10,9 @@ var flight_direction : Vector2
 var speed : float = 0
 var state
 
+@export var frame_rate : float = 0.09
 @export var acceleration : float = 500.0
 @export var max_speed : float = 666.0
-@export var catch_audio : AudioStream
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -20,7 +20,7 @@ var state
 
 
 func _ready() -> void:
-	visible = false
+	hide()
 	state = State.INACTIVE
 	player = PlayerManager.player
 
@@ -39,21 +39,27 @@ func _physics_process(delta: float) -> void:
 		speed += acceleration * delta
 		position += direction * speed * delta
 		if global_position.distance_to( player.global_position ) <= 45: 
-			PlayerManager.play_audio( catch_audio )
 			state = State.PERCHED		
 	elif state == State.PERCHED:
 		perched()
 		pass
-	
-	var speed_ratio = speed / max_speed
-	audio.pitch_scale = speed_ratio * 0.85 + 1.0
-	#animation_player.speed_scale = 1 + ( speed_ratio * 0.25 )
-	animation_player.speed_scale = 1 + ( speed_ratio * 0.2 )
+
+
+func flap_animation() -> void:
+	sprite.frame = 2
+	await get_tree().create_timer( frame_rate ).timeout
+	audio.play()
+	sprite.frame = 1
+	await get_tree().create_timer( frame_rate ).timeout
+	sprite.frame = 0
+	await get_tree().create_timer( frame_rate ).timeout
+	sprite.frame = 1
+	await get_tree().create_timer( frame_rate * randf_range( 3.8, 8.5 ) ).timeout
+	flap_animation()
 	pass
 
 
 func perched() -> void:
-	print("perched")
 	player.show_bird_friend()
 	queue_free() 
 
@@ -63,7 +69,7 @@ func throw( throw_direction : Vector2 ) -> void:
 	speed = max_speed
 	state = State.THROW
 	update_animation()
-	PlayerManager.play_audio( catch_audio ) ## Plays in PlayerManager node
+	flap_animation()
 	visible = true
 	player.hide_bird_friend()
 	pass
@@ -76,9 +82,7 @@ func update_animation() -> void:
 	var direction_id : int = int( round( ( direction * 0.1 ).angle() / TAU * DIR_4.size() ) )
 	flight_direction = DIR_4[ direction_id ]
 	sprite.scale.x = -1 if flight_direction == Vector2.LEFT else 1
-	
-	animation_player.play( "fly_" + anim_direction() )
-	
+
 
 func anim_direction() -> String:
 	if flight_direction == Vector2.DOWN:

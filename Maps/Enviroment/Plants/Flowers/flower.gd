@@ -34,16 +34,6 @@ func _get_pngs():
 			file_name = dir.get_next()
 
 
-#func _get_pngs( path ):
-	#var dir = DirAccess.open( path )
-	#if dir:
-		#dir.list_dir_begin()
-		#var file_name = dir.get_next()
-		#while file_name != "":
-			#if (file_name.get_extension() == "png"):
-				#images.append( file_name )
-			#file_name = dir.get_next()
-
 func get_shuffled_flower():
 	if images.is_empty():
 		images = images_full.duplicate()

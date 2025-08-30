@@ -1,16 +1,14 @@
 class_name PlayerAbilities extends Node
 
-const BOOMERANG = preload("res://Player/boomerang.tscn")
 const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
 const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 
 var abilities : Array[ String ] = [
-	"BIRD", "BOOMERANG", "BOW", "BOMB"
+	"BIRD", "", "", "" ## "BIRD", "GRAPPLE", "BOW", "BOMB"
 	]
 
 var selected_ability = 0
 var player : Player
-var boomerang_instance : Boomerang = null
 var bird_instance : BirdFriend = null
 
 
@@ -19,6 +17,7 @@ var bird_instance : BirdFriend = null
 @onready var idle: State_Idle = $"../StateMachine/Idle"
 @onready var walk: State_Walk = $"../StateMachine/Walk"
 @onready var bow: State_Bow = $"../StateMachine/Bow"
+@onready var grapple: State_Grapple = $"../StateMachine/Grapple"
 
 
 
@@ -26,7 +25,15 @@ func _ready() -> void:
 	player = PlayerManager.player
 	PlayerHud.update_arrow_count( player.arrow_count )
 	PlayerHud.update_bomb_count( player.bomb_count )
+	setup_abilities()
 	
+	
+func setup_abilities() -> void:
+	PauseMenu.update_ability_items( abilities )
+	PlayerHud.update_ability_items( abilities )
+	selected_ability = 0
+	toggle_ability()
+	pass
 	
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -35,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			0:
 				bird_ability()
 			1:
-				boomerang_ability()
+				grapple_ability()
 			2:
 				bow_ability()
 			3:
@@ -48,9 +55,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func toggle_ability() -> void:
+	if abilities.count( "" ) == abilities.size():
+		return
 	selected_ability = wrapi( selected_ability + 1, 0, 4 )
+	while abilities[ selected_ability ] == "":
+		selected_ability = wrapi( selected_ability + 1, 0, 4 )
 	PlayerHud.update_ability_ui( selected_ability )
 	
+	await get_tree().process_frame
 	if selected_ability == 0:
 		player.show_bird_friend()
 	else:
@@ -105,18 +117,7 @@ func bomb_ability() -> void:
 	pass
 	
 
-func boomerang_ability() -> void:
-	if boomerang_instance != null: # Do we have a boomerang? Limits number of boomerangs to 1
-		return
-	
-	var _b = BOOMERANG.instantiate() as Boomerang
-	player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
-	_b.global_position = player.global_position
-	
-	var throw_direction = player.direction
-	if throw_direction == Vector2.ZERO:
-		throw_direction = player.cardinal_direction
-		
-	_b.throw( throw_direction )
-	boomerang_instance = _b
+func grapple_ability() -> void:
+	if  state_machine.current_state == idle or state_machine.current_state == walk:
+		player.state_machine.change_state( grapple )
 	pass

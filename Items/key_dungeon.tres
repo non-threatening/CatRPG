@@ -13,5 +13,6 @@ script = ExtResource("2_u6d1n")
 name = "Dungeon Key"
 description = "Looks like a keycard. This probably opens something."
 texture = SubResource("AtlasTexture_y1yal")
+cost = 10
 effects = Array[ExtResource("1_tdgsu")]([])
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"

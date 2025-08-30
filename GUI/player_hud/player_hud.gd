@@ -149,6 +149,17 @@ func queue_notification( _title : String, _message : String ) -> void:
 	pass
 
 
+func update_ability_items( items : Array[ String ] ) -> void:
+	var ability_item : Array[ Node ] = ability_items.get_children()
+	for i in ability_item.size():
+		if items[ i ] == "":
+			ability_item[ i ].hide()
+		else:
+			ability_item[ i ].show()
+	pass
+
+
+
 func update_ability_ui( ability_index: int ) -> void:
 	var _items : Array[ Node ] = ability_items.get_children()
 	for a in _items:
@@ -172,10 +183,10 @@ func update_bomb_count( count : int ) -> void:
 
 
 func _on_show_menu() -> void:
-	control.visible = false
+	control.hide()
 	pass
 
 
 func _on_hide_menu() -> void:
-	control.visible = true
+	control.show()
 	pass

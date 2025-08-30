@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://r2kdkfki8m1"]
+[gd_scene load_steps=43 format=4 uid="uid://r2kdkfki8m1"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_0eny7"]
 [ext_resource type="AudioStream" uid="uid://xot5s58xou2q" path="res://Levels/Audio/example_music_01.ogg" id="2_gc23w"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://b1n6sy5wqrqy5" path="res://GeneralNodes/ItemDropper/ItemDropper.tscn" id="12_v24pb"]
 [ext_resource type="Resource" uid="uid://bo3v255ny60ee" path="res://Items/the_thing.tres" id="13_gm8iu"]
 [ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests_old/utility_nodes/quest_advance_trigger.tscn" id="14_7km15"]
-[ext_resource type="Resource" uid="uid://bbu7abb38x6fi" path="res://Quests_old/find_lost_thing.tres" id="15_e2cmj"]
 
 [sub_resource type="Gradient" id="Gradient_gc23w"]
 offsets = PackedFloat32Array(0.0859375, 0.535156, 1)
@@ -871,13 +870,6 @@ item_data = ExtResource("13_gm8iu")
 
 [node name="QuestAdvanceTrigger" parent="DarkWizardBoss/ItemDropper" instance=ExtResource("14_7km15")]
 position = Vector2(-399, -213)
-signal_name = "drop_collected"
-linked_quest = ExtResource("15_e2cmj")
-quest_step = 2
-settings_summary = "UPDATE QUEST:
-Quest2: Find lost thing
-Step: 2 - find the thing!
-Complete: false"
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_3gt8q")]
 position = Vector2(840, 267)

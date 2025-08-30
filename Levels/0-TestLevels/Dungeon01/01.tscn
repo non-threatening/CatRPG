@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bng4h21j3iths"]
+[gd_scene load_steps=15 format=4 uid="uid://bng4h21j3iths"]
 
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_umoo4"]
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_ux7ia"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bsbk6o0lgbqfb" path="res://interactables/dungeon/BarredDoor.tscn" id="6_m3xjo"]
 [ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests_old/utility_nodes/quest_advance_trigger.tscn" id="6_x2j10"]
 [ext_resource type="PackedScene" uid="uid://c7qujggerj22o" path="res://interactables/dungeon/PushableStatue.tscn" id="7_4dhgi"]
-[ext_resource type="Resource" uid="uid://bbu7abb38x6fi" path="res://Quests_old/find_lost_thing.tres" id="7_gi814"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="9_gxo4t"]
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="10_gmq4b"]
 [ext_resource type="Resource" uid="uid://d1hal3jqnbjc1" path="res://Items/potion.tres" id="11_0vvle"]
@@ -34,23 +33,8 @@ target_transition_area = "LevelTransition2"
 side = 3
 
 [node name="QuestActivatedSwitch" parent="LevelTransition" instance=ExtResource("6_gi814")]
-check_type = 1
-remove_when_activaed = true
-free_on_remove = true
-react_to_global_signal = true
-linked_quest = ExtResource("7_gi814")
-quest_step = 1
-settings_summary = "UPDATE QUEST:
-Quest2: Find lost thing
-Checking if player has completed step: go in there."
 
 [node name="QuestAdvanceTrigger" parent="LevelTransition/QuestActivatedSwitch" instance=ExtResource("6_x2j10")]
-linked_quest = ExtResource("7_gi814")
-quest_step = 1
-settings_summary = "UPDATE QUEST:
-Quest2: Find lost thing
-Step: 1 - go in there.
-Complete: false"
 
 [node name="LevelTransition2" parent="." instance=ExtResource("3_2la2r")]
 position = Vector2(576, 120)

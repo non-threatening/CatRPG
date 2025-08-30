@@ -12,6 +12,7 @@
 script = ExtResource("1_qhsms")
 
 [node name="Npc" parent="." instance=ExtResource("2_7bcfr")]
+h_frames = 15
 npc_resource = ExtResource("3_rvvc8")
 
 [node name="DialogInteraction" parent="Npc" instance=ExtResource("4_wm1gm")]

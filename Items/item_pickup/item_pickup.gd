@@ -38,7 +38,8 @@ func _on_body_entered( b ) -> void:
 			elif item_data.name == "Arrow":
 				PlayerManager.player.arrow_count += item_count
 				item_picked_up()
-			elif PlayerManager.INVETORY_DATA.add_item( item_data, item_count ) == true:
+			else:
+				PlayerManager.INVETORY_DATA.add_item( item_data, item_count )
 				item_picked_up()
 				
 	pass

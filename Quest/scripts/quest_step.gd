@@ -6,7 +6,7 @@ class_name QuestStep
 
 signal updated
 
-## Virtual method, this has to be overriden
+
 func meets_condition() -> bool:
 	print("step condition met")
 	completed = true

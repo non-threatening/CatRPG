@@ -226,7 +226,6 @@ libraries = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_sxc80")
-autoplay = true
 max_polyphony = 2
 
 [node name="ItemMagnet" parent="." instance=ExtResource("6_h68xt")]

@@ -58,6 +58,7 @@ var wait_time: float = 1.0
 var time: float = 0.0
 
 
+# Quest trigger
 func _item_added() -> void:
 	var quests = QuestSystem.get_active_quests()
 	for q: Quest in quests:
@@ -65,12 +66,14 @@ func _item_added() -> void:
 			Shortcuts.update_quest( q.quest_name )
 
 
+
 func _process( _delta: float ) -> void:
 	direction = Vector2(
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
 	).normalized()
-	
+
+
 ## Bird Friend Head
 	if bird_friend_sprite.visible == true:
 		time += _delta
@@ -89,12 +92,13 @@ func _physics_process( _delta: float ) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("test"):
 		var actionables = actionable_finder.get_overlapping_areas()
+		print("actionables: ", actionables )
 		if actionables.size() > 0:
 			actionables[0].action()
 			#input_vector = Vector2.ZERO
 			return
-		
-		#PlayerManager.shake_camera()
+		#ShopMenu.show_menu( shop_inventory )
+		PlayerManager.shake_camera()
 		#DialogueManager.show_example_dialogue_balloon(load("res://Dialogue/Testing_in_GrassSh.dialogue"), "start")
 		#return
 		pass
@@ -225,8 +229,8 @@ func bird_friend_sprite_animation( new_dir : Vector2 ):
 #
 #
 func show_bird_friend() -> void:
-	bird_friend_sprite.visible = true
+	bird_friend_sprite.show()
 	
 
 func hide_bird_friend() -> void:
-	bird_friend_sprite.visible = false
+	bird_friend_sprite.hide()

@@ -32,6 +32,7 @@ ShopMenu="*res://GUI/shop_menu/shop_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 QuestSystem="*res://addons/quest_system/quest_manager.gd"
 Shortcuts="*res://Quest/scripts/quest_system_shortcuts.gd"
+QuestVars="*res://00_Globals/global_quest_vars.gd"
 
 [debug]
 
@@ -52,6 +53,12 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://GUI/pause_menu/quests/": "gray"
+}
 
 [global_group]
 
@@ -154,13 +161,15 @@ switch_ability={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/QuestTest.dialogue", "res://Dialogue/Conversations/test.dialogue", "res://Dialogue/Conversations/Testing_in_GrassSh.dialogue", "res://Dialogue/Conversations/get_thing_quest.dialogue", "res://Dialogue/Conversations/StepedQuest.dialogue", "res://Dialogue/Conversations/get_more_gems.dialogue", "res://Dialogue/Conversations/get_gems_quest.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/QuestTest.dialogue", "res://Dialogue/Conversations/test.dialogue", "res://Dialogue/Conversations/Testing_in_GrassSh.dialogue", "res://Dialogue/Conversations/get_thing_quest.dialogue", "res://Dialogue/Conversations/StepedQuest.dialogue", "res://Dialogue/Conversations/get_more_gems.dialogue", "res://Dialogue/Conversations/get_gems_quest.dialogue", "res://Dialogue/Conversations/walking_quest.dialogue", "res://Dialogue/Conversations/bird_friend_meeting.dialogue")
 
 [layer_names]
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="PlayerHurt"
 2d_physics/layer_3="PlayerInteract"
-2d_physics/layer_4="Dialog Actionables"
+2d_physics/layer_4="GrappleObstacles"
 2d_physics/layer_5="Walls"
+2d_physics/layer_6="GrapplePoints"
 2d_physics/layer_9="Enemy"
+2d_physics/layer_13="DialogActionable"

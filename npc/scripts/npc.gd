@@ -96,7 +96,8 @@ func _set_npc_resourse( _npc : NPCResource ) -> void:
 	
 func _set_h_frames( value : int ) -> void:
 	h_frames = value
-	sprite.hframes = h_frames
+	if sprite:
+		sprite.hframes = h_frames
 	pass
 
 

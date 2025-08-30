@@ -1,14 +1,28 @@
 ~ start
-Bird Friend: [[Hi|Hello|Howdy]], this is some dialogue. [#happy]
-Cat: Hi [#happy]
-Cat: Wooooooooooooo
-Bird Friend: I've lost my second hand Gimp Suit. Could you look around for a one. [#happy]
-- Totaly, I <3 second hand gimp suits.
-	do Shortcuts.start_quest("a_gimp_suit_for_bird_friend") 
-	Bird Friend: nice.
-- Suck it ass taster
-	Bird Friend: I am your father.
+# Haven't begun, haven't finished
+if not Shortcuts.is_quest_completed("a_gimp_suit_for_bird_friend") and not Shortcuts.is_quest_active("a_gimp_suit_for_bird_friend")
+	Bird Friend: [[Hi|Hello|Howdy]], this is some dialogue. [#happy]
+	Cat: Hi [#happy]
+	Cat: Wooooooooooooo
+	Bird Friend: I've lost my Gimp Suit. Could you look around for a one. [#happy]
+	- Totaly, I <3 second hand gimp suits.
+		do Shortcuts.start_quest("a_gimp_suit_for_bird_friend")
+		do Shortcuts.update_quest("a_gimp_suit_for_bird_friend")
+		Bird Friend: nice.
+	- Suck it ass taster
+		Bird Friend: I am your father.
 
+elif  Shortcuts.get_quest_property( 102, "have_suit" ) == false
+	Bird Friend: Have you found the Gimp Suit?
+else
+	Bird Friend: Nice Can I have the gimpsuit
+	- OK
+		do QuestSystem.set_quest_property( 102, "suit_given", true)
+		do Shortcuts.update_quest("a_gimp_suit_for_bird_friend")
+	- No way
+		Cat: It's my GimpSuit now!!!!
+		
+		
 - End the conversation => END
 Narrator: For more information see the online documentation.
 => END
