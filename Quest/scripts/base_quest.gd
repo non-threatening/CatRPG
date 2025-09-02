@@ -12,7 +12,7 @@ const INVETORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/pl
 
 func start(_args: Dictionary = {}) -> void:
 	for step: QuestStep in steps:
-		step.ready()
+		#step.ready()
 		step.updated.connect(_update_step.bind(step))
 	started.emit()
 

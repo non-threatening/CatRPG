@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://rp5basnb2nrj"]
+
+[ext_resource type="Script" uid="uid://cfwamtrfkr8mr" path="res://GUI/player_hud/stack_notification.gd" id="1_c6boi"]
+
+[node name="StackedNotification" type="MarginContainer"]
+clip_contents = true
+offset_right = 384.0
+offset_bottom = 70.0
+script = ExtResource("1_c6boi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="StackTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "TITLE"
+
+[node name="StackMessage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Thing message"

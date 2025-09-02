@@ -23,6 +23,7 @@ var hearts : Array[ HeartGUI ] = []
 @onready var boss_label: Label = $Control/BossUI/Label
 
 @onready var notificationUI : NotificationUI = $Control/NotificationControl
+@onready var stacked_notificationUI: StackedNotificationUI = $StackedNotificationControl
 
 
 func _ready() -> void:
@@ -147,6 +148,11 @@ func update_boss_hp( hp : int, max_hp : int ) -> void:
 func queue_notification( _title : String, _message : String ) -> void:
 	notificationUI.add_notification_to_queue( _title, _message )
 	pass
+
+func queue_stacked_notification( _title : String, _message : String ) -> void:
+	stacked_notificationUI.add_notification_to_queue( _title, _message )
+	pass
+
 
 
 func update_ability_items( items : Array[ String ] ) -> void:

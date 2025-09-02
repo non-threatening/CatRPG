@@ -13,10 +13,6 @@ func meets_condition() -> bool:
 	return completed
 
 
-func ready() -> void:
-	pass
-
-
 func serialize() -> Dictionary:
 	return {"completed": completed}
 

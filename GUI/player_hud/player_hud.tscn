@@ -1,12 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcpyr1vq1ulx3"]
+[gd_scene load_steps=26 format=3 uid="uid://bcpyr1vq1ulx3"]
 
 [ext_resource type="Script" uid="uid://poj3adf5jpou" path="res://GUI/player_hud/player_hud.gd" id="1_oghrr"]
 [ext_resource type="PackedScene" uid="uid://dkynksfn5v5fw" path="res://GUI/player_hud/heart_gui.tscn" id="2_alx7a"]
 [ext_resource type="Texture2D" uid="uid://c5p00v0ot4ayk" path="res://GUI/player_hud/boss-hp.png" id="3_4b3j6"]
 [ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="4_5bkpt"]
 [ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="4_yhjvm"]
-[ext_resource type="Script" uid="uid://c1bq8ta118edn" path="res://GUI/player_hud/notifications.gd" id="7_5bkpt"]
+[ext_resource type="Script" uid="uid://c1bq8ta118edn" path="res://GUI/player_hud/notifications.gd" id="6_5bkpt"]
 [ext_resource type="AudioStream" uid="uid://sksn752uya8u" path="res://GUI/player_hud/notification.wav" id="8_scbx3"]
+[ext_resource type="Script" uid="uid://lise7q52eo28" path="res://GUI/player_hud/stacked_notifications.gd" id="8_terqw"]
+[ext_resource type="PackedScene" uid="uid://rp5basnb2nrj" path="res://GUI/player_hud/stacked_notification.tscn" id="9_scbx3"]
 
 [sub_resource type="Gradient" id="Gradient_rxq5y"]
 offsets = PackedFloat32Array(0, 0.436975, 0.731092)
@@ -284,34 +286,22 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/path = NodePath("PanelContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/path = NodePath("PanelContainer:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PanelContainer:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -325,46 +315,34 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/path = NodePath("PanelContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 2.7, 3),
-"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 64), Vector2(0, 64), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 2.7, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PanelContainer:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../../AudioStreamPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -372,7 +350,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0)
 }
-tracks/3/use_blend = true
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5bkpt"]
 _data = {
@@ -653,7 +631,7 @@ anchors_preset = 0
 offset_top = 64.0
 offset_bottom = 64.0
 mouse_filter = 2
-script = ExtResource("7_5bkpt")
+script = ExtResource("6_5bkpt")
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/NotificationControl"]
 self_modulate = Color(1, 1, 1, 0)
@@ -694,3 +672,34 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 2
 bus = &"Effects"
+
+[node name="StackedNotificationControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 200.0
+offset_right = 392.0
+offset_bottom = 320.0
+script = ExtResource("8_terqw")
+
+[node name="PanelContainer2" type="PanelContainer" parent="StackedNotificationControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 120.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StackedNotificationControl/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MarginContainer" parent="StackedNotificationControl/PanelContainer2/VBoxContainer" instance=ExtResource("9_scbx3")]
+layout_mode = 2
+script = null
+
+[node name="MarginContainer2" parent="StackedNotificationControl/PanelContainer2/VBoxContainer" instance=ExtResource("9_scbx3")]
+layout_mode = 2
+script = null
+
+[node name="MarginContainer3" parent="StackedNotificationControl/PanelContainer2/VBoxContainer" instance=ExtResource("9_scbx3")]
+layout_mode = 2
+script = null

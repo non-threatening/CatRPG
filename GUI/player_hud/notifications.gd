@@ -26,15 +26,14 @@ func add_notification_to_queue( _title : String, _message : String ) -> void:
 
 func display_notification() -> void:
 	var _n = notification_queue.pop_front()
-	print("notification: ", _n)
 	if _n == null:
 		return
 	title_label.text = _n.title
 	message_label.text = _n.message
 	animation_player.play("show_notification")
 	pass
-
-
+	
+	
 func notification_animation_finished( _a : String ) -> void:
 	display_notification()
 	pass

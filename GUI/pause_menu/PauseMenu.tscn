@@ -474,21 +474,6 @@ layout_mode = 2
 [node name="ListSummary8" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
 layout_mode = 2
 
-[node name="ListSummary9" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
-layout_mode = 2
-
-[node name="ListSummary10" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
-layout_mode = 2
-
-[node name="ListSummary11" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
-layout_mode = 2
-
-[node name="ListSummary12" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
-layout_mode = 2
-
-[node name="ListSummary13" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" instance=ExtResource("5_gtmg6")]
-layout_mode = 2
-
 [node name="System" type="Control" parent="Control/TabContainer"]
 visible = false
 layout_mode = 2
