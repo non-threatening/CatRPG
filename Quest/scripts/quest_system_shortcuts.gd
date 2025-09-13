@@ -4,13 +4,13 @@ const QUEST_PATH: String = "res://Quest/%s.tres"
 
 func start_quest(quest_name: String) -> void:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)
-	PlayerHud.queue_stacked_notification( "Quest Started", quest_name )
+	PlayerHud.queue_stacked_notification( "Quest Started", quest_name.capitalize() )
 	if quest == null: return
 	QuestSystem.start_quest(quest)
 
 func complete_quest(quest_name: String) -> void:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)
-	PlayerHud.queue_stacked_notification( "Quest Complete", quest_name )
+	PlayerHud.queue_stacked_notification( "Quest Complete", quest_name.capitalize() )
 	if quest == null: return
 	QuestSystem.complete_quest(quest)
 

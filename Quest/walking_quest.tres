@@ -37,7 +37,7 @@ ExtResource("2_v882s"): 10
 })
 xp = 5
 id = 101
-quest_name = "Walking Quest"
+quest_name = "walking_quest"
 quest_description = "Walk past a number of flowers in any order"
 quest_objective = "Do a full cicle"
 metadata/_custom_type_script = "uid://cfvjrsna3s1xa"

@@ -25,8 +25,6 @@ PlayerManager="*res://00_Globals/global_player_manager.gd"
 SceneTransition="*res://GUI/scene_transition/scene_transition.tscn"
 SaveManager="*res://00_Globals/global_save_manager.gd"
 PauseMenu="*res://GUI/pause_menu/PauseMenu.tscn"
-DialogSystem="*res://GUI/dialog_system_old/dialog_system.tscn"
-QuestManager="res://Quests_old/scripts/global_quest_manager.gd"
 EffectManager="*res://00_Globals/global_effect_manager.gd"
 ShopMenu="*res://GUI/shop_menu/shop_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
@@ -57,7 +55,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/
 [file_customization]
 
 folder_colors={
-"res://GUI/pause_menu/quests/": "gray"
+"res://GUI/pause_menu/__quests/": "gray"
 }
 
 [global_group]
@@ -161,7 +159,7 @@ switch_ability={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/QuestTest.dialogue", "res://Dialogue/Conversations/test.dialogue", "res://Dialogue/Conversations/Testing_in_GrassSh.dialogue", "res://Dialogue/Conversations/get_thing_quest.dialogue", "res://Dialogue/Conversations/StepedQuest.dialogue", "res://Dialogue/Conversations/get_more_gems.dialogue", "res://Dialogue/Conversations/get_gems_quest.dialogue", "res://Dialogue/Conversations/walking_quest.dialogue", "res://Dialogue/Conversations/bird_friend_meeting.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/QuestTest.dialogue", "res://Dialogue/Conversations/test.dialogue", "res://Dialogue/Conversations/Testing_in_GrassSh.dialogue", "res://Dialogue/Conversations/get_thing_quest.dialogue", "res://Dialogue/Conversations/StepedQuest.dialogue", "res://Dialogue/Conversations/get_more_gems.dialogue", "res://Dialogue/Conversations/get_gems_quest.dialogue", "res://Dialogue/Conversations/walking_quest.dialogue", "res://Dialogue/Conversations/bird_friend_meeting.dialogue", "res://Dialogue/Conversations/cut_scene_test.dialogue")
 
 [layer_names]
 

@@ -83,7 +83,7 @@ metadata/_custom_type_script = "uid://bmpteubp4v57k"
 [sub_resource type="CircleShape2D" id="CircleShape2D_8q7qm"]
 radius = 65.0308
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v347e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_insof"]
 resource_local_to_scene = true
 shader = ExtResource("28_v347e")
 shader_parameter/x = 18.0
@@ -346,7 +346,6 @@ scale = Vector2(0.5, 0.5)
 npc_resource = SubResource("Resource_xnmyp")
 
 [node name="Actionable" parent="Npc" instance=ExtResource("14_6wye2")]
-collision_layer = 4096
 dialogue_resource = ExtResource("25_5k6dy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Actionable"]
@@ -359,7 +358,6 @@ scale = Vector2(1, -1)
 npc_resource = SubResource("Resource_insof")
 
 [node name="Actionable" parent="Npc3" instance=ExtResource("14_6wye2")]
-collision_layer = 4096
 dialogue_resource = ExtResource("27_insof")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc3/Actionable"]
@@ -369,6 +367,6 @@ shape = SubResource("CircleShape2D_8q7qm")
 position = Vector2(843, 259)
 
 [node name="TreasureChest5" parent="." instance=ExtResource("5_87v0s")]
-material = SubResource("ShaderMaterial_v347e")
+material = SubResource("ShaderMaterial_insof")
 position = Vector2(426, 501)
 item_data = ExtResource("29_gxhnc")
