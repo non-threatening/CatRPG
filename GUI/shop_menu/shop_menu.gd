@@ -47,9 +47,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func show_menu( items : Array[ ItemData ], dialog_triggered : bool = true ) -> void:
-	print( items, items.size() )
-	#if dialog_triggered:
-		#await DialogSystem.finished
 	enable_menu()
 	populate_item_list( items )
 	shop_item_container.get_child( 0 ).grab_focus()

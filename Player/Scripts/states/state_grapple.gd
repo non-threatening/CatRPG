@@ -24,8 +24,8 @@ var tween : Tween
 var next_state : State = null
 
 var positions : Array[ Vector3 ] = [
-	Vector3( 8.0, -20.0, 180.0 ), # up
-	Vector3( 8.0, -10.0, 0.0 ), # down
+	Vector3( 0.0, -20.0, 180.0 ), # up
+	Vector3( 0.0, -10.0, 0.0 ), # down
 	Vector3( -10.0, -15.0, 90.0 ), # left
 	Vector3( 10.0, -15.0, -90.0 ), # right
 ]
@@ -48,7 +48,6 @@ func init() -> void:
 
 ## What happens when the player enters this State?
 func enter() -> void:
-	print("Grapple state")
 	player.update_animation( "idle" )
 	grapple_hook.show()
 	grapple_hurt_box.monitoring = true
@@ -162,7 +161,7 @@ func grapple_player() -> void:
 	
 	var player_target : Vector2 = player.global_position
 	player_target += ( player.cardinal_direction * collision_distance )
-	player_target -= player.cardinal_direction * 10
+	player_target -= player.cardinal_direction * nine_patch_size
 	
 	tween.parallel().tween_property(
 		player, "global_position",

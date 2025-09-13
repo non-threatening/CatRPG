@@ -36,11 +36,10 @@ var bomb_count : int = 10 : set = _set_bomb_count
 @onready var held_item: Node2D = $Sprite2D/HeldItem
 @onready var carry: State_Carry = $StateMachine/Carry
 @onready var idle: State_Idle = $StateMachine/Idle
+@onready var player_abilities: PlayerAbilities = $Abilities
 
 @onready var bird_friend_sprite: Sprite2D = $Sprite2D/BirdFriendSprite
-
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
-#var input_vector: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
@@ -49,6 +48,7 @@ func _ready() -> void:
 	hit_box.damaged.connect( _take_damage )
 	update_hp(99)
 	update_damage_values()
+	hide_bird_friend()
 	PlayerManager.player_leveled_up.connect( _on_player_leveled_up )
 	PlayerManager.INVETORY_DATA.equipment_changed.connect( _on_equipment_changed )
 	PlayerManager.INVETORY_DATA.item_added_to_inventory.connect( _item_added )
@@ -84,7 +84,6 @@ func _process( _delta: float ) -> void:
 	pass
 
 
-
 func _physics_process( _delta: float ) -> void:
 	move_and_slide()
 
@@ -102,7 +101,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		#DialogueManager.show_example_dialogue_balloon(load("res://Dialogue/Testing_in_GrassSh.dialogue"), "start")
 		#return
 		pass
-
 
 
 func set_direction() -> bool:
@@ -141,13 +139,10 @@ func anim_direction() -> String:
 func _take_damage( hurt_box : HurtBox ) -> void:
 	if invulnerable == true:
 		return
-		
 	if hp > 0:
 		var dmg : int = hurt_box.damage
-		
 		if dmg > 0:
 			dmg = clampi( dmg - defense - defense_bonus, 1, dmg )
-		
 		update_hp( -dmg )
 		player_damaged.emit( hurt_box )
 		
@@ -224,8 +219,7 @@ func bird_friend_sprite_animation( new_dir : Vector2 ):
 		Vector2.RIGHT:
 			bird_friend_sprite.position = Vector2( -17, -6.0 )
 		_:
-			print( "= 0")
-	pass
+			pass
 #
 #
 func show_bird_friend() -> void:

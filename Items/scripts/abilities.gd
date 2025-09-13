@@ -4,7 +4,7 @@ const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
 const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 
 var abilities : Array[ String ] = [
-	"BIRD", "", "", "" ## "BIRD", "GRAPPLE", "BOW", "BOMB"
+	"", "", "", "" ## "BIRD", "GRAPPLE", "BOW", "BOMB"
 	]
 
 var selected_ability = 0
@@ -26,12 +26,15 @@ func _ready() -> void:
 	PlayerHud.update_arrow_count( player.arrow_count )
 	PlayerHud.update_bomb_count( player.bomb_count )
 	setup_abilities()
+	SaveManager.game_loaded.connect( _on_game_loaded )
+	PlayerManager.INVETORY_DATA.ability_acquired.connect( _on_ability_acquired )
 	
 	
-func setup_abilities() -> void:
+	
+func setup_abilities( select_index : int = 0 ) -> void:
 	PauseMenu.update_ability_items( abilities )
 	PlayerHud.update_ability_items( abilities )
-	selected_ability = 0
+	selected_ability = select_index - 1
 	toggle_ability()
 	pass
 	
@@ -112,12 +115,31 @@ func bomb_ability() -> void:
 		PlayerManager.interact_handled = false
 		var throwable : ThrowableBomb = bomb.find_child("Throwable")
 		throwable.player_interact() ## func that's usually called when player picks something up, runs the pickup animation and all that
-		
-		pass
-	pass
 	
 
 func grapple_ability() -> void:
 	if  state_machine.current_state == idle or state_machine.current_state == walk:
 		player.state_machine.change_state( grapple )
-	pass
+
+
+func _on_game_loaded() -> void:
+	var new_abilities = SaveManager.current_save.abilities
+	abilities.clear()
+	for i in new_abilities:
+		abilities.append( i )
+	setup_abilities()
+
+
+func _on_ability_acquired( _ability : AbilityItemData ) -> void:
+	print( "Give Ability: ",  _ability.type )
+	#"BIRD", "GRAPPLE", "BOW", "BOMB"
+	match _ability.type:
+		_ability.Type.BIRD:
+			abilities[0] = "BIRD"
+		_ability.Type.GRAPPLE:
+			abilities[1] = "GRAPPLE"
+		_ability.Type.ARROW:
+			abilities[2] = "ARROW"
+		_ability.Type.BOMB:
+			abilities[3] = "BOMB"
+	setup_abilities( selected_ability )

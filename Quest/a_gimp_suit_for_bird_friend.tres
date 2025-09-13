@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="AGimpSuitForBirdFriend" load_steps=8 format=3 uid="uid://cv1gxg7lomu62"]
+[gd_resource type="Resource" script_class="AGimpSuitForBirdFriend" load_steps=7 format=3 uid="uid://cv1gxg7lomu62"]
 
 [ext_resource type="Script" uid="uid://bvqtnrn5xgsi0" path="res://Items/scripts/item_data.gd" id="1_7j25i"]
 [ext_resource type="Script" uid="uid://bekolut8q2j0l" path="res://Quest/quest_scripts/a_gimp_suit_for_bird_friend.gd" id="1_ch6qy"]
-[ext_resource type="Resource" uid="uid://d1hal3jqnbjc1" path="res://Items/potion.tres" id="2_7j25i"]
+[ext_resource type="Resource" uid="uid://ct24774noeydi" path="res://Items/ability_bird.tres" id="2_7j25i"]
 [ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quest/scripts/quest_step.gd" id="2_cq7qh"]
-[ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="3_leqh6"]
 
 [sub_resource type="Resource" id="Resource_ch6qy"]
 script = ExtResource("2_cq7qh")
@@ -22,8 +21,7 @@ metadata/_custom_type_script = "uid://cvm36y7b4aids"
 script = ExtResource("1_ch6qy")
 steps = Array[ExtResource("2_cq7qh")]([SubResource("Resource_ch6qy"), SubResource("Resource_cq7qh")])
 reward = Dictionary[ExtResource("1_7j25i"), int]({
-ExtResource("2_7j25i"): 3,
-ExtResource("3_leqh6"): 1
+ExtResource("2_7j25i"): 1
 })
 xp = 27
 id = 102

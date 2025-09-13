@@ -2,6 +2,7 @@ class_name InventoryData extends Resource
 
 signal equipment_changed
 signal item_added_to_inventory
+signal ability_acquired( ability : AbilityItemData )
 
 @export var slots : Array[ SlotData ]
 var equipment_slot_count : int = 4
@@ -22,11 +23,14 @@ func equipment_slots() -> Array[ SlotData ]:
 
 
 func add_item( item : ItemData, count : int = 1 ) -> bool:
+	if item is AbilityItemData:
+		ability_acquired.emit( item )
+		return true
+		
 	for s in slots:
 		if s:
 			if s.item_data == item:
 				s.quantity += count
-				print("existing thing", item)
 				item_added_to_inventory.emit()
 				return true
 	for i in inventory_slots().size():
@@ -37,19 +41,20 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 			slots[ i ] = new
 			new.changed.connect( slot_changed )
 			item_added_to_inventory.emit()
-			print("new thing")	
 			return true
 	print( "inventory was full ;(" )
 	return false
 
 
 func add_item_quest_reward( item : ItemData, count : int = 1 ) -> bool:
+	if item is AbilityItemData:
+		ability_acquired.emit( item )
+		return true
+		
 	for s in slots:
 		if s:
 			if s.item_data == item:
 				s.quantity += count
-				print("existing thing2", item)
-				#item_added_to_inventory.emit()
 				return true
 	for i in inventory_slots().size():
 		if slots[ i ] == null:
@@ -58,8 +63,6 @@ func add_item_quest_reward( item : ItemData, count : int = 1 ) -> bool:
 			new.quantity = count
 			slots[ i ] = new
 			new.changed.connect( slot_changed )
-			#item_added_to_inventory.emit()
-			print("new thing2")	
 			return true
 	print( "inventory was full ;(" )
 	return false
@@ -70,7 +73,7 @@ func connect_slots() -> void:
 	for s in slots:
 		if s:
 			s.changed.connect( slot_changed )
-			print("connect_slots")
+			
 			
 func slot_changed():
 	for s in slots:
@@ -129,6 +132,7 @@ func use_item( item : ItemData, count : int = 1 ) -> bool:
 		if s:
 			if s.item_data == item and s.quantity >= count:
 				s.quantity -= count
+				PlayerHud.queue_notification( "", str(NumberToWords.to_words( count ).capitalize(), " ", item.name, " removed" ) )
 				return true
 	return false	
 

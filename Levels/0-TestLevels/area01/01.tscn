@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://pucwglkmup3m"]
+[gd_scene load_steps=35 format=4 uid="uid://pucwglkmup3m"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
@@ -17,6 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://brbte5cqgjuvx" path="res://npc/patrol_location.tscn" id="12_5ak8t"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://Props/pot/pot.tscn" id="19_huo8l"]
 [ext_resource type="PackedScene" uid="uid://cpugykfww2auk" path="res://interactables/dungeon/PresurePlate.tscn" id="21_1xyfj"]
+[ext_resource type="Resource" uid="uid://cb1puvcqks5h3" path="res://Items/ability_grapple.tres" id="22_31yvb"]
+[ext_resource type="Resource" uid="uid://ct24774noeydi" path="res://Items/ability_bird.tres" id="22_svifw"]
+[ext_resource type="Resource" uid="uid://capjhk4b8qxa6" path="res://Items/ability_bomb.tres" id="23_kr4tu"]
+[ext_resource type="Resource" uid="uid://p3om8hv0rf28" path="res://Items/ability_arrow.tres" id="24_kytmn"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="29_gs60u"]
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="30_egubj"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="31_s5a4g"]
@@ -38,7 +42,39 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_31yvb")
 shader_parameter/density = 0.2
 shader_parameter/speed = Vector2(-0.01, 0.01)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mn1uy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kr4tu"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kytmn"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j6q0"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gs60u"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_egubj"]
 resource_local_to_scene = true
 shader = ExtResource("32_l661h")
 shader_parameter/x = 18.0
@@ -143,9 +179,29 @@ position = Vector2(1133, 204)
 item_data = ExtResource("30_egubj")
 
 [node name="TreasureChest" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_mn1uy")
+material = SubResource("ShaderMaterial_kr4tu")
 position = Vector2(1137, 100)
 item_data = ExtResource("32_kvvsh")
+
+[node name="TreasureChest2" parent="." instance=ExtResource("31_s5a4g")]
+material = SubResource("ShaderMaterial_kytmn")
+position = Vector2(983, 479)
+item_data = ExtResource("22_31yvb")
+
+[node name="TreasureChest3" parent="." instance=ExtResource("31_s5a4g")]
+material = SubResource("ShaderMaterial_1j6q0")
+position = Vector2(907, 479)
+item_data = ExtResource("23_kr4tu")
+
+[node name="TreasureChest4" parent="." instance=ExtResource("31_s5a4g")]
+material = SubResource("ShaderMaterial_gs60u")
+position = Vector2(820, 479)
+item_data = ExtResource("24_kytmn")
+
+[node name="TreasureChest5" parent="." instance=ExtResource("31_s5a4g")]
+material = SubResource("ShaderMaterial_egubj")
+position = Vector2(719, 479)
+item_data = ExtResource("22_svifw")
 
 [node name="GrapplePost" parent="." instance=ExtResource("7_mn1uy")]
 position = Vector2(703, 637)

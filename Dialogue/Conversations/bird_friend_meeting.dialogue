@@ -21,7 +21,12 @@ elif  Shortcuts.get_quest_property( 102, "have_suit" ) == false
 else
 	Bird Friend: Nice Can I have the gimpsuit
 	- OK
+		Bird Friend: ...
 		do QuestSystem.set_quest_property( 102, "suit_given", true)
+		Bird Friend: I'd better come with you, at least for a while
+		Cat: I think I could use the help
+		| Cat: Awesome
+		| Bird Friend: Awesome
 		do Shortcuts.update_quest("a_gimp_suit_for_bird_friend")
 	- No way
 		Cat: It's my GimpSuit now!!!!

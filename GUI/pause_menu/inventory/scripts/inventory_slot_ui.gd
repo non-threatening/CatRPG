@@ -40,7 +40,7 @@ func set_slot_data( value: SlotData ) -> void:
 	inventory_slot.show()	
 	texture_rect.texture = slot_data.item_data.texture
 	label_2.text = slot_data.item_data.name
-	print(slot_data.item_data.name)
+
 	
 	if slot_data.item_data is EquipableItemData:
 		label.text = ""

@@ -8,7 +8,6 @@ signal updated
 
 
 func meets_condition() -> bool:
-	print("step condition met")
 	completed = true
 	return completed
 

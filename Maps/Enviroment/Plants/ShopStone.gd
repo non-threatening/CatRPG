@@ -11,7 +11,6 @@ func _ready() -> void:
 
 
 func show_shop_menu() -> void:
-	print("show shop")
 	ShopMenu.show_menu( shop_inventory )
 	pass
 

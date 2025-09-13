@@ -31,7 +31,6 @@ func process( _delta : float ) -> State:
 
 func _state_complete( _a : String ) -> void:
 	player.animation_player.animation_finished.disconnect( _state_complete )
-	print("enter carry state")
 	state_machine.change_state( carry )
 	pass
 

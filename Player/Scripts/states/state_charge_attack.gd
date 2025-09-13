@@ -89,7 +89,6 @@ func handle_input( _event: InputEvent ) -> State:
 
 
 func charge_attack() -> void:
-	print("charge attack func")
 	charge_attack_hurt_box.damage = 2
 	is_attacking = true
 	player.animation_player.play( "charge_attack" )

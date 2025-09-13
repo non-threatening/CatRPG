@@ -17,14 +17,15 @@ var current_save : Dictionary = {
 		attack = 1,
 		defense = 1,
 		pos_x = 0,
-		pos_y = 0
+		pos_y = 0,
+		arrow_count = 0,
+		bomb_count = 0
 	},
 	items = [],
 	persistance = [],
-	#quests = [ #{ title = "not found ", is_complete = false, completed_steps = ['']  } 
-	#],
 	quest_data = [],
-	pool_state = []
+	pool_state = [],
+	abilities = [ "", "", "", "" ]
 }
 
 
@@ -39,6 +40,7 @@ func save_game() -> void:
 	var save_json = JSON.stringify( current_save )
 	file.store_line( save_json )
 	game_saved.emit()
+	PlayerHud.queue_notification( "Save Game", "GAME SAVED!" )
 	print("save_game")
 	pass
 
@@ -66,6 +68,9 @@ func load_game() -> void:
 	p.xp = current_save.player.xp
 	p.attack = current_save.player.attack
 	p.defense = current_save.player.defense
+	p.arrow_count = current_save.player.arrow_count
+	p.bomb_count = current_save.player.bomb_count
+	
 	
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
 	
@@ -77,6 +82,7 @@ func load_game() -> void:
 			quests.append(quest_resource)
 		QuestSystem.restore_pool_state_from_dict(current_save["pool_state"], quests)
 		QuestSystem.deserialize_quests(current_save["quest_data"])
+		
 		
 	await  LevelManager.level_loaded
 	game_loaded.emit()
@@ -93,6 +99,10 @@ func update_player_data() -> void:
 	current_save.player.xp = p.xp
 	current_save.player.attack = p.attack
 	current_save.player.defense = p.defense
+	current_save.player.arrow_count = p.arrow_count
+	current_save.player.bomb_count = p.bomb_count
+	
+	current_save.abilities = p.player_abilities.abilities
 	
 	
 	

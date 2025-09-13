@@ -22,7 +22,6 @@ func _process( _delta: float ) -> void:
 
 func _on_equipment_changed() -> void:
 	var equipment : Array[ SlotData ] = PlayerManager.INVETORY_DATA.equipment_slots()
-	print("equipment: ", equipment)
 	await get_tree().process_frame
 	
 	texture = equipment[ 0 ].item_data.sprite_texture

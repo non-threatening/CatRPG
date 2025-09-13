@@ -129,7 +129,6 @@ func get_active_quests() -> Array[Quest]:
 	
 
 func get_completed_quests() -> Array[Quest]:
-	print("trifged")
 	return completed.get_all_quests()
 
 

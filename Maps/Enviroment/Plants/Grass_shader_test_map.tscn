@@ -1,14 +1,13 @@
-[gd_scene load_steps=38 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=41 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="1_kc5b1"]
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_sq0g3"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="2_h11ci"]
 [ext_resource type="PackedScene" uid="uid://biuvt1eo6nfpj" path="res://Maps/Enviroment/Plants/Grass/grass_blade.tscn" id="2_o3la6"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_pje86"]
+[ext_resource type="Shader" uid="uid://w4m68pkampei" path="res://Maps/Enviroment/Plants/Grid.gdshader" id="3_v347e"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="4_ryqvc"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="5_87v0s"]
-[ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="6_i0vpj"]
-[ext_resource type="Shader" uid="uid://skvfd1mlofa5" path="res://Maps/Enviroment/Plants/electric_treasure.gdshader" id="6_jafpe"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="7_i0vpj"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="10_7lr6h"]
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="11_jafpe"]
@@ -18,9 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="14_6wye2"]
 [ext_resource type="Shader" uid="uid://btj07hvby1q3q" path="res://materials/color_replace/color_replace.gdshader" id="14_xnmyp"]
 [ext_resource type="PackedScene" uid="uid://dajuqkayd03fp" path="res://npc/npc.tscn" id="16_crvoo"]
-[ext_resource type="Texture2D" uid="uid://dbvgg5qwy3w25" path="res://npc/sprites/portraits/portrait_placeholder.png" id="17_nut02"]
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="18_t5npb"]
-[ext_resource type="Resource" uid="uid://cwppo2fvp6tr7" path="res://Dialogue/Conversations/StepedQuest.dialogue" id="20_xnmyp"]
 [ext_resource type="Script" uid="uid://mgths8ngb5cu" path="res://Quest/quest_scripts/walking_quest.gd" id="22_xnmyp"]
 [ext_resource type="Texture2D" uid="uid://bhqyncgrcywfy" path="res://npc/sprites/portraits/hero_portrait.png" id="23_q5fwb"]
 [ext_resource type="Texture2D" uid="uid://8s1kdamuhbpn" path="res://Player/BirdFriend/sprites/Crow_Outline-384x148.png" id="24_5k6dy"]
@@ -28,29 +25,38 @@
 [ext_resource type="Texture2D" uid="uid://b3gyfk4grcgyo" path="res://Player/BirdFriend/sprites/perched_test.png" id="26_716o7"]
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="27_insof"]
 [ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="28_8q7qm"]
+[ext_resource type="Shader" uid="uid://rau322rwm5hw" path="res://Maps/Enviroment/Plants/Grass/grass_blade.gdshader" id="28_v347e"]
+[ext_resource type="Resource" uid="uid://ct24774noeydi" path="res://Items/ability_bird.tres" id="29_gxhnc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yfni2"]
-shader = ExtResource("6_jafpe")
-shader_parameter/line_width = 0.0
+[sub_resource type="Gradient" id="Gradient_v347e"]
+colors = PackedColorArray(0, 0.569945, 0.609093, 1, 0.307722, 0.598821, 0.574173, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v347e"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gxhnc"]
+color_ramp = SubResource("Gradient_v347e")
+noise = SubResource("FastNoiseLite_v347e")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k1c8l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d4krf"]
+noise = SubResource("FastNoiseLite_k1c8l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxhnc"]
+shader = ExtResource("3_v347e")
 shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/lineWidth = 0.5
+shader_parameter/size = Vector2(50, 50)
+shader_parameter/noise = SubResource("NoiseTexture2D_gxhnc")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_d4krf")
+shader_parameter/edge_fade = 0.0
+shader_parameter/wave_speed = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cwgr4"]
 shader = ExtResource("14_xnmyp")
 shader_parameter/target_color = Color(0.215686, 0.109804, 0.00392157, 1)
 shader_parameter/replace_color = Color(0.0647343, 0.243964, 1, 1)
 shader_parameter/tolerance = 0.139
-
-[sub_resource type="Resource" id="Resource_cwgr4"]
-script = ExtResource("18_t5npb")
-npc_name = "Quest Guy"
-sprite = ExtResource("13_yfni2")
-portrait = ExtResource("17_nut02")
-dialog_audio_pitch = 1.0
-metadata/_custom_type_script = "uid://bmpteubp4v57k"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xjts2"]
-radius = 64.0312
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
 radius = 31.0161
@@ -77,6 +83,14 @@ metadata/_custom_type_script = "uid://bmpteubp4v57k"
 [sub_resource type="CircleShape2D" id="CircleShape2D_8q7qm"]
 radius = 65.0308
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v347e"]
+resource_local_to_scene = true
+shader = ExtResource("28_v347e")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(0, -1)
@@ -85,6 +99,13 @@ script = ExtResource("1_sq0g3")
 [node name="Dungeon01" parent="." instance=ExtResource("2_pje86")]
 z_index = -1
 tile_map_data = PackedByteArray("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")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gxhnc")
+offset_left = -22.0
+offset_top = -251.0
+offset_right = 1302.0
+offset_bottom = 828.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -95,13 +116,6 @@ offset_bottom = 800.0
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_ryqvc")]
 position = Vector2(666, 692)
-
-[node name="TreasureChest" parent="." instance=ExtResource("5_87v0s")]
-visible = false
-material = SubResource("ShaderMaterial_yfni2")
-position = Vector2(516, 582)
-item_data = ExtResource("6_i0vpj")
-quantity = 3
 
 [node name="Grass" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -257,7 +271,7 @@ position = Vector2(591, 573)
 item_data = ExtResource("11_jafpe")
 
 [node name="ItemPickup2" parent="." instance=ExtResource("10_7lr6h")]
-position = Vector2(707, 509)
+position = Vector2(707, 518.702)
 item_data = ExtResource("12_nut02")
 
 [node name="PersistantDataHandler" parent="ItemPickup2" instance=ExtResource("13_t5npb")]
@@ -271,18 +285,6 @@ position = Vector2(328, 503)
 
 [node name="Trees3" parent="." instance=ExtResource("7_i0vpj")]
 position = Vector2(459, 207)
-
-[node name="Npc2" parent="." instance=ExtResource("16_crvoo")]
-position = Vector2(69, -122)
-npc_resource = SubResource("Resource_cwgr4")
-
-[node name="Actionable" parent="Npc2" instance=ExtResource("14_6wye2")]
-position = Vector2(1, -2)
-collision_layer = 4096
-dialogue_resource = ExtResource("20_xnmyp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2/Actionable"]
-shape = SubResource("CircleShape2D_xjts2")
 
 [node name="Flower1" parent="." instance=ExtResource("2_h11ci")]
 position = Vector2(191, 636)
@@ -365,3 +367,8 @@ shape = SubResource("CircleShape2D_8q7qm")
 
 [node name="ShopStone" parent="." instance=ExtResource("28_8q7qm")]
 position = Vector2(843, 259)
+
+[node name="TreasureChest5" parent="." instance=ExtResource("5_87v0s")]
+material = SubResource("ShaderMaterial_v347e")
+position = Vector2(426, 501)
+item_data = ExtResource("29_gxhnc")

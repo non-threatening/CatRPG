@@ -20,7 +20,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	interact_area.area_entered.connect( _on_area_enter )
-	interact_area.area_exited.disconnect( _on_area_exit )
+	interact_area.area_exited.connect( _on_area_exit )
 	persistant_data_is_open.data_loaded.connect( set_chest_state )
 	set_chest_state()
 	pass
@@ -53,7 +53,7 @@ func _on_area_enter( _a : Area2D ) -> void:
 	pass
 
 
-func _on_area_exit( _a : int ) -> void:
+func _on_area_exit( _a : Area2D ) -> void:
 	PlayerManager.interact_pressed.disconnect( player_interact )
 	pass
 
