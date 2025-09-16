@@ -1,5 +1,4 @@
-extends Resource
-class_name QuestStep
+class_name QuestStep extends Resource
 
 @export_multiline var title: String
 @export var completed: bool = false
@@ -11,10 +10,8 @@ func meets_condition() -> bool:
 	completed = true
 	return completed
 
-
 func serialize() -> Dictionary:
 	return {"completed": completed}
-
 
 func deserialize(data: Dictionary) -> void:
 	for key in data.keys():

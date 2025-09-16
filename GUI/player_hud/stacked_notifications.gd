@@ -36,5 +36,5 @@ func display_quest_notification() -> void:
 	v_box_container.add_child( new_notification )
 	new_notification.initialize( _n.title, _n.message, counter )
 	
-	await get_tree().create_timer( 3.0 ).timeout
+	await get_tree().create_timer( 1.666 ).timeout
 	display_quest_notification()

@@ -95,12 +95,14 @@ shader_parameter/time_scale = 1.0
 y_sort_enabled = true
 position = Vector2(0, -1)
 script = ExtResource("1_sq0g3")
+metadata/_edit_vertical_guides_ = [2699.0]
 
 [node name="Dungeon01" parent="." instance=ExtResource("2_pje86")]
 z_index = -1
-tile_map_data = PackedByteArray("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")
+tile_map_data = PackedByteArray("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AABLABkAAQAIAAcAAABMABkAAQAIAAcAAABNABkAAQAIAAcAAABOABkAAQAIAAcAAABPABkAAQAIAAcAAABQABkAAQAIAAcAAABRABkAAQAIAAcAAABSABkAAQAIAAcAAABTABkAAQAIAAcAAABTAOL/AQAIAAcAAABTAOP/AQAIAAcAAABTAOT/AQAIAAcAAABTAOX/AQAIAAcAAABTAOb/AQAIAAcAAABTAOf/AQAIAAcAAABTAOj/AQAIAAcAAABTAOn/AQAIAAcAAABTAOr/AQAIAAcAAABTAOv/AQAIAAcAAABTAOz/AQAIAAcAAABTAO3/AQAIAAcAAABTAO7/AQAIAAcAAABTAO//AQAIAAcAAABTAPD/AQAIAAcAAABTAPH/AQAIAAcAAABTAPL/AQAIAAcAAABTAPP/AQAIAAcAAABTAPT/AQAIAAcAAABTAPX/AQAIAAcAAABTAPb/AQAIAAcAAABTAPf/AQAIAAcAAABTAPj/AQAIAAcAAABTAPn/AQAIAAcAAABTAPr/AQAIAAcAAABTAPv/AQAIAAcAAABTAPz/AQAIAAcAAABTAP3/AQAIAAcAAABTAP7/AQAIAAcAAABTAP//AQAIAAcAAABTAAAAAQAIAAcAAABTAAEAAQAIAAcAAABTAAIAAQAIAAcAAABTAAMAAQAIAAcAAABTAAQAAQAIAAcAAABTAAUAAQAIAAcAAABTAAYAAQAIAAcAAABTAAcAAQAIAAcAAABTAAgAAQAIAAcAAABTAAkAAQAIAAcAAABTAAoAAQAIAAcAAABTAAsAAQAIAAcAAABTAAwAAQAIAAcAAABTAA0AAQAIAAcAAABTAA4AAQAIAAcAAABTAA8AAQAIAAcAAABTABAAAQAIAAcAAABTABEAAQAIAAcAAABTABIAAQAIAAcAAABTABMAAQAIAAcAAABTABQAAQAIAAcAAABTABUAAQAIAAcAAABTABYAAQAIAAcAAABTABcAAQAIAAcAAABTABgAAQAIAAcAAAAoAOL/AQAIAAcAAAAoAOP/AQAIAAcAAAAoAOT/AQAIAAcAAAAoAOX/AQAIAAcAAAAoAOb/AQAIAAcAAAAoAOf/AQAIAAcAAAAoAOj/AQAIAAcAAAAoAOn/AQAIAAcAAAAoAOr/AQAIAAcAAAAoAOv/AQAIAAcAAAAoAOz/AQAIAAcAAAAoAO3/AQAIAAcAAAAoAO7/AQAIAAcAAAAoAO//AQAIAAcAAAAoAPD/AQAIAAcAAAAoAPH/AQAIAAcAAAAoAPL/AQAIAAcAAAAoAPP/AQAIAAcAAAAoAPT/AQAIAAcAAAAoAPX/AQAIAAcAAAAoAPb/AQAIAAcAAAAoAPf/AQAIAAcAAAApAOL/AQAIAAcAAAAqAOL/AQAIAAcAAAArAOL/AQAIAAcAAAAsAOL/AQAIAAcAAAAtAOL/AQAIAAcAAAAuAOL/AQAIAAcAAAAvAOL/AQAIAAcAAAAwAOL/AQAIAAcAAAAxAOL/AQAIAAcAAAAyAOL/AQAIAAcAAAAzAOL/AQAIAAcAAAA0AOL/AQAIAAcAAAA1AOL/AQAIAAcAAAA2AOL/AQAIAAcAAAA3AOL/AQAIAAcAAAA4AOL/AQAIAAcAAAA5AOL/AQAIAAcAAAA6AOL/AQAIAAcAAAA7AOL/AQAIAAcAAAA8AOL/AQAIAAcAAAA9AOL/AQAIAAcAAAA+AOL/AQAIAAcAAAA/AOL/AQAIAAcAAABAAOL/AQAIAAcAAABBAOL/AQAIAAcAAABCAOL/AQAIAAcAAABDAOL/AQAIAAcAAABEAOL/AQAIAAcAAABFAOL/AQAIAAcAAABGAOL/AQAIAAcAAABHAOL/AQAIAAcAAABIAOL/AQAIAAcAAABJAOL/AQAIAAcAAABKAOL/AQAIAAcAAABLAOL/AQAIAAcAAABMAOL/AQAIAAcAAABNAOL/AQAIAAcAAABOAOL/AQAIAAcAAABPAOL/AQAIAAcAAABQAOL/AQAIAAcAAABRAOL/AQAIAAcAAABSAOL/AQAIAAcAAAA=")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_gxhnc")
 offset_left = -22.0
 offset_top = -251.0
@@ -111,7 +113,7 @@ offset_bottom = 828.0
 z_index = -1
 material = ExtResource("1_kc5b1")
 offset_top = -225.0
-offset_right = 1280.0
+offset_right = 2655.0
 offset_bottom = 800.0
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_ryqvc")]
@@ -265,6 +267,163 @@ position = Vector2(923, 520)
 
 [node name="Flower36" parent="Flowers" instance=ExtResource("2_h11ci")]
 position = Vector2(967, 518)
+
+[node name="Flowers2" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1946, 236)
+
+[node name="Flower5" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(351, 179)
+
+[node name="Flower6" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(306, 196)
+
+[node name="Flower7" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(279, 113)
+
+[node name="Flower8" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(101, 179)
+
+[node name="Flower9" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(90, 208)
+
+[node name="Flower10" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(51, 209)
+
+[node name="Flower11" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(1, 189)
+
+[node name="Flower12" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-21, 162)
+
+[node name="Flower13" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(127, 280)
+
+[node name="Flower14" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-25, 192)
+
+[node name="Flower15" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(229, 283)
+
+[node name="Flower16" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(85, 94)
+
+[node name="Flower17" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(125, 174)
+
+[node name="Flower18" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(152, 258)
+
+[node name="Flower19" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(127, 136)
+
+[node name="Flower20" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(123, 308)
+
+[node name="Flower21" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(183, 318)
+
+[node name="Flower22" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(170, 170)
+
+[node name="Flower23" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(274, 204)
+
+[node name="Flower24" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(148, 112)
+
+[node name="Flower25" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(76, 109)
+
+[node name="Flower26" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(45, 100)
+
+[node name="Flower27" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(115, 99)
+
+[node name="Flower28" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(182, 122)
+
+[node name="Flower29" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(225, 176)
+
+[node name="Flower30" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(204, 204)
+
+[node name="Flower31" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(121, 221)
+
+[node name="Flower32" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(327, 108)
+
+[node name="Flower33" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(371, 119)
+
+[node name="Flower34" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(405, 107)
+
+[node name="Flower35" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(446, 109)
+
+[node name="Flower36" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(490, 107)
+
+[node name="Flower37" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-467, 22)
+
+[node name="Flower38" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-420, 119)
+
+[node name="Flower39" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-502, 78)
+
+[node name="Flower40" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-242, 84)
+
+[node name="Flower41" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-116, 134)
+
+[node name="Flower42" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-232, 225)
+
+[node name="Flower43" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-113, 253)
+
+[node name="Flower44" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-188, 234)
+
+[node name="Flower45" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-213, 190)
+
+[node name="Flower46" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-147, 215)
+
+[node name="Flower47" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-288, 184)
+
+[node name="Flower48" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-363, 146)
+
+[node name="Flower49" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-476, 278)
+
+[node name="Flower50" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-354, 291)
+
+[node name="Flower51" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-389, 219)
+
+[node name="Flower53" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-508, 144)
+
+[node name="Flower54" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-586, 59)
+
+[node name="Flower55" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-558, 141)
+
+[node name="Flower52" parent="Flowers2" instance=ExtResource("2_h11ci")]
+position = Vector2(-420, 291)
 
 [node name="ItemPickup" parent="." instance=ExtResource("10_7lr6h")]
 position = Vector2(591, 573)

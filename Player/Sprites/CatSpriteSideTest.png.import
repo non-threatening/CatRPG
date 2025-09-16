@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btscqf4q2vegf"
-path="res://.godot/imported/ThreeFrameTest.png-4a8ed00c943504e1b45518be50e0020e.ctex"
+uid="uid://c14t1p7vmakho"
+path="res://.godot/imported/CatSpriteSideTest.png-70eebef3863cec06b9dfad51c7d7211c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/ThreeFrameTest.png"
-dest_files=["res://.godot/imported/ThreeFrameTest.png-4a8ed00c943504e1b45518be50e0020e.ctex"]
+source_file="res://Player/Sprites/CatSpriteSideTest.png"
+dest_files=["res://.godot/imported/CatSpriteSideTest.png-70eebef3863cec06b9dfad51c7d7211c.ctex"]
 
 [params]
 

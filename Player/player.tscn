@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
+[ext_resource type="Texture2D" uid="uid://c14t1p7vmakho" path="res://Player/Sprites/CatSpriteSideTest.png" id="3_dy65m"]
 [ext_resource type="Texture2D" uid="uid://dhn3ppn1oma2s" path="res://Player/Sprites/AttackSprite01.png" id="3_kkg45"]
 [ext_resource type="Script" uid="uid://d3jhi642kbnhk" path="res://Player/Scripts/player_sprite.gd" id="4_i4o1l"]
 [ext_resource type="Texture2D" uid="uid://cuauam44fa7si" path="res://Player/Sprites/player_sprite_sword.png" id="4_m0h3t"]
@@ -25,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://c3ovyjwujdxmf" path="res://GeneralNodes/HitBox/hit_box.tscn" id="13_urp6f"]
 [ext_resource type="AudioStream" uid="uid://c8px2y4w638w1" path="res://Player/Audio/hit_player.wav" id="14_bwjto"]
 [ext_resource type="Script" uid="uid://cvt3bp8tg6cp7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
-[ext_resource type="Texture2D" uid="uid://xa1v7sonybsn" path="res://Player/Sprites/SprtieTest_002_Colors_Enlarged_128.png" id="14_o28un"]
 [ext_resource type="Script" uid="uid://cp5m17gdo2qko" path="res://Items/scripts/abilities.gd" id="17_pisgm"]
 [ext_resource type="PackedScene" uid="uid://c0jsono37lv7x" path="res://GeneralNodes/ItemMagnet/ItemMagnet.tscn" id="18_b1ygp"]
 [ext_resource type="Script" uid="uid://4s3g56bv3sqy" path="res://Player/Scripts/states/state_lift.gd" id="19_qemgg"]
@@ -3315,7 +3315,7 @@ debug_color = Color(0, 0.65, 0.205833, 0.121569)
 texture_filter = 2
 material = SubResource("ShaderMaterial_iyprq")
 position = Vector2(0, -64)
-texture = ExtResource("14_o28un")
+texture = ExtResource("3_dy65m")
 hframes = 3
 vframes = 4
 script = ExtResource("4_i4o1l")
@@ -3551,9 +3551,9 @@ position = Vector2(0, -42)
 scale = Vector2(0.831355, 0.831355)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet"]
-position = Vector2(-5.84126e-06, 1.20286)
+position = Vector2(-5.84126e-06, 50.5199)
 shape = SubResource("CircleShape2D_o28un")
-debug_color = Color(0.1632, 0.68, 0.593867, 0)
+debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="Label" type="Label" parent="."]
 visible = false
