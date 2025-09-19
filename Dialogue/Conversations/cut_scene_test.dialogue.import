@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://de2e0s7is80oi"
+path="res://.godot/imported/cut_scene_test.dialogue-d4e02408b3e65fa6a8d3aeb8c1a0bc32.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/cut_scene_test.dialogue"
+dest_files=["res://.godot/imported/cut_scene_test.dialogue-d4e02408b3e65fa6a8d3aeb8c1a0bc32.tres"]
+
+[params]
+
+defaults=true
