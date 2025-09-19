@@ -18,12 +18,10 @@ region = Rect2(64, 0, 32, 32)
 
 [resource]
 script = ExtResource("3_inskq")
-type = 0
 modifiers = Array[ExtResource("2_ruas2")]([SubResource("Resource_ruas2")])
 sprite_texture = ExtResource("4_50xaj")
 name = "Katana"
 description = "Standard ass Katana"
 texture = SubResource("AtlasTexture_inskq")
 cost = 150
-effects = Array[ExtResource("1_y8yd3")]([])
 metadata/_custom_type_script = "uid://bluvqvcg0ko5j"

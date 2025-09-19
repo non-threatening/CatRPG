@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="Shader" uid="uid://dijfe1uuswhgp" path="res://GUI/pause_menu/blinker.gdshader" id="3_3yxpl"]
 [ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://GUI/pause_menu/PauseMenuControl_theme.tres" id="3_16eqs"]
-[ext_resource type="Script" uid="uid://c6s5hohp4wc86" path="res://GUI/pause_menu/quests_ui_new.gd" id="4_3yxpl"]
+[ext_resource type="Script" uid="uid://c6s5hohp4wc86" path="res://GUI/pause_menu/quests_ui.gd" id="4_3yxpl"]
 [ext_resource type="PackedScene" uid="uid://bnvj41ww8lhj0" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="4_laftm"]
 [ext_resource type="Script" uid="uid://dvclsk7ha4rgn" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="4_mc7vq"]
 [ext_resource type="Resource" uid="uid://1fwl7lk326j" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="5_408tb"]

@@ -10,9 +10,7 @@ region = Rect2(192, 0, 32, 32)
 
 [resource]
 script = ExtResource("2_ovoyb")
-name = ""
 description = "Tuna can"
 texture = SubResource("AtlasTexture_fnc8c")
-cost = 10
 effects = Array[ExtResource("1_xwhp1")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"

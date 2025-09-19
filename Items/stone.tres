@@ -14,5 +14,4 @@ name = "Stone"
 description = "A shiny new rock!"
 texture = SubResource("AtlasTexture_gqhqt")
 cost = 5
-effects = Array[ExtResource("1_gqhqt")]([])
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"

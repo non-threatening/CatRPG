@@ -3,7 +3,6 @@ class_name QuestUI extends Control
 const QUEST_SUMMARY : PackedScene = preload( "res://GUI/pause_menu/quest/quest_summary.tscn" )
 const LIST_SUMMARY : PackedScene = preload( "res://GUI/pause_menu/quest/list_summary.tscn" )
 
-
 @onready var quest_item_container: VBoxContainer = $ScrollContainer/QuestList/VBoxContainer
 @onready var quest_list_container: VBoxContainer = $ScrollContainer2/QuestList/VBoxContainer
 
@@ -28,7 +27,6 @@ func _on_visible_changed() -> void:
 			var new_q_item : QuestSummary = QUEST_SUMMARY.instantiate()
 			quest_item_container.add_child( new_q_item )
 			new_q_item.initialize( q.quest_objective, q.quest_description, false )
-			
 			new_q_item.focus_entered.connect( update_quest_details.bind( q.steps ) )
 		
 		var completed_quests = QuestSystem.get_completed_quests()
@@ -36,7 +34,6 @@ func _on_visible_changed() -> void:
 			var new_cq_item : QuestSummary = QUEST_SUMMARY.instantiate()
 			quest_item_container.add_child( new_cq_item )
 			new_cq_item.initialize( cq.quest_objective, cq.quest_description, true )
-			
 			new_cq_item.focus_entered.connect( update_quest_details.bind( cq.steps ))
 
 
@@ -50,7 +47,6 @@ func update_quest_details( thing) -> void:
 
 func clear_quest_details() -> void:
 	for c in quest_item_container.get_children():
-		#if c is QuestSummary:
 		c.queue_free()
 		for s in quest_list_container.get_children():
 			if s is ListSummary:
@@ -59,8 +55,6 @@ func clear_quest_details() -> void:
 
 func clear_list_details() -> void:
 	for c in quest_item_container.get_children():
-		#if c is QuestSummary:
-		#c.queue_free()
 		for s in quest_list_container.get_children():
 			if s is ListSummary:
 				s.queue_free()

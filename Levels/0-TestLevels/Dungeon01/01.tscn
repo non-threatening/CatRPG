@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bng4h21j3iths"]
+[gd_scene load_steps=13 format=4 uid="uid://bng4h21j3iths"]
 
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_umoo4"]
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_ux7ia"]
@@ -6,9 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://vcwhbi17a6df" path="res://Levels/Audio/example_music_03.ogg" id="2_uejuh"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="3_2la2r"]
 [ext_resource type="PackedScene" uid="uid://cpugykfww2auk" path="res://interactables/dungeon/PresurePlate.tscn" id="5_swvnj"]
-[ext_resource type="PackedScene" uid="uid://cj6o15jnqj0u0" path="res://Quests_old/utility_nodes/quest_activated_switch.tscn" id="6_gi814"]
 [ext_resource type="PackedScene" uid="uid://bsbk6o0lgbqfb" path="res://interactables/dungeon/BarredDoor.tscn" id="6_m3xjo"]
-[ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests_old/utility_nodes/quest_advance_trigger.tscn" id="6_x2j10"]
 [ext_resource type="PackedScene" uid="uid://c7qujggerj22o" path="res://interactables/dungeon/PushableStatue.tscn" id="7_4dhgi"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="9_gxo4t"]
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="10_gmq4b"]
@@ -31,10 +29,6 @@ position = Vector2(576, 520)
 level = "uid://pucwglkmup3m"
 target_transition_area = "LevelTransition2"
 side = 3
-
-[node name="QuestActivatedSwitch" parent="LevelTransition" instance=ExtResource("6_gi814")]
-
-[node name="QuestAdvanceTrigger" parent="LevelTransition/QuestActivatedSwitch" instance=ExtResource("6_x2j10")]
 
 [node name="LevelTransition2" parent="." instance=ExtResource("3_2la2r")]
 position = Vector2(576, 120)
@@ -66,6 +60,5 @@ position = Vector2(864, 136)
 item_data = ExtResource("12_n8j0c")
 quantity = 3
 
-[connection signal="entered_from_here" from="LevelTransition" to="LevelTransition/QuestActivatedSwitch/QuestAdvanceTrigger" method="advance_quest"]
 [connection signal="activated" from="PresurePlate" to="BarredDoor" method="open_door"]
 [connection signal="deactivated" from="PresurePlate" to="BarredDoor" method="close_door"]

@@ -1,6 +1,6 @@
 class_name QuestFlowerTest extends Area2D
 
-const WALKING_QUEST = preload("res://Quest/walking_quest.tres")
+const WALKING_QUEST = preload("res://Quests/quest_resources/walking_quest.tres")
 
 @onready var area_2d: QuestFlowerTest = $"."
 

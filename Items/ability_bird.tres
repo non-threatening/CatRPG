@@ -10,10 +10,7 @@ region = Rect2(32, 0, 32, 0)
 
 [resource]
 script = ExtResource("2_1orhv")
-type = 0
 name = "Bird Friend"
-description = ""
 texture = SubResource("AtlasTexture_5qndx")
 cost = 0
-effects = Array[ExtResource("1_s8snt")]([])
 metadata/_custom_type_script = "uid://oomaujsdmce8"

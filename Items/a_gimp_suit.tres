@@ -15,7 +15,6 @@ metadata/_custom_type_script = "uid://cvk6jyli0bvd0"
 [sub_resource type="Resource" id="Resource_dhhdw"]
 script = ExtResource("2_bff3e")
 type = 1
-value = 1
 metadata/_custom_type_script = "uid://cvk6jyli0bvd0"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inskq"]
@@ -27,9 +26,8 @@ script = ExtResource("3_a4otj")
 type = 2
 modifiers = Array[ExtResource("2_bff3e")]([SubResource("Resource_ruas2"), SubResource("Resource_dhhdw")])
 sprite_texture = ExtResource("4_xdgd3")
-name = "Gimp suit (used)"
+name = "Gimp suit (2nd hand)"
 description = "Second hand gimp suit"
 texture = SubResource("AtlasTexture_inskq")
 cost = 250
-effects = Array[ExtResource("1_dhhdw")]([])
 metadata/_custom_type_script = "uid://bluvqvcg0ko5j"

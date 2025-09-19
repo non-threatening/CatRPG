@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://r2kdkfki8m1"]
+[gd_scene load_steps=40 format=4 uid="uid://r2kdkfki8m1"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_0eny7"]
 [ext_resource type="AudioStream" uid="uid://xot5s58xou2q" path="res://Levels/Audio/example_music_01.ogg" id="2_gc23w"]
@@ -15,9 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://co1mwctarrili" path="res://Levels/0-TestLevels/Dungeon01/dark_wizard/energy_orb.tscn" id="7_s2x5s"]
 [ext_resource type="PackedScene" uid="uid://uf1mmd3668oj" path="res://Levels/0-TestLevels/Dungeon01/dark_wizard/energy_beam.tscn" id="8_0eny7"]
 [ext_resource type="AudioStream" uid="uid://7v10i5tusfq2" path="res://Levels/0-TestLevels/Dungeon01/dark_wizard/audio/boss_destroy.wav" id="8_hr13v"]
-[ext_resource type="PackedScene" uid="uid://b1n6sy5wqrqy5" path="res://GeneralNodes/ItemDropper/ItemDropper.tscn" id="12_v24pb"]
-[ext_resource type="Resource" uid="uid://bo3v255ny60ee" path="res://Items/the_thing.tres" id="13_gm8iu"]
-[ext_resource type="PackedScene" uid="uid://cbbygr4px6d7h" path="res://Quests_old/utility_nodes/quest_advance_trigger.tscn" id="14_7km15"]
 
 [sub_resource type="Gradient" id="Gradient_gc23w"]
 offsets = PackedFloat32Array(0.0859375, 0.535156, 1)
@@ -863,13 +860,6 @@ texture = SubResource("GradientTexture2D_gc23w")
 [node name="Sprite2D3" type="Sprite2D" parent="DarkWizardBoss/PositionTargets"]
 position = Vector2(176, 315)
 texture = SubResource("GradientTexture2D_gc23w")
-
-[node name="ItemDropper" parent="DarkWizardBoss" instance=ExtResource("12_v24pb")]
-position = Vector2(399, 213)
-item_data = ExtResource("13_gm8iu")
-
-[node name="QuestAdvanceTrigger" parent="DarkWizardBoss/ItemDropper" instance=ExtResource("14_7km15")]
-position = Vector2(-399, -213)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_3gt8q")]
 position = Vector2(840, 267)

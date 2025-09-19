@@ -14,5 +14,4 @@ name = "Gem"
 description = "Yummers !"
 texture = SubResource("AtlasTexture_yq8b3")
 cost = 1
-effects = Array[ExtResource("1_yq8b3")]([])
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"

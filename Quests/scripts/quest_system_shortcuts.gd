@@ -1,6 +1,6 @@
 extends Node
 
-const QUEST_PATH: String = "res://Quest/%s.tres"
+const QUEST_PATH: String = "res://Quests/quest_resources/%s.tres"
 
 func start_quest(quest_name: String) -> void:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)

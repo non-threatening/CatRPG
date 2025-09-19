@@ -1,6 +1,8 @@
 class_name AGimpSuitForBirdFriend extends BaseQuestResource
 
-const A_GIMP_SUIT = preload("res://Quest/a_gimp_suit_for_bird_friend.tres")
+const A_GIMP_SUIT = preload("res://Quests/quest_resources/a_gimp_suit_for_bird_friend.tres")
+
+signal bird_friend_comes_with
 
 var quest_item : ItemData = preload("res://Items/a_gimp_suit.tres")
 var have_suit : bool = false
@@ -17,4 +19,8 @@ func update(_args: Dictionary = {}) -> void:
 	elif suit_given == true:
 		PlayerManager.INVETORY_DATA.use_item( quest_item, 1 )
 		Shortcuts.complete_quest( "a_gimp_suit_for_bird_friend" )
+		
+		## remove Bird Friend from scene from here
+		bird_friend_comes_with.emit()
+		
 	updated.emit()
