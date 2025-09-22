@@ -83,7 +83,7 @@ func play_audio( _audio : AudioStream ) -> void:
 ## will emit this signal if in state that allows interactio
 func interact() -> void:
 	interact_handled = false
-	interact_pressed.emit() 
+	interact_pressed.emit()
 	
 	
 func shake_camera( trauma : float = 1 ) -> void:

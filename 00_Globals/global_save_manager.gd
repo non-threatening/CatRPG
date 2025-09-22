@@ -2,7 +2,6 @@ extends Node
 
 const SAVE_PATH = "user://"
 
-
 signal game_loaded
 signal game_saved
 
@@ -75,8 +74,8 @@ func load_game() -> void:
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
 	
 	var quests: Array[Quest]
-	for quest in DirAccess.get_files_at("res://Quest/"):
-		var quest_path = "res://Quest/" + quest
+	for quest in DirAccess.get_files_at("res://Quests/"):
+		var quest_path = "res://Quests/" + quest
 		var quest_resource = load(quest_path)
 		if quest_resource is Quest:
 			quests.append(quest_resource)

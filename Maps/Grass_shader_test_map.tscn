@@ -1,0 +1,694 @@
+[gd_scene load_steps=52 format=4 uid="uid://ly7wguh1ufuy"]
+
+[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_t22hv"]
+[ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
+[ext_resource type="Shader" uid="uid://w4m68pkampei" path="res://Maps/Enviroment/Plants/Grid.gdshader" id="3_70lcl"]
+[ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="4_4uvlv"]
+[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="5_g0pye"]
+[ext_resource type="PackedScene" uid="uid://biuvt1eo6nfpj" path="res://Maps/Enviroment/Plants/Grass/grass_blade.tscn" id="6_srkr2"]
+[ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="7_qhnrh"]
+[ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="8_v5bit"]
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="9_qnxbr"]
+[ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="10_xvh4v"]
+[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="11_yr5mt"]
+[ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="12_hxh2l"]
+[ext_resource type="Resource" uid="uid://dlkbc8pb4nscr" path="res://npc/00_npcs/bird_friend.tres" id="13_5tx25"]
+[ext_resource type="Shader" uid="uid://btj07hvby1q3q" path="res://materials/color_replace/color_replace.gdshader" id="13_l156c"]
+[ext_resource type="Script" uid="uid://mgths8ngb5cu" path="res://Quests/quest_scripts/walking_quest.gd" id="14_1qe5l"]
+[ext_resource type="Resource" uid="uid://bp38cq1huwval" path="res://npc/00_npcs/flower_guy.tres" id="14_70lcl"]
+[ext_resource type="Texture2D" uid="uid://clnnkp7uhjrl0" path="res://Player/BirdFriend/sprites/Crowfly_three_frames.png" id="14_g0pye"]
+[ext_resource type="PackedScene" uid="uid://dajuqkayd03fp" path="res://npc/npc.tscn" id="15_k0o0t"]
+[ext_resource type="Material" uid="uid://dovepfkvi71pg" path="res://npc/indicator.tres" id="17_srkr2"]
+[ext_resource type="Script" uid="uid://dadco14ppovp6" path="res://Maps/interact_indicator.gd" id="18_70lcl"]
+[ext_resource type="Texture2D" uid="uid://b00jppgs0gc8o" path="res://npc/exclamation-solid-full.svg" id="18_qhnrh"]
+[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="19_li6oa"]
+[ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="20_70lcl"]
+[ext_resource type="Resource" uid="uid://dwyai16xaes5c" path="res://Dialogue/Conversations/walking_quest.dialogue" id="20_xmcjt"]
+[ext_resource type="Script" uid="uid://0hlam00jvvrf" path="res://Maps/bf_comes_with.gd" id="21_5tx25"]
+[ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
+[ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="24_0fwua"]
+[ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="25_451xv"]
+[ext_resource type="Shader" uid="uid://rau322rwm5hw" path="res://Maps/Enviroment/Plants/Grass/grass_blade.gdshader" id="26_0xcwq"]
+[ext_resource type="Resource" uid="uid://ct24774noeydi" path="res://Items/ability_bird.tres" id="27_oya04"]
+
+[sub_resource type="Gradient" id="Gradient_v347e"]
+colors = PackedColorArray(0, 0.569945, 0.609093, 1, 0.307722, 0.598821, 0.574173, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v347e"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gxhnc"]
+noise = SubResource("FastNoiseLite_v347e")
+color_ramp = SubResource("Gradient_v347e")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k1c8l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d4krf"]
+noise = SubResource("FastNoiseLite_k1c8l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxhnc"]
+shader = ExtResource("3_70lcl")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/lineWidth = 0.5
+shader_parameter/size = Vector2(50, 50)
+shader_parameter/noise = SubResource("NoiseTexture2D_gxhnc")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_d4krf")
+shader_parameter/edge_fade = 0.0
+shader_parameter/wave_speed = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqcrc"]
+radius = 123.14624
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4uvlv"]
+radius = 121.264175
+
+[sub_resource type="Animation" id="Animation_o6cys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3i1kj"]
+resource_name = "idle_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fnhme"]
+resource_name = "idle_side"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_ldo70"]
+resource_name = "idle_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_uamtn"]
+resource_name = "walk_down"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 5, 4]
+}
+
+[sub_resource type="Animation" id="Animation_phifv"]
+resource_name = "walk_side"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 13, 12]
+}
+
+[sub_resource type="Animation" id="Animation_ocili"]
+resource_name = "walk_up"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 9, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wuxkc"]
+_data = {
+&"RESET": SubResource("Animation_o6cys"),
+&"idle_down": SubResource("Animation_3i1kj"),
+&"idle_side": SubResource("Animation_fnhme"),
+&"idle_up": SubResource("Animation_ldo70"),
+&"walk_down": SubResource("Animation_uamtn"),
+&"walk_side": SubResource("Animation_phifv"),
+&"walk_up": SubResource("Animation_ocili")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5tx25"]
+radius = 62.0
+height = 186.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5fwb"]
+radius = 109.004585
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwgr4"]
+shader = ExtResource("13_l156c")
+shader_parameter/target_color = Color(0.215686, 0.109804, 0.00392157, 1)
+shader_parameter/replace_color = Color(0.0647343, 0.243964, 1, 1)
+shader_parameter/tolerance = 0.139
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
+radius = 31.0161
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0pye"]
+resource_local_to_scene = true
+shader = ExtResource("26_0xcwq")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(0, -1)
+script = ExtResource("1_t22hv")
+metadata/_edit_vertical_guides_ = [2699.0]
+
+[node name="Dungeon01" parent="." instance=ExtResource("2_5tx25")]
+z_index = -1
+tile_map_data = PackedByteArray("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AABLABkAAQAIAAcAAABMABkAAQAIAAcAAABNABkAAQAIAAcAAABOABkAAQAIAAcAAABPABkAAQAIAAcAAABQABkAAQAIAAcAAABRABkAAQAIAAcAAABSABkAAQAIAAcAAABTABkAAQAIAAcAAABTAOL/AQAIAAcAAABTAOP/AQAIAAcAAABTAOT/AQAIAAcAAABTAOX/AQAIAAcAAABTAOb/AQAIAAcAAABTAOf/AQAIAAcAAABTAOj/AQAIAAcAAABTAOn/AQAIAAcAAABTAOr/AQAIAAcAAABTAOv/AQAIAAcAAABTAOz/AQAIAAcAAABTAO3/AQAIAAcAAABTAO7/AQAIAAcAAABTAO//AQAIAAcAAABTAPD/AQAIAAcAAABTAPH/AQAIAAcAAABTAPL/AQAIAAcAAABTAPP/AQAIAAcAAABTAPT/AQAIAAcAAABTAPX/AQAIAAcAAABTAPb/AQAIAAcAAABTAPf/AQAIAAcAAABTAPj/AQAIAAcAAABTAPn/AQAIAAcAAABTAPr/AQAIAAcAAABTAPv/AQAIAAcAAABTAPz/AQAIAAcAAABTAP3/AQAIAAcAAABTAP7/AQAIAAcAAABTAP//AQAIAAcAAABTAAAAAQAIAAcAAABTAAEAAQAIAAcAAABTAAIAAQAIAAcAAABTAAMAAQAIAAcAAABTAAQAAQAIAAcAAABTAAUAAQAIAAcAAABTAAYAAQAIAAcAAABTAAcAAQAIAAcAAABTAAgAAQAIAAcAAABTAAkAAQAIAAcAAABTAAoAAQAIAAcAAABTAAsAAQAIAAcAAABTAAwAAQAIAAcAAABTAA0AAQAIAAcAAABTAA4AAQAIAAcAAABTAA8AAQAIAAcAAABTABAAAQAIAAcAAABTABEAAQAIAAcAAABTABIAAQAIAAcAAABTABMAAQAIAAcAAABTABQAAQAIAAcAAABTABUAAQAIAAcAAABTABYAAQAIAAcAAABTABcAAQAIAAcAAABTABgAAQAIAAcAAAAoAOL/AQAIAAcAAAAoAOP/AQAIAAcAAAAoAOT/AQAIAAcAAAAoAOX/AQAIAAcAAAAoAOb/AQAIAAcAAAAoAOf/AQAIAAcAAAAoAOj/AQAIAAcAAAAoAOn/AQAIAAcAAAAoAOr/AQAIAAcAAAAoAOv/AQAIAAcAAAAoAOz/AQAIAAcAAAAoAO3/AQAIAAcAAAAoAO7/AQAIAAcAAAAoAO//AQAIAAcAAAAoAPD/AQAIAAcAAAAoAPH/AQAIAAcAAAAoAPL/AQAIAAcAAAAoAPP/AQAIAAcAAAAoAPT/AQAIAAcAAAAoAPX/AQAIAAcAAAAoAPb/AQAIAAcAAAAoAPf/AQAIAAcAAAApAOL/AQAIAAcAAAAqAOL/AQAIAAcAAAArAOL/AQAIAAcAAAAsAOL/AQAIAAcAAAAtAOL/AQAIAAcAAAAuAOL/AQAIAAcAAAAvAOL/AQAIAAcAAAAwAOL/AQAIAAcAAAAxAOL/AQAIAAcAAAAyAOL/AQAIAAcAAAAzAOL/AQAIAAcAAAA0AOL/AQAIAAcAAAA1AOL/AQAIAAcAAAA2AOL/AQAIAAcAAAA3AOL/AQAIAAcAAAA4AOL/AQAIAAcAAAA5AOL/AQAIAAcAAAA6AOL/AQAIAAcAAAA7AOL/AQAIAAcAAAA8AOL/AQAIAAcAAAA9AOL/AQAIAAcAAAA+AOL/AQAIAAcAAAA/AOL/AQAIAAcAAABAAOL/AQAIAAcAAABBAOL/AQAIAAcAAABCAOL/AQAIAAcAAABDAOL/AQAIAAcAAABEAOL/AQAIAAcAAABFAOL/AQAIAAcAAABGAOL/AQAIAAcAAABHAOL/AQAIAAcAAABIAOL/AQAIAAcAAABJAOL/AQAIAAcAAABKAOL/AQAIAAcAAABLAOL/AQAIAAcAAABMAOL/AQAIAAcAAABNAOL/AQAIAAcAAABOAOL/AQAIAAcAAABPAOL/AQAIAAcAAABQAOL/AQAIAAcAAABRAOL/AQAIAAcAAABSAOL/AQAIAAcAAAA=")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_gxhnc")
+offset_left = -22.0
+offset_top = -251.0
+offset_right = 1302.0
+offset_bottom = 828.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+material = ExtResource("4_4uvlv")
+offset_top = -225.0
+offset_right = 2655.0
+offset_bottom = 800.0
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("5_g0pye")]
+position = Vector2(666, 692)
+
+[node name="Grass" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-74, 2)
+
+[node name="GrassBlade2" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(576, 663)
+
+[node name="GrassBlade3" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(509, 629)
+
+[node name="GrassBlade4" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(604, 677)
+
+[node name="GrassBlade5" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(576, 675)
+
+[node name="GrassBlade6" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(561, 637)
+
+[node name="GrassBlade7" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(589, 637)
+
+[node name="GrassBlade8" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(621, 639)
+
+[node name="GrassBlade9" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(655, 641)
+
+[node name="GrassBlade10" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(538, 653)
+
+[node name="GrassBlade11" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(627, 704)
+
+[node name="GrassBlade12" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(895, 367)
+
+[node name="GrassBlade13" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(882, 377)
+
+[node name="GrassBlade14" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(1015, 296)
+
+[node name="GrassBlade15" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(990, 297)
+
+[node name="GrassBlade16" parent="Grass" instance=ExtResource("6_srkr2")]
+position = Vector2(1002, 286)
+
+[node name="Flowers" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-97, -43)
+
+[node name="Flower5" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(828, 590)
+
+[node name="Flower6" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(783, 607)
+
+[node name="Flower7" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(756, 524)
+
+[node name="Flower8" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(578, 590)
+
+[node name="Flower9" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(567, 619)
+
+[node name="Flower10" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(528, 620)
+
+[node name="Flower11" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(478, 600)
+
+[node name="Flower12" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(456, 573)
+
+[node name="Flower13" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(604, 691)
+
+[node name="Flower14" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(452, 603)
+
+[node name="Flower15" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(706, 694)
+
+[node name="Flower16" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(562, 505)
+
+[node name="Flower17" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(602, 585)
+
+[node name="Flower18" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(629, 669)
+
+[node name="Flower19" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(604, 547)
+
+[node name="Flower20" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(600, 719)
+
+[node name="Flower21" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(660, 729)
+
+[node name="Flower22" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(647, 581)
+
+[node name="Flower23" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(751, 615)
+
+[node name="Flower24" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(625, 523)
+
+[node name="Flower25" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(553, 520)
+
+[node name="Flower26" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(522, 511)
+
+[node name="Flower27" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(592, 510)
+
+[node name="Flower28" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(659, 533)
+
+[node name="Flower29" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(702, 587)
+
+[node name="Flower30" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(681, 615)
+
+[node name="Flower31" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(598, 632)
+
+[node name="Flower32" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(804, 519)
+
+[node name="Flower33" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(848, 530)
+
+[node name="Flower34" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(882, 518)
+
+[node name="Flower35" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(923, 520)
+
+[node name="Flower36" parent="Flowers" instance=ExtResource("7_qhnrh")]
+position = Vector2(967, 518)
+
+[node name="Flowers2" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1946, 236)
+
+[node name="Flower5" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(351, 179)
+
+[node name="Flower6" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(306, 196)
+
+[node name="Flower7" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(279, 113)
+
+[node name="Flower8" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(101, 179)
+
+[node name="Flower9" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(90, 208)
+
+[node name="Flower10" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(51, 209)
+
+[node name="Flower11" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(1, 189)
+
+[node name="Flower12" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-21, 162)
+
+[node name="Flower13" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(127, 280)
+
+[node name="Flower14" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-25, 192)
+
+[node name="Flower15" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(229, 283)
+
+[node name="Flower16" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(85, 94)
+
+[node name="Flower17" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(125, 174)
+
+[node name="Flower18" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(152, 258)
+
+[node name="Flower19" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(127, 136)
+
+[node name="Flower20" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(123, 308)
+
+[node name="Flower21" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(183, 318)
+
+[node name="Flower22" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(170, 170)
+
+[node name="Flower23" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(274, 204)
+
+[node name="Flower24" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(148, 112)
+
+[node name="Flower25" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(76, 109)
+
+[node name="Flower26" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(45, 100)
+
+[node name="Flower27" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(115, 99)
+
+[node name="Flower28" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(182, 122)
+
+[node name="Flower29" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(225, 176)
+
+[node name="Flower30" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(204, 204)
+
+[node name="Flower31" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(121, 221)
+
+[node name="Flower32" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(327, 108)
+
+[node name="Flower33" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(371, 119)
+
+[node name="Flower34" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(405, 107)
+
+[node name="Flower35" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(446, 109)
+
+[node name="Flower36" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(490, 107)
+
+[node name="Flower37" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-467, 22)
+
+[node name="Flower38" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-420, 119)
+
+[node name="Flower39" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-502, 78)
+
+[node name="Flower40" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-242, 84)
+
+[node name="Flower41" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-116, 134)
+
+[node name="Flower42" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-232, 225)
+
+[node name="Flower43" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-113, 253)
+
+[node name="Flower44" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-188, 234)
+
+[node name="Flower45" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-213, 190)
+
+[node name="Flower46" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-147, 215)
+
+[node name="Flower47" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-288, 184)
+
+[node name="Flower48" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-363, 146)
+
+[node name="Flower49" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-476, 278)
+
+[node name="Flower50" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-354, 291)
+
+[node name="Flower51" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-389, 219)
+
+[node name="Flower53" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-508, 144)
+
+[node name="Flower54" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-586, 59)
+
+[node name="Flower55" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-558, 141)
+
+[node name="Flower52" parent="Flowers2" instance=ExtResource("7_qhnrh")]
+position = Vector2(-420, 291)
+
+[node name="ItemPickup" parent="." instance=ExtResource("8_v5bit")]
+position = Vector2(591, 573)
+item_data = ExtResource("9_qnxbr")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("8_v5bit")]
+position = Vector2(1098, 336)
+item_data = ExtResource("10_xvh4v")
+
+[node name="PersistantDataHandler" parent="ItemPickup2" instance=ExtResource("11_yr5mt")]
+
+[node name="BFComesWith" type="CharacterBody2D" parent="."]
+position = Vector2(949, 546)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("21_5tx25")
+h_frames = 3
+npc_resource = ExtResource("13_5tx25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BFComesWith"]
+shape = SubResource("CircleShape2D_yqcrc")
+debug_color = Color(0.37905112, 0.47461665, 1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BFComesWith"]
+position = Vector2(0, -19)
+texture = ExtResource("14_g0pye")
+hframes = 3
+
+[node name="ShadowSprite" type="Sprite2D" parent="BFComesWith/Sprite2D"]
+modulate = Color(0.0980392, 0.0509804, 0.458824, 0.537255)
+show_behind_parent = true
+position = Vector2(2.38419e-07, 19)
+scale = Vector2(0.75, 0.875)
+texture = ExtResource("20_70lcl")
+
+[node name="Indicator2D" type="Area2D" parent="BFComesWith/Sprite2D"]
+visible = false
+position = Vector2(0, 38)
+script = ExtResource("18_70lcl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BFComesWith/Sprite2D/Indicator2D"]
+shape = SubResource("CircleShape2D_4uvlv")
+debug_color = Color(0.27450982, 0.40392157, 1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BFComesWith/Sprite2D/Indicator2D"]
+material = ExtResource("17_srkr2")
+position = Vector2(0, -137.54686)
+scale = Vector2(0.15, 0.1)
+texture = ExtResource("18_qhnrh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BFComesWith"]
+libraries = {
+&"": SubResource("AnimationLibrary_wuxkc")
+}
+
+[node name="Actionable" parent="BFComesWith" instance=ExtResource("19_li6oa")]
+dialogue_resource = ExtResource("23_26whl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BFComesWith/Actionable"]
+position = Vector2(11.999998, 2.861023e-05)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_5tx25")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="PersistantDataHandler" parent="BFComesWith" instance=ExtResource("11_yr5mt")]
+
+[node name="Npc" parent="." instance=ExtResource("15_k0o0t")]
+position = Vector2(310, 732)
+npc_resource = ExtResource("14_70lcl")
+
+[node name="Actionable" parent="Npc" instance=ExtResource("19_li6oa")]
+dialogue_resource = ExtResource("20_xmcjt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Actionable"]
+shape = SubResource("CircleShape2D_q5fwb")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Trees" parent="." instance=ExtResource("12_hxh2l")]
+material = SubResource("ShaderMaterial_cwgr4")
+position = Vector2(668, 436)
+
+[node name="Trees2" parent="." instance=ExtResource("12_hxh2l")]
+position = Vector2(328, 503)
+
+[node name="Trees3" parent="." instance=ExtResource("12_hxh2l")]
+position = Vector2(459, 207)
+
+[node name="Flower1" parent="." instance=ExtResource("7_qhnrh")]
+position = Vector2(191, 636)
+
+[node name="WalkingQuest" type="Area2D" parent="Flower1"]
+script = ExtResource("14_1qe5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower1/WalkingQuest"]
+shape = SubResource("CircleShape2D_t5npb")
+
+[node name="Flower2" parent="." instance=ExtResource("7_qhnrh")]
+position = Vector2(72, 546)
+
+[node name="WalkingQuest" type="Area2D" parent="Flower2"]
+script = ExtResource("14_1qe5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower2/WalkingQuest"]
+shape = SubResource("CircleShape2D_t5npb")
+
+[node name="Flower3" parent="." instance=ExtResource("7_qhnrh")]
+position = Vector2(65, 377)
+
+[node name="WalkingQuest" type="Area2D" parent="Flower3"]
+script = ExtResource("14_1qe5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower3/WalkingQuest"]
+shape = SubResource("CircleShape2D_t5npb")
+
+[node name="Flower4" parent="." instance=ExtResource("7_qhnrh")]
+position = Vector2(205, 440)
+
+[node name="WalkingQuest" type="Area2D" parent="Flower4"]
+script = ExtResource("14_1qe5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower4/WalkingQuest"]
+shape = SubResource("CircleShape2D_t5npb")
+
+[node name="Flower5" parent="." instance=ExtResource("7_qhnrh")]
+position = Vector2(65, 197)
+
+[node name="WalkingQuest" type="Area2D" parent="Flower5"]
+script = ExtResource("14_1qe5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower5/WalkingQuest"]
+shape = SubResource("CircleShape2D_t5npb")
+
+[node name="Flower6" parent="." instance=ExtResource("7_qhnrh")]
+position = Vector2(143, 176)
+
+[node name="WalkingQuest" type="Area2D" parent="Flower6"]
+script = ExtResource("14_1qe5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower6/WalkingQuest"]
+shape = SubResource("CircleShape2D_t5npb")
+
+[node name="ShopStone" parent="." instance=ExtResource("24_0fwua")]
+position = Vector2(843, 259)
+
+[node name="TreasureChest5" parent="." instance=ExtResource("25_451xv")]
+visible = false
+material = SubResource("ShaderMaterial_g0pye")
+position = Vector2(426, 501)
+item_data = ExtResource("27_oya04")

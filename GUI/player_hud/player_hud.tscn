@@ -670,6 +670,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 max_polyphony = 2
 bus = &"Effects"
 

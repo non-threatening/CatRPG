@@ -12,7 +12,7 @@ config_version=5
 
 config/name="RPGC"
 run/main_scene="uid://ly7wguh1ufuy"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
@@ -29,8 +29,9 @@ EffectManager="*res://00_Globals/global_effect_manager.gd"
 ShopMenu="*res://GUI/shop_menu/shop_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 QuestSystem="*res://addons/quest_system/quest_manager.gd"
-Shortcuts="*res://Quest/scripts/quest_system_shortcuts.gd"
+Shortcuts="*res://Quests/scripts/quest_system_shortcuts.gd"
 QuestVars="*res://00_Globals/global_quest_vars.gd"
+NpcManager="*res://00_Globals/global_npc_manager.gd"
 
 [debug]
 
@@ -50,7 +51,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
 
 [file_customization]
 

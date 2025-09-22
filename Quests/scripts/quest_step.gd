@@ -5,7 +5,6 @@ class_name QuestStep extends Resource
 
 signal updated
 
-
 func meets_condition() -> bool:
 	completed = true
 	return completed
