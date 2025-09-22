@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0u3mmda127cd"]
+[gd_scene load_steps=8 format=3 uid="uid://c0u3mmda127cd"]
 
 [ext_resource type="Script" uid="uid://bm4oe7er3ffwr" path="res://Dialogue/SpeachBubbles/speach_bubble.gd" id="1_suubk"]
 [ext_resource type="Theme" uid="uid://bpsv0tvfru4e2" path="res://Dialogue/SpeachBubbles/speach_bubble.tres" id="2_suubk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b8mukr7afp5o4" path="res://Dialogue/SpeachBubbles/blured_panel_white.png" id="3_tr0jp"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_t1jep"]
 [ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeachBubbles/portraits/cat.png" id="6_l6g6q"]
+[ext_resource type="AudioStream" uid="uid://dppicop8bwemo" path="res://Dialogue/SpeachBubbles/voice_blip.wav" id="7_t1jep"]
 
 [node name="SpeachBubble" type="CanvasLayer"]
 process_mode = 3
@@ -54,7 +55,7 @@ layout_mode = 2
 texture = ExtResource("3_tr0jp")
 
 [node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 80.0
 offset_top = 44.0
 offset_right = 704.0
@@ -102,6 +103,20 @@ response_template = NodePath("ResponseExample")
 [node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu"]
 layout_mode = 2
 text = "Response example"
+
+[node name="Label" type="Label" parent="Bubble"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 625.0
+offset_right = 940.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 32
+text = " ~~> "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_t1jep")
+max_polyphony = 5
+bus = &"Effects"
 
 [connection signal="gui_input" from="Bubble" to="." method="_on_bubble_gui_input"]
 [connection signal="response_selected" from="Bubble/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

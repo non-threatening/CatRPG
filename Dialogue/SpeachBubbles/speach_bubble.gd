@@ -18,8 +18,15 @@ var resource: DialogueResource
 ## Temporary game states
 var temporary_game_states: Array = []
 
+
 ## See if we are waiting for the player
-var is_waiting_for_input: bool = false
+var is_waiting_for_input: bool = false:
+	set( value ):
+		is_waiting_for_input = value
+		label.visible = value
+	get:
+		return is_waiting_for_input
+
 
 ## See if we are running a long mutation and should hide the bubble
 var will_hide_bubble: bool = false
@@ -36,13 +43,16 @@ var dialogue_line: DialogueLine:
 			dialogue_line = value
 			apply_dialogue_line()
 		else:
-			# The dialogue has finished so close the bubble
 			queue_free()
 	get:
 		return dialogue_line
 
 ## A cooldown timer for delaying the bubble hide when encountering a mutation.
 var mutation_cooldown: Timer = Timer.new()
+
+
+var pitch : float = 1.0
+
 
 ## The base bubble anchor
 @onready var bubble: Control = %Bubble
@@ -59,6 +69,8 @@ var mutation_cooldown: Timer = Timer.new()
 
 @onready var margin_container: MarginContainer = $Bubble/MarginContainer
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var label: Label = $Bubble/Label
 
 
 func _ready() -> void:
@@ -68,17 +80,24 @@ func _ready() -> void:
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
-
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
+	
+	dialogue_label.spoke.connect( _spoke )
 	
 	## pause / unpause
 	get_tree().paused = true
 	DialogueManager.dialogue_ended.connect( _unpause )
 
+
+func _spoke( letter: String, letter_index: int, speed: float ) -> void:
+	if 'aeiouy1234567890'.contains( letter ):
+		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.85, 1.15 ))
+		audio_stream_player.play()
+
+
 func _unpause( _t ) -> void:
 	get_tree().paused = false
-	pass
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -111,18 +130,28 @@ func apply_dialogue_line() -> void:
 	is_waiting_for_input = false
 	bubble.focus_mode = Control.FOCUS_ALL
 	bubble.grab_focus()
+	
+	
+	var character : Resource
+	var character_path : String = "res://npc/00_npcs/%s.tres" % ( dialogue_line.character.to_snake_case() )
+	if ResourceLoader.exists( character_path ):
+		character = load( character_path )
+		pitch = character.dialog_audio_pitch
+	elif dialogue_line.character.to_snake_case() == "cat":
+		pitch = 1.0
+
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
-
-
 
 	#only change charactr when a new character appears ???
 	# Or use tags, maybe better.. if cat use [1]
 	var emotion : String = ""
 	if not dialogue_line.tags.is_empty():
-		emotion = dialogue_line.tags[0]
-	var portrait_path : String = "res://Dialogue/SpeachBubbles/portraits/%s.png" % ( dialogue_line.character.to_lower() + emotion )
+		emotion = ( "_" + dialogue_line.tags[0] )
+		
+		
+	var portrait_path : String = "res://Dialogue/SpeachBubbles/portraits/%s.png" % ( dialogue_line.character.to_snake_case() + emotion )
 	print( "pp ", portrait_path)
 	if ResourceLoader.exists( portrait_path ):
 		portrait.texture = load( portrait_path )
@@ -140,8 +169,6 @@ func apply_dialogue_line() -> void:
 		character_label.text = ""
 		%DialogueLabel.horizontal_alignment = 1
 		
-
-
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

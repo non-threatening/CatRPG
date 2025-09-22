@@ -52,6 +52,7 @@ func _ready() -> void:
 	PlayerManager.player_leveled_up.connect( _on_player_leveled_up )
 	PlayerManager.INVETORY_DATA.equipment_changed.connect( _on_equipment_changed )
 	PlayerManager.INVETORY_DATA.item_added_to_inventory.connect( _item_added )
+	PlayerManager.interact_pressed.connect( _interact_pressed )
 	pass
 
 var wait_time: float = 1.0
@@ -88,19 +89,17 @@ func _physics_process( _delta: float ) -> void:
 	move_and_slide()
 
 
+func _interact_pressed() -> void:
+	var actionables = actionable_finder.get_overlapping_areas()
+	if actionables.size() > 0:
+		actionables[0].action()
+		return
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("test"):
-		var actionables = actionable_finder.get_overlapping_areas()
-		print("actionables: ", actionables )
-		if actionables.size() > 0:
-			actionables[0].action()
-			#input_vector = Vector2.ZERO
-			return
-		#ShopMenu.show_menu( shop_inventory )
 		PlayerManager.shake_camera()
-		#DialogueManager.show_example_dialogue_balloon(load("res://Dialogue/Testing_in_GrassSh.dialogue"), "start")
-		#return
-		pass
+
 
 
 func set_direction() -> bool:

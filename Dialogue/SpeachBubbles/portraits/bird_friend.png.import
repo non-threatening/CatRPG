@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm4238rk6sken"
-path="res://.godot/imported/example1.png-df833248af0ebaf547bc33f27f71a689.ctex"
+uid="uid://drydd6souxdj7"
+path="res://.godot/imported/bird_friend.png-5eb32406f242d9068323e7f4375e4ec1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TODO_Manager-cbacea3f2014275205dd05482f5b80c36d001dce/addons/Todo_Manager/doc/images/example1.png"
-dest_files=["res://.godot/imported/example1.png-df833248af0ebaf547bc33f27f71a689.ctex"]
+source_file="res://Dialogue/SpeachBubbles/portraits/bird_friend.png"
+dest_files=["res://.godot/imported/bird_friend.png-5eb32406f242d9068323e7f4375e4ec1.ctex"]
 
 [params]
 

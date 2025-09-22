@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dik1pxuh46u4d"
-path="res://.godot/imported/cathappy.png-d1befc9cb0511f999e837ad2c191046e.ctex"
+uid="uid://40nvpu1vn725"
+path="res://.godot/imported/chat_bubbles.svg-dcc7fcc927559e9a15cffd19bd48ff40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogue/SpeachBubbles/portraits/cathappy.png"
-dest_files=["res://.godot/imported/cathappy.png-d1befc9cb0511f999e837ad2c191046e.ctex"]
+source_file="res://Dialogue/SpeachBubbles/chat_bubbles.svg"
+dest_files=["res://.godot/imported/chat_bubbles.svg-dcc7fcc927559e9a15cffd19bd48ff40.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
