@@ -58,8 +58,6 @@ func start() -> void:
 	start() # func calls self
 	pass
 	
-	
-	
 
 func _set_wander_range( v : int ) -> void:
 	wander_range = v

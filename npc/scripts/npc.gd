@@ -10,7 +10,7 @@ var direction_name : String = "down"
 var do_behavior : bool = true
 
 @export var h_frames : int = 3 : set = _set_h_frames
-
+@export var v_frames : int = 3 : set = _set_v_frames
 @export var npc_resource : NPCResource : set = _set_npc_resourse
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -19,24 +19,14 @@ var do_behavior : bool = true
 
 func _ready() -> void:
 	setup_npc()
-	sprite.hframes = h_frames
 	if Engine.is_editor_hint():
 		return
-	#gather_interactables()
 	do_behavior_enabled.emit()
 	pass
 	
 	
-
 func _physics_process( _delta: float ) -> void:
 	move_and_slide()
-
-
-#func gather_interactables() -> void:
-	#for c in get_children():
-		#if c is DialogInteraction:
-			#c.player_interacted.connect( _on_player_interacted )
-			#c.finished.connect( _on_interaction_finished )
 
 
 func _on_player_interacted() -> void:
@@ -47,6 +37,8 @@ func _on_player_interacted() -> void:
 	do_behavior = false
 	pass
 
+
+
 func _on_interaction_finished() -> void:
 	state = "idle"
 	update_animation()
@@ -55,12 +47,11 @@ func _on_interaction_finished() -> void:
 	pass
 	
 
-
 func update_animation() -> void:
 	animation.play( state + "_" + direction_name )
 
 
-
+## use for animation... in extended
 func update_direction( target_position : Vector2 ) -> void:
 	direction = global_position.direction_to( target_position )
 	update_direction_name()
@@ -68,7 +59,6 @@ func update_direction( target_position : Vector2 ) -> void:
 		sprite.flip_h = true
 	else:
 		sprite.flip_h = false
-	
 	
 	
 func update_direction_name() -> void:
@@ -86,6 +76,7 @@ func setup_npc() -> void:
 	if npc_resource:
 		if sprite:
 			sprite.texture = npc_resource.sprite
+			sprite.hframes = h_frames
 	pass
 
 
@@ -100,10 +91,8 @@ func _set_h_frames( value : int ) -> void:
 		sprite.hframes = h_frames
 	pass
 
-
-
-
-
-
-
-	
+func _set_v_frames( value : int ) -> void:
+	v_frames = value
+	if sprite:
+		sprite.vframes = v_frames
+	pass

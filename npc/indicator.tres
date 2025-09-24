@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dovepfkvi71pg"]
+
+[ext_resource type="Shader" uid="uid://ougq5pnu62fh" path="res://npc/indicator.gdshader" id="1_s8qhm"]
+
+[resource]
+shader = ExtResource("1_s8qhm")
+shader_parameter/y = 8.0
+shader_parameter/time_scale = 1.0

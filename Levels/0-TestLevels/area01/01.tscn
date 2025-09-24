@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://pucwglkmup3m"]
+[gd_scene load_steps=42 format=4 uid="uid://pucwglkmup3m"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
@@ -14,9 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dul2wk6yslbpi" path="res://npc/npc_behavior_wander.tscn" id="8_ug5ku"]
 [ext_resource type="Resource" uid="uid://b7h0sdate1pn4" path="res://npc/00_npcs/npc_02.tres" id="10_h1fhx"]
 [ext_resource type="PackedScene" uid="uid://dhgjugbxgnsn3" path="res://npc/npc_behavior_patrol.tscn" id="11_8vfny"]
-[ext_resource type="Script" uid="uid://dygsjhwv7nf6e" path="res://Dialogue/dialog_cutscene.gd" id="11_gs60u"]
 [ext_resource type="PackedScene" uid="uid://brbte5cqgjuvx" path="res://npc/patrol_location.tscn" id="12_5ak8t"]
-[ext_resource type="Script" uid="uid://cgw66bwayciho" path="res://Dialogue/cutscene_action_animation.gd" id="12_egubj"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="12_kr4tu"]
 [ext_resource type="Resource" uid="uid://de2e0s7is80oi" path="res://Dialogue/Conversations/cut_scene_test.dialogue" id="13_kytmn"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://Props/pot/pot.tscn" id="19_huo8l"]
@@ -36,9 +34,9 @@ noise_type = 2
 frequency = 0.003
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_31yvb"]
+noise = SubResource("FastNoiseLite_c8171")
 seamless = true
 seamless_blend_skirt = 0.333
-noise = SubResource("FastNoiseLite_c8171")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_31yvb"]
 shader = ExtResource("7_c8171")
@@ -103,6 +101,22 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_kytmn"]
 radius = 52.2524
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kytmn"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j6q0"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gs60u"]
 resource_local_to_scene = true
 shader = ExtResource("32_l661h")
@@ -120,22 +134,6 @@ shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
 shader_parameter/time_scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s5a4g"]
-resource_local_to_scene = true
-shader = ExtResource("32_l661h")
-shader_parameter/x = 18.0
-shader_parameter/y = 8.0
-shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
-shader_parameter/time_scale = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvvsh"]
-resource_local_to_scene = true
-shader = ExtResource("32_l661h")
-shader_parameter/x = 18.0
-shader_parameter/y = 8.0
-shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
-shader_parameter/time_scale = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l661h"]
 resource_local_to_scene = true
 shader = ExtResource("32_l661h")
 shader_parameter/x = 18.0
@@ -203,14 +201,6 @@ scale = Vector2(4, 4)
 h_frames = 15
 npc_resource = ExtResource("8_ngmh3")
 
-[node name="DialogCutscene" type="Node" parent="Npc"]
-script = ExtResource("11_gs60u")
-metadata/_custom_type_script = "uid://dygsjhwv7nf6e"
-
-[node name="CutsceneActionAnimation" type="Node" parent="Npc/DialogCutscene"]
-script = ExtResource("12_egubj")
-metadata/_custom_type_script = "uid://cgw66bwayciho"
-
 [node name="NpcBehaviorWander" parent="Npc" instance=ExtResource("8_ug5ku")]
 wander_range = 3
 
@@ -263,27 +253,27 @@ position = Vector2(1133, 204)
 item_data = ExtResource("30_egubj")
 
 [node name="TreasureChest" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_gs60u")
+material = SubResource("ShaderMaterial_kytmn")
 position = Vector2(1137, 100)
 item_data = ExtResource("32_kvvsh")
 
 [node name="TreasureChest2" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_egubj")
+material = SubResource("ShaderMaterial_1j6q0")
 position = Vector2(983, 479)
 item_data = ExtResource("22_31yvb")
 
 [node name="TreasureChest3" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_s5a4g")
+material = SubResource("ShaderMaterial_gs60u")
 position = Vector2(907, 479)
 item_data = ExtResource("23_kr4tu")
 
 [node name="TreasureChest4" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_kvvsh")
+material = SubResource("ShaderMaterial_egubj")
 position = Vector2(820, 479)
 item_data = ExtResource("24_kytmn")
 
 [node name="TreasureChest5" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_l661h")
+material = SubResource("ShaderMaterial_s5a4g")
 position = Vector2(719, 479)
 item_data = ExtResource("22_svifw")
 

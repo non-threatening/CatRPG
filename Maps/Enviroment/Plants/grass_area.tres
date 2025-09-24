@@ -13,8 +13,8 @@ fractal_type = 2
 cellular_distance_function = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hwei2"]
-color_ramp = SubResource("Gradient_pg2pf")
 noise = SubResource("FastNoiseLite_svkfw")
+color_ramp = SubResource("Gradient_pg2pf")
 
 [resource]
 shader = ExtResource("1_pg2pf")

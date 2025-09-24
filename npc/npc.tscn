@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dajuqkayd03fp"]
 
 [ext_resource type="Script" uid="uid://bovbv6m0thrps" path="res://npc/scripts/npc.gd" id="1_2xp5l"]
-[ext_resource type="Texture2D" uid="uid://db1m2rdjmtb5n" path="res://npc/sprites/npc_sprite_02.png" id="2_nhy3c"]
+[ext_resource type="Texture2D" uid="uid://jnoa5oe7m7oo" path="res://Player/BirdFriend/sprites/Crowfly_three_x_three.png" id="2_3i1kj"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="3_3i1kj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xp5l"]
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [7]
 }
 
 [sub_resource type="Animation" id="Animation_fnhme"]
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_ldo70"]
@@ -65,12 +65,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_uamtn"]
 resource_name = "walk_down"
-length = 1.2
+length = 0.4
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -80,15 +80,15 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [3, 4, 5, 6, 5, 4]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6, 8]
 }
 
 [sub_resource type="Animation" id="Animation_phifv"]
 resource_name = "walk_side"
-length = 1.2
+length = 0.4
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -98,15 +98,15 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [11, 12, 13, 14, 13, 12]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_ocili"]
 resource_name = "walk_up"
-length = 1.2
+length = 0.4
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -116,10 +116,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [7, 8, 9, 10, 9, 8]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wuxkc"]
@@ -137,16 +137,18 @@ _data = {
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_2xp5l")
+v_frames = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2xp5l")
-debug_color = Color(0, 0.6, 0.701961, 0.14902)
+debug_color = Color(0, 0.6, 0.7019608, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -19)
-texture = ExtResource("2_nhy3c")
+texture = ExtResource("2_3i1kj")
 hframes = 3
+vframes = 3
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0.0980392, 0.0509804, 0.458824, 0.537255)

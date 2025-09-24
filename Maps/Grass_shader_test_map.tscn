@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=43 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
@@ -12,19 +12,17 @@
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="10_xvh4v"]
 [ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="11_yr5mt"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="12_hxh2l"]
-[ext_resource type="Resource" uid="uid://dlkbc8pb4nscr" path="res://npc/00_npcs/bird_friend.tres" id="13_5tx25"]
 [ext_resource type="Shader" uid="uid://btj07hvby1q3q" path="res://materials/color_replace/color_replace.gdshader" id="13_l156c"]
 [ext_resource type="Script" uid="uid://mgths8ngb5cu" path="res://Quests/quest_scripts/walking_quest.gd" id="14_1qe5l"]
 [ext_resource type="Resource" uid="uid://bp38cq1huwval" path="res://npc/00_npcs/flower_guy.tres" id="14_70lcl"]
 [ext_resource type="Texture2D" uid="uid://clnnkp7uhjrl0" path="res://Player/BirdFriend/sprites/Crowfly_three_frames.png" id="14_g0pye"]
 [ext_resource type="PackedScene" uid="uid://dajuqkayd03fp" path="res://npc/npc.tscn" id="15_k0o0t"]
-[ext_resource type="Material" uid="uid://dovepfkvi71pg" path="res://npc/indicator.tres" id="17_srkr2"]
-[ext_resource type="Script" uid="uid://dadco14ppovp6" path="res://Maps/interact_indicator.gd" id="18_70lcl"]
-[ext_resource type="Texture2D" uid="uid://b00jppgs0gc8o" path="res://npc/exclamation-solid-full.svg" id="18_qhnrh"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://Dialogue/indicator.tscn" id="15_t22hv"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="19_li6oa"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="20_70lcl"]
 [ext_resource type="Resource" uid="uid://dwyai16xaes5c" path="res://Dialogue/Conversations/walking_quest.dialogue" id="20_xmcjt"]
 [ext_resource type="Script" uid="uid://0hlam00jvvrf" path="res://Maps/bf_comes_with.gd" id="21_5tx25"]
+[ext_resource type="PackedScene" uid="uid://dul2wk6yslbpi" path="res://npc/npc_behavior_wander.tscn" id="21_70lcl"]
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
 [ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="24_0fwua"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="25_451xv"]
@@ -56,142 +54,20 @@ shader_parameter/edge_fade = 0.0
 shader_parameter/wave_speed = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yqcrc"]
-radius = 123.14624
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4uvlv"]
-radius = 121.264175
-
-[sub_resource type="Animation" id="Animation_o6cys"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_3i1kj"]
-resource_name = "idle_down"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_fnhme"]
-resource_name = "idle_side"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-
-[sub_resource type="Animation" id="Animation_ldo70"]
-resource_name = "idle_up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_uamtn"]
-resource_name = "walk_down"
-length = 1.2
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [3, 4, 5, 6, 5, 4]
-}
-
-[sub_resource type="Animation" id="Animation_phifv"]
-resource_name = "walk_side"
-length = 1.2
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [11, 12, 13, 14, 13, 12]
-}
-
-[sub_resource type="Animation" id="Animation_ocili"]
-resource_name = "walk_up"
-length = 1.2
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [7, 8, 9, 10, 9, 8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wuxkc"]
-_data = {
-&"RESET": SubResource("Animation_o6cys"),
-&"idle_down": SubResource("Animation_3i1kj"),
-&"idle_side": SubResource("Animation_fnhme"),
-&"idle_up": SubResource("Animation_ldo70"),
-&"walk_down": SubResource("Animation_uamtn"),
-&"walk_side": SubResource("Animation_phifv"),
-&"walk_up": SubResource("Animation_ocili")
-}
+radius = 17.117243
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5tx25"]
 radius = 62.0
 height = 186.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t22hv"]
+radius = 82.565125
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5fwb"]
-radius = 109.004585
+radius = 73.552704
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tx25"]
+size = Vector2(147, 101)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cwgr4"]
 shader = ExtResource("13_l156c")
@@ -202,7 +78,7 @@ shader_parameter/tolerance = 0.139
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
 radius = 31.0161
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0pye"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tx25"]
 resource_local_to_scene = true
 shader = ExtResource("26_0xcwq")
 shader_parameter/x = 18.0
@@ -559,10 +435,9 @@ position = Vector2(949, 546)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("21_5tx25")
-h_frames = 3
-npc_resource = ExtResource("13_5tx25")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BFComesWith"]
+visible = false
 shape = SubResource("CircleShape2D_yqcrc")
 debug_color = Color(0.37905112, 0.47461665, 1, 0)
 
@@ -578,26 +453,6 @@ position = Vector2(2.38419e-07, 19)
 scale = Vector2(0.75, 0.875)
 texture = ExtResource("20_70lcl")
 
-[node name="Indicator2D" type="Area2D" parent="BFComesWith/Sprite2D"]
-visible = false
-position = Vector2(0, 38)
-script = ExtResource("18_70lcl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BFComesWith/Sprite2D/Indicator2D"]
-shape = SubResource("CircleShape2D_4uvlv")
-debug_color = Color(0.27450982, 0.40392157, 1, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="BFComesWith/Sprite2D/Indicator2D"]
-material = ExtResource("17_srkr2")
-position = Vector2(0, -137.54686)
-scale = Vector2(0.15, 0.1)
-texture = ExtResource("18_qhnrh")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BFComesWith"]
-libraries = {
-&"": SubResource("AnimationLibrary_wuxkc")
-}
-
 [node name="Actionable" parent="BFComesWith" instance=ExtResource("19_li6oa")]
 dialogue_resource = ExtResource("23_26whl")
 
@@ -609,8 +464,20 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="PersistantDataHandler" parent="BFComesWith" instance=ExtResource("11_yr5mt")]
 
+[node name="Indicator2D" parent="BFComesWith" instance=ExtResource("15_t22hv")]
+modulate = Color(1, 1, 1, 0.5)
+y = -100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BFComesWith/Indicator2D"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_t22hv")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BFComesWith"]
+
 [node name="Npc" parent="." instance=ExtResource("15_k0o0t")]
-position = Vector2(310, 732)
+position = Vector2(1263, 48)
+v_frames = 3
 npc_resource = ExtResource("14_70lcl")
 
 [node name="Actionable" parent="Npc" instance=ExtResource("19_li6oa")]
@@ -619,6 +486,21 @@ dialogue_resource = ExtResource("20_xmcjt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Actionable"]
 shape = SubResource("CircleShape2D_q5fwb")
 debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Indicator2D" parent="Npc" instance=ExtResource("15_t22hv")]
+modulate = Color(1, 1, 1, 0.5)
+position = Vector2(-2, 4)
+y = -120
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Indicator2D"]
+position = Vector2(4.5, -23.5)
+shape = SubResource("RectangleShape2D_5tx25")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="NpcWander" parent="Npc" instance=ExtResource("21_70lcl")]
+wander_range = 10
+wander_speed = 60.0
+wander_duration = 2.0
 
 [node name="Trees" parent="." instance=ExtResource("12_hxh2l")]
 material = SubResource("ShaderMaterial_cwgr4")
@@ -689,6 +571,6 @@ position = Vector2(843, 259)
 
 [node name="TreasureChest5" parent="." instance=ExtResource("25_451xv")]
 visible = false
-material = SubResource("ShaderMaterial_g0pye")
+material = SubResource("ShaderMaterial_5tx25")
 position = Vector2(426, 501)
 item_data = ExtResource("27_oya04")
