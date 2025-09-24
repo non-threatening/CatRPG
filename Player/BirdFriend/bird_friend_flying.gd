@@ -9,6 +9,8 @@ var direction : Vector2
 var flight_direction : Vector2
 var speed : float = 0
 var state
+var frame_offest : int = 0
+var anim_stop : bool = false
 
 @export var frame_rate : float = 0.09
 @export var acceleration : float = 500.0
@@ -16,7 +18,6 @@ var state
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
 
 
 func _ready() -> void:
@@ -33,29 +34,32 @@ func _physics_process(delta: float) -> void:
 			state = State.RETURN
 			update_animation()
 			## TODO: only update animation after state changes
-		pass
 	elif state == State.RETURN:
 		direction = global_position.direction_to( player.global_position + Vector2( 0, -40 ) )
 		speed += acceleration * delta
 		position += direction * speed * delta
 		if global_position.distance_to( player.global_position ) <= 45: 
-			state = State.PERCHED		
+			state = State.PERCHED
+		if global_position.distance_to( player.global_position ) <= 200: 
+			anim_stop = true
 	elif state == State.PERCHED:
 		perched()
 		pass
 
 
 func flap_animation() -> void:
-	sprite.frame = 2
+	sprite.frame = 2 + frame_offest
 	await get_tree().create_timer( frame_rate ).timeout
 	audio.play()
-	sprite.frame = 1
+	sprite.frame = 1 + frame_offest
 	await get_tree().create_timer( frame_rate ).timeout
-	sprite.frame = 0
+	sprite.frame = 0 + frame_offest
 	await get_tree().create_timer( frame_rate ).timeout
-	sprite.frame = 1
+	sprite.frame = 1 + frame_offest
 	await get_tree().create_timer( frame_rate * randf_range( 3.8, 8.5 ) ).timeout
-	flap_animation()
+	
+	if anim_stop == false:
+		flap_animation()
 	pass
 
 
@@ -72,7 +76,6 @@ func throw( throw_direction : Vector2 ) -> void:
 	flap_animation()
 	visible = true
 	player.hide_bird_friend()
-	pass
 
 
 func update_animation() -> void:
@@ -81,13 +84,14 @@ func update_animation() -> void:
 	await get_tree().process_frame # wait an extra frame to process Return state and change direction
 	var direction_id : int = int( round( ( direction * 0.1 ).angle() / TAU * DIR_4.size() ) )
 	flight_direction = DIR_4[ direction_id ]
+	frame_offest = anim_direction()
 	sprite.scale.x = -1 if flight_direction == Vector2.LEFT else 1
 
 
-func anim_direction() -> String:
-	if flight_direction == Vector2.DOWN:
-		return "down"
-	elif flight_direction == Vector2.UP:
-		return "up"
+func anim_direction() -> int:
+	if flight_direction == Vector2.UP:
+		return 3
+	elif flight_direction == Vector2.DOWN:
+		return 6
 	else:
-		return "side"
+		return 0
