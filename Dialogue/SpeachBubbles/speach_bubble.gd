@@ -52,6 +52,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 
 var pitch : float = 1.0
+var audio_file : AudioStream
 
 
 ## The base bubble anchor
@@ -92,6 +93,7 @@ func _ready() -> void:
 
 func _spoke( letter: String, letter_index: int, speed: float ) -> void:
 	if 'aeiouy1234567890'.contains( letter ):
+		audio_stream_player.stream = audio_file
 		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.85, 1.15 ))
 		audio_stream_player.play()
 
@@ -136,7 +138,8 @@ func apply_dialogue_line() -> void:
 	var character_path : String = "res://npc/00_npcs/%s.tres" % ( dialogue_line.character.to_snake_case() )
 	if ResourceLoader.exists( character_path ):
 		character = load( character_path )
-		pitch = character.dialog_audio_pitch
+		audio_file = load( character.talk_blip.resource_path )
+		pitch = character.pitch
 	elif dialogue_line.character.to_snake_case() == "cat":
 		pitch = 1.0
 
