@@ -3,6 +3,7 @@ class_name QuestStep extends Resource
 @export_multiline var title: String
 @export var completed: bool = false
 
+@warning_ignore("unused_signal")
 signal updated
 
 func meets_condition() -> bool:

@@ -428,13 +428,15 @@ item_data = ExtResource("9_qnxbr")
 position = Vector2(1098, 336)
 item_data = ExtResource("10_xvh4v")
 
-[node name="PersistantDataHandler" parent="ItemPickup2" instance=ExtResource("11_yr5mt")]
+[node name="PersistantDataHandler2" parent="ItemPickup2" instance=ExtResource("11_yr5mt")]
 
 [node name="BFComesWith" type="CharacterBody2D" parent="."]
 position = Vector2(949, 546)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("21_5tx25")
+
+[node name="PersistantDataHandler" parent="BFComesWith" instance=ExtResource("11_yr5mt")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BFComesWith"]
 visible = false
@@ -461,8 +463,6 @@ position = Vector2(11.999998, 2.861023e-05)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_5tx25")
 debug_color = Color(0, 0.6, 0.69803923, 0)
-
-[node name="PersistantDataHandler" parent="BFComesWith" instance=ExtResource("11_yr5mt")]
 
 [node name="Indicator2D" parent="BFComesWith" instance=ExtResource("15_t22hv")]
 modulate = Color(1, 1, 1, 0.5)

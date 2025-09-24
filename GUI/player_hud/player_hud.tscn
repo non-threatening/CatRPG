@@ -413,6 +413,7 @@ visible = false
 layout_mode = 2
 
 [node name="Abilities" type="Control" parent="Control"]
+visible = false
 anchors_preset = 0
 offset_left = 240.0
 offset_top = -8.0

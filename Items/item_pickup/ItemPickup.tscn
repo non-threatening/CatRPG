@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ii2b5gvv4utb"]
+[gd_scene load_steps=15 format=3 uid="uid://ii2b5gvv4utb"]
 
 [ext_resource type="Script" uid="uid://cy6eloboq1jjc" path="res://Items/item_pickup/item_pickup.gd" id="1_ib4el"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="2_iu3ir"]
 [ext_resource type="AudioStream" uid="uid://co0nsphnunane" path="res://Items/item_pickup/item_pickup.wav" id="2_vggup"]
 [ext_resource type="Shader" uid="uid://bkqm4tb0ry7p5" path="res://Items/item_pickup/ItemPickup.gdshader" id="4_m27qk"]
 [ext_resource type="Texture2D" uid="uid://bnviobmca7lp0" path="res://Items/sprites/flute.png" id="5_y6ru5"]
+[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="7_2vl3s"]
 [ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="7_me7sg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vggup"]
@@ -101,3 +102,5 @@ theme_override_fonts/font = ExtResource("7_me7sg")
 theme_override_font_sizes/font_size = 42
 text = "99"
 horizontal_alignment = 1
+
+[node name="PersistantDataHandler" parent="." instance=ExtResource("7_2vl3s")]

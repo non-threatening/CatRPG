@@ -11,6 +11,10 @@ signal picked_up
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var count_label: Label = %CountLabel
 
+@onready var persistant_data_picked_up: PersistantDataHandler = $PersistantDataHandler
+@onready var item_pickup: ItemPickup = $"."
+
+var collected : bool = false
 
 
 func _ready() -> void:
@@ -19,7 +23,22 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	area_2d.body_entered.connect( _on_body_entered )
+	persistant_data_picked_up.data_loaded.connect( _on_data_loaded )
+	_set_item_existance()
+	
 
+func _set_item_existance() -> void:
+	collected = persistant_data_picked_up.value
+	if collected: 
+		item_pickup.queue_free()
+	else:
+		item_pickup.show()
+	
+		
+func _on_data_loaded() -> void:
+	collected = persistant_data_picked_up.value
+	pass
+	
 
 func _physics_process(delta: float) -> void:
 	var collision_info = move_and_collide( velocity * delta )
@@ -50,8 +69,14 @@ func item_picked_up() -> void:
 	audio_stream_player_2d.play()
 	visible = false
 	picked_up.emit()
+	collected = true
+	persistant_data_picked_up.set_value()
 	await audio_stream_player_2d.finished
 	queue_free()
+	if item_count > 1:
+		PlayerHud.queue_notification( "You found", str(NumberToWords.to_words(item_count).capitalize(), " ", item_data.name, "s") )
+	else:
+		PlayerHud.queue_notification( "You found", str(NumberToWords.to_words(item_count).capitalize(), " ", item_data.name) )
 	pass
 
 
