@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhhvqu8fmuoe6"]
+
+[ext_resource type="Script" uid="uid://dadco14ppovp6" path="res://Dialogue/interact_indicator.gd" id="1_e517h"]
+[ext_resource type="Material" uid="uid://dovepfkvi71pg" path="res://npc/indicator.tres" id="2_kp6q7"]
+[ext_resource type="Texture2D" uid="uid://b00jppgs0gc8o" path="res://npc/sprites/exclamation-solid-full.svg" id="3_c4fat"]
+
+[node name="Indicator2D" type="Area2D"]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_e517h")
+y = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_kp6q7")
+scale = Vector2(0.15, 0.1)
+texture = ExtResource("3_c4fat")
