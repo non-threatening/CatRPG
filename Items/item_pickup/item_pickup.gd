@@ -47,7 +47,6 @@ func _physics_process(delta: float) -> void:
 	velocity -= velocity * delta * 4 #slow it down after bounces
 
 
-
 func _on_body_entered( b ) -> void:
 	if b is Player:
 		if item_data:
@@ -60,14 +59,11 @@ func _on_body_entered( b ) -> void:
 			else:
 				PlayerManager.INVETORY_DATA.add_item( item_data, item_count )
 				item_picked_up()
-				
-	pass
-	
+
 
 func item_picked_up() -> void:
 	area_2d.body_entered.disconnect( _on_body_entered )
 	audio_stream_player_2d.play()
-	visible = false
 	picked_up.emit()
 	collected = true
 	persistant_data_picked_up.set_value()

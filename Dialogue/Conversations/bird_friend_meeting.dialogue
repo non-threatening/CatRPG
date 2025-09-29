@@ -5,7 +5,7 @@ if Shortcuts.is_quest_completed("a_gimp_suit_for_bird_friend"):
 
 ## Quest line: A gimp suit for 
 elif not Shortcuts.is_quest_completed("a_gimp_suit_for_bird_friend") and not Shortcuts.is_quest_active("a_gimp_suit_for_bird_friend")
-	Bird Friend: [[Hi|Hello|Howdy]], this is some dialogue. [#happy]
+	Bird Friend: [[Hi|Hello|Hey]], who are you? [#happy]
 	Cat: Hi [#happy]
 	Cat: Wooooooooooooo
 	Bird Friend: I've lost my Gimp Suit. Could you look around for a one. [#happy]
@@ -25,13 +25,8 @@ else
 		do QuestSystem.set_quest_property( 102, "suit_given", true)
 		Bird Friend: I'd better come with you, at least for a while
 		Cat: I think I could use the help
-		| Cat: Awesome
-		| Bird Friend: Awesome
 		do Shortcuts.update_quest("a_gimp_suit_for_bird_friend")
+		=> END
 	- No way
 		Cat: It's my GimpSuit now!!!!
-		
-		
-- End the conversation => END
-Narrator: For more information see the online documentation.
 => END

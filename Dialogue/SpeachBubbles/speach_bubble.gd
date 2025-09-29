@@ -85,6 +85,7 @@ func _ready() -> void:
 	add_child(mutation_cooldown)
 	
 	dialogue_label.spoke.connect( _spoke )
+	dialogue_label.seconds_per_step = SaveManager.talk_speed
 	
 	## pause / unpause
 	get_tree().paused = true

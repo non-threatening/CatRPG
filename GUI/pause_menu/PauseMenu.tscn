@@ -1,8 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=31 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
+[ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="2_hio0w"]
 [ext_resource type="Shader" uid="uid://dijfe1uuswhgp" path="res://GUI/pause_menu/blinker.gdshader" id="3_3yxpl"]
-[ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://GUI/pause_menu/PauseMenuControl_theme.tres" id="3_16eqs"]
 [ext_resource type="Script" uid="uid://c6s5hohp4wc86" path="res://GUI/pause_menu/quests_ui.gd" id="4_3yxpl"]
 [ext_resource type="PackedScene" uid="uid://bnvj41ww8lhj0" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="4_laftm"]
 [ext_resource type="Script" uid="uid://dvclsk7ha4rgn" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="4_mc7vq"]
@@ -13,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="6_hio0w"]
 [ext_resource type="Texture2D" uid="uid://c0ryvmifyacll" path="res://Items/sprites/gear.png" id="8_mnpje"]
 [ext_resource type="PackedScene" uid="uid://dm0ac3qyce012" path="res://GUI/pause_menu/stats/stats.tscn" id="8_vbpxr"]
+[ext_resource type="Script" uid="uid://lb7rrfcatrlv" path="res://GUI/pause_menu/options/v_box_container_sound.gd" id="14_3yxpl"]
+[ext_resource type="PackedScene" uid="uid://d4gdrnrgnp45q" path="res://GUI/pause_menu/slider.tscn" id="15_1v4th"]
+[ext_resource type="StyleBox" uid="uid://id0j1ev6ejo4" path="res://GUI/pause_menu/Slider.tres" id="15_320ax"]
+[ext_resource type="Script" uid="uid://cvn03p8t473fi" path="res://GUI/pause_menu/options/v_box_container_music.gd" id="15_gtmg6"]
+[ext_resource type="Script" uid="uid://de0xi2erjthqh" path="res://GUI/pause_menu/options/v_box_talk_speed.gd" id="18_1v4th"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtmg6"]
 shader = ExtResource("3_3yxpl")
@@ -69,7 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_16eqs")
+theme = ExtResource("2_hio0w")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -488,10 +493,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -201.5
-offset_top = -274.0
-offset_right = 202.5
-offset_bottom = -142.0
+offset_left = -95.5
+offset_top = -283.0
+offset_right = 104.5
+offset_bottom = -151.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -509,3 +514,62 @@ text = "Load"
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Quit"
+
+[node name="VBoxContainerSound" type="VBoxContainer" parent="Control/TabContainer/System"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 232.0
+offset_right = 573.0
+offset_bottom = 497.0
+
+[node name="VBoxMaster" type="VBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound"]
+layout_mode = 2
+script = ExtResource("14_3yxpl")
+
+[node name="Slider" parent="Control/TabContainer/System/VBoxContainerSound/VBoxMaster" instance=ExtResource("15_1v4th")]
+layout_mode = 2
+
+[node name="VBoxMusic" type="VBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound"]
+layout_mode = 2
+script = ExtResource("15_gtmg6")
+
+[node name="Slider" parent="Control/TabContainer/System/VBoxContainerSound/VBoxMusic" instance=ExtResource("15_1v4th")]
+layout_mode = 2
+
+[node name="VBoxTalkSpeed" type="VBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound"]
+layout_mode = 2
+script = ExtResource("18_1v4th")
+
+[node name="Slider" type="Control" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed"]
+custom_minimum_size = Vector2(512, 64)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed/Slider"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 17.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed/Slider/HBoxContainer"]
+layout_mode = 2
+text = "Talk Speed"
+
+[node name="Label2" type="Label" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed/Slider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "50%"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed/Slider"]
+modulate = Color(0, 1, 0, 1)
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 0
+offset_top = 26.0
+offset_right = 512.0
+offset_bottom = 42.0
+theme_override_styles/slider = ExtResource("15_320ax")
+max_value = 0.04
+step = 0.005
+value = 0.02
+tick_count = 9
+ticks_on_borders = true
+ticks_position = 2

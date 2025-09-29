@@ -36,7 +36,7 @@ func complete(_args: Dictionary = {}) -> void:
 		if not step.meets_condition(): break
 	if xp > 0:
 		PlayerManager.reward_xp( xp )
-	if !reward.is_empty():
+	if not reward.is_empty():
 		for key in reward:
 			var value = reward[key]
 			INVETORY_DATA.add_item_quest_reward( key, value )

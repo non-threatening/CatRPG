@@ -1,11 +1,11 @@
 ~ start
-White Bird: [[Hi|Hello|Howdy]], this is some dialogue. you can do walking.
-White Bird: Here are some choices.
+Flower Guy: [[Hi|Hello|Howdy]], this is some dialogue. you can do walking.
+Flower Guy: Here are some choices.
 - First one
 	do Shortcuts.start_quest("walking_quest")
-	White Bird: nice.
+	Flower Guy: nice.
 - Second one
-	White Bird: shiiiiiiiiiiiiiiiiiiit
+	Flower Guy: shiiiiiiiiiiiiiiiiiiit
 - Start again => start
 - End the conversation => END
 

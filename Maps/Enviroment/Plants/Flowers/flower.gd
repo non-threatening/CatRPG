@@ -60,7 +60,7 @@ func _set_random_color() -> void:
 	var color_range1 : float = fmod( randf_range( (270.0/360.0), 1.0 ) + 50.0/360.0, 1.0 )
 	var color1 = Color.from_hsv(
 		color_range1, 
-		randf_range( 0.7, 0.9 ), 
+		randf_range( 0.6, 0.8 ), 
 		randf_range( 0.8, 1.0 )
 	)
 	sprite.material.set_shader_parameter( "color1", color1 )

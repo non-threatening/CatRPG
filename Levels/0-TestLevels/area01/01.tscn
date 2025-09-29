@@ -199,6 +199,7 @@ libraries = {
 position = Vector2(233, 561)
 scale = Vector2(4, 4)
 h_frames = 15
+v_frames = 3
 npc_resource = ExtResource("8_ngmh3")
 
 [node name="NpcBehaviorWander" parent="Npc" instance=ExtResource("8_ug5ku")]
@@ -214,6 +215,7 @@ shape = SubResource("CircleShape2D_kytmn")
 position = Vector2(366, 32)
 scale = Vector2(3.5, 3.5)
 h_frames = 15
+v_frames = 3
 npc_resource = ExtResource("10_h1fhx")
 
 [node name="NpcBehaviorPatrol" parent="Npc2" instance=ExtResource("11_8vfny")]

@@ -5,6 +5,10 @@ const SAVE_PATH = "user://"
 signal game_loaded
 signal game_saved
 
+var master : float = 0.9
+var music : float = 0.9
+
+var talk_speed : float = 0.02
 
 var current_save : Dictionary = {
 	scene_path = "",
@@ -24,7 +28,12 @@ var current_save : Dictionary = {
 	persistance = [],
 	quest_data = [],
 	pool_state = [],
-	abilities = [ "", "", "", "" ]
+	abilities = [ "", "", "", "" ],
+	options = {
+		master = 0.5,
+		music = 0.5,
+		talk_speed = 0.01
+	}
 }
 
 
@@ -35,6 +44,7 @@ func save_game() -> void:
 	update_scene_path()
 	update_item_data()
 	update_quest_data()
+	update_options_data()
 	var file := FileAccess.open( SAVE_PATH + "save.sav", FileAccess.WRITE )
 	var save_json = JSON.stringify( current_save )
 	file.store_line( save_json )
@@ -70,6 +80,10 @@ func load_game() -> void:
 	p.arrow_count = current_save.player.arrow_count
 	p.bomb_count = current_save.player.bomb_count
 	
+	# Options Menu
+	master = current_save.options.master
+	music = current_save.options.music
+	talk_speed = current_save.options.talk_speed
 	
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
 	
@@ -83,9 +97,15 @@ func load_game() -> void:
 		QuestSystem.deserialize_quests(current_save["quest_data"])
 		
 		
-	await  LevelManager.level_loaded
+	await LevelManager.level_loaded
 	game_loaded.emit()
 	pass
+
+
+func update_options_data() -> void:
+	current_save.options.master = master
+	current_save.options.music = music
+	current_save.options.talk_speed = talk_speed
 
 
 func update_player_data() -> void:
@@ -100,9 +120,7 @@ func update_player_data() -> void:
 	current_save.player.defense = p.defense
 	current_save.player.arrow_count = p.arrow_count
 	current_save.player.bomb_count = p.bomb_count
-	
 	current_save.abilities = p.player_abilities.abilities
-	
 	
 	
 func update_scene_path() -> void:

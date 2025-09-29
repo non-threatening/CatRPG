@@ -275,3 +275,4 @@ theme_override_font_sizes/font_size = 48
 text = "Shopkeeper"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Effects"

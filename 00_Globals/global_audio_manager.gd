@@ -53,11 +53,3 @@ func fade_out( audio_player : AudioStreamPlayer) -> void:
 	await  tween.finished
 	audio_player.stop()
 	pass
-
-
-
-
-
-
-
-	
