@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhhvqu8fmuoe6"]
+[gd_scene load_steps=3 format=3 uid="uid://bhhvqu8fmuoe6"]
 
 [ext_resource type="Script" uid="uid://dadco14ppovp6" path="res://Dialogue/interact_indicator.gd" id="1_e517h"]
-[ext_resource type="Material" uid="uid://dovepfkvi71pg" path="res://npc/indicator.tres" id="2_kp6q7"]
-[ext_resource type="Texture2D" uid="uid://b00jppgs0gc8o" path="res://npc/sprites/exclamation-solid-full.svg" id="3_c4fat"]
+[ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://Dialogue/controller_icon.tres" id="3_e517h"]
 
 [node name="Indicator2D" type="Area2D"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.5)
 script = ExtResource("1_e517h")
-y = 0
+x = null
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_kp6q7")
-scale = Vector2(0.15, 0.1)
-texture = ExtResource("3_c4fat")
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.627451)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -128.0
+offset_right = 68.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("3_e517h")
