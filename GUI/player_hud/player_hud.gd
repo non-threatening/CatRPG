@@ -23,7 +23,7 @@ var hearts : Array[ HeartGUI ] = []
 @onready var boss_label: Label = $Control/BossUI/Label
 
 @onready var notificationUI : NotificationUI = $Control/NotificationControl
-@onready var stacked_notificationUI: StackedNotificationUI = $StackedNotificationControl
+@onready var stacked_notificationUI: StackedNotificationUI = $Control/StackedNotificationControl
 
 
 func _ready() -> void:

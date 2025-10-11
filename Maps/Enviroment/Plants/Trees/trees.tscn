@@ -1,11 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bc7f06w1326e"]
 
 [ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees.tres" id="1_etgwk"]
-[ext_resource type="Texture2D" uid="uid://y1iucyw3p8ky" path="res://Maps/Enviroment/Plants/Trees/sprites/tree.png" id="1_omv7f"]
+[ext_resource type="Texture2D" uid="uid://c103s31mjv3bk" path="res://Maps/Enviroment/Plants/Trees/sprites/tree_stump2.png" id="2_etgwk"]
 [ext_resource type="Script" uid="uid://dg2utqdot7mxt" path="res://Maps/Enviroment/Plants/Trees/trees.gd" id="2_t8ti7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8ti7"]
-size = Vector2(41, 90)
 
 [sub_resource type="Gradient" id="Gradient_6rbys"]
 offsets = PackedFloat32Array(0.216216, 1)
@@ -19,25 +16,30 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgwk"]
+radius = 27.750004
+height = 111.99998
+
 [node name="Trees" type="StaticBody2D"]
 collision_layer = 16
-metadata/_edit_horizontal_guides_ = [-60.0]
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 material = ExtResource("1_etgwk")
-position = Vector2(-12, -165)
-texture = ExtResource("1_omv7f")
+position = Vector2(1, 9)
+texture = ExtResource("2_etgwk")
+offset = Vector2(0, -210)
 script = ExtResource("2_t8ti7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, 7.5)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_t8ti7")
-debug_color = Color(0, 0.6, 0.7, 0)
-
-[node name="ShadowSprite" type="Sprite2D" parent="."]
+[node name="ShadowSprite" type="Sprite2D" parent="TreeSprite"]
 z_index = 1
-position = Vector2(7.35995, 11.5)
-scale = Vector2(8.59305, 6.03571)
+position = Vector2(11, 14)
+scale = Vector2(9.913044, 7.267857)
 texture = SubResource("GradientTexture2D_2vxfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(13, 18)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_etgwk")
+debug_color = Color(0, 0.6, 0.7, 0)

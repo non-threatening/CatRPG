@@ -32,7 +32,7 @@ float has_solid_neighbor( sampler2D texture_sample, vec2 uv_coord, vec2 pixel_si
 
 
 void vertex() {
-	if ( VERTEX.y < 20.0 ) {
+	if ( VERTEX.y < 16.0 ) {
 		VERTEX.x += sin( TIME * time_scale ) * x;
 		VERTEX.y += sin( TIME * ( time_scale * 1.25 ) ) * y;
 	}

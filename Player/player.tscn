@@ -45,8 +45,8 @@
 [ext_resource type="Texture2D" uid="uid://b4vhkw38nugvr" path="res://Player/Sprites/grapple.png" id="39_f4lon"]
 [ext_resource type="AudioStream" uid="uid://b8hbhokgsn50x" path="res://Player/Audio/grapple_chain.wav" id="44_dy65m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyprq"]
-size = Vector2(36.249, 13.5671)
+[sub_resource type="CircleShape2D" id="CircleShape2D_dy65m"]
+radius = 15.524853
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iyprq"]
 radius = 61.2944
@@ -323,8 +323,8 @@ scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_8mwp6")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwjto"]
-radius = 15.0
-height = 62.0
+radius = 34.0
+height = 68.0
 
 [sub_resource type="Animation" id="Animation_sm0op"]
 length = 0.001
@@ -3015,7 +3015,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dkpta"]
-size = Vector2(90, 41)
+size = Vector2(90, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pisgm"]
 size = Vector2(80, 38)
@@ -3265,7 +3265,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o28un"]
-radius = 80.0
+radius = 57.849728
 
 [sub_resource type="Gradient" id="Gradient_f4lon"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
@@ -3286,6 +3286,8 @@ color_ramp = SubResource("GradientTexture1D_8ynux")
 size = Vector2(21, 27)
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+position = Vector2(0, 10)
 collision_mask = 24
 motion_mode = 1
 wall_min_slide_angle = 0.174533
@@ -3295,7 +3297,7 @@ script = ExtResource("1_t577b")
 visible = false
 position = Vector2(-1, -9.5)
 scale = Vector2(1.98626, 1.25303)
-shape = SubResource("RectangleShape2D_iyprq")
+shape = SubResource("CircleShape2D_dy65m")
 debug_color = Color(0.415, 0.502, 0.879, 0.419)
 
 [node name="Direction" type="Marker2D" parent="."]
@@ -3314,8 +3316,8 @@ debug_color = Color(0, 0.65, 0.205833, 0.121569)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
 material = SubResource("ShaderMaterial_iyprq")
-position = Vector2(0, -64)
 texture = ExtResource("3_dy65m")
+offset = Vector2(0, -48)
 hframes = 3
 vframes = 4
 script = ExtResource("4_i4o1l")
@@ -3349,7 +3351,7 @@ autoplay = "no_attack"
 [node name="AttackHurtBox" parent="Sprite2D" instance=ExtResource("10_q6j84")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-2, 73)
+position = Vector2(2.3841858e-07, -26.000023)
 scale = Vector2(1.33333, 1.33333)
 collision_mask = 256
 monitoring = false
@@ -3361,13 +3363,14 @@ debug_color = Color(0.988235, 0, 0.294118, 0)
 
 [node name="ChargeAttackHurtBox" parent="Sprite2D" instance=ExtResource("10_q6j84")]
 unique_name_in_owner = true
-position = Vector2(0, 27)
+visible = false
+position = Vector2(2, -23)
 collision_mask = 256
 monitoring = false
 damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ChargeAttackHurtBox"]
-position = Vector2(-1.12171, 30.4589)
+position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_n471f")
 debug_color = Color(0.99, 0, 0.297, 0)
 
@@ -3379,7 +3382,7 @@ process_material = SubResource("ParticleProcessMaterial_gpjlu")
 
 [node name="HitBox" parent="Sprite2D" instance=ExtResource("13_urp6f")]
 visible = false
-position = Vector2(-3, 24)
+position = Vector2(1, -23)
 rotation = 1.5708
 collision_layer = 2
 
@@ -3390,8 +3393,9 @@ shape = SubResource("CapsuleShape2D_bwjto")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="SpinEffectSprite2D" type="Sprite2D" parent="Sprite2D"]
+visible = false
 show_behind_parent = true
-position = Vector2(1, 23)
+position = Vector2(1, -22.000004)
 scale = Vector2(1.51562, 1.51562)
 texture = ExtResource("8_gpjlu")
 hframes = 8
@@ -3402,11 +3406,11 @@ libraries = {
 }
 
 [node name="HeldItem" type="Node2D" parent="Sprite2D"]
+visible = false
 show_behind_parent = true
 position = Vector2(0, 75)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/HeldItem"]
-visible = false
 position = Vector2(0, -9)
 texture = ExtResource("9_8mwp6")
 hframes = 16
@@ -3414,16 +3418,18 @@ vframes = 3
 frame = 4
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
+visible = false
 modulate = Color(0.0354, 0.0168, 0.24, 0.141176)
 show_behind_parent = true
-position = Vector2(1, 53)
+position = Vector2(1, 9.000004)
 scale = Vector2(3.125, 3.56287)
 texture = ExtResource("4_svx73")
 
 [node name="BirdFriendSprite" type="Sprite2D" parent="Sprite2D"]
+visible = false
 show_behind_parent = true
 material = SubResource("ShaderMaterial_f4lon")
-position = Vector2(3, -19)
+position = Vector2(0, -53)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("12_iyprq")
 hframes = 2
@@ -3507,17 +3513,17 @@ script = ExtResource("11_hfp0w")
 max_polyphony = 6
 
 [node name="Interactions" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -25)
 script = ExtResource("10_4cvxe")
 
 [node name="Area2D" type="Area2D" parent="Interactions"]
-visible = false
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
-position = Vector2(7, 3.5)
+position = Vector2(7, 3)
 shape = SubResource("RectangleShape2D_dkpta")
 debug_color = Color(0.282353, 0.807843, 0.313726, 0)
 
@@ -3547,11 +3553,10 @@ libraries = {
 script = ExtResource("17_pisgm")
 
 [node name="ItemMagnet" parent="." instance=ExtResource("18_b1ygp")]
-position = Vector2(0, -42)
+position = Vector2(0, -27)
 scale = Vector2(0.831355, 0.831355)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet"]
-position = Vector2(-5.84126e-06, 50.5199)
 shape = SubResource("CircleShape2D_o28un")
 debug_color = Color(0, 0.595, 0.7, 0)
 
@@ -3580,6 +3585,7 @@ process_material = SubResource("ParticleProcessMaterial_d30e8")
 
 [node name="GrappleHook" type="Node2D" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GrappleHook"]
 anchors_preset = 5

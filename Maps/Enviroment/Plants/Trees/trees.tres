@@ -5,15 +5,15 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_panwd")
-shader_parameter/center = Vector2(0.6, 0.6)
-shader_parameter/size = 0.279
-shader_parameter/squishness = Vector2(1, 1)
-shader_parameter/color1 = Color(0, 0, 0, 1)
-shader_parameter/color2 = Color(0, 0, 0, 1)
-shader_parameter/color3 = Color(0.02, 0.216, 1, 1)
-shader_parameter/step1 = 1.0
-shader_parameter/step2 = 0.506
-shader_parameter/step3 = 0.0
-shader_parameter/amplitude = 8.0
-shader_parameter/frequency = 2000.0
+shader_parameter/center = Vector2(0.45, 0.35)
+shader_parameter/size = 1.7650000838375
+shader_parameter/squishness = Vector2(0.5, 1)
+shader_parameter/color1 = Color(0.456, 0.48, 0, 1)
+shader_parameter/color2 = Color(0.39600003, 0.66, 0, 1)
+shader_parameter/color3 = Color(0.51, 0.238, 0, 1)
+shader_parameter/step1 = 0.0
+shader_parameter/step2 = 0.18000000855
+shader_parameter/step3 = 0.2750000130625
+shader_parameter/amplitude = 5.0
+shader_parameter/frequency = 500.0
 shader_parameter/speed = 0.5

@@ -16,5 +16,5 @@ func initialize( objective : String, description : String, completed : bool ) ->
 	else:
 		title_label.text = s + objective + s
 		description_label.text = s + description + s
-		title_label.modulate.a = 0.666
-		description_label.modulate.a = 0.666
+		title_label.modulate = Color( 0.666, 0.666, 0.666, 0.666 )
+		description_label.modulate = Color( 0.666, 0.666, 0.666, 0.666 )

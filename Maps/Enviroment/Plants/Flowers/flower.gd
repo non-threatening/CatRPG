@@ -8,7 +8,6 @@ var images_full = []
 
 func _ready() -> void:
 	_get_pngs()
-	
 	images_full = images.duplicate()
 	images.shuffle()
 	get_shuffled_flower()
@@ -26,13 +25,10 @@ func _get_pngs():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-##TODO: wierd work around to get pngs to load in exported game
-			#if ResourceLoader.exists(file_name.get_extension() == "png"):
 			if (file_name.get_extension() == "import"):
 				file_name = file_name.replace('.import', '')
 				images.append( file_name )
 			file_name = dir.get_next()
-
 
 func get_shuffled_flower():
 	if images.is_empty():
@@ -49,7 +45,7 @@ func _set_time_scale() -> void:
 
 
 func _set_random_scale() -> void:
-	var rand = randf_range( 0.48, 0.82 )
+	var rand = randf_range( 0.48, 0.8 )
 	var new_scale = Vector2( rand, rand )
 	var flip = randi() % 2
 	sprite.flip_h = flip

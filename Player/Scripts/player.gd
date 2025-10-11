@@ -208,19 +208,19 @@ func _set_bomb_count( value : int ) -> void:
 func bird_friend_sprite_animation( new_dir : Vector2 ):
 	match new_dir:
 		Vector2.DOWN:
-			bird_friend_sprite.position = Vector2( 3, -19 )
+			bird_friend_sprite.position = Vector2( 3, -67 )
 			bird_friend_sprite.show_behind_parent = false
 		Vector2.UP:
-			bird_friend_sprite.position = Vector2( -8, 0 )
+			bird_friend_sprite.position = Vector2( -8, -48 )
 			bird_friend_sprite.show_behind_parent = true
 		Vector2.LEFT:
-			bird_friend_sprite.position = Vector2( -17, -6.0 )
+			bird_friend_sprite.position = Vector2( -17, -54.0 )
 		Vector2.RIGHT:
-			bird_friend_sprite.position = Vector2( -17, -6.0 )
+			bird_friend_sprite.position = Vector2( -17, -54.0 )
 		_:
 			pass
-#
-#
+
+
 func show_bird_friend() -> void:
 	bird_friend_sprite.show()
 	

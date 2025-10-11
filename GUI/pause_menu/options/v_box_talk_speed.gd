@@ -1,7 +1,5 @@
 extends VBoxContainer
 
-var bus_index : int
-
 @onready var h_slider: HSlider = $Slider/HSlider
 @onready var label_2: Label = $Slider/HBoxContainer/Label2
 
@@ -15,7 +13,6 @@ func _on_value_changed( _v ) -> void:
 	var value = ( _v - 0.04 ) * -1
 	label_2.text = show_text( value )
 	SaveManager.talk_speed = value
-	print( value )
 
 
 func _set_prefs() -> void:
@@ -24,11 +21,15 @@ func _set_prefs() -> void:
 
 
 func show_text( _t ) -> String:
-	if _t >= 0.025:
-		return "Slow"
-	elif _t <= 0.015:
-		if _t == 0.0:
-			return "Instant"
-		return "Fast"
-	else:
-		return "Normal"
+	var thing = int( _t * 1000 )
+	match thing:
+		0: return "Instant"
+		4: return "Fastest"
+		10: return "Faster"
+		15: return "Fast"
+		20: return "Normal"
+		25: return "Slow"
+		30: return "Slower"
+		35: return "Slowest"
+		40: return "Slowester"
+		_: return "Normal"
