@@ -41,9 +41,9 @@ func complete(_args: Dictionary = {}) -> void:
 			var value = reward[key]
 			INVETORY_DATA.add_item_quest_reward( key, value )
 			if value > 1:
-				PlayerHud.queue_notification( "You've got", str(NumberToWords.to_words(value).capitalize(), " ", key.name, "s") )
+				PlayerHud.queue_notification( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name, "s") )
 			else:
-				PlayerHud.queue_notification( "You've got", str(NumberToWords.to_words(value).capitalize(), " ", key.name) )
+				PlayerHud.queue_notification( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name) )
 	completed.emit()
 
 
