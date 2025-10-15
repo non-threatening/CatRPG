@@ -6,7 +6,6 @@
 [node name="Indicator2D" type="Area2D"]
 modulate = Color(1, 1, 1, 0.5)
 script = ExtResource("1_e517h")
-x = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.627451)

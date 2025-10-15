@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://b8asi4egl7gsr"]
+
+[ext_resource type="Script" uid="uid://bvqtnrn5xgsi0" path="res://Items/scripts/item_data.gd" id="1_5ujwg"]
+[ext_resource type="Script" uid="uid://c5fpu6ww87ydn" path="res://Items/item_effects/item_effect.gd" id="1_yq8b3"]
+
+[sub_resource type="Gradient" id="Gradient_elg8r"]
+offsets = PackedFloat32Array(0, 0.5662252)
+colors = PackedColorArray(3.2944162, 1.124968, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_saay3"]
+gradient = SubResource("Gradient_elg8r")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[resource]
+script = ExtResource("1_5ujwg")
+name = "Bling"
+description = "Yummers !"
+texture = SubResource("GradientTexture2D_saay3")
+cost = 1
+metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"

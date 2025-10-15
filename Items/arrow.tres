@@ -11,8 +11,6 @@ region = Rect2(32, 0, 32, 32)
 [resource]
 script = ExtResource("2_67485")
 name = "Arrow"
-description = ""
 texture = SubResource("AtlasTexture_g6y51")
-cost = 10
 effects = Array[ExtResource("1_ti3hs")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"

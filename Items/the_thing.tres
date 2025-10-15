@@ -10,5 +10,4 @@ name = "The Thing"
 description = "It's the thing"
 texture = ExtResource("3_o12ti")
 cost = 500000
-effects = Array[ExtResource("1_ugcro")]([])
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"

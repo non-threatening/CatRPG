@@ -8,9 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_pw2eo"]
 script = ExtResource("2_yhh2t")
-heal_amount = 1
 audio = ExtResource("3_cvo6j")
-use_description = ""
 metadata/_custom_type_script = "uid://6vunt0okoe6m"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8xv6"]
@@ -22,6 +20,5 @@ script = ExtResource("1_hw0jr")
 name = "Potion"
 description = "Drink me"
 texture = SubResource("AtlasTexture_t8xv6")
-cost = 10
 effects = Array[ExtResource("1_pw2eo")]([SubResource("Resource_pw2eo"), null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"
