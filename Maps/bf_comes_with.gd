@@ -1,7 +1,6 @@
 class_name BFComesWith extends Node2D
 
 @onready var bf_comes_with: BFComesWith = $"."
-
 @onready var persistant_data_handler: PersistantDataHandler = $BFComesWithNPC/PersistantDataHandler
 
 var is_hidden : bool = false

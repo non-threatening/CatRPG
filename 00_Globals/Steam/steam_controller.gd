@@ -2,9 +2,12 @@ extends Node
 
 
 func _init() -> void:
-	Steam.steamInitEx( 4097910, true )
 	print( "response: ", Steam.get_steam_init_result() )
 	
+	Steam.clearAchievement("ACH_MEET_BF")
+	Steam.storeStats()
+
+
 	var username : String = Steam.getPersonaName()
 	print( "username: ", username )
 	

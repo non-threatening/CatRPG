@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://c3t8tcbq6u5iy" path="res://Items/arrow.tres" id="12_qhrc2"]
 [ext_resource type="Resource" uid="uid://b1fxn3sbeb2ea" path="res://Items/bomb.tres" id="13_dvxcx"]
 [ext_resource type="PackedScene" uid="uid://b0mbc3get8pug" path="res://interactables/bomb/bomb.tscn" id="14_7vnyu"]
-[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="14_dvxcx"]
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="14_dvxcx"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="15_k64fe"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="16_qhrc2"]
 [ext_resource type="PackedScene" uid="uid://bejbrfw00gn63" path="res://interactables/arrow/arrow.tscn" id="17_qhrc2"]

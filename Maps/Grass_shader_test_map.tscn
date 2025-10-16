@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://biuvt1eo6nfpj" path="res://Maps/Enviroment/Plants/Grass/grass_blade.tscn" id="6_srkr2"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="7_qhnrh"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="8_v5bit"]
-[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="9_qnxbr"]
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="9_qnxbr"]
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="10_xvh4v"]
 [ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="11_yr5mt"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="12_hxh2l"]
@@ -80,7 +80,7 @@ shader_parameter/tolerance = 0.139
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
 radius = 31.0161
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tx25"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4uvlv"]
 resource_local_to_scene = true
 shader = ExtResource("26_0xcwq")
 shader_parameter/x = 18.0
@@ -97,6 +97,10 @@ metadata/_edit_vertical_guides_ = [2699.0]
 [node name="Dungeon01" parent="." instance=ExtResource("2_5tx25")]
 z_index = -1
 tile_map_data = PackedByteArray("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AABLABkAAQAIAAcAAABMABkAAQAIAAcAAABNABkAAQAIAAcAAABOABkAAQAIAAcAAABPABkAAQAIAAcAAABQABkAAQAIAAcAAABRABkAAQAIAAcAAABSABkAAQAIAAcAAABTABkAAQAIAAcAAABTAOL/AQAIAAcAAABTAOP/AQAIAAcAAABTAOT/AQAIAAcAAABTAOX/AQAIAAcAAABTAOb/AQAIAAcAAABTAOf/AQAIAAcAAABTAOj/AQAIAAcAAABTAOn/AQAIAAcAAABTAOr/AQAIAAcAAABTAOv/AQAIAAcAAABTAOz/AQAIAAcAAABTAO3/AQAIAAcAAABTAO7/AQAIAAcAAABTAO//AQAIAAcAAABTAPD/AQAIAAcAAABTAPH/AQAIAAcAAABTAPL/AQAIAAcAAABTAPP/AQAIAAcAAABTAPT/AQAIAAcAAABTAPX/AQAIAAcAAABTAPb/AQAIAAcAAABTAPf/AQAIAAcAAABTAPj/AQAIAAcAAABTAPn/AQAIAAcAAABTAPr/AQAIAAcAAABTAPv/AQAIAAcAAABTAPz/AQAIAAcAAABTAP3/AQAIAAcAAABTAP7/AQAIAAcAAABTAP//AQAIAAcAAABTAAAAAQAIAAcAAABTAAEAAQAIAAcAAABTAAIAAQAIAAcAAABTAAMAAQAIAAcAAABTAAQAAQAIAAcAAABTAAUAAQAIAAcAAABTAAYAAQAIAAcAAABTAAcAAQAIAAcAAABTAAgAAQAIAAcAAABTAAkAAQAIAAcAAABTAAoAAQAIAAcAAABTAAsAAQAIAAcAAABTAAwAAQAIAAcAAABTAA0AAQAIAAcAAABTAA4AAQAIAAcAAABTAA8AAQAIAAcAAABTABAAAQAIAAcAAABTABEAAQAIAAcAAABTABIAAQAIAAcAAABTABMAAQAIAAcAAABTABQAAQAIAAcAAABTABUAAQAIAAcAAABTABYAAQAIAAcAAABTABcAAQAIAAcAAABTABgAAQAIAAcAAAAoAOL/AQAIAAcAAAAoAOP/AQAIAAcAAAAoAOT/AQAIAAcAAAAoAOX/AQAIAAcAAAAoAOb/AQAIAAcAAAAoAOf/AQAIAAcAAAAoAOj/AQAIAAcAAAAoAOn/AQAIAAcAAAAoAOr/AQAIAAcAAAAoAOv/AQAIAAcAAAAoAOz/AQAIAAcAAAAoAO3/AQAIAAcAAAAoAO7/AQAIAAcAAAAoAO//AQAIAAcAAAAoAPD/AQAIAAcAAAAoAPH/AQAIAAcAAAAoAPL/AQAIAAcAAAAoAPP/AQAIAAcAAAAoAPT/AQAIAAcAAAAoAPX/AQAIAAcAAAAoAPb/AQAIAAcAAAAoAPf/AQAIAAcAAAApAOL/AQAIAAcAAAAqAOL/AQAIAAcAAAArAOL/AQAIAAcAAAAsAOL/AQAIAAcAAAAtAOL/AQAIAAcAAAAuAOL/AQAIAAcAAAAvAOL/AQAIAAcAAAAwAOL/AQAIAAcAAAAxAOL/AQAIAAcAAAAyAOL/AQAIAAcAAAAzAOL/AQAIAAcAAAA0AOL/AQAIAAcAAAA1AOL/AQAIAAcAAAA2AOL/AQAIAAcAAAA3AOL/AQAIAAcAAAA4AOL/AQAIAAcAAAA5AOL/AQAIAAcAAAA6AOL/AQAIAAcAAAA7AOL/AQAIAAcAAAA8AOL/AQAIAAcAAAA9AOL/AQAIAAcAAAA+AOL/AQAIAAcAAAA/AOL/AQAIAAcAAABAAOL/AQAIAAcAAABBAOL/AQAIAAcAAABCAOL/AQAIAAcAAABDAOL/AQAIAAcAAABEAOL/AQAIAAcAAABFAOL/AQAIAAcAAABGAOL/AQAIAAcAAABHAOL/AQAIAAcAAABIAOL/AQAIAAcAAABJAOL/AQAIAAcAAABKAOL/AQAIAAcAAABLAOL/AQAIAAcAAABMAOL/AQAIAAcAAABNAOL/AQAIAAcAAABOAOL/AQAIAAcAAABPAOL/AQAIAAcAAABQAOL/AQAIAAcAAABRAOL/AQAIAAcAAABSAOL/AQAIAAcAAAA=")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.110599995, 0.4050067, 0.79, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
@@ -423,7 +427,7 @@ position = Vector2(-558, 141)
 position = Vector2(-420, 291)
 
 [node name="ItemPickup" parent="." instance=ExtResource("8_v5bit")]
-position = Vector2(591, 573)
+position = Vector2(617, 578)
 item_data = ExtResource("9_qnxbr")
 
 [node name="ItemPickup2" parent="." instance=ExtResource("8_v5bit")]
@@ -444,18 +448,18 @@ npc_resource = ExtResource("14_srkr2")
 
 [node name="PersistantDataHandler" parent="Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("11_yr5mt")]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
 visible = false
 shape = SubResource("CircleShape2D_yqcrc")
 debug_color = Color(0.37905112, 0.47461665, 1, 0)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
+[node name="Sprite2D" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
 position = Vector2(0, -19)
 texture = ExtResource("14_g0pye")
 hframes = 3
 frame = 2
 
-[node name="ShadowSprite" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC/Sprite2D2"]
+[node name="ShadowSprite" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC/Sprite2D"]
 modulate = Color(0.0980392, 0.0509804, 0.458824, 0.537255)
 show_behind_parent = true
 position = Vector2(2.38419e-07, 19)
@@ -473,14 +477,13 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="Indicator2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("15_t22hv")]
 position = Vector2(4, -8)
-x = -32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quest[102]_BFComesWith/BFComesWithNPC/Indicator2D"]
 position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_t22hv")
 debug_color = Color(0, 0.6, 0.69803923, 0)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
 
 [node name="Npc" parent="." instance=ExtResource("15_k0o0t")]
 position = Vector2(1263, 48)
@@ -496,7 +499,6 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="Indicator2D" parent="Npc" instance=ExtResource("15_t22hv")]
 position = Vector2(-2, 4)
-x = -32
 y = -120
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Indicator2D"]
@@ -593,6 +595,6 @@ position = Vector2(843, 259)
 
 [node name="TreasureChest5" parent="." instance=ExtResource("25_451xv")]
 visible = false
-material = SubResource("ShaderMaterial_5tx25")
+material = SubResource("ShaderMaterial_4uvlv")
 position = Vector2(426, 501)
 item_data = ExtResource("27_oya04")
