@@ -22,6 +22,7 @@ reward = Dictionary[ExtResource("1_7j25i"), int]({
 ExtResource("2_7j25i"): 1
 })
 xp = 27
+achievement = "ACH_MEET_BF"
 id = 102
 quest_name = "a_gimp_suit_for_bird_friend"
 quest_description = "Find a gimp suit hidden in the bushes and bring it back to Bird Friend."

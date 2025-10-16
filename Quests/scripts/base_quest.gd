@@ -8,11 +8,10 @@ const INVETORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/pl
 @export var steps: Array[QuestStep]
 @export var reward: Dictionary[ ItemData, int ]
 @export var xp : int = 0
-
+@export var achievement : String = ""
 
 func start(_args: Dictionary = {}) -> void:
 	for step: QuestStep in steps:
-		#step.ready()
 		step.updated.connect(_update_step.bind(step))
 	started.emit()
 
@@ -44,6 +43,10 @@ func complete(_args: Dictionary = {}) -> void:
 				PlayerHud.queue_notification( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name, "s") )
 			else:
 				PlayerHud.queue_notification( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name) )
+	if not achievement.is_empty():
+		Steam.setAchievement( achievement )
+		Steam.storeStats()
+	
 	completed.emit()
 
 
