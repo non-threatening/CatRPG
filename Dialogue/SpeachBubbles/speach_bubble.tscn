@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0u3mmda127cd"]
+[gd_scene load_steps=8 format=3 uid="uid://c0u3mmda127cd"]
 
 [ext_resource type="Script" uid="uid://bm4oe7er3ffwr" path="res://Dialogue/SpeachBubbles/speach_bubble.gd" id="1_suubk"]
 [ext_resource type="Theme" uid="uid://bpsv0tvfru4e2" path="res://Dialogue/SpeachBubbles/speach_bubble.tres" id="2_suubk"]
@@ -6,11 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://b8mukr7afp5o4" path="res://Dialogue/SpeachBubbles/blured_panel_white.png" id="3_tr0jp"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_t1jep"]
 [ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeachBubbles/portraits/cat.png" id="6_l6g6q"]
+[ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://Dialogue/controller_icon_interact.tres" id="7_t1jep"]
 
 [node name="SpeachBubble" type="CanvasLayer"]
 process_mode = 3
 layer = 100
 script = ExtResource("1_suubk")
+next_action = &"interact"
+skip_action = &"attack"
 
 [node name="Portrait" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -48,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer"]
-self_modulate = Color(0, 0, 0, 0.7529412)
+self_modulate = Color(0, 0, 0, 0.87058824)
 clip_children = 2
 layout_mode = 2
 texture = ExtResource("3_tr0jp")
@@ -101,16 +104,17 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 text = "Response example"
 
-[node name="Label" type="Label" parent="Bubble"]
+[node name="TextureRect" type="TextureRect" parent="Bubble"]
 layout_mode = 0
-offset_left = 870.0
-offset_top = 625.0
-offset_right = 940.0
-offset_bottom = 665.0
-theme_override_font_sizes/font_size = 32
-text = " ~~> "
+offset_left = 887.0
+offset_top = 619.0
+offset_right = 987.0
+offset_bottom = 719.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_t1jep")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 5

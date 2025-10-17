@@ -23,7 +23,7 @@ var temporary_game_states: Array = []
 var is_waiting_for_input: bool = false:
 	set( value ):
 		is_waiting_for_input = value
-		label.visible = value
+		texture_rect.visible = value
 	get:
 		return is_waiting_for_input
 
@@ -71,7 +71,8 @@ var audio_file : AudioStream
 @onready var margin_container: MarginContainer = $Bubble/MarginContainer
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var label: Label = $Bubble/Label
+
+@onready var texture_rect: TextureRect = $Bubble/TextureRect
 
 
 func _ready() -> void:
@@ -162,7 +163,6 @@ func apply_dialogue_line() -> void:
 	else:
 		portrait.texture = null
 
-	#resource.get_next_dialogue_line(next_id, temporary_game_states)
 
 #	Narrator or not
 	if not dialogue_line.character.to_lower() == "narrator":

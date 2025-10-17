@@ -30,8 +30,6 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if is_paused == false:
-			#if DialogSystem.is_active:
-				#return
 			show_pause_menu()
 		else:
 			hide_pause_menu()
@@ -42,6 +40,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			change_tab( 1 )
 		elif event.is_action_pressed("left_bumper"):
 			change_tab( -1 )
+		elif event.is_action_pressed("attack"):
+			hide_pause_menu()
 		
 		
 		
