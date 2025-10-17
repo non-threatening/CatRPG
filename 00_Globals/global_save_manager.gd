@@ -88,16 +88,22 @@ func load_game() -> void:
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
 	
 	var quests: Array[Quest]
-	for quest in DirAccess.get_files_at("res://Quests/"):
-		var quest_path = "res://Quests/" + quest
+	for quest in DirAccess.get_files_at("res://Quests/quest_resources/"):
+		var quest_path = "res://Quests/quest_resources/" + quest
 		var quest_resource = load(quest_path)
 		if quest_resource is Quest:
 			quests.append(quest_resource)
 		QuestSystem.restore_pool_state_from_dict(current_save["pool_state"], quests)
 		QuestSystem.deserialize_quests(current_save["quest_data"])
-		
+	
 		
 	await LevelManager.level_loaded
+	
+	var load_active_quests = QuestSystem.get_active_quests()
+	for q: Quest in load_active_quests:
+		if q.quest_name:
+			Shortcuts.update_quest( q.quest_name )
+			
 	game_loaded.emit()
 	pass
 

@@ -34,10 +34,11 @@ func _on_visible_changed() -> void:
 			var new_cq_item : QuestSummary = QUEST_SUMMARY.instantiate()
 			quest_item_container.add_child( new_cq_item )
 			new_cq_item.initialize( cq.quest_objective, cq.quest_description, true )
-			new_cq_item.focus_entered.connect( update_quest_details.bind( cq.steps ))
+			new_cq_item.focus_entered.connect( update_completed_quest_details.bind( cq.steps ))
 
 
-func update_quest_details( thing) -> void:
+
+func update_quest_details( thing ) -> void:
 	clear_list_details()
 	for s in thing:
 		var new_step : ListSummary = LIST_SUMMARY.instantiate()
@@ -45,6 +46,14 @@ func update_quest_details( thing) -> void:
 		new_step.initialize( s.title, s.completed )
 
 
+func update_completed_quest_details( thing ) -> void:
+	clear_list_details()
+	for s in thing:
+		var new_step : ListSummary = LIST_SUMMARY.instantiate()
+		quest_list_container.add_child( new_step )
+		new_step.initialize( s.title, true )
+		
+		
 func clear_quest_details() -> void:
 	for c in quest_item_container.get_children():
 		c.queue_free()

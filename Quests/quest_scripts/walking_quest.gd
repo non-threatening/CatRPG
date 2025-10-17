@@ -7,7 +7,22 @@ const WALKING_QUEST = preload("res://Quests/quest_resources/walking_quest.tres")
 
 func _ready() -> void:
 	area_2d.body_entered.connect( _on_body_entered )
-	pass
+	SaveManager.game_loaded.connect( _on_game_loaded )
+
+
+func _on_game_loaded() -> void:
+	var _completed : Array[bool]
+	if QuestSystem.is_quest_active(WALKING_QUEST):
+		for c in WALKING_QUEST.steps:
+			_completed.append( c.completed )
+	var total_sum = sum_bool_array( _completed )
+	QuestVars.flower_count = total_sum
+
+func sum_bool_array(bool_array: Array) -> int:
+	var total = 0
+	for value in bool_array:
+		total += int(value)  # Convert boolean to integer
+	return total
 
 
 func _on_body_entered( _a ) -> void:
