@@ -1,12 +1,17 @@
 shader_type canvas_item;
 
 uniform vec3 color: source_color;
-uniform float lineWidth : hint_range(0.0, 100.0, 0.1);
+uniform float lineWidth : hint_range(0.0, 100.0, 0.05);
 uniform vec2 size;
 uniform sampler2D noise: filter_nearest;
 uniform sampler2D noise2: filter_nearest;
 uniform float edge_fade : hint_range(0.0, 1.0, 0.1);
-uniform float wave_speed: hint_range(0.0, 10.0, 0.1);
+uniform float wave_speed: hint_range(0.0, 10.0, 0.05);
+
+uniform float blur_amount : hint_range(-2.0, 10.0);
+uniform float mix_amount : hint_range(0.0, 1.0);
+uniform vec4 color_over : source_color;
+//uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 void fragment() {
 
@@ -26,4 +31,9 @@ void fragment() {
 		discard;
 	}
 	COLOR.a = ma*n3;
+
+	//vec4 blurred = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount);
+	//blurred.a = 255.0;
+	//vec4 fin = mix(blurred, color_over, mix_amount);
+	//COLOR = fin;
 }

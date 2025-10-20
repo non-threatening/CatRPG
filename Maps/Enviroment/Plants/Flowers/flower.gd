@@ -1,20 +1,34 @@
 class_name Flower extends Node2D
 
-@onready var sprite: Flower = $"."
+const DREAM_FLOWER = preload( "res://Maps/Enviroment/Plants/Flowers/flower_dream_material.gdshader" )
+const png_dir : String = "res://Maps/Enviroment/Plants/Flowers/sprites/"
 
-var png_dir : String = "res://Maps/Enviroment/Plants/Flowers/sprites/"
 var images : Array[ String ]
 var images_full = []
+
+@onready var sprite: Flower = $"."
+@onready var shadow_sprite: Sprite2D = $ShadowSprite
+@onready var shadow_sprite_green: Sprite2D = $ShadowSpriteGreen
+
 
 func _ready() -> void:
 	_get_pngs()
 	images_full = images.duplicate()
 	images.shuffle()
 	get_shuffled_flower()
-	
 	_set_time_scale()
 	_set_random_scale()
-	_set_random_color()
+	
+	var thing = get_tree().get_current_scene().name
+	if thing == "TheLobby":
+		sprite.material.shader = DREAM_FLOWER
+		shadow_sprite.hide()
+		shadow_sprite_green.show()
+	else:
+		_set_random_color()
+		shadow_sprite.show()
+		shadow_sprite_green.hide()
+		
 	_set_random_motion_amount()
 	pass
 
@@ -52,6 +66,13 @@ func _set_random_scale() -> void:
 	sprite.scale = new_scale
 
 
+func _set_random_motion_amount() -> void:
+	var x = randf_range( 3.0, 5.0 )
+	var y = randf_range( 2.5, 3.5 )
+	sprite.material.set_shader_parameter( "x", x )
+	sprite.material.set_shader_parameter( "y", y )
+
+
 func _set_random_color() -> void:
 	var color_range1 : float = fmod( randf_range( (270.0/360.0), 1.0 ) + 50.0/360.0, 1.0 )
 	var color1 = Color.from_hsv(
@@ -61,19 +82,11 @@ func _set_random_color() -> void:
 	)
 	sprite.material.set_shader_parameter( "color1", color1 )
 
-	
-	
-func _set_random_stem_color() -> void:
-	var stem_color = Color.from_hsv(
-		randf_range( (120.0/360.0), (133.0/360.0) ), 
-		randf_range( 0.6, 0.9 ), 
-		randf_range( 0.45, 0.6 )
-	)
-	sprite.material.set_shader_parameter( "stem_color", stem_color )
 
-
-func _set_random_motion_amount() -> void:
-	var x = randf_range( 3.0, 5.0 )
-	var y = randf_range( 2.5, 3.5 )
-	sprite.material.set_shader_parameter( "x", x )
-	sprite.material.set_shader_parameter( "y", y )
+#func _set_random_stem_color() -> void:
+	#var stem_color = Color.from_hsv(
+		#randf_range( (120.0/360.0), (133.0/360.0) ), 
+		#randf_range( 0.6, 0.9 ), 
+		#randf_range( 0.45, 0.6 )
+	#)
+	#sprite.material.set_shader_parameter( "stem_color", stem_color )

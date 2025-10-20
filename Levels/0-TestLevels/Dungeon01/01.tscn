@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bng4h21j3iths"]
+[gd_scene load_steps=14 format=4 uid="uid://bng4h21j3iths"]
 
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_umoo4"]
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_ux7ia"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="10_gmq4b"]
 [ext_resource type="Resource" uid="uid://d1hal3jqnbjc1" path="res://Items/potion.tres" id="11_0vvle"]
 [ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="12_n8j0c"]
+[ext_resource type="Script" uid="uid://btat3ybgx0y38" path="res://Maps/Enviroment/Plants/Flowers/flower.gd" id="13_jpcg2"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_ux7ia")
@@ -59,6 +60,11 @@ quantity = 5
 position = Vector2(864, 136)
 item_data = ExtResource("12_n8j0c")
 quantity = 3
+
+[node name="Flower" type="Node2D" parent="."]
+position = Vector2(536, 328)
+script = ExtResource("13_jpcg2")
+metadata/_custom_type_script = "uid://btat3ybgx0y38"
 
 [connection signal="activated" from="PresurePlate" to="BarredDoor" method="open_door"]
 [connection signal="deactivated" from="PresurePlate" to="BarredDoor" method="close_door"]

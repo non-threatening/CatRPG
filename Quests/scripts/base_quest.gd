@@ -10,6 +10,8 @@ const INVETORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/pl
 @export var xp : int = 0
 @export var achievement : String = ""
 
+
+
 func start(_args: Dictionary = {}) -> void:
 	for step: QuestStep in steps:
 		step.updated.connect(_update_step.bind(step))
@@ -48,7 +50,13 @@ func complete(_args: Dictionary = {}) -> void:
 		Steam.storeStats()
 	
 	completed.emit()
+	
+	var completed_quests_size = QuestSystem.get_completed_quests().size()
+	print("completed_quests_size ", completed_quests_size + 1 )
+	Steam.setStatInt( "Q_COMPLETE", completed_quests_size + 1 )
+	
 
+	
 
 func get_first_uncompleted_step() -> QuestStep:
 	var uncompleted_steps := steps.filter(func(step): return step.completed == false)

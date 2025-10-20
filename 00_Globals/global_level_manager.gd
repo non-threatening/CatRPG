@@ -16,7 +16,12 @@ func _ready() -> void:
 func change_tilemap_bounds( bounds : Array[ Vector2 ] ) -> void:
 	current_tilemap_bounds = bounds
 	TileMapBoundsChanged.emit( bounds )
-	
+
+
+func enter_dream_world() -> void:
+	load_new_level( "res://Maps/Klardraumland/TheLobby.tscn", "LevelTransition", Vector2( 0, 0 ))
+
+
 
 func load_new_level(
 		level_path : String,
@@ -39,6 +44,3 @@ func load_new_level(
 	
 	await get_tree().process_frame
 	level_loaded.emit()
-	
-	
-	pass

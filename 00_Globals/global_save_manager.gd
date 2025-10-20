@@ -90,6 +90,8 @@ func load_game() -> void:
 	var quests: Array[Quest]
 	for quest in DirAccess.get_files_at("res://Quests/quest_resources/"):
 		var quest_path = "res://Quests/quest_resources/" + quest
+		if ".tres.remap" in quest_path:
+			quest_path = quest_path.trim_suffix('.remap')
 		var quest_resource = load(quest_path)
 		if quest_resource is Quest:
 			quests.append(quest_resource)

@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform vec4 outline_color : source_color = vec4( 0.5, 0.0, 0.0, 1.0 );
-uniform float outline_thickness : hint_range( 0.5, 15.0 ) = 1.0;
+uniform vec4 outline_color : source_color = vec4( 0.1, 1.0, 0.1, 1.0 );
+uniform float outline_thickness : hint_range( 0.5, 15.0 ) = 10.0;
 uniform float alpha_threshold : hint_range(0.0, 0.9) = 0.5;
 
 

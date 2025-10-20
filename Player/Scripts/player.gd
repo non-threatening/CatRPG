@@ -74,7 +74,6 @@ func _process( _delta: float ) -> void:
 		Input.get_axis("up", "down")
 	).normalized()
 
-
 ## Bird Friend Head
 	if bird_friend_sprite.visible == true:
 		time += _delta
@@ -89,6 +88,7 @@ func _physics_process( _delta: float ) -> void:
 	move_and_slide()
 
 
+##	Dialog actionable
 func _interact_pressed() -> void:
 	var actionables = actionable_finder.get_overlapping_areas()
 	if actionables.size() > 0:

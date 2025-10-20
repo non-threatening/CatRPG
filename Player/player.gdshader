@@ -53,4 +53,8 @@ void fragment() {
 	float alpha_blend_factor = smoothstep( 0.0, alpha_threshold, COLOR.a );
 	COLOR.rgb = mix( outline_color.rgb, COLOR.rgb, alpha_blend_factor );
 	COLOR.a = max( COLOR.a, outline_mask );
+	
+	vec3 inverted = 1.0 - COLOR.rgb;
+	vec3 green = inverted * vec3( 0, 0.666, 0 );
+	COLOR.rgb = green;
 }
