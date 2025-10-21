@@ -4,12 +4,23 @@ const FRAME_COUNT : int = 128
 
 @onready var weapon_below: Sprite2D = $Sprite2D_Weapon_Below
 @onready var weapon_above: Sprite2D = $Sprite2D_Weapon_Above
+@onready var sprite: Sprite2D = $"."
 
 
 func _ready() -> void:
 	PlayerManager.INVETORY_DATA.equipment_changed.connect( _on_equipment_changed )
-	pass
+	LevelManager.level_loaded.connect( _check_level )
 	
+	
+func _check_level() -> void:
+	var thing = get_tree().get_current_scene().name
+	if thing == "TheLobby":
+		sprite.material.set_shader_parameter( "alpha_threshold", 0.9 )
+		sprite.material.set_shader_parameter( "cover_color", Vector4( 1, 1, 1, 1 ) )
+	else:
+		sprite.material.set_shader_parameter( "alpha_threshold", 0 )
+		sprite.material.set_shader_parameter( "cover_color", PlayerManager.player_color )
+
 
 func _process( _delta: float ) -> void:
 	## This syncs when the weapon sprites match the player sprites

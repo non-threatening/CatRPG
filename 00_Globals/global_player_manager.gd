@@ -15,6 +15,8 @@ var player_spawned : bool = false
 #var level_requirments = [ 0, 50, 100, 200, 400, 800, 1500, 3000, 6000, 12000, 25000 ]
 var level_requirments = [ 0, 5, 10, 20, 40 ]
 
+var player_color : Vector4 = Vector4( 0.6, 0.4, 0.3, 1.0 )
+
 
 
 func _ready() -> void:

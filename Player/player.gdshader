@@ -54,7 +54,9 @@ void fragment() {
 	COLOR.rgb = mix( outline_color.rgb, COLOR.rgb, alpha_blend_factor );
 	COLOR.a = max( COLOR.a, outline_mask );
 	
-	vec3 inverted = 1.0 - COLOR.rgb;
-	vec3 green = inverted * vec3( 0, 0.666, 0 );
-	COLOR.rgb = green;
+	if ( alpha_threshold != 0.0 ){
+		vec3 inverted = 1.0 - COLOR.rgb;
+		vec3 green = inverted * vec3( 0, 0.666, 0 );
+		COLOR.rgb = green;
+		}
 }
