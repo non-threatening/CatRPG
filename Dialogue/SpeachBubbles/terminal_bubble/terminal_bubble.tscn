@@ -1,0 +1,143 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxp6nsydpp02j"]
+
+[ext_resource type="Script" uid="uid://mbsarhpox6qb" path="res://Dialogue/SpeachBubbles/terminal_bubble/terminal_bubble.gd" id="1_6jqwh"]
+[ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeachBubbles/portraits/cat.png" id="2_df5e2"]
+[ext_resource type="Theme" uid="uid://belqqulh7hauf" path="res://Dialogue/SpeachBubbles/terminal_bubble/terminal_bubble.tres" id="3_g5gxr"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="5_0fht5"]
+[ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Klardraumland/crt_shader.tres" id="6_7afn2"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="6_ntj65"]
+
+[node name="TerminalBubble" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+script = ExtResource("1_6jqwh")
+next_action = &"interact"
+skip_action = &"attack"
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.1254902, 0.7529412)
+
+[node name="Portrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(250, 250)
+offset_left = 312.0
+offset_top = 224.0
+offset_right = 562.0
+offset_bottom = 474.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_df5e2")
+
+[node name="Bubble" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_g5gxr")
+
+[node name="MarginContainer" type="MarginContainer" parent="Bubble"]
+custom_minimum_size = Vector2(768, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -240.0
+offset_right = 384.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Bubble/MarginContainer"]
+layout_mode = 2
+color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+
+[node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer"]
+self_modulate = Color(0, 0, 0, 0.87058824)
+clip_children = 2
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 92.0
+offset_right = 694.0
+offset_bottom = 248.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "Character"
+fit_content = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_0fht5")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 42
+text = "Dialogue..."
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 315.0
+offset_top = 374.0
+offset_right = 470.0
+offset_bottom = 476.0
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+script = ExtResource("6_ntj65")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+text = "~ Yes"
+flat = true
+alignment = 0
+
+[node name="ResponseExample2" type="Button" parent="Bubble/ResponsesMenu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+text = "~ No"
+flat = true
+alignment = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 5
+bus = &"Effects"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("6_7afn2")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -378.0
+offset_top = -228.0
+offset_right = 378.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="Bubble" to="." method="_on_bubble_gui_input"]
+[connection signal="response_selected" from="Bubble/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

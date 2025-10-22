@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ddn55rmeynqpa" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_Stacked_layers_Stem.png" id="8_h4xte"]
 
 [sub_resource type="Gradient" id="Gradient_s7pb4"]
-colors = PackedColorArray(0, 1, 0, 0.27058825, 0, 0, 0, 0)
+colors = PackedColorArray(0, 0, 0, 0.27058825, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qyvkd"]
 gradient = SubResource("Gradient_s7pb4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bwa3jdmpvxxvu"]
+[gd_scene load_steps=15 format=4 uid="uid://bwa3jdmpvxxvu"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_2g8rj"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_gcgvm"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="3_abty2"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="4_abty2"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="5_jc7gr"]
+[ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Klardraumland/crt_shader.tres" id="7_0eggj"]
+[ext_resource type="Script" uid="uid://u1gm6dsjttxc" path="res://Maps/Klardraumland/disappear.gd" id="7_jp6c1"]
 
 [sub_resource type="Gradient" id="Gradient_jc7gr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -27,7 +29,7 @@ noise = SubResource("FastNoiseLite_0eggj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jp6c1"]
 shader = ExtResource("1_yb7pt")
-shader_parameter/color = Color(0, 0.41250366, 0.061364338, 1)
+shader_parameter/color = Color(0, 0.11764706, 0.12156863, 1)
 shader_parameter/lineWidth = 0.10000000149012
 shader_parameter/size = Vector2(64, 40)
 shader_parameter/noise = SubResource("NoiseTexture2D_gxhnc")
@@ -60,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0426667, 0, 0.16, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="Grid" type="ColorRect" parent="."]
 z_index = -1
 material = SubResource("ShaderMaterial_jp6c1")
 offset_left = -3840.0
@@ -71,31 +73,51 @@ offset_bottom = 2400.0
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_abty2")]
 position = Vector2(296, 70)
 
-[node name="Flower" parent="." instance=ExtResource("4_abty2")]
-position = Vector2(248, -122)
+[node name="ColorRect3" type="ColorRect" parent="."]
+material = ExtResource("7_0eggj")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3840.0
+offset_top = -2400.0
+offset_right = 3840.0
+offset_bottom = 2400.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Flower2" parent="." instance=ExtResource("4_abty2")]
-position = Vector2(296, -123)
+[node name="Entrance" type="Node2D" parent="."]
+position = Vector2(-14, -77)
+script = ExtResource("7_jp6c1")
 
-[node name="Flower3" parent="." instance=ExtResource("4_abty2")]
-position = Vector2(344, -123)
-
-[node name="Flower4" parent="." instance=ExtResource("4_abty2")]
-position = Vector2(200, -122)
-
-[node name="Flower5" parent="." instance=ExtResource("4_abty2")]
-position = Vector2(153, -124)
-
-[node name="Flower6" parent="." instance=ExtResource("4_abty2")]
-position = Vector2(105, -123)
-
-[node name="Flower7" parent="." instance=ExtResource("4_abty2")]
-position = Vector2(58, -123)
-
-[node name="Flower8" parent="." instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="LevelTransition" parent="." instance=ExtResource("5_jc7gr")]
+[node name="LevelTransition" parent="Entrance" instance=ExtResource("5_jc7gr")]
 level = "uid://ly7wguh1ufuy"
 target_transition_area = "LevelTransition1"
 size = 1
+
+[node name="Flowers" type="Node2D" parent="."]
+
+[node name="Flower" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(248, -122)
+
+[node name="Flower2" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(296, -123)
+
+[node name="Flower3" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(344, -123)
+
+[node name="Flower4" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(200, -122)
+
+[node name="Flower5" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(153, -124)
+
+[node name="Flower6" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(105, -123)
+
+[node name="Flower7" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(58, -123)
+
+[node name="Flower8" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(8, -122)

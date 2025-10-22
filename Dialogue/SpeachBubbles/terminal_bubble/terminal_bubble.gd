@@ -23,7 +23,7 @@ var temporary_game_states: Array = []
 var is_waiting_for_input: bool = false:
 	set( value ):
 		is_waiting_for_input = value
-		texture_rect.visible = value
+		#texture_rect.visible = value
 	get:
 		return is_waiting_for_input
 
@@ -151,27 +151,27 @@ func apply_dialogue_line() -> void:
 
 	#only change charactr when a new character appears ???
 	# Or use tags, maybe better.. if cat use [1]
-	var emotion : String = ""
-	if not dialogue_line.tags.is_empty():
-		emotion = ( "_" + dialogue_line.tags[0] )
+	#var emotion : String = ""
+	#if not dialogue_line.tags.is_empty():
+		#emotion = ( "_" + dialogue_line.tags[0] )
 		
 		
-	var portrait_path : String = "res://Dialogue/SpeachBubbles/portraits/%s.png" % ( dialogue_line.character.to_snake_case() + emotion )
-	print( "pp ", portrait_path)
-	if ResourceLoader.exists( portrait_path ):
-		portrait.texture = load( portrait_path )
-	else:
-		portrait.texture = null
+	#var portrait_path : String = "res://Dialogue/SpeachBubbles/portraits/%s.png" % ( dialogue_line.character.to_snake_case() + emotion )
+	#print( "pp ", portrait_path)
+	#if ResourceLoader.exists( portrait_path ):
+		#portrait.texture = load( portrait_path )
+	#else:
+		#portrait.texture = null
 
 
-#	Narrator or not
-	if not dialogue_line.character.to_lower() == "narrator":
-		margin_container.position.y = 428
-		%DialogueLabel.horizontal_alignment = 0
-	else:
-		margin_container.position.y = 128
-		character_label.text = ""
-		%DialogueLabel.horizontal_alignment = 1
+##	Narrator or not
+	#if not dialogue_line.character.to_lower() == "narrator":
+		#margin_container.position.y = 428
+		#%DialogueLabel.horizontal_alignment = 0
+	#else:
+		#margin_container.position.y = 128
+		#character_label.text = ""
+		#%DialogueLabel.horizontal_alignment = 1
 		
 
 	dialogue_label.hide()

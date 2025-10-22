@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://fnb335xp2rg4"]
+
+[ext_resource type="Texture2D" uid="uid://bxcqdywq4tybk" path="res://Maps/Enviroment/Plants/isometric-modern-buildings-cartoon.png" id="1_6k2pf"]
+[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="2_ghq3x"]
+[ext_resource type="Resource" uid="uid://sp87haiqrb68" path="res://Dialogue/Conversations/world_transition.dialogue" id="3_lix13"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://Dialogue/indicator.tscn" id="4_ghq3x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghq3x"]
+radius = 99.35794
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhnrh"]
+radius = 168.76018
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ghq3x"]
+radius = 20.0
+height = 80.0
+
+[node name="TerminalInterface" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+scale = Vector2(0.25, 0.125)
+shape = SubResource("CircleShape2D_ghq3x")
+
+[node name="TerminalInterface" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.125)
+texture = ExtResource("1_6k2pf")
+offset = Vector2(0, -175)
+
+[node name="Actionable" parent="TerminalInterface" instance=ExtResource("2_ghq3x")]
+modulate = Color(1, 1, 1, 0.5)
+bubble = 1
+dialogue_resource = ExtResource("3_lix13")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerminalInterface/Actionable"]
+position = Vector2(0, 128)
+shape = SubResource("CircleShape2D_qhnrh")
+debug_color = Color(0, 0, 1, 0)
+
+[node name="Indicator2D" parent="." instance=ExtResource("4_ghq3x")]
+y = -160
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Indicator2D"]
+position = Vector2(0, 16)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ghq3x")
+debug_color = Color(0, 0, 1, 0)

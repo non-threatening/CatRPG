@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=43 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
@@ -27,24 +27,20 @@
 [ext_resource type="PackedScene" uid="uid://dul2wk6yslbpi" path="res://npc/npc_behavior_wander.tscn" id="21_70lcl"]
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
 [ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="24_0fwua"]
-[ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="25_451xv"]
-[ext_resource type="Shader" uid="uid://rau322rwm5hw" path="res://Maps/Enviroment/Plants/Grass/grass_blade.gdshader" id="26_0xcwq"]
-[ext_resource type="Resource" uid="uid://ct24774noeydi" path="res://Items/ability_bird.tres" id="27_oya04"]
-[ext_resource type="Texture2D" uid="uid://bxcqdywq4tybk" path="res://Maps/Enviroment/Plants/isometric-modern-buildings-cartoon.png" id="31_g0pye"]
-[ext_resource type="Resource" uid="uid://sp87haiqrb68" path="res://Dialogue/Conversations/world_transition.dialogue" id="32_qhnrh"]
+[ext_resource type="PackedScene" uid="uid://fnb335xp2rg4" path="res://Maps/Enviroment/objects/terminal_interface.tscn" id="31_g0pye"]
 
 [sub_resource type="Gradient" id="Gradient_v347e"]
 colors = PackedColorArray(0, 0.569945, 0.609093, 1, 0.307722, 0.598821, 0.574173, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_v347e"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4uvlv"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5tx25"]
 noise = SubResource("FastNoiseLite_v347e")
 color_ramp = SubResource("Gradient_v347e")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k1c8l"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g0pye"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_70lcl"]
 noise = SubResource("FastNoiseLite_k1c8l")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxhnc"]
@@ -52,8 +48,8 @@ shader = ExtResource("3_70lcl")
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/lineWidth = 0.5
 shader_parameter/size = Vector2(50, 50)
-shader_parameter/noise = SubResource("NoiseTexture2D_4uvlv")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_g0pye")
+shader_parameter/noise = SubResource("NoiseTexture2D_5tx25")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_70lcl")
 shader_parameter/edge_fade = 0.0
 shader_parameter/wave_speed = 0.1
 shader_parameter/blur_amount = 0.0
@@ -88,17 +84,6 @@ shader_parameter/tolerance = 0.139
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
 radius = 31.0161
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_srkr2"]
-resource_local_to_scene = true
-shader = ExtResource("26_0xcwq")
-shader_parameter/x = 18.0
-shader_parameter/y = 8.0
-shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
-shader_parameter/time_scale = 1.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qhnrh"]
-radius = 200.0
-
 [node name="GrassTestMap" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(0, -1)
@@ -114,7 +99,6 @@ visible = false
 color = Color(0.110599995, 0.4050067, 0.79, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_gxhnc")
 offset_left = -22.0
 offset_top = -251.0
@@ -182,103 +166,203 @@ position = Vector2(1002, 286)
 
 [node name="Flowers" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-310, -254)
+position = Vector2(394, 215)
 
 [node name="Flower5" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(828, 590)
+position = Vector2(162, 37)
 
 [node name="Flower6" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(783, 607)
+position = Vector2(117, 54)
 
 [node name="Flower7" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(756, 524)
+position = Vector2(90, -29)
 
 [node name="Flower8" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(578, 590)
+position = Vector2(-88, 37)
 
 [node name="Flower9" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(567, 619)
+position = Vector2(-99, 66)
 
 [node name="Flower10" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(528, 620)
+position = Vector2(-138, 67)
 
 [node name="Flower11" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(478, 600)
+position = Vector2(-188, 47)
 
 [node name="Flower12" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(456, 573)
+position = Vector2(-210, 20)
 
 [node name="Flower13" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(604, 691)
+position = Vector2(-62, 138)
 
 [node name="Flower14" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(452, 603)
+position = Vector2(-214, 50)
 
 [node name="Flower15" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(706, 694)
+position = Vector2(40, 141)
 
 [node name="Flower16" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(562, 505)
+position = Vector2(-104, -48)
 
 [node name="Flower17" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(602, 585)
+position = Vector2(-64, 32)
 
 [node name="Flower18" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(629, 669)
+position = Vector2(-37, 116)
 
 [node name="Flower19" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(604, 547)
+position = Vector2(-62, -6)
 
 [node name="Flower20" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(600, 719)
+position = Vector2(-66, 166)
 
 [node name="Flower21" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(660, 729)
+position = Vector2(-6, 176)
 
 [node name="Flower22" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(647, 581)
+position = Vector2(-19, 28)
 
 [node name="Flower23" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(751, 615)
+position = Vector2(85, 62)
 
 [node name="Flower24" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(625, 523)
+position = Vector2(-41, -30)
 
 [node name="Flower25" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(553, 520)
+position = Vector2(-113, -33)
 
 [node name="Flower26" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(522, 511)
+position = Vector2(-144, -42)
 
 [node name="Flower27" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(592, 510)
+position = Vector2(-74, -43)
 
 [node name="Flower28" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(659, 533)
+position = Vector2(-7, -20)
 
 [node name="Flower29" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(702, 587)
+position = Vector2(36, 34)
 
 [node name="Flower30" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(681, 615)
+position = Vector2(15, 62)
 
 [node name="Flower31" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(598, 632)
+position = Vector2(-68, 79)
 
 [node name="Flower32" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(804, 519)
+position = Vector2(138, -34)
 
 [node name="Flower33" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(848, 530)
+position = Vector2(182, -23)
 
 [node name="Flower34" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(882, 518)
+position = Vector2(216, -35)
 
 [node name="Flower35" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(923, 520)
+position = Vector2(257, -33)
 
 [node name="Flower36" parent="Flowers" instance=ExtResource("7_qhnrh")]
-position = Vector2(967, 518)
+position = Vector2(301, -35)
+
+[node name="Flowers3" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(761, 297)
+
+[node name="Flower5" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(162, 37)
+
+[node name="Flower6" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(117, 54)
+
+[node name="Flower7" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(90, -29)
+
+[node name="Flower8" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-88, 37)
+
+[node name="Flower9" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-99, 66)
+
+[node name="Flower10" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-138, 67)
+
+[node name="Flower11" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-188, 47)
+
+[node name="Flower12" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-210, 20)
+
+[node name="Flower13" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-62, 138)
+
+[node name="Flower14" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-214, 50)
+
+[node name="Flower15" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(40, 141)
+
+[node name="Flower16" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-104, -48)
+
+[node name="Flower17" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-64, 32)
+
+[node name="Flower18" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-37, 116)
+
+[node name="Flower19" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-62, -6)
+
+[node name="Flower20" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-66, 166)
+
+[node name="Flower21" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-6, 176)
+
+[node name="Flower22" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-19, 28)
+
+[node name="Flower23" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(85, 62)
+
+[node name="Flower24" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-41, -30)
+
+[node name="Flower25" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-113, -33)
+
+[node name="Flower26" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-144, -42)
+
+[node name="Flower27" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-74, -43)
+
+[node name="Flower28" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-7, -20)
+
+[node name="Flower29" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(36, 34)
+
+[node name="Flower30" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(15, 62)
+
+[node name="Flower31" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(-68, 79)
+
+[node name="Flower32" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(138, -34)
+
+[node name="Flower33" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(182, -23)
+
+[node name="Flower34" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(216, -35)
+
+[node name="Flower35" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(257, -33)
+
+[node name="Flower36" parent="Flowers3" instance=ExtResource("7_qhnrh")]
+position = Vector2(301, -35)
 
 [node name="Flowers2" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -443,7 +527,7 @@ position = Vector2(617, 578)
 item_data = ExtResource("9_qnxbr")
 
 [node name="ItemPickup2" parent="." instance=ExtResource("8_v5bit")]
-position = Vector2(1114.4685, 272.1506)
+position = Vector2(1114.4685, 303.68356)
 item_data = ExtResource("10_xvh4v")
 
 [node name="PersistantDataHandler2" parent="ItemPickup2" instance=ExtResource("11_yr5mt")]
@@ -615,24 +699,8 @@ script = ExtResource("14_1qe5l")
 shape = SubResource("CircleShape2D_t5npb")
 
 [node name="ShopStone" parent="." instance=ExtResource("24_0fwua")]
-position = Vector2(843, 259)
+visible = false
+position = Vector2(1209, -677)
 
-[node name="TreasureChest5" parent="." instance=ExtResource("25_451xv")]
-material = SubResource("ShaderMaterial_srkr2")
-position = Vector2(426, 501)
-item_data = ExtResource("27_oya04")
-
-[node name="IsometricModernBuildingsCartoon" type="Sprite2D" parent="."]
+[node name="IsometricModernBuildingsCartoon" parent="." instance=ExtResource("31_g0pye")]
 position = Vector2(417, 93)
-scale = Vector2(0.25, 0.125)
-texture = ExtResource("31_g0pye")
-offset = Vector2(0, -175)
-
-[node name="Actionable" parent="IsometricModernBuildingsCartoon" instance=ExtResource("19_li6oa")]
-modulate = Color(1, 1, 1, 0.5)
-choice = 1
-dialogue_resource = ExtResource("32_qhnrh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="IsometricModernBuildingsCartoon/Actionable"]
-position = Vector2(0, 120)
-shape = SubResource("CircleShape2D_qhnrh")

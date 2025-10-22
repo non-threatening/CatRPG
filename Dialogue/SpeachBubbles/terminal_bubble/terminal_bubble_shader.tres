@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bva204e27o1q6"]
+
+[ext_resource type="Shader" uid="uid://bx6mkdhirbk73" path="res://Dialogue/SpeachBubbles/terminal_bubble/terminal_bubble_shader.gdshader" id="1_d73rm"]
+
+[resource]
+shader = ExtResource("1_d73rm")
+shader_parameter/scanline_color = Color(0, 1, 0, 1)
+shader_parameter/flicker_color = Color(1.0829419e-06, 0.39540687, 0.01663389, 1)
+shader_parameter/scanlines_count = 1.0
+shader_parameter/scanlines_intensity = 0.05
+shader_parameter/flicker_speed = 30.0
+shader_parameter/flicker_intensity = 0.025
+shader_parameter/color_offset = 1.5
+shader_parameter/blur = 0.15

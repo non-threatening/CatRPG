@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://bpsv0tvfru4e2"]
 
-[ext_resource type="StyleBox" uid="uid://d1wbkvmemp48" path="res://Dialogue/SpeachBubbles/style_box_speach_bubble.tres" id="1_j64s0"]
+[ext_resource type="StyleBox" uid="uid://d1wbkvmemp48" path="res://Dialogue/SpeachBubbles/speech_bubble/style_box_speach_bubble.tres" id="1_j64s0"]
 [ext_resource type="FontFile" uid="uid://cta00yqut7wdq" path="res://GUI/fonts/FtCairove-aYEjg.otf" id="1_vv877"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xww3l"]

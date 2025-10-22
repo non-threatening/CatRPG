@@ -8,7 +8,7 @@ modulate = Color(1, 1, 1, 0.5)
 script = ExtResource("1_e517h")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.627451)
+modulate = Color(1, 1, 1, 0.76862746)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

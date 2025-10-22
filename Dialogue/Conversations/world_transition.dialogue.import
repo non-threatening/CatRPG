@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://sp87haiqrb68"
+path="res://.godot/imported/world_transition.dialogue-97d7028a9eabc54bd8e2f975ab855a82.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/world_transition.dialogue"
+dest_files=["res://.godot/imported/world_transition.dialogue-97d7028a9eabc54bd8e2f975ab855a82.tres"]
+
+[params]
+
+defaults=true
