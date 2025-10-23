@@ -6,11 +6,9 @@ const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 var abilities : Array[ String ] = [
 	"", "", "", "" ## "BIRD", "GRAPPLE", "BOW", "BOMB"
 	]
-
 var selected_ability = 0
 var player : Player
 var bird_instance : BirdFriend = null
-
 
 @onready var state_machine: PlayerStateMachine = $"../StateMachine"
 @onready var lift: State_Lift = $"../StateMachine/Lift"
@@ -28,7 +26,6 @@ func _ready() -> void:
 	setup_abilities()
 	SaveManager.game_loaded.connect( _on_game_loaded )
 	PlayerManager.INVETORY_DATA.ability_acquired.connect( _on_ability_acquired )
-	
 	
 	
 func setup_abilities( select_index : int = 0 ) -> void:
@@ -54,7 +51,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("switch_ability"):
 		toggle_ability()
 	pass
-
 
 
 func toggle_ability() -> void:
@@ -90,7 +86,6 @@ func bird_ability() -> void:
 	pass
 
 
-
 func bow_ability() -> void:
 	if player.arrow_count <= 0:
 		return
@@ -98,7 +93,6 @@ func bow_ability() -> void:
 		player.arrow_count -= 1
 		player.state_machine.change_state( bow )
 		pass
-		
 
 
 func bomb_ability() -> void:

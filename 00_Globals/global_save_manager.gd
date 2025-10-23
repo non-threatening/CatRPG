@@ -7,7 +7,6 @@ signal game_saved
 
 var master : float = 0.9
 var music : float = 0.9
-
 var talk_speed : float = 0.02
 
 var current_save : Dictionary = {
@@ -33,40 +32,58 @@ var current_save : Dictionary = {
 		master = 0.5,
 		music = 0.5,
 		talk_speed = 0.01
-	}
+	},
 }
+var save_list : Dictionary = {"_1" : ""}
 
 
 
-
-func save_game() -> void:
-	update_player_data()
+func _ready() -> void:
+	var file := get_save_file( "list" )
+	if file == null:
+		var game_file := FileAccess.open( SAVE_PATH + "list_save.sav", FileAccess.WRITE )
+		var save_list_json = JSON.stringify( save_list )
+		game_file.store_line( save_list_json )
+		file = get_save_file( "list" )	
+	var json := JSON.new()
+	json.parse( file.get_line() )
+	var save_dict := json.get_data() as Dictionary
+	save_list = save_dict
+	
+	
+func save_game( _number ) -> void:
+	var thing : String = str( get_tree().get_current_scene().name, "[br]", "Player_level_poo: ", PlayerManager.player.level ).capitalize()
+	save_list[ _number ] = thing
+	var game_file := FileAccess.open( SAVE_PATH + "list_save.sav", FileAccess.WRITE )
+	var save_list_json = JSON.stringify( save_list )
+	game_file.store_line( save_list_json )
+	
 	update_scene_path()
+	update_player_data()
 	update_item_data()
 	update_quest_data()
 	update_options_data()
-	var file := FileAccess.open( SAVE_PATH + "save.sav", FileAccess.WRITE )
+	
+	var file := FileAccess.open( SAVE_PATH + _number + "_save.sav", FileAccess.WRITE )
 	var save_json = JSON.stringify( current_save )
 	file.store_line( save_json )
+	
 	game_saved.emit()
 	PlayerHud.queue_notification( "Save Game", "GAME SAVED!" )
-	print("save_game")
-	pass
 
 
-func get_save_file() -> FileAccess:
-	return FileAccess.open( SAVE_PATH + "save.sav", FileAccess.READ )
+func get_save_file( _number ) -> FileAccess:
+	return FileAccess.open( SAVE_PATH + _number + "_save.sav", FileAccess.READ )
 
 
-func load_game() -> void:
-	var file := get_save_file()
+func load_game( _number ) -> void:
+	var file := get_save_file( _number )
 	var json := JSON.new()
 	json.parse( file.get_line() )
 	var save_dict := json.get_data() as Dictionary
 	current_save = save_dict
 	
 	LevelManager.load_new_level( current_save.scene_path, "", Vector2.ZERO )
-	
 	await LevelManager.level_load_started
 	
 	PlayerManager.set_player_position( Vector2( current_save.player.pos_x, current_save.player.pos_y ) )
@@ -98,7 +115,6 @@ func load_game() -> void:
 		QuestSystem.restore_pool_state_from_dict(current_save["pool_state"], quests)
 		QuestSystem.deserialize_quests(current_save["quest_data"])
 	
-		
 	await LevelManager.level_loaded
 	
 	var load_active_quests = QuestSystem.get_active_quests()
@@ -153,14 +169,12 @@ func update_quest_data() -> void:
 func add_persistant_value( value : String ) -> void:
 	if check_persistant_value( value ) == false:
 		current_save.persistance.append( value )
-	pass
 
 
 func remove_persistant_value( value : String ) -> void:
 	var p = current_save.persistance as Array
 	p.erase( value )
 	pass
-
 
 
 func check_persistant_value( value : String ) -> bool: # if persistant value exists, it's open

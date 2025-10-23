@@ -16,6 +16,27 @@ signal preview_stats_changed( item : ItemData )
 
 var is_paused : bool = false
 
+@onready var button_1: Button = $Control/TabContainer/System/Save/Button1
+@onready var button_2: Button = $Control/TabContainer/System/Save/Button2
+@onready var button_3: Button = $Control/TabContainer/System/Save/Button3
+@onready var button_4: Button = $Control/TabContainer/System/Save/Button4
+@onready var button_5: Button = $Control/TabContainer/System/Save/Button5
+@onready var button_6: Button = $Control/TabContainer/System/Save/Button6
+
+@onready var load_button_1: Button = $Control/TabContainer/System/Load/Button1
+@onready var load_button_2: Button = $Control/TabContainer/System/Load/Button2
+@onready var load_button_3: Button = $Control/TabContainer/System/Load/Button3
+@onready var load_button_4: Button = $Control/TabContainer/System/Load/Button4
+@onready var load_button_5: Button = $Control/TabContainer/System/Load/Button5
+@onready var load_button_6: Button = $Control/TabContainer/System/Load/Button6
+
+@onready var load_button_1_label: RichTextLabel = $Control/TabContainer/System/Load/Button1/RichTextLabel
+@onready var load_button_2_label: RichTextLabel = $Control/TabContainer/System/Load/Button2/RichTextLabel
+@onready var load_button_3_label: RichTextLabel = $Control/TabContainer/System/Load/Button3/RichTextLabel
+@onready var load_button_4_label: RichTextLabel = $Control/TabContainer/System/Load/Button4/RichTextLabel
+@onready var load_button_5_label: RichTextLabel = $Control/TabContainer/System/Load/Button5/RichTextLabel
+@onready var load_button_6_label: RichTextLabel = $Control/TabContainer/System/Load/Button6/RichTextLabel
+
 
 
 func _ready() -> void:
@@ -23,7 +44,20 @@ func _ready() -> void:
 	button_save.pressed.connect( _on_save_pressed )
 	button_load.pressed.connect( _on_load_pressed )
 	button_quit.pressed.connect( _on_quit_pressed )
-	pass
+	
+	button_1.pressed.connect( _on_save_pressed.bind("_1") )
+	button_2.pressed.connect( _on_save_pressed.bind("_2") )
+	button_3.pressed.connect( _on_save_pressed.bind("_3") )
+	button_4.pressed.connect( _on_save_pressed.bind("_4") )
+	button_5.pressed.connect( _on_save_pressed.bind("_5") )
+	button_6.pressed.connect( _on_save_pressed.bind("_6") )
+	
+	load_button_1.pressed.connect( _on_load_pressed.bind("_1") )
+	load_button_2.pressed.connect( _on_load_pressed.bind("_2") )
+	load_button_3.pressed.connect( _on_load_pressed.bind("_3") )
+	load_button_4.pressed.connect( _on_load_pressed.bind("_4") )
+	load_button_5.pressed.connect( _on_load_pressed.bind("_5") )
+	load_button_6.pressed.connect( _on_load_pressed.bind("_6") )
 
 
 
@@ -34,7 +68,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			hide_pause_menu()
 		get_viewport().set_input_as_handled()
-	
 	if is_paused:
 		if event.is_action_pressed("right_bumper"):
 			change_tab( 1 )
@@ -42,7 +75,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			change_tab( -1 )
 		elif event.is_action_pressed("attack"):
 			hide_pause_menu()
-		
 		
 		
 func show_pause_menu() -> void:
@@ -53,6 +85,49 @@ func show_pause_menu() -> void:
 	shown.emit()
 	%ArrowCountLabel.text = str( PlayerManager.player.arrow_count )
 	%BombCountLabel.text = str( PlayerManager.player.bomb_count )
+	
+	var file := FileAccess.open( "user://list_save.sav", FileAccess.READ )
+
+	var json := JSON.new()
+	json.parse( file.get_line() )
+	var save_dict := json.get_data() as Dictionary
+
+	if save_dict.has("_1") and save_dict["_1"] != "":
+		load_button_1_label.text = save_dict["_1"]
+	else:
+		load_button_1_label.text = "empty save"
+		button_1.text = "Save"
+
+	if save_dict.has("_2"):
+		load_button_2_label.text = save_dict["_2"]
+	else:
+		load_button_2_label.text = "empty save"
+		button_2.text = "Save"
+
+	if save_dict.has("_3"):
+		load_button_3_label.text = save_dict["_3"]
+	else:
+		load_button_3_label.text = "empty save"
+		button_3.text = "Save"
+
+	if save_dict.has("_4"):
+		load_button_4_label.text = save_dict["_4"]
+	else:
+		load_button_4_label.text = "empty save"
+		button_4.text = "Save"
+		
+	if save_dict.has("_5"):
+		load_button_5_label.text = save_dict["_5"]
+	else:
+		load_button_5_label.text = "empty save"
+		button_5.text = "Save"
+		
+	if save_dict.has("_6"):
+		load_button_6_label.text = save_dict["_6"]
+	else:
+		load_button_6_label.text = "empty save"
+		button_6.text = "Save"
+	
 
 
 func hide_pause_menu() -> void:
@@ -63,19 +138,21 @@ func hide_pause_menu() -> void:
 		
 		
 		
-func _on_save_pressed() -> void:
+func _on_save_pressed( _number ) -> void:
 	if is_paused == false:
 		return
-	SaveManager.save_game()
+	SaveManager.save_game( _number )
+	PlayerHud.active_save = _number
 	hide_pause_menu()
 	pass
 	
 	
 	
-func _on_load_pressed() -> void:
+func _on_load_pressed( _number ) -> void:
 	if is_paused == false:
 		return
-	SaveManager.load_game()
+	SaveManager.load_game( _number )
+	PlayerHud.active_save = _number
 	await LevelManager.level_load_started
 	hide_pause_menu()
 	pass
@@ -95,7 +172,6 @@ func focused_item_changed( slot : SlotData ) -> void:
 		preview_stats( null )
 
 
-	
 func update_item_description( new_text : String ) -> void:
 	item_description.text = new_text
 	
@@ -105,7 +181,6 @@ func play_audio( audio : AudioStream ) -> void:
 	audio_stream_player.play()
 	
 	
-
 func change_tab( _i : int = 1 ) -> void:
 	tab_container.current_tab = wrapi(
 		tab_container.current_tab + _i,
@@ -114,7 +189,6 @@ func change_tab( _i : int = 1 ) -> void:
 		)
 	tab_container.get_tab_bar().grab_focus()
 	pass
-
 
 
 func preview_stats( item : ItemData ) -> void:

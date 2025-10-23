@@ -83,7 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.14, 0, 0.0023333, 0.556863)
+color = Color(0, 0, 0.1254902, 0.7529412)
 
 [node name="paused" type="Label" parent="Control"]
 material = SubResource("ShaderMaterial_gtmg6")
@@ -115,7 +115,7 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
 visible = false
@@ -393,6 +393,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Quest" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("4_3yxpl")
 metadata/_tab_index = 1
@@ -482,9 +483,178 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="System" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="Save" type="VBoxContainer" parent="Control/TabContainer/System"]
+layout_mode = 0
+offset_left = 713.0
+offset_top = 30.0
+offset_right = 789.0
+offset_bottom = 590.0
+
+[node name="Button1" type="Button" parent="Control/TabContainer/System/Save"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Save
+Over"
+
+[node name="Button2" type="Button" parent="Control/TabContainer/System/Save"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Save
+Over"
+
+[node name="Button3" type="Button" parent="Control/TabContainer/System/Save"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Save
+Over"
+
+[node name="Button4" type="Button" parent="Control/TabContainer/System/Save"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Save
+Over"
+
+[node name="Button5" type="Button" parent="Control/TabContainer/System/Save"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Save
+Over"
+
+[node name="Button6" type="Button" parent="Control/TabContainer/System/Save"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Save
+Over"
+
+[node name="Load" type="VBoxContainer" parent="Control/TabContainer/System"]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 30.0
+offset_right = 1084.0
+offset_bottom = 590.0
+
+[node name="Button1" type="Button" parent="Control/TabContainer/System/Load"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = " 
+ "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button1"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 69.0
+theme_override_constants/line_separation = 5
+bbcode_enabled = true
+text = "The Lobby[br]Player Level 3 "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="Control/TabContainer/System/Load"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = " 
+ "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 69.0
+theme_override_constants/line_separation = 5
+bbcode_enabled = true
+text = "The Lobby[br]Player Level 3 "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="Control/TabContainer/System/Load"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = " 
+ "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 69.0
+theme_override_constants/line_separation = 5
+bbcode_enabled = true
+text = "The Lobby[br]Player Level 3 "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button4" type="Button" parent="Control/TabContainer/System/Load"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = " 
+ "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button4"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 69.0
+theme_override_constants/line_separation = 5
+bbcode_enabled = true
+text = "The Lobby[br]Player Level 3 "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button5" type="Button" parent="Control/TabContainer/System/Load"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = " 
+ "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button5"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 69.0
+theme_override_constants/line_separation = 5
+bbcode_enabled = true
+text = "The Lobby[br]Player Level 3 "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button6" type="Button" parent="Control/TabContainer/System/Load"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = " 
+ "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button6"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 69.0
+theme_override_constants/line_separation = 5
+bbcode_enabled = true
+text = "The Lobby[br]Player Level 3 "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/System"]
 layout_mode = 1
@@ -493,10 +663,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -95.5
-offset_top = -283.0
-offset_right = 104.5
-offset_bottom = -151.0
+offset_left = -285.5
+offset_top = -203.0
+offset_right = -85.5
+offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -517,10 +687,10 @@ text = "Quit"
 
 [node name="VBoxContainerSound" type="VBoxContainer" parent="Control/TabContainer/System"]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 232.0
-offset_right = 573.0
-offset_bottom = 497.0
+offset_left = 28.0
+offset_top = 397.0
+offset_right = 540.0
+offset_bottom = 662.0
 
 [node name="VBoxMaster" type="VBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound"]
 layout_mode = 2

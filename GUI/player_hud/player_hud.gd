@@ -5,6 +5,8 @@ extends CanvasLayer
 
 var hearts : Array[ HeartGUI ] = []
 
+var active_save : String = "_1"
+
 @onready var game_over : Control = $Control/GameOver
 @onready var continue_button: Button = $Control/GameOver/VBoxContainer/ContinueButton
 @onready var title_button: Button = $Control/GameOver/VBoxContainer/TitleButton
@@ -78,7 +80,7 @@ func show_game_over_screen() -> void:
 	game_over.visible = true
 	game_over.mouse_filter = Control.MOUSE_FILTER_STOP
 	
-	var can_continue : bool = SaveManager.get_save_file() != null
+	var can_continue : bool = SaveManager.get_save_file( active_save ) != null
 	continue_button.visible = can_continue
 	
 	animation_player.play("show_game_over")
@@ -88,11 +90,7 @@ func show_game_over_screen() -> void:
 		continue_button.grab_focus()
 	else:
 		title_button.grab_focus()
-	
-	
-	#focus button default
-	
-	#game_over.modulate = Color(1,1,1,0)
+
 	
 	
 
@@ -105,7 +103,7 @@ func hide_game_over_screen() -> void:
 func load_game() -> void:
 	play_audio( button_select_audio )
 	await fade_to_black()
-	SaveManager.load_game()
+	SaveManager.load_game( active_save )
 	pass
 	
 
