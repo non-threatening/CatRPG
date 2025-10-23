@@ -14,4 +14,4 @@ script = ExtResource("1_cut12")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-64, 0)
 shape = SubResource("RectangleShape2D_xkh2t")
-debug_color = Color(0.708922, 0.270784, 0.992304, 0.42)
+debug_color = Color(0.70906067, 0.2716998, 0.9924897, 0)

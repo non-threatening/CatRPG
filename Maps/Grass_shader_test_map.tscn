@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=44 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dul2wk6yslbpi" path="res://npc/npc_behavior_wander.tscn" id="21_70lcl"]
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
 [ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="24_0fwua"]
+[ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="29_70lcl"]
 [ext_resource type="PackedScene" uid="uid://fnb335xp2rg4" path="res://Maps/Enviroment/objects/terminal_interface.tscn" id="31_g0pye"]
 
 [sub_resource type="Gradient" id="Gradient_v347e"]
@@ -99,6 +100,7 @@ visible = false
 color = Color(0.110599995, 0.4050067, 0.79, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_gxhnc")
 offset_left = -22.0
 offset_top = -251.0
@@ -621,6 +623,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trees4/StaticBody2D"]
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_4uvlv")
+debug_color = Color(1, 0, 0, 0)
 
 [node name="Trees" parent="Trees4" instance=ExtResource("12_hxh2l")]
 material = SubResource("ShaderMaterial_cwgr4")
@@ -643,6 +646,9 @@ position = Vector2(941, -189)
 
 [node name="Trees7" parent="Trees4" instance=ExtResource("12_hxh2l")]
 position = Vector2(1122, -194)
+
+[node name="Trees8" parent="Trees4" instance=ExtResource("12_hxh2l")]
+position = Vector2(72, -99)
 
 [node name="Flower1" parent="." instance=ExtResource("7_qhnrh")]
 position = Vector2(191, 636)
@@ -702,5 +708,12 @@ shape = SubResource("CircleShape2D_t5npb")
 visible = false
 position = Vector2(1209, -677)
 
-[node name="IsometricModernBuildingsCartoon" parent="." instance=ExtResource("31_g0pye")]
+[node name="TerminalInterface" parent="." instance=ExtResource("31_g0pye")]
 position = Vector2(417, 93)
+
+[node name="LevelTransition" parent="TerminalInterface" instance=ExtResource("29_70lcl")]
+position = Vector2(0, -49)
+portal_dir = 1
+level = "uid://bwa3jdmpvxxvu"
+size = 1
+side = 3
