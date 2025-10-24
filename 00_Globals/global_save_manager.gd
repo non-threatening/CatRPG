@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_PATH = "user://"
+const SAVE_PATH = "user://save_files/"
 
 signal game_loaded
 signal game_saved
@@ -39,6 +39,12 @@ var save_list : Dictionary = {"_1" : ""}
 
 
 func _ready() -> void:
+	
+	if not DirAccess.dir_exists_absolute( SAVE_PATH ):
+		print("NOT!")
+		DirAccess.make_dir_absolute( SAVE_PATH )
+
+	
 	var file := get_save_file( "list" )
 	if file == null:
 		var game_file := FileAccess.open( SAVE_PATH + "list_save.sav", FileAccess.WRITE )
@@ -103,6 +109,9 @@ func load_game( _number ) -> void:
 	talk_speed = current_save.options.talk_speed
 	
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
+	
+	QuestSystem.completed.reset()
+	QuestSystem.active.reset()
 	
 	var quests: Array[Quest]
 	for quest in DirAccess.get_files_at("res://Quests/quest_resources/"):
