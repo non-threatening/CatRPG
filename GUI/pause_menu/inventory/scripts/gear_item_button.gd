@@ -9,4 +9,3 @@ func _ready() -> void:
 	
 func _on_focus_entered() -> void:
 	PauseMenu.update_item_description( description )
-	pass

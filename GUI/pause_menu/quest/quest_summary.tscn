@@ -1,27 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsrcagysegr3h"]
+[gd_scene load_steps=2 format=3 uid="uid://bsrcagysegr3h"]
 
 [ext_resource type="Script" uid="uid://cjtrqpfm7i362" path="res://GUI/pause_menu/quest/quest_summary.gd" id="1_7tgkt"]
-[ext_resource type="Theme" uid="uid://crjtt5htayopl" path="res://GUI/pause_menu/PauseMenuControl_theme.tres" id="1_xgsjx"]
 
 [node name="QuestSummary" type="Button"]
-custom_minimum_size = Vector2(280, 110)
+custom_minimum_size = Vector2(280, 88)
 offset_right = 432.0
-offset_bottom = 100.0
+offset_bottom = 88.0
 size_flags_horizontal = 3
-theme = ExtResource("1_xgsjx")
 script = ExtResource("1_7tgkt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 448.0
-offset_bottom = 121.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 440.0
+offset_bottom = 96.0
 theme_override_constants/separation = 6
 
 [node name="TitleLabel" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "Quest2 Title"
 fit_content = true

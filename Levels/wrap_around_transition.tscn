@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://csrhsyiqv7781"]
+
+[ext_resource type="Script" uid="uid://dex38c3tn4oge" path="res://Levels/scripts/wrap_around_transition.gd" id="1_djadn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkh2t"]
+resource_local_to_scene = true
+size = Vector2(64, 128)
+
+[node name="WrapAroundTransition" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_djadn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_xkh2t")
+debug_color = Color(0.70906067, 0.2716998, 0.9924897, 0)

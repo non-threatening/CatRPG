@@ -1,14 +1,7 @@
 @tool
-class_name LevelTransition extends Area2D
-
-signal  entered_from_here
+class_name WrapAroundTransition extends Area2D
 
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
-
-@export_enum( "In and Out", "Only In", "Only Out" ) var portal_dir : int = 0
-@export_file( "*.tscn" ) var level
-@export var target_transition_area : String = "LevelTransition"
-@export var center_player : bool = false
 
 @export_category( "Collision Area Settings" )
 @export_range( 1, 12, 1, "or_greater" ) var size : int = 2:
@@ -22,56 +15,39 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
-
 func _ready() -> void:
 	_update_area()
 	if Engine.is_editor_hint():
 		return
-	
-	monitoring = false # Set to false if so player doesn't trigger transition area on new level 
-	_place_player()
-	
-	await LevelManager.level_loaded # defer until loaded
-	
-	if portal_dir == 1:
-		return
-	monitoring = true
 	body_entered.connect( _player_entered )
 
 
-func _player_entered( _p : Node2D ) -> void: ## _p not actually used
-	LevelManager.load_new_level( level, target_transition_area, get_offset()  )
-	pass
-
-
-
-func _place_player() -> void:
-	if name != LevelManager.target_transition: # check if the placement not from level_trans, eg. player_spawn
-		return
-	PlayerManager.set_player_position( global_position + LevelManager.position_offset )
-	entered_from_here.emit()
-
+func _player_entered( _p : Node2D ) -> void: ## _p not actually used, keep it there.
+	var bounds = LevelManager.current_tilemap_bounds
+	var offset : Vector2 = get_offset()
+	match side:
+		SIDE.RIGHT:
+			PlayerManager.set_player_position( Vector2( bounds[0].x + offset.x, offset.y ) )
+		SIDE.LEFT:
+			PlayerManager.set_player_position( Vector2( bounds[1].x + offset.x, offset.y ) )
+		SIDE.BOTTOM:
+			PlayerManager.set_player_position( Vector2( offset.x, bounds[0].y - offset.y ) )
+		SIDE.TOP:
+			PlayerManager.set_player_position( Vector2( offset.x, bounds[1].y - offset.y ) )
 
 
 func get_offset() -> Vector2:
 	var offset : Vector2 = Vector2.ZERO
 	var player_pos = PlayerManager.player.global_position
-	
 	if side == SIDE.LEFT or side == SIDE.RIGHT:
-		if center_player == true:
-			offset.y = 0
-		else:
-			offset.y = player_pos.y - global_position.y
-		offset.x = 64
+		offset.y = player_pos.y
+		offset.x = 128*7
 		if side == SIDE.LEFT:
 			offset.x *= -1
 	else:
-		if center_player == true:
-			offset.x = 0
-		else:
-			offset.x = player_pos.x - global_position.x
-		offset.y = 64
-		if side == SIDE.TOP:
+		offset.x = player_pos.x
+		offset.y = 128*6
+		if side == SIDE.BOTTOM:
 			offset.y *= -1
 	return offset
 
@@ -95,6 +71,5 @@ func _update_area() -> void:
 		
 	if collision_shape == null:
 		collision_shape = get_node("CollisionShape2D")
-		
 	collision_shape.shape.size = new_rect
 	collision_shape.position = new_position

@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://1fwl7lk326j" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="5_408tb"]
 [ext_resource type="PackedScene" uid="uid://nced8eb1v3q7" path="res://GUI/pause_menu/quest/list_summary.tscn" id="5_gtmg6"]
 [ext_resource type="PackedScene" uid="uid://bsrcagysegr3h" path="res://GUI/pause_menu/quest/quest_summary.tscn" id="5_hio0w"]
+[ext_resource type="Texture2D" uid="uid://b01fd223ndm5l" path="res://GUI/pause_menu/inventory/sprites/crow-silhouette.png" id="5_iygof"]
 [ext_resource type="Script" uid="uid://d3avo2oc26t6w" path="res://GUI/pause_menu/inventory/scripts/gear_item_button.gd" id="6_320ax"]
 [ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="6_hio0w"]
 [ext_resource type="Texture2D" uid="uid://c0ryvmifyacll" path="res://Items/sprites/gear.png" id="8_mnpje"]
@@ -21,10 +22,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtmg6"]
 shader = ExtResource("3_3yxpl")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1v4th"]
-atlas = ExtResource("6_hio0w")
-region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awacl"]
 atlas = ExtResource("6_hio0w")
@@ -115,19 +112,18 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="AbilityContainer" type="PanelContainer" parent="Control/TabContainer/Inventory"]
 layout_mode = 0
-offset_left = 454.0
-offset_top = 325.0
-offset_right = 714.0
-offset_bottom = 589.0
+offset_left = 816.0
+offset_top = 85.0
+offset_right = 1076.0
+offset_bottom = 349.0
 
 [node name="AbilityGridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/AbilityContainer"]
 unique_name_in_owner = true
@@ -135,12 +131,13 @@ layout_mode = 2
 columns = 2
 
 [node name="InventorySlot" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("6_320ax")
-description = "This is boomerrang. Later, this will be a bird friend"
+description = "This is Bird Friend. She likes to fly out to get things and pecking eyes out."
 
 [node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer/InventorySlot"]
+modulate = Color(0.369525, 0.45, 0.2835, 0.5019608)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,7 +146,7 @@ offset_left = 30.0
 offset_right = -34.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_1v4th")
+texture = ExtResource("5_iygof")
 stretch_mode = 3
 
 [node name="InventorySlot2" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer"]
@@ -319,9 +316,9 @@ layout_mode = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="Control/TabContainer/Inventory"]
 layout_mode = 0
-offset_left = 764.0
+offset_left = 1301.0
 offset_top = 112.0
-offset_right = 1084.0
+offset_right = 1621.0
 offset_bottom = 544.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Inventory/PanelContainer2"]
@@ -379,7 +376,7 @@ layout_mode = 0
 offset_left = 484.0
 offset_top = 85.0
 offset_right = 684.0
-offset_bottom = 289.0
+offset_bottom = 329.0
 
 [node name="ItemDescription" type="Label" parent="Control/TabContainer/Inventory"]
 layout_mode = 0
@@ -389,6 +386,16 @@ offset_right = 404.0
 offset_bottom = 657.0
 grow_horizontal = 2
 text = "ITEM DESCRIPTION"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AbilitiesDescription" type="Label" parent="Control/TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 814.0
+offset_top = 369.0
+offset_right = 1076.0
+offset_bottom = 493.0
+text = "This is Bird Friend. She likes to fly out to get things and pecking eyes out."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -417,14 +424,13 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(448, 0)
 layout_mode = 0
 offset_right = 448.0
-offset_bottom = 348.0
+offset_bottom = 316.0
+theme_override_constants/separation = 8
 
 [node name="QuestSumContainer" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="QuestSummary" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer/QuestSumContainer" instance=ExtResource("5_hio0w")]
-custom_minimum_size = Vector2(280, 150)
 layout_mode = 2
 
 [node name="QuestSumContainer2" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer"]
@@ -432,7 +438,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="QuestSummary" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer/QuestSumContainer2" instance=ExtResource("5_hio0w")]
-custom_minimum_size = Vector2(280, 150)
 layout_mode = 2
 
 [node name="spacer" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer"]
@@ -483,6 +488,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="System" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -511,13 +517,13 @@ layout_mode = 2
 text = "Save
 Over"
 
-[node name="Button4" type="Button" parent="Control/TabContainer/System/Save"]
+[node name="Button5" type="Button" parent="Control/TabContainer/System/Save"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 text = "Save
 Over"
 
-[node name="Button5" type="Button" parent="Control/TabContainer/System/Save"]
+[node name="Button4" type="Button" parent="Control/TabContainer/System/Save"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 text = "Save

@@ -13,6 +13,7 @@ signal preview_stats_changed( item : ItemData )
 @onready var button_quit: Button = $Control/TabContainer/System/VBoxContainer/Button_Quit
 
 @onready var item_description: Label = $Control/TabContainer/Inventory/ItemDescription
+@onready var abilities_description: Label = $Control/TabContainer/Inventory/AbilitiesDescription
 
 var is_paused : bool = false
 
@@ -86,7 +87,7 @@ func show_pause_menu() -> void:
 	%ArrowCountLabel.text = str( PlayerManager.player.arrow_count )
 	%BombCountLabel.text = str( PlayerManager.player.bomb_count )
 	
-	var file := FileAccess.open( "user://list_save.sav", FileAccess.READ )
+	var file := FileAccess.open( "user://save_files/list_save.sav", FileAccess.READ )
 
 	var json := JSON.new()
 	json.parse( file.get_line() )
@@ -174,6 +175,9 @@ func focused_item_changed( slot : SlotData ) -> void:
 
 func update_item_description( new_text : String ) -> void:
 	item_description.text = new_text
+	
+func update_abilities_description( new_text : String ) -> void:
+	abilities_description.text = new_text
 	
 	
 func play_audio( audio : AudioStream ) -> void:

@@ -1,5 +1,5 @@
 ~ start
-Stick head in hole to enter another world, that's also a charging port somehow ?
+Terminal Seven: Stick head in hole to enter another world, that's also a charging port somehow ?
 - Yes
 	do LevelManager.enter_dream_world()
 - No

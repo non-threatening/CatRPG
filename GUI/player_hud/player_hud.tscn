@@ -374,11 +374,11 @@ mouse_filter = 2
 
 [node name="Hearts" type="HFlowContainer" parent="Control"]
 layout_mode = 0
-offset_top = 16.0
-offset_right = 270.0
-offset_bottom = 99.0
+offset_left = 1040.0
+offset_top = 24.0
+offset_right = 1230.0
+offset_bottom = 53.0
 theme_override_constants/h_separation = 0
-alignment = 1
 
 [node name="Heart" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 layout_mode = 2
@@ -413,13 +413,95 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="Hearts2" type="HFlowContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 56.0
+offset_right = 1230.0
+offset_bottom = 85.0
+theme_override_constants/h_separation = 0
+
+[node name="Heart" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart2" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart3" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart4" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart5" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart6" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart7" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart8" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
+[node name="Heart9" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
+[node name="Heart10" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
+[node name="Hearts3" type="HFlowContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 88.0
+offset_right = 1230.0
+offset_bottom = 117.0
+theme_override_constants/h_separation = 0
+
+[node name="Heart" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart2" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart3" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart4" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart5" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart6" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart7" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart8" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
+[node name="Heart9" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
+[node name="Heart10" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
+visible = false
+layout_mode = 2
+
 [node name="Abilities" type="Control" parent="Control"]
 visible = false
 anchors_preset = 0
-offset_left = 240.0
-offset_top = -8.0
-offset_right = 304.0
-offset_bottom = 56.0
+offset_left = 456.0
+offset_top = 144.0
+offset_right = 520.0
+offset_bottom = 208.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Abilities"]
 layout_mode = 0

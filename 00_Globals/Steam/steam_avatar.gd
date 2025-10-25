@@ -5,9 +5,9 @@ extends TextureRect
 #var icon_buffer: Dictionary = Steam.getImageRGBA(icon_handle)
 
 func _ready() -> void:
-	Steam.avatar_loaded.connect( _on_avatar_loaded )
-	Steam.getPlayerAvatar( Steam.AVATAR_MEDIUM, Steam.getSteamID() )
-	pass
+	if Steam.isSteamRunning():
+		Steam.avatar_loaded.connect( _on_avatar_loaded )
+		Steam.getPlayerAvatar( Steam.AVATAR_MEDIUM, Steam.getSteamID() )
 
 
 func _on_avatar_loaded( user_id : int, avatar_size : int, avatar_buffer : PackedByteArray ) -> void:

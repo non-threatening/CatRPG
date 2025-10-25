@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bwa3jdmpvxxvu"]
+[gd_scene load_steps=15 format=4 uid="uid://bwa3jdmpvxxvu"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_2g8rj"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_gcgvm"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="4_abty2"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="5_jc7gr"]
 [ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Klardraumland/crt_shader.tres" id="7_0eggj"]
+[ext_resource type="PackedScene" uid="uid://csrhsyiqv7781" path="res://Levels/wrap_around_transition.tscn" id="8_jp6c1"]
 
 [sub_resource type="Gradient" id="Gradient_jc7gr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -118,3 +119,22 @@ level = "uid://ly7wguh1ufuy"
 center_player = true
 size = 1
 side = 2
+
+[node name="WrapAroundTransition" parent="." instance=ExtResource("8_jp6c1")]
+position = Vector2(3132, 18)
+size = 76
+side = 1
+
+[node name="WrapAroundTransition2" parent="." instance=ExtResource("8_jp6c1")]
+position = Vector2(-3172, 18)
+size = 76
+
+[node name="WrapAroundTransition3" parent="." instance=ExtResource("8_jp6c1")]
+position = Vector2(0, -1878)
+size = 120
+side = 2
+
+[node name="WrapAroundTransition4" parent="." instance=ExtResource("8_jp6c1")]
+position = Vector2(30, 1817)
+size = 120
+side = 3

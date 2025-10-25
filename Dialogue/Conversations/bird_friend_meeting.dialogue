@@ -13,7 +13,7 @@ elif not Shortcuts.is_quest_completed("a_gimp_suit_for_bird_friend") and not Sho
 		do Shortcuts.start_quest("a_gimp_suit_for_bird_friend")
 		do Shortcuts.update_quest("a_gimp_suit_for_bird_friend")
 		Bird Friend: nice.
-	- Suck it ass taster
+	- No way lady!
 		Bird Friend: I am your father.
 
 elif  Shortcuts.get_quest_property( 102, "have_suit" ) == false

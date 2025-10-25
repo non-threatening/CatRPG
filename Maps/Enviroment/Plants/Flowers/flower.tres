@@ -7,6 +7,6 @@ resource_local_to_scene = true
 shader = ExtResource("1_ueegd")
 shader_parameter/x = 4.0
 shader_parameter/y = 3.0
-shader_parameter/color1 = Color(0.5176471, 0.2, 0.36078432, 1)
+shader_parameter/color1 = Color(0.52, 0.20279999, 0.36139998, 0)
 shader_parameter/stem_color = Color(0.24313726, 0.5294118, 0.3529412, 1)
 shader_parameter/time_scale = 4.831378575564267

@@ -1,3 +1,4 @@
+@icon( "res://npc/icons/npc.svg" )
 class_name BFComesWith extends Node2D
 
 @onready var bf_comes_with: BFComesWith = $"."

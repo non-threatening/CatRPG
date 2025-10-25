@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://fnb335xp2rg4"]
+[gd_scene load_steps=10 format=3 uid="uid://fnb335xp2rg4"]
 
 [ext_resource type="Texture2D" uid="uid://bxcqdywq4tybk" path="res://Maps/Enviroment/Plants/isometric-modern-buildings-cartoon.png" id="1_6k2pf"]
+[ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="1_lix13"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="2_ghq3x"]
 [ext_resource type="Resource" uid="uid://sp87haiqrb68" path="res://Dialogue/Conversations/world_transition.dialogue" id="3_lix13"]
 [ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://Dialogue/indicator.tscn" id="4_ghq3x"]
@@ -8,12 +9,27 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghq3x"]
 radius = 99.35794
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qhnrh"]
-radius = 168.76018
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tp61w"]
+shader = ExtResource("1_lix13")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/size = 5.0
+shader_parameter/squishness = Vector2(1, 1)
+shader_parameter/color1 = Color(0.38220003, 0.49, 0.29400003, 1)
+shader_parameter/color2 = Color(0.5, 0.185, 0.185, 1)
+shader_parameter/color3 = Color(0.24, 0.06, 0.06, 1)
+shader_parameter/step1 = 0.030000001425
+shader_parameter/step2 = 0.0910000043225
+shader_parameter/step3 = 0.290000013775
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 1.0
+shader_parameter/speed = 1.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ghq3x"]
-radius = 20.0
-height = 80.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhnrh"]
+radius = 308.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lix13"]
+radius = 33.0
+height = 144.0
 
 [node name="TerminalInterface" type="StaticBody2D"]
 collision_layer = 16
@@ -25,6 +41,7 @@ scale = Vector2(0.25, 0.125)
 shape = SubResource("CircleShape2D_ghq3x")
 
 [node name="TerminalInterface" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tp61w")
 scale = Vector2(0.25, 0.125)
 texture = ExtResource("1_6k2pf")
 offset = Vector2(0, -175)
@@ -40,10 +57,11 @@ shape = SubResource("CircleShape2D_qhnrh")
 debug_color = Color(0, 0, 1, 0)
 
 [node name="Indicator2D" parent="." instance=ExtResource("4_ghq3x")]
-y = -160
+modulate = Color(1, 1, 1, 0.5)
+x = -150
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Indicator2D"]
 position = Vector2(0, 16)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_ghq3x")
-debug_color = Color(0, 0, 1, 0)
+shape = SubResource("CapsuleShape2D_lix13")
+debug_color = Color(0, 0.5950001, 0.7, 0)

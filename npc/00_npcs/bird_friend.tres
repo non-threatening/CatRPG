@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="1_dgjxi"]
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="2_t0jrf"]
-[ext_resource type="Texture2D" uid="uid://clnnkp7uhjrl0" path="res://Player/BirdFriend/sprites/Crowfly_three_frames.png" id="3_t0jrf"]
+[ext_resource type="Texture2D" uid="uid://b01fd223ndm5l" path="res://GUI/pause_menu/inventory/sprites/crow-silhouette.png" id="3_pr4d0"]
 [ext_resource type="AudioStream" uid="uid://dppicop8bwemo" path="res://Dialogue/SpeachBubbles/voice_blip.wav" id="4_pr4d0"]
 
 [resource]
 script = ExtResource("2_t0jrf")
 npc_name = "Bird Friend"
-sprite = ExtResource("3_t0jrf")
+sprite = ExtResource("3_pr4d0")
 portrait = ExtResource("1_dgjxi")
 talk_blip = ExtResource("4_pr4d0")
 metadata/_custom_type_script = "uid://bmpteubp4v57k"

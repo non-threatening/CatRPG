@@ -22,26 +22,25 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sjd8"]
-bg_color = Color(0.16924527, 0.16924533, 0.16924518, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+bg_color = Color(0.32, 0.32, 0.32, 0.2509804)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 shadow_color = Color(0, 0, 0, 0.25098)
 shadow_size = 2
 shadow_offset = Vector2(2, 2)
 
 [resource]
-Button/colors/font_color = Color(0, 0.5019608, 0, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/font_sizes/font_size = 27
 Button/styles/focus = SubResource("StyleBoxFlat_acws1")
 Button/styles/hover = SubResource("StyleBoxFlat_mshh3")
 Button/styles/normal = SubResource("StyleBoxFlat_2sjd8")
-Label/colors/font_color = Color(0, 0.5019608, 0, 1)
+Label/colors/font_color = Color(0.64, 0.64, 0.64, 1)
 Label/font_sizes/font_size = 26
-RichTextLabel/font_sizes/normal_font_size = 26
+RichTextLabel/font_sizes/normal_font_size = 18
 TabContainer/colors/font_outline_color = Color(1, 1, 1, 1)
 TabContainer/font_sizes/font_size = 32
 TabContainer/styles/panel = ExtResource("1_v7alu")
-VBoxContainer/constants/separation = 16
+VBoxContainer/constants/separation = 8
