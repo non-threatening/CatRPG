@@ -14,6 +14,7 @@ const START_LEVEL : String = "res://Maps/Grass_shader_test_map.tscn"
 
 func _ready() -> void:
 	get_tree().paused = true
+	TimeSystem.time_tick.pause()
 	PlayerManager.player.visible = false
 	
 	PlayerHud.visible = false

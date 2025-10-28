@@ -90,6 +90,7 @@ func _ready() -> void:
 	
 	## pause / unpause
 	get_tree().paused = true
+	TimeSystem.time_tick.pause()
 	DialogueManager.dialogue_ended.connect( _unpause )
 
 
@@ -102,6 +103,7 @@ func _spoke( letter: String, letter_index: int, speed: float ) -> void:
 
 func _unpause( _t ) -> void:
 	get_tree().paused = false
+	TimeSystem.time_tick.resume()
 
 
 func _unhandled_input(_event: InputEvent) -> void:

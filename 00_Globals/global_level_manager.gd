@@ -30,6 +30,7 @@ func load_new_level(
 ) -> void:
 	
 	get_tree().paused = true
+	TimeSystem.time_tick.pause()
 	target_transition = _target_transition
 	position_offset = _position_offset
 	
@@ -41,6 +42,7 @@ func load_new_level(
 	
 	await SceneTransition.fade_in()
 	get_tree().paused = false
+	TimeSystem.time_tick.resume()
 	
 	await get_tree().process_frame
 	level_loaded.emit()

@@ -112,9 +112,10 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -488,16 +489,15 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="System" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="Save" type="VBoxContainer" parent="Control/TabContainer/System"]
 layout_mode = 0
-offset_left = 713.0
-offset_top = 30.0
-offset_right = 789.0
-offset_bottom = 590.0
+offset_left = 751.0
+offset_top = 29.0
+offset_right = 827.0
+offset_bottom = 589.0
 
 [node name="Button1" type="Button" parent="Control/TabContainer/System/Save"]
 custom_minimum_size = Vector2(0, 80)
@@ -517,146 +517,157 @@ layout_mode = 2
 text = "Save
 Over"
 
-[node name="Button5" type="Button" parent="Control/TabContainer/System/Save"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Save
-Over"
-
 [node name="Button4" type="Button" parent="Control/TabContainer/System/Save"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 text = "Save
 Over"
 
+[node name="Button5" type="Button" parent="Control/TabContainer/System/Save"]
+visible = false
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Save
+Over"
+
 [node name="Button6" type="Button" parent="Control/TabContainer/System/Save"]
+visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 text = "Save
 Over"
 
 [node name="Load" type="VBoxContainer" parent="Control/TabContainer/System"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = 818.0
-offset_top = 30.0
-offset_right = 1084.0
-offset_bottom = 590.0
+offset_left = 828.0
+offset_top = 29.0
+offset_right = 1028.0
+offset_bottom = 589.0
 
 [node name="Button1" type="Button" parent="Control/TabContainer/System/Load"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 text = " 
  "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button1"]
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 0
 offset_left = 3.0
-offset_top = 12.0
-offset_right = 260.0
-offset_bottom = 69.0
-theme_override_constants/line_separation = 5
+offset_top = 6.0
+offset_right = 203.0
+offset_bottom = 75.0
+theme_override_constants/line_separation = 3
 bbcode_enabled = true
-text = "The Lobby[br]Player Level 3 "
+text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button2" type="Button" parent="Control/TabContainer/System/Load"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 text = " 
  "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button2"]
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 0
 offset_left = 3.0
-offset_top = 12.0
-offset_right = 260.0
-offset_bottom = 69.0
-theme_override_constants/line_separation = 5
+offset_top = 6.0
+offset_right = 203.0
+offset_bottom = 75.0
+theme_override_constants/line_separation = 3
 bbcode_enabled = true
-text = "The Lobby[br]Player Level 3 "
+text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button3" type="Button" parent="Control/TabContainer/System/Load"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 text = " 
  "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button3"]
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 0
 offset_left = 3.0
-offset_top = 12.0
-offset_right = 260.0
-offset_bottom = 69.0
-theme_override_constants/line_separation = 5
+offset_top = 6.0
+offset_right = 203.0
+offset_bottom = 75.0
+theme_override_constants/line_separation = 3
 bbcode_enabled = true
-text = "The Lobby[br]Player Level 3 "
+text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button4" type="Button" parent="Control/TabContainer/System/Load"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 text = " 
  "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button4"]
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 0
 offset_left = 3.0
-offset_top = 12.0
-offset_right = 260.0
-offset_bottom = 69.0
-theme_override_constants/line_separation = 5
+offset_top = 6.0
+offset_right = 203.0
+offset_bottom = 75.0
+theme_override_constants/line_separation = 3
 bbcode_enabled = true
-text = "The Lobby[br]Player Level 3 "
+text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button5" type="Button" parent="Control/TabContainer/System/Load"]
-custom_minimum_size = Vector2(0, 80)
+visible = false
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 text = " 
  "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button5"]
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 0
 offset_left = 3.0
-offset_top = 12.0
-offset_right = 260.0
-offset_bottom = 69.0
-theme_override_constants/line_separation = 5
+offset_top = 8.0
+offset_right = 203.0
+offset_bottom = 72.0
+theme_override_constants/line_separation = 3
 bbcode_enabled = true
-text = "The Lobby[br]Player Level 3 "
+text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button6" type="Button" parent="Control/TabContainer/System/Load"]
-custom_minimum_size = Vector2(0, 80)
+visible = false
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 text = " 
  "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button6"]
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 0
 offset_left = 3.0
-offset_top = 12.0
-offset_right = 260.0
-offset_bottom = 69.0
-theme_override_constants/line_separation = 5
+offset_top = 8.0
+offset_right = 203.0
+offset_bottom = 72.0
+theme_override_constants/line_separation = 3
 bbcode_enabled = true
-text = "The Lobby[br]Player Level 3 "
+text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1

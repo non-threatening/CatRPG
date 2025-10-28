@@ -11,6 +11,13 @@ var talk_speed : float = 0.02
 
 var current_save : Dictionary = {
 	scene_path = "",
+	time = {
+		day = "",
+		hour = "",
+		minute = "",
+		moon = "",
+		month = ""
+	},
 	player = {
 		level = 1,
 		xp = 0,
@@ -39,12 +46,9 @@ var save_list : Dictionary = {"_1" : ""}
 
 
 func _ready() -> void:
-	
 	if not DirAccess.dir_exists_absolute( SAVE_PATH ):
 		print("NOT!")
 		DirAccess.make_dir_absolute( SAVE_PATH )
-
-	
 	var file := get_save_file( "list" )
 	if file == null:
 		var game_file := FileAccess.open( SAVE_PATH + "list_save.sav", FileAccess.WRITE )
@@ -56,14 +60,22 @@ func _ready() -> void:
 	var save_dict := json.get_data() as Dictionary
 	save_list = save_dict
 	
+	if save_list.size() > 1:
+		PlayerHud.active_save = save_list.active
+	
+	
 	
 func save_game( _number ) -> void:
-	var thing : String = str( get_tree().get_current_scene().name, "[br]", "Player_level_poo: ", PlayerManager.player.level ).capitalize()
+	var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
+	var day = TimeSystem.time_tick.get_time_unit("day")
+	var thing : String = str( get_tree().get_current_scene().name.capitalize(), "[br]", "Day %d %s" % [day, formatted], "[br]", "Player Level: ", PlayerManager.player.level )
 	save_list[ _number ] = thing
+	save_list[ "active" ] = _number
 	var game_file := FileAccess.open( SAVE_PATH + "list_save.sav", FileAccess.WRITE )
 	var save_list_json = JSON.stringify( save_list )
 	game_file.store_line( save_list_json )
 	
+	update_time()
 	update_scene_path()
 	update_player_data()
 	update_item_data()
@@ -108,11 +120,22 @@ func load_game( _number ) -> void:
 	music = current_save.options.music
 	talk_speed = current_save.options.talk_speed
 	
+	TimeSystem.time_tick.set_time_units({
+		"day": current_save.time.day,
+		"hour": current_save.time.hour,
+		"minute": current_save.time.minute,
+		"moon": current_save.time.moon,
+		"month": current_save.time.month
+	})
+	var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
+	var day = TimeSystem.time_tick.get_time_unit("day")
+	PlayerHud.time_label.text = ("Day %d %s" % [day, formatted])
+	
+	
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
 	
 	QuestSystem.completed.reset()
 	QuestSystem.active.reset()
-	
 	var quests: Array[Quest]
 	for quest in DirAccess.get_files_at("res://Quests/quest_resources/"):
 		var quest_path = "res://Quests/quest_resources/" + quest
@@ -133,6 +156,14 @@ func load_game( _number ) -> void:
 			
 	game_loaded.emit()
 	pass
+
+
+func update_time() -> void:
+	current_save.time.day =  TimeSystem.time_tick.get_time_unit("day")
+	current_save.time.hour =  TimeSystem.time_tick.get_time_unit("hour")
+	current_save.time.minute =  TimeSystem.time_tick.get_time_unit("minute")
+	current_save.time.moon =  TimeSystem.time_tick.get_time_unit("moon")
+	current_save.time.month =  TimeSystem.time_tick.get_time_unit("month")
 
 
 func update_options_data() -> void:

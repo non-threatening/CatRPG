@@ -80,6 +80,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 func show_pause_menu() -> void:
 	get_tree().paused = true
+	TimeSystem.time_tick.pause()
 	visible = true
 	is_paused = true
 	tab_container.current_tab = 0
@@ -88,7 +89,6 @@ func show_pause_menu() -> void:
 	%BombCountLabel.text = str( PlayerManager.player.bomb_count )
 	
 	var file := FileAccess.open( "user://save_files/list_save.sav", FileAccess.READ )
-
 	var json := JSON.new()
 	json.parse( file.get_line() )
 	var save_dict := json.get_data() as Dictionary
@@ -98,41 +98,48 @@ func show_pause_menu() -> void:
 	else:
 		load_button_1_label.text = "empty save"
 		button_1.text = "Save"
+		load_button_1.set_disabled( true )
 
 	if save_dict.has("_2"):
 		load_button_2_label.text = save_dict["_2"]
 	else:
 		load_button_2_label.text = "empty save"
 		button_2.text = "Save"
-
+		load_button_2.set_disabled( true )
+		
 	if save_dict.has("_3"):
 		load_button_3_label.text = save_dict["_3"]
 	else:
 		load_button_3_label.text = "empty save"
 		button_3.text = "Save"
+		load_button_3.set_disabled( true )
 
 	if save_dict.has("_4"):
 		load_button_4_label.text = save_dict["_4"]
 	else:
 		load_button_4_label.text = "empty save"
 		button_4.text = "Save"
+		load_button_4.set_disabled( true )
 		
 	if save_dict.has("_5"):
 		load_button_5_label.text = save_dict["_5"]
 	else:
 		load_button_5_label.text = "empty save"
 		button_5.text = "Save"
+		load_button_5.set_disabled( true )
 		
 	if save_dict.has("_6"):
 		load_button_6_label.text = save_dict["_6"]
 	else:
 		load_button_6_label.text = "empty save"
 		button_6.text = "Save"
+		load_button_6.set_disabled( true )
 	
 
 
 func hide_pause_menu() -> void:
 	get_tree().paused = false
+	TimeSystem.time_tick.resume()
 	visible = false
 	is_paused = false
 	hidden.emit()
@@ -142,8 +149,35 @@ func hide_pause_menu() -> void:
 func _on_save_pressed( _number ) -> void:
 	if is_paused == false:
 		return
+	## If exists in list_save
+	## do popup
 	SaveManager.save_game( _number )
 	PlayerHud.active_save = _number
+	match _number:
+		"_1":
+			load_button_1.set_disabled( false )
+			button_1.text = "Save
+			Over"
+		"_2":
+			load_button_2.set_disabled( false )
+			button_2.text = "Save
+			Over"
+		"_3":
+			load_button_3.set_disabled( false )
+			button_3.text = "Save
+			Over"
+		"_4":
+			load_button_4.set_disabled( false )
+			button_4.text = "Save
+			Over"
+		"_5":
+			load_button_5.set_disabled( false )
+			button_5.text = "Save
+			Over"
+		"_6":
+			load_button_6.set_disabled( false )
+			button_6.text = "Save
+			Over"	
 	hide_pause_menu()
 	pass
 	

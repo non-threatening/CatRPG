@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bcpyr1vq1ulx3"]
+[gd_scene load_steps=28 format=3 uid="uid://bcpyr1vq1ulx3"]
 
 [ext_resource type="Script" uid="uid://poj3adf5jpou" path="res://GUI/player_hud/player_hud.gd" id="1_oghrr"]
 [ext_resource type="PackedScene" uid="uid://dkynksfn5v5fw" path="res://GUI/player_hud/heart_gui.tscn" id="2_alx7a"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://lise7q52eo28" path="res://GUI/player_hud/stacked_notifications.gd" id="8_terqw"]
 [ext_resource type="PackedScene" uid="uid://rp5basnb2nrj" path="res://GUI/player_hud/stacked_notification.tscn" id="9_scbx3"]
 [ext_resource type="Script" uid="uid://b1y8m1dxfykkn" path="res://00_Globals/Steam/steam_avatar.gd" id="10_terqw"]
+[ext_resource type="Texture2D" uid="uid://dx6grwyk80lvg" path="res://GUI/player_hud/MoonPhases.png" id="11_ea3vn"]
 
 [sub_resource type="Gradient" id="Gradient_rxq5y"]
 offsets = PackedFloat32Array(0, 0.436975, 0.731092)
@@ -788,6 +789,36 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("10_terqw")
+
+[node name="Time" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 48.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Time"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = -24.0
+offset_top = 8.0
+offset_right = 103.0
+offset_bottom = 43.0
+alignment = 1
+
+[node name="TimeLabel" type="Label" parent="Control/Time/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 26
+text = "Day 0 06:00"
+vertical_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Time/HBoxContainer"]
+position = Vector2(-24, 16)
+texture = ExtResource("11_ea3vn")
+hframes = 8
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

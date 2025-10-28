@@ -67,6 +67,10 @@ func enable_menu( _enabled : bool = true ) -> void:
 	get_tree().paused = _enabled
 	visible = _enabled
 	is_active = _enabled
+	if _enabled:
+		TimeSystem.time_tick.pause()
+	else:
+		TimeSystem.time_tick.resume()
 	pass
 
 
