@@ -1,0 +1,12 @@
+[2025-10-28 19:15:17]: Starting build for depot 4097911, content path is "/home/trivers/Dropbox/lamp/CatRPG/rpgc/z_sdk/tools/ContentBuilder/content/4097910/4097911/", build flags 0x0
+[2025-10-28 19:15:18]: Building file listing for depot 4097911 ...
+[2025-10-28 19:15:18]: Found 6 files for mapping: /home/trivers/Dropbox/lamp/CatRPG/rpgc/z_sdk/tools/ContentBuilder/content/4097910/4097911 * -> .
+[2025-10-28 19:15:18]: Found 6 files (91 MB) for depot 4097911
+[2025-10-28 19:15:21]: Building depot 4097911, baseline manifest 2800272117509107750 (6 files)
+[2025-10-28 19:15:22]: Found 97 new chunks ( 97 used previously ) for depot 4097911, took 0 minutes, 0 seconds
+[2025-10-28 19:15:22]: Changes to baseline manifest 2800272117509107750 :
+[2025-10-28 19:15:22]: Changed: "RPGC.pck" 17722 KB size, 2356 KB changed 
+[2025-10-28 19:15:22]: Summary: 0 files added (0 bytes), 1 files changed (2.30 MB), 0 files removed (0 bytes)
+[2025-10-28 19:15:23]: Uploading new manifest to 208.78.164.214:80 (handle 6623897736278906452, 3960 bytes).
+[2025-10-28 19:15:23]: Uploading 4 out of 4 missing chunks.
+[2025-10-28 19:15:29]: Success! New manifestID 8238118121788831219 created and 4 new chunks uploaded.

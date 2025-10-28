@@ -1,0 +1,15 @@
+"AppBuild"
+{
+    "AppID" "4097910"
+    "Desc" "Cat Game"
+
+    "Preview" "0"
+    "Local" ""
+    "SetLive" ""
+    "ContentRoot" ""
+    "BuildOutput" "..\output"
+    "Depots"
+    {
+        "4097911" "..\scripts\4097911.vdf"
+        }
+}
