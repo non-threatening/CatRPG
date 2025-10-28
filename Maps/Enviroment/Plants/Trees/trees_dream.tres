@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://pww5hwrd41gd"]
+
+[ext_resource type="Shader" uid="uid://bqesrg18iwyem" path="res://Maps/Enviroment/Plants/Trees/trees_dream.gdshader" id="1_xh5qr"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_xh5qr")
+shader_parameter/x = 4.0
+shader_parameter/y = 3.0
+shader_parameter/time_scale = 5.0
+shader_parameter/amplitude = 5.0
+shader_parameter/frequency = 500.0
+shader_parameter/speed = 0.5

@@ -1,6 +1,7 @@
 class_name Flower extends Node2D
 
-const DREAM_FLOWER = preload( "res://Maps/Enviroment/Plants/Flowers/flower_dream_material.gdshader" )
+const FLOWER_DREAM = preload("uid://c5ovupdrrtgpr")
+const FLOWER_MATERIAL = preload("uid://bbj3feg1ntecx")
 const png_dir : String = "res://Maps/Enviroment/Plants/Flowers/sprites/"
 
 var images : Array[ String ]
@@ -18,13 +19,13 @@ func _ready() -> void:
 	get_shuffled_flower()
 	_set_time_scale()
 	_set_random_scale()
-	
-	var thing = get_tree().get_current_scene().name
-	if thing == "TheLobby":
-		sprite.material.shader = DREAM_FLOWER
+	var is_lobby = get_tree().get_current_scene().name
+	if is_lobby == "TheLobby":
+		sprite.material.shader = FLOWER_DREAM
 		shadow_sprite.hide()
 		shadow_sprite_green.show()
 	else:
+		sprite.material.shader = FLOWER_MATERIAL
 		_set_random_color()
 		shadow_sprite.show()
 		shadow_sprite_green.hide()
@@ -81,12 +82,3 @@ func _set_random_color() -> void:
 		randf_range( 0.8, 1.0 )
 	)
 	sprite.material.set_shader_parameter( "color1", color1 )
-
-
-#func _set_random_stem_color() -> void:
-	#var stem_color = Color.from_hsv(
-		#randf_range( (120.0/360.0), (133.0/360.0) ), 
-		#randf_range( 0.6, 0.9 ), 
-		#randf_range( 0.45, 0.6 )
-	#)
-	#sprite.material.set_shader_parameter( "stem_color", stem_color )

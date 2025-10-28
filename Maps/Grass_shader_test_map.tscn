@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=44 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://dul2wk6yslbpi" path="res://npc/npc_behavior_wander.tscn" id="21_70lcl"]
 [ext_resource type="Texture2D" uid="uid://b01fd223ndm5l" path="res://GUI/pause_menu/inventory/sprites/crow-silhouette.png" id="22_g0pye"]
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
-[ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="24_0fwua"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="29_70lcl"]
 [ext_resource type="PackedScene" uid="uid://fnb335xp2rg4" path="res://Maps/Enviroment/objects/terminal_interface.tscn" id="31_g0pye"]
 
@@ -524,15 +523,31 @@ position = Vector2(425.59302, 235.919)
 [node name="Flower52" parent="Flowers2" instance=ExtResource("7_qhnrh")]
 position = Vector2(563.593, 385.919)
 
-[node name="ItemPickup" parent="." instance=ExtResource("8_v5bit")]
+[node name="Bling" type="Node2D" parent="."]
+
+[node name="ItemPickup" parent="Bling" instance=ExtResource("8_v5bit")]
 position = Vector2(617, 578)
+item_data = ExtResource("9_qnxbr")
+
+[node name="ItemPickup3" parent="Bling" instance=ExtResource("8_v5bit")]
+position = Vector2(720, 369)
+item_data = ExtResource("9_qnxbr")
+
+[node name="ItemPickup4" parent="Bling" instance=ExtResource("8_v5bit")]
+position = Vector2(1030, 70)
+item_data = ExtResource("9_qnxbr")
+
+[node name="ItemPickup5" parent="Bling" instance=ExtResource("8_v5bit")]
+position = Vector2(66, 162)
+item_data = ExtResource("9_qnxbr")
+
+[node name="ItemPickup6" parent="Bling" instance=ExtResource("8_v5bit")]
+position = Vector2(1618, 38)
 item_data = ExtResource("9_qnxbr")
 
 [node name="ItemPickup2" parent="." instance=ExtResource("8_v5bit")]
 position = Vector2(1114.4685, 303.68356)
 item_data = ExtResource("10_xvh4v")
-
-[node name="PersistantDataHandler2" parent="ItemPickup2" instance=ExtResource("11_yr5mt")]
 
 [node name="Npc" parent="." instance=ExtResource("15_k0o0t")]
 position = Vector2(1980, -92)
@@ -548,7 +563,6 @@ shape = SubResource("CircleShape2D_q5fwb")
 debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="Indicator2D" parent="Npc" instance=ExtResource("15_t22hv")]
-modulate = Color(1, 1, 1, 0.5)
 position = Vector2(-2, 4)
 x = -32
 y = -168
@@ -609,10 +623,9 @@ shape = SubResource("CircleShape2D_70lcl")
 debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="Indicator2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("15_t22hv")]
-modulate = Color(1, 1, 1, 0.5)
 position = Vector2(-131, 171)
-x = 50
-y = -320
+x = 76
+y = -360
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quest[102]_BFComesWith/BFComesWithNPC/Indicator2D"]
 position = Vector2(-1, -1)
@@ -714,14 +727,11 @@ script = ExtResource("14_1qe5l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flower6/WalkingQuest"]
 shape = SubResource("CircleShape2D_t5npb")
 
-[node name="ShopStone" parent="." instance=ExtResource("24_0fwua")]
-visible = false
-position = Vector2(1209, -677)
-
 [node name="TerminalInterface" parent="." instance=ExtResource("31_g0pye")]
-position = Vector2(424, 93)
+position = Vector2(416, 100)
 
 [node name="LevelTransition" parent="TerminalInterface" instance=ExtResource("29_70lcl")]
+visible = false
 position = Vector2(0, 35)
 portal_dir = 1
 level = "uid://bwa3jdmpvxxvu"

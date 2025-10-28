@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://pucwglkmup3m"]
+[gd_scene load_steps=43 format=4 uid="uid://pucwglkmup3m"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://diddnu4t7u02t" path="res://Tile Maps/layer_grass.tscn" id="1_vbl6q"]
@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://ct24774noeydi" path="res://Items/ability_bird.tres" id="22_svifw"]
 [ext_resource type="Resource" uid="uid://capjhk4b8qxa6" path="res://Items/ability_bomb.tres" id="23_kr4tu"]
 [ext_resource type="Resource" uid="uid://p3om8hv0rf28" path="res://Items/ability_arrow.tres" id="24_kytmn"]
+[ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="29_1j6q0"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="29_gs60u"]
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="30_egubj"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="31_s5a4g"]
@@ -101,22 +102,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_kytmn"]
 radius = 52.2524
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kytmn"]
-resource_local_to_scene = true
-shader = ExtResource("32_l661h")
-shader_parameter/x = 18.0
-shader_parameter/y = 8.0
-shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
-shader_parameter/time_scale = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j6q0"]
-resource_local_to_scene = true
-shader = ExtResource("32_l661h")
-shader_parameter/x = 18.0
-shader_parameter/y = 8.0
-shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
-shader_parameter/time_scale = 1.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gs60u"]
 resource_local_to_scene = true
 shader = ExtResource("32_l661h")
@@ -134,6 +119,22 @@ shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
 shader_parameter/time_scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s5a4g"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvvsh"]
+resource_local_to_scene = true
+shader = ExtResource("32_l661h")
+shader_parameter/x = 18.0
+shader_parameter/y = 8.0
+shader_parameter/new_color = Color(0.323285, 0.41, 0.2173, 1)
+shader_parameter/time_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l661h"]
 resource_local_to_scene = true
 shader = ExtResource("32_l661h")
 shader_parameter/x = 18.0
@@ -255,27 +256,27 @@ position = Vector2(1133, 204)
 item_data = ExtResource("30_egubj")
 
 [node name="TreasureChest" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_kytmn")
+material = SubResource("ShaderMaterial_gs60u")
 position = Vector2(1137, 100)
 item_data = ExtResource("32_kvvsh")
 
 [node name="TreasureChest2" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_1j6q0")
+material = SubResource("ShaderMaterial_egubj")
 position = Vector2(983, 479)
 item_data = ExtResource("22_31yvb")
 
 [node name="TreasureChest3" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_gs60u")
+material = SubResource("ShaderMaterial_s5a4g")
 position = Vector2(907, 479)
 item_data = ExtResource("23_kr4tu")
 
 [node name="TreasureChest4" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_egubj")
+material = SubResource("ShaderMaterial_kvvsh")
 position = Vector2(820, 479)
 item_data = ExtResource("24_kytmn")
 
 [node name="TreasureChest5" parent="." instance=ExtResource("31_s5a4g")]
-material = SubResource("ShaderMaterial_s5a4g")
+material = SubResource("ShaderMaterial_l661h")
 position = Vector2(719, 479)
 item_data = ExtResource("22_svifw")
 
@@ -284,3 +285,6 @@ position = Vector2(703, 637)
 
 [node name="GrapplePost2" parent="." instance=ExtResource("7_mn1uy")]
 position = Vector2(820, 926)
+
+[node name="ShopStone" parent="." instance=ExtResource("29_1j6q0")]
+position = Vector2(836, 127)

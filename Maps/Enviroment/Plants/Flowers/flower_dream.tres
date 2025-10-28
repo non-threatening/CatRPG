@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d4kyp8h2r0x61"]
+
+[ext_resource type="Shader" uid="uid://c5ovupdrrtgpr" path="res://Maps/Enviroment/Plants/Flowers/flower_dream_material.gdshader" id="1_yddvh"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_yddvh")
+shader_parameter/x = 4.0
+shader_parameter/y = 3.0
+shader_parameter/time_scale = 4.831378575564267

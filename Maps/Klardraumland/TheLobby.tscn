@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bwa3jdmpvxxvu"]
+[gd_scene load_steps=16 format=4 uid="uid://bwa3jdmpvxxvu"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_2g8rj"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_gcgvm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="5_jc7gr"]
 [ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Klardraumland/crt_shader.tres" id="7_0eggj"]
 [ext_resource type="PackedScene" uid="uid://csrhsyiqv7781" path="res://Levels/wrap_around_transition.tscn" id="8_jp6c1"]
+[ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="9_cdbcb"]
 
 [sub_resource type="Gradient" id="Gradient_jc7gr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -80,10 +81,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3840.0
-offset_top = -2400.0
-offset_right = 3840.0
-offset_bottom = 2400.0
+offset_top = -1.0
+offset_right = 7680.0
+offset_bottom = 4799.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -113,28 +113,36 @@ position = Vector2(58, -123)
 [node name="Flower8" parent="Flowers" instance=ExtResource("4_abty2")]
 position = Vector2(8, -122)
 
-[node name="LevelTransition" parent="." instance=ExtResource("5_jc7gr")]
+[node name="WrapArounds" type="Node" parent="."]
+
+[node name="LevelTransition" parent="WrapArounds" instance=ExtResource("5_jc7gr")]
 position = Vector2(8, -77)
 level = "uid://ly7wguh1ufuy"
 center_player = true
 size = 1
 side = 2
 
-[node name="WrapAroundTransition" parent="." instance=ExtResource("8_jp6c1")]
+[node name="WrapAroundTransition" parent="WrapArounds" instance=ExtResource("8_jp6c1")]
 position = Vector2(3132, 18)
 size = 76
 side = 1
 
-[node name="WrapAroundTransition2" parent="." instance=ExtResource("8_jp6c1")]
+[node name="WrapAroundTransition2" parent="WrapArounds" instance=ExtResource("8_jp6c1")]
 position = Vector2(-3172, 18)
 size = 76
 
-[node name="WrapAroundTransition3" parent="." instance=ExtResource("8_jp6c1")]
+[node name="WrapAroundTransition3" parent="WrapArounds" instance=ExtResource("8_jp6c1")]
 position = Vector2(0, -1878)
 size = 120
 side = 2
 
-[node name="WrapAroundTransition4" parent="." instance=ExtResource("8_jp6c1")]
+[node name="WrapAroundTransition4" parent="WrapArounds" instance=ExtResource("8_jp6c1")]
 position = Vector2(30, 1817)
 size = 120
 side = 3
+
+[node name="Trees" parent="." instance=ExtResource("9_cdbcb")]
+position = Vector2(999, -217)
+
+[node name="Trees2" parent="." instance=ExtResource("9_cdbcb")]
+position = Vector2(-1720, 695)

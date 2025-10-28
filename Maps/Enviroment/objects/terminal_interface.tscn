@@ -57,8 +57,7 @@ shape = SubResource("CircleShape2D_qhnrh")
 debug_color = Color(0, 0, 1, 0)
 
 [node name="Indicator2D" parent="." instance=ExtResource("4_ghq3x")]
-modulate = Color(1, 1, 1, 0.5)
-x = -150
+y = -175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Indicator2D"]
 position = Vector2(0, 16)

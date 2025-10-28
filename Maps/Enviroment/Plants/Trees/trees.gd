@@ -1,5 +1,9 @@
 class_name Trees extends Node2D
 
+const DREAM_TREE = preload( "res://Maps/Enviroment/Plants/Trees/trees_dream.gdshader" )
+const TREES = preload("uid://c6n83nrhuenne")
+
+
 @onready var sprite: Trees = $"."
 
 var png_dir : String = "res://Maps/Enviroment/Plants/Trees/sprites/"
@@ -8,14 +12,19 @@ var images_full = []
 
 func _ready() -> void:
 	_get_pngs( png_dir )
-	_set_random_scale()
-	_set_steps()
-	_set_random_motion_amount()
-
 	images_full = images.duplicate()
 	images.shuffle()
-	get_shuffled_tree()
-	
+	get_shuffled_tree()	
+	var is_lobby = get_tree().get_current_scene().name
+	if is_lobby == "TheLobby":
+		sprite.material.shader = DREAM_TREE
+	else:
+		sprite.material.shader = TREES
+		_set_steps()
+
+	_set_random_scale()
+	_set_random_motion_amount()
+
 
 func _get_pngs( path ):
 	var dir = DirAccess.open( path )
@@ -34,12 +43,7 @@ func get_shuffled_tree():
 	var random_shuffled_tree = images.pop_front()
 	var texture = load( png_dir + random_shuffled_tree )
 	sprite.texture = texture
-	#_change_sprite( random_shuffled_tree )
 
-
-#func _change_sprite( file : String ):
-	#var texture = load( png_dir + file )
-	#sprite.texture = texture
 
 
 func _set_random_scale() -> void:
