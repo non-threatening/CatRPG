@@ -1,72 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhhvqu8fmuoe6"]
+[gd_scene load_steps=3 format=3 uid="uid://bhhvqu8fmuoe6"]
 
 [ext_resource type="Script" uid="uid://dadco14ppovp6" path="res://Dialogue/interact_indicator.gd" id="1_e517h"]
 [ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://Dialogue/controller_icon_interact.tres" id="3_e517h"]
 
-[sub_resource type="Animation" id="Animation_bqfay"]
-resource_name = "bounce"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1998209, 0.2991184, 0.3996418, 0.5001652, 0.60068864, 0.701212, 0.8029613, 0.9022588, 1),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
-"update": 0,
-"values": [Vector2(-50, -128), Vector2(-50, -128), Vector2(-50, -148), Vector2(-50, -128), Vector2(-50, -158), Vector2(-50, -128), Vector2(-50, -148), Vector2(-50, -128), Vector2(-50, -138), Vector2(-50, -128)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.64, 0.64), Vector2(0.7, 0.7), Vector2(0.64, 0.64)]
-}
-
-[sub_resource type="Animation" id="Animation_e517h"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-32, -128)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.64, 0.64)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kp6q7"]
-_data = {
-&"RESET": SubResource("Animation_e517h"),
-&"bounce": SubResource("Animation_bqfay")
-}
-
 [node name="Indicator2D" type="Area2D"]
+modulate = Color(1, 1, 1, 0.5)
 script = ExtResource("1_e517h")
+y = -200
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -74,17 +14,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -128.0
-offset_right = 68.0
-offset_bottom = -28.0
+offset_left = -50.0
+offset_top = -200.0
+offset_right = 50.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.64, 0.64)
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("3_e517h")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kp6q7")
-}
