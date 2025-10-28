@@ -39,6 +39,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_mshh3")
 Button/styles/normal = SubResource("StyleBoxFlat_2sjd8")
 Label/colors/font_color = Color(0.64, 0.64, 0.64, 1)
 Label/font_sizes/font_size = 24
+RichTextLabel/constants/line_separation = 3
 RichTextLabel/font_sizes/normal_font_size = 20
 TabContainer/colors/font_outline_color = Color(1, 1, 1, 1)
 TabContainer/font_sizes/font_size = 32

@@ -558,7 +558,6 @@ offset_left = 3.0
 offset_top = 6.0
 offset_right = 203.0
 offset_bottom = 75.0
-theme_override_constants/line_separation = 3
 bbcode_enabled = true
 text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
 fit_content = true
@@ -760,3 +759,25 @@ value = 0.02
 tick_count = 9
 ticks_on_borders = true
 ticks_position = 2
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control"]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(330, 180)
+borderless = true
+ok_button_text = "  OK  "
+cancel_button_text = "  Cancel  "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ConfirmationDialog"]
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 322.0
+offset_bottom = 130.0
+bbcode_enabled = true
+text = "Really overwrite save file:
+The Lobby
+Day 13 12:00
+Player Level 4
+fourth line"
+horizontal_alignment = 1
+vertical_alignment = 1

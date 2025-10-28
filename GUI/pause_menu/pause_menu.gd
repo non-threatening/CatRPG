@@ -16,6 +16,7 @@ signal preview_stats_changed( item : ItemData )
 @onready var abilities_description: Label = $Control/TabContainer/Inventory/AbilitiesDescription
 
 var is_paused : bool = false
+var save_dict : Dictionary
 
 @onready var button_1: Button = $Control/TabContainer/System/Save/Button1
 @onready var button_2: Button = $Control/TabContainer/System/Save/Button2
@@ -38,6 +39,8 @@ var is_paused : bool = false
 @onready var load_button_5_label: RichTextLabel = $Control/TabContainer/System/Load/Button5/RichTextLabel
 @onready var load_button_6_label: RichTextLabel = $Control/TabContainer/System/Load/Button6/RichTextLabel
 
+@onready var dialog: ConfirmationDialog = $Control/ConfirmationDialog
+@onready var rich_text_label: RichTextLabel = $Control/ConfirmationDialog/RichTextLabel
 
 
 func _ready() -> void:
@@ -91,7 +94,7 @@ func show_pause_menu() -> void:
 	var file := FileAccess.open( "user://save_files/list_save.sav", FileAccess.READ )
 	var json := JSON.new()
 	json.parse( file.get_line() )
-	var save_dict := json.get_data() as Dictionary
+	save_dict = json.get_data() as Dictionary
 
 	if save_dict.has("_1") and save_dict["_1"] != "":
 		load_button_1_label.text = save_dict["_1"]
@@ -136,7 +139,6 @@ func show_pause_menu() -> void:
 		load_button_6.set_disabled( true )
 	
 
-
 func hide_pause_menu() -> void:
 	get_tree().paused = false
 	TimeSystem.time_tick.resume()
@@ -145,12 +147,17 @@ func hide_pause_menu() -> void:
 	hidden.emit()
 		
 		
-		
 func _on_save_pressed( _number ) -> void:
 	if is_paused == false:
 		return
-	## If exists in list_save
-	## do popup
+	var save_text : String = save_dict[_number]
+	if save_dict.has( _number ):
+		rich_text_label.text = str( "Really overwrite save file:[br]", save_text, "?")
+		dialog.confirmed.connect( _on_save_confirmed.bind( _number ) )
+		dialog.popup_centered()
+
+
+func _on_save_confirmed( _number ) -> void:
 	SaveManager.save_game( _number )
 	PlayerHud.active_save = _number
 	match _number:
@@ -186,6 +193,12 @@ func _on_save_pressed( _number ) -> void:
 func _on_load_pressed( _number ) -> void:
 	if is_paused == false:
 		return
+	var load_text : String = save_dict[_number]
+	rich_text_label.text = str( "Loading:[br]", load_text, "[br]will erase current game progress!")
+	dialog.confirmed.connect( _on_load_confirmed.bind( _number ) )
+	dialog.popup_centered()
+		
+func _on_load_confirmed( _number ) -> void:
 	SaveManager.load_game( _number )
 	PlayerHud.active_save = _number
 	await LevelManager.level_load_started
