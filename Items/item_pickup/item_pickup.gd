@@ -24,6 +24,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	area_2d.body_entered.connect( _on_body_entered )
+	
 	if item_persists == true:
 		persistant_data_picked_up.data_loaded.connect( _on_data_loaded )
 		_set_item_existance()

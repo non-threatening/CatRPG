@@ -53,6 +53,7 @@ func _set_y( _a : int = 0 ) -> void:
 
 func _bounce() -> void:
 	var dur : float = 0.033
+	await get_tree().create_timer( 0.35 ).timeout
 	var tween : Tween = create_tween()
 	tween.tween_property( texture_rect, "position", Vector2( x, -10 + y ), dur ).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property( texture_rect, "position", Vector2( x, y ), dur ).set_ease(Tween.EASE_IN_OUT)
