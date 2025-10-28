@@ -5,6 +5,7 @@ signal picked_up
 
 @export var item_data : ItemData : set  = _set_item_data
 @export var item_count : int = 1 : set = _set_item_count
+@export var item_persists : bool = true
 
 @onready var area_2d: Area2D = $Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -23,8 +24,9 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	area_2d.body_entered.connect( _on_body_entered )
-	persistant_data_picked_up.data_loaded.connect( _on_data_loaded )
-	_set_item_existance()
+	if item_persists == true:
+		persistant_data_picked_up.data_loaded.connect( _on_data_loaded )
+		_set_item_existance()
 	
 
 func _set_item_existance() -> void:
