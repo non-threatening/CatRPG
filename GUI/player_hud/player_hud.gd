@@ -106,9 +106,13 @@ func time_display( unit_name: String, new_value: int, old_value: int ) -> void:
 			if tens == 0:
 				var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
 				var day = TimeSystem.time_tick.get_time_unit("day")
-				time_label.text = ("Day %d %s" % [day, formatted])
+				var year = TimeSystem.time_tick.get_time_unit("year")
+				var show_year : String
+				if year != 0:
+					show_year = str( "Year ", year ) 
+				time_label.text = str( show_year, "  Day %d  %s" % [day, formatted])
 		"moon":
-			var moon = TimeSystem.time_tick.get_time_unit("moon") % 8
+			var moon = new_value
 			sprite_moon.frame = moon
 			print( "moon:", moon )
 	pass

@@ -16,7 +16,8 @@ var current_save : Dictionary = {
 		hour = "",
 		minute = "",
 		moon = "",
-		month = ""
+		month = "",
+		year = ""
 	},
 	player = {
 		level = 1,
@@ -62,8 +63,7 @@ func _ready() -> void:
 	
 	if save_list.size() > 1:
 		PlayerHud.active_save = save_list.active
-	
-	
+
 	
 func save_game( _number ) -> void:
 	var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
@@ -125,8 +125,11 @@ func load_game( _number ) -> void:
 		"hour": current_save.time.hour,
 		"minute": current_save.time.minute,
 		"moon": current_save.time.moon,
-		"month": current_save.time.month
+		"month": current_save.time.month,
+		"year": current_save.time.year
 	})
+	
+	## HUD clock
 	var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
 	var day = TimeSystem.time_tick.get_time_unit("day")
 	PlayerHud.time_label.text = ("Day %d %s" % [day, formatted])
@@ -153,9 +156,10 @@ func load_game( _number ) -> void:
 	for q: Quest in load_active_quests:
 		if q.quest_name:
 			Shortcuts.update_quest( q.quest_name )
-			
 	game_loaded.emit()
 	pass
+	
+
 
 
 func update_time() -> void:
@@ -164,6 +168,7 @@ func update_time() -> void:
 	current_save.time.minute =  TimeSystem.time_tick.get_time_unit("minute")
 	current_save.time.moon =  TimeSystem.time_tick.get_time_unit("moon")
 	current_save.time.month =  TimeSystem.time_tick.get_time_unit("month")
+	current_save.time.year =  TimeSystem.time_tick.get_time_unit("year")
 
 
 func update_options_data() -> void:
