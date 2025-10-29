@@ -492,12 +492,55 @@ layout_mode = 2
 layout_mode = 2
 metadata/_tab_index = 2
 
+[node name="ButtonAuto" type="Button" parent="Control/TabContainer/System"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 737.0
+offset_top = 61.0
+offset_right = 1010.0
+offset_bottom = 141.0
+text = " Load
+ Autosave"
+alignment = 0
+
+[node name="Label" type="Label" parent="Control/TabContainer/System/ButtonAuto"]
+modulate = Color(1, 1, 1, 0.7529412)
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -32.5
+offset_right = 118.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "LOAD"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/ButtonAuto"]
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 0
+offset_left = 78.0
+offset_top = 6.0
+offset_right = 278.0
+offset_bottom = 75.0
+bbcode_enabled = true
+text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Save" type="VBoxContainer" parent="Control/TabContainer/System"]
 layout_mode = 0
-offset_left = 751.0
-offset_top = 29.0
-offset_right = 827.0
-offset_bottom = 589.0
+offset_left = 735.0
+offset_top = 148.0
+offset_right = 811.0
+offset_bottom = 708.0
 
 [node name="Button1" type="Button" parent="Control/TabContainer/System/Save"]
 custom_minimum_size = Vector2(0, 80)
@@ -523,27 +566,13 @@ layout_mode = 2
 text = "Save
 Over"
 
-[node name="Button5" type="Button" parent="Control/TabContainer/System/Save"]
-visible = false
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Save
-Over"
-
-[node name="Button6" type="Button" parent="Control/TabContainer/System/Save"]
-visible = false
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Save
-Over"
-
 [node name="Load" type="VBoxContainer" parent="Control/TabContainer/System"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = 828.0
-offset_top = 29.0
-offset_right = 1028.0
-offset_bottom = 589.0
+offset_left = 812.0
+offset_top = 148.0
+offset_right = 1012.0
+offset_bottom = 708.0
 
 [node name="Button1" type="Button" parent="Control/TabContainer/System/Load"]
 custom_minimum_size = Vector2(200, 80)
@@ -564,6 +593,23 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/System/Load/Button1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -32.5
+offset_right = 72.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "LOAD"
 
 [node name="Button2" type="Button" parent="Control/TabContainer/System/Load"]
 custom_minimum_size = Vector2(200, 80)
@@ -586,6 +632,23 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label" type="Label" parent="Control/TabContainer/System/Load/Button2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -32.5
+offset_right = 72.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "LOAD"
+
 [node name="Button3" type="Button" parent="Control/TabContainer/System/Load"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
@@ -606,6 +669,22 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/System/Load/Button3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -32.5
+offset_right = 72.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "LOAD"
 
 [node name="Button4" type="Button" parent="Control/TabContainer/System/Load"]
 custom_minimum_size = Vector2(200, 80)
@@ -628,49 +707,22 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button5" type="Button" parent="Control/TabContainer/System/Load"]
-visible = false
-custom_minimum_size = Vector2(200, 80)
-layout_mode = 2
-text = " 
- "
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button5"]
-custom_minimum_size = Vector2(200, 64)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 8.0
-offset_right = 203.0
-offset_bottom = 72.0
-theme_override_constants/line_separation = 3
-bbcode_enabled = true
-text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button6" type="Button" parent="Control/TabContainer/System/Load"]
-visible = false
-custom_minimum_size = Vector2(200, 80)
-layout_mode = 2
-text = " 
- "
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button6"]
-custom_minimum_size = Vector2(200, 64)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 8.0
-offset_right = 203.0
-offset_bottom = 72.0
-theme_override_constants/line_separation = 3
-bbcode_enabled = true
-text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Label" type="Label" parent="Control/TabContainer/System/Load/Button4"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -32.5
+offset_right = 72.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "LOAD"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/System"]
 layout_mode = 1

@@ -49,6 +49,8 @@ func complete(_args: Dictionary = {}) -> void:
 		Steam.setAchievement( achievement )
 		Steam.storeStats()
 	
+	SaveManager.save_game( "auto" )
+	
 	completed.emit()
 	
 	var completed_quests_size = QuestSystem.get_completed_quests().size()
