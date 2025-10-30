@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bwa3jdmpvxxvu"]
+[gd_scene load_steps=17 format=4 uid="uid://bwa3jdmpvxxvu"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_2g8rj"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_gcgvm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Klardraumland/crt_shader.tres" id="7_0eggj"]
 [ext_resource type="PackedScene" uid="uid://csrhsyiqv7781" path="res://Levels/wrap_around_transition.tscn" id="8_jp6c1"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="9_cdbcb"]
+[ext_resource type="PackedScene" uid="uid://ba5e5f3bpk8i3" path="res://Enemies/Pixquitoe/pixquito.tscn" id="10_56v51"]
 
 [sub_resource type="Gradient" id="Gradient_jc7gr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -146,3 +147,24 @@ position = Vector2(999, -217)
 
 [node name="Trees2" parent="." instance=ExtResource("9_cdbcb")]
 position = Vector2(-1720, 695)
+
+[node name="Trees3" parent="." instance=ExtResource("9_cdbcb")]
+position = Vector2(2109, 1079)
+
+[node name="Pixquitoes" type="Node2D" parent="."]
+
+[node name="Pixquito" parent="Pixquitoes" instance=ExtResource("10_56v51")]
+position = Vector2(-284, -154)
+rotation = -6.2831855
+
+[node name="Pixquito2" parent="Pixquitoes" instance=ExtResource("10_56v51")]
+position = Vector2(-324, -198)
+
+[node name="Pixquito3" parent="Pixquitoes" instance=ExtResource("10_56v51")]
+position = Vector2(-336, -160)
+
+[node name="Pixquito4" parent="Pixquitoes" instance=ExtResource("10_56v51")]
+position = Vector2(-375, -198)
+
+[node name="Pixquito5" parent="Pixquitoes" instance=ExtResource("10_56v51")]
+position = Vector2(-399, -124)

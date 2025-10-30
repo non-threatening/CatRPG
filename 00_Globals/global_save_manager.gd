@@ -48,7 +48,6 @@ var save_list : Dictionary = {"_1" : ""}
 
 func _ready() -> void:
 	if not DirAccess.dir_exists_absolute( SAVE_PATH ):
-		print("NOT!")
 		DirAccess.make_dir_absolute( SAVE_PATH )
 	var file := get_save_file( "list" )
 	if file == null:

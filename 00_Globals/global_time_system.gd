@@ -47,35 +47,34 @@ func _on_game_loaded() -> void:
 
 
 func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) -> void:
-	match unit_name:
-		"day":
-			print("\n--- NEW DAY! Day %d → Day %d\n" % [old_value, new_value])
-		"hour":
-			print( unit_name, " new: ", new_value, " old: ", old_value )
-		"moon":
-			if auto_save_gate == true:
+	if auto_save_gate == true:
+		match unit_name:
+			"day":
 				SaveManager.save_game( "auto" )
-			moon = new_value
-			match moon:
-				0:
-					moon_phase = "Full Moon"
-				1:
-					moon_phase = "Waxing"
-				2:
-					moon_phase = "First Quarter"
-				3:
-					moon_phase = "Waxing"
-				4:
-					moon_phase = "New Moon"
-				5:
-					moon_phase = "Waning"
-				6:
-					moon_phase = "Last Quarter"
-				7:
-					moon_phase = "Waning"
-			print("\n--- Moon Phase: ", moon_phase, " ", moon )
-		"year":
-			print( "YEAR!" )
+			#"hour":
+				#print( unit_name, " new: ", new_value, " old: ", old_value )
+			"moon":
+				moon = new_value
+				match moon:
+					0:
+						moon_phase = "Full Moon"
+					1:
+						moon_phase = "Waxing"
+					2:
+						moon_phase = "First Quarter"
+					3:
+						moon_phase = "Waxing"
+					4:
+						moon_phase = "New Moon"
+					5:
+						moon_phase = "Waning"
+					6:
+						moon_phase = "Last Quarter"
+					7:
+						moon_phase = "Waning"
+				print("\n--- Moon Phase: ", moon_phase, " ", moon )
+			"year":
+				print( "YEAR!" )
 
 
 

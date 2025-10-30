@@ -37,9 +37,7 @@ func enter() -> void:
 	enemy.update_animation( anim_name )
 	_can_see_player = true
 	if attack_area:
-		#attack_area.monitoring = true
-		set_deferred( "attack_area.monitoring", true ) ## or else causes damage on enter ??
-	pass
+		set_deferred( "attack_area.monitoring", true )
 
 
 ## What happens when the enemy exits this State?
@@ -55,9 +53,6 @@ func exit() -> void:
 func process( _delta : float ) -> EnemyState:
 	if PlayerManager.player.hp <= 0:
 		return next_state
-	
-	#var new_dir : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )
-	#_direction = lerp( _direction, new_dir, turn_rate )
 	_direction = lerp( _direction, pathfinder.move_dir, turn_rate )
 	enemy.velocity = _direction * chase_speed
 	

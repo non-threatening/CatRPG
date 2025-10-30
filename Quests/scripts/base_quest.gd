@@ -37,6 +37,7 @@ func complete(_args: Dictionary = {}) -> void:
 		if not step.meets_condition(): break
 	if xp > 0:
 		PlayerManager.reward_xp( xp )
+		
 	if not reward.is_empty():
 		for key in reward:
 			var value = reward[key]
@@ -45,6 +46,7 @@ func complete(_args: Dictionary = {}) -> void:
 				PlayerHud.queue_notification( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name, "s") )
 			else:
 				PlayerHud.queue_notification( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name) )
+				
 	if not achievement.is_empty():
 		Steam.setAchievement( achievement )
 		Steam.storeStats()
@@ -53,11 +55,9 @@ func complete(_args: Dictionary = {}) -> void:
 	
 	completed.emit()
 	
-	var completed_quests_size = QuestSystem.get_completed_quests().size()
-	print("completed_quests_size ", completed_quests_size + 1 )
-	Steam.setStatInt( "Q_COMPLETE", completed_quests_size + 1 )
-	
-
+	#var completed_quests_size = QuestSystem.get_completed_quests().size()
+	#print("completed_quests_size ", completed_quests_size + 1 )
+	#Steam.setStatInt( "Q_COMPLETE", completed_quests_size + 1 )
 	
 
 func get_first_uncompleted_step() -> QuestStep:
