@@ -9,13 +9,14 @@ const START_LEVEL : String = "res://Maps/Grass_shader_test_map.tscn"
 @onready var button_new: Button = $CanvasLayer/Control/ColorRect/VBox/ButtonNew
 @onready var button_continue: Button = $CanvasLayer/Control/ColorRect/VBox/ButtonContinue
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var splash_screen: Control = $CanvasLayer/SplashScreen
 
 
 
 func _ready() -> void:
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()
-	PlayerManager.player.visible = false
+	PlayerManager.player.hide()
 	
 	PlayerHud.visible = false
 	PauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
@@ -24,7 +25,8 @@ func _ready() -> void:
 		button_continue.disabled = true
 		button_continue.visible = false
 	
-	setup_title_screen()
+	#setup_title_screen()
+	splash_screen.finished.connect( setup_title_screen )
 	
 	LevelManager.level_load_started.connect( exit_title_screen )
 	
@@ -32,6 +34,8 @@ func _ready() -> void:
 
 
 func setup_title_screen() -> void:
+	print("finished")
+	splash_screen.hide()
 	button_new.pressed.connect( start_game )
 	button_continue.pressed.connect( load_game )
 	button_new.grab_focus()
@@ -62,8 +66,7 @@ func exit_title_screen() -> void:
 	PlayerManager.player.visible = true
 	PlayerHud.visible = true
 	PauseMenu.process_mode = Node.PROCESS_MODE_ALWAYS
-	
-	self.queue_free()
+	queue_free()
 	pass
 	
 	
