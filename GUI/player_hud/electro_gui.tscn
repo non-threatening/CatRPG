@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cio2ixu33svhj"]
+
+[ext_resource type="Script" uid="uid://cumt80mqw5u7t" path="res://GUI/player_hud/electro_gui.gd" id="1_aaf6x"]
+[ext_resource type="Texture2D" uid="uid://ci2habgduqh7a" path="res://GUI/player_hud/GUI-Health.png" id="2_0d7od"]
+
+[node name="Electro" type="Control"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_aaf6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0d7od")
+centered = false
+hframes = 7
+vframes = 2
+frame = 9

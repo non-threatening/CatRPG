@@ -4,6 +4,7 @@ extends CanvasLayer
 @export var button_select_audio : AudioStream = preload("res://title_scene/audio/menu_select.wav")
 
 var hearts : Array[ HeartGUI ] = []
+var electros : Array[ ElectroGUI ] = []
 
 var active_save : String = "_1"
 
@@ -36,6 +37,11 @@ func _ready() -> void:
 			hearts.append( child )
 			child.visible = false
 			
+	for c in $Control/Electros.get_children():
+		if c is ElectroGUI:
+			electros.append( c )
+			c.visible = false
+			
 	hide_game_over_screen()
 	continue_button.focus_entered.connect( play_audio.bind( button_focus_audio ) )
 	continue_button.pressed.connect( load_game )
@@ -53,21 +59,40 @@ func _ready() -> void:
 	ShopMenu.hidden.connect( _on_hide_menu )
 	
 	TimeSystem.time_tick.time_unit_changed.connect( time_display )
-	
-	
-	
+
+
+##	Electro Display
+func update_shell( _es: int, _max_es: int ) -> void:
+	update_max_es( _max_es )
+	for i in _max_es:
+		update_bolt( i, _es )
+
+
+func update_bolt( _index : int, _es : int ) -> void:
+	var _value : int = clampi( _es - _index * 2, 0, 2 ) + 7
+	electros[ _index ].value = _value
+	pass
+
+
+func update_max_es( _max_es : int ) -> void:
+	var _es_count : int = roundi( _max_es * 0.5 )
+	for i in electros.size():
+		if i < _es_count:
+			electros[i].visible = true
+		else:
+			electros[i].visible= false
+
+
+## Heart displays
 func update_hp( _hp: int, _max_hp: int ) -> void:
 	update_max_hp( _max_hp )
 	for i in _max_hp:
 		update_heart( i, _hp )
-	pass
-	
 	
 func update_heart( _index : int, _hp : int ) -> void:
-	var _value : int = clampi( _hp - _index * 2, 0, 2 )
-	hearts[ _index ].value = _value
+	var _value : int = clampi( _hp - _index * 2, 0, 2 ) ###!!! +
+	hearts[ _index ].value = _value ##Picks the frame
 	pass
-	
 	
 func update_max_hp( _max_hp : int ) -> void:
 	var _heart_count : int = roundi( _max_hp * 0.5 )

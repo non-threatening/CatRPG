@@ -41,22 +41,22 @@ void vertex() {
 
 void fragment() {
 	vec4 input_color = texture( TEXTURE, UV );
-	vec4 output_color = vec4( input_color.r, input_color.g, input_color.b, input_color.a );
-	if ( output_color.r > 0.8 && output_color.g < 0.75 && output_color.b < 0.75 ) {
-		output_color = vec4( eye_color ); // output_color is the eye isolated
+	if ( input_color.r > 0.01 && input_color.g > 0.01 && input_color.b > 0.01 && input_color.a > 0.1) {
+		COLOR.rgb = cover_color.rgb * input_color.rgb;
 	}
-	vec4 cover_eye_mix = output_color;
-
-	COLOR = cover_eye_mix * cover_color;
+	input_color = COLOR;
+	if ( input_color.r > 0.4 && input_color.g < 0.2 && input_color.b < 0.2 ) {
+		COLOR.rgba = eye_color.rgba;
+	}
 
 	float outline_mask = has_solid_neighbor( TEXTURE, UV, TEXTURE_PIXEL_SIZE );
 	float alpha_blend_factor = smoothstep( 0.0, alpha_threshold, COLOR.a );
 	COLOR.rgb = mix( outline_color.rgb, COLOR.rgb, alpha_blend_factor );
 	COLOR.a = max( COLOR.a, outline_mask );
-	
-	if ( alpha_threshold != 0.0 ){
-		vec3 inverted = 1.0 - COLOR.rgb;
-		vec3 green = inverted * vec3( 0, 0.666, 0 );
-		COLOR.rgb = green;
-		}
+
+	//if ( alpha_threshold != 0.0 ){
+		//vec3 inverted = 1.0 - COLOR.rgb;
+		//vec3 green = inverted * vec3( 0, 0.666, 0 );
+		//COLOR.rgb = green;
+		//}
 }

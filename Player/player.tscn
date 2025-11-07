@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://bpcvp55f33q1s"]
+[gd_scene load_steps=117 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://dgr8864etq4ft" path="res://Player/Audio/huwh.wav" id="20_sm0op"]
 [ext_resource type="AudioStream" uid="uid://c3gwp3c3cjfxs" path="res://Player/Audio/throw.wav" id="22_76lrf"]
 [ext_resource type="Script" uid="uid://brqohad66u14w" path="res://Player/Scripts/states/state_death.gd" id="23_efx54"]
+[ext_resource type="Script" uid="uid://6tr15mx0lxyq" path="res://Player/Scripts/states/state_electro_shell.gd" id="23_maysp"]
 [ext_resource type="AudioStream" uid="uid://ne6q0acunx70" path="res://Player/Audio/exhausted.wav" id="24_755ss"]
 [ext_resource type="Script" uid="uid://yxttc1bkcbek" path="res://Player/Scripts/states/state_dash.gd" id="27_c6x0f"]
 [ext_resource type="AudioStream" uid="uid://bsd4g0cistw3p" path="res://Player/Audio/level_up_jingle.wav" id="29_bbimk"]
@@ -45,8 +46,8 @@
 [ext_resource type="Texture2D" uid="uid://b4vhkw38nugvr" path="res://Player/Sprites/grapple.png" id="39_f4lon"]
 [ext_resource type="AudioStream" uid="uid://b8hbhokgsn50x" path="res://Player/Audio/grapple_chain.wav" id="44_dy65m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dy65m"]
-radius = 15.524853
+[sub_resource type="CircleShape2D" id="CircleShape2D_1l10g"]
+radius = 37.65634
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iyprq"]
 radius = 61.2944
@@ -56,8 +57,8 @@ shader = ExtResource("13_o28un")
 shader_parameter/outline_color = Color(0.983333, 1, 0, 1)
 shader_parameter/outline_thickness = 0.0
 shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(0.60784316, 0.40392157, 0.27058825, 1)
-shader_parameter/eye_color = Color(0, 0, 0, 1)
+shader_parameter/cover_color = Color(1, 0.6431373, 1, 1)
+shader_parameter/eye_color = Color(1, 1, 1, 1)
 shader_parameter/x = 0.8
 shader_parameter/y = 1.2
 shader_parameter/time_scale = 2.666
@@ -294,12 +295,8 @@ _data = {
 &"no_attack": SubResource("Animation_on6it")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jiql5"]
-radius = 27.0417
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n471f"]
-radius = 17.0
-height = 111.082
+[sub_resource type="CircleShape2D" id="CircleShape2D_maysp"]
+radius = 43.104523
 
 [sub_resource type="Gradient" id="Gradient_gpjlu"]
 offsets = PackedFloat32Array(0, 0.852632)
@@ -322,9 +319,16 @@ scale_min = 2.0
 scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_8mwp6")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jiql5"]
+radius = 27.0417
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n471f"]
+radius = 17.0
+height = 111.082
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwjto"]
-radius = 34.0
-height = 68.0
+radius = 28.000023
+height = 56.000046
 
 [sub_resource type="Animation" id="Animation_sm0op"]
 length = 0.001
@@ -3287,17 +3291,14 @@ size = Vector2(21, 27)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
-position = Vector2(0, 10)
 collision_mask = 24
 motion_mode = 1
 wall_min_slide_angle = 0.174533
 script = ExtResource("1_t577b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1, -9.5)
-scale = Vector2(1.98626, 1.25303)
-shape = SubResource("CircleShape2D_dy65m")
+position = Vector2(-1, -19)
+shape = SubResource("CircleShape2D_1l10g")
 debug_color = Color(0.415, 0.502, 0.879, 0.419)
 
 [node name="Direction" type="Marker2D" parent="."]
@@ -3348,6 +3349,22 @@ libraries = {
 }
 autoplay = "no_attack"
 
+[node name="ElectroShellHurtBox" parent="Sprite2D" instance=ExtResource("10_q6j84")]
+visible = false
+collision_mask = 256
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ElectroShellHurtBox"]
+position = Vector2(0, -27)
+shape = SubResource("CircleShape2D_maysp")
+debug_color = Color(0.5620224, 0.54661584, 0.34310177, 0.41960785)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D/ElectroShellHurtBox"]
+position = Vector2(0, 24)
+amount = 13
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_gpjlu")
+
 [node name="AttackHurtBox" parent="Sprite2D" instance=ExtResource("10_q6j84")]
 unique_name_in_owner = true
 visible = false
@@ -3382,7 +3399,7 @@ process_material = SubResource("ParticleProcessMaterial_gpjlu")
 
 [node name="HitBox" parent="Sprite2D" instance=ExtResource("13_urp6f")]
 visible = false
-position = Vector2(1, -23)
+position = Vector2(-1, -27)
 rotation = 1.5708
 collision_layer = 2
 
@@ -3477,6 +3494,10 @@ script = ExtResource("8_n471f")
 sfx_charged = ExtResource("9_hshwv")
 sfx_spin = ExtResource("10_gpjlu")
 
+[node name="ElectroShell" type="Node" parent="StateMachine"]
+script = ExtResource("23_maysp")
+move_speed = 250.0
+
 [node name="Lift" type="Node" parent="StateMachine"]
 script = ExtResource("19_qemgg")
 lift_audio = ExtResource("20_sm0op")
@@ -3553,6 +3574,7 @@ libraries = {
 script = ExtResource("17_pisgm")
 
 [node name="ItemMagnet" parent="." instance=ExtResource("18_b1ygp")]
+visible = false
 position = Vector2(0, -27)
 scale = Vector2(0.831355, 0.831355)
 

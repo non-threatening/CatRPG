@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://bcpyr1vq1ulx3"]
+[gd_scene load_steps=30 format=3 uid="uid://bcpyr1vq1ulx3"]
 
 [ext_resource type="Script" uid="uid://poj3adf5jpou" path="res://GUI/player_hud/player_hud.gd" id="1_oghrr"]
 [ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="2_3m3x0"]
 [ext_resource type="PackedScene" uid="uid://dkynksfn5v5fw" path="res://GUI/player_hud/heart_gui.tscn" id="2_alx7a"]
 [ext_resource type="Texture2D" uid="uid://c5p00v0ot4ayk" path="res://GUI/player_hud/boss-hp.png" id="3_4b3j6"]
 [ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="4_5bkpt"]
+[ext_resource type="PackedScene" uid="uid://cio2ixu33svhj" path="res://GUI/player_hud/electro_gui.tscn" id="4_5nb4v"]
 [ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="4_yhjvm"]
 [ext_resource type="Script" uid="uid://c1bq8ta118edn" path="res://GUI/player_hud/notifications.gd" id="6_5bkpt"]
 [ext_resource type="AudioStream" uid="uid://sksn752uya8u" path="res://GUI/player_hud/notification.wav" id="8_scbx3"]
@@ -377,9 +378,9 @@ theme = ExtResource("2_3m3x0")
 
 [node name="Hearts" type="HFlowContainer" parent="Control"]
 layout_mode = 0
-offset_left = 1040.0
+offset_left = 997.0
 offset_top = 24.0
-offset_right = 1230.0
+offset_right = 1255.0
 offset_bottom = 53.0
 theme_override_constants/h_separation = 0
 
@@ -405,97 +406,50 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Heart8" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
-visible = false
 layout_mode = 2
 
 [node name="Heart9" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
-visible = false
 layout_mode = 2
 
 [node name="Heart10" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
-visible = false
 layout_mode = 2
 
-[node name="Hearts2" type="HFlowContainer" parent="Control"]
+[node name="Electros" type="HFlowContainer" parent="Control"]
 layout_mode = 0
-offset_left = 1040.0
+offset_left = 997.0
 offset_top = 56.0
-offset_right = 1230.0
+offset_right = 1254.0
 offset_bottom = 85.0
 theme_override_constants/h_separation = 0
 
-[node name="Heart" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+[node name="Electro" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart2" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+[node name="Electro2" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart3" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+[node name="Electro3" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart4" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+[node name="Electro4" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart5" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+[node name="Electro5" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart6" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+[node name="Electro6" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart7" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
+[node name="Electro7" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart8" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
-visible = false
+[node name="Electro8" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart9" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
-visible = false
+[node name="Electro9" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
-[node name="Heart10" parent="Control/Hearts2" instance=ExtResource("2_alx7a")]
-visible = false
-layout_mode = 2
-
-[node name="Hearts3" type="HFlowContainer" parent="Control"]
-layout_mode = 0
-offset_left = 1040.0
-offset_top = 88.0
-offset_right = 1230.0
-offset_bottom = 117.0
-theme_override_constants/h_separation = 0
-
-[node name="Heart" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-layout_mode = 2
-
-[node name="Heart2" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-layout_mode = 2
-
-[node name="Heart3" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-layout_mode = 2
-
-[node name="Heart4" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-layout_mode = 2
-
-[node name="Heart5" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-layout_mode = 2
-
-[node name="Heart6" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-layout_mode = 2
-
-[node name="Heart7" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-layout_mode = 2
-
-[node name="Heart8" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-visible = false
-layout_mode = 2
-
-[node name="Heart9" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-visible = false
-layout_mode = 2
-
-[node name="Heart10" parent="Control/Hearts3" instance=ExtResource("2_alx7a")]
-visible = false
+[node name="Electro10" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
 [node name="Abilities" type="Control" parent="Control"]
@@ -723,7 +677,8 @@ script = ExtResource("6_5bkpt")
 [node name="PanelContainer" type="PanelContainer" parent="Control/NotificationControl"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 384.0
+offset_left = 16.0
+offset_right = 400.0
 offset_bottom = 120.0
 
 [node name="VBoxContainer" type="Button" parent="Control/NotificationControl/PanelContainer"]
@@ -738,16 +693,17 @@ offset_right = 320.0
 offset_bottom = 41.0
 theme_override_font_sizes/font_size = 26
 text = "Notification Type"
+vertical_alignment = 2
 autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="Control/NotificationControl/PanelContainer/VBoxContainer"]
+[node name="Label2" type="RichTextLabel" parent="Control/NotificationControl/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
 offset_right = 376.0
 offset_bottom = 97.0
-theme_override_font_sizes/font_size = 22
+bbcode_enabled = true
 text = "Notification Message dlkfj hdkfj hgsdlkfj ghdsfkj hgdkfj hgdklfj"
 autowrap_mode = 2
 
@@ -758,9 +714,9 @@ libraries = {
 
 [node name="StackedNotificationControl" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 8.0
+offset_left = 16.0
 offset_top = 200.0
-offset_right = 392.0
+offset_right = 400.0
 offset_bottom = 320.0
 script = ExtResource("8_terqw")
 
@@ -787,6 +743,7 @@ layout_mode = 2
 script = null
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0

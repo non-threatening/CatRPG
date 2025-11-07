@@ -11,6 +11,8 @@ var direction : Vector2 = Vector2.ZERO
 var invulnerable : bool = false
 var hp : int = 10
 var max_hp : int = 10
+var electro_shell : int = 0
+var max_electro_shell : int = 10
 
 var level : int = 1
 var xp : int = 0
@@ -37,6 +39,7 @@ var bomb_count : int = 10 : set = _set_bomb_count
 @onready var carry: State_Carry = $StateMachine/Carry
 @onready var idle: State_Idle = $StateMachine/Idle
 @onready var player_abilities: PlayerAbilities = $Abilities
+@onready var state_electro_shell: StateElectroShell = $StateMachine/ElectroShell
 
 @onready var bird_friend_sprite: Sprite2D = $Sprite2D/BirdFriendSprite
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
@@ -47,6 +50,7 @@ func _ready() -> void:
 	state_machine.Initialize(self)
 	hit_box.damaged.connect( _take_damage )
 	update_hp(99)
+	update_electro_shell( 0 )
 	update_damage_values()
 	hide_bird_friend()
 	PlayerManager.player_leveled_up.connect( _on_player_leveled_up )
@@ -97,8 +101,10 @@ func _interact_pressed() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("test"):
-		PlayerManager.shake_camera()
+	#if event.is_action_pressed("test"):
+		#PlayerManager.shake_camera()
+	if Input.is_action_pressed("test"): 
+		state_machine.change_state( state_electro_shell ) ## this should be in the respective states
 
 
 
@@ -152,6 +158,11 @@ func update_hp( delta : int ) -> void:
 	hp = clampi( hp + delta, 0, max_hp )
 	PlayerHud.update_hp( hp, max_hp )
 	pass
+
+
+func update_electro_shell( delta : int ) -> void:
+	electro_shell = clampi( electro_shell + delta, 0, max_electro_shell)
+	PlayerHud.update_shell( electro_shell, max_electro_shell )
 	
 	
 func make_invulnerable( _duration : float = 1.0 ) -> void:
