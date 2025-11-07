@@ -9,7 +9,7 @@
 [ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Klardraumland/crt_shader.tres" id="7_0eggj"]
 [ext_resource type="PackedScene" uid="uid://csrhsyiqv7781" path="res://Levels/wrap_around_transition.tscn" id="8_jp6c1"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="9_cdbcb"]
-[ext_resource type="PackedScene" uid="uid://ba5e5f3bpk8i3" path="res://Enemies/Pixquitoe/pixquito.tscn" id="10_56v51"]
+[ext_resource type="Script" uid="uid://cl8p050f11rpa" path="res://Maps/Klardraumland/pixquito_spawner.gd" id="10_dx835"]
 
 [sub_resource type="Gradient" id="Gradient_jc7gr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -33,7 +33,7 @@ noise = SubResource("FastNoiseLite_0eggj")
 shader = ExtResource("1_yb7pt")
 shader_parameter/color = Color(0, 0.11764706, 0.12156863, 1)
 shader_parameter/lineWidth = 0.10000000149012
-shader_parameter/size = Vector2(64, 40)
+shader_parameter/size = Vector2(60, 38)
 shader_parameter/noise = SubResource("NoiseTexture2D_gxhnc")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_d4krf")
 shader_parameter/edge_fade = 0.0
@@ -67,13 +67,20 @@ color = Color(0.0426667, 0, 0.16, 1)
 [node name="Grid" type="ColorRect" parent="."]
 z_index = -1
 material = SubResource("ShaderMaterial_jp6c1")
-offset_left = -3840.0
-offset_top = -2400.0
-offset_right = 3840.0
-offset_bottom = 2400.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3825.0
+offset_top = -2390.0
+offset_right = 3855.0
+offset_bottom = 2410.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_abty2")]
-position = Vector2(296, 70)
+position = Vector2(655, -405)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 material = ExtResource("7_0eggj")
@@ -89,6 +96,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Flowers" type="Node2D" parent="."]
+position = Vector2(-625, -11)
 
 [node name="Flower" parent="Flowers" instance=ExtResource("4_abty2")]
 position = Vector2(248, -122)
@@ -114,17 +122,17 @@ position = Vector2(58, -123)
 [node name="Flower8" parent="Flowers" instance=ExtResource("4_abty2")]
 position = Vector2(8, -122)
 
-[node name="WrapArounds" type="Node" parent="."]
-
-[node name="LevelTransition" parent="WrapArounds" instance=ExtResource("5_jc7gr")]
+[node name="LevelTransition" parent="Flowers" instance=ExtResource("5_jc7gr")]
 position = Vector2(8, -77)
+portal_dir = 1
 level = "uid://ly7wguh1ufuy"
-center_player = true
 size = 1
 side = 2
 
+[node name="WrapArounds" type="Node" parent="."]
+
 [node name="WrapAroundTransition" parent="WrapArounds" instance=ExtResource("8_jp6c1")]
-position = Vector2(3132, 18)
+position = Vector2(3171, 18)
 size = 76
 side = 1
 
@@ -142,7 +150,7 @@ position = Vector2(30, 1817)
 size = 120
 side = 3
 
-[node name="Trees" parent="." instance=ExtResource("9_cdbcb")]
+[node name="TheTreeOfLeaving" parent="." instance=ExtResource("9_cdbcb")]
 position = Vector2(999, -217)
 
 [node name="Trees2" parent="." instance=ExtResource("9_cdbcb")]
@@ -152,19 +160,4 @@ position = Vector2(-1720, 695)
 position = Vector2(2109, 1079)
 
 [node name="Pixquitoes" type="Node2D" parent="."]
-
-[node name="Pixquito" parent="Pixquitoes" instance=ExtResource("10_56v51")]
-position = Vector2(-284, -154)
-rotation = -6.2831855
-
-[node name="Pixquito2" parent="Pixquitoes" instance=ExtResource("10_56v51")]
-position = Vector2(-324, -198)
-
-[node name="Pixquito3" parent="Pixquitoes" instance=ExtResource("10_56v51")]
-position = Vector2(-336, -160)
-
-[node name="Pixquito4" parent="Pixquitoes" instance=ExtResource("10_56v51")]
-position = Vector2(-375, -198)
-
-[node name="Pixquito5" parent="Pixquitoes" instance=ExtResource("10_56v51")]
-position = Vector2(-399, -124)
+script = ExtResource("10_dx835")

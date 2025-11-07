@@ -4,7 +4,7 @@ var notification_queue : Array
 
 @onready var panel_container: PanelContainer = $PanelContainer
 @onready var title_label: Label = $PanelContainer/VBoxContainer/Label
-@onready var message_label: Label = $PanelContainer/VBoxContainer/Label2
+@onready var message_label: RichTextLabel = $PanelContainer/VBoxContainer/Label2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 

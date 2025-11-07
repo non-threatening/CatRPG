@@ -129,7 +129,7 @@ text = " New Game "
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = " Continue"
+text = " Continue "
 
 [node name="SplashScreen" parent="CanvasLayer" instance=ExtResource("7_fkwea")]
 

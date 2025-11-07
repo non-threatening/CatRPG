@@ -20,6 +20,7 @@ func _ready() -> void:
 	time_tick.register_time_unit("hour", "minute", 60, 24, 0)
 	# 24 hours = 1 day, starts at day 1, no wrap
 	time_tick.register_time_unit("day", "hour", 24, 365, 1)
+	# 1 moon phase 3.5 days, 8 phases in a 28 day month
 	time_tick.register_time_unit("moon", "hour", 84, 84, 0)
 	time_tick.register_time_unit("month", "day", 28, 28, 0)
 	time_tick.register_time_unit( "year", "day", 365, 365, 1 )

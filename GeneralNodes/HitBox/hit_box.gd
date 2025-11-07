@@ -8,5 +8,4 @@ func _ready() -> void:
 
 
 func take_damage( hurt_box : HurtBox ) -> void:
-	print( "take_damage: ", hurt_box )
 	damaged.emit( hurt_box )
