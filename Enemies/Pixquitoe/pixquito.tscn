@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ba5e5f3bpk8i3"]
+[gd_scene load_steps=39 format=3 uid="uid://ba5e5f3bpk8i3"]
 
 [ext_resource type="Script" uid="uid://b8214atadhq7u" path="res://Enemies/Pixquitoe/pixquitoe.gd" id="1_mk43a"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_eaod3"]
@@ -13,8 +13,6 @@
 [ext_resource type="Script" uid="uid://bdfvfjhvnnpf5" path="res://Enemies/Scripts/drop_data.gd" id="13_cmxhe"]
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="14_eqclk"]
 [ext_resource type="Script" uid="uid://bvtthnnq0xynw" path="res://Enemies/Pixquitoe/pixquitoe_state_chase.gd" id="14_mk43a"]
-[ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="15_guhch"]
-[ext_resource type="Texture2D" uid="uid://dalyj6duug8yd" path="res://Enemies/Slime/destroy.png" id="17_oj66d"]
 [ext_resource type="PackedScene" uid="uid://danwl1nkjj72k" path="res://Enemies/vision_area.tscn" id="18_wd6qg"]
 [ext_resource type="PackedScene" uid="uid://ckv0vcfluyvx2" path="res://Enemies/pathfinder.tscn" id="19_eu3tq"]
 
@@ -22,13 +20,13 @@
 radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_whlsh"]
-offsets = PackedFloat32Array(0, 0.8645833)
-colors = PackedColorArray(0, 1, 0.01666665, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.2764706, 0.6647059)
+colors = PackedColorArray(0, 1, 0.01666665, 1, 0.5921569, 1, 0.6, 0.2509804, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dd26p"]
 gradient = SubResource("Gradient_whlsh")
-width = 8
-height = 8
+width = 32
+height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -72,6 +70,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 11)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hvprn"]
@@ -154,203 +164,44 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ke740"]
 resource_name = "destroy_down"
-tracks/0/type = "value"
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("AudioStreamPlayer2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_ahd4u")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer2D")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("7_rlhit")
 }],
-"times": PackedFloat32Array(0.1)
-}
-tracks/3/use_blend = true
-tracks/4/type = "animation"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("DestroyEffectSprite/AnimationPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": PackedStringArray("destroy"),
 "times": PackedFloat32Array(0)
 }
-
-[sub_resource type="Animation" id="Animation_2vvwu"]
-resource_name = "destroy_side"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
+tracks/0/use_blend = true
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/path = NodePath("Sprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(1, 1), Vector2(2, 2)]
 }
-tracks/2/type = "audio"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/path = NodePath("Sprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_ahd4u")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer2D")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("7_rlhit")
-}],
-"times": PackedFloat32Array(0.1)
-}
-tracks/3/use_blend = true
-tracks/4/type = "animation"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("DestroyEffectSprite/AnimationPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": PackedStringArray("destroy"),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_ts4pi"]
-resource_name = "destroy_up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_ahd4u")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer2D")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("7_rlhit")
-}],
-"times": PackedFloat32Array(0.1)
-}
-tracks/3/use_blend = true
-tracks/4/type = "animation"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("DestroyEffectSprite/AnimationPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": PackedStringArray("destroy"),
-"times": PackedFloat32Array(0)
+"values": [Color(1, 1, 1, 1), Color(4.415934, 4.415934, 1.2416996, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0ae7n"]
@@ -620,6 +471,90 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_mk43a"]
+resource_name = "destroy_up"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_rlhit")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(4.415934, 4.415934, 1.2416996, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yuuiu"]
+resource_name = "destroy_side"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_rlhit")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(4.415934, 4.415934, 1.2416996, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3of0s"]
 _data = {
 &"RESET": SubResource("Animation_wyclx"),
@@ -627,8 +562,8 @@ _data = {
 &"chase_side": SubResource("Animation_p257j"),
 &"chase_up": SubResource("Animation_r3i0u"),
 &"destroy_down": SubResource("Animation_ke740"),
-&"destroy_side": SubResource("Animation_2vvwu"),
-&"destroy_up": SubResource("Animation_ts4pi"),
+&"destroy_side": SubResource("Animation_yuuiu"),
+&"destroy_up": SubResource("Animation_mk43a"),
 &"idle_down": SubResource("Animation_0ae7n"),
 &"idle_side": SubResource("Animation_qsqqn"),
 &"idle_up": SubResource("Animation_mjfjn"),
@@ -643,77 +578,11 @@ _data = {
 [sub_resource type="Resource" id="Resource_ts4pi"]
 script = ExtResource("13_cmxhe")
 item = ExtResource("14_eqclk")
-max_amount = 4
+probability = 25.0
 metadata/_custom_type_script = "uid://bdfvfjhvnnpf5"
-
-[sub_resource type="Resource" id="Resource_2vvwu"]
-script = ExtResource("13_cmxhe")
-item = ExtResource("15_guhch")
-probability = 33.0
-metadata/_custom_type_script = "uid://bdfvfjhvnnpf5"
-
-[sub_resource type="Animation" id="Animation_mmn81"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_gorp7"]
-resource_name = "destroy"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ljnrh"]
-_data = {
-&"RESET": SubResource("Animation_mmn81"),
-&"destroy": SubResource("Animation_gorp7")
-}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yuuiu"]
-radius = 64.0
+radius = 128.0
 
 [node name="Pixquito" type="CharacterBody2D"]
 collision_layer = 256
@@ -721,7 +590,6 @@ collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_mk43a")
 hp = 1
-xp_reward = 2
 
 [node name="HurtBox" parent="." instance=ExtResource("2_eaod3")]
 visible = false
@@ -731,6 +599,7 @@ shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(0.940365, 0.167688, 0.443471, 0.286275)
 
 [node name="HitBox" parent="." instance=ExtResource("3_vl4f0")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_dkpye")
@@ -760,15 +629,14 @@ shape = SubResource("CircleShape2D_mk43a")
 libraries = {
 &"": SubResource("AnimationLibrary_3of0s")
 }
-autoplay = "idle_down"
 
 [node name="EnemyStateMachine" type="Node" parent="."]
 script = ExtResource("8_6c7gn")
 
 [node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_idle_state")]
 script = ExtResource("9_8yj1t")
-state_duration_min = 1.6
-state_duration_max = 1.6
+state_duration_min = 0.7
+state_duration_max = 0.7
 after_idle_state = NodePath("../Wander")
 
 [node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
@@ -781,29 +649,17 @@ next_state = NodePath("../Chase")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("12_1vg0v")
-drops = Array[ExtResource("13_cmxhe")]([SubResource("Resource_ts4pi"), SubResource("Resource_2vvwu")])
+drops = Array[ExtResource("13_cmxhe")]([SubResource("Resource_ts4pi")])
 
 [node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
 script = ExtResource("14_mk43a")
+chase_speed = 420.0
 vision_area = NodePath("../../VisionArea")
 attack_area = NodePath("../../Sprite2D/AttackHurtBox")
-state_aggro_duration = 10.0
 next_state = NodePath("../Idle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 4
-
-[node name="DestroyEffectSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-1, -7)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("17_oj66d")
-hframes = 6
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffectSprite"]
-libraries = {
-&"": SubResource("AnimationLibrary_ljnrh")
-}
 
 [node name="VisionArea" parent="." instance=ExtResource("18_wd6qg")]
 
@@ -812,4 +668,3 @@ shape = SubResource("CircleShape2D_yuuiu")
 debug_color = Color(0.9751809, 0, 0.38230178, 0)
 
 [node name="Pathfinder" parent="." instance=ExtResource("19_eu3tq")]
-visible = false

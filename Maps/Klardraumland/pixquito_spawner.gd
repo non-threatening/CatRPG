@@ -7,21 +7,16 @@ const PIXQUITO = preload("uid://ba5e5f3bpk8i3")
 
 func _ready() -> void:
 	count()
-	pass
+
 
 func count() -> void:
-	if pixquitoes.get_children().size() < 10:
-
+	if pixquitoes.get_children().size() < 50:
 		spawn()
-	await get_tree().create_timer( 13 ).timeout
+	await get_tree().create_timer( 5 ).timeout
 	count()
-	pass
 
 
 func spawn() -> void:
-	
-	
-	
 	var new_pixquito : Pixquitoe = PIXQUITO.instantiate()
 	pixquitoes.add_child( new_pixquito )
 	new_pixquito.initialize()
