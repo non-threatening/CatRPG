@@ -4,7 +4,7 @@ var time_tick: TimeTick
 var moon : int = 0
 var moon_phase : String = "Full Moon"
 
-var auto_save_gate : bool = false
+var time_gate : bool = false
 
 func _ready() -> void:
 	# Create and initialize TimeTick
@@ -30,12 +30,13 @@ func _ready() -> void:
 	SaveManager.game_loaded.connect( _on_game_loaded )
 	
 	## 66.6 is about 10 minutes every 9 seconds
+	## One day game time is about 21.2 minutes
 	time_tick.set_time_scale(66.6) 
 
 	## New game
 	time_tick.set_time_units({
-		"day": 364,
-		"hour": 23,
+		"day": 0,
+		"hour": 12,
 		"minute": 0,
 		"moon": 0,
 		"month": 0,
@@ -43,12 +44,12 @@ func _ready() -> void:
 	})
 
 func _on_game_loaded() -> void:
-	auto_save_gate = true
+	time_gate = true
 	pass
 
 
 func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) -> void:
-	if auto_save_gate == true:
+	if time_gate == true:
 		match unit_name:
 			"day":
 				SaveManager.save_game( "auto" )

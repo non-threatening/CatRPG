@@ -3595,7 +3595,6 @@ text = "Level UP"
 horizontal_alignment = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
 position = Vector2(0, -1)
 emitting = false
 amount = 100

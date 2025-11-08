@@ -68,7 +68,6 @@ func process( _delta : float ) -> State:
 			timer = 0
 			charge_complete()
 			player.update_electro_shell( 1 )
-	## use an elif and have a different animation while charging and being charged
 	
 	if disipation_timer > 0:
 		disipation_timer -= _delta
@@ -78,9 +77,10 @@ func process( _delta : float ) -> State:
 				disipation_timer = disipation_duration
 				if player.electro_shell == 0:
 					discharge()
+					
 
 
-
+	## change to an elif and have a different animation while charging
 	if is_attacking == false:
 		if player.direction == Vector2.ZERO: #not pushing in any direction
 			walking = false
