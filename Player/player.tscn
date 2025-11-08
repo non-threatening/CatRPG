@@ -3297,6 +3297,7 @@ wall_min_slide_angle = 0.174533
 script = ExtResource("1_t577b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -19)
 shape = SubResource("CircleShape2D_1l10g")
 debug_color = Color(0.415, 0.502, 0.879, 0.419)

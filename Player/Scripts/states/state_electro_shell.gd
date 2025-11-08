@@ -1,11 +1,13 @@
 class_name StateElectroShell extends State
 
 @export var charge_duration : float = 3.0
+@export var disipation_duration : float = 20.0
 @export var move_speed : float =  200.0
 @export var sfx_charged : AudioStream
 @export var sfx_spin : AudioStream
 
 var timer : float = 0.0
+var disipation_timer : float = 20
 var walking : bool = false
 var is_attacking : bool = false
 var particles : ParticleProcessMaterial
@@ -37,6 +39,7 @@ func init() -> void:
 
 func enter() -> void:
 	timer = charge_duration
+	disipation_timer = disipation_duration
 	is_attacking = false
 	walking = false
 	electro_shell_hurt_box.damage = 0
@@ -65,9 +68,19 @@ func process( _delta : float ) -> State:
 			timer = 0
 			charge_complete()
 			player.update_electro_shell( 1 )
-
-		##	Put special chagering animation inside timer change function
+	## use an elif and have a different animation while charging and being charged
 	
+	if disipation_timer > 0:
+		disipation_timer -= _delta
+		if disipation_timer <= 0:
+			if player.electro_shell > 0:
+				player.update_electro_shell( -1 )
+				disipation_timer = disipation_duration
+				if player.electro_shell == 0:
+					discharge()
+
+
+
 	if is_attacking == false:
 		if player.direction == Vector2.ZERO: #not pushing in any direction
 			walking = false
@@ -101,9 +114,7 @@ func handle_input( _event: InputEvent ) -> State:
 	return null
 
 
-
 func shell_touch() -> void:
-	## BZZZZZT noise / flash
 	if player.electro_shell > 0:
 		player.update_electro_shell( -1 )
 		if player.electro_shell <= 0:
