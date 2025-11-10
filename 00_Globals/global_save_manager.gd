@@ -43,6 +43,7 @@ var current_save : Dictionary = {
 		music = 0.5,
 		talk_speed = 0.01
 	},
+	stats = {}
 }
 var save_list : Dictionary = {"_1" : ""}
 
@@ -82,6 +83,7 @@ func save_game( _number ) -> void:
 	update_item_data()
 	update_quest_data()
 	update_options_data()
+	update_stats()
 	
 	var file := FileAccess.open( SAVE_PATH + _number + "_save.sav", FileAccess.WRITE )
 	var save_json = JSON.stringify( current_save )
@@ -116,6 +118,9 @@ func load_game( _number ) -> void:
 	p.defense = current_save.player.defense
 	p.arrow_count = current_save.player.arrow_count
 	p.bomb_count = current_save.player.bomb_count
+	
+	var s : Dictionary = StatsManager.stats
+	s.stats = current_save.stats
 	
 	# Options Menu
 	master = current_save.options.master
@@ -213,6 +218,10 @@ func update_quest_data() -> void:
 	var pool_state = QuestSystem.pool_state_as_dict()
 	current_save.quest_data = quest_data 
 	current_save.pool_state = pool_state
+
+
+func update_stats() -> void:
+	current_save.stats = StatsManager.stats
 
 
 func add_persistant_value( value : String ) -> void:

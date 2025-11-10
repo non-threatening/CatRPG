@@ -31,10 +31,14 @@ func enter() -> void:
 	disable_hurt_box()
 	drop_items()
 	PlayerManager.reward_xp( enemy.xp_reward )
+	
+	var kill_name : String = (
+		get_parent().get_parent().get_script().get_global_name().to_lower()
+	)
+	StatsManager.enemy_stat_count( str( kill_name ) )
 	pass
 	
-	
-##
+
 func exit() -> void:
 	pass
 		
@@ -64,7 +68,7 @@ func _on_animation_finished( _0 : String ) -> void:
 func disable_hurt_box() -> void:
 	var hurt_box : HurtBox = enemy.get_node_or_null("HurtBox")
 	if hurt_box:
-		hurt_box.monitoring = false
+		set_deferred( "hurt_box.monitoring", false)
 	
 	
 
