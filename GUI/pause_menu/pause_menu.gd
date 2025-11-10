@@ -103,7 +103,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		
 func show_pause_menu() -> void:
-	get_viewport().gui_focus_changed.connect( load_focus )
+	if not get_viewport().gui_focus_changed.is_connected( load_focus ):
+		get_viewport().gui_focus_changed.connect( load_focus )
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()
 	visible = true
@@ -154,7 +155,6 @@ func show_pause_menu() -> void:
 	
 
 func hide_pause_menu() -> void:
-	#get_viewport().gui_focus_changed.disconnect( load_focus )
 	get_tree().paused = false
 	TimeSystem.time_tick.resume()
 	visible = false
@@ -194,6 +194,7 @@ func _on_save_confirmed( _number ) -> void:
 			load_button_4.set_disabled( false )
 			button_4.text = "Save
 			Over"
+	disconnect_confirm()
 	hide_pause_menu()
 	pass
 	
@@ -216,9 +217,16 @@ func _on_load_confirmed( _number ) -> void:
 	SaveManager.load_game( _number )
 	PlayerHud.active_save = _number
 	await LevelManager.level_load_started
+	disconnect_confirm()
 	hide_pause_menu()
-	pass
-	
+
+
+func disconnect_confirm() -> void:
+	if dialog.confirmed.is_connected( _on_load_confirmed ):
+		dialog.confirmed.disconnect( _on_load_confirmed )
+	if dialog.confirmed.is_connected( _on_save_confirmed ):
+		dialog.confirmed.disconnect( _on_save_confirmed )
+
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
