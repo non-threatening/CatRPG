@@ -59,6 +59,7 @@ func _ready() -> void:
 	ShopMenu.hidden.connect( _on_hide_menu )
 	
 	TimeSystem.time_tick.time_unit_changed.connect( time_display )
+	time_display("minute", 0, 0)
 
 
 ##	Electro Display

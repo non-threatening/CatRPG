@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://c57u3p620us0u"]
+
+[ext_resource type="Shader" uid="uid://e0qbtnkfl2ip" path="res://Maps/shadows.gdshader" id="1_yyswi"]
+
+[sub_resource type="Gradient" id="Gradient_yyswi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_78k38"]
+gradient = SubResource("Gradient_yyswi")
+fill_to = Vector2(0.47368422, 0)
+
+[resource]
+shader = ExtResource("1_yyswi")
+shader_parameter/color = Color(0, 0, 0.34, 0.1254902)
+shader_parameter/angle = 223.63601062271
+shader_parameter/max_dist = 36.00000171
+shader_parameter/gradientTexture = SubResource("GradientTexture2D_78k38")

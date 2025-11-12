@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=39 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
-[ext_resource type="Shader" uid="uid://w4m68pkampei" path="res://Maps/Enviroment/Plants/Grid.gdshader" id="3_70lcl"]
+[ext_resource type="Script" uid="uid://d00db08v22b4c" path="res://Maps/lighting_shadows.gd" id="3_4uvlv"]
 [ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="4_4uvlv"]
+[ext_resource type="Material" uid="uid://c57u3p620us0u" path="res://Maps/shadows.tres" id="4_70lcl"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="5_g0pye"]
 [ext_resource type="PackedScene" uid="uid://biuvt1eo6nfpj" path="res://Maps/Enviroment/Plants/Grass/grass_blade.tscn" id="6_srkr2"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="7_qhnrh"]
@@ -29,33 +30,6 @@
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="29_70lcl"]
 [ext_resource type="PackedScene" uid="uid://fnb335xp2rg4" path="res://Maps/Enviroment/objects/terminal_interface.tscn" id="31_g0pye"]
-
-[sub_resource type="Gradient" id="Gradient_v347e"]
-colors = PackedColorArray(0, 0.569945, 0.609093, 1, 0.307722, 0.598821, 0.574173, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_v347e"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5tx25"]
-noise = SubResource("FastNoiseLite_v347e")
-color_ramp = SubResource("Gradient_v347e")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_k1c8l"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_70lcl"]
-noise = SubResource("FastNoiseLite_k1c8l")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxhnc"]
-shader = ExtResource("3_70lcl")
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/lineWidth = 0.5
-shader_parameter/size = Vector2(50, 50)
-shader_parameter/noise = SubResource("NoiseTexture2D_5tx25")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_70lcl")
-shader_parameter/edge_fade = 0.0
-shader_parameter/wave_speed = 0.1
-shader_parameter/blur_amount = 0.0
-shader_parameter/mix_amount = 0.0
-shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5fwb"]
 radius = 73.552704
@@ -90,21 +64,14 @@ position = Vector2(0, -1)
 script = ExtResource("1_t22hv")
 metadata/_edit_vertical_guides_ = [2699.0]
 
+[node name="LightingShadows" type="Polygon2D" parent="."]
+material = ExtResource("4_70lcl")
+polygon = PackedVector2Array(-24, -252, 1591, -252, 1583, 836, -6, 836)
+script = ExtResource("3_4uvlv")
+
 [node name="Dungeon01" parent="." instance=ExtResource("2_5tx25")]
 z_index = -1
 tile_map_data = PackedByteArray("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AABLABkAAQAIAAcAAABMABkAAQAIAAcAAABNABkAAQAIAAcAAABOABkAAQAIAAcAAABPABkAAQAIAAcAAABQABkAAQAIAAcAAABRABkAAQAIAAcAAABSABkAAQAIAAcAAABTABkAAQAIAAcAAABTAOL/AQAIAAcAAABTAOP/AQAIAAcAAABTAOT/AQAIAAcAAABTAOX/AQAIAAcAAABTAOb/AQAIAAcAAABTAOf/AQAIAAcAAABTAOj/AQAIAAcAAABTAOn/AQAIAAcAAABTAOr/AQAIAAcAAABTAOv/AQAIAAcAAABTAOz/AQAIAAcAAABTAO3/AQAIAAcAAABTAO7/AQAIAAcAAABTAO//AQAIAAcAAABTAPD/AQAIAAcAAABTAPH/AQAIAAcAAABTAPL/AQAIAAcAAABTAPP/AQAIAAcAAABTAPT/AQAIAAcAAABTAPX/AQAIAAcAAABTAPb/AQAIAAcAAABTAPf/AQAIAAcAAABTAPj/AQAIAAcAAABTAPn/AQAIAAcAAABTAPr/AQAIAAcAAABTAPv/AQAIAAcAAABTAPz/AQAIAAcAAABTAP3/AQAIAAcAAABTAP7/AQAIAAcAAABTAP//AQAIAAcAAABTAAAAAQAIAAcAAABTAAEAAQAIAAcAAABTAAIAAQAIAAcAAABTAAMAAQAIAAcAAABTAAQAAQAIAAcAAABTAAUAAQAIAAcAAABTAAYAAQAIAAcAAABTAAcAAQAIAAcAAABTAAgAAQAIAAcAAABTAAkAAQAIAAcAAABTAAoAAQAIAAcAAABTAAsAAQAIAAcAAABTAAwAAQAIAAcAAABTAA0AAQAIAAcAAABTAA4AAQAIAAcAAABTAA8AAQAIAAcAAABTABAAAQAIAAcAAABTABEAAQAIAAcAAABTABIAAQAIAAcAAABTABMAAQAIAAcAAABTABQAAQAIAAcAAABTABUAAQAIAAcAAABTABYAAQAIAAcAAABTABcAAQAIAAcAAABTABgAAQAIAAcAAAAoAOL/AQAIAAcAAAAoAOP/AQAIAAcAAAAoAOT/AQAIAAcAAAAoAOX/AQAIAAcAAAAoAOb/AQAIAAcAAAAoAOf/AQAIAAcAAAAoAOj/AQAIAAcAAAAoAOn/AQAIAAcAAAAoAOr/AQAIAAcAAAAoAOv/AQAIAAcAAAAoAOz/AQAIAAcAAAAoAO3/AQAIAAcAAAAoAO7/AQAIAAcAAAAoAO//AQAIAAcAAAAoAPD/AQAIAAcAAAAoAPH/AQAIAAcAAAAoAPL/AQAIAAcAAAAoAPP/AQAIAAcAAAAoAPT/AQAIAAcAAAAoAPX/AQAIAAcAAAAoAPb/AQAIAAcAAAAoAPf/AQAIAAcAAAApAOL/AQAIAAcAAAAqAOL/AQAIAAcAAAArAOL/AQAIAAcAAAAsAOL/AQAIAAcAAAAtAOL/AQAIAAcAAAAuAOL/AQAIAAcAAAAvAOL/AQAIAAcAAAAwAOL/AQAIAAcAAAAxAOL/AQAIAAcAAAAyAOL/AQAIAAcAAAAzAOL/AQAIAAcAAAA0AOL/AQAIAAcAAAA1AOL/AQAIAAcAAAA2AOL/AQAIAAcAAAA3AOL/AQAIAAcAAAA4AOL/AQAIAAcAAAA5AOL/AQAIAAcAAAA6AOL/AQAIAAcAAAA7AOL/AQAIAAcAAAA8AOL/AQAIAAcAAAA9AOL/AQAIAAcAAAA+AOL/AQAIAAcAAAA/AOL/AQAIAAcAAABAAOL/AQAIAAcAAABBAOL/AQAIAAcAAABCAOL/AQAIAAcAAABDAOL/AQAIAAcAAABEAOL/AQAIAAcAAABFAOL/AQAIAAcAAABGAOL/AQAIAAcAAABHAOL/AQAIAAcAAABIAOL/AQAIAAcAAABJAOL/AQAIAAcAAABKAOL/AQAIAAcAAABLAOL/AQAIAAcAAABMAOL/AQAIAAcAAABNAOL/AQAIAAcAAABOAOL/AQAIAAcAAABPAOL/AQAIAAcAAABQAOL/AQAIAAcAAABRAOL/AQAIAAcAAABSAOL/AQAIAAcAAAA=")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.110599995, 0.4050067, 0.79, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_gxhnc")
-offset_left = -22.0
-offset_top = -251.0
-offset_right = 1302.0
-offset_bottom = 828.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -113,8 +80,10 @@ offset_top = -225.0
 offset_right = 2655.0
 offset_bottom = 800.0
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_g0pye")]
-position = Vector2(532, -79)
+position = Vector2(838, 197)
 
 [node name="Grass" type="Node2D" parent="."]
 y_sort_enabled = true

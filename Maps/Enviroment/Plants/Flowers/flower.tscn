@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bll4i550rlr37"]
+[gd_scene load_steps=11 format=3 uid="uid://bll4i550rlr37"]
 
 [ext_resource type="Material" uid="uid://ct1qgfawmdse2" path="res://Maps/Enviroment/Plants/Flowers/flower.tres" id="1_qyvkd"]
 [ext_resource type="Script" uid="uid://btat3ybgx0y38" path="res://Maps/Enviroment/Plants/Flowers/flower.gd" id="2_sd35e"]
@@ -18,6 +18,9 @@ height = 21
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_px1lc"]
+polygon = PackedVector2Array(-1, -92.5, -1, -90.9, -3.7000008, -88.3, -7.6000004, -91.5, -12.5, -91.5, -17, -85.9, -17, -81.5, -21.6, -81.5, -22.6, -79.5, -23.6, -79.5, -23, -70.9, -28.4, -70.5, -30.4, -68.5, -29.2, -59.1, -30.3, -49.5, -30, -44.1, -23.9, -38, -24, -32.9, -22, -31.900002, -22, -30.5, -15.6, -30.5, -14, -27.300003, -7, -24.024021, -6, -6.0060043, -6, -4.504503, -20.6, -10.5, -26, -0.5999985, -26, 0.69999695, -21, 12.599998, -21, 15.900002, -11, 24.900002, -11, 26.300003, -7, 27.300003, -7, 28.5, 2.4000015, 28.5, 5.4000015, 25.5, 9.400002, 25.5, 12, 22.900002, 13.400002, 22.5, 20.5, 16.5, 22.5, 16.5, 26.5, 11.5, 28, 11.5, 28, 8.900002, 31, 5.9000015, 31, 3.0999985, 26, -1.9000015, 26, -3.9000015, 16, -4.504503, 6, -1.5015, 4, -15.400002, 8.799999, -26, 9, -24.199997, 14.200001, -25.5, 17.3, -25.5, 23.400002, -30.5, 25, -32.1, 29.199997, -38.5, 31.599998, -38.5, 33.300003, -52.5, 35, -52.5, 35, -58, 28.900002, -62.1, 30, -63.1, 30, -70.9, 28.400002, -72.5, 23.400002, -72.5, 23, -72.9, 23, -78.1, 21, -79.1, 21, -80.3, 15, -81.4, 15, -87.5, 6.5, -87.5, 5, -89.8, 5, -92.5)
 
 [node name="Flower" type="Node2D"]
 y_sort_enabled = true
@@ -49,12 +52,13 @@ texture = ExtResource("8_h4xte")
 [node name="Flower" type="Sprite2D" parent="."]
 y_sort_enabled = true
 material = ExtResource("1_qyvkd")
-scale = Vector2(0.6414893, 0.6414893)
+scale = Vector2(0.666, 0.666)
 texture = ExtResource("6_rjoxa")
 offset = Vector2(0, -32)
 script = ExtResource("2_sd35e")
 
 [node name="ShadowSprite" type="Sprite2D" parent="Flower"]
+visible = false
 z_index = -1
 position = Vector2(0, 30)
 rotation = -3.14159
@@ -68,3 +72,10 @@ position = Vector2(0, 30)
 rotation = -3.14159
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_qyvkd")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Flower"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(-1, 7.999999)
+scale = Vector2(1, 0.666)
+occluder = SubResource("OccluderPolygon2D_px1lc")

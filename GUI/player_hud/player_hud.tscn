@@ -383,6 +383,7 @@ offset_top = 24.0
 offset_right = 1255.0
 offset_bottom = 53.0
 theme_override_constants/h_separation = 0
+alignment = 2
 
 [node name="Heart" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 layout_mode = 2
@@ -421,35 +422,45 @@ offset_top = 56.0
 offset_right = 1254.0
 offset_bottom = 85.0
 theme_override_constants/h_separation = 0
+alignment = 2
 
 [node name="Electro" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 layout_mode = 2
 
 [node name="Electro2" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Electro3" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Electro4" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Electro5" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Electro6" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Electro7" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Electro8" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Electro9" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Electro10" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
 layout_mode = 2
 
 [node name="Abilities" type="Control" parent="Control"]
