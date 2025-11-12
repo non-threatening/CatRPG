@@ -29,14 +29,16 @@ func _ready() -> void:
 	time_tick.time_unit_changed.connect(_on_time_unit_changed)
 	SaveManager.game_loaded.connect( _on_game_loaded )
 	
-	## 66.6 is about 10 minutes every 9 seconds
-	## One day game time is about 21.2 minutes
+	##	66.6 is about 10 minutes every 9 seconds
+	##	One day game time is about 21.2 minutes
+	##	21.2 x 365 = 128 hours = 1 year
 	time_tick.set_time_scale(66.6) 
 
 	## New game
 	time_tick.set_time_units({
 		"day": 0,
-		"hour": 12,
+		"hour": randi_range( 1, 24 ),
+		#"hour": 0,
 		"minute": 0,
 		"moon": 0,
 		"month": 0,
@@ -52,6 +54,7 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 	if time_gate == true:
 		match unit_name:
 			"day":
+				print( " day")
 				SaveManager.save_game( "auto" )
 			#"hour":
 				#print( unit_name, " new: ", new_value, " old: ", old_value )
@@ -77,6 +80,8 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 				print("\n--- Moon Phase: ", moon_phase, " ", moon )
 			"year":
 				print( "YEAR!" )
+			_:
+				print("boom")
 
 
 

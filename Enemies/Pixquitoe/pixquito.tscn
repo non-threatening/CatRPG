@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ba5e5f3bpk8i3"]
+[gd_scene load_steps=27 format=3 uid="uid://ba5e5f3bpk8i3"]
 
 [ext_resource type="Script" uid="uid://b8214atadhq7u" path="res://Enemies/Pixquitoe/pixquitoe.gd" id="1_mk43a"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_eaod3"]
@@ -185,12 +185,16 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1), Color(4.415934, 4.415934, 1.2416996, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_wru2s"]
+resource_name = "idle_down"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3of0s"]
 _data = {
 &"RESET": SubResource("Animation_wyclx"),
 &"destroy_down": SubResource("Animation_ke740"),
 &"destroy_side": SubResource("Animation_yuuiu"),
-&"destroy_up": SubResource("Animation_mk43a")
+&"destroy_up": SubResource("Animation_mk43a"),
+&"idle_down": SubResource("Animation_wru2s")
 }
 
 [sub_resource type="Resource" id="Resource_ts4pi"]

@@ -52,9 +52,10 @@ func check_for_level_advance() -> void:
 		player.level += 1
 		player.attack += 1
 		player.defense += 1
+		player.max_hp += 2
 		player_leveled_up.emit()
 		await get_tree().process_frame
-		PlayerHud.queue_stacked_notification( "Level Up!", NumberToWords.to_words( player.level ) )
+		PlayerHud.queue_notification( "Level Up!", NumberToWords.to_words( player.level ) )
 		check_for_level_advance()
 	pass
 

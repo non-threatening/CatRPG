@@ -876,12 +876,14 @@ center_player = true
 side = 3
 
 [node name="TorchDungeon" parent="." instance=ExtResource("6_mn8mo")]
+visible = false
 position = Vector2(128, 136)
 
 [node name="TorchDungeon2" parent="." instance=ExtResource("6_mn8mo")]
 position = Vector2(120, 528)
 
 [node name="TorchDungeon3" parent="." instance=ExtResource("6_mn8mo")]
+visible = false
 position = Vector2(1024, 520)
 
 [node name="TorchDungeon4" parent="." instance=ExtResource("6_mn8mo")]

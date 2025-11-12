@@ -9,17 +9,13 @@ var push_direction : Vector2 = Vector2.ZERO : set = _set_push
 var on_target : bool = false
 
 @onready var audio : AudioStreamPlayer2D = $AudioStreamPlayer2D
-#@onready var persistent_data_handler: PersistentDataHandler = $OnTarget
 @onready var persistant_data_handler: PersistantDataHandler = $PersistantDataHandler
-
 
 
 func _ready() -> void:
 	# Set the location if saved
 	if persistant_data_handler.value == true:
 		position = persistent_location
-	pass
-
 
 
 func _physics_process( _delta: float ) -> void:
