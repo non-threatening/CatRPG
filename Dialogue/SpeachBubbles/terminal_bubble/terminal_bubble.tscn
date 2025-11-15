@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeachBubbles/portraits/cat.png" id="2_df5e2"]
 [ext_resource type="Theme" uid="uid://belqqulh7hauf" path="res://Dialogue/SpeachBubbles/terminal_bubble/terminal_bubble.tres" id="3_g5gxr"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="5_0fht5"]
-[ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Klardraumland/crt_shader.tres" id="6_7afn2"]
+[ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Worlds/Klardraumland/crt_shader.tres" id="6_7afn2"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="6_ntj65"]
 
 [node name="TerminalBubble" type="CanvasLayer"]
