@@ -29,7 +29,6 @@ func init() -> void:
 
 
 func enter() -> void:
-	print("chase")
 	##	TODO: Do a flash when we enter chase state, bling!
 	pathfinder = PATHFINDER.instantiate() as Pathfinder
 	enemy.add_child( pathfinder )

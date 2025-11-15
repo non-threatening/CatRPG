@@ -1,6 +1,7 @@
 [gd_scene load_steps=117 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
+[ext_resource type="Material" uid="uid://ikl3qglhwxv3" path="res://Player/player.tres" id="2_1l10g"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
 [ext_resource type="Texture2D" uid="uid://c14t1p7vmakho" path="res://Player/Sprites/CatSpriteSideTest.png" id="3_dy65m"]
 [ext_resource type="Texture2D" uid="uid://dhn3ppn1oma2s" path="res://Player/Sprites/AttackSprite01.png" id="3_kkg45"]
@@ -51,17 +52,6 @@ radius = 37.65634
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iyprq"]
 radius = 61.2944
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyprq"]
-shader = ExtResource("13_o28un")
-shader_parameter/outline_color = Color(0.983333, 1, 0, 1)
-shader_parameter/outline_thickness = 0.0
-shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(1, 0.6431373, 1, 1)
-shader_parameter/eye_color = Color(1, 1, 1, 1)
-shader_parameter/x = 0.8
-shader_parameter/y = 1.2
-shader_parameter/time_scale = 2.666
 
 [sub_resource type="Animation" id="Animation_xqcul"]
 length = 0.001
@@ -3019,10 +3009,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dkpta"]
-size = Vector2(90, 72)
+size = Vector2(74, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pisgm"]
-size = Vector2(80, 38)
+size = Vector2(80, 83)
 
 [sub_resource type="Animation" id="Animation_pylmc"]
 length = 0.001
@@ -3317,9 +3307,9 @@ debug_color = Color(0, 0.65, 0.205833, 0.121569)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
-material = SubResource("ShaderMaterial_iyprq")
+material = ExtResource("2_1l10g")
 texture = ExtResource("3_dy65m")
-offset = Vector2(0, -48)
+offset = Vector2(0, -56)
 hframes = 3
 vframes = 4
 script = ExtResource("4_i4o1l")
@@ -3436,7 +3426,6 @@ vframes = 3
 frame = 4
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
-visible = false
 modulate = Color(0.0354, 0.0168, 0.24, 0.141176)
 show_behind_parent = true
 position = Vector2(1, 9.000004)
@@ -3545,19 +3534,18 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
-position = Vector2(7, 3)
+position = Vector2(-1, 3)
 shape = SubResource("RectangleShape2D_dkpta")
 debug_color = Color(0.282353, 0.807843, 0.313726, 0)
 
 [node name="PushArea" type="Area2D" parent="Interactions"]
-visible = false
 collision_layer = 0
 collision_mask = 16
 monitorable = false
 script = ExtResource("14_lfmf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/PushArea"]
-position = Vector2(0, 5)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_pisgm")
 debug_color = Color(0.87, 0.261, 0.5858, 0)
 

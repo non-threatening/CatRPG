@@ -1,6 +1,8 @@
 extends Sprite2D
 
 const FRAME_COUNT : int = 128
+const PLAYER = preload("uid://b4d5u50y4e3og")
+const PLAYER_LOKTIN = preload("uid://b3iybtj0bph5k")
 
 @onready var weapon_below: Sprite2D = $Sprite2D_Weapon_Below
 @onready var weapon_above: Sprite2D = $Sprite2D_Weapon_Above
@@ -15,11 +17,11 @@ func _ready() -> void:
 func _check_level() -> void:
 	var thing = get_tree().get_current_scene().name
 	if thing == "TheLobby":
-		sprite.material.set_shader_parameter( "alpha_threshold", 0.9 )
-		sprite.material.set_shader_parameter( "cover_color", Vector4( 1, 1, 1, 1 ) )
+		sprite.material.shader = PLAYER_LOKTIN
 	else:
-		sprite.material.set_shader_parameter( "alpha_threshold", 0 )
-		sprite.material.set_shader_parameter( "cover_color", PlayerManager.player_color )
+		sprite.material.shader = PLAYER
+		#sprite.material.set_shader_parameter( "alpha_threshold", 0 )
+		#sprite.material.set_shader_parameter( "cover_color", PlayerManager.player_color )
 
 
 func _process( _delta: float ) -> void:

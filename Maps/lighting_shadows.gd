@@ -6,7 +6,7 @@ var minutes : int = 0
 var degree : int = 360
 var thing : int = 0
 var tens : int = 0
-var darkness : int = 1
+var darkness : float = 0.0
 
 @onready var canvas_modulate: CanvasModulate = $"../CanvasModulate"
 
@@ -25,7 +25,7 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 		"minute":
 			minute = new_value
 			tens = minute % 10
-
+			night_time()
 			if tens == 0:
 				minutes = hour * 60 + minute
 				thing = int( remap( minutes, 1, 1440, 0, 360 ) )
@@ -38,26 +38,33 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 				else:
 					dist2 = remap( dist, 360, 720, 40, 20  ) 
 				material.set_shader_parameter( "max_dist", dist2 )
-## CavasModulate
-			minutes = hour * 60 + minute
-			darkness = int( remap( minutes, 1, 1440, 0, 360 ) )
-			if darkness > 0 and darkness < 90:
-				canvas_modulate.show()
-				if darkness > 50:
-					canvas_modulate.color = Color.from_hsv(
-						222.0 / 360, ((darkness - 90) * -0.01) * 2, 1, 1
-					)
-					print( "midnight to dawn: ", ((darkness - 90) * -0.01) * 2 )
-			elif darkness > 90 and darkness < 180:
-				canvas_modulate.hide()
-				print( "dawn to noon" )
-			elif darkness > 180 and darkness < 270:
-				canvas_modulate.hide()
-				print( "noon til sunset" )
-			elif darkness > 270 and darkness < 360:
-				canvas_modulate.show()
-				if darkness < 312:
-					canvas_modulate.color = Color.from_hsv(
-						222.0 / 360, (darkness - 270) * 0.02, 1, 1
-					)
-					print( "sunset til midnight: ", (darkness - 270) * 0.02 )
+
+
+func night_time() -> void:
+	## CavasModulate
+	minutes = hour * 60 + minute
+	darkness = fmod( remap( minutes, 1.0, 1440.0, 0.0, 360.0 ), 360 )
+	if darkness >= 0 and darkness < 90:
+		#canvas_modulate.show()
+		if darkness <= 49:
+			canvas_modulate.color = Color.from_hsv(
+				222.0 / 360, 0.83933287004864, 1, 1
+			)
+		elif darkness > 50:
+			canvas_modulate.color = Color.from_hsv(
+				222.0 / 360, ((darkness - 90) * -0.01) * 2, 1, 1
+			)
+			
+	#elif darkness > 90 and darkness < 270:
+		#canvas_modulate.hide()
+		
+	elif darkness > 270 and darkness < 360:
+		#canvas_modulate.show()
+		if darkness >= 313:
+			canvas_modulate.color = Color.from_hsv(
+				222.0 / 360, 0.83933287004864, 1, 1
+			)
+		elif darkness < 312:
+			canvas_modulate.color = Color.from_hsv(
+				222.0 / 360, (darkness - 270) * 0.02, 1, 1
+			)

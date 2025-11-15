@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ba5e5f3bpk8i3"]
+[gd_scene load_steps=28 format=3 uid="uid://ba5e5f3bpk8i3"]
 
 [ext_resource type="Script" uid="uid://b8214atadhq7u" path="res://Enemies/Pixquitoe/pixquitoe.gd" id="1_mk43a"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_eaod3"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cwlq57dt1kpnl" path="res://Enemies/Scripts/states/enemy_state_machine.gd" id="8_6c7gn"]
 [ext_resource type="Script" uid="uid://bbw82si2vkoyy" path="res://Enemies/Pixquitoe/pixquitoe_state_wander.gd" id="8_mk43a"]
 [ext_resource type="Script" uid="uid://bwki6uuqrdqlp" path="res://Enemies/Scripts/states/enemy_state_idle.gd" id="9_8yj1t"]
-[ext_resource type="Script" uid="uid://ckbuq8824f5qe" path="res://Enemies/Scripts/states/enemy_state_stun.gd" id="11_6gl1r"]
 [ext_resource type="Script" uid="uid://c4tg0vnp4nujr" path="res://Enemies/Scripts/states/enemy_state_destroy.gd" id="12_1vg0v"]
 [ext_resource type="Script" uid="uid://bdfvfjhvnnpf5" path="res://Enemies/Scripts/drop_data.gd" id="13_cmxhe"]
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="14_eqclk"]
@@ -58,6 +57,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.64]
+}
 
 [sub_resource type="Animation" id="Animation_ke740"]
 resource_name = "destroy_down"
@@ -100,8 +111,23 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(4.415934, 4.415934, 1.2416996, 1), Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19938424),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.64, 16.0]
+}
 
-[sub_resource type="Animation" id="Animation_yuuiu"]
+[sub_resource type="Animation" id="Animation_wru2s"]
+resource_name = "idle_down"
+
+[sub_resource type="Animation" id="Animation_5kw7o"]
 resource_name = "destroy_side"
 tracks/0/type = "audio"
 tracks/0/imported = false
@@ -142,8 +168,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(4.415934, 4.415934, 1.2416996, 1), Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19938424),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.64, 16.0]
+}
 
-[sub_resource type="Animation" id="Animation_mk43a"]
+[sub_resource type="Animation" id="Animation_rxyrx"]
 resource_name = "destroy_up"
 tracks/0/type = "audio"
 tracks/0/imported = false
@@ -184,16 +222,25 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(4.415934, 4.415934, 1.2416996, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_wru2s"]
-resource_name = "idle_down"
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19938424),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.64, 16.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3of0s"]
 _data = {
 &"RESET": SubResource("Animation_wyclx"),
 &"destroy_down": SubResource("Animation_ke740"),
-&"destroy_side": SubResource("Animation_yuuiu"),
-&"destroy_up": SubResource("Animation_mk43a"),
+&"destroy_side": SubResource("Animation_5kw7o"),
+&"destroy_up": SubResource("Animation_rxyrx"),
 &"idle_down": SubResource("Animation_wru2s")
 }
 
@@ -205,6 +252,15 @@ metadata/_custom_type_script = "uid://bdfvfjhvnnpf5"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yuuiu"]
 radius = 128.0
+
+[sub_resource type="Gradient" id="Gradient_5kw7o"]
+offsets = PackedFloat32Array(0, 0.18)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wru2s"]
+gradient = SubResource("Gradient_5kw7o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Pixquito" type="CharacterBody2D"]
 collision_layer = 256
@@ -243,6 +299,7 @@ shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(0.940365, 0.167688, 0.443471, 0.286275)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 rotation = 1.5708
 shape = SubResource("CircleShape2D_mk43a")
 
@@ -263,10 +320,6 @@ after_idle_state = NodePath("../Wander")
 [node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_mk43a")
 next_state = NodePath("../Idle")
-
-[node name="Stun" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
-script = ExtResource("11_6gl1r")
-next_state = NodePath("../Chase")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("12_1vg0v")
@@ -290,3 +343,9 @@ shape = SubResource("CircleShape2D_yuuiu")
 debug_color = Color(0.9751809, 0, 0.38230178, 0)
 
 [node name="Pathfinder" parent="." instance=ExtResource("19_eu3tq")]
+visible = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.25, 1, 0, 1)
+energy = 3.64
+texture = SubResource("GradientTexture2D_wru2s")
