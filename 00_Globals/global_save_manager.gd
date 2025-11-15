@@ -16,7 +16,7 @@ var current_save : Dictionary = {
 		hour = "",
 		minute = "",
 		moon = "",
-		month = "",
+		#month = "",
 		year = ""
 	},
 	player = {
@@ -62,7 +62,6 @@ func _ready() -> void:
 	json.parse( file.get_line() )
 	var save_dict := json.get_data() as Dictionary
 	save_list = save_dict
-	
 	if save_list.size() > 1:
 		PlayerHud.active_save = save_list.active
 
@@ -132,7 +131,7 @@ func load_game( _number ) -> void:
 		"hour": current_save.time.hour,
 		"minute": current_save.time.minute,
 		"moon": current_save.time.moon,
-		"month": current_save.time.month,
+		#"month": current_save.time.month,
 		"year": current_save.time.year
 	})
 	
@@ -174,7 +173,7 @@ func update_time() -> void:
 	current_save.time.hour =  TimeSystem.time_tick.get_time_unit("hour")
 	current_save.time.minute =  TimeSystem.time_tick.get_time_unit("minute")
 	current_save.time.moon =  TimeSystem.time_tick.get_time_unit("moon")
-	current_save.time.month =  TimeSystem.time_tick.get_time_unit("month")
+	#current_save.time.month =  TimeSystem.time_tick.get_time_unit("month")
 	current_save.time.year =  TimeSystem.time_tick.get_time_unit("year")
 
 
