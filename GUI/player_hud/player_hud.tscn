@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bcpyr1vq1ulx3"]
+[gd_scene load_steps=32 format=3 uid="uid://bcpyr1vq1ulx3"]
 
 [ext_resource type="Script" uid="uid://poj3adf5jpou" path="res://GUI/player_hud/player_hud.gd" id="1_oghrr"]
 [ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="2_3m3x0"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://rp5basnb2nrj" path="res://GUI/player_hud/stacked_notification.tscn" id="9_scbx3"]
 [ext_resource type="Script" uid="uid://b1y8m1dxfykkn" path="res://00_Globals/Steam/steam_avatar.gd" id="10_terqw"]
 [ext_resource type="Texture2D" uid="uid://dx6grwyk80lvg" path="res://GUI/player_hud/MoonPhases.png" id="11_ea3vn"]
+[ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees.tres" id="14_e1kye"]
 
 [sub_resource type="Gradient" id="Gradient_rxq5y"]
 offsets = PackedFloat32Array(0, 0.436975, 0.731092)
@@ -38,9 +39,6 @@ region = Rect2(128, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ea3vn"]
 atlas = ExtResource("4_5bkpt")
 region = Rect2(128, 0, 16, 16)
-
-[sub_resource type="FontVariation" id="FontVariation_alx7a"]
-spacing_glyph = 15
 
 [sub_resource type="Animation" id="Animation_oghrr"]
 length = 0.001
@@ -362,6 +360,14 @@ _data = {
 &"show_notification": SubResource("Animation_sysqg")
 }
 
+[sub_resource type="Gradient" id="Gradient_5nb4v"]
+offsets = PackedFloat32Array(0.2311828, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0009124387, 0, 0.38307324, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e1kye"]
+gradient = SubResource("Gradient_5nb4v")
+fill_from = Vector2(0, 0.4017094)
+
 [node name="PlayerHud" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_oghrr")
@@ -415,6 +421,36 @@ layout_mode = 2
 [node name="Heart10" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
 layout_mode = 2
 
+[node name="Heart11" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart12" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart13" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart14" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart15" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart16" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart17" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart18" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart19" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
+[node name="Heart20" parent="Control/Hearts" instance=ExtResource("2_alx7a")]
+layout_mode = 2
+
 [node name="Electros" type="HFlowContainer" parent="Control"]
 layout_mode = 0
 offset_left = 997.0
@@ -460,6 +496,46 @@ visible = false
 layout_mode = 2
 
 [node name="Electro10" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro11" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro12" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro13" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro14" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro15" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro16" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro17" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro18" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro19" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
+visible = false
+layout_mode = 2
+
+[node name="Electro20" parent="Control/Electros" instance=ExtResource("4_5nb4v")]
 visible = false
 layout_mode = 2
 
@@ -575,9 +651,9 @@ offset_right = 990.5
 offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = SubResource("FontVariation_alx7a")
 theme_override_font_sizes/font_size = 160
 text = "GAME OVER"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/GameOver"]
 layout_mode = 1
@@ -589,18 +665,18 @@ anchor_bottom = 0.5
 offset_left = -130.0
 offset_top = 59.0
 offset_right = 770.0
-offset_bottom = 443.0
+offset_bottom = 315.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ContinueButton" type="Button" parent="Control/GameOver/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 160
+theme_override_font_sizes/font_size = 100
 text = "continue"
 
 [node name="TitleButton" type="Button" parent="Control/GameOver/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 160
+theme_override_font_sizes/font_size = 100
 text = "back to title"
 
 [node name="FadeToBlack" type="ColorRect" parent="Control/GameOver"]
@@ -753,7 +829,7 @@ script = null
 layout_mode = 2
 script = null
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="SteamAvatar" type="TextureRect" parent="Control"]
 visible = false
 layout_mode = 0
 offset_right = 64.0
@@ -794,3 +870,21 @@ hframes = 8
 volume_db = -10.0
 max_polyphony = 2
 bus = &"Effects"
+
+[node name="LoadingScreen" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1280.0
+offset_bottom = 800.0
+texture = SubResource("GradientTexture2D_e1kye")
+
+[node name="Label" type="Label" parent="LoadingScreen"]
+material = ExtResource("14_e1kye")
+layout_mode = 0
+offset_left = 328.0
+offset_top = 320.0
+offset_right = 966.0
+offset_bottom = 421.0
+theme_override_font_sizes/font_size = 100
+text = "Loading Screen..."
+horizontal_alignment = 1
+vertical_alignment = 1

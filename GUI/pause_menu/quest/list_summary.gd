@@ -1,6 +1,5 @@
 class_name ListSummary extends Button
 
-var quest : Quest
 
 @onready var title_label: RichTextLabel = $TitleLabel
 

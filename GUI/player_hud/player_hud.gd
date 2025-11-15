@@ -8,6 +8,11 @@ var electros : Array[ ElectroGUI ] = []
 
 var active_save : String = "_1"
 
+@onready var loading_screen: TextureRect = $LoadingScreen
+@onready var hearts_display: HFlowContainer = $Control/Hearts
+@onready var electros_display: HFlowContainer = $Control/Electros
+@onready var time: Control = $Control/Time
+
 @onready var game_over : Control = $Control/GameOver
 @onready var continue_button: Button = $Control/GameOver/VBoxContainer/ContinueButton
 @onready var title_button: Button = $Control/GameOver/VBoxContainer/TitleButton
@@ -48,6 +53,8 @@ func _ready() -> void:
 	title_button.focus_entered.connect( play_audio.bind( button_focus_audio ) )
 	title_button.pressed.connect( title_screen )
 	LevelManager.level_load_started.connect( hide_game_over_screen )
+	LevelManager.level_load_started.connect( show_loading_screen )
+	LevelManager.level_loaded.connect( hide_loading_screen )
 	
 	hide_boss_health()
 	
@@ -60,6 +67,25 @@ func _ready() -> void:
 	
 	TimeSystem.time_tick.time_unit_changed.connect( time_display )
 	time_display("minute", 0, 0)
+	time_display( "moon", TimeSystem.time_tick.get_time_unit("moon"), 0 )
+
+
+
+func show_loading_screen() -> void:
+	var tween : Tween = create_tween()
+	tween.tween_property( loading_screen, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.15 ).set_ease( Tween.EASE_IN )
+	hearts_display.hide()
+	electros_display.hide()
+	time.hide()
+
+
+func hide_loading_screen() -> void:
+	var tween : Tween = create_tween()
+	tween.tween_property( loading_screen, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.15 ).set_ease( Tween.EASE_IN )
+	hearts_display.show()
+	electros_display.show()
+	time.show()
+
 
 
 ##	Electro Display
@@ -122,13 +148,13 @@ func fade_to_black() -> bool:
 	animation_player.play("fade_to_black")
 	await animation_player.animation_finished
 	PlayerManager.player.revive_player()
-	return true	
+	return true
 	
 
 func time_display( unit_name: String, new_value: int, old_value: int ) -> void:
 	match unit_name:
 		"minute":
-			var tens = TimeSystem.time_tick.get_time_unit( "minute" ) % 10
+			var tens = new_value % 10 
 			if tens == 0:
 				var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
 				var day = TimeSystem.time_tick.get_time_unit("day")
@@ -140,7 +166,6 @@ func time_display( unit_name: String, new_value: int, old_value: int ) -> void:
 		"moon":
 			var moon = new_value
 			sprite_moon.frame = moon
-			print( "moon:", moon )
 	pass
 
 
