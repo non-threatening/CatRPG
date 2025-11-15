@@ -4,16 +4,17 @@ const QUEST_PATH: String = "res://Quests/quest_resources/%s.tres"
 
 func start_quest(quest_name: String) -> void:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)
-	PlayerHud.queue_notification( "Quest Started", quest_name.capitalize() )
 	if quest == null: return
+	PlayerHud.queue_notification( "Quest Started", quest_name.capitalize() )
 	QuestSystem.start_quest(quest)
 
 
 func complete_quest(quest_name: String) -> void:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)
-	PlayerHud.queue_notification( "Quest Complete", quest_name.capitalize() )
 	if quest == null: return
+	PlayerHud.queue_notification( "Quest Complete", quest_name.capitalize() )
 	QuestSystem.complete_quest(quest)
+	StatsManager.stats.quests_completed = QuestSystem.get_completed_quests().size()
 
 
 func update_quest(quest_name: String) -> void:

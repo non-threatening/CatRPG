@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://ia11y5hkgfa8"]
+
+[ext_resource type="Script" uid="uid://bu6em2qvt1mvx" path="res://GUI/pause_menu/stat_display_button.gd" id="1_etfwd"]
+
+[node name="DisplayStats" type="Button"]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 576.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+script = ExtResource("1_etfwd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 174.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 21
+text = "Pixquitoes Killed :"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 8.0
+offset_right = 561.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 21
+text = "One Hundered and Thirty three"
+vertical_alignment = 1

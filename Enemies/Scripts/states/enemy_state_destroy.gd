@@ -32,10 +32,10 @@ func enter() -> void:
 	drop_items()
 	PlayerManager.reward_xp( enemy.xp_reward )
 	
-	var kill_name : String = (
+	var victim : String = (
 		get_parent().get_parent().get_script().get_global_name().to_lower()
 	)
-	StatsManager.enemy_stat_count( str( kill_name ) )
+	StatsManager.enemy_stat_count( str( victim ) )
 	pass
 	
 

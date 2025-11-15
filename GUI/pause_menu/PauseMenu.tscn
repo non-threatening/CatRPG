@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=33 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="2_hio0w"]
@@ -19,6 +19,8 @@
 [ext_resource type="StyleBox" uid="uid://id0j1ev6ejo4" path="res://GUI/pause_menu/Slider.tres" id="15_320ax"]
 [ext_resource type="Script" uid="uid://cvn03p8t473fi" path="res://GUI/pause_menu/options/v_box_container_music.gd" id="15_gtmg6"]
 [ext_resource type="Script" uid="uid://de0xi2erjthqh" path="res://GUI/pause_menu/options/v_box_talk_speed.gd" id="18_1v4th"]
+[ext_resource type="Script" uid="uid://cl4hk8m1eyhh5" path="res://GUI/pause_menu/stuff.gd" id="20_awacl"]
+[ext_resource type="PackedScene" uid="uid://ia11y5hkgfa8" path="res://GUI/pause_menu/stat_display_button.tscn" id="21_5wmam"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtmg6"]
 shader = ExtResource("3_3yxpl")
@@ -112,7 +114,7 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 3
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
 visible = false
@@ -401,6 +403,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Quest" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("4_3yxpl")
 metadata/_tab_index = 1
@@ -812,6 +815,74 @@ tick_count = 9
 ticks_on_borders = true
 ticks_position = 2
 
+[node name="Stuff" type="Control" parent="Control/TabContainer"]
+layout_mode = 2
+script = ExtResource("20_awacl")
+metadata/_tab_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Stuff"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 42.0
+offset_right = 571.0
+offset_bottom = 532.0
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Stuff/ScrollContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DisplayStats" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats2" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats3" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats4" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats5" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats6" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats7" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats8" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats9" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats10" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats11" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats12" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats13" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats14" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats15" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="DisplayStats16" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control"]
 oversampling_override = 1.0
 initial_position = 1
@@ -822,9 +893,9 @@ cancel_button_text = "  Cancel  "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ConfirmationDialog"]
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 8.0
 offset_right = 322.0
-offset_bottom = 130.0
+offset_bottom = 134.0
 bbcode_enabled = true
 text = "Really overwrite save file:
 The Lobby

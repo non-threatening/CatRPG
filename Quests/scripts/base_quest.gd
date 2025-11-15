@@ -55,9 +55,7 @@ func complete(_args: Dictionary = {}) -> void:
 	
 	completed.emit()
 	
-	#var completed_quests_size = QuestSystem.get_completed_quests().size()
-	#print("completed_quests_size ", completed_quests_size + 1 )
-	#Steam.setStatInt( "Q_COMPLETE", completed_quests_size + 1 )
+
 	
 
 func get_first_uncompleted_step() -> QuestStep:
