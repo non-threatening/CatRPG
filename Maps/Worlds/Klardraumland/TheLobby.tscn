@@ -1,15 +1,17 @@
-[gd_scene load_steps=17 format=4 uid="uid://bwa3jdmpvxxvu"]
+[gd_scene load_steps=19 format=4 uid="uid://bwa3jdmpvxxvu"]
 
-[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_2g8rj"]
+[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_2g8rj"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_gcgvm"]
 [ext_resource type="Shader" uid="uid://w4m68pkampei" path="res://Maps/Enviroment/Plants/Grid.gdshader" id="1_yb7pt"]
-[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="3_abty2"]
+[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Maps/Levels/player_spawn.tscn" id="3_abty2"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="4_abty2"]
-[ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="5_jc7gr"]
-[ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Klardraumland/crt_shader.tres" id="7_0eggj"]
-[ext_resource type="PackedScene" uid="uid://csrhsyiqv7781" path="res://Levels/wrap_around_transition.tscn" id="8_jp6c1"]
+[ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Maps/Levels/level_transition.tscn" id="5_jc7gr"]
+[ext_resource type="Script" uid="uid://b43osbi7ukllb" path="res://Maps/Worlds/Klardraumland/flowers_spawner_ktl.gd" id="6_8jkbr"]
+[ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Worlds/Klardraumland/crt_shader.tres" id="7_0eggj"]
+[ext_resource type="PackedScene" uid="uid://csrhsyiqv7781" path="res://Maps/Levels/wrap_around_transition.tscn" id="8_jp6c1"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="9_cdbcb"]
-[ext_resource type="Script" uid="uid://cl8p050f11rpa" path="res://Maps/Klardraumland/pixquito_spawner.gd" id="10_dx835"]
+[ext_resource type="Script" uid="uid://cl8p050f11rpa" path="res://Maps/Worlds/Klardraumland/pixquito_spawner.gd" id="10_dx835"]
+[ext_resource type="PackedScene" uid="uid://ba5e5f3bpk8i3" path="res://Enemies/Pixquitoe/pixquito.tscn" id="10_qf45g"]
 
 [sub_resource type="Gradient" id="Gradient_jc7gr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -97,6 +99,7 @@ grow_vertical = 2
 
 [node name="Flowers" type="Node2D" parent="."]
 position = Vector2(-625, -11)
+script = ExtResource("6_8jkbr")
 
 [node name="Flower" parent="Flowers" instance=ExtResource("4_abty2")]
 position = Vector2(248, -122)
@@ -150,6 +153,12 @@ position = Vector2(30, 1817)
 size = 120
 side = 3
 
+[node name="Pixquitoes" type="Node2D" parent="."]
+script = ExtResource("10_dx835")
+
+[node name="Pixquito" parent="Pixquitoes" instance=ExtResource("10_qf45g")]
+position = Vector2(869, -474)
+
 [node name="TheTreeOfLeaving" parent="." instance=ExtResource("9_cdbcb")]
 position = Vector2(999, -217)
 
@@ -158,6 +167,3 @@ position = Vector2(-1720, 695)
 
 [node name="Trees3" parent="." instance=ExtResource("9_cdbcb")]
 position = Vector2(2109, 1079)
-
-[node name="Pixquitoes" type="Node2D" parent="."]
-script = ExtResource("10_dx835")

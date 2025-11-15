@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://csrhsyiqv7781"]
+[gd_scene load_steps=3 format=3 uid="uid://ktsnmva7j1e8"]
 
-[ext_resource type="Script" uid="uid://dex38c3tn4oge" path="res://Levels/scripts/wrap_around_transition.gd" id="1_djadn"]
+[ext_resource type="Script" uid="uid://2hvco6abb8v4" path="res://Maps/Levels/scripts/level_transition.gd" id="1_cut12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkh2t"]
 resource_local_to_scene = true
 size = Vector2(64, 128)
 
-[node name="WrapAroundTransition" type="Area2D"]
+[node name="LevelTransition" type="Area2D"]
 collision_layer = 0
 monitorable = false
-script = ExtResource("1_djadn")
+script = ExtResource("1_cut12")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-64, 0)

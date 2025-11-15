@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dr3lpovuk6pj"]
 
-[ext_resource type="Shader" uid="uid://ccmjhwpvk2cjb" path="res://Maps/Klardraumland/crt_shader.gdshader" id="1_3igsp"]
+[ext_resource type="Shader" uid="uid://ccmjhwpvk2cjb" path="res://Maps/Worlds/Klardraumland/crt_shader.gdshader" id="1_3igsp"]
 
 [resource]
 shader = ExtResource("1_3igsp")
