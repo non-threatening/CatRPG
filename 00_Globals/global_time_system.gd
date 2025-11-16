@@ -21,10 +21,10 @@ func _ready() -> void:
 	# 24 hours = 1 day, starts at day 1, no wrap
 	time_tick.register_time_unit("day", "hour", 24, 364, 1)
 	# 1 moon phase 3.5 days, 8 phases in a 28 day month
-	time_tick.register_time_unit("moon", "hour", 84, 84, 1)
+	time_tick.register_time_unit("moon", "hour", 84, 84, 0)
 	# 13 months in a year, not really counted/visible 13 * 28 = 364 days
 	#time_tick.register_time_unit("month", "day", 28, 28, 1)
-	time_tick.register_time_unit( "year", "day", 364, 364, 1 )
+	time_tick.register_time_unit( "year", "day", 364, -1, 1 )
 	
 	# Connect to signals
 	time_tick.time_unit_changed.connect(_on_time_unit_changed)
@@ -39,20 +39,20 @@ func _ready() -> void:
 	## New game
 	time_tick.set_time_units({
 		"day": randi_range( 1, 28 ),
-		#"day": 0,
+		#"day": 1,
 		"hour": randi_range( 17, 23 ),
-		#"hour": 0,
+		#"hour": 8,
 		"minute": 0,
-		"moon": randi_range( 0, 8 ),
+		"moon": randi_range( 0, 7 ),
 		#"month": 0,
 		"year": 0
 	})
 
-func _on_game_loaded() -> void:
-	time_gate = true
 
 func _on_load_started() -> void:
 	time_gate = false
+func _on_game_loaded() -> void:
+	time_gate = true
 
 
 func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) -> void:

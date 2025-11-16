@@ -9,6 +9,8 @@ var master : float = 0.9
 var music : float = 0.9
 var talk_speed : float = 0.02
 
+var save_list : Dictionary = {"_1" : ""}
+
 var current_save : Dictionary = {
 	scene_path = "",
 	time = {
@@ -45,7 +47,6 @@ var current_save : Dictionary = {
 	},
 	stats = {}
 }
-var save_list : Dictionary = {"_1" : ""}
 
 
 
@@ -69,8 +70,8 @@ func _ready() -> void:
 func save_game( _number ) -> void:
 	var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
 	var day = TimeSystem.time_tick.get_time_unit("day")
-	var thing : String = str( get_tree().get_current_scene().name.capitalize(), "[br]", "Day %d %s" % [day, formatted], "[br]", "Player Level: ", PlayerManager.player.level )
-	save_list[ _number ] = thing
+	var save_description : String = str( get_tree().get_current_scene().name.capitalize(), "[br]", "Day %d %s" % [day, formatted], "[br]", "Player Level: ", PlayerManager.player.level )
+	save_list[ _number ] = save_description
 	save_list[ "active" ] = _number
 	var game_file := FileAccess.open( SAVE_PATH + "list_save.sav", FileAccess.WRITE )
 	var save_list_json = JSON.stringify( save_list )
@@ -89,7 +90,8 @@ func save_game( _number ) -> void:
 	file.store_line( save_json )
 	
 	game_saved.emit()
-	PlayerHud.queue_notification( "GAME SAVED!", thing )
+	await get_tree().create_timer( 0.666 ).timeout
+	PlayerHud.queue_stacked_notification( "GAME SAVED!", save_description )
 
 
 
