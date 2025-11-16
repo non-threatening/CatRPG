@@ -16,7 +16,7 @@ func update(_args: Dictionary = {}) -> void:
 		if Shortcuts.get_item_quantity( quest_item ) >= 1:
 			complete_step( 0 )
 			have_suit = true
-			PlayerHud.queue_notification( "Quest step complete!", "Bring the second hand gimp suit back to Bird Friend")
+			PlayerHud.queue_center_notificationUI( "Quest step complete!", "Bring the second hand gimp suit back to Bird Friend")
 ##	The suit is given in dialog
 	elif suit_given == true:
 		PlayerManager.INVETORY_DATA.use_item( quest_item, 1 )

@@ -1,7 +1,9 @@
 class_name StackNotification extends MarginContainer
 
 @onready var title_label: Label = $VBoxContainer/StackTitle
-@onready var description_label: Label = $VBoxContainer/StackMessage
+#@onready var description_label: Label = $VBoxContainer/StackMessage
+@onready var description_label: RichTextLabel = $VBoxContainer/StackMessage
+
 @onready var stacked_notification: StackNotification = $"."
 
 func initialize( title : String, description : String, counter : int ) -> void:
@@ -14,7 +16,7 @@ func initialize( title : String, description : String, counter : int ) -> void:
 	tween.tween_property(stacked_notification, "modulate", Color.TRANSPARENT, 0.666 )
 	
 	tween.tween_property(title_label, "theme_override_font_sizes/font_size", 1, 0.444)
-	tween.parallel().tween_property(description_label, "theme_override_font_sizes/font_size", 1, 0.444)
+	tween.parallel().tween_property(description_label, "theme_override_font_sizes/normal_font_size", 1, 0.444)
 	
 	await get_tree().create_timer( 1.0 ).timeout
 	title_label.hide()

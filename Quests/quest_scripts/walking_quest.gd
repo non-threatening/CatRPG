@@ -28,7 +28,7 @@ func sum_bool_array(bool_array: Array) -> int:
 func _on_body_entered( _a ) -> void:
 	if QuestSystem.is_quest_active(WALKING_QUEST) and QuestVars.flower_count <= 3:
 		WALKING_QUEST.complete_step( QuestVars.flower_count )
-		PlayerHud.queue_notification( WALKING_QUEST.get_quest_step(
+		PlayerHud.queue_center_notificationUI( WALKING_QUEST.get_quest_step(
 			QuestVars.flower_count ).title, "Passed!" 
 			)
 		area_2d.body_entered.disconnect( _on_body_entered )

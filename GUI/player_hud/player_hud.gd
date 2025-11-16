@@ -34,6 +34,7 @@ var active_save : String = "_1"
 
 @onready var notificationUI : NotificationUI = $Control/NotificationControl
 @onready var stacked_notificationUI: StackedNotificationUI = $Control/StackedNotificationControl
+@onready var center_notificationUI: CenterNotification = $Control/CenterNotification
 
 
 func _ready() -> void:
@@ -182,6 +183,10 @@ func queue_notification( _title : String, _message : String ) -> void:
 
 func queue_stacked_notification( _title : String, _message : String ) -> void:
 	stacked_notificationUI.add_notification_to_queue( _title, _message )
+	pass
+
+func queue_center_notificationUI( _title : String, _message : String ) -> void:
+	center_notificationUI.add_notification_to_queue( _title, _message )
 	pass
 
 

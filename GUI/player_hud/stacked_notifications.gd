@@ -21,11 +21,11 @@ func add_notification_to_queue( _title : String, _message : String ) -> void:
 		message = _message 
 	})
 	if gate:
-		display_quest_notification()
+		display_stack_notification()
 		gate = false
 
 	
-func display_quest_notification() -> void:
+func display_stack_notification() -> void:
 	var _n = notification_queue.pop_front()
 	if _n == null:
 		gate = true
@@ -37,4 +37,4 @@ func display_quest_notification() -> void:
 	new_notification.initialize( _n.title, _n.message, counter )
 	
 	await get_tree().create_timer( 1.666 ).timeout
-	display_quest_notification()
+	display_stack_notification()
