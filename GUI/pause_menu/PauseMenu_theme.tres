@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://ct7neug04nuq3" path="res://GUI/StyleBoxBluePanel.tres" id="1_v7alu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acws1"]
-bg_color = Color(1, 0.47888, 0.960063, 0.258824)
+bg_color = Color(0.6, 0.6, 0.6, 0)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3

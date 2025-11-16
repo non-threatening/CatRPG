@@ -1,11 +1,11 @@
 [gd_scene load_steps=39 format=4 uid="uid://ly7wguh1ufuy"]
 
-[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_t22hv"]
+[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
 [ext_resource type="Script" uid="uid://d00db08v22b4c" path="res://Maps/lighting_shadows.gd" id="3_4uvlv"]
 [ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="4_4uvlv"]
 [ext_resource type="Material" uid="uid://c57u3p620us0u" path="res://Maps/shadows.tres" id="4_70lcl"]
-[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="5_g0pye"]
+[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Maps/Levels/player_spawn.tscn" id="5_g0pye"]
 [ext_resource type="PackedScene" uid="uid://biuvt1eo6nfpj" path="res://Maps/Enviroment/Plants/Grass/grass_blade.tscn" id="6_srkr2"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="7_qhnrh"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="8_v5bit"]
@@ -24,11 +24,11 @@
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="20_70lcl"]
 [ext_resource type="Resource" uid="uid://dwyai16xaes5c" path="res://Dialogue/Conversations/walking_quest.dialogue" id="20_xmcjt"]
 [ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees.tres" id="21_4uvlv"]
-[ext_resource type="Script" uid="uid://0hlam00jvvrf" path="res://Maps/bf_comes_with.gd" id="21_5tx25"]
+[ext_resource type="Script" uid="uid://0hlam00jvvrf" path="res://Maps/bf_comes_with[102].gd" id="21_5tx25"]
 [ext_resource type="PackedScene" uid="uid://dul2wk6yslbpi" path="res://npc/npc_behavior_wander.tscn" id="21_70lcl"]
 [ext_resource type="Texture2D" uid="uid://b01fd223ndm5l" path="res://GUI/pause_menu/inventory/sprites/crow-silhouette.png" id="22_g0pye"]
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
-[ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="29_70lcl"]
+[ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Maps/Levels/level_transition.tscn" id="29_70lcl"]
 [ext_resource type="PackedScene" uid="uid://fnb335xp2rg4" path="res://Maps/Enviroment/objects/terminal_interface.tscn" id="31_g0pye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5fwb"]
@@ -36,15 +36,6 @@ radius = 73.552704
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tx25"]
 size = Vector2(147, 101)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yqcrc"]
-radius = 17.117243
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_70lcl"]
-radius = 154.53801
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_t22hv"]
-radius = 155.42522
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uvlv"]
 size = Vector2(1203, 67)
@@ -57,6 +48,15 @@ shader_parameter/tolerance = 0.139
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
 radius = 31.0161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqcrc"]
+radius = 17.117243
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70lcl"]
+radius = 154.53801
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t22hv"]
+radius = 155.42522
 
 [node name="GrassTestMap" type="Node2D"]
 y_sort_enabled = true
@@ -514,8 +514,8 @@ item_data = ExtResource("9_qnxbr")
 position = Vector2(1618, 38)
 item_data = ExtResource("9_qnxbr")
 
-[node name="ItemPickup2" parent="." instance=ExtResource("8_v5bit")]
-position = Vector2(1114.4685, 303.68356)
+[node name="GimpSuit" parent="." instance=ExtResource("8_v5bit")]
+position = Vector2(1388, -136)
 item_data = ExtResource("10_xvh4v")
 
 [node name="Npc" parent="." instance=ExtResource("15_k0o0t")]
@@ -545,63 +545,6 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 wander_range = 10
 wander_speed = 60.0
 wander_duration = 2.0
-
-[node name="Quest[102]_BFComesWith" type="Node2D" parent="."]
-z_index = 1
-position = Vector2(1022, -99)
-script = ExtResource("21_5tx25")
-
-[node name="BFComesWithNPC" type="CharacterBody2D" parent="Quest[102]_BFComesWith"]
-position = Vector2(1, 2)
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("13_4uvlv")
-h_frames = 1
-v_frames = 1
-npc_resource = ExtResource("14_srkr2")
-
-[node name="PersistantDataHandler" parent="Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("11_yr5mt")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
-visible = false
-shape = SubResource("CircleShape2D_yqcrc")
-debug_color = Color(0.37905112, 0.47461665, 1, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
-material = ExtResource("21_4uvlv")
-position = Vector2(0, -19)
-texture = ExtResource("22_g0pye")
-flip_h = true
-
-[node name="ShadowSprite" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC/Sprite2D"]
-modulate = Color(0.0980392, 0.0509804, 0.458824, 0.537255)
-show_behind_parent = true
-position = Vector2(2.38419e-07, 19)
-scale = Vector2(0.75, 0.875)
-texture = ExtResource("20_70lcl")
-
-[node name="Actionable" parent="Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("19_li6oa")]
-modulate = Color(1, 1, 1, 0.5)
-position = Vector2(-202, 204)
-dialogue_resource = ExtResource("23_26whl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Quest[102]_BFComesWith/BFComesWithNPC/Actionable"]
-position = Vector2(62, -32)
-rotation = 1.5707964
-shape = SubResource("CircleShape2D_70lcl")
-debug_color = Color(0, 0.6, 0.69803923, 0)
-
-[node name="Indicator2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("15_t22hv")]
-position = Vector2(-131, 171)
-x = 76
-y = -360
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Quest[102]_BFComesWith/BFComesWithNPC/Indicator2D"]
-position = Vector2(-1, -1)
-shape = SubResource("CircleShape2D_t22hv")
-debug_color = Color(0, 0.6, 0.69803923, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Quest[102]_BFComesWith/BFComesWithNPC"]
 
 [node name="Trees4" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -687,6 +630,63 @@ script = ExtResource("14_1qe5l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flower5/WalkingQuest"]
 shape = SubResource("CircleShape2D_t5npb")
 
+[node name="Quest[102]_BFComesWith" type="Node2D" parent="Flower5"]
+z_index = 1
+position = Vector2(957, -296)
+script = ExtResource("21_5tx25")
+
+[node name="BFComesWithNPC" type="CharacterBody2D" parent="Flower5/Quest[102]_BFComesWith"]
+position = Vector2(1, 2)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("13_4uvlv")
+h_frames = 1
+v_frames = 1
+npc_resource = ExtResource("14_srkr2")
+
+[node name="PersistantDataHandler" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("11_yr5mt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC"]
+visible = false
+shape = SubResource("CircleShape2D_yqcrc")
+debug_color = Color(0.37905112, 0.47461665, 1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC"]
+material = ExtResource("21_4uvlv")
+position = Vector2(0, -19)
+texture = ExtResource("22_g0pye")
+flip_h = true
+
+[node name="ShadowSprite" type="Sprite2D" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC/Sprite2D"]
+modulate = Color(0.0980392, 0.0509804, 0.458824, 0.537255)
+show_behind_parent = true
+position = Vector2(2.38419e-07, 19)
+scale = Vector2(0.75, 0.875)
+texture = ExtResource("20_70lcl")
+
+[node name="Actionable" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("19_li6oa")]
+modulate = Color(1, 1, 1, 0.5)
+position = Vector2(-202, 204)
+dialogue_resource = ExtResource("23_26whl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC/Actionable"]
+position = Vector2(62, -32)
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_70lcl")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Indicator2D" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC" instance=ExtResource("15_t22hv")]
+position = Vector2(-131, 171)
+x = 76
+y = -360
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC/Indicator2D"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_t22hv")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flower5/Quest[102]_BFComesWith/BFComesWithNPC"]
+
 [node name="Flower6" parent="." instance=ExtResource("7_qhnrh")]
 position = Vector2(143, 176)
 
@@ -700,7 +700,6 @@ shape = SubResource("CircleShape2D_t5npb")
 position = Vector2(416, 100)
 
 [node name="LevelTransition" parent="TerminalInterface" instance=ExtResource("29_70lcl")]
-visible = false
 position = Vector2(0, 35)
 portal_dir = 1
 level = "uid://bwa3jdmpvxxvu"

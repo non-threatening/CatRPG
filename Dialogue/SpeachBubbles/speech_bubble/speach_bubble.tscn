@@ -10,7 +10,6 @@
 
 [node name="SpeachBubble" type="CanvasLayer"]
 process_mode = 3
-layer = 100
 script = ExtResource("1_suubk")
 next_action = &"interact"
 skip_action = &"attack"

@@ -35,6 +35,7 @@ QuestVars="*res://00_Globals/global_quest_vars.gd"
 NpcManager="*res://00_Globals/global_npc_manager.gd"
 SteamController="*res://00_Globals/Steam/steam_controller.gd"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
+StatsManager="*res://00_Globals/global_stats_manager.gd"
 
 [debug]
 

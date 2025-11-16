@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bwyhle5m0jsga" path="res://Player/Sprites/spin_effect.png" id="8_gpjlu"]
 [ext_resource type="Script" uid="uid://sro52odq4ttt" path="res://Player/Scripts/states/state_charge_attack.gd" id="8_n471f"]
 [ext_resource type="AudioStream" uid="uid://bib76kq2p2jji" path="res://Player/Audio/SwordSwoosh.wav" id="8_paeps"]
-[ext_resource type="Texture2D" uid="uid://bicu8rrmlxkwk" path="res://Props/Sprites/Props.png" id="9_8mwp6"]
+[ext_resource type="Texture2D" uid="uid://bicu8rrmlxkwk" path="res://zz_test/Props/Sprites/Props.png" id="9_8mwp6"]
 [ext_resource type="AudioStream" uid="uid://bbdmj7rgev28r" path="res://Player/Audio/charged.wav" id="9_hshwv"]
 [ext_resource type="Script" uid="uid://c1k5vgukppsay" path="res://Player/Scripts/PlayerInteractionsHost.gd" id="10_4cvxe"]
 [ext_resource type="AudioStream" uid="uid://cuj4okwcek200" path="res://Player/Audio/spin-attack.wav" id="10_gpjlu"]

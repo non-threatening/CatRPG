@@ -1,6 +1,5 @@
 @tool
-class_name LevelTransitionInteract 
-extends LevelTransition
+class_name LevelTransitionInteract extends LevelTransition
 
 func _ready() -> void:
 	super() # runs the ready function of parent class, LevelTransition

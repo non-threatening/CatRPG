@@ -12,7 +12,6 @@ const START_LEVEL : String = "res://Maps/Grass_shader_test_map.tscn"
 @onready var splash_screen: Control = $CanvasLayer/SplashScreen
 
 
-
 func _ready() -> void:
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()
@@ -25,16 +24,13 @@ func _ready() -> void:
 		button_continue.disabled = true
 		button_continue.visible = false
 	
-	#setup_title_screen()
 	splash_screen.finished.connect( setup_title_screen )
 	
 	LevelManager.level_load_started.connect( exit_title_screen )
-	
 	pass
 
 
 func setup_title_screen() -> void:
-	print("finished")
 	splash_screen.hide()
 	button_new.pressed.connect( start_game )
 	button_continue.pressed.connect( load_game )
@@ -44,10 +40,6 @@ func setup_title_screen() -> void:
 	button_continue.focus_entered.connect( play_audio.bind( button_focus_audio ) )
 	
 	AudioManager.play_music( music )
-	
-	pass
-
-
 
 
 func start_game() -> void:

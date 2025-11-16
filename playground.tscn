@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://c26e5qs51phrq"]
 
-[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Levels/scripts/level.gd" id="1_o00ia"]
-[ext_resource type="PackedScene" uid="uid://7y3rydpf6bjk" path="res://Props/Plants/Plant.tscn" id="4_7ekl8"]
-[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Levels/player_spawn.tscn" id="4_is3ju"]
+[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_o00ia"]
+[ext_resource type="PackedScene" uid="uid://7y3rydpf6bjk" path="res://zz_test/Props/Plants/Plant.tscn" id="4_7ekl8"]
+[ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Maps/Levels/player_spawn.tscn" id="4_is3ju"]
 [ext_resource type="PackedScene" uid="uid://bin63ynm0s2ot" path="res://Enemies/Slime/Slime.tscn" id="5_4bqqs"]
 [ext_resource type="PackedScene" uid="uid://560xltvvxujl" path="res://Tile Maps/lab_outline.tscn" id="5_o00ia"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="6_ynsuh"]
 [ext_resource type="Resource" uid="uid://d1hal3jqnbjc1" path="res://Items/potion.tres" id="7_v7dth"]
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="10_h1jm5"]
-[ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Levels/level_transition.tscn" id="10_pio1y"]
+[ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Maps/Levels/level_transition.tscn" id="10_pio1y"]
 [ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="10_te8jg"]
 [ext_resource type="PackedScene" uid="uid://cl2lkcvct4h4i" path="res://interactables/treasure_chest/treasure_chest.tscn" id="11_pio1y"]
 

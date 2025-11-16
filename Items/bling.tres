@@ -4,11 +4,13 @@
 [ext_resource type="Script" uid="uid://c5fpu6ww87ydn" path="res://Items/item_effects/item_effect.gd" id="1_yq8b3"]
 
 [sub_resource type="Gradient" id="Gradient_elg8r"]
-offsets = PackedFloat32Array(0, 0.5662252)
-colors = PackedColorArray(3.2944162, 1.124968, 0, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.6441718)
+colors = PackedColorArray(0.98333335, 1, 0, 0.7529412, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_saay3"]
 gradient = SubResource("Gradient_elg8r")
+width = 32
+height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
