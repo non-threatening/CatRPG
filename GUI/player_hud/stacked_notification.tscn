@@ -19,7 +19,7 @@ text = "TITLE"
 
 [node name="StackMessage" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "Thing message"
 fit_content = true

@@ -66,11 +66,25 @@ func _ready() -> void:
 	if save_list.size() > 1:
 		PlayerHud.active_save = save_list.active
 
+
+func save_game_auto( _number ) -> void:
+	await get_tree().create_timer( 9 ).timeout
+	save_game( _number )
 	
 func save_game( _number ) -> void:
-	var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
+	var year = TimeSystem.time_tick.get_time_unit("year")
 	var day = TimeSystem.time_tick.get_time_unit("day")
-	var save_description : String = str( get_tree().get_current_scene().name.capitalize(), "[br]", "Day %d %s" % [day, formatted], "[br]", "Player Level: ", PlayerManager.player.level )
+	var hour = TimeSystem.time_tick.get_time_unit("hour")
+	var m = TimeSystem.time_tick.get_time_unit("minute")
+	var minute = "00"
+	if m > 10:
+		minute = m - (m % 10)
+	var save_description : String
+	if year == 0:
+		save_description = str( get_tree().get_current_scene().name.capitalize(), "[br]", str( "Day ", day, "  ", hour, ":", minute ), "[br]", "Player Level: ", PlayerManager.player.level )
+	else:
+		save_description = str( get_tree().get_current_scene().name.capitalize(), "[br]", str( "Year ", year, "  Day ", day, "  ", hour, ":", minute ), "[br]", "Player Level: ", PlayerManager.player.level )
+	
 	save_list[ _number ] = save_description
 	save_list[ "active" ] = _number
 	var game_file := FileAccess.open( SAVE_PATH + "list_save.sav", FileAccess.WRITE )
@@ -90,7 +104,6 @@ func save_game( _number ) -> void:
 	file.store_line( save_json )
 	
 	game_saved.emit()
-	await get_tree().create_timer( 0.666 ).timeout
 	PlayerHud.queue_stacked_notification( "GAME SAVED!", save_description )
 
 
