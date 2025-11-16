@@ -20,6 +20,7 @@ func update(_args: Dictionary = {}) -> void:
 ##	The suit is given in dialog
 	elif suit_given == true:
 		PlayerManager.INVETORY_DATA.use_item( quest_item, 1 )
-		Shortcuts.complete_quest( "a_gimp_suit_for_bird_friend" )
+		Shortcuts.complete_quest( "[102]a_gimp_suit_for_bird_friend" )
+		StatsManager.stats.friends_made += StatsManager.stats.friends_made
 		
 	updated.emit()

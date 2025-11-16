@@ -1,6 +1,6 @@
 class_name QuestFlowerTest extends Area2D
 
-const WALKING_QUEST = preload("res://Quests/quest_resources/walking_quest.tres")
+const WALKING_QUEST = preload("res://Quests/quest_resources/[101]walking_quest.tres")
 
 @onready var area_2d: QuestFlowerTest = $"."
 
@@ -33,7 +33,7 @@ func _on_body_entered( _a ) -> void:
 			)
 		area_2d.body_entered.disconnect( _on_body_entered )
 		QuestVars.flower_count += 1
-		Shortcuts.update_quest("walking_quest")
+		Shortcuts.update_quest("[101]walking_quest")
 		
 		if QuestVars.flower_count >= 4:
-			Shortcuts.complete_quest("walking_quest")
+			Shortcuts.complete_quest("[101]walking_quest")
