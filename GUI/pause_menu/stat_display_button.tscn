@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bu6em2qvt1mvx" path="res://GUI/pause_menu/stat_display_button.gd" id="1_etfwd"]
 
 [node name="DisplayStats" type="Button"]
-custom_minimum_size = Vector2(0, 40)
-offset_right = 576.0
+custom_minimum_size = Vector2(500, 40)
+offset_right = 500.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -22,9 +22,9 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 257.0
+offset_left = 192.0
 offset_top = 8.0
-offset_right = 561.0
+offset_right = 496.0
 offset_bottom = 33.0
 theme_override_font_sizes/font_size = 21
 text = "One Hundered and Thirty three"

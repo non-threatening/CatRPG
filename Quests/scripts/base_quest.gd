@@ -43,17 +43,18 @@ func complete(_args: Dictionary = {}) -> void:
 			var value = reward[key]
 			INVETORY_DATA.add_item_quest_reward( key, value )
 			if value > 1:
-				PlayerHud.queue_notification( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name, "s") )
+				PlayerHud.queue_center_notificationUI( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name, "s") )
 			else:
-				PlayerHud.queue_notification( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name) )
+				PlayerHud.queue_center_notificationUI( "Quest Reward", str(NumberToWords.to_words(value).capitalize(), " ", key.name) )
 				
 	if not achievement.is_empty():
 		Steam.setAchievement( achievement )
 		Steam.storeStats()
 	
-	SaveManager.save_game( "auto" )
-	
 	completed.emit()
+	
+	
+	SaveManager.save_game_auto( "auto" )
 	
 
 	

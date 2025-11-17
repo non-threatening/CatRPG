@@ -14,6 +14,8 @@ func _ready() -> void:
 
 
 func add_notification_to_queue( _title : String, _message : String ) -> void:
+	if _message.contains( "]" ):
+		_message = _message.get_slice("]", 1).capitalize()
 	notification_queue.append({
 		title = _title,
 		message = _message 
