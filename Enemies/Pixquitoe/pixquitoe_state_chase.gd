@@ -13,6 +13,9 @@ const PATHFINDER : PackedScene = preload("res://Enemies/pathfinder.tscn")
 
 @export var ignore_flee : bool = false
 
+@onready var pixquito: Pixquitoe = $"../.."
+@onready var chase_detect: ChaseDetect = $"../../ChaseDetect"
+
 var pathfinder : Pathfinder
 var _timer : float = 0.0
 var _direction : Vector2
@@ -36,6 +39,11 @@ func enter() -> void:
 	_can_see_player = true
 	if attack_area:
 		set_deferred( "attack_area.monitoring", true )
+	
+	#	trigger chase state from other enemy
+	pixquito.set_collision_layer_value( 10, true )
+	chase_detect.set_collision_mask_value( 10, false )
+	set_deferred( "chase_detect.monitoring", false )
 
 
 func exit() -> void:

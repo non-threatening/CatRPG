@@ -1,6 +1,8 @@
 class_name PixquitoeStateWander extends EnemyState
 
 @export var next_state : EnemyState
+@onready var chase_detect: ChaseDetect = $"../../ChaseDetect"
+@onready var pixquito: Pixquitoe = $"../.."
 
 var count : int = 1
 var ended : bool = false
@@ -25,6 +27,11 @@ func enter() -> void:
 	var tween : Tween = create_tween()
 	tween.tween_property( enemy, "global_position", current_position + multiple, 0.666 )
 	tween.finished.connect( _change_state )
+	
+	#	trigger chase state from other enemy
+	pixquito.set_collision_layer_value( 10, false )
+	chase_detect.set_collision_mask_value( 10, true )
+	chase_detect.monitoring = true
 	pass
 	
 

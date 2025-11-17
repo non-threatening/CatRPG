@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ba5e5f3bpk8i3"]
+[gd_scene load_steps=30 format=3 uid="uid://ba5e5f3bpk8i3"]
 
 [ext_resource type="Script" uid="uid://b8214atadhq7u" path="res://Enemies/Pixquitoe/pixquitoe.gd" id="1_mk43a"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_eaod3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bdfvfjhvnnpf5" path="res://Enemies/Scripts/drop_data.gd" id="13_cmxhe"]
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="14_eqclk"]
 [ext_resource type="Script" uid="uid://bvtthnnq0xynw" path="res://Enemies/Pixquitoe/pixquitoe_state_chase.gd" id="14_mk43a"]
+[ext_resource type="Script" uid="uid://gliqkt6ffomr" path="res://Enemies/Pixquitoe/chase_detect.gd" id="14_wru2s"]
 [ext_resource type="PackedScene" uid="uid://danwl1nkjj72k" path="res://Enemies/vision_area.tscn" id="18_wd6qg"]
 [ext_resource type="PackedScene" uid="uid://ckv0vcfluyvx2" path="res://Enemies/pathfinder.tscn" id="19_eu3tq"]
 
@@ -124,9 +125,6 @@ tracks/3/keys = {
 "values": [3.64, 16.0]
 }
 
-[sub_resource type="Animation" id="Animation_wru2s"]
-resource_name = "idle_down"
-
 [sub_resource type="Animation" id="Animation_5kw7o"]
 resource_name = "destroy_side"
 tracks/0/type = "audio"
@@ -235,6 +233,9 @@ tracks/3/keys = {
 "values": [3.64, 16.0]
 }
 
+[sub_resource type="Animation" id="Animation_wru2s"]
+resource_name = "idle_down"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3of0s"]
 _data = {
 &"RESET": SubResource("Animation_wyclx"),
@@ -261,6 +262,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_5kw7o")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxyrx"]
+radius = 384.0
 
 [node name="Pixquito" type="CharacterBody2D"]
 collision_layer = 256
@@ -336,7 +340,6 @@ next_state = NodePath("../Idle")
 max_polyphony = 4
 
 [node name="VisionArea" parent="." instance=ExtResource("18_wd6qg")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea"]
 shape = SubResource("CircleShape2D_yuuiu")
@@ -349,3 +352,14 @@ visible = false
 color = Color(0.25, 1, 0, 1)
 energy = 3.64
 texture = SubResource("GradientTexture2D_wru2s")
+
+[node name="ChaseDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("14_wru2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseDetect"]
+shape = SubResource("CircleShape2D_rxyrx")
+debug_color = Color(0, 0.5950001, 0.7, 0)

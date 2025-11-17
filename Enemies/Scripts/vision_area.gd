@@ -13,8 +13,6 @@ func _ready() -> void:
 		p.direction_changed.connect( _on_direction_change )
 
 
-
-
 func _on_body_enter( _b : Node2D ) -> void:
 	if _b is Player:
 		player_entered.emit()

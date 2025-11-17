@@ -2,6 +2,7 @@ class_name Pixquitoe extends Enemy
 
 @onready var hurt_b : HurtBox = $HurtBox
 @onready var destroy: EnemyStateDestroy = $EnemyStateMachine/Destroy
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func initialize() -> void:
