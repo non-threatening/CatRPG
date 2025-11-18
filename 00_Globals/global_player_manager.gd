@@ -31,11 +31,13 @@ func add_player_instance() -> void:
 	add_child( player )
 	pass
 
-func set_health( hp: int, max_hp: int, es: int, max_es: int) -> void:
+func set_health( hp: int, max_hp: int, es: int, max_es: int, spoons: int, max_capacity: int) -> void:
 	player.max_hp = max_hp
 	player.hp = hp
 	player.electro_shell = es
 	player.max_electro_shell = max_es
+	player.spoons = spoons
+	player.max_capacity = max_capacity
 	player.update_hp( 0 )
 
 

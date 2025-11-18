@@ -11,6 +11,8 @@ var direction : Vector2 = Vector2.ZERO
 var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
+var spoons : int = 3
+var max_capacity : int = 6
 var electro_shell : int = 0
 var max_electro_shell : int = 2
 
@@ -51,6 +53,7 @@ func _ready() -> void:
 	hit_box.damaged.connect( _take_damage )
 	update_hp(99)
 	update_electro_shell( 0 )
+	update_spoons( 0 )
 	update_damage_values()
 	hide_bird_friend()
 	PlayerManager.player_leveled_up.connect( _on_player_leveled_up )
@@ -157,12 +160,17 @@ func _take_damage( hurt_box : HurtBox ) -> void:
 func update_hp( delta : int ) -> void:
 	hp = clampi( hp + delta, 0, max_hp )
 	PlayerHud.update_hp( hp, max_hp )
-	pass
 
 
 func update_electro_shell( delta : int ) -> void:
 	electro_shell = clampi( electro_shell + delta, 0, max_electro_shell)
 	PlayerHud.update_shell( electro_shell, max_electro_shell )
+	print( "plyaer.gd, update_electro_shell: ", electro_shell)
+
+func update_spoons( delta : int ) -> void:
+	spoons = clampi( spoons + delta, 0, max_capacity )
+	PlayerHud.update_spoons( spoons, max_capacity )
+	print( "plyaer.gd, update_spoons: ", spoons)
 	
 	
 func make_invulnerable( _duration : float = 1.0 ) -> void:

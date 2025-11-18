@@ -3309,7 +3309,7 @@ debug_color = Color(0, 0.65, 0.205833, 0.121569)
 texture_filter = 2
 material = ExtResource("2_1l10g")
 texture = ExtResource("3_dy65m")
-offset = Vector2(0, -56)
+offset = Vector2(0, -52)
 hframes = 3
 vframes = 4
 script = ExtResource("4_i4o1l")
@@ -3632,3 +3632,6 @@ shape = SubResource("RectangleShape2D_dy65m")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GrappleHook"]
 stream = ExtResource("44_dy65m")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

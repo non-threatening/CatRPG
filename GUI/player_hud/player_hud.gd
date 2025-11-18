@@ -5,12 +5,14 @@ extends CanvasLayer
 
 var hearts : Array[ HeartGUI ] = []
 var electros : Array[ ElectroGUI ] = []
+var spoons : Array[ SpoonsGUI ] = []
 
 var active_save : String = "_1"
 
 @onready var loading_screen: TextureRect = $LoadingScreen
 @onready var hearts_display: HFlowContainer = $Control/Hearts
 @onready var electros_display: HFlowContainer = $Control/Electros
+@onready var spoons_display: HFlowContainer = $Control/Spoons
 @onready var time: Control = $Control/Time
 
 @onready var game_over : Control = $Control/GameOver
@@ -38,15 +40,21 @@ var active_save : String = "_1"
 
 
 func _ready() -> void:
-	for child in $Control/Hearts.get_children():
+	for child in hearts_display.get_children():
 		if child is HeartGUI:
 			hearts.append( child )
 			child.visible = false
 			
-	for c in $Control/Electros.get_children():
+	for c in electros_display.get_children():
 		if c is ElectroGUI:
 			electros.append( c )
 			c.visible = false
+			
+	for c in spoons_display.get_children():
+		if c is SpoonsGUI:
+			spoons.append( c )
+			c.visible = false
+			
 			
 	hide_game_over_screen()
 	continue_button.focus_entered.connect( play_audio.bind( button_focus_audio ) )
@@ -77,6 +85,7 @@ func show_loading_screen() -> void:
 	tween.tween_property( loading_screen, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.15 ).set_ease( Tween.EASE_IN )
 	hearts_display.hide()
 	electros_display.hide()
+	spoons_display.hide()
 	time.hide()
 
 
@@ -85,6 +94,7 @@ func hide_loading_screen() -> void:
 	tween.tween_property( loading_screen, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.15 ).set_ease( Tween.EASE_IN )
 	hearts_display.show()
 	electros_display.show()
+	spoons_display.show()
 	time.show()
 
 
@@ -95,12 +105,9 @@ func update_shell( _es: int, _max_es: int ) -> void:
 	for i in _max_es:
 		update_bolt( i, _es )
 
-
 func update_bolt( _index : int, _es : int ) -> void:
 	var _value : int = clampi( _es - _index * 2, 0, 2 ) + 7
 	electros[ _index ].value = _value
-	pass
-
 
 func update_max_es( _max_es : int ) -> void:
 	var _es_count : int = roundi( _max_es * 0.5 )
@@ -109,6 +116,26 @@ func update_max_es( _max_es : int ) -> void:
 			electros[i].visible = true
 		else:
 			electros[i].visible= false
+
+
+##	Spoons Display
+func update_spoons( _cap: int, _max_cap: int ) -> void:
+	update_capacity( _max_cap )
+	for i in _max_cap:
+		update_spoon( i, _cap )
+
+func update_spoon( _index : int, _cap : int ) -> void:
+	var _value : int = clampi( _cap - _index * 2, 0, 2 ) + 10
+	spoons[ _index ].value = _value
+
+func update_capacity( _max_cap : int ) -> void:
+	var _cap_count : int = roundi( _max_cap * 0.5 )
+	for i in spoons.size():
+		if i < _cap_count:
+			spoons[i].visible = true
+		else:
+			spoons[i].visible= false
+
 
 
 ## Heart displays
@@ -120,7 +147,6 @@ func update_hp( _hp: int, _max_hp: int ) -> void:
 func update_heart( _index : int, _hp : int ) -> void:
 	var _value : int = clampi( _hp - _index * 2, 0, 2 ) ###!!! +
 	hearts[ _index ].value = _value ##Picks the frame
-	pass
 	
 func update_max_hp( _max_hp : int ) -> void:
 	var _heart_count : int = roundi( _max_hp * 0.5 )

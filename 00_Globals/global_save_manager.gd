@@ -28,6 +28,8 @@ var current_save : Dictionary = {
 		max_hp = 1,
 		electro_shell = 1,
 		max_electro_shell = 1,
+		spoons = 1,
+		max_capacity = 1,
 		attack = 1,
 		defense = 1,
 		pos_x = 0,
@@ -123,7 +125,7 @@ func load_game( _number ) -> void:
 	await LevelManager.level_load_started
 	
 	PlayerManager.set_player_position( Vector2( current_save.player.pos_x, current_save.player.pos_y ) )
-	PlayerManager.set_health( current_save.player.hp, current_save.player.max_hp, current_save.electro_shell, current_save.max_electro_shell )
+	PlayerManager.set_health( current_save.player.hp, current_save.player.max_hp, current_save.electro_shell, current_save.max_electro_shell, current_save.spoons, current_save.max_capacity )
 
 	var p : Player = PlayerManager.player
 	p.level = current_save.player.level
@@ -204,6 +206,8 @@ func update_player_data() -> void:
 	current_save.player.max_hp = p.max_hp
 	current_save.electro_shell = p.electro_shell
 	current_save.max_electro_shell = p.max_electro_shell
+	current_save.spoons = p.spoons
+	current_save.max_capacity = p.max_capacity
 	current_save.player.pos_x = p.global_position.x
 	current_save.player.pos_y = p.global_position.y
 	current_save.player.level = p.level

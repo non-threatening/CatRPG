@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://tggihnqvract"]
+
+[ext_resource type="Script" uid="uid://bxua0e5m1ugsx" path="res://GUI/player_hud/spoons_gui.gd" id="1_foptw"]
+[ext_resource type="Texture2D" uid="uid://ci2habgduqh7a" path="res://GUI/player_hud/sprites/GUI-Health.png" id="2_xmx12"]
+
+[node name="Spoons" type="Control"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_foptw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xmx12")
+centered = false
+hframes = 7
+vframes = 2
+frame = 10
