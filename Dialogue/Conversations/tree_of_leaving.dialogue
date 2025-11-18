@@ -1,0 +1,22 @@
+~ start
+Tree of Leaving: Disconnect ?
+- YES
+	do LevelManager.change_worlds( "res://Maps/Grass_shader_test_map.tscn" )
+- NO
+Tree of Leaving: Hello Cat. I am the Tree of Leaving
+
+Cat: Hello Tree. Where are you going?
+
+Tree of Leaving: I don't go anywhere I'm not real.
+
+Cat: But, where did you came from?
+
+Tree of Leaving: I've always been here. I can help you leave
+
+Tree of Leaving: Leave the Loktin Place
+- YES
+	do LevelManager.change_worlds( "res://Maps/Grass_shader_test_map.tscn" )
+- NO
+
+
+=> END

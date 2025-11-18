@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dq68ejhr6ptlx"
+path="res://.godot/imported/tree_of_leaving.dialogue-29ab067b70532554e010d692ed8eada2.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/tree_of_leaving.dialogue"
+dest_files=["res://.godot/imported/tree_of_leaving.dialogue-29ab067b70532554e010d692ed8eada2.tres"]
+
+[params]
+
+defaults=true

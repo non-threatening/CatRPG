@@ -1,6 +1,6 @@
 ~ start
 Terminal Seven: Stick head in hole to enter another world, that's also a charging port somehow ?
 - Yes
-	do LevelManager.enter_dream_world()
+	do LevelManager.change_worlds( "res://Maps/Worlds/Klardraumland/TheLobby.tscn", "LevelTransition" )
 - No
 => END
