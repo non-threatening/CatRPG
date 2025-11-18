@@ -1,8 +1,10 @@
 class_name Pixquitoe extends Enemy
 
+@export var audio : AudioStream
+
 @onready var hurt_b : HurtBox = $HurtBox
-@onready var destroy: EnemyStateDestroy = $EnemyStateMachine/Destroy
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var destroy : EnemyStateDestroy = $EnemyStateMachine/Destroy
+@onready var audio_player : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func initialize() -> void:
@@ -11,8 +13,14 @@ func initialize() -> void:
 	
 	hurt_b.did_damage.connect( _kamikaze )
 	
+	audio_player.stream = audio
+	audio_player.play()
+	
 	await get_tree().create_timer( 60 ).timeout
 	queue_free()
+
+
+
 
 
 func _kamikaze() -> void:

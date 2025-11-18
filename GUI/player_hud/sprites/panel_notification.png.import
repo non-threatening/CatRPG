@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx6grwyk80lvg"
-path="res://.godot/imported/MoonPhases.png-e4e2a759d37c8b11a91d06a0b22eff0c.ctex"
+uid="uid://rkm1y06x4cn"
+path="res://.godot/imported/panel_notification.png-e486bab9ee91d116f5c1be8aedb477fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/player_hud/MoonPhases.png"
-dest_files=["res://.godot/imported/MoonPhases.png-e4e2a759d37c8b11a91d06a0b22eff0c.ctex"]
+source_file="res://GUI/player_hud/sprites/panel_notification.png"
+dest_files=["res://.godot/imported/panel_notification.png-e486bab9ee91d116f5c1be8aedb477fd.ctex"]
 
 [params]
 
