@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://Dialogue/controller_icon_interact.tres" id="3_e517h"]
 
 [node name="Indicator2D" type="Area2D"]
-modulate = Color(1, 1, 1, 0.5)
 script = ExtResource("1_e517h")
 y = -200
 
