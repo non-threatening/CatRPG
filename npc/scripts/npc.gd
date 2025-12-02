@@ -71,7 +71,7 @@ func update_direction_name() -> void:
 		direction_name = "side"
 	
 
-
+####
 func setup_npc() -> void:
 	if npc_resource:
 		if sprite:

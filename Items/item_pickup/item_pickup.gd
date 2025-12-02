@@ -73,9 +73,9 @@ func item_picked_up() -> void:
 	await audio_stream_player_2d.finished
 	queue_free()
 	if item_count > 1:
-		PlayerHud.queue_stacked_notification( "You found", str(NumberToWords.to_words(item_count).capitalize(), " ", item_data.name, "s") )
+		PlayerHud.queue_stacked_notification( "You've got", str(NumberToWords.to_words(item_count).capitalize(), " ", item_data.name, "s") )
 	else:
-		PlayerHud.queue_stacked_notification( "You found", str(NumberToWords.to_words(item_count).capitalize(), " ", item_data.name) )
+		PlayerHud.queue_stacked_notification( "You've got", str(NumberToWords.to_words(item_count).capitalize(), " ", item_data.name) )
 	pass
 
 

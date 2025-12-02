@@ -77,7 +77,7 @@ func get_offset() -> Vector2:
 
 
 func _update_area() -> void:
-	var new_rect : Vector2 = Vector2( 64, 64 )
+	var new_rect : Vector2 = Vector2( 128, 128 )
 	var new_position : Vector2 = Vector2.ZERO
 	match side:
 		SIDE.TOP:

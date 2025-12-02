@@ -5,9 +5,15 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_xh5qr")
-shader_parameter/x = 4.0
-shader_parameter/y = 3.0
-shader_parameter/time_scale = 5.0
+shader_parameter/center = Vector2(0.5, 0.4)
+shader_parameter/size = 1.0
+shader_parameter/squishness = Vector2(1, 1)
+shader_parameter/color1 = Color(0.11372549, 0.98039216, 0, 0.22352941)
+shader_parameter/color2 = Color(0.11372549, 0.98039216, 0, 0.22352941)
+shader_parameter/color3 = Color(0.35686275, 0.9882353, 0.3372549, 0.74509805)
+shader_parameter/step1 = 0.1010000047975
+shader_parameter/step2 = 0.26400001254
+shader_parameter/step3 = 0.686000032585
 shader_parameter/amplitude = 5.0
 shader_parameter/frequency = 500.0
 shader_parameter/speed = 0.5

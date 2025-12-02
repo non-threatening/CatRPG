@@ -5,9 +5,9 @@ uniform float size: hint_range(0.0,5.0) = 1.0; //change size to well, change the
 uniform vec2 squishness = vec2(1.0); // how squashed your gradient is
 
 //choose colors in the inspector
-uniform vec4 color1 : source_color;
-uniform vec4 color2 : source_color;
-uniform vec4 color3 : source_color;
+uniform vec4 color1 : source_color = vec4( 0.35, 0.57, 0.17, 1.0);
+uniform vec4 color2 : source_color = vec4( 0.49, 0.48, 0.10, 1.0);
+uniform vec4 color3 : source_color = vec4( 0.37, 0.21, 0.02, 1.0);
 
 //choose how far the colors are from each other in the inspector
 uniform float step1 : hint_range(0.0,1.0) = 0.15;

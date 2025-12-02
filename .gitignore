@@ -1,5 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-/Z_assets
-/_0_Testing
+/zz_test
+txt.txt

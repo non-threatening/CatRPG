@@ -116,10 +116,9 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 3
+current_tab = 0
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -818,6 +817,7 @@ ticks_on_borders = true
 ticks_position = 2
 
 [node name="Stuff" type="Control" parent="Control/TabContainer"]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 script = ExtResource("20_awacl")

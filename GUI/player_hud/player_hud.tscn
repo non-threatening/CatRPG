@@ -211,7 +211,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -231,7 +231,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(3, 4),
 "transitions": PackedFloat32Array(1, 0.5),
 "update": 0,
-"values": [Vector2(597.5, 300), Vector2(597.5, 270)]
+"values": [Vector2(128, 384), Vector2(128, 196)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -243,7 +243,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(3, 4),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(510, 422), Vector2(510, 459)]
+"values": [Vector2(196, 422), Vector2(196, 384)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -822,8 +822,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -42.5
 offset_top = -130.0
-offset_right = 990.5
-offset_bottom = 49.0
+offset_right = 981.4995
+offset_bottom = 49.000244
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 160
@@ -839,8 +839,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -130.0
 offset_top = 59.0
-offset_right = 770.0
-offset_bottom = 315.0
+offset_right = 770.0005
+offset_bottom = 315.00006
 grow_horizontal = 2
 grow_vertical = 2
 

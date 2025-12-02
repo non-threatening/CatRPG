@@ -19,6 +19,7 @@ func _ready() -> void:
 	get_shuffled_flower()
 	_set_time_scale()
 	_set_random_scale()
+	
 	var is_lobby = get_tree().get_current_scene().name
 	if is_lobby == "TheLobby":
 		sprite.material.shader = FLOWER_DREAM

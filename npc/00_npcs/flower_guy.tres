@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="NPCResource" load_steps=5 format=3 uid="uid://bp38cq1huwval"]
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://bp38cq1huwval"]
 
-[ext_resource type="Texture2D" uid="uid://bhqyncgrcywfy" path="res://npc/sprites/portraits/hero_portrait.png" id="1_bly3r"]
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="2_hpd5d"]
 [ext_resource type="Texture2D" uid="uid://dpc7qhim7qsyb" path="res://Player/BirdFriend/sprites/FlowerGuyCrow.png" id="3_hpd5d"]
 [ext_resource type="AudioStream" uid="uid://dppicop8bwemo" path="res://Dialogue/SpeachBubbles/voice_blip.wav" id="4_hpd5d"]
@@ -9,6 +8,5 @@
 script = ExtResource("2_hpd5d")
 npc_name = "Flower Guy"
 sprite = ExtResource("3_hpd5d")
-portrait = ExtResource("1_bly3r")
 talk_blip = ExtResource("4_hpd5d")
 metadata/_custom_type_script = "uid://bmpteubp4v57k"

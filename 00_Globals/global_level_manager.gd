@@ -18,8 +18,12 @@ func change_tilemap_bounds( bounds : Array[ Vector2 ] ) -> void:
 	TileMapBoundsChanged.emit( bounds )
 
 
-func enter_dream_world() -> void:
-	load_new_level( "res://Maps/Worlds/Klardraumland/TheLobby.tscn", "LevelTransition", Vector2( 0, 0 ))
+func change_worlds(
+	 level_path : String, 
+	_target_transition : String = "LevelTransition", 
+	_position_offset : Vector2 = Vector2( 0, 0 )
+) -> void:
+	load_new_level( level_path, _target_transition, _position_offset)
 	## Check for and remove friends
 	PlayerManager.player.hide_bird_friend()
 

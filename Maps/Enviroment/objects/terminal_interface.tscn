@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://fnb335xp2rg4"]
+[gd_scene load_steps=11 format=3 uid="uid://fnb335xp2rg4"]
 
 [ext_resource type="Texture2D" uid="uid://bxcqdywq4tybk" path="res://Maps/Enviroment/Plants/isometric-modern-buildings-cartoon.png" id="1_6k2pf"]
 [ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="1_lix13"]
-[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable.tscn" id="2_ghq3x"]
+[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable_dialog.tscn" id="2_ghq3x"]
 [ext_resource type="Resource" uid="uid://sp87haiqrb68" path="res://Dialogue/Conversations/world_transition.dialogue" id="3_lix13"]
 [ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://Dialogue/indicator.tscn" id="4_ghq3x"]
 
@@ -31,6 +31,9 @@ radius = 308.0
 radius = 33.0
 height = 144.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lix13"]
+polygon = PackedVector2Array(-148, 152, 0, 240, 136, 160, 0, 112)
+
 [node name="TerminalInterface" type="StaticBody2D"]
 collision_layer = 16
 collision_mask = 0
@@ -46,12 +49,12 @@ scale = Vector2(0.25, 0.125)
 texture = ExtResource("1_6k2pf")
 offset = Vector2(0, -175)
 
-[node name="Actionable" parent="TerminalInterface" instance=ExtResource("2_ghq3x")]
+[node name="ActionableDialog" parent="TerminalInterface" instance=ExtResource("2_ghq3x")]
 modulate = Color(1, 1, 1, 0.5)
 bubble = 1
 dialogue_resource = ExtResource("3_lix13")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TerminalInterface/Actionable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerminalInterface/ActionableDialog"]
 position = Vector2(0, 128)
 shape = SubResource("CircleShape2D_qhnrh")
 debug_color = Color(0, 0, 1, 0)
@@ -64,3 +67,8 @@ position = Vector2(0, 16)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_lix13")
 debug_color = Color(0, 0.5950001, 0.7, 0)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+modulate = Color(0, 0, 0, 0)
+scale = Vector2(0.25, 0.125)
+occluder = SubResource("OccluderPolygon2D_lix13")
