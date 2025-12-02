@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsm1sxxrq3n7"]
+
+[ext_resource type="Script" uid="uid://g7b0o2v2f7wg" path="res://Dialogue/actionable_minigame.gd" id="1_eet6t"]
+
+[node name="ActionableMinigame" type="Area2D"]
+collision_layer = 4096
+collision_mask = 0
+script = ExtResource("1_eet6t")

@@ -5,6 +5,7 @@ var qvars = {
 	flower_count = 0
 }
 
+
 func _ready() -> void:
 	SaveManager.game_loaded.connect( _on_game_loaded )
 

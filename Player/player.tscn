@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://bpcvp55f33q1s"]
+[gd_scene load_steps=123 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Material" uid="uid://ikl3qglhwxv3" path="res://Player/player.tres" id="2_1l10g"]
@@ -25,10 +25,13 @@
 [ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="12_iyprq"]
 [ext_resource type="Shader" uid="uid://b4d5u50y4e3og" path="res://Player/player.gdshader" id="13_o28un"]
 [ext_resource type="PackedScene" uid="uid://c3ovyjwujdxmf" path="res://GeneralNodes/HitBox/hit_box.tscn" id="13_urp6f"]
+[ext_resource type="Shader" uid="uid://cenq3c1oyr3a2" path="res://Maps/frequency_wave.gdshader" id="14_6rl0i"]
 [ext_resource type="AudioStream" uid="uid://c8px2y4w638w1" path="res://Player/Audio/hit_player.wav" id="14_bwjto"]
 [ext_resource type="Script" uid="uid://cvt3bp8tg6cp7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
 [ext_resource type="Script" uid="uid://cp5m17gdo2qko" path="res://Items/scripts/abilities.gd" id="17_pisgm"]
+[ext_resource type="Script" uid="uid://b4v4enjcc4ffa" path="res://Player/Scripts/states/state_freq.gd" id="18_7x5p2"]
 [ext_resource type="PackedScene" uid="uid://c0jsono37lv7x" path="res://GeneralNodes/ItemMagnet/ItemMagnet.tscn" id="18_b1ygp"]
+[ext_resource type="AudioStream" uid="uid://dpit41htjj5we" path="res://interactables/treasure_chest/treasure-open.wav" id="19_6eb1q"]
 [ext_resource type="Script" uid="uid://4s3g56bv3sqy" path="res://Player/Scripts/states/state_lift.gd" id="19_qemgg"]
 [ext_resource type="Script" uid="uid://cfk8rfbhj8tly" path="res://Player/Scripts/states/state_carry.gd" id="20_8viyr"]
 [ext_resource type="AudioStream" uid="uid://dgr8864etq4ft" path="res://Player/Audio/huwh.wav" id="20_sm0op"]
@@ -387,6 +390,19 @@ shader = ExtResource("11_iyprq")
 shader_parameter/x = 0.5
 shader_parameter/y = 1.0
 shader_parameter/time_scale = 2.666
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6eb1q"]
+shader = ExtResource("14_6rl0i")
+shader_parameter/wave_amplitude = 0.25
+shader_parameter/wave_frequency = 40.0
+shader_parameter/wave_speed = 5.0
+shader_parameter/left_falloff = 1.0
+shader_parameter/right_falloff = 0.0
+
+[sub_resource type="Gradient" id="Gradient_qhnrh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wvbyc"]
+gradient = SubResource("Gradient_qhnrh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n471f"]
 shader = ExtResource("13_o28un")
@@ -3442,6 +3458,21 @@ texture = ExtResource("12_iyprq")
 hframes = 2
 region_rect = Rect2(7, 81, 102, 42)
 
+[node name="Control" type="Control" parent="Sprite2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 45.0
+offset_top = -104.0
+offset_right = 405.0
+offset_bottom = 46.0
+
+[node name="TextureRect" type="TextureRect" parent="Sprite2D/Control"]
+material = SubResource("ShaderMaterial_6eb1q")
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 151.0
+texture = SubResource("GradientTexture2D_wvbyc")
+
 [node name="Sprite2D_death" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 2
@@ -3468,6 +3499,10 @@ script = ExtResource("3_6mdjo")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_t8vup")
+
+[node name="freq" type="Node" parent="StateMachine"]
+script = ExtResource("18_7x5p2")
+harmonized_sound = ExtResource("19_6eb1q")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_48gbi")

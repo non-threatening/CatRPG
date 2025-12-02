@@ -34,9 +34,9 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 				var dist : float = minutes % 720
 				var dist2 : float = 0
 				if dist < 360:
-					dist2 = remap( dist, 0, 360, 20, 40  )
+					dist2 = remap( dist, 0, 360, 20, 100  )
 				else:
-					dist2 = remap( dist, 360, 720, 40, 20  ) 
+					dist2 = remap( dist, 360, 720, 100, 20  ) 
 				material.set_shader_parameter( "max_dist", dist2 )
 
 
@@ -45,7 +45,6 @@ func night_time() -> void:
 	minutes = hour * 60 + minute
 	darkness = fmod( remap( minutes, 1.0, 1440.0, 0.0, 360.0 ), 360 )
 	if darkness >= 0 and darkness < 90:
-		#canvas_modulate.show()
 		if darkness <= 49:
 			canvas_modulate.color = Color.from_hsv(
 				222.0 / 360, 0.83933287004864, 1, 1
@@ -54,12 +53,8 @@ func night_time() -> void:
 			canvas_modulate.color = Color.from_hsv(
 				222.0 / 360, ((darkness - 90) * -0.01) * 2, 1, 1
 			)
-			
-	#elif darkness > 90 and darkness < 270:
-		#canvas_modulate.hide()
 		
 	elif darkness > 270 and darkness < 360:
-		#canvas_modulate.show()
 		if darkness >= 313:
 			canvas_modulate.color = Color.from_hsv(
 				222.0 / 360, 0.83933287004864, 1, 1

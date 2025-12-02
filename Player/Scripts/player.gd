@@ -42,6 +42,7 @@ var bomb_count : int = 10 : set = _set_bomb_count
 @onready var idle: State_Idle = $StateMachine/Idle
 @onready var player_abilities: PlayerAbilities = $Abilities
 @onready var state_electro_shell: StateElectroShell = $StateMachine/ElectroShell
+@onready var state_freq: State_Freq = $StateMachine/freq
 
 @onready var bird_friend_sprite: Sprite2D = $Sprite2D/BirdFriendSprite
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
@@ -98,6 +99,7 @@ func _physics_process( _delta: float ) -> void:
 ##	Dialog actionable
 func _interact_pressed() -> void:
 	var actionables = actionable_finder.get_overlapping_areas()
+	
 	if actionables.size() > 0:
 		actionables[0].action()
 		return
@@ -167,6 +169,7 @@ func update_electro_shell( delta : int ) -> void:
 	PlayerHud.update_shell( electro_shell, max_electro_shell )
 	print( "plyaer.gd, update_electro_shell: ", electro_shell)
 
+
 func update_spoons( delta : int ) -> void:
 	spoons = clampi( spoons + delta, 0, max_capacity )
 	PlayerHud.update_spoons( spoons, max_capacity )
@@ -176,12 +179,15 @@ func update_spoons( delta : int ) -> void:
 func make_invulnerable( _duration : float = 1.0 ) -> void:
 	invulnerable = true
 	hit_box.monitoring = false
-
 	await get_tree().create_timer( _duration ).timeout
 	invulnerable = false
 	hit_box.monitoring = true
 	pass
-	
+
+
+func start_freq() -> void:
+	state_machine.change_state( state_freq )
+
 	
 func pickup_item( _t : Throwable ) -> void:
 	state_machine.change_state( lift )

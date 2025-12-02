@@ -108,12 +108,12 @@ func disable_collisions( _node : Node ) -> void:
 
 
 func _on_area_enter( _a : Area2D ) -> void:
-	PlayerManager.interact_pressed.connect( player_interact)
+	PlayerManager.interact_pressed.connect( player_interact )
 	pass
 
 
 func _on_area_exit( _a : Area2D ) -> void:
-	PlayerManager.interact_pressed.disconnect( player_interact)
+	PlayerManager.interact_pressed.disconnect( player_interact )
 	pass
 	
 	
