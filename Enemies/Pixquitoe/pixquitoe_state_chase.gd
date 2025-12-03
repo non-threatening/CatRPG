@@ -44,6 +44,9 @@ func enter() -> void:
 	pixquito.set_collision_layer_value( 10, true )
 	chase_detect.set_collision_mask_value( 10, false )
 	set_deferred( "chase_detect.monitoring", false )
+	
+	await get_tree().create_timer( 6.66 ).timeout
+	pixquito.queue_free()
 
 
 func exit() -> void:

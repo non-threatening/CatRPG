@@ -8,8 +8,8 @@ class_name Pixquitoe extends Enemy
 
 
 func initialize() -> void:
-	position.x = (randi_range( 1, 38 ) -19 ) * 128
-	position.y = (randi_range( 1, 24 ) -12 ) * 128
+	position.x = (randi_range( 0, 38 ) -19 ) * 128
+	position.y = (randi_range( 0, 24 ) -12 ) * 128
 	
 	hurt_b.did_damage.connect( _kamikaze )
 	

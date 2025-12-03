@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://ba5e5f3bpk8i3"]
+[gd_scene load_steps=32 format=3 uid="uid://ba5e5f3bpk8i3"]
 
 [ext_resource type="Script" uid="uid://b8214atadhq7u" path="res://Enemies/Pixquitoe/pixquitoe.gd" id="1_mk43a"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_eaod3"]
+[ext_resource type="AudioStream" uid="uid://dkpc5ggsxugo7" path="res://Enemies/Pixquitoe/violet_noise.ogg" id="2_rxyrx"]
 [ext_resource type="PackedScene" uid="uid://c3ovyjwujdxmf" path="res://GeneralNodes/HitBox/hit_box.tscn" id="3_vl4f0"]
 [ext_resource type="AudioStream" uid="uid://c28jh1tirtpb4" path="res://Enemies/Slime/hit_00.wav" id="7_rlhit"]
 [ext_resource type="Script" uid="uid://cwlq57dt1kpnl" path="res://Enemies/Scripts/states/enemy_state_machine.gd" id="8_6c7gn"]
@@ -245,6 +246,10 @@ _data = {
 &"idle_down": SubResource("Animation_wru2s")
 }
 
+[sub_resource type="Curve" id="Curve_rxyrx"]
+_data = [Vector2(0, 0), 0.0, 0.5, 0, 1, Vector2(0.2, 0.1), 0.55340946, 0.55340946, 0, 0, Vector2(0.8, 0.9), 1.4581414, 1.4581414, 0, 0, Vector2(1, 1), 0.03, 0.0, 0, 0]
+point_count = 4
+
 [sub_resource type="Resource" id="Resource_ts4pi"]
 script = ExtResource("13_cmxhe")
 item = ExtResource("14_eqclk")
@@ -264,13 +269,14 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxyrx"]
-radius = 384.0
+radius = 256.12497
 
 [node name="Pixquito" type="CharacterBody2D"]
 collision_layer = 256
 collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_mk43a")
+audio = ExtResource("2_rxyrx")
 hp = 1
 
 [node name="HurtBox" parent="." instance=ExtResource("2_eaod3")]
@@ -324,6 +330,7 @@ after_idle_state = NodePath("../Wander")
 [node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_mk43a")
 next_state = NodePath("../Idle")
+curve = SubResource("Curve_rxyrx")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("12_1vg0v")
@@ -337,16 +344,20 @@ attack_area = NodePath("../../Sprite2D/AttackHurtBox")
 next_state = NodePath("../Idle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-max_polyphony = 4
+volume_db = -15.0
+autoplay = true
+max_distance = 1250.0
+attenuation = 2.000001
+bus = &"Effects"
 
 [node name="VisionArea" parent="." instance=ExtResource("18_wd6qg")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea"]
 shape = SubResource("CircleShape2D_yuuiu")
 debug_color = Color(0.9751809, 0, 0.38230178, 0)
 
 [node name="Pathfinder" parent="." instance=ExtResource("19_eu3tq")]
-visible = false
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.25, 1, 0, 1)
@@ -354,6 +365,7 @@ energy = 3.64
 texture = SubResource("GradientTexture2D_wru2s")
 
 [node name="ChaseDetect" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 0
 monitoring = false
