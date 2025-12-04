@@ -8,13 +8,8 @@ var is_paused : bool = false
 var save_dict : Dictionary
 
 @onready var audio_stream_player: AudioStreamPlayer = $Control/AudioStreamPlayer
-
 @onready var tab_container: TabContainer = $Control/TabContainer
-
-@onready var button_save: Button = $Control/TabContainer/System/VBoxContainer/Button_Save
-@onready var button_load: Button = $Control/TabContainer/System/VBoxContainer/Button_Load
-@onready var button_quit: Button = $Control/TabContainer/System/VBoxContainer/Button_Quit
-
+@onready var button_quit: Button = $Control/TabContainer/System/Button_Quit
 @onready var item_description: Label = $Control/TabContainer/Inventory/ItemDescription
 @onready var abilities_description: Label = $Control/TabContainer/Inventory/AbilitiesDescription
 
@@ -48,8 +43,6 @@ var save_dict : Dictionary
 
 func _ready() -> void:
 	hide_pause_menu()
-	button_save.pressed.connect( _on_save_pressed )
-	button_load.pressed.connect( _on_load_pressed )
 	button_quit.pressed.connect( _on_quit_pressed )
 	
 	button_1.pressed.connect( _on_save_pressed.bind("_1") )
@@ -197,9 +190,8 @@ func _on_save_confirmed( _number ) -> void:
 	disconnect_confirm()
 	hide_pause_menu()
 	pass
-	
-	
-	
+
+
 func _on_load_pressed( _number ) -> void:
 	if is_paused == false:
 		return
@@ -211,8 +203,7 @@ func _on_load_pressed( _number ) -> void:
 	else:
 		_on_load_confirmed( _number )
 
-	
-		
+
 func _on_load_confirmed( _number ) -> void:
 	SaveManager.load_game( _number )
 	PlayerHud.active_save = _number
