@@ -1,10 +1,15 @@
 class_name Trees extends Node2D
 
-@onready var sprite: Trees = $"."
+const TREES_DREAM = preload("uid://bqesrg18iwyem")
+const TREES = preload("uid://c6n83nrhuenne")
+
 
 var png_dir : String = "res://Maps/Enviroment/Plants/Trees/sprites/"
 var images : Array[ String ]
 var images_full = []
+
+@onready var sprite: Trees = $"."
+
 
 func _ready() -> void:
 	_get_pngs( png_dir )
@@ -17,8 +22,10 @@ func _ready() -> void:
 	
 	var is_lobby = get_tree().get_current_scene().name
 	if is_lobby == "TheLobby":
+		sprite.material.shader = TREES_DREAM
 		_dream_tree()
 	else:
+		sprite.material.shader = TREES
 		_tree()
 
 
@@ -29,8 +36,8 @@ func _tree() -> void:
 
 
 func _dream_tree() -> void:
-	sprite.material.set_shader_parameter( "color1", Color( 0.2, 0.82, 0.0, 0.28 ) )
-	sprite.material.set_shader_parameter( "color2", Color( 0.11, 0.98, 0.0, 0.22 ) )
+	sprite.material.set_shader_parameter( "color1", Color(0.047, 0.561, 0.0, 0.502) )
+	sprite.material.set_shader_parameter( "color2", Color(0.067, 0.69, 0.0, 0.502) )
 	sprite.material.set_shader_parameter( "color3", Color( 0.35, 0.99, 0.33, 0.74 ) )
 
 

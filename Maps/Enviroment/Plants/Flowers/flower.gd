@@ -7,6 +7,7 @@ const png_dir : String = "res://Maps/Enviroment/Plants/Flowers/sprites/"
 var images : Array[ String ]
 var images_full = []
 
+@onready var flower: Node2D = $".."
 @onready var sprite: Flower = $"."
 @onready var shadow_sprite: Sprite2D = $ShadowSprite
 @onready var shadow_sprite_green: Sprite2D = $ShadowSpriteGreen

@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dm100xw332yew"]
+
+[ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="1_x4x2n"]
+
+[resource]
+shader = ExtResource("1_x4x2n")
+shader_parameter/center = Vector2(0.5, 0.4)
+shader_parameter/size = 1.0
+shader_parameter/squishness = Vector2(1, 1)
+shader_parameter/color1 = Color(0.2075, 0.83, 0, 0.28627452)
+shader_parameter/color2 = Color(0.11372549, 0.98039216, 0, 0.22352941)
+shader_parameter/color3 = Color(0.35837993, 0.99, 0.33659998, 0.74509805)
+shader_parameter/step1 = 0.1010000047975
+shader_parameter/step2 = 0.26400001254
+shader_parameter/step3 = 0.686000032585
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 1.0
+shader_parameter/speed = 1.0

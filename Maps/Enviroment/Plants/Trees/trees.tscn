@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc7f06w1326e"]
+[gd_scene load_steps=10 format=3 uid="uid://bc7f06w1326e"]
 
-[ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees.tres" id="1_etgwk"]
+[ext_resource type="Material" uid="uid://pww5hwrd41gd" path="res://Maps/Enviroment/Plants/Trees/trees_dream.tres" id="1_etgwk"]
+[ext_resource type="Script" uid="uid://ciliranxsf3ke" path="res://Maps/Enviroment/Plants/Trees/trees_node.gd" id="1_ndlp4"]
 [ext_resource type="Texture2D" uid="uid://c103s31mjv3bk" path="res://Maps/Enviroment/Plants/Trees/sprites/tree_stump2.png" id="2_etgwk"]
 [ext_resource type="Script" uid="uid://dg2utqdot7mxt" path="res://Maps/Enviroment/Plants/Trees/trees.gd" id="2_t8ti7"]
 
@@ -18,14 +19,18 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgwk"]
 radius = 35.99996
-height = 132.00002
+height = 138.00002
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_etgwk"]
 polygon = PackedVector2Array(138, -402.8, 81, -436.66666, 26.200012, -457.6, -31.600006, -454, -99.7, -418, -138, -389.99997, -173, -320, -196, -240, -184, -168.6, -155, -120, -121, -90.100006, -121, -82.79999, -100, -66.66667, -55, -53.333332, -41, -13.333336, -16, 40.799988, -16, 42.899994, 9, 50, 37, 46.666664, 65, 30, 79, -36.66667, 98, -83.333336, 130, -100, 163, -126.666664, 188.1, -178, 193, -256.66666, 192, -266.66666, 193, -300, 182, -349.1, 182, -353.1, 160, -386.66666, 138, -397.2)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndlp4"]
+radius = 520.5535
+
 [node name="Trees" type="StaticBody2D"]
 collision_layer = 16
 collision_mask = 0
+script = ExtResource("1_ndlp4")
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -43,7 +48,6 @@ scale = Vector2(9.913044, 7.267857)
 texture = SubResource("GradientTexture2D_2vxfg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(7, -4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_etgwk")
@@ -55,3 +59,12 @@ z_index = 1
 position = Vector2(6, 36)
 scale = Vector2(1, 0.3)
 occluder = SubResource("OccluderPolygon2D_etgwk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -136)
+shape = SubResource("CircleShape2D_ndlp4")
+debug_color = Color(2.4065375e-07, 0.6413922, 0.32999834, 0)
