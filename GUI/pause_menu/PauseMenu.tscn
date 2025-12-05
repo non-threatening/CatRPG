@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dyr4d637h6ono"]
+[gd_scene load_steps=34 format=3 uid="uid://dyr4d637h6ono"]
 
 [ext_resource type="Script" uid="uid://hxcbojuqvpcn" path="res://GUI/pause_menu/pause_menu.gd" id="1_xyt8q"]
 [ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="2_hio0w"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://lb7rrfcatrlv" path="res://GUI/pause_menu/options/v_box_container_sound.gd" id="14_3yxpl"]
 [ext_resource type="PackedScene" uid="uid://d4gdrnrgnp45q" path="res://GUI/pause_menu/slider.tscn" id="15_1v4th"]
 [ext_resource type="StyleBox" uid="uid://id0j1ev6ejo4" path="res://GUI/pause_menu/Slider.tres" id="15_320ax"]
+[ext_resource type="Script" uid="uid://dmg2j313nt035" path="res://GUI/pause_menu/options.gd" id="15_d1w5p"]
 [ext_resource type="Script" uid="uid://cvn03p8t473fi" path="res://GUI/pause_menu/options/v_box_container_music.gd" id="15_gtmg6"]
 [ext_resource type="Script" uid="uid://de0xi2erjthqh" path="res://GUI/pause_menu/options/v_box_talk_speed.gd" id="18_1v4th"]
 [ext_resource type="Script" uid="uid://cl4hk8m1eyhh5" path="res://GUI/pause_menu/stuff.gd" id="20_awacl"]
@@ -737,7 +738,13 @@ offset_right = 1010.0
 offset_bottom = 516.0
 text = "Quit"
 
-[node name="CheckButton" type="CheckButton" parent="Control/TabContainer/System"]
+[node name="Settings" type="Control" parent="Control/TabContainer/System"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_d1w5p")
+
+[node name="CheckCensor" type="CheckButton" parent="Control/TabContainer/System/Settings"]
 layout_mode = 0
 offset_left = 99.0
 offset_top = 303.0
@@ -748,51 +755,51 @@ theme_override_colors/button_unchecked_color = Color(1, 0.47657922, 0.46015894, 
 button_pressed = true
 text = "Censor Dialog"
 
-[node name="VBoxContainerSound" type="VBoxContainer" parent="Control/TabContainer/System"]
+[node name="VBoxContainerSound" type="VBoxContainer" parent="Control/TabContainer/System/Settings"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 397.0
 offset_right = 540.0
 offset_bottom = 662.0
 
-[node name="VBoxMaster" type="VBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound"]
+[node name="VBoxMaster" type="VBoxContainer" parent="Control/TabContainer/System/Settings/VBoxContainerSound"]
 layout_mode = 2
 script = ExtResource("14_3yxpl")
 
-[node name="Slider" parent="Control/TabContainer/System/VBoxContainerSound/VBoxMaster" instance=ExtResource("15_1v4th")]
+[node name="Slider" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxMaster" instance=ExtResource("15_1v4th")]
 layout_mode = 2
 
-[node name="VBoxMusic" type="VBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound"]
+[node name="VBoxMusic" type="VBoxContainer" parent="Control/TabContainer/System/Settings/VBoxContainerSound"]
 layout_mode = 2
 script = ExtResource("15_gtmg6")
 
-[node name="Slider" parent="Control/TabContainer/System/VBoxContainerSound/VBoxMusic" instance=ExtResource("15_1v4th")]
+[node name="Slider" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxMusic" instance=ExtResource("15_1v4th")]
 layout_mode = 2
 
-[node name="VBoxTalkSpeed" type="VBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound"]
+[node name="VBoxTalkSpeed" type="VBoxContainer" parent="Control/TabContainer/System/Settings/VBoxContainerSound"]
 layout_mode = 2
 script = ExtResource("18_1v4th")
 
-[node name="Slider" type="Control" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed"]
+[node name="Slider" type="Control" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxTalkSpeed"]
 custom_minimum_size = Vector2(512, 64)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed/Slider"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxTalkSpeed/Slider"]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 17.0
 
-[node name="Label" type="Label" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed/Slider/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxTalkSpeed/Slider/HBoxContainer"]
 layout_mode = 2
 text = "Talk Speed"
 
-[node name="Label2" type="Label" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed/Slider/HBoxContainer"]
+[node name="Label2" type="Label" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxTalkSpeed/Slider/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "50%"
 horizontal_alignment = 2
 
-[node name="HSlider" type="HSlider" parent="Control/TabContainer/System/VBoxContainerSound/VBoxTalkSpeed/Slider"]
+[node name="HSlider" type="HSlider" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxTalkSpeed/Slider"]
 modulate = Color(0, 1, 0, 1)
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 0

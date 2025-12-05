@@ -8,6 +8,7 @@ signal game_saved
 var master : float = 0.9
 var music : float = 0.9
 var talk_speed : float = 0.02
+var censored : bool = false
 
 var save_list : Dictionary = {"_1" : ""}
 
@@ -45,7 +46,8 @@ var current_save : Dictionary = {
 	options = {
 		master = 0.5,
 		music = 0.5,
-		talk_speed = 0.01
+		talk_speed = 0.01,
+		censored = false
 	},
 	stats = {},
 	qvars = {}
@@ -147,6 +149,7 @@ func load_game( _number ) -> void:
 	master = current_save.options.master
 	music = current_save.options.music
 	talk_speed = current_save.options.talk_speed
+	censored = current_save.options.censored
 	
 	TimeSystem.time_tick.set_time_units({
 		"day": current_save.time.day,
@@ -203,6 +206,7 @@ func update_options_data() -> void:
 	current_save.options.master = master
 	current_save.options.music = music
 	current_save.options.talk_speed = talk_speed
+	current_save.options.censored = censored
 
 
 func update_player_data() -> void:

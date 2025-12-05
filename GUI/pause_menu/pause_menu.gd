@@ -77,22 +77,6 @@ func _reset_modulates() -> void:
 	button_3_load_label.modulate = Color( 1.0, 1.0, 1.0, 0.0)
 	button_4_load_label.modulate = Color( 1.0, 1.0, 1.0, 0.0)
 
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		if is_paused == false:
-			show_pause_menu()
-		else:
-			hide_pause_menu()
-		get_viewport().set_input_as_handled()
-	if is_paused:
-		if event.is_action_pressed("right_bumper"):
-			change_tab( 1 )
-		elif event.is_action_pressed("left_bumper"):
-			change_tab( -1 )
-		elif event.is_action_pressed("attack"):
-			hide_pause_menu()
 		
 		
 func show_pause_menu() -> void:
@@ -240,20 +224,6 @@ func update_abilities_description( new_text : String ) -> void:
 	abilities_description.text = new_text
 	
 	
-func play_audio( audio : AudioStream ) -> void:
-	audio_stream_player.stream = audio
-	audio_stream_player.play()
-	
-	
-func change_tab( _i : int = 1 ) -> void:
-	tab_container.current_tab = wrapi(
-		tab_container.current_tab + _i,
-		0,
-		tab_container.get_tab_count()
-		)
-	tab_container.get_tab_bar().grab_focus()
-	pass
-
 
 func preview_stats( item : ItemData ) -> void:
 	preview_stats_changed.emit( item )
@@ -266,3 +236,33 @@ func update_ability_items( items : Array[ String ] ) -> void:
 			item_buttons[ i ].hide()
 		else:
 			item_buttons[ i ].show()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if is_paused == false:
+			show_pause_menu()
+		else:
+			hide_pause_menu()
+		get_viewport().set_input_as_handled()
+	if is_paused:
+		if event.is_action_pressed("right_bumper"):
+			change_tab( 1 )
+		elif event.is_action_pressed("left_bumper"):
+			change_tab( -1 )
+		elif event.is_action_pressed("attack"):
+			hide_pause_menu()
+			
+	
+func change_tab( _i : int = 1 ) -> void:
+	tab_container.current_tab = wrapi(
+		tab_container.current_tab + _i,
+		0,
+		tab_container.get_tab_count()
+		)
+	tab_container.get_tab_bar().grab_focus()
+	pass
+#
+func play_audio( audio : AudioStream ) -> void:
+	audio_stream_player.stream = audio
+	audio_stream_player.play()
