@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bamfyc4kogtv0"
+path="res://.godot/imported/tom (2).ogg-05d33c21eb29ba4a25337cd45457351d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/808/tom (2).ogg"
+dest_files=["res://.godot/imported/tom (2).ogg-05d33c21eb29ba4a25337cd45457351d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

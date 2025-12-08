@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c8mgcru8hkchx"
+path="res://.godot/imported/snare (48).ogg-f459aef662b5385b8b67ba40f4b29bb7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/808/snare (48).ogg"
+dest_files=["res://.godot/imported/snare (48).ogg-f459aef662b5385b8b67ba40f4b29bb7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

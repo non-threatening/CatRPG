@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b18q7rbybspnh"
+path="res://.godot/imported/bass (9).ogg-b77b66fd08544f7c8ae4f998e2805a7b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/808/bass (9).ogg"
+dest_files=["res://.godot/imported/bass (9).ogg-b77b66fd08544f7c8ae4f998e2805a7b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

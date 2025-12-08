@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://xnjx3uoguqaw"
+path="res://.godot/imported/Frying bacon.ogg-528cb8f2aab97fda9b8880c42fe985bb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/random/Frying bacon.ogg"
+dest_files=["res://.godot/imported/Frying bacon.ogg-528cb8f2aab97fda9b8880c42fe985bb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

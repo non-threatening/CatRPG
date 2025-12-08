@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dyr04c2rurv6a"
+path="res://.godot/imported/clap (12).ogg-ea1c5461d5dc3fb9f1d0468d682387fa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/808/clap (12).ogg"
+dest_files=["res://.godot/imported/clap (12).ogg-ea1c5461d5dc3fb9f1d0468d682387fa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

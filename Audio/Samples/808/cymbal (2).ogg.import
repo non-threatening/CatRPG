@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d0wo76gioo0iu"
+path="res://.godot/imported/cymbal (2).ogg-7f305f736dc603f04565cea88a20365d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/808/cymbal (2).ogg"
+dest_files=["res://.godot/imported/cymbal (2).ogg-7f305f736dc603f04565cea88a20365d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

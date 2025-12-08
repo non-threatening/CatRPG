@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dtk5ee5eho7aa"
+path="res://.godot/imported/Bacon frying, extractor fan working.ogg-021b7e6bce0061ed085b8958b2bfb4a9.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/random/Bacon frying, extractor fan working.ogg"
+dest_files=["res://.godot/imported/Bacon frying, extractor fan working.ogg-021b7e6bce0061ed085b8958b2bfb4a9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

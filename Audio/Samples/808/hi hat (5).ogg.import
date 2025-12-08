@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://wpkwq1nt41ul"
+path="res://.godot/imported/hi hat (5).ogg-315c58435daa2abf85a10fd58476fdba.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/808/hi hat (5).ogg"
+dest_files=["res://.godot/imported/hi hat (5).ogg-315c58435daa2abf85a10fd58476fdba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

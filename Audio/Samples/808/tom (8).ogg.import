@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dadpun34s8uf1"
+path="res://.godot/imported/tom (8).ogg-f120df681da7b214c79416507f317495.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/808/tom (8).ogg"
+dest_files=["res://.godot/imported/tom (8).ogg-f120df681da7b214c79416507f317495.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkk8oleqmpes0"
+path="res://.godot/imported/kick (2).ogg-95aa9e336830107a6a3bff59d894f51d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/808/kick (2).ogg"
+dest_files=["res://.godot/imported/kick (2).ogg-95aa9e336830107a6a3bff59d894f51d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
