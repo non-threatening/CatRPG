@@ -3,18 +3,18 @@ class_name PixquitoeStateWander extends EnemyState
 @export var next_state : EnemyState
 @export var curve : Curve
 
-@onready var chase_detect: ChaseDetect = $"../../ChaseDetect"
-@onready var pixquito: Pixquitoe = $"../.."
-
 var count : int = 1
 var ended : bool = false
+var multiple : Vector2
+var x : float
+var y : float
+
+@onready var chase_detect: ChaseDetect = $"../../ChaseDetect"
+@onready var pixquito: Pixquitoe = $"../.."
 
 
 func enter() -> void:
 	var current_position : Vector2 = enemy.global_position
-	var multiple : Vector2
-	var x : float
-	var y : float
 	var random_dir = pow(-1, randi() % 2) ## returns 1 or -1
 	count += 1
 	count = count % 2

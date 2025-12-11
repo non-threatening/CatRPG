@@ -1,10 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://ba5e5f3bpk8i3"]
+[gd_scene load_steps=34 format=3 uid="uid://ba5e5f3bpk8i3"]
 
 [ext_resource type="Script" uid="uid://b8214atadhq7u" path="res://Enemies/Pixquitoe/pixquitoe.gd" id="1_mk43a"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_eaod3"]
-[ext_resource type="AudioStream" uid="uid://dkpc5ggsxugo7" path="res://Enemies/Pixquitoe/violet_noise.ogg" id="2_rxyrx"]
+[ext_resource type="AudioStream" uid="uid://4kl8x61ym54x" path="res://Audio/Samples/musicradar-lofi-samples/SoundFX/25.ogg" id="2_rxyrx"]
 [ext_resource type="PackedScene" uid="uid://c3ovyjwujdxmf" path="res://GeneralNodes/HitBox/hit_box.tscn" id="3_vl4f0"]
-[ext_resource type="AudioStream" uid="uid://c28jh1tirtpb4" path="res://Enemies/Slime/hit_00.wav" id="7_rlhit"]
+[ext_resource type="AudioStream" uid="uid://c3nd7lpb7fiix" path="res://Audio/Samples/808/snare (19).ogg" id="5_mk43a"]
+[ext_resource type="AudioStream" uid="uid://c7mpoydblhrfg" path="res://Audio/Samples/808/snare (12).ogg" id="6_yuuiu"]
+[ext_resource type="AudioStream" uid="uid://ds076jmw3y5fy" path="res://Audio/Samples/808/snare (2).ogg" id="7_c3bxm"]
 [ext_resource type="Script" uid="uid://cwlq57dt1kpnl" path="res://Enemies/Scripts/states/enemy_state_machine.gd" id="8_6c7gn"]
 [ext_resource type="Script" uid="uid://bbw82si2vkoyy" path="res://Enemies/Pixquitoe/pixquitoe_state_wander.gd" id="8_mk43a"]
 [ext_resource type="Script" uid="uid://bwki6uuqrdqlp" path="res://Enemies/Scripts/states/enemy_state_idle.gd" id="9_8yj1t"]
@@ -84,7 +86,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("7_rlhit")
+"stream": ExtResource("5_mk43a")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -138,7 +140,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("7_rlhit")
+"stream": ExtResource("6_yuuiu")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -192,7 +194,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("7_rlhit")
+"stream": ExtResource("7_c3bxm")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -247,13 +249,13 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_rxyrx"]
-_data = [Vector2(0, 0), 0.0, 0.5, 0, 1, Vector2(0.2, 0.1), 0.55340946, 0.55340946, 0, 0, Vector2(0.8, 0.9), 1.4581414, 1.4581414, 0, 0, Vector2(1, 1), 0.03, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.30769232, 0, 1, Vector2(0.325, 0.1), 0.55340946, 0.55340946, 0, 0, Vector2(0.8, 0.9), 1.4581414, 1.4581414, 0, 0, Vector2(1, 1), 0.03, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Resource" id="Resource_ts4pi"]
 script = ExtResource("13_cmxhe")
 item = ExtResource("14_eqclk")
-probability = 25.0
+probability = 1.0
 metadata/_custom_type_script = "uid://bdfvfjhvnnpf5"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yuuiu"]
@@ -365,7 +367,6 @@ energy = 3.64
 texture = SubResource("GradientTexture2D_wru2s")
 
 [node name="ChaseDetect" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 0
 monitoring = false

@@ -33,7 +33,6 @@ func _ready() -> void:
 		shadow_sprite_green.hide()
 		
 	_set_random_motion_amount()
-	pass
 
 
 func _get_pngs():

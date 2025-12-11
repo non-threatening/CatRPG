@@ -52,11 +52,9 @@ func player_interact() -> void:
 			prop.get_parent().remove_child( prop )
 		PlayerManager.player.held_item.add_child( prop ) # make it prop
 		prop.position = Vector2.ZERO # 
-		PlayerManager.player.pickup_item( self ) # pick up the prop node
+		PlayerManager.player.pickup_item( self ) # change to lift state
 		area_entered.disconnect( _on_area_enter )
 		area_exited.disconnect( _on_area_exit )
-		pass
-	pass
 
 
 func throw() -> void:

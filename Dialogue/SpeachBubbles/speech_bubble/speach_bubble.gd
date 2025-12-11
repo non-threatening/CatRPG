@@ -97,7 +97,7 @@ func _ready() -> void:
 func _spoke( letter: String, letter_index: int, speed: float ) -> void:
 	if 'aeiouy1234567890'.contains( letter ):
 		audio_stream_player.stream = audio_file
-		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.85, 1.15 ))
+		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ))
 		audio_stream_player.play()
 
 

@@ -50,7 +50,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer"]
-self_modulate = Color(0.08, 0.08, 0.08, 0.93333334)
+self_modulate = Color(0.13784477, 0.19378534, 0.13785636, 0.972549)
 clip_children = 2
 layout_mode = 2
 texture = ExtResource("4_gc3ck")
@@ -81,7 +81,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 42
 text = "Dialogue...
-login..... welcome Cat_4097910"
+login..... welcome Cat"
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
