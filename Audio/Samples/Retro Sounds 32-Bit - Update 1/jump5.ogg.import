@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmfeuk5em4ofe"
+path="res://.godot/imported/jump5.ogg-8012acb43a9606d795c11e3b070f0879.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/Retro Sounds 32-Bit - Update 1/jump5.ogg"
+dest_files=["res://.godot/imported/jump5.ogg-8012acb43a9606d795c11e3b070f0879.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

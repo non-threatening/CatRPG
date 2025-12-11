@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b2mago2okj0tc"
+path="res://.godot/imported/pickup3.ogg-d5cae5c7b0c1b7d6a30eb328f0e3b27a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/Retro Sounds 32-Bit - Update 1/pickup3.ogg"
+dest_files=["res://.godot/imported/pickup3.ogg-d5cae5c7b0c1b7d6a30eb328f0e3b27a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

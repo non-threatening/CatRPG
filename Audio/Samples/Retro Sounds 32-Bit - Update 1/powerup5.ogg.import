@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmui6emjn2rgu"
+path="res://.godot/imported/powerup5.ogg-379cf916875db0d56f570f3714a421a3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/Retro Sounds 32-Bit - Update 1/powerup5.ogg"
+dest_files=["res://.godot/imported/powerup5.ogg-379cf916875db0d56f570f3714a421a3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

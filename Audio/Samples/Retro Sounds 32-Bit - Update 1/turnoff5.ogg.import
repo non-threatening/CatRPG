@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://3848q3d4nbi"
+path="res://.godot/imported/turnoff5.ogg-fddb21aef42856bcf967dc9f8968a1d8.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Samples/Retro Sounds 32-Bit - Update 1/turnoff5.ogg"
+dest_files=["res://.godot/imported/turnoff5.ogg-fddb21aef42856bcf967dc9f8968a1d8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
