@@ -6,6 +6,8 @@ uniform vec4 color1 : source_color;
 uniform vec4 stem_color: source_color;
 uniform float time_scale = 5.0;
 
+// to not error dream shader
+uniform float progress = 0.0;
 
 void vertex() {
 	if ( VERTEX.y < -10.0 ) {

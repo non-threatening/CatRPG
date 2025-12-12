@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://btat3ybgx0y38" path="res://Maps/Enviroment/Plants/Flowers/flower.gd" id="2_sd35e"]
 [ext_resource type="Texture2D" uid="uid://cv358jhfk1ws5" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_8Petals_Stem.png" id="4_q6xlj"]
 [ext_resource type="Texture2D" uid="uid://dptumtturaxp1" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_8Petals_Stem_2.png" id="5_gnnoh"]
-[ext_resource type="Material" uid="uid://d4kyp8h2r0x61" path="res://Maps/Enviroment/Plants/Flowers/flower_dream.tres" id="6_px1lc"]
 [ext_resource type="Texture2D" uid="uid://dmj07u3lguye8" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_ManyPetals_Stem.png" id="6_rjoxa"]
 [ext_resource type="Texture2D" uid="uid://stxgu2qmjsah" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_ManyPetals_Stem_2.png" id="7_q3lrd"]
+[ext_resource type="Material" uid="uid://ct1qgfawmdse2" path="res://Maps/Enviroment/Plants/Flowers/flower.tres" id="7_q6xlj"]
 [ext_resource type="Texture2D" uid="uid://ddn55rmeynqpa" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_Stacked_layers_Stem.png" id="8_h4xte"]
 
 [sub_resource type="Gradient" id="Gradient_s7pb4"]
@@ -53,7 +53,7 @@ texture = ExtResource("8_h4xte")
 
 [node name="Flower" type="Sprite2D" parent="."]
 y_sort_enabled = true
-material = ExtResource("6_px1lc")
+material = ExtResource("7_q6xlj")
 scale = Vector2(0.666, 0.666)
 texture = ExtResource("6_rjoxa")
 offset = Vector2(0, -32)

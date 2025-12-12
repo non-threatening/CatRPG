@@ -107,18 +107,18 @@ float get_local_progress(vec2 grid) {
 
 void vertex() {
 	modulate = COLOR;
-	if ( VERTEX.y < -10.0 ) {
+	//if ( VERTEX.y < -10.0 ) {
 		//VERTEX.x += sin( 0.5 * TIME * time_scale ) * x;
-		VERTEX.y += sin( 0.3 * TIME * time_scale ) * y;
-	}
+		//VERTEX.y += sin( 0.3 * TIME * time_scale ) * y;
+	//}
 }
 
 void fragment() {
-	
+
 	vec4 inverted = vec4( ( 1.2 - COLOR.rgb ), COLOR.a );
 	vec4 green = inverted * vec4( 0, 0.666, 0, COLOR.a );
 	COLOR = vec4( green * 0.85 ) * modulate;
-	
+
 	vec2 grid = UV * grid_size;
 	vec2 offset_uv = grid + get_stagger_offset(grid);
 	vec2 grid_flipped_uv = get_grid_flip(offset_uv);
