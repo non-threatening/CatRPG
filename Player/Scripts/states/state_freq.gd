@@ -4,24 +4,25 @@ class_name State_Freq extends State
 
 @onready var idle: State_Idle = $"../Idle"
 @onready var audio: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
-@onready var control: Control = $"../../Sprite2D/Control"
+@onready var control: Control = $"../../Sprite2D/WaveControl"
+@onready var tone_generator: ToneGenerator = $"../../Audio/ToneGenerator"
 
 var deg : float
 var freq : float
 var position : Vector2
-var hold_time: float = 0.0
-var threshold_time: float = 3.0  # Time in seconds to hold
-var action_triggered: bool = false
+var hold_time : float = 0.0
+var threshold_time : float = 3.0  # Time in seconds to hold
+var action_triggered : bool = false
 
 
 func _ready() -> void:
 	SignalBus.frequency_match.connect( frequency )
 	control.hide()
 
+
 func frequency( _freq, _wave_pos ) -> void:
 	freq = _freq
 	position = _wave_pos
-	print( "state freq: ", _freq, " pos: ", _wave_pos )
 	
 
 func enter() -> void:
@@ -32,6 +33,8 @@ func enter() -> void:
 
 	player.sprite.scale.x = 1
 	player.animation_player.play( "idle_side" )
+	
+	tone_generator.play()
 
 
 func harmonized() -> void:
@@ -39,35 +42,37 @@ func harmonized() -> void:
 	audio.pitch_scale = randf_range( 0.9, 1.1 )
 	audio.play()
 	control.hide()
+	tone_generator.stop()
+	tone_generator.process_sine = false
 	player.state_machine.change_state( idle )
-
 
 
 func handle_input( _event: InputEvent ) -> State:
 	if Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down"):
 		var direction = Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down")
 		deg = -0.5 * rad_to_deg( direction.angle() ) + 10
-		if deg > 0: 
-			$"../../Sprite2D/Control/TextureRect".material.set_shader_parameter( "wave_frequency", deg )
-			print( deg, " ", freq )
+		if deg > 0:
+			$"../../Sprite2D/WaveControl/TextureRect".material.set_shader_parameter( "wave_frequency", deg )
 			
-	elif _event.is_action_pressed("attack"):
-		return idle
-	elif _event.is_action_pressed("interact"):
+			tone_generator.set_hz( deg )
+			prints( "input", deg, freq )
+			
+	elif _event.is_action_pressed("attack") or _event.is_action_pressed("interact"):
 		return idle
 	return null
 
 
-## When the player exits
 func exit() -> void:
 	action_triggered = false
 	SignalBus.frequecy_matched.emit()
 	
 	
-## What happens during the _process update in the State?	
 func process( _delta : float ) -> State:
 	if ( freq - 3 ) <= deg and deg <= ( freq + 3 ):
 		hold_time += _delta
+		
+		##TODO: Put an effect here... pulsing; light and volume
+		
 		if hold_time >= threshold_time and not action_triggered:
 			action_triggered = true
 			harmonized()
@@ -75,10 +80,3 @@ func process( _delta : float ) -> State:
 		hold_time = 0.0
 		action_triggered = false
 	return null
-	
-	
-## What happens during the _physics_process update in the State?	
-func physics( _delta : float ) -> State:
-	return null
-	
-	

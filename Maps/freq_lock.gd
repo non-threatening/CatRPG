@@ -9,6 +9,7 @@ var is_opened : bool = false
 @onready var actionable_minigame: Area2D = $"../ActionableMinigame"
 @onready var wave_form: TextureRect = $WaveForm
 @onready var persistant_data_handler: PersistantDataHandler = $PersistantDataHandler
+@onready var tone_generator: ToneGenerator = $ToneGenerator
 
 
 func _ready() -> void:
@@ -30,14 +31,18 @@ func tune_freq() -> void:
 	wave_pos = wave_form.global_position
 	freq_lock.show()
 	frequency = randf_range( 40.0, 90.0 )
+	
+	tone_generator.set_hz( frequency )
+	tone_generator.play()
+	
 	wave_form.material.set_shader_parameter( "wave_frequency", frequency )
 	SignalBus.frequency_match.emit( frequency, wave_pos )	
 	PlayerManager.player.start_freq()
 
 
 func solved() -> void:
+	persistant_data_handler.set_value()
 	freq_lock.queue_free()
 	indicator_2d.queue_free()
 	actionable_minigame.queue_free()
-	persistant_data_handler.set_value()
 	pass
