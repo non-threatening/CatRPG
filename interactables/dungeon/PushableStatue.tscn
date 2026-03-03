@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="4_alwy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b56n4"]
-size = Vector2(32, 13)
+size = Vector2(48, 22.5)
 
 [node name="PushableStatue" type="RigidBody2D"]
 collision_layer = 16

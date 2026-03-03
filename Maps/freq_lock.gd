@@ -26,15 +26,15 @@ func _is_opened() -> void:
 		indicator_2d.queue_free()
 		actionable_minigame.queue_free()
 
-
+## Start trigger
 func tune_freq() -> void:
 	wave_pos = wave_form.global_position
-	freq_lock.show()
+	freq_lock.show() ###################################################### dlete
 	frequency = randf_range( 40.0, 90.0 )
 	
 	tone_generator.set_hz( frequency )
 	tone_generator.play()
-	
+
 	wave_form.material.set_shader_parameter( "wave_frequency", frequency )
 	SignalBus.frequency_match.emit( frequency, wave_pos )	
 	PlayerManager.player.start_freq()

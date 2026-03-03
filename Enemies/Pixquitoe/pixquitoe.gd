@@ -18,9 +18,7 @@ func initialize() -> void:
 	
 	await get_tree().create_timer( 60 ).timeout
 	queue_free()
-
-
-
+## bird Friend is a traveller from far away
 
 
 func _kamikaze() -> void:

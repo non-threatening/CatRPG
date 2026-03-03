@@ -53,7 +53,6 @@ func complete(_args: Dictionary = {}) -> void:
 	
 	completed.emit()
 	
-	
 	SaveManager.save_game_auto( "auto" )
 	
 

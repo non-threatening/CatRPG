@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bwa3jdmpvxxvu"]
+[gd_scene load_steps=34 format=4 uid="uid://bwa3jdmpvxxvu"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_2g8rj"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_gcgvm"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://dg2utqdot7mxt" path="res://Maps/Enviroment/Plants/Trees/trees.gd" id="13_1sp4d"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable_dialog.tscn" id="13_6ipnb"]
 [ext_resource type="Resource" uid="uid://dq68ejhr6ptlx" path="res://Dialogue/Conversations/tree_of_leaving.dialogue" id="16_usbqa"]
+[ext_resource type="PackedScene" uid="uid://cwis5wv0e7243" path="res://Items/Keys/Key.tscn" id="17_usbqa"]
+[ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://zz_test/Props/pot/pot.tscn" id="18_1sp4d"]
 
 [sub_resource type="Gradient" id="Gradient_jc7gr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -38,15 +40,15 @@ noise = SubResource("FastNoiseLite_0eggj")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jp6c1"]
 shader = ExtResource("1_yb7pt")
 shader_parameter/color = Color(0, 0.11764706, 0.12156863, 1)
-shader_parameter/lineWidth = 0.10000000149012
+shader_parameter/lineWidth = 0.05000000074506
 shader_parameter/size = Vector2(60, 38)
 shader_parameter/noise = SubResource("NoiseTexture2D_gxhnc")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_d4krf")
 shader_parameter/edge_fade = 0.0
 shader_parameter/wave_speed = 0.05000000074506
-shader_parameter/blur_amount = 0.0
-shader_parameter/mix_amount = 0.0
-shader_parameter/color_over = Color(0, 0, 0, 1)
+shader_parameter/blur_amount = 10.0
+shader_parameter/mix_amount = 1.0
+shader_parameter/color_over = Color(1.2513996e-06, 0.3548596, 0.16761851, 1)
 
 [sub_resource type="Gradient" id="Gradient_6rbys"]
 offsets = PackedFloat32Array(0.216216, 1)
@@ -72,6 +74,43 @@ radius = 168.66832
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_usbqa"]
 radius = 521.1622
+
+[sub_resource type="Animation" id="Animation_vcn8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/wait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3798, 2059)]
+}
+
+[sub_resource type="Animation" id="Animation_1sp4d"]
+resource_name = "wait"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/wait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3798, 2059)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_awqxf"]
+_data = {
+&"RESET": SubResource("Animation_vcn8n"),
+&"wait": SubResource("Animation_1sp4d")
+}
 
 [node name="TheLobby" type="Node2D"]
 script = ExtResource("1_2g8rj")
@@ -111,108 +150,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_abty2")]
-position = Vector2(655, -405)
+position = Vector2(-3502, -2258)
 
 [node name="LevelTransition" parent="." instance=ExtResource("5_jc7gr")]
 portal_dir = 1
 level = "uid://ly7wguh1ufuy"
 size = 1
 side = 2
-
-[node name="Flowers" type="Node2D" parent="."]
-y_sort_enabled = true
-position = Vector2(-3713, -2155)
-script = ExtResource("6_8jkbr")
-
-[node name="Flower" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -124)
-
-[node name="Flower2" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(10, -123)
-
-[node name="Flower3" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -124)
-
-[node name="Flower4" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -124)
-
-[node name="Flower5" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -124)
-
-[node name="Flower6" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower7" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(10, -122)
-
-[node name="Flower8" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower9" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower10" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower11" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower12" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower13" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower14" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower15" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower16" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower17" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower18" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower19" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower20" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower21" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower22" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower23" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower24" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower25" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower26" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower27" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower28" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower29" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
-
-[node name="Flower30" parent="Flowers" instance=ExtResource("4_abty2")]
-position = Vector2(8, -122)
 
 [node name="WrapArounds" type="Node" parent="."]
 
@@ -307,3 +251,112 @@ position = Vector2(-305, 90)
 
 [node name="Trees4" parent="Trees" instance=ExtResource("9_cdbcb")]
 position = Vector2(-299, 90)
+
+[node name="Flowers" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-3713, -2155)
+script = ExtResource("6_8jkbr")
+
+[node name="Flower" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(57, -124)
+
+[node name="Flower2" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-48, -124)
+
+[node name="Flower3" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(89, -99)
+
+[node name="Flower4" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-112, -124)
+
+[node name="Flower5" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-85, -149)
+
+[node name="Flower6" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(87, -151)
+
+[node name="Flower7" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-108, -188)
+
+[node name="Flower8" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-46, -174)
+
+[node name="Flower9" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-2, -174)
+
+[node name="Flower10" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(45, -173)
+
+[node name="Flower11" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-83, -77)
+
+[node name="Flower12" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-112, -48)
+
+[node name="Flower13" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-46, -47)
+
+[node name="Flower14" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(32, -66)
+
+[node name="Flower15" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-11, -57)
+
+[node name="Flower16" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(67, -34)
+
+[node name="Flower17" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-112, 29)
+
+[node name="Flower18" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-80, -6)
+
+[node name="Flower19" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(101, -189)
+
+[node name="Flower20" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-55, 9)
+
+[node name="Flower21" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(-10, 22)
+
+[node name="Flower22" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(35, 16)
+
+[node name="Flower23" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(148, -183)
+
+[node name="Flower24" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(125, -123)
+
+[node name="Flower25" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(126, -50)
+
+[node name="Flower26" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(100, -14)
+
+[node name="Flower27" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(162, -98)
+
+[node name="Flower28" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(187, -143)
+
+[node name="Flower29" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(202, -187)
+
+[node name="Flower30" parent="Flowers" instance=ExtResource("4_abty2")]
+position = Vector2(8, -122)
+
+[node name="Key" parent="." instance=ExtResource("17_usbqa")]
+position = Vector2(845, -337)
+
+[node name="Pot" parent="." instance=ExtResource("18_1sp4d")]
+position = Vector2(607, -268)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_awqxf")
+}
+
+[node name="wait" type="Node2D" parent="AnimationPlayer"]
+position = Vector2(-3798, 2059)

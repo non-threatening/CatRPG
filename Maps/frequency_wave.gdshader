@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D color: source_color;
+uniform sampler2D wave_color: source_color;
 
 uniform float wave_amplitude = 0.25;
 uniform float wave_frequency = 50.0;
@@ -25,7 +26,11 @@ void fragment() {
     float dist = abs(UV.y - y);
 
 	vec3 c = texture(color, UV).rgb;
-	
+
     float alpha = smoothstep(thickness, 0.0, dist);
-    COLOR = vec4(c, alpha);
+    vec4 wave = vec4(c, alpha);
+
+	vec4 wc = texture( wave_color, UV );
+	COLOR = wave - wc;
+
 }

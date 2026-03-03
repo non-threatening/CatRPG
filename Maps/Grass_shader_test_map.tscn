@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=57 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
@@ -35,7 +35,11 @@
 [ext_resource type="Shader" uid="uid://cenq3c1oyr3a2" path="res://Maps/frequency_wave.gdshader" id="33_qhnrh"]
 [ext_resource type="Texture2D" uid="uid://bxawm0g5jchnr" path="res://zz_test/Props/Sprites/magic-portal-gate.png" id="34_v5bit"]
 [ext_resource type="Script" uid="uid://cb1p3ev4nie21" path="res://Maps/freq_lock.gd" id="35_qnxbr"]
+[ext_resource type="PackedScene" uid="uid://38bq26xw57sx" path="res://Player/Audio/ToneGenerator/tone_generator.tscn" id="36_1qe5l"]
 [ext_resource type="PackedScene" uid="uid://dsm1sxxrq3n7" path="res://Dialogue/actionable_minigame.tscn" id="36_xvh4v"]
+[ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://zz_test/Props/pot/pot.tscn" id="37_yr5mt"]
+[ext_resource type="PackedScene" uid="uid://cwis5wv0e7243" path="res://Items/Keys/Key.tscn" id="38_hxh2l"]
+[ext_resource type="PackedScene" uid="uid://dfcwjey80ry5k" path="res://Maps/pushable_reflector.tscn" id="39_l156c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5fwb"]
 radius = 73.552704
@@ -70,13 +74,20 @@ size = Vector2(531.6667, 126)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvh4v"]
 size = Vector2(532, 122)
 
+[sub_resource type="Gradient" id="Gradient_yr5mt"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.3499999, 1, 0.32941177)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hxh2l"]
+gradient = SubResource("Gradient_yr5mt")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v5bit"]
 shader = ExtResource("33_qhnrh")
+shader_parameter/wave_color = SubResource("GradientTexture1D_hxh2l")
 shader_parameter/wave_amplitude = 0.25
 shader_parameter/wave_frequency = 40.0
 shader_parameter/wave_speed = 5.0
 shader_parameter/left_falloff = 0.0
-shader_parameter/right_falloff = 0.5
+shader_parameter/right_falloff = 0.0
 
 [sub_resource type="Gradient" id="Gradient_qhnrh"]
 
@@ -111,7 +122,7 @@ offset_bottom = 800.0
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_g0pye")]
-position = Vector2(1223, 473)
+position = Vector2(1212, 447)
 
 [node name="Grass" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -531,7 +542,7 @@ position = Vector2(720, 369)
 item_data = ExtResource("9_qnxbr")
 
 [node name="ItemPickup4" parent="Bling" instance=ExtResource("8_v5bit")]
-position = Vector2(1030, 70)
+position = Vector2(1017.97375, 95.22027)
 item_data = ExtResource("9_qnxbr")
 
 [node name="ItemPickup5" parent="Bling" instance=ExtResource("8_v5bit")]
@@ -781,6 +792,9 @@ texture = SubResource("GradientTexture2D_v5bit")
 
 [node name="PersistantDataHandler" parent="FrequencyMini/FreqLock" instance=ExtResource("11_yr5mt")]
 
+[node name="ToneGenerator" parent="FrequencyMini/FreqLock" instance=ExtResource("36_1qe5l")]
+pulse_hz = 330.0
+
 [node name="ActionableMinigame" parent="FrequencyMini" instance=ExtResource("36_xvh4v")]
 position = Vector2(202.66667, 196)
 
@@ -788,3 +802,15 @@ position = Vector2(202.66667, 196)
 position = Vector2(239.83337, 53.49997)
 shape = SubResource("RectangleShape2D_yr5mt")
 debug_color = Color(0, 0.60038817, 0.70000815, 0)
+
+[node name="Pot" parent="." instance=ExtResource("37_yr5mt")]
+position = Vector2(1102, 377)
+
+[node name="Key" parent="." instance=ExtResource("38_hxh2l")]
+position = Vector2(1390, 563)
+
+[node name="PushableReflector" parent="." instance=ExtResource("39_l156c")]
+position = Vector2(2267, -52)
+
+[node name="PushableReflector2" parent="." instance=ExtResource("39_l156c")]
+position = Vector2(2129, -104)

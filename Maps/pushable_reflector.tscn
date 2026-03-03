@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfcwjey80ry5k"]
+
+[ext_resource type="Script" uid="uid://dkw4vkpq1ohls" path="res://Maps/pushable_reflector.gd" id="1_efmbv"]
+[ext_resource type="Texture2D" uid="uid://b1w34lfwpwoq7" path="res://materials/color_change/Gunpowder.png" id="2_0rtob"]
+[ext_resource type="Texture2D" uid="uid://dge6x70cjvhjp" path="res://interactables/dungeon/dungeon_props.png" id="3_iei42"]
+[ext_resource type="AudioStream" uid="uid://xh5ubp2fet0y" path="res://interactables/dungeon/push_stone.wav" id="4_pk0ly"]
+[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="5_8gf72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efmbv"]
+size = Vector2(42, 40)
+
+[node name="PushableReflector" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 273
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_efmbv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_0rtob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.9999995, 9)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_efmbv")
+
+[node name="xxxSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+texture = ExtResource("3_iei42")
+region_enabled = true
+region_rect = Rect2(385, 0, 32, 48)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pk0ly")
+
+[node name="PersistantDataHandler" parent="." instance=ExtResource("5_8gf72")]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(200, 100)
+collision_mask = 273

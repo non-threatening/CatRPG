@@ -13,6 +13,8 @@ uniform float mix_amount : hint_range(0.0, 1.0);
 uniform vec4 color_over : source_color;
 //uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
 void fragment() {
 
 	float n = texture(noise,mod(UV+-TIME*wave_speed/21.2,1.0)).r;
@@ -32,8 +34,8 @@ void fragment() {
 	}
 	COLOR.a = ma*n3;
 
-	//vec4 blurred = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount);
-	//blurred.a = 255.0;
-	//vec4 fin = mix(blurred, color_over, mix_amount);
-	//COLOR = fin;
+	vec4 blurred = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount);
+	blurred.a = 255.0;
+	vec4 fin = mix(blurred, color_over, mix_amount);
+	COLOR = fin;
 }
