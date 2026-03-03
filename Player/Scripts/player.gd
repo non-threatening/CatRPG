@@ -167,15 +167,13 @@ func update_hp( delta : int ) -> void:
 func update_electro_shell( delta : int ) -> void:
 	electro_shell = clampi( electro_shell + delta, 0, max_electro_shell)
 	PlayerHud.update_shell( electro_shell, max_electro_shell )
-	print( "plyaer.gd, update_electro_shell: ", electro_shell)
 
 
 func update_spoons( delta : int ) -> void:
 	spoons = clampi( spoons + delta, 0, max_capacity )
 	PlayerHud.update_spoons( spoons, max_capacity )
-	print( "plyaer.gd, update_spoons: ", spoons)
-	
-	
+
+
 func make_invulnerable( _duration : float = 1.0 ) -> void:
 	invulnerable = true
 	hit_box.monitoring = false
@@ -233,10 +231,10 @@ func _set_bomb_count( value : int ) -> void:
 func bird_friend_sprite_animation( new_dir : Vector2 ):
 	match new_dir:
 		Vector2.DOWN:
-			bird_friend_sprite.position = Vector2( 3, -67 )
+			bird_friend_sprite.position = Vector2( 0, -52 )
 			bird_friend_sprite.show_behind_parent = false
 		Vector2.UP:
-			bird_friend_sprite.position = Vector2( -8, -48 )
+			bird_friend_sprite.position = Vector2( -4, -79 )
 			bird_friend_sprite.show_behind_parent = true
 		Vector2.LEFT:
 			bird_friend_sprite.position = Vector2( -17, -54.0 )

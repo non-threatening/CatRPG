@@ -1,10 +1,10 @@
-[gd_scene load_steps=123 format=3 uid="uid://bpcvp55f33q1s"]
+[gd_scene load_steps=134 format=3 uid="uid://bpcvp55f33q1s"]
 
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Material" uid="uid://ikl3qglhwxv3" path="res://Player/player.tres" id="2_1l10g"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
-[ext_resource type="Texture2D" uid="uid://c14t1p7vmakho" path="res://Player/Sprites/CatSpriteSideTest.png" id="3_dy65m"]
 [ext_resource type="Texture2D" uid="uid://dhn3ppn1oma2s" path="res://Player/Sprites/AttackSprite01.png" id="3_kkg45"]
+[ext_resource type="Texture2D" uid="uid://bqetda8jkyx5" path="res://Player/Sprites/Player_Sprite_Master.png" id="3_wvbyc"]
 [ext_resource type="Script" uid="uid://d3jhi642kbnhk" path="res://Player/Scripts/player_sprite.gd" id="4_i4o1l"]
 [ext_resource type="Texture2D" uid="uid://cuauam44fa7si" path="res://Player/Sprites/player_sprite_sword.png" id="4_m0h3t"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="4_svx73"]
@@ -14,9 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://bwyhle5m0jsga" path="res://Player/Sprites/spin_effect.png" id="8_gpjlu"]
 [ext_resource type="Script" uid="uid://sro52odq4ttt" path="res://Player/Scripts/states/state_charge_attack.gd" id="8_n471f"]
 [ext_resource type="AudioStream" uid="uid://bib76kq2p2jji" path="res://Player/Audio/SwordSwoosh.wav" id="8_paeps"]
-[ext_resource type="Texture2D" uid="uid://bicu8rrmlxkwk" path="res://zz_test/Props/Sprites/Props.png" id="9_8mwp6"]
 [ext_resource type="AudioStream" uid="uid://bbdmj7rgev28r" path="res://Player/Audio/charged.wav" id="9_hshwv"]
 [ext_resource type="Script" uid="uid://c1k5vgukppsay" path="res://Player/Scripts/PlayerInteractionsHost.gd" id="10_4cvxe"]
+[ext_resource type="Texture2D" uid="uid://bnviobmca7lp0" path="res://Items/sprites/flute.png" id="10_6eb1q"]
 [ext_resource type="AudioStream" uid="uid://cuj4okwcek200" path="res://Player/Audio/spin-attack.wav" id="10_gpjlu"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="10_q6j84"]
 [ext_resource type="Script" uid="uid://f64sh3qypsw" path="res://Player/Scripts/states/state_stun.gd" id="11_606se"]
@@ -26,7 +26,6 @@
 [ext_resource type="Shader" uid="uid://b4d5u50y4e3og" path="res://Player/player.gdshader" id="13_o28un"]
 [ext_resource type="PackedScene" uid="uid://c3ovyjwujdxmf" path="res://GeneralNodes/HitBox/hit_box.tscn" id="13_urp6f"]
 [ext_resource type="Shader" uid="uid://cenq3c1oyr3a2" path="res://Maps/frequency_wave.gdshader" id="14_6rl0i"]
-[ext_resource type="AudioStream" uid="uid://c8px2y4w638w1" path="res://Player/Audio/hit_player.wav" id="14_bwjto"]
 [ext_resource type="Script" uid="uid://cvt3bp8tg6cp7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
 [ext_resource type="Script" uid="uid://cp5m17gdo2qko" path="res://Items/scripts/abilities.gd" id="17_pisgm"]
 [ext_resource type="Script" uid="uid://b4v4enjcc4ffa" path="res://Player/Scripts/states/state_freq.gd" id="18_7x5p2"]
@@ -48,6 +47,8 @@
 [ext_resource type="PackedScene" uid="uid://ccodbacsl6vdt" path="res://GeneralNodes/footstep_audio_2d/footstep_audio_2d.tscn" id="34_j2n6q"]
 [ext_resource type="AudioStream" uid="uid://j8xkn1lu8038" path="res://Player/Audio/grapple_clang.wav" id="34_maysp"]
 [ext_resource type="Texture2D" uid="uid://b4vhkw38nugvr" path="res://Player/Sprites/grapple.png" id="39_f4lon"]
+[ext_resource type="PackedScene" uid="uid://38bq26xw57sx" path="res://Player/Audio/ToneGenerator/tone_generator.tscn" id="41_wvbyc"]
+[ext_resource type="AudioStream" uid="uid://ds076jmw3y5fy" path="res://Audio/Samples/808/snare (2).ogg" id="43_6eb1q"]
 [ext_resource type="AudioStream" uid="uid://b8hbhokgsn50x" path="res://Player/Audio/grapple_chain.wav" id="44_dy65m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1l10g"]
@@ -391,18 +392,109 @@ shader_parameter/x = 0.5
 shader_parameter/y = 1.0
 shader_parameter/time_scale = 2.666
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6eb1q"]
+[sub_resource type="Gradient" id="Gradient_6eb1q"]
+offsets = PackedFloat32Array(0, 0)
+colors = PackedColorArray(0.85, 0.5808334, 0, 0.1254902, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wvbyc"]
+gradient = SubResource("Gradient_6eb1q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvbyc"]
+resource_local_to_scene = true
 shader = ExtResource("14_6rl0i")
+shader_parameter/wave_color = SubResource("GradientTexture1D_wvbyc")
 shader_parameter/wave_amplitude = 0.25
-shader_parameter/wave_frequency = 40.0
+shader_parameter/wave_frequency = 80.0
 shader_parameter/wave_speed = 5.0
-shader_parameter/left_falloff = 1.0
+shader_parameter/left_falloff = 0.666
 shader_parameter/right_falloff = 0.0
 
 [sub_resource type="Gradient" id="Gradient_qhnrh"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wvbyc"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gvnt1"]
 gradient = SubResource("Gradient_qhnrh")
+
+[sub_resource type="Gradient" id="Gradient_1kmt7"]
+offsets = PackedFloat32Array(0.9966443, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.25756282, 3.792703e-05, 0.9678828, 0.2509804)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c4i3b"]
+gradient = SubResource("Gradient_1kmt7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvbbp"]
+shader = ExtResource("14_6rl0i")
+shader_parameter/wave_color = SubResource("GradientTexture1D_c4i3b")
+shader_parameter/wave_amplitude = 0.25
+shader_parameter/wave_frequency = 120.0
+shader_parameter/wave_speed = 5.0
+shader_parameter/left_falloff = 0.666
+shader_parameter/right_falloff = 0.0
+
+[sub_resource type="Gradient" id="Gradient_7v2uk"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m6nl3"]
+gradient = SubResource("Gradient_7v2uk")
+
+[sub_resource type="Animation" id="Animation_gvnt1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/wave_color:gradient:offsets")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedFloat32Array(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect3:material:shader_parameter/wave_color:gradient:offsets")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedFloat32Array(0.9966443, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wvbyc"]
+resource_name = "unfold"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/wave_color:gradient:offsets")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [PackedFloat32Array(0, 0), PackedFloat32Array(0.25, 1), PackedFloat32Array(0.9899329, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect3:material:shader_parameter/wave_color:gradient:offsets")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [PackedFloat32Array(0.9966443, 1), PackedFloat32Array(0.9966443, 1), PackedFloat32Array(0.25, 1), PackedFloat32Array(0, 0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1kmt7"]
+_data = {
+&"RESET": SubResource("Animation_gvnt1"),
+&"unfold": SubResource("Animation_wvbyc")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n471f"]
 shader = ExtResource("13_o28un")
@@ -1043,34 +1135,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/HeldItem:position")
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(2, 4), Vector2(1, 2)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.5708]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1117,18 +1197,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/HeldItem:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(-20, 15), Vector2(-19, 15)]
-}
 
 [sub_resource type="Animation" id="Animation_j2n6q"]
 resource_name = "carry_up"
@@ -1149,34 +1217,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/HeldItem:position")
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(0, -5), Vector2(-3, -5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.5708]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1202,58 +1258,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/HeldItem:show_behind_parent")
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.5708]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/HeldItem:position")
+tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2(-1, 3), Vector2(0, 3), Vector2(2, 4)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.5708]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-5, -4)]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FootstepAudio2D")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FootstepAudio2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1281,46 +1313,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/HeldItem:position")
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.153648, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-20, 15), Vector2(-20, 10), Vector2(-20, 14)]
+"values": [Vector2(3, -4)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
+tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(3, -4)]
+"values": [0.0]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
+tracks/3/path = NodePath("FootstepAudio2D")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FootstepAudio2D")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1348,58 +1368,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/HeldItem:position")
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.142082, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-3, -5), Vector2(-3, -2), Vector2(-3, -5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/HeldItem:show_behind_parent")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.5708]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/HitBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-12, 5.36442e-07)]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FootstepAudio2D")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FootstepAudio2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -2288,7 +2284,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [16]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2353,7 +2349,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [7]
+"values": [2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2418,7 +2414,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [21]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2491,10 +2487,10 @@ tracks/1/path = NodePath("Sprite2D/HeldItem:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(2, 1, 0.5),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 0.5),
 "update": 0,
-"values": [Vector2(0, 75), Vector2(0, 54), Vector2(0, 3)]
+"values": [Vector2(0, 15), Vector2(0, -17)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2556,10 +2552,10 @@ tracks/1/path = NodePath("Sprite2D/HeldItem:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.246805, 0.4),
-"transitions": PackedFloat32Array(2, 1, 1, 0.5),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 0.5),
 "update": 0,
-"values": [Vector2(43, 63), Vector2(46, 23), Vector2(20, 6), Vector2(-3, 19)]
+"values": [Vector2(58, 0), Vector2(53, -27)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2595,7 +2591,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_efx54"]
@@ -2620,10 +2616,10 @@ tracks/1/path = NodePath("Sprite2D/HeldItem:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 75), Vector2(0, 54), Vector2(0, -15)]
+"values": [Vector2(0, -29), Vector2(0, -15)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2675,7 +2671,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1]
+"values": [15]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2727,7 +2723,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [8]
+"values": [2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2779,7 +2775,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [10]
+"values": [21]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2820,8 +2816,8 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_taxpx"]
 resource_name = "walk_down"
-length = 0.3
-loop_mode = 2
+length = 1.000005
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2830,10 +2826,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0, 2]
+"values": [12, 17, 17]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2876,8 +2872,9 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_dx1an"]
 resource_name = "walk_side"
-length = 0.3
-loop_mode = 2
+length = 1.000005
+loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2885,10 +2882,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [6, 8]
+"values": [0, 5, 5]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2928,11 +2925,24 @@ tracks/3/keys = {
 "method": &"play_footstep"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_n3nwh"]
 resource_name = "walk_up"
-length = 0.3
-loop_mode = 2
+length = 1.000005
+loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2940,10 +2950,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [9, 11]
+"values": [18, 23, 23]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3129,7 +3139,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("14_bwjto")
+"stream": ExtResource("43_6eb1q")
 }],
 "times": PackedFloat32Array(0.0333333)
 }
@@ -3324,10 +3334,10 @@ debug_color = Color(0, 0.65, 0.205833, 0.121569)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
 material = ExtResource("2_1l10g")
-texture = ExtResource("3_dy65m")
+texture = ExtResource("3_wvbyc")
 offset = Vector2(0, -52)
-hframes = 3
-vframes = 4
+hframes = 6
+vframes = 6
 script = ExtResource("4_i4o1l")
 
 [node name="Sprite2D_Weapon_Below" type="Sprite2D" parent="Sprite2D"]
@@ -3430,16 +3440,13 @@ libraries = {
 }
 
 [node name="HeldItem" type="Node2D" parent="Sprite2D"]
-visible = false
 show_behind_parent = true
+z_index = 1
 position = Vector2(0, 75)
+rotation = 0.34906584
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/HeldItem"]
-position = Vector2(0, -9)
-texture = ExtResource("9_8mwp6")
-hframes = 16
-vframes = 3
-frame = 4
+texture = ExtResource("10_6eb1q")
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0.0354, 0.0168, 0.24, 0.141176)
@@ -3449,16 +3456,16 @@ scale = Vector2(3.125, 3.56287)
 texture = ExtResource("4_svx73")
 
 [node name="BirdFriendSprite" type="Sprite2D" parent="Sprite2D"]
-visible = false
 show_behind_parent = true
 material = SubResource("ShaderMaterial_f4lon")
-position = Vector2(0, -53)
+position = Vector2(3, -80)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("12_iyprq")
 hframes = 2
 region_rect = Rect2(7, 81, 102, 42)
 
-[node name="Control" type="Control" parent="Sprite2D"]
+[node name="WaveControl" type="Control" parent="Sprite2D"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 45.0
@@ -3466,12 +3473,24 @@ offset_top = -104.0
 offset_right = 405.0
 offset_bottom = 46.0
 
-[node name="TextureRect" type="TextureRect" parent="Sprite2D/Control"]
-material = SubResource("ShaderMaterial_6eb1q")
+[node name="TextureRect" type="TextureRect" parent="Sprite2D/WaveControl"]
+material = SubResource("ShaderMaterial_wvbyc")
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 151.0
-texture = SubResource("GradientTexture2D_wvbyc")
+texture = SubResource("GradientTexture2D_gvnt1")
+
+[node name="TextureRect3" type="TextureRect" parent="Sprite2D/WaveControl"]
+material = SubResource("ShaderMaterial_uvbbp")
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 151.0
+texture = SubResource("GradientTexture2D_m6nl3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/WaveControl"]
+libraries = {
+&"": SubResource("AnimationLibrary_1kmt7")
+}
 
 [node name="Sprite2D_death" type="Sprite2D" parent="."]
 visible = false
@@ -3557,6 +3576,8 @@ script = ExtResource("11_hfp0w")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
 max_polyphony = 6
+
+[node name="ToneGenerator" parent="Audio" instance=ExtResource("41_wvbyc")]
 
 [node name="Interactions" type="Node2D" parent="."]
 visible = false

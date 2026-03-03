@@ -8,6 +8,7 @@ var throwable : Throwable
 
 @onready var idle: State_Idle = $"../Idle"
 @onready var stun: State_Stun = $"../Stun"
+@onready var held_item: Node2D = $"../../Sprite2D/HeldItem"
 
 
 	
@@ -46,15 +47,27 @@ func process( _delta : float ) -> State:
 	elif player.set_direction() or walking == false:
 		player.update_animation( "carry_walk" )
 		walking = true
-		
+	
+	## Held Item
+	match player.direction:
+		Vector2.DOWN:
+			held_item.position = Vector2( -1.0, -12.0 )
+			held_item.rotation = 20.0
+			held_item.show_behind_parent = false
+		Vector2.UP:
+			held_item.position = Vector2( 0.0, -20 )
+			held_item.show_behind_parent = true
+		Vector2.LEFT, Vector2.RIGHT:
+			held_item.position = Vector2( 47, -18 )
+			held_item.rotation = 0
+			held_item.show_behind_parent = false
+		_:
+			pass
+			
 	player.velocity = player.direction * move_speed
 	return null
-	
-	
-func physics( _delta : float ) -> State:
-	return null
-	
-	
+
+
 func handle_input( _event: InputEvent ) -> State:
 	if _event.is_action_pressed( "attack" ) or _event.is_action_pressed( "interact" ):
 		return idle # triggers exit

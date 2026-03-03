@@ -13,6 +13,7 @@ var increment : float
 
 func _ready() -> void:
 	audio.stop()
+	audio.volume_linear = 0.0
 	audio.stream.mix_rate = sample_hz
 	audio.volume_db = linear_to_db( 0.5 )
 
@@ -21,6 +22,8 @@ func play() -> void:
 	audio.play()
 	playback = audio.get_stream_playback()
 	process_sine = true
+	var tween : Tween = create_tween()
+	tween.tween_property( audio, "volume_linear", 0.5, 0.5 )
 
 
 func set_hz( hz ) -> void:
@@ -28,9 +31,9 @@ func set_hz( hz ) -> void:
 	prints( "hz", hz * 4 )
 
 
+
 func _fill_buffer() -> void:
 	increment = pulse_hz / sample_hz
-	
 	var to_fill: int = playback.get_frames_available()
 	while to_fill > 0:
 		playback.push_frame(Vector2.ONE * sin(phase * TAU)) # Audio frames are stereo.
@@ -39,6 +42,8 @@ func _fill_buffer() -> void:
 
 
 func stop() -> void:
+	var tween : Tween = create_tween()
+	tween.tween_property( audio, "volume_linear", 0.0, 0.25 )
 	audio.stop()
 	
 

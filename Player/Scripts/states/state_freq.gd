@@ -6,6 +6,9 @@ class_name State_Freq extends State
 @onready var audio: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
 @onready var control: Control = $"../../Sprite2D/WaveControl"
 @onready var tone_generator: ToneGenerator = $"../../Audio/ToneGenerator"
+@onready var texture_rect: TextureRect = $"../../Sprite2D/WaveControl/TextureRect"
+@onready var animation: AnimationPlayer = $"../../Sprite2D/WaveControl/AnimationPlayer"
+
 
 var deg : float
 var freq : float
@@ -18,13 +21,14 @@ var action_triggered : bool = false
 func _ready() -> void:
 	SignalBus.frequency_match.connect( frequency )
 	control.hide()
+	animation.play("RESET")
 
 
 func frequency( _freq, _wave_pos ) -> void:
 	freq = _freq
-	position = _wave_pos
+	position = _wave_pos  ##Change this to doorway position
 	
-
+################# Start #####
 func enter() -> void:
 	control.show()
 	player.update_animation( "walk" )
@@ -35,6 +39,8 @@ func enter() -> void:
 	player.animation_player.play( "idle_side" )
 	
 	tone_generator.play()
+	animation.play("unfold")
+
 
 
 func harmonized() -> void:
@@ -52,7 +58,7 @@ func handle_input( _event: InputEvent ) -> State:
 		var direction = Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down")
 		deg = -0.5 * rad_to_deg( direction.angle() ) + 10
 		if deg > 0:
-			$"../../Sprite2D/WaveControl/TextureRect".material.set_shader_parameter( "wave_frequency", deg )
+			texture_rect.material.set_shader_parameter( "wave_frequency", deg )
 			
 			tone_generator.set_hz( deg )
 			prints( "input", deg, freq )
@@ -63,6 +69,7 @@ func handle_input( _event: InputEvent ) -> State:
 
 
 func exit() -> void:
+	animation.play("RESET")
 	action_triggered = false
 	SignalBus.frequecy_matched.emit()
 	
