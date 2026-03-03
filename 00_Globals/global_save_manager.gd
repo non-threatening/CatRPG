@@ -73,7 +73,7 @@ func _ready() -> void:
 
 
 func save_game_auto( _number ) -> void:
-	await get_tree().create_timer( 6.66 ).timeout
+	await get_tree().create_timer( 32.0 ).timeout
 	save_game( _number )
 	
 func save_game( _number ) -> void:

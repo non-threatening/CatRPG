@@ -38,13 +38,13 @@ func _ready() -> void:
 
 	## New game
 	time_tick.set_time_units({
-		"day": randi_range( 1, 28 ),
-		#"day": 1,
-		"hour": randi_range( 17, 23 ),
-		#"hour": 8,
+		#"day": randi_range( 1, 28 ),
+		"day": 1,
+		#"hour": randi_range( 17, 23 ),
+		"hour": 8,
 		"minute": 0,
-		"moon": randi_range( 0, 7 ),
-		#"month": 0,
+		#"moon": randi_range( 0, 7 ),
+		"moon": 0,
 		"year": 0
 	})
 
