@@ -65,6 +65,7 @@ collision_layer = 1024
 collision_mask = 1024
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, -136)
 shape = SubResource("CircleShape2D_ndlp4")
 debug_color = Color(2.4065375e-07, 0.6413922, 0.32999834, 0)

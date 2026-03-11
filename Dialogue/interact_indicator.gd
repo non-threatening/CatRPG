@@ -4,7 +4,7 @@ class_name InteractIndicator extends Area2D
 @export var x : int = -50 : set = _set_x
 @export var y : int = -250 : set = _set_y
 
-var gate : bool = true
+var bounce_gate : bool = true
 
 @onready var indicator_2d: InteractIndicator = $"."
 @onready var texture_rect: TextureRect = $TextureRect
@@ -27,7 +27,7 @@ func _on_body_entered( _a ) -> void:
 	indicator_2d.show()
 	var tween = get_tree().create_tween()
 	tween.tween_property(indicator_2d, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.35)
-	gate = true
+	bounce_gate = true
 	_bounce()
 	
 	
@@ -36,7 +36,7 @@ func _on_body_exited( _a ) -> void:
 	tween.tween_property(indicator_2d, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.35)
 	await get_tree().create_timer( 0.35 ).timeout
 	indicator_2d.hide()
-	gate = false
+	bounce_gate = false
 
 
 func _set_x( _a : = 0 ) -> void:
@@ -64,6 +64,6 @@ func _bounce() -> void:
 	tween.tween_property( texture_rect, "position", Vector2( x, -5 + y ), dur ).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property( texture_rect, "position", Vector2( x, + y ), dur ).set_ease(Tween.EASE_IN_OUT)
 	await get_tree().create_timer( 6.66 ).timeout
-	if gate == true:
+	if bounce_gate == true:
 		_bounce()
 	

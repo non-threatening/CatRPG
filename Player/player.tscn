@@ -2874,7 +2874,7 @@ tracks/3/keys = {
 resource_name = "walk_side"
 length = 1.000005
 loop_mode = 1
-step = 0.05
+step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2882,10 +2882,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 5, 5]
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666, 0.5, 0.5833333, 0.6666667, 0.75, 0.8333333, 0.9166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3440,6 +3440,7 @@ libraries = {
 }
 
 [node name="HeldItem" type="Node2D" parent="Sprite2D"]
+visible = false
 show_behind_parent = true
 z_index = 1
 position = Vector2(0, 75)
@@ -3456,21 +3457,21 @@ scale = Vector2(3.125, 3.56287)
 texture = ExtResource("4_svx73")
 
 [node name="BirdFriendSprite" type="Sprite2D" parent="Sprite2D"]
+visible = false
 show_behind_parent = true
 material = SubResource("ShaderMaterial_f4lon")
-position = Vector2(3, -80)
+position = Vector2(-2, -73)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("12_iyprq")
 hframes = 2
 region_rect = Rect2(7, 81, 102, 42)
 
 [node name="WaveControl" type="Control" parent="Sprite2D"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 45.0
+offset_left = -76.0
 offset_top = -104.0
-offset_right = 405.0
+offset_right = 284.0
 offset_bottom = 46.0
 
 [node name="TextureRect" type="TextureRect" parent="Sprite2D/WaveControl"]
@@ -3483,7 +3484,7 @@ texture = SubResource("GradientTexture2D_gvnt1")
 [node name="TextureRect3" type="TextureRect" parent="Sprite2D/WaveControl"]
 material = SubResource("ShaderMaterial_uvbbp")
 layout_mode = 0
-offset_right = 360.0
+offset_right = 280.0
 offset_bottom = 151.0
 texture = SubResource("GradientTexture2D_m6nl3")
 

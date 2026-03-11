@@ -58,8 +58,8 @@ func _on_game_loaded() -> void:
 func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) -> void:
 	if time_gate == true:
 		match unit_name:
-			"day":
-				SaveManager.save_game_auto( "auto" )
+			#"day":
+				#SaveManager.save_game_auto( "auto" )
 			"moon":
 				moon = new_value
 				match moon:
