@@ -30,9 +30,13 @@ var defense_bonus : int = 0
 var arrow_count : int = 25 : set = _set_arrow_count
 var bomb_count : int = 10 : set = _set_bomb_count
 
+
+@onready var player_shape_vert: CollisionShape2D = $PlayerShapeVert
+@onready var player_shape_hor: CollisionShape2D = $PlayerShapeHor
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
-@onready var hit_box: HitBox = $Sprite2D/HitBox
+@onready var hit_box: HitBox = $Collisions/HitBox
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var audio: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
@@ -82,7 +86,7 @@ func _process( _delta: float ) -> void:
 		Input.get_axis("up", "down")
 	).normalized()
 
-## Bird Friend Head
+	## Bird Friend Head
 	if bird_friend_sprite.visible == true:
 		time += _delta
 		if time >= wait_time:
@@ -127,7 +131,8 @@ func set_direction() -> bool:
 	DirectionChanged.emit( new_dir )
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	
-	bird_friend_sprite_animation( new_dir )
+	_on_direction_changed( new_dir )
+	
 	return true
 	
 
@@ -145,6 +150,32 @@ func anim_direction() -> String:
 	else:
 		return "side"
 		
+		
+func _on_direction_changed( new_dir : Vector2 ):
+	bird_friend_sprite.show_behind_parent = false
+	match new_dir:
+		Vector2.DOWN:
+			bird_friend_sprite.position = Vector2( -2, -73 )
+			bird_friend_sprite.show_behind_parent = true
+			player_shape_vert.set_deferred( "disabled", false )
+			player_shape_hor.set_deferred( "disabled", true )
+		Vector2.UP:
+			bird_friend_sprite.position = Vector2( -5, -71 )
+			player_shape_vert.set_deferred( "disabled", false )
+			player_shape_hor.set_deferred( "disabled", true )
+		Vector2.LEFT, Vector2.RIGHT:
+			bird_friend_sprite.position = Vector2( -25, -64 )
+			player_shape_vert.set_deferred( "disabled", true )
+			player_shape_hor.set_deferred( "disabled", false )
+		_:
+			pass
+
+
+func show_bird_friend() -> void:
+	bird_friend_sprite.show()
+func hide_bird_friend() -> void:
+	bird_friend_sprite.hide()		
+
 		
 func _take_damage( hurt_box : HurtBox ) -> void:
 	if invulnerable == true:
@@ -227,26 +258,4 @@ func _set_bomb_count( value : int ) -> void:
 	PlayerHud.update_bomb_count( value )
 	pass
 	
-
-func bird_friend_sprite_animation( new_dir : Vector2 ):
-	bird_friend_sprite.show_behind_parent = false
-	match new_dir:
-		Vector2.DOWN:
-			bird_friend_sprite.position = Vector2( -2, -73 )
-			bird_friend_sprite.show_behind_parent = true
-		Vector2.UP:
-			bird_friend_sprite.position = Vector2( -5, -71 )
-		Vector2.LEFT:
-			bird_friend_sprite.position = Vector2( -25, -64 )
-		Vector2.RIGHT:
-			bird_friend_sprite.position = Vector2( -25, -64 )
-		_:
-			pass
-
-
-func show_bird_friend() -> void:
-	bird_friend_sprite.show()
 	
-
-func hide_bird_friend() -> void:
-	bird_friend_sprite.hide()

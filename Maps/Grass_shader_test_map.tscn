@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://ly7wguh1ufuy"]
+[gd_scene load_steps=53 format=4 uid="uid://ly7wguh1ufuy"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
@@ -20,7 +20,7 @@
 [ext_resource type="Resource" uid="uid://bp38cq1huwval" path="res://npc/00_npcs/flower_guy.tres" id="14_70lcl"]
 [ext_resource type="Resource" uid="uid://dlkbc8pb4nscr" path="res://npc/00_npcs/bird_friend.tres" id="14_srkr2"]
 [ext_resource type="PackedScene" uid="uid://dajuqkayd03fp" path="res://npc/npc.tscn" id="15_k0o0t"]
-[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://Dialogue/indicator.tscn" id="15_t22hv"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicator/indicator.tscn" id="15_t22hv"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable_dialog.tscn" id="19_li6oa"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="20_70lcl"]
 [ext_resource type="Resource" uid="uid://dwyai16xaes5c" path="res://Dialogue/Conversations/walking_quest.dialogue" id="20_xmcjt"]
@@ -36,9 +36,11 @@
 [ext_resource type="Script" uid="uid://cb1p3ev4nie21" path="res://Maps/freq_lock.gd" id="35_qnxbr"]
 [ext_resource type="PackedScene" uid="uid://38bq26xw57sx" path="res://Player/Audio/ToneGenerator/tone_generator.tscn" id="36_1qe5l"]
 [ext_resource type="PackedScene" uid="uid://dsm1sxxrq3n7" path="res://Dialogue/actionable_minigame.tscn" id="36_xvh4v"]
+[ext_resource type="PackedScene" uid="uid://c7qujggerj22o" path="res://interactables/dungeon/PushableStatue.tscn" id="37_1qe5l"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://zz_test/Props/pot/pot.tscn" id="37_yr5mt"]
 [ext_resource type="PackedScene" uid="uid://cwis5wv0e7243" path="res://Items/Keys/Key.tscn" id="38_hxh2l"]
 [ext_resource type="PackedScene" uid="uid://dfcwjey80ry5k" path="res://Maps/pushable_reflector.tscn" id="39_l156c"]
+[ext_resource type="Script" uid="uid://bayu8sq37l1ij" path="res://interactables/dungeon/scripts/pushable_statue.gd" id="40_k0o0t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5fwb"]
 radius = 73.552704
@@ -67,11 +69,11 @@ shader_parameter/tolerance = 0.139
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
 radius = 31.0161
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnxbr"]
-size = Vector2(160.00005, 126)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvh4v"]
 size = Vector2(532, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnxbr"]
+size = Vector2(160.00005, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yr5mt"]
 size = Vector2(168.00006, 127.00004)
@@ -737,16 +739,6 @@ offset = Vector2(0, -250)
 z_index = 1
 position = Vector2(1992, -679)
 
-[node name="Indicator2D" parent="FrequencyMini" instance=ExtResource("15_t22hv")]
-position = Vector2(-110, 213)
-x = -171
-y = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FrequencyMini/Indicator2D"]
-position = Vector2(-122, 256)
-shape = SubResource("RectangleShape2D_qnxbr")
-debug_color = Color(0, 0.5950001, 0.7, 0)
-
 [node name="FreqLock" type="Area2D" parent="FrequencyMini"]
 position = Vector2(-430, 390)
 script = ExtResource("35_qnxbr")
@@ -760,6 +752,16 @@ debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="ToneGenerator" parent="FrequencyMini/FreqLock" instance=ExtResource("36_1qe5l")]
 pulse_hz = 330.0
+
+[node name="Indicator2D" parent="FrequencyMini" instance=ExtResource("15_t22hv")]
+position = Vector2(-110, 213)
+x = -171
+y = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrequencyMini/Indicator2D"]
+position = Vector2(-122, 256)
+shape = SubResource("RectangleShape2D_qnxbr")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="ActionableMinigame" parent="FrequencyMini" instance=ExtResource("36_xvh4v")]
 position = Vector2(-230.99994, 466)
@@ -780,3 +782,7 @@ position = Vector2(2267, -52)
 
 [node name="PushableReflector2" parent="." instance=ExtResource("39_l156c")]
 position = Vector2(2129, -104)
+script = ExtResource("40_k0o0t")
+
+[node name="PushableStatue" parent="." instance=ExtResource("37_1qe5l")]
+position = Vector2(1764, -52)

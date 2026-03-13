@@ -22,7 +22,7 @@ void fragment() {
     float amp = wave_amplitude * center_falloff;
     float y = 0.5 + sin(UV.x * wave_frequency + TIME * wave_speed) * amp;
 
-    float thickness = 0.0666;
+    float thickness = 0.125;
     float dist = abs(UV.y - y);
 
 	vec3 c = texture(color, UV).rgb;

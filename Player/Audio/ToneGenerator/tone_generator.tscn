@@ -10,3 +10,4 @@ script = ExtResource("1_m8e7j")
 [node name="Player" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_8tsrq")
 autoplay = true
+max_polyphony = 5

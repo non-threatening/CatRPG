@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="1_lix13"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable_dialog.tscn" id="2_ghq3x"]
 [ext_resource type="Resource" uid="uid://sp87haiqrb68" path="res://Dialogue/Conversations/world_transition.dialogue" id="3_lix13"]
-[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://Dialogue/indicator.tscn" id="4_ghq3x"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicator/indicator.tscn" id="4_ghq3x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghq3x"]
 radius = 99.35794
