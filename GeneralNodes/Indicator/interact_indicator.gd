@@ -11,31 +11,31 @@ var bounce_gate : bool = true
 
 
 func _ready() -> void:
-	indicator_2d.body_entered.connect( _on_body_entered )
-	indicator_2d.body_exited.connect( _on_body_exited )
+	body_entered.connect( _on_body_entered )
+	body_exited.connect( _on_body_exited )
 	texture_rect.position.x = x
 	texture_rect.position.y = y
 	if Engine.is_editor_hint():
-		indicator_2d.show()
-		indicator_2d.modulate.a = 0.5
+		show()
+		modulate.a = 0.5
 		return
-	indicator_2d.modulate.a = 0.0
-	indicator_2d.hide()
+	modulate.a = 0.0
+	hide()
 	
 	
 func _on_body_entered( _a ) -> void:
-	indicator_2d.show()
+	show()
 	var tween = get_tree().create_tween()
-	tween.tween_property(indicator_2d, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.35)
+	tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.35)
 	bounce_gate = true
 	_bounce()
 	
 	
 func _on_body_exited( _a ) -> void:
 	var tween : Tween = create_tween()
-	tween.tween_property(indicator_2d, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.35)
+	tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.35)
 	await get_tree().create_timer( 0.35 ).timeout
-	indicator_2d.hide()
+	hide()
 	bounce_gate = false
 
 

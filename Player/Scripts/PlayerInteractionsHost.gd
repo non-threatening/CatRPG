@@ -3,14 +3,11 @@ class_name PlayerInteractionsHost extends Node2D
 @onready var player : Player = $".."
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.DirectionChanged.connect( _update_direction )
 	pass 
 
-
-
+# This rotates the whole node
 func _update_direction( new_direction : Vector2 ) -> void:
 	match new_direction:
 		Vector2.DOWN:

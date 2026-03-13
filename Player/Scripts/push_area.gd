@@ -7,11 +7,11 @@ func _ready() -> void:
 
 
 func _on_body_entered( b : Node2D ) -> void:
-	if b is PushableStatue:
+	if b is PushableStatue or b is PushableReflector:
 		b.push_direction = PlayerManager.player.direction
 	pass
 	
 func _on_body_exited( b : Node2D ) -> void:
-	if b is PushableStatue:
+	if b is PushableStatue or b is PushableReflector:
 		b.push_direction = Vector2.ZERO
 	pass

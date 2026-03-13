@@ -1,7 +1,7 @@
 class_name State_ChargeAttack extends State
 
 @export var charge_duration : float = 1.0
-@export var move_speed : float =  200.0
+@export var move_speed : float =  250.0
 @export var sfx_charged : AudioStream
 @export var sfx_spin : AudioStream
 
@@ -15,8 +15,7 @@ var particles : ParticleProcessMaterial
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
 @onready var spin_effect_sprite_2d: Sprite2D = $"../../Sprite2D/SpinEffectSprite2D"
 @onready var spin_animation_player: AnimationPlayer = $"../../Sprite2D/SpinEffectSprite2D/AnimationPlayer"
-@onready var gpu_particles_2d: GPUParticles2D = $"../../Sprite2D/ChargeAttackHurtBox/GPUParticles2D"
-
+@onready var gpu_particles_2d: GPUParticles2D = $"../../Collisions/ChargeAttackHurtBox/GPUParticles2D"
 @onready var sprite_2d: Sprite2D = $"../../Sprite2D"
 
 
