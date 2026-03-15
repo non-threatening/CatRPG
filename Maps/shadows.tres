@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://c57u3p620us0u"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c57u3p620us0u"]
 
 [ext_resource type="Shader" uid="uid://e0qbtnkfl2ip" path="res://Maps/shadows.gdshader" id="1_yyswi"]
 

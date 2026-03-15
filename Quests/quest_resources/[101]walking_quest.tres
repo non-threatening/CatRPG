@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BaseQuestResource" load_steps=9 format=3 uid="uid://b22sak1mr2g77"]
+[gd_resource type="Resource" script_class="BaseQuestResource" format=3 uid="uid://b22sak1mr2g77"]
 
 [ext_resource type="Script" uid="uid://bvqtnrn5xgsi0" path="res://Items/scripts/item_data.gd" id="1_jibmj"]
 [ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="2_fmsrv"]

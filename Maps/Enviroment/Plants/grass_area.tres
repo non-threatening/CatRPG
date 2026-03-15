@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://t7e014hmcmxq"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://t7e014hmcmxq"]
 
 [ext_resource type="Shader" uid="uid://dco25tfrip36b" path="res://Maps/Enviroment/Plants/grass_area.gdshader" id="1_pg2pf"]
 

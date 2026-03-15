@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://clw8ovvifpi63"]
+[gd_resource type="Theme" format=3 uid="uid://clw8ovvifpi63"]
 
 [ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="1_p5scn"]
 [ext_resource type="StyleBox" uid="uid://dkwvejalmw3bf" path="res://Dialogue/SpeachBubbles/terminal_bubble/style_box_speach_bubble.tres" id="2_cwdo8"]
