@@ -130,11 +130,7 @@ func set_direction() -> bool:
 	cardinal_direction = new_dir
 	DirectionChanged.emit( new_dir )
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
-	
-	_on_direction_changed( new_dir )
-	
 	return true
-	
 
 
 func update_animation( state : String) -> void:
@@ -149,26 +145,6 @@ func anim_direction() -> String:
 		return "up"
 	else:
 		return "side"
-		
-		
-func _on_direction_changed( new_dir : Vector2 ):
-	bird_friend_sprite.show_behind_parent = false
-	match new_dir:
-		Vector2.DOWN:
-			bird_friend_sprite.position = Vector2( -2, -73 )
-			bird_friend_sprite.show_behind_parent = true
-			player_shape_vert.set_deferred( "disabled", false )
-			player_shape_hor.set_deferred( "disabled", true )
-		Vector2.UP:
-			bird_friend_sprite.position = Vector2( -5, -71 )
-			player_shape_vert.set_deferred( "disabled", false )
-			player_shape_hor.set_deferred( "disabled", true )
-		Vector2.LEFT, Vector2.RIGHT:
-			bird_friend_sprite.position = Vector2( -25, -64 )
-			player_shape_vert.set_deferred( "disabled", true )
-			player_shape_hor.set_deferred( "disabled", false )
-		_:
-			pass
 
 
 func show_bird_friend() -> void:
@@ -176,7 +152,7 @@ func show_bird_friend() -> void:
 func hide_bird_friend() -> void:
 	bird_friend_sprite.hide()		
 
-		
+
 func _take_damage( hurt_box : HurtBox ) -> void:
 	if invulnerable == true:
 		return

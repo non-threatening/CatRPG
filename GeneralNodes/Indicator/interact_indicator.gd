@@ -2,7 +2,7 @@
 class_name InteractIndicator extends Area2D
 
 @export var x : int = -50 : set = _set_x
-@export var y : int = -250 : set = _set_y
+@export var y : int = -400 : set = _set_y
 
 var bounce_gate : bool = true
 

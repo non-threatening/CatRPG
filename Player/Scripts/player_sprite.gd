@@ -3,16 +3,43 @@ extends Sprite2D
 const PLAYER = preload("uid://b4d5u50y4e3og")
 const PLAYER_LOKTIN = preload("uid://b3iybtj0bph5k")
 
+@onready var player : Player = $".."
 @onready var sprite: Sprite2D = $"."
+@onready var shadow_sprite: Sprite2D = $ShadowSprite
+@onready var bird_friend_sprite: Sprite2D = $BirdFriendSprite
+@onready var player_shape_hor: CollisionShape2D = $"../PlayerShapeHor"
+@onready var player_shape_vert: CollisionShape2D = $"../PlayerShapeVert"
 
 
 func _ready() -> void:
 	LevelManager.level_loaded.connect( _check_level )
+	player.DirectionChanged.connect( _on_direction_changed )
 	
 	
 func _check_level() -> void:
 	var thing = get_tree().get_current_scene().name
-	if thing == "TheLobby":
-		sprite.material.shader = PLAYER_LOKTIN
-	else:
-		sprite.material.shader = PLAYER
+	match thing:
+		"TheLobby":
+			sprite.material.shader = PLAYER_LOKTIN
+		_:
+			sprite.material.shader = PLAYER
+
+
+func _on_direction_changed( new_dir : Vector2 ):
+	bird_friend_sprite.show_behind_parent = false
+	match new_dir:
+		Vector2.DOWN:
+			bird_friend_sprite.position = Vector2( -2, -73 )
+			bird_friend_sprite.show_behind_parent = true
+			player_shape_vert.set_deferred( "disabled", false )
+			player_shape_hor.set_deferred( "disabled", true )
+		Vector2.UP:
+			bird_friend_sprite.position = Vector2( -5, -71 )
+			player_shape_vert.set_deferred( "disabled", false )
+			player_shape_hor.set_deferred( "disabled", true )
+		Vector2.LEFT, Vector2.RIGHT:
+			bird_friend_sprite.position = Vector2( -25, -64 )
+			player_shape_vert.set_deferred( "disabled", true )
+			player_shape_hor.set_deferred( "disabled", false )
+		_:
+			pass
