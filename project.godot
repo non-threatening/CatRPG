@@ -8,13 +8,21 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="RPGC"
 run/main_scene="uid://ly7wguh1ufuy"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://c257bwkqgjp38"
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://bop826olg37j2"
 
 [autoload]
 
@@ -24,19 +32,19 @@ LevelManager="*res://00_Globals/global_level_manager.gd"
 PlayerHud="*res://GUI/player_hud/player_hud.tscn"
 PlayerManager="*res://00_Globals/global_player_manager.gd"
 SceneTransition="*res://GUI/scene_transition/scene_transition.tscn"
-SaveManager="*res://00_Globals/global_save_manager.gd"
 PauseMenu="*res://GUI/pause_menu/PauseMenu.tscn"
 EffectManager="*res://00_Globals/global_effect_manager.gd"
 ShopMenu="*res://GUI/shop_menu/shop_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-QuestSystem="*res://addons/quest_system/quest_manager.gd"
+QuestSystem="*uid://b77kvbliweux5"
 Shortcuts="*res://Quests/scripts/quest_system_shortcuts.gd"
 QuestVars="*res://00_Globals/global_quest_vars.gd"
 NpcManager="*res://00_Globals/global_npc_manager.gd"
 SteamController="*res://00_Globals/Steam/steam_controller.gd"
-ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 StatsManager="*res://00_Globals/global_stats_manager.gd"
+ControllerIcons="*uid://7v05m8kncw6p"
 SignalBus="*res://00_Globals/global_signal_bus.gd"
+SaveManager="*res://00_Globals/global_save_manager.gd"
 
 [debug]
 
@@ -53,12 +61,14 @@ editor/wrap_long_lines=true
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=800
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
 
 [global_group]
 
