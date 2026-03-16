@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bym1e6q2jq1c2"]
+[gd_scene format=3 uid="uid://bym1e6q2jq1c2"]
 
 [ext_resource type="Script" uid="uid://rqr83dvx8b1r" path="res://Dialogue/SpeachBubbles/loktin_bubble/loktin_bubble.gd" id="1_b1hkn"]
 [ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeachBubbles/portraits/cat.png" id="2_wirsn"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://rsvckalsylk" path="res://Dialogue/SpeachBubbles/loktin_bubble/blured_panel_white.png" id="4_gc3ck"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="5_sga68"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="6_n1jnn"]
-[ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://Dialogue/controller_icon_interact.tres" id="7_hrs3s"]
+[ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://GeneralNodes/controller_icon_interact.tres" id="7_hrs3s"]
 
 [node name="LoktinBubble" type="CanvasLayer"]
 process_mode = 3

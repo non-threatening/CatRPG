@@ -1,4 +1,4 @@
-class_name FreqLock extends Area2D
+class_name FreqLock extends Node2D
 
 @export var threshold_time : float = 5
 @export var slop : float = 3
@@ -9,6 +9,7 @@ class_name FreqLock extends Area2D
 @onready var actionable_minigame: Area2D = $"../ActionableMinigame"
 @onready var persistant_data_handler: PersistantDataHandler = $PersistantDataHandler
 @onready var tone_generator: ToneGenerator = $ToneGenerator
+@onready var sprite_2d: Sprite2D = $"../Sprite2D"
 
 var frequency : float
 var wave_pos : Vector2
@@ -25,9 +26,11 @@ func _ready() -> void:
 func _is_opened() -> void:
 	is_opened = persistant_data_handler.value
 	if is_opened == true:
-		freq_lock.queue_free()
-		indicator_2d.queue_free()
-		actionable_minigame.queue_free()
+		solved()
+		#freq_lock.queue_free()
+		#indicator_2d.queue_free()
+		#actionable_minigame.queue_free()
+		#sprite_2d.frame = 1
 
 
 ## Start trigger
@@ -35,18 +38,20 @@ func tune_freq() -> void:
 	wave_pos = freq_lock.global_position
 	
 	## Setup the locked frequency
-	frequency = randf_range( 40.0, 100.0 )
+	frequency = randf_range( 40.0, 150.0 ) ## multilied by 4 in tone_generator.de
 	tone_generator.set_hz( frequency )
 	tone_generator.play()
 	SignalBus.frequency_match.emit( frequency, wave_pos, threshold_time, slop, up_or_side )
-	
-	## Enter the player state freq
+	prints("Signal match", frequency*4, wave_pos, threshold_time, slop, up_or_side)
+	## Enter the player state freq and start the game
 	PlayerManager.player.start_freq()
 
 
 func solved() -> void:
-	persistant_data_handler.set_value()
+	if is_opened == false:
+		persistant_data_handler.set_value()
 	freq_lock.queue_free()
 	indicator_2d.queue_free()
 	actionable_minigame.queue_free()
+	sprite_2d.frame = 1
 	pass

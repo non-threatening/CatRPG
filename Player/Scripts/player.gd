@@ -103,9 +103,9 @@ func _physics_process( _delta: float ) -> void:
 ##	Dialog actionable
 func _interact_pressed() -> void:
 	var actionables = actionable_finder.get_overlapping_areas()
-	
 	if actionables.size() > 0:
 		actionables[0].action()
+		prints("ation:", actionables )
 		return
 
 

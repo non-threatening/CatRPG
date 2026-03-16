@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhhvqu8fmuoe6"]
 
-[ext_resource type="Script" uid="uid://dadco14ppovp6" path="res://GeneralNodes/Indicator/interact_indicator.gd" id="1_e517h"]
-[ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://Dialogue/controller_icon_interact.tres" id="3_e517h"]
+[ext_resource type="Script" uid="uid://dadco14ppovp6" path="res://GeneralNodes/Indicators/interact_indicator.gd" id="1_e517h"]
+[ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://GeneralNodes/controller_icon_interact.tres" id="3_e517h"]
 
 [node name="Indicator2D" type="Area2D" unique_id=497168644]
 modulate = Color(1, 1, 1, 0.5)
@@ -15,9 +15,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -400.0
+offset_top = -200.0
 offset_right = 50.0
-offset_bottom = -300.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 50)

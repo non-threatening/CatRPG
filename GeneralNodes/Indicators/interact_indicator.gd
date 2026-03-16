@@ -6,7 +6,6 @@ class_name InteractIndicator extends Area2D
 
 var bounce_gate : bool = true
 
-@onready var indicator_2d: InteractIndicator = $"."
 @onready var texture_rect: TextureRect = $TextureRect
 
 

@@ -9,8 +9,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	super()
-	TimeSystem.time_tick.time_unit_changed.connect( _on_time_unit_changed )
-	_on_time_unit_changed( "moon", TimeSystem.time_tick.get_time_unit("moon"), 0 )
+	#TimeSystem.time_tick.time_unit_changed.connect( _on_time_unit_changed )
+	#_on_time_unit_changed( "moon", TimeSystem.time_tick.get_time_unit("moon"), 0 )
 	
 
 func _on_time_unit_changed( unit_name: String, new_value: int, old_value: int ) -> void:

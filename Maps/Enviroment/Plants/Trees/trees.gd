@@ -62,7 +62,7 @@ func get_shuffled_tree():
 
 
 func _set_random_scale() -> void:
-	var rand = randf_range( 0.86, 1.0 )
+	var rand = randf_range( 1.5, 2.0 )
 	var new_scale = Vector2( rand, rand ) 
 	var flip = randi() % 2
 	sprite.flip_h = flip

@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://fnb335xp2rg4"]
+[gd_scene format=3 uid="uid://fnb335xp2rg4"]
 
 [ext_resource type="Texture2D" uid="uid://bxcqdywq4tybk" path="res://Maps/Enviroment/Plants/isometric-modern-buildings-cartoon.png" id="1_6k2pf"]
 [ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="1_lix13"]
-[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable_dialog.tscn" id="2_ghq3x"]
+[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://GeneralNodes/Actionables/actionable_dialog.tscn" id="2_ghq3x"]
 [ext_resource type="Resource" uid="uid://sp87haiqrb68" path="res://Dialogue/Conversations/world_transition.dialogue" id="3_lix13"]
-[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicator/indicator.tscn" id="4_ghq3x"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="4_ghq3x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghq3x"]
-radius = 99.35794
+radius = 108.29589
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tp61w"]
 shader = ExtResource("1_lix13")
@@ -25,50 +25,49 @@ shader_parameter/frequency = 1.0
 shader_parameter/speed = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhnrh"]
-radius = 308.0
+radius = 489.6366
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lix13"]
-radius = 33.0
-height = 144.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_lix13"]
+radius = 480.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lix13"]
 polygon = PackedVector2Array(-148, 152, 0, 240, 136, 160, 0, 112)
 
-[node name="TerminalInterface" type="StaticBody2D"]
+[node name="TerminalInterface" type="StaticBody2D" unique_id=1153674162]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1102224458]
+position = Vector2(0, 16)
 scale = Vector2(0.25, 0.125)
 shape = SubResource("CircleShape2D_ghq3x")
 
-[node name="TerminalInterface" type="Sprite2D" parent="."]
+[node name="TerminalInterface" type="Sprite2D" parent="." unique_id=743440425]
 material = SubResource("ShaderMaterial_tp61w")
 scale = Vector2(0.25, 0.125)
 texture = ExtResource("1_6k2pf")
 offset = Vector2(0, -175)
 
-[node name="ActionableDialog" parent="TerminalInterface" instance=ExtResource("2_ghq3x")]
+[node name="ActionableDialog" parent="TerminalInterface" unique_id=1919879390 instance=ExtResource("2_ghq3x")]
 modulate = Color(1, 1, 1, 0.5)
 bubble = 1
 dialogue_resource = ExtResource("3_lix13")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TerminalInterface/ActionableDialog"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerminalInterface/ActionableDialog" unique_id=1864902959]
 position = Vector2(0, 128)
 shape = SubResource("CircleShape2D_qhnrh")
 debug_color = Color(0, 0, 1, 0)
 
-[node name="Indicator2D" parent="." instance=ExtResource("4_ghq3x")]
+[node name="Indicator2D" parent="." unique_id=292363359 instance=ExtResource("4_ghq3x")]
 y = -175
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Indicator2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Indicator2D" unique_id=1945957659]
 position = Vector2(0, 16)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_lix13")
-debug_color = Color(0, 0.5950001, 0.7, 0)
+scale = Vector2(0.25, 0.125)
+shape = SubResource("CircleShape2D_lix13")
+debug_color = Color(0.7830148, 0.09294992, 0.9999997, 0)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1297679360]
 modulate = Color(0, 0, 0, 0)
 scale = Vector2(0.25, 0.125)
 occluder = SubResource("OccluderPolygon2D_lix13")

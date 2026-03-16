@@ -2844,7 +2844,7 @@ shader_parameter/wave_amplitude = 0.25
 shader_parameter/wave_frequency = 20.0
 shader_parameter/wave_speed = 5.0
 shader_parameter/left_falloff = 0.666
-shader_parameter/right_falloff = 0.0
+shader_parameter/right_falloff = 0.2
 
 [sub_resource type="Gradient" id="Gradient_qhnrh"]
 
@@ -2865,7 +2865,7 @@ shader_parameter/wave_amplitude = 0.25
 shader_parameter/wave_frequency = 80.0
 shader_parameter/wave_speed = 5.0
 shader_parameter/left_falloff = 0.666
-shader_parameter/right_falloff = 0.0
+shader_parameter/right_falloff = 0.2
 
 [sub_resource type="Gradient" id="Gradient_7v2uk"]
 
@@ -3367,24 +3367,25 @@ region_rect = Rect2(7, 81, 102, 42)
 show_behind_parent = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = 113.0
-offset_top = -130.0
-offset_right = 413.0
-offset_bottom = 20.0
+offset_left = 104.0
+offset_top = -137.0
+offset_right = 429.0
+offset_bottom = 43.0
+rotation = -0.87266463
 pivot_offset = Vector2(0, 75)
 
 [node name="TextureRect" type="TextureRect" parent="Sprite2D/WaveControl" unique_id=1132020421]
 material = SubResource("ShaderMaterial_wvbyc")
 layout_mode = 0
-offset_right = 300.0
-offset_bottom = 151.0
+offset_right = 325.0
+offset_bottom = 180.0
 texture = SubResource("GradientTexture2D_gvnt1")
 
 [node name="TextureRect3" type="TextureRect" parent="Sprite2D/WaveControl" unique_id=246703096]
 material = SubResource("ShaderMaterial_uvbbp")
 layout_mode = 0
-offset_right = 300.0
-offset_bottom = 151.0
+offset_right = 325.0
+offset_bottom = 180.0
 texture = SubResource("GradientTexture2D_m6nl3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/WaveControl" unique_id=158744333]

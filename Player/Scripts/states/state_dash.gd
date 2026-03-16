@@ -64,8 +64,8 @@ func spawn_effect() -> void:
 	#effect.material.set_shader_parameter( "shader_parameter/cover_color", Color( 1.5, 0.2, 1.25, 0.75 ) )
 	
 	
-	var sprite_copy : Sprite2D = player.sprite.duplicate()
-	effect.add_child( sprite_copy )
+	#var sprite_copy : Sprite2D = player.sprite.duplicate()
+	#effect.add_child( sprite_copy )
 	
 	var tween : Tween = create_tween()
 	tween.set_ease( Tween.EASE_OUT )

@@ -1,7 +1,7 @@
 class_name ToneGenerator extends Node
 
 @export var sample_hz := 22050.0
-@export var pulse_hz := 440.0
+@export var pulse_hz := 0.0
 @export var phase := 0.0
 
 var playback: AudioStreamPlayback
@@ -15,7 +15,6 @@ func _ready() -> void:
 	audio.stop()
 	audio.volume_linear = 0.0
 	audio.stream.mix_rate = sample_hz
-	audio.volume_db = linear_to_db( 0.5 )
 
 
 func play() -> void:
@@ -26,10 +25,13 @@ func play() -> void:
 	tween.tween_property( audio, "volume_linear", 0.5, 0.5 )
 
 
-func set_hz( hz ) -> void:
+func set_hz( hz : float ) -> void:
 	pulse_hz = hz * 4
 	prints( "hz", hz * 4 )
-
+	
+	
+func set_volume( vol : float = 0.5 ) -> void:
+	audio.volume_linear = vol
 
 
 func _fill_buffer() -> void:

@@ -6,7 +6,7 @@ extends Area2D
 
 
 func action() -> void:
-	print("Action mingame!!!!")
+	print("Action mingame!!!!", game )
 	match game:
 		0:
 			freq_lock.tune_freq()
