@@ -1,6 +1,8 @@
 @tool
 extends Panel
 
+const GODOT_4_6_VERSION = 0x040600
+
 signal done
 
 @onready var n_name_filter := %NameFilter
@@ -134,8 +136,13 @@ func get_icon_path() -> String:
 		return button.icon.path
 	return ""
 
-func grab_focus() -> void:
-	n_name_filter.grab_focus()
+func grab_focus(hide_focus: bool = false) -> void:
+	# UPGRADE: In Godot 4.6, grab_focus has a new internal arg
+	# n_name_filter.grab_focus(hide_focus)
+	if Engine.get_version_info().hex >= GODOT_4_6_VERSION:
+		n_name_filter.call("grab_focus", hide_focus)
+	else:
+		n_name_filter.grab_focus()
 
 
 func _on_base_asset_names_item_selected():
