@@ -1,0 +1,103 @@
+# LANGUAGE translation for  for the following files:
+# res://GUI/pause_menu/PauseMenu.tscn
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "{ paused }"
+msgstr "Pause"
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "Inventory"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "99"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "ITEM DESCRIPTION"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "This is Bird Friend. She likes to fly out to get things and pecking eyes out."
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "Quest"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "System"
+msgstr "Alles"
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid ""
+" Load\n"
+" Autosave"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "LOAD"
+msgstr "LADEN"
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "The Lobby[br]Day 0 11:30[br]Player Level 3 "
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid ""
+"Save\n"
+"Over"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "Quit"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "Censor Dialog"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "Talk Speed"
+msgstr "Qwatsch Tempo"
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "50%"
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "Stuff"
+msgstr "Sachen"
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "  OK  "
+msgstr ""
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid "  Cancel  "
+msgstr " Absagen"
+
+#: GUI/pause_menu/PauseMenu.tscn
+msgid ""
+"Really overwrite save file:\n"
+"The Lobby\n"
+"Day 13 12:00\n"
+"Player Level 4\n"
+"fourth line"
+msgstr ""

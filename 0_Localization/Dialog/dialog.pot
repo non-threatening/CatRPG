@@ -1,0 +1,237 @@
+# LANGUAGE translation for  for the following files:
+# res://Dialogue/Conversations/tree_of_leaving.dialogue
+# res://Dialogue/Conversations/walking_quest.dialogue
+# res://Dialogue/Conversations/world_transition.dialogue
+# res://Dialogue/Conversations/bird_friend_meeting.dialogue
+# res://Dialogue/Conversations/cut_scene_test.dialogue
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#. TRANSLATORS: Character name
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgctxt "dialogue"
+msgid "Tree of Leaving"
+msgstr ""
+
+#. TRANSLATORS: Character name
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgctxt "dialogue"
+msgid "Cat"
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "Disconnect ?"
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "YES"
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "NO"
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "Hello Cat. I am the Tree of Leaving"
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "Hello Tree. Where are you going?"
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "I don't go anywhere I'm not real."
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "But, where did you came from?"
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "I've always been here. I can help you leave"
+msgstr ""
+
+#: Dialogue/Conversations/tree_of_leaving.dialogue
+msgid "Leave the Loktin Place"
+msgstr ""
+
+#. TRANSLATORS: Character name
+#: Dialogue/Conversations/walking_quest.dialogue
+msgctxt "dialogue"
+msgid "Flower Guy"
+msgstr ""
+
+#: Dialogue/Conversations/walking_quest.dialogue
+msgid "[[Hi|Hello|Howdy]], this is some dialogue. you can do walking."
+msgstr ""
+
+#: Dialogue/Conversations/walking_quest.dialogue
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "Here are some choices."
+msgstr ""
+
+#: Dialogue/Conversations/walking_quest.dialogue
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "nice."
+msgstr ""
+
+#: Dialogue/Conversations/walking_quest.dialogue
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "First one"
+msgstr ""
+
+#: Dialogue/Conversations/walking_quest.dialogue
+msgid "shiiiiiiiiiiiiiiiiiiit"
+msgstr ""
+
+#: Dialogue/Conversations/walking_quest.dialogue
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "Second one"
+msgstr ""
+
+#: Dialogue/Conversations/walking_quest.dialogue
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "Start again"
+msgstr ""
+
+#: Dialogue/Conversations/walking_quest.dialogue
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "End the conversation"
+msgstr ""
+
+#. TRANSLATORS: Character name
+#: Dialogue/Conversations/world_transition.dialogue
+msgctxt "dialogue"
+msgid "Terminal Seven"
+msgstr ""
+
+#: Dialogue/Conversations/world_transition.dialogue
+msgid "Stick head in hole to enter another world, that's also a charging port somehow ?"
+msgstr ""
+
+#: Dialogue/Conversations/world_transition.dialogue
+msgid "Yes"
+msgstr ""
+
+#: Dialogue/Conversations/world_transition.dialogue
+msgid "No"
+msgstr ""
+
+#. TRANSLATORS: Character name
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgctxt "dialogue"
+msgid "Bird Friend"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "That was cool how you found my Gimpsuit Cat"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "It was so much greasier than I though possible"
+msgstr ""
+
+#. TRANSLATORS: Quest line: A gimp suit for
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "[[Hi|Hello|Hey]], who are you?"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "Hi"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "Wooooooooooooo"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "I've lost my Gimp Suit. Could you look around for a one."
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "Totaly, I <3 gimp suits."
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "I am your father."
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "No way lady!"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "Have you found the Gimp Suit?"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "Nice Can I have the gimpsuit"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "..."
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "I'd better come with you, at least for a while"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "I think I could use the help"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "OK"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "It's my GimpSuit now!!!!"
+msgstr ""
+
+#: Dialogue/Conversations/bird_friend_meeting.dialogue
+msgid "No way"
+msgstr ""
+
+#. TRANSLATORS: Character name
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgctxt "dialogue"
+msgid "Nathan"
+msgstr ""
+
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "[[Hi|Hello|Howdy]], this is some dialogue."
+msgstr ""
+
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "You picked the first one."
+msgstr ""
+
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "Can you feel love"
+msgstr ""
+
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "yes"
+msgstr ""
+
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "no"
+msgstr ""
+
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "You picked the second one."
+msgstr ""
+
+#: Dialogue/Conversations/cut_scene_test.dialogue
+msgid "For more information see the online documentation."
+msgstr ""

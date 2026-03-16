@@ -14,7 +14,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="RPGC"
+config/name_localized={
+"de": ""
+}
 run/main_scene="uid://ly7wguh1ufuy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://c257bwkqgjp38"
@@ -26,6 +28,7 @@ buses/default_bus_layout="uid://bop826olg37j2"
 
 [autoload]
 
+ControllerIcons="*uid://dor6pohdms78l"
 TimeSystem="*res://00_Globals/global_time_system.gd"
 AudioManager="*res://00_Globals/global_audio_manager.gd"
 LevelManager="*res://00_Globals/global_level_manager.gd"
@@ -42,7 +45,6 @@ QuestVars="*res://00_Globals/global_quest_vars.gd"
 NpcManager="*res://00_Globals/global_npc_manager.gd"
 SteamController="*res://00_Globals/Steam/steam_controller.gd"
 StatsManager="*res://00_Globals/global_stats_manager.gd"
-ControllerIcons="*uid://7v05m8kncw6p"
 SignalBus="*res://00_Globals/global_signal_bus.gd"
 SaveManager="*res://00_Globals/global_save_manager.gd"
 
@@ -69,6 +71,12 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Player/": "green"
+}
 
 [global_group]
 
@@ -191,7 +199,9 @@ right_stick_right={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/walking_quest.dialogue", "res://Dialogue/Conversations/bird_friend_meeting.dialogue", "res://Dialogue/Conversations/cut_scene_test.dialogue", "res://Dialogue/Conversations/world_transition.dialogue", "res://Dialogue/Conversations/tree_of_leaving.dialogue")
+locale/translations=PackedStringArray("res://0_Localization/PauseMenu/de.po", "res://0_Localization/Dialog/de.po")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/tree_of_leaving.dialogue", "res://Dialogue/Conversations/walking_quest.dialogue", "res://Dialogue/Conversations/world_transition.dialogue", "res://Dialogue/Conversations/bird_friend_meeting.dialogue", "res://Dialogue/Conversations/cut_scene_test.dialogue")
+locale/test="de"
 
 [layer_names]
 
