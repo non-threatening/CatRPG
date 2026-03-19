@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bwa3jdmpvxxvu"]
+[gd_scene format=4 uid="uid://bwa3jdmpvxxvu"]
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_2g8rj"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_gcgvm"]
@@ -12,9 +12,9 @@
 [ext_resource type="Script" uid="uid://cl8p050f11rpa" path="res://Maps/Worlds/Klardraumland/pixquito_spawner.gd" id="10_dx835"]
 [ext_resource type="Material" uid="uid://dm100xw332yew" path="res://Maps/Worlds/Klardraumland/tree_of_leaving.tres" id="11_usbqa"]
 [ext_resource type="Texture2D" uid="uid://c103s31mjv3bk" path="res://Maps/Enviroment/Plants/Trees/sprites/tree_stump2.png" id="12_usbqa"]
-[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicator/indicator.tscn" id="12_vum22"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="12_vum22"]
 [ext_resource type="Script" uid="uid://dg2utqdot7mxt" path="res://Maps/Enviroment/Plants/Trees/trees.gd" id="13_1sp4d"]
-[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://Dialogue/actionable_dialog.tscn" id="13_6ipnb"]
+[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://GeneralNodes/Actionables/actionable_dialog.tscn" id="13_6ipnb"]
 [ext_resource type="Resource" uid="uid://dq68ejhr6ptlx" path="res://Dialogue/Conversations/tree_of_leaving.dialogue" id="16_usbqa"]
 [ext_resource type="PackedScene" uid="uid://cwis5wv0e7243" path="res://Items/Keys/Key.tscn" id="17_usbqa"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://zz_test/Props/pot/pot.tscn" id="18_1sp4d"]

@@ -2,8 +2,8 @@ extends Control
 
 const STAT_DISPLAY_BUTTON = preload("uid://ia11y5hkgfa8")
 
-@onready var display_stats: DisplayStats = $ScrollContainer/VBoxContainer/DisplayStats
 @onready var v_box_container: VBoxContainer = $ScrollContainer/VBoxContainer
+@onready var display_stats: DisplayStats = $ScrollContainer/VBoxContainer/DisplayStats
 
 
 func _ready() -> void:

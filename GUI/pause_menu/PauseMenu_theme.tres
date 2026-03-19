@@ -33,7 +33,7 @@ shadow_offset = Vector2(2, 2)
 
 [resource]
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/font_sizes/font_size = 27
+Button/font_sizes/font_size = 32
 Button/styles/focus = SubResource("StyleBoxFlat_acws1")
 Button/styles/hover = SubResource("StyleBoxFlat_mshh3")
 Button/styles/normal = SubResource("StyleBoxFlat_2sjd8")
@@ -41,13 +41,11 @@ Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
 Label/constants/shadow_offset_x = -2
 Label/constants/shadow_offset_y = 2
-Label/font_sizes/font_size = 24
+Label/font_sizes/font_size = 28
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
-RichTextLabel/constants/line_separation = 3
 RichTextLabel/constants/shadow_offset_x = 1
 RichTextLabel/constants/shadow_offset_y = -1
 RichTextLabel/font_sizes/normal_font_size = 22
-TabContainer/colors/font_outline_color = Color(1, 1, 1, 1)
-TabContainer/font_sizes/font_size = 32
+TabContainer/font_sizes/font_size = 48
 TabContainer/styles/panel = ExtResource("1_v7alu")
 VBoxContainer/constants/separation = 2
