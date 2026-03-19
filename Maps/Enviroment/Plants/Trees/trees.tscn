@@ -1,21 +1,9 @@
 [gd_scene format=3 uid="uid://bc7f06w1326e"]
 
-[ext_resource type="Material" uid="uid://pww5hwrd41gd" path="res://Maps/Enviroment/Plants/Trees/trees_dream.tres" id="1_etgwk"]
 [ext_resource type="Script" uid="uid://ciliranxsf3ke" path="res://Maps/Enviroment/Plants/Trees/trees_node.gd" id="1_ndlp4"]
-[ext_resource type="Texture2D" uid="uid://c103s31mjv3bk" path="res://Maps/Enviroment/Plants/Trees/sprites/tree_stump2.png" id="2_etgwk"]
+[ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees.tres" id="2_ndlp4"]
 [ext_resource type="Script" uid="uid://dg2utqdot7mxt" path="res://Maps/Enviroment/Plants/Trees/trees.gd" id="2_t8ti7"]
-
-[sub_resource type="Gradient" id="Gradient_6rbys"]
-offsets = PackedFloat32Array(0.216216, 1)
-colors = PackedColorArray(0, 0, 0, 0.37, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2vxfg"]
-gradient = SubResource("Gradient_6rbys")
-width = 46
-height = 28
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
+[ext_resource type="Texture2D" uid="uid://ck1on0t25qmd8" path="res://Maps/Enviroment/Plants/Trees/sprites/tree.png" id="3_ndlp4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgwk"]
 radius = 35.99996
@@ -34,19 +22,12 @@ script = ExtResource("1_ndlp4")
 
 [node name="TreeSprite" type="Sprite2D" parent="." unique_id=257443767]
 y_sort_enabled = true
-material = ExtResource("1_etgwk")
+material = ExtResource("2_ndlp4")
 position = Vector2(0, -1)
 scale = Vector2(2, 2)
-texture = ExtResource("2_etgwk")
+texture = ExtResource("3_ndlp4")
 offset = Vector2(0, -210)
 script = ExtResource("2_t8ti7")
-
-[node name="ShadowSprite" type="Sprite2D" parent="TreeSprite" unique_id=1306859810]
-visible = false
-z_index = 1
-position = Vector2(11, 14)
-scale = Vector2(9.913044, 7.267857)
-texture = SubResource("GradientTexture2D_2vxfg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1250747908]
 position = Vector2(7, -4)

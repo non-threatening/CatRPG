@@ -1,13 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bll4i550rlr37"]
+[gd_scene format=3 uid="uid://bll4i550rlr37"]
 
 [ext_resource type="Script" uid="uid://b2pjcwktbjus3" path="res://Maps/Enviroment/Plants/Flowers/flower_node.gd" id="1_q6xlj"]
 [ext_resource type="Script" uid="uid://btat3ybgx0y38" path="res://Maps/Enviroment/Plants/Flowers/flower.gd" id="2_sd35e"]
-[ext_resource type="Texture2D" uid="uid://cv358jhfk1ws5" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_8Petals_Stem.png" id="4_q6xlj"]
-[ext_resource type="Texture2D" uid="uid://dptumtturaxp1" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_8Petals_Stem_2.png" id="5_gnnoh"]
 [ext_resource type="Texture2D" uid="uid://dmj07u3lguye8" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_ManyPetals_Stem.png" id="6_rjoxa"]
-[ext_resource type="Texture2D" uid="uid://stxgu2qmjsah" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_ManyPetals_Stem_2.png" id="7_q3lrd"]
 [ext_resource type="Material" uid="uid://ct1qgfawmdse2" path="res://Maps/Enviroment/Plants/Flowers/flower.tres" id="7_q6xlj"]
-[ext_resource type="Texture2D" uid="uid://ddn55rmeynqpa" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_Stacked_layers_Stem.png" id="8_h4xte"]
 
 [sub_resource type="Gradient" id="Gradient_s7pb4"]
 colors = PackedColorArray(0, 0, 0, 0.27058825, 0, 0, 0, 0)
@@ -23,35 +19,12 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_px1lc"]
 polygon = PackedVector2Array(-15.015015, -42.042034, -24.024023, -33.033028, -3.003003, -28.528528, 19.51952, -31.531523, 12.012012, -45.045036)
 
-[node name="Flower" type="Node2D"]
+[node name="Flower" type="Node2D" unique_id=1495846864]
 y_sort_enabled = true
 position = Vector2(0, -7)
 script = ExtResource("1_q6xlj")
 
-[node name="needed_for_export-please_fix" type="Sprite2D" parent="."]
-visible = false
-
-[node name="Flowers8PetalsStem" type="Sprite2D" parent="needed_for_export-please_fix"]
-position = Vector2(-60, -16)
-texture = ExtResource("4_q6xlj")
-
-[node name="Flowers8PetalsStem2" type="Sprite2D" parent="needed_for_export-please_fix"]
-position = Vector2(-60, -16)
-texture = ExtResource("5_gnnoh")
-
-[node name="FlowersManyPetalsStem" type="Sprite2D" parent="needed_for_export-please_fix"]
-position = Vector2(-60, -16)
-texture = ExtResource("6_rjoxa")
-
-[node name="FlowersManyPetalsStem2" type="Sprite2D" parent="needed_for_export-please_fix"]
-position = Vector2(-60, -16)
-texture = ExtResource("7_q3lrd")
-
-[node name="FlowersStackedLayersStem" type="Sprite2D" parent="needed_for_export-please_fix"]
-position = Vector2(-60, -16)
-texture = ExtResource("8_h4xte")
-
-[node name="Flower" type="Sprite2D" parent="."]
+[node name="Flower" type="Sprite2D" parent="." unique_id=265141847]
 y_sort_enabled = true
 material = ExtResource("7_q6xlj")
 scale = Vector2(0.666, 0.666)
@@ -59,7 +32,7 @@ texture = ExtResource("6_rjoxa")
 offset = Vector2(0, -32)
 script = ExtResource("2_sd35e")
 
-[node name="ShadowSprite" type="Sprite2D" parent="Flower"]
+[node name="ShadowSprite" type="Sprite2D" parent="Flower" unique_id=834572141]
 visible = false
 z_index = -1
 position = Vector2(0, 30)
@@ -67,7 +40,7 @@ rotation = -3.14159
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_qyvkd")
 
-[node name="ShadowSpriteGreen" type="Sprite2D" parent="Flower"]
+[node name="ShadowSpriteGreen" type="Sprite2D" parent="Flower" unique_id=422288438]
 visible = false
 z_index = -1
 position = Vector2(0, 30)
@@ -75,7 +48,7 @@ rotation = -3.14159
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_qyvkd")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1121845371]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(2, 41.999996)
 scale = Vector2(0.666, 0.666)

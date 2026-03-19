@@ -12,7 +12,7 @@ func beam_node() -> void:
 	tween.tween_property( tree.material, "shader_parameter/progress", 3, 18)
 	tween.finished.connect( check_distance )
 	
-	
+## Don't put them too close together
 func check_distance() -> void:
 	placement = Vector2(
 		randi_range( 0, 34 * 128 ) - 17 * 128,
