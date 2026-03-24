@@ -8,6 +8,7 @@ class_name State_Freq extends State
 @onready var tone_generator: ToneGenerator = $"../../Audio/ToneGenerator"
 @onready var texture_rect: TextureRect = $"../../Sprite2D/WaveControl/TextureRect"
 @onready var texture_rect_3: TextureRect = $"../../Sprite2D/WaveControl/TextureRect3"
+@onready var glow_behind_rect: TextureRect = $"../../Sprite2D/WaveControl/GlowBehindRect"
 @onready var animation: AnimationPlayer = $"../../Sprite2D/WaveControl/AnimationPlayer"
 
 
@@ -40,9 +41,6 @@ func frequency( _freq, _wave_pos, _thresh, _slop, _up_or_side ) -> void:
 
 ################# Start #####
 func enter() -> void:
-	#prints( "Player global", PlayerManager.player.global_position )
-	#prints( "freq position", position )
-	#prints( "Player global", PlayerManager.player.global_position.x - position.x )
 	##	Check if player is on the left or right. left = true
 	if PlayerManager.player.global_position.x - position.x <= 0:
 		player_side = true
@@ -55,10 +53,12 @@ func enter() -> void:
 	# Does the wave point up or to the side. 0 = Side
 	match up_or_side:
 		0:
-			wave_control.position = Vector2( 123, -127 )
+			wave_control.position = Vector2( 116, -196 )
 			wave_control.rotation_degrees = -50
 			texture_rect.size = Vector2( 325, 180 )
 			texture_rect_3.size = Vector2( 325, 180 )
+			glow_behind_rect.size = Vector2( 400, 160 )
+			glow_behind_rect.modulate = Color(1.0, 1.0, 1.0, 0.0)
 			player.animation_player.play( "idle_side" )
 			if player_side == true:
 				PlayerManager.set_player_position( position - Vector2( 337, 51 ) )
@@ -111,18 +111,14 @@ func exit() -> void:
 func process( _delta : float ) -> State:
 	if ( freq - slop ) <= deg and deg <= ( freq + slop ):
 		hold_time += _delta
-		prints("thinging", hold_time, threshold_time)
-		
-		#tone_generator.set_volume(0.5)
-		
-		##TODO: Put an effect here... pulsing; light and volume
-		## The closer threshold get to hold_time the louder
-		
+		prints("thinging", (hold_time * 0.85 ) / threshold_time + 0.15, _delta )
+		var wobble = randf()
+		glow_behind_rect.modulate = Color( 1.0, 1.0, 1.0, ((hold_time * 0.5 ) / threshold_time + 0.5) + wobble )
 		if hold_time >= threshold_time and not action_triggered:
 			action_triggered = true
 			harmonized()
 	else:
 		hold_time = 0.0
-		tone_generator.set_volume(0.5)
+		glow_behind_rect.modulate = Color(1.0, 1.0, 1.0, 0.0)
 		action_triggered = false
 	return null

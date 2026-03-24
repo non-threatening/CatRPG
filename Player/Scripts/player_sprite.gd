@@ -29,16 +29,16 @@ func _on_direction_changed( new_dir : Vector2 ):
 	bird_friend_sprite.show_behind_parent = false
 	match new_dir:
 		Vector2.DOWN:
-			bird_friend_sprite.position = Vector2( -2, -73 )
+			bird_friend_sprite.position = Vector2( -8, -153 )
 			bird_friend_sprite.show_behind_parent = true
 			player_shape_vert.set_deferred( "disabled", false )
 			player_shape_hor.set_deferred( "disabled", true )
 		Vector2.UP:
-			bird_friend_sprite.position = Vector2( -5, -71 )
+			bird_friend_sprite.position = Vector2( -10, -164 )
 			player_shape_vert.set_deferred( "disabled", false )
 			player_shape_hor.set_deferred( "disabled", true )
 		Vector2.LEFT, Vector2.RIGHT:
-			bird_friend_sprite.position = Vector2( -25, -64 )
+			bird_friend_sprite.position = Vector2( -41, -132 )
 			player_shape_vert.set_deferred( "disabled", true )
 			player_shape_hor.set_deferred( "disabled", false )
 		_:

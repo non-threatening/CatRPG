@@ -1793,7 +1793,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [10]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2329,7 +2329,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666, 0.5, 0.5833333, 0.6666667, 0.75, 0.8333333, 0.9166667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+"values": [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 9, 10]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2829,6 +2829,39 @@ shader_parameter/x = 0.5
 shader_parameter/y = 1.0
 shader_parameter/time_scale = 2.666
 
+[sub_resource type="Gradient" id="Gradient_1kmt7"]
+offsets = PackedFloat32Array(0.9966443, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.25882354, 0, 0.96862745, 0.5019608)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c4i3b"]
+gradient = SubResource("Gradient_1kmt7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvbbp"]
+shader = ExtResource("14_6rl0i")
+shader_parameter/wave_color = SubResource("GradientTexture1D_c4i3b")
+shader_parameter/wave_amplitude = 0.25
+shader_parameter/wave_frequency = 80.0
+shader_parameter/wave_speed = 5.0
+shader_parameter/left_falloff = 0.666
+shader_parameter/right_falloff = 0.2
+
+[sub_resource type="Gradient" id="Gradient_7v2uk"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m6nl3"]
+gradient = SubResource("Gradient_7v2uk")
+
+[sub_resource type="Gradient" id="Gradient_wvbyc"]
+offsets = PackedFloat32Array(0, 0.26589596, 0.716763, 1)
+colors = PackedColorArray(1, 0.97866666, 0.36, 0.60784316, 0.99, 0.48807004, 0.21780004, 0.5647059, 0.19, 1, 0.379, 0.13333334, 0, 1, 0.23333335, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1kmt7"]
+gradient = SubResource("Gradient_wvbyc")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
 [sub_resource type="Gradient" id="Gradient_6eb1q"]
 offsets = PackedFloat32Array(0, 0)
 colors = PackedColorArray(0.85, 0.5808334, 0, 0.1254902, 0, 0, 0, 1)
@@ -2850,27 +2883,6 @@ shader_parameter/right_falloff = 0.2
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gvnt1"]
 gradient = SubResource("Gradient_qhnrh")
-
-[sub_resource type="Gradient" id="Gradient_1kmt7"]
-offsets = PackedFloat32Array(0.9966443, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.25882354, 0, 0.96862745, 0.5019608)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_c4i3b"]
-gradient = SubResource("Gradient_1kmt7")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvbbp"]
-shader = ExtResource("14_6rl0i")
-shader_parameter/wave_color = SubResource("GradientTexture1D_c4i3b")
-shader_parameter/wave_amplitude = 0.25
-shader_parameter/wave_frequency = 80.0
-shader_parameter/wave_speed = 5.0
-shader_parameter/left_falloff = 0.666
-shader_parameter/right_falloff = 0.2
-
-[sub_resource type="Gradient" id="Gradient_7v2uk"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m6nl3"]
-gradient = SubResource("Gradient_7v2uk")
 
 [sub_resource type="Animation" id="Animation_gvnt1"]
 length = 0.001
@@ -3293,13 +3305,12 @@ debug_color = Color(0, 0.65, 0.205833, 0.121569)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=836509636]
 libraries/ = SubResource("AnimationLibrary_3pjbc")
-speed_scale = 1.25
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=969619066]
 texture_filter = 2
 material = ExtResource("2_1l10g")
 texture = ExtResource("3_wvbyc")
-offset = Vector2(0, -52)
+offset = Vector2(0, -104)
 hframes = 6
 vframes = 6
 script = ExtResource("4_i4o1l")
@@ -3350,36 +3361,28 @@ texture = ExtResource("10_6eb1q")
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D" unique_id=1168808391]
 modulate = Color(0.0354, 0.0168, 0.24, 0.141176)
 show_behind_parent = true
-position = Vector2(-7.000001, 60)
-scale = Vector2(3.125, 3.56287)
+position = Vector2(2, 23)
+scale = Vector2(6.203126, 3.56287)
 texture = ExtResource("4_svx73")
 
 [node name="BirdFriendSprite" type="Sprite2D" parent="Sprite2D" unique_id=1110330149]
-visible = false
 material = SubResource("ShaderMaterial_f4lon")
-position = Vector2(-9, -72.00001)
-scale = Vector2(1.5, 1.2)
+position = Vector2(-41, -132)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("12_iyprq")
 hframes = 2
 region_rect = Rect2(7, 81, 102, 42)
 
 [node name="WaveControl" type="Control" parent="Sprite2D" unique_id=66399363]
-show_behind_parent = true
+clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = 104.0
-offset_top = -137.0
-offset_right = 429.0
-offset_bottom = 43.0
+offset_left = 116.0
+offset_top = -196.0
+offset_right = 441.0
+offset_bottom = -16.0
 rotation = -0.87266463
-pivot_offset = Vector2(0, 75)
-
-[node name="TextureRect" type="TextureRect" parent="Sprite2D/WaveControl" unique_id=1132020421]
-material = SubResource("ShaderMaterial_wvbyc")
-layout_mode = 0
-offset_right = 325.0
-offset_bottom = 180.0
-texture = SubResource("GradientTexture2D_gvnt1")
+pivot_offset = Vector2(0, 90)
 
 [node name="TextureRect3" type="TextureRect" parent="Sprite2D/WaveControl" unique_id=246703096]
 material = SubResource("ShaderMaterial_uvbbp")
@@ -3387,6 +3390,21 @@ layout_mode = 0
 offset_right = 325.0
 offset_bottom = 180.0
 texture = SubResource("GradientTexture2D_m6nl3")
+
+[node name="GlowBehindRect" type="TextureRect" parent="Sprite2D/WaveControl" unique_id=581338702]
+layout_mode = 0
+offset_left = -45.814194
+offset_top = 6.3992705
+offset_right = 354.1858
+offset_bottom = 166.39928
+texture = SubResource("GradientTexture2D_1kmt7")
+
+[node name="TextureRect" type="TextureRect" parent="Sprite2D/WaveControl" unique_id=1132020421]
+material = SubResource("ShaderMaterial_wvbyc")
+layout_mode = 0
+offset_right = 325.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_gvnt1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/WaveControl" unique_id=158744333]
 libraries/ = SubResource("AnimationLibrary_1kmt7")
