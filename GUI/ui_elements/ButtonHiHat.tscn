@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bdk4ypu4x8px2"]
+
+[ext_resource type="Script" uid="uid://cw12wo4re7mt4" path="res://GUI/ui_elements/button_hi_hat.gd" id="1_j0bqy"]
+
+[node name="ButtonHiHat" type="Button" unique_id=1872997853]
+offset_right = 187.0
+offset_bottom = 47.0
+script = ExtResource("1_j0bqy")

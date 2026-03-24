@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://ia11y5hkgfa8" path="res://GUI/pause_menu/stat_display_button.tscn" id="21_5wmam"]
 [ext_resource type="Script" uid="uid://boqm5mmieloht" path="res://GUI/pause_menu/save_load/popup_panel_saves.gd" id="23_gsub6"]
 [ext_resource type="Script" uid="uid://8qm8g3f6s4bf" path="res://GUI/pause_menu/save_load/popup_panel_loads.gd" id="24_4gdvi"]
+[ext_resource type="Script" uid="uid://cw12wo4re7mt4" path="res://GUI/ui_elements/button_hi_hat.gd" id="24_ev0cl"]
 [ext_resource type="PackedScene" uid="uid://cj6lxwitp32sk" path="res://GUI/pause_menu/save_load/button_saves.tscn" id="24_g6jep"]
 [ext_resource type="PackedScene" uid="uid://rh7jg47r5dfh" path="res://GUI/pause_menu/save_load/button_loads.tscn" id="26_ylgvk"]
 
@@ -503,23 +504,27 @@ layout_mode = 2
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="SaveButton" type="Button" parent="Control/TabContainer/System" unique_id=1643657948]
+[node name="SaveButton" type="Button" parent="Control/TabContainer/System" unique_id=1971816885]
 layout_mode = 0
 offset_left = 796.0
 offset_top = 82.0
 offset_right = 868.0
 offset_bottom = 122.0
 text = "SAVE"
+script = ExtResource("24_ev0cl")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
-[node name="LoadButton" type="Button" parent="Control/TabContainer/System" unique_id=2040471178]
+[node name="LoadButton" type="Button" parent="Control/TabContainer/System" unique_id=67851829]
 layout_mode = 0
 offset_left = 900.0
 offset_top = 82.0
 offset_right = 974.0
 offset_bottom = 122.0
 text = "LOAD"
+script = ExtResource("24_ev0cl")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
-[node name="Button_Quit" type="Button" parent="Control/TabContainer/System" unique_id=560069969]
+[node name="Button_Quit" type="Button" parent="Control/TabContainer/System" unique_id=1966159300]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = 794.0
@@ -527,6 +532,8 @@ offset_top = 736.0
 offset_right = 1094.0
 offset_bottom = 784.0
 text = "Quit"
+script = ExtResource("24_ev0cl")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="Settings" type="Control" parent="Control/TabContainer/System" unique_id=600691121]
 anchors_preset = 0
@@ -723,10 +730,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
 
-[node name="ButtonCancel" type="Button" parent="Control/PopupPanelSaves/Panel/Save" unique_id=124515956]
+[node name="ButtonCancel" type="Button" parent="Control/PopupPanelSaves/Panel/Save" unique_id=1497025808]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 text = "Cancel"
+script = ExtResource("24_ev0cl")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="HSeparator" type="HSeparator" parent="Control/PopupPanelSaves/Panel/Save" unique_id=427037936]
 modulate = Color(1, 1, 1, 0)
@@ -775,10 +784,12 @@ offset_bottom = 297.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonCancel" type="Button" parent="Control/PopupPanelLoads/Panel/Load" unique_id=998664028]
+[node name="ButtonCancel" type="Button" parent="Control/PopupPanelLoads/Panel/Load" unique_id=1998913789]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 text = "Cancel"
+script = ExtResource("24_ev0cl")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="HSeparator" type="HSeparator" parent="Control/PopupPanelLoads/Panel/Load" unique_id=2002834475]
 modulate = Color(1, 1, 1, 0)

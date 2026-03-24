@@ -1,4 +1,4 @@
-class_name QuestSummary extends Button
+class_name QuestSummary extends ButtonHiHat
 
 @onready var title_label: RichTextLabel = $VBoxContainer/TitleLabel
 @onready var description_label: RichTextLabel = $VBoxContainer/DescriptionLabel
