@@ -4,29 +4,22 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acws1"]
 bg_color = Color(0.66, 0.6039, 0.32340002, 0.2509804)
+border_width_right = 1
+border_width_bottom = 1
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mshh3"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.225, 0.225, 0.225, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sjd8"]
-bg_color = Color(0.32, 0.32, 0.32, 0.2509804)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.043137256, 0.047058824, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_color = Color(0.88, 0.88, 0.88, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 shadow_color = Color(0, 0, 0, 0.25098)
 shadow_size = 2
 shadow_offset = Vector2(2, 2)
@@ -35,17 +28,17 @@ shadow_offset = Vector2(2, 2)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/font_sizes/font_size = 32
 Button/styles/focus = SubResource("StyleBoxFlat_acws1")
-Button/styles/hover = SubResource("StyleBoxFlat_mshh3")
+Button/styles/hover = null
 Button/styles/normal = SubResource("StyleBoxFlat_2sjd8")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
 Label/constants/shadow_offset_x = -2
 Label/constants/shadow_offset_y = 2
-Label/font_sizes/font_size = 28
+Label/font_sizes/font_size = 32
+PopupPanel/styles/panel = ExtResource("1_v7alu")
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 6
 RichTextLabel/constants/shadow_offset_x = 1
 RichTextLabel/constants/shadow_offset_y = -1
-RichTextLabel/font_sizes/normal_font_size = 22
+RichTextLabel/font_sizes/normal_font_size = 28
 TabContainer/font_sizes/font_size = 48
-TabContainer/styles/panel = ExtResource("1_v7alu")
-VBoxContainer/constants/separation = 2

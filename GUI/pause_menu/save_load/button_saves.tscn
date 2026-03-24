@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cj6lxwitp32sk"]
+
+[ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="1_6yr80"]
+[ext_resource type="Script" uid="uid://bfp1bteey43ld" path="res://GUI/pause_menu/save_load/button_saves_an_loads.gd" id="2_hg3na"]
+
+[node name="Button1" type="Button" unique_id=840750032]
+custom_minimum_size = Vector2(0, 90)
+theme = ExtResource("1_6yr80")
+script = ExtResource("2_hg3na")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1361836469]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -36.0
+offset_right = 225.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "The Lobby : Day 0 11:30[br]Player Level 3 "
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=2070326424]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "SAVE"
+horizontal_alignment = 1
+vertical_alignment = 1

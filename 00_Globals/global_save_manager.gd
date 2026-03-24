@@ -86,9 +86,19 @@ func save_game( _number ) -> void:
 		minute = m - (m % 10)
 	var save_description : String
 	if year == 0:
-		save_description = str( get_tree().get_current_scene().name.capitalize(), "[br]", str( "Day ", day, "  ", hour, ":", minute ), "[br]", "Player Level: ", PlayerManager.player.level )
+		save_description = str( 
+			get_tree().get_current_scene().name.capitalize(), " : ", 
+			str( "Day ", day, "  ", hour, ":", minute ), 
+			"[br]", "Player Level: ",
+			 PlayerManager.player.level
+			)
 	else:
-		save_description = str( get_tree().get_current_scene().name.capitalize(), "[br]", str( "Year ", year, "  Day ", day, "  ", hour, ":", minute ), "[br]", "Player Level: ", PlayerManager.player.level )
+		save_description = str( 
+			get_tree().get_current_scene().name.capitalize(), " : ",
+			str( "Year ", year, "  Day ", day, "  ", hour, ":", minute ),
+			"[br]", "Player Level: ",
+			PlayerManager.player.level
+			)
 	
 	save_list[ _number ] = save_description
 	save_list[ "active" ] = _number

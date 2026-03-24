@@ -22,6 +22,10 @@
 [ext_resource type="Script" uid="uid://de0xi2erjthqh" path="res://GUI/pause_menu/options/v_box_talk_speed.gd" id="18_1v4th"]
 [ext_resource type="Script" uid="uid://cl4hk8m1eyhh5" path="res://GUI/pause_menu/stuff.gd" id="20_awacl"]
 [ext_resource type="PackedScene" uid="uid://ia11y5hkgfa8" path="res://GUI/pause_menu/stat_display_button.tscn" id="21_5wmam"]
+[ext_resource type="Script" uid="uid://boqm5mmieloht" path="res://GUI/pause_menu/save_load/popup_panel_saves.gd" id="23_gsub6"]
+[ext_resource type="Script" uid="uid://8qm8g3f6s4bf" path="res://GUI/pause_menu/save_load/popup_panel_loads.gd" id="24_4gdvi"]
+[ext_resource type="PackedScene" uid="uid://cj6lxwitp32sk" path="res://GUI/pause_menu/save_load/button_saves.tscn" id="24_g6jep"]
+[ext_resource type="PackedScene" uid="uid://rh7jg47r5dfh" path="res://GUI/pause_menu/save_load/button_loads.tscn" id="26_ylgvk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtmg6"]
 shader = ExtResource("3_3yxpl")
@@ -106,16 +110,18 @@ max_polyphony = 4
 
 [node name="TabContainer" type="TabContainer" parent="Control" unique_id=169430853]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -574.0
-offset_top = 64.0
-offset_right = 574.0
-offset_bottom = -64.0
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -480.0
+offset_right = 600.0
+offset_bottom = 480.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/tab_separation = 9
 tab_alignment = 1
 current_tab = 2
 
@@ -497,245 +503,29 @@ layout_mode = 2
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="ButtonAuto" type="Button" parent="Control/TabContainer/System" unique_id=1768426578]
-custom_minimum_size = Vector2(200, 80)
+[node name="SaveButton" type="Button" parent="Control/TabContainer/System" unique_id=1643657948]
 layout_mode = 0
-offset_left = 737.0
-offset_top = 61.0
-offset_right = 1010.0
-offset_bottom = 141.0
-text = " Load
- Autosave"
-alignment = 0
+offset_left = 796.0
+offset_top = 82.0
+offset_right = 868.0
+offset_bottom = 122.0
+text = "SAVE"
 
-[node name="Label" type="Label" parent="Control/TabContainer/System/ButtonAuto" unique_id=1428027495]
-modulate = Color(1, 1, 1, 0.7529412)
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.5
-offset_top = -32.5
-offset_right = 118.5
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "LOAD"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/ButtonAuto" unique_id=752229543]
-custom_minimum_size = Vector2(200, 64)
+[node name="LoadButton" type="Button" parent="Control/TabContainer/System" unique_id=2040471178]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 6.0
-offset_right = 278.0
-offset_bottom = 75.0
-bbcode_enabled = true
-text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Save" type="VBoxContainer" parent="Control/TabContainer/System" unique_id=997578258]
-layout_mode = 0
-offset_left = 735.0
-offset_top = 148.0
-offset_right = 811.0
-offset_bottom = 708.0
-
-[node name="Button1" type="Button" parent="Control/TabContainer/System/Save" unique_id=1123113128]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Save
-Over"
-
-[node name="Button2" type="Button" parent="Control/TabContainer/System/Save" unique_id=1458245901]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Save
-Over"
-
-[node name="Button3" type="Button" parent="Control/TabContainer/System/Save" unique_id=1737467184]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Save
-Over"
-
-[node name="Button4" type="Button" parent="Control/TabContainer/System/Save" unique_id=24449597]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Save
-Over"
-
-[node name="Load" type="VBoxContainer" parent="Control/TabContainer/System" unique_id=1116075534]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-offset_left = 812.0
-offset_top = 148.0
-offset_right = 1012.0
-offset_bottom = 708.0
-
-[node name="Button1" type="Button" parent="Control/TabContainer/System/Load" unique_id=945935111]
-custom_minimum_size = Vector2(200, 80)
-layout_mode = 2
-text = " 
- "
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button1" unique_id=1422869167]
-custom_minimum_size = Vector2(200, 64)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 6.0
-offset_right = 203.0
-offset_bottom = 75.0
-bbcode_enabled = true
-text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="Control/TabContainer/System/Load/Button1" unique_id=136410202]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -72.5
-offset_top = -32.5
-offset_right = 72.5
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "LOAD"
-
-[node name="Button2" type="Button" parent="Control/TabContainer/System/Load" unique_id=1929462333]
-custom_minimum_size = Vector2(200, 80)
-layout_mode = 2
-text = " 
- "
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button2" unique_id=1253568933]
-custom_minimum_size = Vector2(200, 64)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 6.0
-offset_right = 203.0
-offset_bottom = 75.0
-theme_override_constants/line_separation = 3
-bbcode_enabled = true
-text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="Control/TabContainer/System/Load/Button2" unique_id=1661780925]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -72.5
-offset_top = -32.5
-offset_right = 72.5
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "LOAD"
-
-[node name="Button3" type="Button" parent="Control/TabContainer/System/Load" unique_id=580628495]
-custom_minimum_size = Vector2(200, 80)
-layout_mode = 2
-text = " 
- "
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button3" unique_id=346887376]
-custom_minimum_size = Vector2(200, 64)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 6.0
-offset_right = 203.0
-offset_bottom = 75.0
-theme_override_constants/line_separation = 3
-bbcode_enabled = true
-text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="Control/TabContainer/System/Load/Button3" unique_id=1838428088]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -72.5
-offset_top = -32.5
-offset_right = 72.5
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "LOAD"
-
-[node name="Button4" type="Button" parent="Control/TabContainer/System/Load" unique_id=400367812]
-custom_minimum_size = Vector2(200, 80)
-layout_mode = 2
-text = " 
- "
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/System/Load/Button4" unique_id=1526703875]
-custom_minimum_size = Vector2(200, 64)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 6.0
-offset_right = 203.0
-offset_bottom = 75.0
-theme_override_constants/line_separation = 3
-bbcode_enabled = true
-text = "The Lobby[br]Day 0 11:30[br]Player Level 3 "
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="Control/TabContainer/System/Load/Button4" unique_id=545345422]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -72.5
-offset_top = -32.5
-offset_right = 72.5
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
+offset_left = 900.0
+offset_top = 82.0
+offset_right = 974.0
+offset_bottom = 122.0
 text = "LOAD"
 
 [node name="Button_Quit" type="Button" parent="Control/TabContainer/System" unique_id=560069969]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = 737.0
-offset_top = 488.0
-offset_right = 1010.0
-offset_bottom = 516.0
+offset_left = 794.0
+offset_top = 736.0
+offset_right = 1094.0
+offset_bottom = 784.0
 text = "Quit"
 
 [node name="Settings" type="Control" parent="Control/TabContainer/System" unique_id=600691121]
@@ -888,7 +678,7 @@ layout_mode = 2
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control" unique_id=1846072849]
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(330, 180)
+size = Vector2i(480, 250)
 borderless = true
 ok_button_text = "  OK  "
 cancel_button_text = "  Cancel  "
@@ -896,13 +686,124 @@ cancel_button_text = "  Cancel  "
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ConfirmationDialog" unique_id=1229437621]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 322.0
-offset_bottom = 134.0
+offset_right = 472.0
+offset_bottom = 198.0
 bbcode_enabled = true
 text = "Really overwrite save file:
-The Lobby
-Day 13 12:00
+The Lobby : Day 13 12:00
 Player Level 4
 fourth line"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PopupPanelSaves" type="PopupPanel" parent="Control" unique_id=1752935833]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(1200, 960)
+theme = ExtResource("2_hio0w")
+script = ExtResource("23_gsub6")
+
+[node name="Panel" type="Panel" parent="Control/PopupPanelSaves" unique_id=1512654645]
+custom_minimum_size = Vector2(500, 550)
+offset_right = 1200.0
+offset_bottom = 960.0
+
+[node name="Save" type="VBoxContainer" parent="Control/PopupPanelSaves/Panel" unique_id=997578258]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -204.0
+offset_right = 240.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="ButtonCancel" type="Button" parent="Control/PopupPanelSaves/Panel/Save" unique_id=124515956]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Cancel"
+
+[node name="HSeparator" type="HSeparator" parent="Control/PopupPanelSaves/Panel/Save" unique_id=427037936]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Button1" parent="Control/PopupPanelSaves/Panel/Save" unique_id=840750032 instance=ExtResource("24_g6jep")]
+layout_mode = 2
+
+[node name="Button2" parent="Control/PopupPanelSaves/Panel/Save" unique_id=1571589619 instance=ExtResource("24_g6jep")]
+layout_mode = 2
+
+[node name="Button3" parent="Control/PopupPanelSaves/Panel/Save" unique_id=441210151 instance=ExtResource("24_g6jep")]
+layout_mode = 2
+
+[node name="Button4" parent="Control/PopupPanelSaves/Panel/Save" unique_id=592140774 instance=ExtResource("24_g6jep")]
+layout_mode = 2
+
+[node name="Button5" parent="Control/PopupPanelSaves/Panel/Save" unique_id=600455050 instance=ExtResource("24_g6jep")]
+layout_mode = 2
+
+[node name="PopupPanelLoads" type="PopupPanel" parent="Control" unique_id=1985781586]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(1200, 960)
+theme = ExtResource("2_hio0w")
+script = ExtResource("24_4gdvi")
+
+[node name="Panel" type="Panel" parent="Control/PopupPanelLoads" unique_id=471662784]
+custom_minimum_size = Vector2(500, 550)
+offset_right = 1200.0
+offset_bottom = 960.0
+
+[node name="Load" type="VBoxContainer" parent="Control/PopupPanelLoads/Panel" unique_id=1116075534]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -297.0
+offset_right = 240.0
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonCancel" type="Button" parent="Control/PopupPanelLoads/Panel/Load" unique_id=998664028]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Cancel"
+
+[node name="HSeparator" type="HSeparator" parent="Control/PopupPanelLoads/Panel/Load" unique_id=2002834475]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="ButtonAuto" parent="Control/PopupPanelLoads/Panel/Load" unique_id=1611636996 instance=ExtResource("26_ylgvk")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Control/PopupPanelLoads/Panel/Load" unique_id=641910261]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Button1" parent="Control/PopupPanelLoads/Panel/Load" unique_id=1177632928 instance=ExtResource("26_ylgvk")]
+layout_mode = 2
+
+[node name="Button2" parent="Control/PopupPanelLoads/Panel/Load" unique_id=816231585 instance=ExtResource("26_ylgvk")]
+layout_mode = 2
+
+[node name="Button3" parent="Control/PopupPanelLoads/Panel/Load" unique_id=1263562550 instance=ExtResource("26_ylgvk")]
+layout_mode = 2
+
+[node name="Button4" parent="Control/PopupPanelLoads/Panel/Load" unique_id=1277839292 instance=ExtResource("26_ylgvk")]
+layout_mode = 2
+
+[node name="Button5" parent="Control/PopupPanelLoads/Panel/Load" unique_id=770127530 instance=ExtResource("26_ylgvk")]
+layout_mode = 2

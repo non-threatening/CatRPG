@@ -13,29 +13,10 @@ var save_dict : Dictionary
 @onready var item_description: Label = $Control/TabContainer/Inventory/ItemDescription
 @onready var abilities_description: Label = $Control/TabContainer/Inventory/AbilitiesDescription
 
-
-@onready var button_1: Button = $Control/TabContainer/System/Save/Button1
-@onready var button_2: Button = $Control/TabContainer/System/Save/Button2
-@onready var button_3: Button = $Control/TabContainer/System/Save/Button3
-@onready var button_4: Button = $Control/TabContainer/System/Save/Button4
-
-@onready var button_auto: Button = $Control/TabContainer/System/ButtonAuto
-@onready var load_button_1: Button = $Control/TabContainer/System/Load/Button1
-@onready var load_button_2: Button = $Control/TabContainer/System/Load/Button2
-@onready var load_button_3: Button = $Control/TabContainer/System/Load/Button3
-@onready var load_button_4: Button = $Control/TabContainer/System/Load/Button4
-
-@onready var auto_text_label: RichTextLabel = $Control/TabContainer/System/ButtonAuto/RichTextLabel
-@onready var load_button_1_label: RichTextLabel = $Control/TabContainer/System/Load/Button1/RichTextLabel
-@onready var load_button_2_label: RichTextLabel = $Control/TabContainer/System/Load/Button2/RichTextLabel
-@onready var load_button_3_label: RichTextLabel = $Control/TabContainer/System/Load/Button3/RichTextLabel
-@onready var load_button_4_label: RichTextLabel = $Control/TabContainer/System/Load/Button4/RichTextLabel
-
-@onready var auto_button_load_label: Label = $Control/TabContainer/System/ButtonAuto/Label
-@onready var button_1_load_label: Label = $Control/TabContainer/System/Load/Button1/Label
-@onready var button_2_load_label: Label = $Control/TabContainer/System/Load/Button2/Label
-@onready var button_3_load_label: Label = $Control/TabContainer/System/Load/Button3/Label
-@onready var button_4_load_label: Label = $Control/TabContainer/System/Load/Button4/Label
+@onready var save_button: Button = $Control/TabContainer/System/SaveButton
+@onready var load_button: Button = $Control/TabContainer/System/LoadButton
+@onready var popup_panel_saves: SavePopup = $Control/PopupPanelSaves
+@onready var popup_panel_loads: LoadPopup = $Control/PopupPanelLoads
 
 @onready var dialog: ConfirmationDialog = $Control/ConfirmationDialog
 @onready var rich_text_label: RichTextLabel = $Control/ConfirmationDialog/RichTextLabel
@@ -44,44 +25,11 @@ var save_dict : Dictionary
 func _ready() -> void:
 	hide_pause_menu()
 	button_quit.pressed.connect( _on_quit_pressed )
-	
-	button_1.pressed.connect( _on_save_pressed.bind("_1") )
-	button_2.pressed.connect( _on_save_pressed.bind("_2") )
-	button_3.pressed.connect( _on_save_pressed.bind("_3") )
-	button_4.pressed.connect( _on_save_pressed.bind("_4") )
-	
-	button_auto.pressed.connect( _on_load_pressed.bind("auto") )
-	load_button_1.pressed.connect( _on_load_pressed.bind("_1") )
-	load_button_2.pressed.connect( _on_load_pressed.bind("_2") )
-	load_button_3.pressed.connect( _on_load_pressed.bind("_3") )
-	load_button_4.pressed.connect( _on_load_pressed.bind("_4") )
+	save_button.pressed.connect( _save_dialog_open_pressed )
+	load_button.pressed.connect( _load_dialog_open_pressed )
 
-	
-func load_focus( node : Node) -> void:
-	_reset_modulates()
-	if button_auto.has_focus():
-		auto_button_load_label.modulate = Color(1.0, 1.0, 1.0, 0.666)	
-	elif load_button_1.has_focus():
-		button_1_load_label.modulate = Color(1.0, 1.0, 1.0, 0.666)
-	elif load_button_2.has_focus():
-		button_2_load_label.modulate = Color(1.0, 1.0, 1.0, 0.666)
-	elif load_button_3.has_focus():
-		button_3_load_label.modulate = Color(1.0, 1.0, 1.0, 0.666)
-	elif load_button_4.has_focus():
-		button_4_load_label.modulate = Color(1.0, 1.0, 1.0, 0.666)
-		
-func _reset_modulates() -> void:
-	auto_button_load_label.modulate = Color(1.0, 1.0, 1.0, 0.0)
-	button_1_load_label.modulate = Color( 1.0, 1.0, 1.0, 0.0)
-	button_2_load_label.modulate = Color( 1.0, 1.0, 1.0, 0.0)
-	button_3_load_label.modulate = Color( 1.0, 1.0, 1.0, 0.0)
-	button_4_load_label.modulate = Color( 1.0, 1.0, 1.0, 0.0)
 
-		
-		
 func show_pause_menu() -> void:
-	if not get_viewport().gui_focus_changed.is_connected( load_focus ):
-		get_viewport().gui_focus_changed.connect( load_focus )
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()
 	visible = true
@@ -96,50 +44,29 @@ func show_pause_menu() -> void:
 	json.parse( file.get_line() )
 	save_dict = json.get_data() as Dictionary
 
-	if save_dict.has("_1") and save_dict["_1"] != "":
-		load_button_1_label.text = save_dict["_1"]
-	else:
-		load_button_1_label.text = "empty save"
-		button_1.text = "Save"
-		load_button_1.set_disabled( true )
-
-	if save_dict.has("_2"):
-		load_button_2_label.text = save_dict["_2"]
-	else:
-		load_button_2_label.text = "empty save"
-		button_2.text = "Save"
-		load_button_2.set_disabled( true )
-		
-	if save_dict.has("_3"):
-		load_button_3_label.text = save_dict["_3"]
-	else:
-		load_button_3_label.text = "empty save"
-		button_3.text = "Save"
-		load_button_3.set_disabled( true )
-
-	if save_dict.has("_4"):
-		load_button_4_label.text = save_dict["_4"]
-	else:
-		load_button_4_label.text = "empty save"
-		button_4.text = "Save"
-		load_button_4.set_disabled( true )
 	
-	if save_dict.has("auto"):
-		auto_text_label.text = save_dict["auto"]
-	else:
-		auto_text_label.text = "empty save"
-		button_auto.set_disabled( true )
-	
-
 func hide_pause_menu() -> void:
 	get_tree().paused = false
 	TimeSystem.time_tick.resume()
 	visible = false
 	is_paused = false
+	popup_panel_saves.hide()
+	popup_panel_loads.hide()
 	hidden.emit()
-		
-		
-func _on_save_pressed( _number ) -> void:
+
+
+func _on_quit_pressed() -> void:
+	##TODO: confirmation
+	get_tree().quit()
+	
+func _save_dialog_open_pressed() -> void:
+	popup_panel_saves.popup_centered()
+	
+func _load_dialog_open_pressed() -> void:
+	popup_panel_loads.popup_centered()
+
+
+func on_save_pressed( _number ) -> void:
 	if is_paused == false:
 		return
 	if save_dict.has( _number ):
@@ -150,33 +77,17 @@ func _on_save_pressed( _number ) -> void:
 	else:
 		_on_save_confirmed( _number )
 
-
 func _on_save_confirmed( _number ) -> void:
 	SaveManager.save_game( _number )
 	PlayerHud.active_save = _number
-	match _number:
-		"_1":
-			load_button_1.set_disabled( false )
-			button_1.text = "Save
-			Over"
-		"_2":
-			load_button_2.set_disabled( false )
-			button_2.text = "Save
-			Over"
-		"_3":
-			load_button_3.set_disabled( false )
-			button_3.text = "Save
-			Over"
-		"_4":
-			load_button_4.set_disabled( false )
-			button_4.text = "Save
-			Over"
 	disconnect_confirm()
+	##TODO: put saving progress indicator; for show
+	#await get_tree().create_timer(1).timeout
 	hide_pause_menu()
 	pass
 
 
-func _on_load_pressed( _number ) -> void:
+func on_load_pressed( _number ) -> void:
 	if is_paused == false:
 		return
 	if save_dict.has( _number ):
@@ -186,7 +97,6 @@ func _on_load_pressed( _number ) -> void:
 		dialog.popup_centered()
 	else:
 		_on_load_confirmed( _number )
-
 
 func _on_load_confirmed( _number ) -> void:
 	SaveManager.load_game( _number )
@@ -202,9 +112,6 @@ func disconnect_confirm() -> void:
 	if dialog.confirmed.is_connected( _on_save_confirmed ):
 		dialog.confirmed.disconnect( _on_save_confirmed )
 
-
-func _on_quit_pressed() -> void:
-	get_tree().quit()
 
 
 func focused_item_changed( slot : SlotData ) -> void:
