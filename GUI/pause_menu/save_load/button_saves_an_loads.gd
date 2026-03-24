@@ -11,7 +11,6 @@ func _ready() -> void:
 
 
 func _on_focus() -> void:
-	PauseMenu.play_audio( HI_HAT__10_ )
 	var tween = create_tween()
 	tween.tween_property( label, "modulate", Color( 1, 1, 1, 1 ), 0.25 )
 
