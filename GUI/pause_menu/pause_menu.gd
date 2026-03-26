@@ -4,6 +4,10 @@ signal shown
 signal hidden
 signal preview_stats_changed( item : ItemData )
 
+const KICK__7_ = preload("uid://bgdpmxn86hpae")
+const HI_HAT__33_ = preload("uid://bcw1ihsfr3g1j")
+const TOM__9_ = preload("uid://b55lwwli8jahd")
+
 var is_paused : bool = false
 var save_dict : Dictionary
 
@@ -27,6 +31,22 @@ func _ready() -> void:
 	button_quit.pressed.connect( _on_quit_pressed )
 	save_button.pressed.connect( _save_dialog_open_pressed )
 	load_button.pressed.connect( _load_dialog_open_pressed )
+	dialog.canceled.connect( _on_canceled )
+	dialog.confirmed.connect( _on_confirmed )
+	tab_container.tab_changed.connect( _on_tab_change )
+
+
+func _on_tab_change( _t ) -> void:
+	play_audio( TOM__9_ )
+
+
+func _on_confirmed() -> void:
+	await get_tree().process_frame
+	play_audio( HI_HAT__33_ )
+
+func _on_canceled() -> void:
+	await get_tree().process_frame
+	play_audio( KICK__7_ )
 
 
 func show_pause_menu() -> void:
@@ -58,10 +78,10 @@ func hide_pause_menu() -> void:
 func _on_quit_pressed() -> void:
 	##TODO: confirmation
 	get_tree().quit()
-	
+
 func _save_dialog_open_pressed() -> void:
 	popup_panel_saves.popup_centered()
-	
+
 func _load_dialog_open_pressed() -> void:
 	popup_panel_loads.popup_centered()
 
@@ -113,7 +133,7 @@ func disconnect_confirm() -> void:
 		dialog.confirmed.disconnect( _on_save_confirmed )
 
 
-
+##Inventory
 func focused_item_changed( slot : SlotData ) -> void:
 	if slot:
 		if slot.item_data:
@@ -129,8 +149,7 @@ func update_item_description( new_text : String ) -> void:
 	
 func update_abilities_description( new_text : String ) -> void:
 	abilities_description.text = new_text
-	
-	
+
 
 func preview_stats( item : ItemData ) -> void:
 	preview_stats_changed.emit( item )
@@ -168,6 +187,7 @@ func change_tab( _i : int = 1 ) -> void:
 		tab_container.get_tab_count()
 		)
 	tab_container.get_tab_bar().grab_focus()
+	prints( "change_tab" )
 	pass
 #
 func play_audio( audio : AudioStream ) -> void:

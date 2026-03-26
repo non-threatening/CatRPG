@@ -19,14 +19,17 @@
 [ext_resource type="StyleBox" uid="uid://id0j1ev6ejo4" path="res://GUI/pause_menu/Slider.tres" id="15_320ax"]
 [ext_resource type="Script" uid="uid://dmg2j313nt035" path="res://GUI/pause_menu/options.gd" id="15_d1w5p"]
 [ext_resource type="Script" uid="uid://cvn03p8t473fi" path="res://GUI/pause_menu/options/v_box_container_music.gd" id="15_gtmg6"]
+[ext_resource type="AudioStream" uid="uid://bgdpmxn86hpae" path="res://Audio/UsedSamples/kick (7).ogg" id="16_x822l"]
 [ext_resource type="Script" uid="uid://de0xi2erjthqh" path="res://GUI/pause_menu/options/v_box_talk_speed.gd" id="18_1v4th"]
 [ext_resource type="Script" uid="uid://cl4hk8m1eyhh5" path="res://GUI/pause_menu/stuff.gd" id="20_awacl"]
 [ext_resource type="PackedScene" uid="uid://ia11y5hkgfa8" path="res://GUI/pause_menu/stat_display_button.tscn" id="21_5wmam"]
+[ext_resource type="Script" uid="uid://bbceo7y6b8dek" path="res://GUI/ui_elements/h_slider_hi_hat.gd" id="22_fop8i"]
 [ext_resource type="Script" uid="uid://boqm5mmieloht" path="res://GUI/pause_menu/save_load/popup_panel_saves.gd" id="23_gsub6"]
 [ext_resource type="Script" uid="uid://8qm8g3f6s4bf" path="res://GUI/pause_menu/save_load/popup_panel_loads.gd" id="24_4gdvi"]
 [ext_resource type="Script" uid="uid://cw12wo4re7mt4" path="res://GUI/ui_elements/button_hi_hat.gd" id="24_ev0cl"]
 [ext_resource type="PackedScene" uid="uid://cj6lxwitp32sk" path="res://GUI/pause_menu/save_load/button_saves.tscn" id="24_g6jep"]
 [ext_resource type="PackedScene" uid="uid://rh7jg47r5dfh" path="res://GUI/pause_menu/save_load/button_loads.tscn" id="26_ylgvk"]
+[ext_resource type="Script" uid="uid://bfp1bteey43ld" path="res://GUI/pause_menu/save_load/button_saves_an_loads.gd" id="29_vifo2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtmg6"]
 shader = ExtResource("3_3yxpl")
@@ -512,27 +515,29 @@ offset_right = 868.0
 offset_bottom = 122.0
 text = "SAVE"
 script = ExtResource("24_ev0cl")
+pressed_sound = ExtResource("16_x822l")
 metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="LoadButton" type="Button" parent="Control/TabContainer/System" unique_id=67851829]
 layout_mode = 0
 offset_left = 900.0
 offset_top = 82.0
-offset_right = 974.0
+offset_right = 1059.0
 offset_bottom = 122.0
 text = "LOAD"
 script = ExtResource("24_ev0cl")
 metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="Button_Quit" type="Button" parent="Control/TabContainer/System" unique_id=1966159300]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(300, 48)
 layout_mode = 0
-offset_left = 794.0
-offset_top = 736.0
-offset_right = 1094.0
-offset_bottom = 784.0
+offset_left = 796.0
+offset_top = 344.0
+offset_right = 1096.0
+offset_bottom = 392.0
 text = "Quit"
 script = ExtResource("24_ev0cl")
+pressed_sound = ExtResource("16_x822l")
 metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="Settings" type="Control" parent="Control/TabContainer/System" unique_id=600691121]
@@ -596,7 +601,7 @@ size_flags_horizontal = 10
 text = "50%"
 horizontal_alignment = 2
 
-[node name="HSlider" type="HSlider" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxTalkSpeed/Slider" unique_id=936532597]
+[node name="HSliderHiHat" type="HSlider" parent="Control/TabContainer/System/Settings/VBoxContainerSound/VBoxTalkSpeed/Slider" unique_id=1333622443]
 modulate = Color(0, 1, 0, 1)
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 0
@@ -610,6 +615,8 @@ value = 0.02
 tick_count = 9
 ticks_on_borders = true
 ticks_position = 2
+script = ExtResource("22_fop8i")
+metadata/_custom_type_script = "uid://bbceo7y6b8dek"
 
 [node name="Stuff" type="Control" parent="Control/TabContainer" unique_id=727843018]
 visible = false
@@ -684,8 +691,9 @@ layout_mode = 2
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control" unique_id=1846072849]
 oversampling_override = 1.0
+title = ""
 initial_position = 1
-size = Vector2i(480, 250)
+size = Vector2i(480, 259)
 borderless = true
 ok_button_text = "  OK  "
 cancel_button_text = "  Cancel  "
@@ -694,7 +702,7 @@ cancel_button_text = "  Cancel  "
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 472.0
-offset_bottom = 198.0
+offset_bottom = 192.0
 bbcode_enabled = true
 text = "Really overwrite save file:
 The Lobby : Day 13 12:00
@@ -739,7 +747,6 @@ metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="HSeparator" type="HSeparator" parent="Control/PopupPanelSaves/Panel/Save" unique_id=427037936]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 
 [node name="Button1" parent="Control/PopupPanelSaves/Panel/Save" unique_id=840750032 instance=ExtResource("24_g6jep")]
@@ -793,15 +800,64 @@ metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="HSeparator" type="HSeparator" parent="Control/PopupPanelLoads/Panel/Load" unique_id=2002834475]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 
-[node name="ButtonAuto" parent="Control/PopupPanelLoads/Panel/Load" unique_id=1611636996 instance=ExtResource("26_ylgvk")]
+[node name="ButtonAuto" type="Button" parent="Control/PopupPanelLoads/Panel/Load" unique_id=1611636996]
+custom_minimum_size = Vector2(480, 135)
 layout_mode = 2
+theme = ExtResource("2_hio0w")
+script = ExtResource("29_vifo2")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/PopupPanelLoads/Panel/Load/ButtonAuto" unique_id=1613721798]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 0
+offset_top = 12.0
+offset_right = 480.0
+offset_bottom = 52.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Auto Save :"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/PopupPanelLoads/Panel/Load/ButtonAuto" unique_id=40838500]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -16.0
+offset_right = 225.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "The Lobby : Day 0 11:30[br]Player Level 3 "
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control/PopupPanelLoads/Panel/Load/ButtonAuto" unique_id=267798540]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -16.5
+offset_right = 81.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "LOAD"
 
 [node name="HSeparator2" type="HSeparator" parent="Control/PopupPanelLoads/Panel/Load" unique_id=641910261]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 
 [node name="Button1" parent="Control/PopupPanelLoads/Panel/Load" unique_id=1177632928 instance=ExtResource("26_ylgvk")]

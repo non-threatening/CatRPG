@@ -1,4 +1,4 @@
-class_name DisplayStats extends Button
+class_name DisplayStats extends ButtonHiHat
 
 @onready var label: Label = $Label
 @onready var label_2: Label = $Label2

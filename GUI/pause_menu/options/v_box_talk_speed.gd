@@ -1,6 +1,7 @@
 extends VBoxContainer
 
-@onready var h_slider: HSlider = $Slider/HSlider
+@onready var h_slider: HSliderHiHat = $Slider/HSliderHiHat
+#@onready var h_slider: HSlider = $Slider/HSlider
 @onready var label_2: Label = $Slider/HBoxContainer/Label2
 
 

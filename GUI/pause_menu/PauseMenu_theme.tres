@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://ct7neug04nuq3" path="res://GUI/StyleBoxBluePanel.tres" id="1_v7alu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acws1"]
-bg_color = Color(0.66, 0.6039, 0.32340002, 0.2509804)
+bg_color = Color(0.66, 0.54219, 0.32340002, 0.5019608)
 border_width_right = 1
 border_width_bottom = 1
 corner_radius_top_left = 3
@@ -20,11 +20,12 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.25098)
+shadow_color = Color(0, 0, 0, 0.5019608)
 shadow_size = 2
 shadow_offset = Vector2(2, 2)
 
 [resource]
+AcceptDialog/constants/buttons_min_height = 48
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/font_sizes/font_size = 32
 Button/styles/focus = SubResource("StyleBoxFlat_acws1")
@@ -42,3 +43,4 @@ RichTextLabel/constants/shadow_offset_x = 1
 RichTextLabel/constants/shadow_offset_y = -1
 RichTextLabel/font_sizes/normal_font_size = 28
 TabContainer/font_sizes/font_size = 48
+VBoxContainer/constants/separation = 8
