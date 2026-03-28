@@ -2,11 +2,13 @@
 
 [ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="1_6yr80"]
 [ext_resource type="Script" uid="uid://bfp1bteey43ld" path="res://GUI/pause_menu/save_load/button_saves_an_loads.gd" id="2_hg3na"]
+[ext_resource type="AudioStream" uid="uid://bcw1ihsfr3g1j" path="res://Audio/UsedSamples/hi hat (33).ogg" id="3_m12um"]
 
 [node name="Button1" type="Button" unique_id=840750032]
 custom_minimum_size = Vector2(0, 90)
 theme = ExtResource("1_6yr80")
 script = ExtResource("2_hg3na")
+pressed_sound = ExtResource("3_m12um")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1361836469]
 custom_minimum_size = Vector2(450, 80)

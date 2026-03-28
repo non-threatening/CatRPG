@@ -1,5 +1,7 @@
 class_name LoadPopup extends PopupPanel
 
+var minutes_passed : float = 1
+
 @onready var button_cancel: Button = $Panel/Load/ButtonCancel
 @onready var button_auto: Button = $Panel/Load/ButtonAuto
 @onready var load_button_1: Button = $Panel/Load/Button1
@@ -8,6 +10,7 @@ class_name LoadPopup extends PopupPanel
 @onready var load_button_4: Button = $Panel/Load/Button4
 @onready var load_button_5: Button = $Panel/Load/Button5
 
+@onready var rich_text_label_2: RichTextLabel = $Panel/Load/ButtonAuto/RichTextLabel2
 @onready var auto_text_label: RichTextLabel = $Panel/Load/ButtonAuto/RichTextLabel
 @onready var load_button_1_label: RichTextLabel = $Panel/Load/Button1/RichTextLabel
 @onready var load_button_2_label: RichTextLabel = $Panel/Load/Button2/RichTextLabel
@@ -36,8 +39,13 @@ func _ready() -> void:
 	
 func _on_visible_changed() -> void:
 	button_cancel.grab_focus()
+	minutes_passed = (Time.get_unix_time_from_system() - SaveManager.last_auto_save_time) / 60
+	if minutes_passed > 9999:
+		minutes_passed = 0
 
 	if PauseMenu.save_dict.has("auto"):
+		var get_min = "Auto Save : " + str( round( minutes_passed )) + " minutes ago"
+		rich_text_label_2.text = get_min.replace( ".0" , "")
 		auto_text_label.text = PauseMenu.save_dict["auto"]
 		button_auto_label.show()
 		button_auto.set_disabled( false )

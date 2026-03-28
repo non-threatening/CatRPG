@@ -18,4 +18,3 @@ func _on_focus() -> void:
 func _on_exit() -> void:
 	var tween = create_tween()
 	tween.tween_property( label, "modulate", Color( 1, 1, 1, 0 ), 0.15 )
-	

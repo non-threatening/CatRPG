@@ -6,22 +6,20 @@ extends CanvasLayer
 var hearts : Array[ HeartGUI ] = []
 var electros : Array[ ElectroGUI ] = []
 var spoons : Array[ SpoonsGUI ] = []
-
 var active_save : String = "_1"
 
 @onready var loading_screen: TextureRect = $LoadingScreen
+@onready var time_label: Label = $Control/HudTime/HBoxContainer/TimeLabel
 @onready var hearts_display: HFlowContainer = $Control/Hearts
 @onready var electros_display: HFlowContainer = $Control/Electros
 @onready var spoons_display: HFlowContainer = $Control/Spoons
-@onready var time: Control = $Control/Time
+@onready var time: Control = $Control/HudTime
 
 @onready var game_over : Control = $Control/GameOver
 @onready var continue_button: Button = $Control/GameOver/VBoxContainer/ContinueButton
 @onready var title_button: Button = $Control/GameOver/VBoxContainer/TitleButton
 @onready var animation_player: AnimationPlayer = $Control/GameOver/AnimationPlayer
 @onready var audio: AudioStreamPlayer = $AudioStreamPlayer
-@onready var time_label: Label = $Control/Time/HBoxContainer/TimeLabel
-@onready var sprite_moon: Sprite2D = $Control/Time/HBoxContainer/Sprite2D
 
 @onready var control: Control = $Control
 
@@ -73,11 +71,6 @@ func _ready() -> void:
 	PauseMenu.hidden.connect( _on_hide_menu )
 	ShopMenu.shown.connect( _on_show_menu )
 	ShopMenu.hidden.connect( _on_hide_menu )
-	
-	TimeSystem.time_tick.time_unit_changed.connect( time_display )
-	time_display("minute", 0, 0)
-	time_display( "moon", TimeSystem.time_tick.get_time_unit("moon"), 0 )
-
 
 
 func show_loading_screen() -> void:
@@ -155,7 +148,6 @@ func update_max_hp( _max_hp : int ) -> void:
 			hearts[i].visible = true
 		else:
 			hearts[i].visible= false
-	pass	
 
 
 func load_game() -> void:
@@ -176,30 +168,11 @@ func fade_to_black() -> bool:
 	await animation_player.animation_finished
 	PlayerManager.player.revive_player()
 	return true
-	
-
-func time_display( unit_name: String, new_value: int, old_value: int ) -> void:
-	match unit_name:
-		"minute":
-			var tens = new_value % 10 
-			if tens == 0:
-				var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
-				var day = TimeSystem.time_tick.get_time_unit("day")
-				var year = TimeSystem.time_tick.get_time_unit("year")
-				var show_year : String
-				if year != 0:
-					show_year = str( "Year ", year ) 
-				time_label.text = str( show_year, "  Day %d  %s" % [day, formatted])
-		"moon":
-			var moon = new_value
-			sprite_moon.frame = moon
-	pass
 
 
 func play_audio( _a : AudioStream ) -> void:
 	audio.stream = _a
 	audio.play()
-
 
 
 ##can queue notifictions from anywhere globaly

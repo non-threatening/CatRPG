@@ -29,7 +29,7 @@ func display_notification() -> void:
 	if _n == null:
 		return
 	title_label.text = _n.title
-	message_label.text = _n.message
+	message_label.text =  _n.message
 	animation_player.play("show_notification")
 	pass
 	

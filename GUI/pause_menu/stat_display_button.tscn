@@ -12,9 +12,9 @@ script = ExtResource("1_etfwd")
 
 [node name="Label" type="Label" parent="." unique_id=1247118337]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 55.0
 offset_top = 8.0
-offset_right = 174.0
+offset_right = 213.0
 offset_bottom = 33.0
 text = "Pixquitoes Killed :"
 vertical_alignment = 1
