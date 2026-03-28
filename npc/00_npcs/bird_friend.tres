@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://dlkbc8pb4nscr"]
+[gd_resource type="Resource" script_class="NPCResource" format=3 uid="uid://dlkbc8pb4nscr"]
 
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="2_t0jrf"]
 [ext_resource type="Texture2D" uid="uid://b01fd223ndm5l" path="res://GUI/pause_menu/inventory/sprites/crow-silhouette.png" id="3_pr4d0"]
-[ext_resource type="AudioStream" uid="uid://djx27e4co3qff" path="res://Audio/Samples/musicradar-lofi-samples/BonusMultiSamples/Bass02/Octave02/A.ogg" id="3_t0jrf"]
+[ext_resource type="AudioStream" uid="uid://bh2c1aeen51tw" path="res://Player/BirdFriend/audio/voice_kakaist-crow-sfx.wav" id="3_t0jrf"]
 
 [resource]
 script = ExtResource("2_t0jrf")

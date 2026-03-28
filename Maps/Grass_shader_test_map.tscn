@@ -27,7 +27,7 @@
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
 [ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="23_a6xma"]
 [ext_resource type="Texture2D" uid="uid://c1mn6ochpknba" path="res://Maps/Enviroment/Plants/Trees/sprites/DeadTree.png" id="24_0lun4"]
-[ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="27_j6e1k"]
+[ext_resource type="Texture2D" uid="uid://b01fd223ndm5l" path="res://GUI/pause_menu/inventory/sprites/crow-silhouette.png" id="27_xa65b"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Maps/Levels/level_transition.tscn" id="29_70lcl"]
 [ext_resource type="PackedScene" uid="uid://fnb335xp2rg4" path="res://Maps/Enviroment/objects/terminal_interface.tscn" id="31_g0pye"]
 [ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="31_srkr2"]
@@ -112,7 +112,6 @@ size = Vector2(276, 127.00004)
 
 [node name="GrassTestMap" type="Node2D" unique_id=1650074484]
 y_sort_enabled = true
-position = Vector2(0, -1)
 script = ExtResource("1_t22hv")
 metadata/_edit_vertical_guides_ = [2699.0]
 
@@ -733,8 +732,7 @@ debug_color = Color(0.37905112, 0.47461665, 1, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" unique_id=1967215626]
 position = Vector2(115, -511)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("27_j6e1k")
-hframes = 2
+texture = ExtResource("27_xa65b")
 
 [node name="ActionableDialog" parent="Quest[102]_BFComesWith/BFComesWithNPC" unique_id=1903231240 instance=ExtResource("19_li6oa")]
 modulate = Color(1, 1, 1, 0.5)
@@ -792,13 +790,15 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 1.2288811
+energy = 0.6369852
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")
 
 [node name="FreqLock" type="Node2D" parent="FrequencyMini" unique_id=1195659981]
 script = ExtResource("35_qnxbr")
+threshold_time = 3.0
+slop = 2.0
 
 [node name="PersistantDataHandler" parent="FrequencyMini/FreqLock" unique_id=497425313 instance=ExtResource("11_yr5mt")]
 
@@ -831,6 +831,7 @@ position = Vector2(2267, -52)
 [node name="PushableReflector2" parent="." unique_id=512466949 instance=ExtResource("39_l156c")]
 position = Vector2(2129, -104)
 script = ExtResource("40_k0o0t")
+push_speed = 300.0
 
 [node name="PushableStatue" parent="." unique_id=110020231 instance=ExtResource("37_1qe5l")]
 position = Vector2(1764, -52)

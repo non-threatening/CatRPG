@@ -2,7 +2,7 @@ extends Node
 
 var time_tick: TimeTick
 var moon : int = 0
-var moon_phase : String = "Full Moon"
+var moon_phase : String = "New Moon"
 
 var time_gate : bool = false
 
@@ -21,9 +21,8 @@ func _ready() -> void:
 	# 24 hours = 1 day, starts at day 1, no wrap
 	time_tick.register_time_unit("day", "hour", 24, 364, 1)
 	# 1 moon phase 3.5 days, 8 phases in a 28 day month
-	time_tick.register_time_unit("moon", "hour", 84, 84, 0)
+	time_tick.register_time_unit("moon", "hour", 84, 8, 0)
 	# 13 months in a year, not really counted/visible 13 * 28 = 364 days
-	#time_tick.register_time_unit("month", "day", 28, 28, 1)
 	time_tick.register_time_unit( "year", "day", 364, -1, 1 )
 	
 	# Connect to signals
@@ -34,16 +33,13 @@ func _ready() -> void:
 	##	66.6 is about 10 minutes every 9 seconds; 56 seconds =  1 hour
 	##	One day game time is about 21.2 minutes; one day = 1344 seconds
 	##	21.2 x 365 = 128 hours = 1 year
-	time_tick.set_time_scale(66.6) 
+	time_tick.set_time_scale(6666.6) 
 
 	## New game
 	time_tick.set_time_units({
-		#"day": randi_range( 1, 28 ),
 		"day": 1,
-		#"hour": randi_range( 17, 23 ),
 		"hour": 8,
 		"minute": 0,
-		#"moon": randi_range( 0, 7 ),
 		"moon": 0,
 		"year": 0
 	})
@@ -58,27 +54,25 @@ func _on_game_loaded() -> void:
 func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) -> void:
 	if time_gate == true:
 		match unit_name:
-			#"day":
-				#SaveManager.save_game_auto( "auto" )
 			"moon":
 				moon = new_value
 				match moon:
 					0:
-						moon_phase = "Full Moon"
+						moon_phase = "New Moon"
 					1:
-						moon_phase = "Waxing"
+						moon_phase = "Waxing Crescent"
 					2:
 						moon_phase = "First Quarter"
 					3:
-						moon_phase = "Waxing"
+						moon_phase = "Waxing Gibbous"
 					4:
-						moon_phase = "New Moon"
+						moon_phase = "Full Moon"
 					5:
-						moon_phase = "Waning"
+						moon_phase = "Waning Gibbous"
 					6:
 						moon_phase = "Last Quarter"
 					7:
-						moon_phase = "Waning"
+						moon_phase = "Waning Crescent"
 			"year":
 				print( "YEAR! ", new_value )
 			_:

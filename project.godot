@@ -70,7 +70,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/quest_system/plugin.cfg")
 
 [file_customization]
 
@@ -205,7 +205,7 @@ right_stick_right={
 [internationalization]
 
 locale/translations=PackedStringArray("res://0_Localization/PauseMenu/de.po", "res://0_Localization/Dialog/de.po")
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/tree_of_leaving.dialogue", "res://Dialogue/Conversations/walking_quest.dialogue", "res://Dialogue/Conversations/world_transition.dialogue", "res://Dialogue/Conversations/bird_friend_meeting.dialogue", "res://Dialogue/Conversations/cut_scene_test.dialogue", "res://[1000]_hello_bird_friend.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Conversations/tree_of_leaving.dialogue", "res://Dialogue/Conversations/walking_quest.dialogue", "res://Dialogue/Conversations/world_transition.dialogue", "res://Dialogue/Conversations/bird_friend_meeting.dialogue", "res://Dialogue/Conversations/cut_scene_test.dialogue", "res://Dialogue/Conversations/[1000]_hello_bird_friend.dialogue")
 locale/test="de"
 
 [layer_names]

@@ -3374,6 +3374,7 @@ hframes = 2
 region_rect = Rect2(7, 81, 102, 42)
 
 [node name="WaveControl" type="Control" parent="Sprite2D" unique_id=66399363]
+visible = false
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
