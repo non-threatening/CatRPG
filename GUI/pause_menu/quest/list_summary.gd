@@ -1,18 +1,15 @@
 class_name ListSummary extends Button
 
 
-@onready var title_label: RichTextLabel = $TitleLabel
+@onready var list_summary: ListSummary = $"."
 
 
 func initialize( objective : String, completed : bool ) -> void:
-	
 	var s : String = "[s]"
-	
-	
 	if completed == false:
-		title_label.text = objective
-		title_label.modulate.a = 1.0
+		list_summary.text = objective
+		list_summary.modulate.a = 1.0
 	else:
-		title_label.text = s + objective + s
-		title_label.modulate = Color( 0.666, 0.666, 0.666, 0.666 )
+		list_summary.text = s + objective + s
+		list_summary.modulate = Color( 0.666, 0.666, 0.666, 0.666 )
 	pass

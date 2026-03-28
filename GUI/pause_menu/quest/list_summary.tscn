@@ -1,21 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://nced8eb1v3q7"]
+[gd_scene format=3 uid="uid://nced8eb1v3q7"]
 
 [ext_resource type="Script" uid="uid://cmio55eh72mqx" path="res://GUI/pause_menu/quest/list_summary.gd" id="1_2w73i"]
 
-[node name="ListSummary" type="Button"]
-custom_minimum_size = Vector2(450, 36)
-offset_right = 450.0
-offset_bottom = 36.0
-script = ExtResource("1_2w73i")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65cc6"]
+bg_color = Color(0.53333336, 0.34509805, 0.1764706, 0.29411766)
 
-[node name="TitleLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 2.0
-offset_right = 448.0
-offset_bottom = 34.0
-bbcode_enabled = true
-text = "Quest step"
-scroll_active = false
-autowrap_mode = 0
-vertical_alignment = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w73i"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.34509805, 0.21568628, 0.09803922, 0.29411766)
+
+[sub_resource type="Theme" id="Theme_65cc6"]
+default_font_size = 28
+Button/styles/focus = SubResource("StyleBoxFlat_65cc6")
+Button/styles/normal = SubResource("StyleBoxFlat_2w73i")
+
+[node name="ListSummary" type="Button" unique_id=2085211627]
+custom_minimum_size = Vector2(400, 0)
+offset_right = 400.0
+offset_bottom = 42.0
+theme = SubResource("Theme_65cc6")
+text = "Quest step Quest step Quest step Quest step Quest step Quest step"
+alignment = 0
+autowrap_mode = 3
+script = ExtResource("1_2w73i")
