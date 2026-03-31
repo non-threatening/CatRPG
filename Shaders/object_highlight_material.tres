@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bkxpp6yhp0v3i"]
+
+[ext_resource type="Shader" uid="uid://jfmsso6ra02b" path="res://Items/Keys/highlight.gdshader" id="1_ihpvp"]
+
+[sub_resource type="Gradient" id="Gradient_13fqu"]
+colors = PackedColorArray(0.5, 1, 0.5, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_105h4"]
+gradient = SubResource("Gradient_13fqu")
+
+[resource]
+shader = ExtResource("1_ihpvp")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_105h4")
+shader_parameter/size_effect = 0.1
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 1.0000002375000001
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = false
+shader_parameter/gd_time = 0.5

@@ -16,7 +16,6 @@ func _ready() -> void:
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()
 	PlayerManager.player.hide()
-	
 	PlayerHud.visible = false
 	PauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -25,9 +24,10 @@ func _ready() -> void:
 		button_continue.visible = false
 	
 	splash_screen.finished.connect( setup_title_screen )
-	
 	LevelManager.level_load_started.connect( exit_title_screen )
-	pass
+	
+	await get_tree().create_timer( 0.666 ).timeout
+	AudioManager.play_music( music )
 
 
 func setup_title_screen() -> void:
@@ -35,23 +35,18 @@ func setup_title_screen() -> void:
 	button_new.pressed.connect( start_game )
 	button_continue.pressed.connect( load_game )
 	button_new.grab_focus()
-	
 	button_new.focus_entered.connect( play_audio.bind( button_focus_audio ) )
 	button_continue.focus_entered.connect( play_audio.bind( button_focus_audio ) )
-	
-	AudioManager.play_music( music )
 
 
 func start_game() -> void:
 	play_audio( button_press_audio )
 	LevelManager.load_new_level( START_LEVEL, "", Vector2.ZERO )
-	pass
-	
+
 
 func load_game() -> void:
 	play_audio( button_press_audio )
 	SaveManager.load_game( PlayerHud.active_save )
-	pass
 	
 	
 func exit_title_screen() -> void:
@@ -59,10 +54,8 @@ func exit_title_screen() -> void:
 	PlayerHud.visible = true
 	PauseMenu.process_mode = Node.PROCESS_MODE_ALWAYS
 	queue_free()
-	pass
 	
 	
 func play_audio( _a : AudioStream ) -> void:
 	audio_stream_player.stream = _a
 	audio_stream_player.play()
-	pass

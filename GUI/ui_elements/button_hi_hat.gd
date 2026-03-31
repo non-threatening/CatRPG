@@ -18,10 +18,9 @@ func on_focus_entered() -> void:
 	PauseMenu.play_audio( focus_sound )
 	var tween_entered = create_tween()
 	tween_entered.tween_property( self, "scale", Vector2( 1.1, 1.1 ), 0.2 )
-	#scale = Vector2( 1.1, 1.1 )
+
 
 func on_focus_exited() -> void:
-	#scale = Vector2( 1.0, 1.0 )
 	var tween_exited = create_tween()
 	tween_exited.tween_property( self, "scale", Vector2( 1.0, 1.0 ), 0.2 )
 

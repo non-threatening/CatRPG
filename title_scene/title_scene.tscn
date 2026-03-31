@@ -1,87 +1,70 @@
-[gd_scene load_steps=20 format=3 uid="uid://f6hapagaurf5"]
+[gd_scene format=3 uid="uid://f6hapagaurf5"]
 
 [ext_resource type="Script" uid="uid://b7gl0klev5pvn" path="res://title_scene/title_scene.gd" id="1_uvhto"]
-[ext_resource type="AudioStream" uid="uid://cag1o37ttppti" path="res://title_scene/audio/waves.mp3" id="2_5wnq4"]
+[ext_resource type="AudioStream" uid="uid://bwhkacy01vu21" path="res://title_scene/audio/ToyPianoScale_opening.wav" id="2_fkwea"]
 [ext_resource type="AudioStream" uid="uid://cuun6qkdi8yqe" path="res://title_scene/audio/menu_focus.wav" id="3_1a1kh"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Maps/Levels/player_spawn.tscn" id="4_2sy4f"]
 [ext_resource type="AudioStream" uid="uid://btpvg5ust0ng8" path="res://title_scene/audio/menu_select.wav" id="4_wgj1g"]
-[ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="5_lj5tl"]
-[ext_resource type="Shader" uid="uid://w4m68pkampei" path="res://Maps/Enviroment/Plants/Grid.gdshader" id="6_fkwea"]
+[ext_resource type="Material" uid="uid://dmn4nkwj8cf3p" path="res://title_scene/title_grass.tres" id="5_lj5tl"]
+[ext_resource type="Script" uid="uid://cw12wo4re7mt4" path="res://GUI/ui_elements/button_hi_hat.gd" id="6_fkwea"]
 [ext_resource type="PackedScene" uid="uid://cknrd4sbx4hht" path="res://title_scene/splash_screen.tscn" id="7_fkwea"]
 [ext_resource type="Shader" uid="uid://bh26fn50skl4i" path="res://zz_test/0-TestLevels/fog01.gdshader" id="9_lj5tl"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="9_svbj5"]
 
-[sub_resource type="Gradient" id="Gradient_fp78m"]
-colors = PackedColorArray(0, 0.569945, 0.609093, 1, 0.307722, 0.598821, 0.574173, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_svbj5"]
+noise_type = 2
+frequency = 0.003
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1falw"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fp78m"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_svbj5")
+seamless = true
+seamless_blend_skirt = 0.333
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4uvlv"]
-noise = SubResource("FastNoiseLite_1falw")
-color_ramp = SubResource("Gradient_fp78m")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xyq50"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g0pye"]
-noise = SubResource("FastNoiseLite_xyq50")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0tql"]
-shader = ExtResource("6_fkwea")
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/lineWidth = 0.80000001192096
-shader_parameter/size = Vector2(32, 20)
-shader_parameter/noise = SubResource("NoiseTexture2D_4uvlv")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_g0pye")
-shader_parameter/edge_fade = 0.0
-shader_parameter/wave_speed = 0.1
-shader_parameter/blur_amount = 0.0
-shader_parameter/mix_amount = 0.0
-shader_parameter/color_over = Color(0, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkwea"]
+resource_local_to_scene = true
+shader = ExtResource("9_lj5tl")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_fp78m")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(-0.05, -0.025)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fkwea"]
 noise_type = 2
 frequency = 0.003
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_31yvb"]
+resource_local_to_scene = true
 noise = SubResource("FastNoiseLite_fkwea")
 seamless = true
+invert = true
 seamless_blend_skirt = 0.333
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_svbj5"]
+resource_local_to_scene = true
 shader = ExtResource("9_lj5tl")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_31yvb")
 shader_parameter/density = 0.25
-shader_parameter/speed = Vector2(0.05, -0.025)
+shader_parameter/speed = Vector2(0.05, 0.025)
 
-[node name="TitleScene" type="Node2D"]
+[node name="TitleScene" type="Node2D" unique_id=846321229]
+position = Vector2(0, 62)
 script = ExtResource("1_uvhto")
-music = ExtResource("2_5wnq4")
+music = ExtResource("2_fkwea")
 button_focus_audio = ExtResource("3_1a1kh")
 button_press_audio = ExtResource("4_wgj1g")
 
-[node name="ColorRect4" type="ColorRect" parent="."]
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=925673454]
 modulate = Color(0.20152658, 0.20152658, 0.20152658, 1)
 z_index = -1
 material = ExtResource("5_lj5tl")
-offset_right = 1280.0
-offset_bottom = 800.0
+offset_top = -60.0
+offset_right = 1920.0
+offset_bottom = 1140.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-z_index = 1
-offset_right = 1280.0
-offset_bottom = 800.0
-color = Color(0, 0, 0, 0.57254905)
-
-[node name="ColorRect3" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_e0tql")
-offset_right = 1280.0
-offset_bottom = 800.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=223758034]
 process_mode = 3
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=592952901]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,8 +72,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-custom_minimum_size = Vector2(640, 400)
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=973980064]
+custom_minimum_size = Vector2(960, 600)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,347 +88,409 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.019607844, 0.05882353, 0.7529412)
 
-[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Control/ColorRect"]
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Control/ColorRect" unique_id=757880258]
 layout_mode = 0
-offset_right = 640.0
-offset_bottom = 400.0
+offset_right = 960.0
+offset_bottom = 600.0
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ColorRect/VBox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=364987529]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 100
-text = "CAT"
+text = "CAT GAME"
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="ButtonNew" type="Button" parent="CanvasLayer/Control/ColorRect/VBox"]
+[node name="ButtonNew" type="Button" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=2041726241]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = " New Game "
+script = ExtResource("6_fkwea")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
-[node name="ButtonContinue" type="Button" parent="CanvasLayer/Control/ColorRect/VBox"]
+[node name="ButtonContinue" type="Button" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=275793181]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = " Continue "
+script = ExtResource("6_fkwea")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
-[node name="SplashScreen" parent="CanvasLayer" instance=ExtResource("7_fkwea")]
+[node name="SplashScreen" parent="CanvasLayer" unique_id=396004961 instance=ExtResource("7_fkwea")]
+offset_bottom = 149.0
 
-[node name="PlayerSpawn" parent="." instance=ExtResource("4_2sy4f")]
-position = Vector2(640, 400)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=136731331]
+z_index = 1
+offset_top = -60.0
+offset_right = 1920.0
+offset_bottom = 1140.0
+color = Color(0, 0, 0, 0.5019608)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="PlayerSpawn" parent="." unique_id=986617841 instance=ExtResource("4_2sy4f")]
+visible = false
+position = Vector2(960, 540)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1597530515]
+autoplay = true
 max_polyphony = 4
 bus = &"Music"
 
-[node name="Flowers" type="Node2D" parent="."]
+[node name="Flowers" type="Node2D" parent="." unique_id=1928154124]
 y_sort_enabled = true
-position = Vector2(343, 406)
+position = Vector2(315, 172)
 
-[node name="Flower5" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower5" parent="Flowers" unique_id=1210297212 instance=ExtResource("9_svbj5")]
 position = Vector2(162, 37)
 
-[node name="Flower6" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower6" parent="Flowers" unique_id=1157043548 instance=ExtResource("9_svbj5")]
 position = Vector2(117, 54)
 
-[node name="Flower7" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower7" parent="Flowers" unique_id=218432073 instance=ExtResource("9_svbj5")]
 position = Vector2(90, -29)
 
-[node name="Flower8" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower8" parent="Flowers" unique_id=848387842 instance=ExtResource("9_svbj5")]
 position = Vector2(-88, 37)
 
-[node name="Flower9" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower9" parent="Flowers" unique_id=1014280682 instance=ExtResource("9_svbj5")]
 position = Vector2(-99, 66)
 
-[node name="Flower10" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower10" parent="Flowers" unique_id=1390397102 instance=ExtResource("9_svbj5")]
 position = Vector2(-138, 67)
 
-[node name="Flower11" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower11" parent="Flowers" unique_id=820662331 instance=ExtResource("9_svbj5")]
 position = Vector2(-188, 47)
 
-[node name="Flower12" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower12" parent="Flowers" unique_id=699646497 instance=ExtResource("9_svbj5")]
 position = Vector2(-210, 20)
 
-[node name="Flower13" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower13" parent="Flowers" unique_id=1168697435 instance=ExtResource("9_svbj5")]
 position = Vector2(-62, 138)
 
-[node name="Flower14" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower14" parent="Flowers" unique_id=35309667 instance=ExtResource("9_svbj5")]
 position = Vector2(-214, 50)
 
-[node name="Flower15" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower15" parent="Flowers" unique_id=968743848 instance=ExtResource("9_svbj5")]
 position = Vector2(40, 141)
 
-[node name="Flower16" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower16" parent="Flowers" unique_id=831572005 instance=ExtResource("9_svbj5")]
 position = Vector2(-104, -48)
 
-[node name="Flower17" parent="Flowers" instance=ExtResource("9_svbj5")]
-position = Vector2(-64, 32)
+[node name="Flower17" parent="Flowers" unique_id=1989473045 instance=ExtResource("9_svbj5")]
+position = Vector2(-121, 54)
 
-[node name="Flower18" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower18" parent="Flowers" unique_id=1251960446 instance=ExtResource("9_svbj5")]
 position = Vector2(-37, 116)
 
-[node name="Flower19" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower19" parent="Flowers" unique_id=1496217963 instance=ExtResource("9_svbj5")]
 position = Vector2(-62, -6)
 
-[node name="Flower20" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower20" parent="Flowers" unique_id=582211046 instance=ExtResource("9_svbj5")]
 position = Vector2(-66, 166)
 
-[node name="Flower21" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower21" parent="Flowers" unique_id=1052178003 instance=ExtResource("9_svbj5")]
 position = Vector2(-6, 176)
 
-[node name="Flower22" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower22" parent="Flowers" unique_id=675341739 instance=ExtResource("9_svbj5")]
 position = Vector2(-19, 28)
 
-[node name="Flower23" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower23" parent="Flowers" unique_id=894226504 instance=ExtResource("9_svbj5")]
 position = Vector2(85, 62)
 
-[node name="Flower24" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower24" parent="Flowers" unique_id=2055882600 instance=ExtResource("9_svbj5")]
 position = Vector2(-41, -30)
 
-[node name="Flower25" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower25" parent="Flowers" unique_id=843820167 instance=ExtResource("9_svbj5")]
 position = Vector2(-113, -33)
 
-[node name="Flower26" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower26" parent="Flowers" unique_id=1670081204 instance=ExtResource("9_svbj5")]
 position = Vector2(-144, -42)
 
-[node name="Flower27" parent="Flowers" instance=ExtResource("9_svbj5")]
-position = Vector2(-74, -43)
-
-[node name="Flower28" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower28" parent="Flowers" unique_id=333588970 instance=ExtResource("9_svbj5")]
 position = Vector2(-7, -20)
 
-[node name="Flower29" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower29" parent="Flowers" unique_id=58484337 instance=ExtResource("9_svbj5")]
 position = Vector2(36, 34)
 
-[node name="Flower30" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower30" parent="Flowers" unique_id=619113008 instance=ExtResource("9_svbj5")]
 position = Vector2(15, 62)
 
-[node name="Flower31" parent="Flowers" instance=ExtResource("9_svbj5")]
-position = Vector2(-68, 79)
-
-[node name="Flower32" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower32" parent="Flowers" unique_id=21234054 instance=ExtResource("9_svbj5")]
 position = Vector2(138, -34)
 
-[node name="Flower33" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower33" parent="Flowers" unique_id=1661748788 instance=ExtResource("9_svbj5")]
 position = Vector2(182, -23)
 
-[node name="Flower34" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower34" parent="Flowers" unique_id=447380425 instance=ExtResource("9_svbj5")]
 position = Vector2(216, -35)
 
-[node name="Flower35" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower35" parent="Flowers" unique_id=501189141 instance=ExtResource("9_svbj5")]
 position = Vector2(257, -33)
 
-[node name="Flower36" parent="Flowers" instance=ExtResource("9_svbj5")]
+[node name="Flower36" parent="Flowers" unique_id=1956322206 instance=ExtResource("9_svbj5")]
 position = Vector2(301, -35)
 
-[node name="Flowers2" type="Node2D" parent="."]
+[node name="Flowers2" type="Node2D" parent="." unique_id=1242913669]
 y_sort_enabled = true
-position = Vector2(1062, 535)
+position = Vector2(672, 264)
 
-[node name="Flower5" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower5" parent="Flowers2" unique_id=1464588720 instance=ExtResource("9_svbj5")]
 position = Vector2(43, -22)
 
-[node name="Flower6" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower6" parent="Flowers2" unique_id=2000748865 instance=ExtResource("9_svbj5")]
 position = Vector2(107, 34)
 
-[node name="Flower7" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower7" parent="Flowers2" unique_id=696575006 instance=ExtResource("9_svbj5")]
 position = Vector2(90, -29)
 
-[node name="Flower8" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower8" parent="Flowers2" unique_id=577008380 instance=ExtResource("9_svbj5")]
 position = Vector2(-88, 37)
 
-[node name="Flower9" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower9" parent="Flowers2" unique_id=2104581614 instance=ExtResource("9_svbj5")]
 position = Vector2(-99, 66)
 
-[node name="Flower10" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower10" parent="Flowers2" unique_id=1176162053 instance=ExtResource("9_svbj5")]
 position = Vector2(-138, 67)
 
-[node name="Flower11" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower11" parent="Flowers2" unique_id=244938572 instance=ExtResource("9_svbj5")]
 position = Vector2(-188, 47)
 
-[node name="Flower12" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower12" parent="Flowers2" unique_id=1490195176 instance=ExtResource("9_svbj5")]
 position = Vector2(-210, 20)
 
-[node name="Flower13" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower13" parent="Flowers2" unique_id=2101833364 instance=ExtResource("9_svbj5")]
 position = Vector2(-19, 82)
 
-[node name="Flower14" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower14" parent="Flowers2" unique_id=1820246678 instance=ExtResource("9_svbj5")]
 position = Vector2(-214, 50)
 
-[node name="Flower15" parent="Flowers2" instance=ExtResource("9_svbj5")]
-position = Vector2(18, 124)
+[node name="Flower15" parent="Flowers2" unique_id=879193431 instance=ExtResource("9_svbj5")]
+position = Vector2(-594, -183)
 
-[node name="Flower16" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower16" parent="Flowers2" unique_id=1424826122 instance=ExtResource("9_svbj5")]
 position = Vector2(-104, -48)
 
-[node name="Flower17" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower17" parent="Flowers2" unique_id=1707354067 instance=ExtResource("9_svbj5")]
 position = Vector2(-64, 32)
 
-[node name="Flower18" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower18" parent="Flowers2" unique_id=946547848 instance=ExtResource("9_svbj5")]
 position = Vector2(-37, 116)
 
-[node name="Flower19" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower19" parent="Flowers2" unique_id=541458484 instance=ExtResource("9_svbj5")]
 position = Vector2(-62, -6)
 
-[node name="Flower20" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower20" parent="Flowers2" unique_id=1891851154 instance=ExtResource("9_svbj5")]
 position = Vector2(-104, 110)
 
-[node name="Flower21" parent="Flowers2" instance=ExtResource("9_svbj5")]
-position = Vector2(107, 128)
+[node name="Flower21" parent="Flowers2" unique_id=662438892 instance=ExtResource("9_svbj5")]
+position = Vector2(-617, -230)
 
-[node name="Flower22" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower22" parent="Flowers2" unique_id=1515160152 instance=ExtResource("9_svbj5")]
 position = Vector2(-19, 28)
 
-[node name="Flower23" parent="Flowers2" instance=ExtResource("9_svbj5")]
-position = Vector2(85, 62)
+[node name="Flower23" parent="Flowers2" unique_id=5342354 instance=ExtResource("9_svbj5")]
+position = Vector2(-524, -230)
 
-[node name="Flower24" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower24" parent="Flowers2" unique_id=1672752949 instance=ExtResource("9_svbj5")]
 position = Vector2(-41, -30)
 
-[node name="Flower25" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower25" parent="Flowers2" unique_id=2078982183 instance=ExtResource("9_svbj5")]
 position = Vector2(-113, -33)
 
-[node name="Flower26" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower26" parent="Flowers2" unique_id=1812731070 instance=ExtResource("9_svbj5")]
 position = Vector2(-144, -42)
 
-[node name="Flower27" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower27" parent="Flowers2" unique_id=248428852 instance=ExtResource("9_svbj5")]
 position = Vector2(-74, -43)
 
-[node name="Flower28" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower28" parent="Flowers2" unique_id=2115549389 instance=ExtResource("9_svbj5")]
 position = Vector2(-7, -20)
 
-[node name="Flower29" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower29" parent="Flowers2" unique_id=1461899578 instance=ExtResource("9_svbj5")]
 position = Vector2(36, 34)
 
-[node name="Flower30" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower30" parent="Flowers2" unique_id=1382617852 instance=ExtResource("9_svbj5")]
 position = Vector2(15, 62)
 
-[node name="Flower31" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower31" parent="Flowers2" unique_id=1909206283 instance=ExtResource("9_svbj5")]
 position = Vector2(-68, 79)
 
-[node name="Flower32" parent="Flowers2" instance=ExtResource("9_svbj5")]
+[node name="Flower32" parent="Flowers2" unique_id=1106383036 instance=ExtResource("9_svbj5")]
 position = Vector2(-157, 25)
 
-[node name="Flower33" parent="Flowers2" instance=ExtResource("9_svbj5")]
-position = Vector2(58, 87)
+[node name="Flower33" parent="Flowers2" unique_id=1158257151 instance=ExtResource("9_svbj5")]
+position = Vector2(-571, -211)
 
-[node name="Flower34" parent="Flowers2" instance=ExtResource("9_svbj5")]
-position = Vector2(-933, -208)
+[node name="Flower34" parent="Flowers2" unique_id=1828623963 instance=ExtResource("9_svbj5")]
+position = Vector2(897, -13)
 
-[node name="Flowers3" type="Node2D" parent="."]
+[node name="Flowers3" type="Node2D" parent="." unique_id=807421461]
 y_sort_enabled = true
-position = Vector2(710, 488)
+position = Vector2(1620, 885)
 
-[node name="Flower5" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(48, 68)
+[node name="Flower5" parent="Flowers3" unique_id=1681823946 instance=ExtResource("9_svbj5")]
+position = Vector2(140, 43)
 
-[node name="Flower6" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower6" parent="Flowers3" unique_id=46075770 instance=ExtResource("9_svbj5")]
 position = Vector2(95, 86)
 
-[node name="Flower7" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower7" parent="Flowers3" unique_id=1012736202 instance=ExtResource("9_svbj5")]
 position = Vector2(90, -29)
 
-[node name="Flower8" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-88, 37)
+[node name="Flower8" parent="Flowers3" unique_id=1594623379 instance=ExtResource("9_svbj5")]
+position = Vector2(-10, 13)
 
-[node name="Flower9" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-99, 66)
+[node name="Flower9" parent="Flowers3" unique_id=865116920 instance=ExtResource("9_svbj5")]
+position = Vector2(-180, 28)
 
-[node name="Flower10" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower10" parent="Flowers3" unique_id=2007104087 instance=ExtResource("9_svbj5")]
 position = Vector2(-138, 67)
 
-[node name="Flower11" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-188, 47)
+[node name="Flower11" parent="Flowers3" unique_id=729527512 instance=ExtResource("9_svbj5")]
+position = Vector2(-264, -56)
 
-[node name="Flower12" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-210, 20)
+[node name="Flower12" parent="Flowers3" unique_id=1858650402 instance=ExtResource("9_svbj5")]
+position = Vector2(-208, -45)
 
-[node name="Flower13" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower13" parent="Flowers3" unique_id=1028136451 instance=ExtResource("9_svbj5")]
 position = Vector2(-21, 90)
 
-[node name="Flower14" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-214, 50)
+[node name="Flower14" parent="Flowers3" unique_id=2038314412 instance=ExtResource("9_svbj5")]
+position = Vector2(-51, -129)
 
-[node name="Flower15" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower15" parent="Flowers3" unique_id=134822047 instance=ExtResource("9_svbj5")]
 position = Vector2(58, 101)
 
-[node name="Flower16" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-104, -48)
+[node name="Flower16" parent="Flowers3" unique_id=65744096 instance=ExtResource("9_svbj5")]
+position = Vector2(-102, -87)
 
-[node name="Flower17" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower17" parent="Flowers3" unique_id=1586913514 instance=ExtResource("9_svbj5")]
 position = Vector2(-64, 32)
 
-[node name="Flower18" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-37, 116)
+[node name="Flower18" parent="Flowers3" unique_id=1787447230 instance=ExtResource("9_svbj5")]
+position = Vector2(81, 158)
 
-[node name="Flower19" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-62, -6)
+[node name="Flower19" parent="Flowers3" unique_id=1554424199 instance=ExtResource("9_svbj5")]
+position = Vector2(-39, -50)
 
-[node name="Flower20" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-110, 107)
+[node name="Flower20" parent="Flowers3" unique_id=427127934 instance=ExtResource("9_svbj5")]
+position = Vector2(-241, 111)
 
-[node name="Flower21" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower21" parent="Flowers3" unique_id=168289006 instance=ExtResource("9_svbj5")]
 position = Vector2(11, 111)
 
-[node name="Flower22" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-19, 28)
+[node name="Flower22" parent="Flowers3" unique_id=773006842 instance=ExtResource("9_svbj5")]
+position = Vector2(48, -81)
 
-[node name="Flower23" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(85, 62)
+[node name="Flower23" parent="Flowers3" unique_id=150857309 instance=ExtResource("9_svbj5")]
+position = Vector2(159, 158)
 
-[node name="Flower24" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-41, -30)
+[node name="Flower25" parent="Flowers3" unique_id=817163319 instance=ExtResource("9_svbj5")]
+position = Vector2(-191, -122)
 
-[node name="Flower25" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-113, -33)
-
-[node name="Flower26" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower26" parent="Flowers3" unique_id=1396200953 instance=ExtResource("9_svbj5")]
 position = Vector2(-144, -42)
 
-[node name="Flower27" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower27" parent="Flowers3" unique_id=2048010477 instance=ExtResource("9_svbj5")]
 position = Vector2(-74, -43)
 
-[node name="Flower28" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-7, -20)
+[node name="Flower28" parent="Flowers3" unique_id=19671923 instance=ExtResource("9_svbj5")]
+position = Vector2(-331, 62)
 
-[node name="Flower29" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower29" parent="Flowers3" unique_id=1847378986 instance=ExtResource("9_svbj5")]
 position = Vector2(36, 34)
 
-[node name="Flower30" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(15, 62)
+[node name="Flower30" parent="Flowers3" unique_id=589810692 instance=ExtResource("9_svbj5")]
+position = Vector2(205, 76)
 
-[node name="Flower31" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-68, 79)
+[node name="Flower31" parent="Flowers3" unique_id=777898688 instance=ExtResource("9_svbj5")]
+position = Vector2(-65, 111)
 
-[node name="Flower32" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower32" parent="Flowers3" unique_id=891222709 instance=ExtResource("9_svbj5")]
 position = Vector2(138, -34)
 
-[node name="Flower33" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower33" parent="Flowers3" unique_id=1742081651 instance=ExtResource("9_svbj5")]
 position = Vector2(182, -23)
 
-[node name="Flower34" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(-37, -60)
+[node name="Flower34" parent="Flowers3" unique_id=1228767002 instance=ExtResource("9_svbj5")]
+position = Vector2(-142, -141)
 
-[node name="Flower35" parent="Flowers3" instance=ExtResource("9_svbj5")]
+[node name="Flower35" parent="Flowers3" unique_id=479160405 instance=ExtResource("9_svbj5")]
 position = Vector2(4, -58)
 
-[node name="Flower36" parent="Flowers3" instance=ExtResource("9_svbj5")]
-position = Vector2(48, -60)
+[node name="Flower36" parent="Flowers3" unique_id=895697110 instance=ExtResource("9_svbj5")]
+position = Vector2(81, 13)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="Flowers4" type="Node2D" parent="." unique_id=1809735805]
+y_sort_enabled = true
+position = Vector2(1505, 323)
+
+[node name="Flower7" parent="Flowers4" unique_id=1495846864 instance=ExtResource("9_svbj5")]
+position = Vector2(90, -29)
+
+[node name="Flower10" parent="Flowers4" unique_id=1059858926 instance=ExtResource("9_svbj5")]
+position = Vector2(196, -127)
+
+[node name="Flower11" parent="Flowers4" unique_id=1701879238 instance=ExtResource("9_svbj5")]
+position = Vector2(365, 554)
+
+[node name="Flower12" parent="Flowers4" unique_id=1779000609 instance=ExtResource("9_svbj5")]
+position = Vector2(196, -114)
+
+[node name="Flower15" parent="Flowers4" unique_id=1922936153 instance=ExtResource("9_svbj5")]
+position = Vector2(280, -147)
+
+[node name="Flower16" parent="Flowers4" unique_id=1380130471 instance=ExtResource("9_svbj5")]
+position = Vector2(257, -84)
+
+[node name="Flower20" parent="Flowers4" unique_id=971020978 instance=ExtResource("9_svbj5")]
+position = Vector2(388, 739)
+
+[node name="Flower22" parent="Flowers4" unique_id=972297333 instance=ExtResource("9_svbj5")]
+position = Vector2(87, -93)
+
+[node name="Flower23" parent="Flowers4" unique_id=799246861 instance=ExtResource("9_svbj5")]
+position = Vector2(234, -134)
+
+[node name="Flower24" parent="Flowers4" unique_id=846795918 instance=ExtResource("9_svbj5")]
+position = Vector2(113, -82)
+
+[node name="Flower25" parent="Flowers4" unique_id=1429607291 instance=ExtResource("9_svbj5")]
+position = Vector2(-126, 586)
+
+[node name="Flower28" parent="Flowers4" unique_id=1470681985 instance=ExtResource("9_svbj5")]
+position = Vector2(322, 705)
+
+[node name="Flower32" parent="Flowers4" unique_id=620013494 instance=ExtResource("9_svbj5")]
+position = Vector2(230, -98)
+
+[node name="Flower34" parent="Flowers4" unique_id=2146003660 instance=ExtResource("9_svbj5")]
+position = Vector2(411, 643)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=924595693]
 layer = 1
 follow_viewport_enabled = true
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-349, -146)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1708680464]
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer" unique_id=1811714338]
+material = SubResource("ShaderMaterial_fkwea")
+offset_top = 2.0
+offset_right = 1920.0
+offset_bottom = 1202.0
+color = Color(0.22666645, 0, 0.68, 1)
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="." unique_id=412119136]
+layer = 1
+follow_viewport_enabled = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2" unique_id=1217590567]
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground2/ParallaxLayer" unique_id=2041989485]
 material = SubResource("ShaderMaterial_svbj5")
-offset_left = 349.0
-offset_top = 146.0
-offset_right = 1629.0
-offset_bottom = 946.0
+offset_top = 2.0
+offset_right = 1920.0
+offset_bottom = 1202.0
 color = Color(0.22666645, 0, 0.68, 1)
