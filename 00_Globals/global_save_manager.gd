@@ -10,6 +10,7 @@ var music : float = 0.9
 var talk_speed : float = 0.02
 var censored : bool = false
 
+var last_auto_save_time : float = 1
 var save_list : Dictionary = {"_1" : ""}
 
 var current_save : Dictionary = {
@@ -19,7 +20,6 @@ var current_save : Dictionary = {
 		hour = "",
 		minute = "",
 		moon = "",
-		#month = "",
 		year = ""
 	},
 	player = {
@@ -73,6 +73,8 @@ func _ready() -> void:
 
 
 func save_game_auto( _number ) -> void:
+	##get current time and store in var
+	last_auto_save_time = Time.get_unix_time_from_system()
 	await get_tree().create_timer( 32.0 ).timeout
 	save_game( _number )
 	

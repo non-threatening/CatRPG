@@ -6,8 +6,7 @@
 bg_color = Color(0.53333336, 0.34509805, 0.1764706, 0.29411766)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w73i"]
-content_margin_left = 16.0
-content_margin_top = 16.0
+content_margin_left = 21.0
 content_margin_right = 16.0
 content_margin_bottom = 16.0
 bg_color = Color(0.34509805, 0.21568628, 0.09803922, 0.29411766)
@@ -17,12 +16,36 @@ default_font_size = 28
 Button/styles/focus = SubResource("StyleBoxFlat_65cc6")
 Button/styles/normal = SubResource("StyleBoxFlat_2w73i")
 
-[node name="ListSummary" type="Button" unique_id=2085211627]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jygu"]
+content_margin_left = 16.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_dyp6n"]
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_2jygu")
+
+[node name="MarginContainer" type="MarginContainer" unique_id=889872400]
 custom_minimum_size = Vector2(400, 0)
 offset_right = 400.0
-offset_bottom = 42.0
+offset_bottom = 119.0
+script = ExtResource("1_2w73i")
+
+[node name="ListSummary" type="Button" parent="." unique_id=2085211627]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 theme = SubResource("Theme_65cc6")
-text = "Quest step Quest step Quest step Quest step Quest step Quest step"
+theme_override_colors/font_color = Color(0.8784314, 0.8784314, 0.8784314, 0.12156863)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.28627452, 0.28627452, 0.1882353)
+text = "Quest step Quest step Quest step Quest step Quest step Quest step Quest ste"
 alignment = 0
 autowrap_mode = 3
-script = ExtResource("1_2w73i")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=901244862]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+theme = SubResource("Theme_dyp6n")
+theme_override_constants/strikethrough_alpha = 100
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "Quest step Quest step Quest step Quest step Quest step Quest step Quest ste"
+fit_content = true
+vertical_alignment = 1

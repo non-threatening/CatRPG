@@ -459,11 +459,6 @@ size_flags_vertical = 3
 [node name="QuestSummary" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer/QuestSumContainer2" unique_id=1321537759 instance=ExtResource("5_hio0w")]
 layout_mode = 2
 
-[node name="spacer" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer/QuestList/VBoxContainer" unique_id=472690451]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 20.0
-
 [node name="ScrollContainer2" type="ScrollContainer" parent="Control/TabContainer/Quest" unique_id=1599458263]
 layout_mode = 0
 offset_left = 612.0
@@ -490,11 +485,6 @@ layout_mode = 2
 
 [node name="ListSummary5" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" unique_id=865642588 instance=ExtResource("5_gtmg6")]
 layout_mode = 2
-
-[node name="spacer" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" unique_id=1736949798]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 20.0
 
 [node name="System" type="Control" parent="Control/TabContainer" unique_id=2116072026]
 visible = false
