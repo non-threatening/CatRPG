@@ -24,7 +24,7 @@ func play_music( _audio : AudioStream ) -> void:
 		return ## don't change the music if it's the same
 		
 	current_music_player += 1
-	print( current_music_player )
+	prints( "current music player", current_music_player )
 	if current_music_player > 1:
 		current_music_player = 0
 	
