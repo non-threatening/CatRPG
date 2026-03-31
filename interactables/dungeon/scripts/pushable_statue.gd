@@ -1,6 +1,6 @@
 class_name PushableStatue extends RigidBody2D
 
-@export var push_speed : float = 200.0
+@export var push_speed : float = 300.0
 @export var persistent : bool = true
 @export var persistent_location : Vector2 = Vector2.ZERO
 @export var target_location_size : Vector2 = Vector2( 5, 6 )
