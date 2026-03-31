@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://og10qlqywnvs"
+path="res://.godot/imported/01_hello_bird_frend.dialogue-db319c74c8d2c4cada1bc2ad1796bed2.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/BF/01_hello_bird_frend.dialogue"
+dest_files=["res://.godot/imported/01_hello_bird_frend.dialogue-db319c74c8d2c4cada1bc2ad1796bed2.tres"]
+
+[params]
+
+defaults=true

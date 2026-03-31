@@ -151,11 +151,13 @@ func apply_dialogue_line() -> void:
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
 
-	#only change charactr when a new character appears ???
+	
+	##TODO: load controller icon from tag like, [#icon=interact]
+	
 	# Or use tags, maybe better.. if cat use [1]
 	var emotion : String = ""
 	if not dialogue_line.tags.is_empty():
-		emotion = ( "_" + dialogue_line.tags[0] )
+		emotion = ( "_" + dialogue_line.get_tag_value("mood") )
 		
 		
 	var portrait_path : String = "res://Dialogue/SpeachBubbles/portraits/%s.png" % ( dialogue_line.character.to_snake_case() + emotion )

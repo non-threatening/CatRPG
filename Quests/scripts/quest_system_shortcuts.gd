@@ -1,6 +1,10 @@
 extends Node
 
+const ICON_INTERACT : String = "[img=48]res://GeneralNodes/controller_icon_interact.tres[/img]"
+const ICON_ATTACK : String = "[img=48]res://GeneralNodes/controller_icon_attack.tres[/img]"
+
 const QUEST_PATH: String = "res://Quests/quest_resources/%s.tres"
+
 
 func start_quest(quest_name: String) -> void:
 	var quest: Quest = ResourceLoader.load(QUEST_PATH % quest_name)

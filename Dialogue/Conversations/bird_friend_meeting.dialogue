@@ -1,31 +1,28 @@
 ~ start
-if Shortcuts.is_quest_completed("[102]a_gimp_suit_for_bird_friend"):
+if is_quest_completed("[102]a_gimp_suit_for_bird_friend"):
 	Bird Friend: That was cool how you found my Gimpsuit Cat
 	Cat: It was so much greasier than I though possible
 
 ## Quest line: A gimp suit for 
-elif not Shortcuts.is_quest_completed("[102]a_gimp_suit_for_bird_friend") and not Shortcuts.is_quest_active("[102]a_gimp_suit_for_bird_friend")
-	Bird Friend: [[Hi|Hello|Hey]], who are you? [#happy]
-	Cat: Hi [#happy]
-	Cat: Wooooooooooooo
-	Bird Friend: I've lost my Gimp Suit. Could you look around for a one. [#happy]
+elif not is_quest_completed("[102]a_gimp_suit_for_bird_friend") and not is_quest_active("[102]a_gimp_suit_for_bird_friend")
+	Bird Friend: [[Hi|Hello|Hey]], who are you? [#mood=happy]
+	Cat: Hi [#mood=happy]
+	Cat: Wooooooooooooo {{ICON_ATTACK}}
+	Bird Friend: I've lost my Gimp Suit. Could you look around for one. [#mood=happy]
 	- Totaly, I <3 gimp suits.
-		do Shortcuts.start_quest("[102]a_gimp_suit_for_bird_friend")
-		do Shortcuts.update_quest("[102]a_gimp_suit_for_bird_friend")
-		Bird Friend: nice.
+		do start_quest("[102]a_gimp_suit_for_bird_friend")
+		do update_quest("[102]a_gimp_suit_for_bird_friend")
+		Bird Friend: nice. {{ICON_INTERACT}}
 	- No way lady!
 		Bird Friend: I am your father.
 
-elif  Shortcuts.get_quest_property( 102, "have_suit" ) == false
+elif  get_quest_property( 102, "have_suit" ) == false
 	Bird Friend: Have you found the Gimp Suit?
 else
 	Bird Friend: Nice Can I have the gimpsuit
 	- OK
-		Bird Friend: ...
 		do QuestSystem.set_quest_property( 102, "suit_given", true)
-		Bird Friend: I'd better come with you, at least for a while
-		Cat: I think I could use the help
-		do Shortcuts.update_quest("[102]a_gimp_suit_for_bird_friend")
+		do update_quest("[102]a_gimp_suit_for_bird_friend")
 		=> END
 	- No way
 		Cat: It's my GimpSuit now!!!!

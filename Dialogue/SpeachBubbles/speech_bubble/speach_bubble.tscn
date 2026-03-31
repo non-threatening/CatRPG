@@ -8,13 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeachBubbles/portraits/cat.png" id="6_l6g6q"]
 [ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://GeneralNodes/controller_icon_interact.tres" id="7_t1jep"]
 
-[node name="SpeachBubble" type="CanvasLayer"]
+[node name="SpeachBubble" type="CanvasLayer" unique_id=1360327746]
 process_mode = 3
 script = ExtResource("1_suubk")
 next_action = &"interact"
 skip_action = &"attack"
 
-[node name="Portrait" type="TextureRect" parent="."]
+[node name="Portrait" type="TextureRect" parent="." unique_id=302673411]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 250)
 offset_left = 312.0
@@ -24,7 +24,7 @@ offset_bottom = 474.0
 scale = Vector2(2, 2)
 texture = ExtResource("6_l6g6q")
 
-[node name="Bubble" type="Control" parent="."]
+[node name="Bubble" type="Control" parent="." unique_id=891178929]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_suubk")
 
-[node name="MarginContainer" type="MarginContainer" parent="Bubble"]
+[node name="MarginContainer" type="MarginContainer" parent="Bubble" unique_id=1800983521]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -49,23 +49,23 @@ offset_bottom = -95.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer"]
+[node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer" unique_id=708482350]
 self_modulate = Color(0, 0, 0, 0.93333334)
 clip_children = 2
 layout_mode = 2
 texture = ExtResource("3_tr0jp")
 
-[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer" unique_id=1107000419]
 layout_mode = 0
 offset_left = 80.0
 offset_top = 44.0
 offset_right = 704.0
 offset_bottom = 200.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer" unique_id=2127673451]
 layout_mode = 2
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1071894988]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -75,13 +75,13 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_l6g6q")]
+[node name="DialogueLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1081869472 instance=ExtResource("3_l6g6q")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" unique_id=1059512609 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -101,12 +101,12 @@ alignment = 1
 script = ExtResource("4_t1jep")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu"]
+[node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu" unique_id=1253312560]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 text = "Response example"
 
-[node name="TextureRect" type="TextureRect" parent="Bubble"]
+[node name="TextureRect" type="TextureRect" parent="Bubble" unique_id=1578933542]
 layout_mode = 0
 offset_left = 887.0
 offset_top = 619.0
@@ -115,7 +115,7 @@ offset_bottom = 719.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_t1jep")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=776240330]
 max_polyphony = 5
 bus = &"Effects"
 
