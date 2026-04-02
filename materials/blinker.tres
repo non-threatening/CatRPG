@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bdkcvlujtfe3o"]
+
+[ext_resource type="Shader" uid="uid://dijfe1uuswhgp" path="res://GUI/pause_menu/blinker.gdshader" id="1_a3oxr"]
+
+[resource]
+shader = ExtResource("1_a3oxr")

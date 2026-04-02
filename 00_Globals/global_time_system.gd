@@ -3,6 +3,7 @@ extends Node
 var time_tick: TimeTick
 var moon : int = 0
 var moon_phase : String = "New Moon"
+var time_display : String
 
 var time_gate : bool = false
 
@@ -54,6 +55,17 @@ func _on_game_loaded() -> void:
 func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) -> void:
 	if time_gate == true:
 		match unit_name:
+			"minute":
+				var tens = new_value % 10 
+				if tens == 0:
+					var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
+					var day = TimeSystem.time_tick.get_time_unit("day")
+					var year = TimeSystem.time_tick.get_time_unit("year")
+					if year != 0:
+						var show_year : String = str( "Year ", year ) 
+						time_display = str( show_year, "  Day %d  %s" % [day, formatted])
+					else:
+						time_display = str( "Day %d  %s" % [day, formatted])
 			"moon":
 				moon = new_value
 				match moon:
