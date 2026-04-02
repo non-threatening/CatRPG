@@ -2,35 +2,19 @@
 
 [ext_resource type="StyleBox" uid="uid://ct7neug04nuq3" path="res://GUI/StyleBoxBluePanel.tres" id="1_v7alu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acws1"]
-bg_color = Color(0.66, 0.54219, 0.32340002, 0.5019608)
-border_width_right = 1
-border_width_bottom = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7alu"]
+bg_color = Color(0.75, 0.75, 0.75, 0.2509804)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sjd8"]
-bg_color = Color(0.043137256, 0.047058824, 0.09411765, 1)
-border_width_left = 1
-border_width_top = 1
-border_color = Color(0.88, 0.88, 0.88, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.5019608)
-shadow_size = 2
-shadow_offset = Vector2(2, 2)
-
 [resource]
 AcceptDialog/constants/buttons_min_height = 48
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/font_sizes/font_size = 32
-Button/styles/focus = SubResource("StyleBoxFlat_acws1")
-Button/styles/hover = null
-Button/styles/normal = SubResource("StyleBoxFlat_2sjd8")
+Button/styles/focus = null
+Button/styles/normal = SubResource("StyleBoxFlat_v7alu")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
 Label/constants/shadow_offset_x = -2

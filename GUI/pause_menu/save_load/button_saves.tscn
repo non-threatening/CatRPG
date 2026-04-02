@@ -2,16 +2,17 @@
 
 [ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="1_6yr80"]
 [ext_resource type="Script" uid="uid://bfp1bteey43ld" path="res://GUI/pause_menu/save_load/button_saves_an_loads.gd" id="2_hg3na"]
-[ext_resource type="AudioStream" uid="uid://bcw1ihsfr3g1j" path="res://Audio/UsedSamples/hi hat (33).ogg" id="3_m12um"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m12um"]
+bg_color = Color(0, 0, 0, 0.5019608)
 
 [node name="Button1" type="Button" unique_id=840750032]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(450, 90)
 theme = ExtResource("1_6yr80")
 script = ExtResource("2_hg3na")
-pressed_sound = ExtResource("3_m12um")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1361836469]
-custom_minimum_size = Vector2(450, 80)
+custom_minimum_size = Vector2(450, 90)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,9 +20,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -225.0
-offset_top = -36.0
+offset_top = -40.0
 offset_right = 225.0
-offset_bottom = 44.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -32,15 +33,15 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=2070326424]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(450, 90)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 2.0
-offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_m12um")
 text = "SAVE"
 horizontal_alignment = 1
 vertical_alignment = 1

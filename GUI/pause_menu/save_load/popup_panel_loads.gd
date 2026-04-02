@@ -38,64 +38,64 @@ func _ready() -> void:
 	
 	
 func _on_visible_changed() -> void:
-	button_cancel.grab_focus()
-	minutes_passed = (Time.get_unix_time_from_system() - SaveManager.last_auto_save_time) / 60
-	if minutes_passed > 9999:
-		minutes_passed = 0
+	if visible == true:
+		button_cancel.grab_focus()
+		minutes_passed = (Time.get_unix_time_from_system() - SaveManager.last_auto_save_time) / 60
+		if minutes_passed > 9999:
+			minutes_passed = 0
 
-	if PauseMenu.save_dict.has("auto"):
-		var get_min = "Auto Save : " + str( round( minutes_passed )) + " minutes ago"
-		rich_text_label_2.text = get_min.replace( ".0" , "")
-		auto_text_label.text = PauseMenu.save_dict["auto"]
-		button_auto_label.show()
-		button_auto.set_disabled( false )
-	else:
-		auto_text_label.text = "empty save"
-		button_auto_label.hide()
-		button_auto.set_disabled( true )
+		if PauseMenu.save_dict.has("auto"):
+			var get_min = "Auto Save : " + str( round( minutes_passed )) + " minutes ago"
+			rich_text_label_2.text = get_min.replace( ".0" , "")
+			auto_text_label.text = PauseMenu.save_dict["auto"]
+			button_auto_label.show()
+			button_auto.set_disabled( false )
+		else:
+			auto_text_label.text = "empty save"
+			button_auto_label.hide()
+			button_auto.set_disabled( true )
 
-	if PauseMenu.save_dict.has("_1") and PauseMenu.save_dict["_1"] != "":
-		load_button_1_label.text = PauseMenu.save_dict["_1"]
-		button_1_load_label.show()
-		load_button_1.set_disabled( false )
-	else:
-		load_button_1_label.text = "empty save"
-		button_1_load_label.hide()
-		load_button_1.set_disabled( true )
+		if PauseMenu.save_dict.has("_1") and PauseMenu.save_dict["_1"] != "":
+			load_button_1_label.text = PauseMenu.save_dict["_1"]
+			button_1_load_label.show()
+			load_button_1.set_disabled( false )
+		else:
+			load_button_1_label.text = "empty save"
+			button_1_load_label.hide()
+			load_button_1.set_disabled( true )
 
-	if PauseMenu.save_dict.has("_2"):
-		load_button_2_label.text = PauseMenu.save_dict["_2"]
-		button_2_load_label.show()
-		load_button_2.set_disabled( false )
-	else:
-		load_button_2_label.text = "empty save"
-		button_2_load_label.hide()
-		load_button_2.set_disabled( true )
-		
-	if PauseMenu.save_dict.has("_3"):
-		load_button_3_label.text = PauseMenu.save_dict["_3"]
-		button_3_load_label.show()
-		load_button_3.set_disabled( false )
-	else:
-		load_button_3_label.text = "empty save"
-		button_3_load_label.hide()
-		load_button_3.set_disabled( true )
+		if PauseMenu.save_dict.has("_2"):
+			load_button_2_label.text = PauseMenu.save_dict["_2"]
+			button_2_load_label.show()
+			load_button_2.set_disabled( false )
+		else:
+			load_button_2_label.text = "empty save"
+			button_2_load_label.hide()
+			load_button_2.set_disabled( true )
+			
+		if PauseMenu.save_dict.has("_3"):
+			load_button_3_label.text = PauseMenu.save_dict["_3"]
+			button_3_load_label.show()
+			load_button_3.set_disabled( false )
+		else:
+			load_button_3_label.text = "empty save"
+			button_3_load_label.hide()
+			load_button_3.set_disabled( true )
 
-	if PauseMenu.save_dict.has("_4"):
-		load_button_4_label.text = PauseMenu.save_dict["_4"]
-		button_4_load_label.show()
-		load_button_4.set_disabled( false )
-	else:
-		load_button_4_label.text = "empty save"
-		button_4_load_label.hide()
-		load_button_4.set_disabled( true )
-		
-	if PauseMenu.save_dict.has("_5"):
-		load_button_5_label.text = PauseMenu.save_dict["_5"]
-		button_5_load_label.show()
-		load_button_5.set_disabled( false )
-	else:
-		load_button_5_label.text = "empty save"
-		button_5_load_label.hide()
-		load_button_5.set_disabled( true )
-		
+		if PauseMenu.save_dict.has("_4"):
+			load_button_4_label.text = PauseMenu.save_dict["_4"]
+			button_4_load_label.show()
+			load_button_4.set_disabled( false )
+		else:
+			load_button_4_label.text = "empty save"
+			button_4_load_label.hide()
+			load_button_4.set_disabled( true )
+			
+		if PauseMenu.save_dict.has("_5"):
+			load_button_5_label.text = PauseMenu.save_dict["_5"]
+			button_5_load_label.show()
+			load_button_5.set_disabled( false )
+		else:
+			load_button_5_label.text = "empty save"
+			button_5_load_label.hide()
+			load_button_5.set_disabled( true )

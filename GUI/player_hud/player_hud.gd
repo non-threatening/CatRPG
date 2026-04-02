@@ -9,7 +9,8 @@ var spoons : Array[ SpoonsGUI ] = []
 var active_save : String = "_1"
 
 @onready var loading_screen: TextureRect = $LoadingScreen
-@onready var time_label: Label = $Control/HudTime/HBoxContainer/TimeLabel
+@onready var time_label: Label = $Control/HudTime/TimeLabel
+
 @onready var hearts_display: HFlowContainer = $Control/Hearts
 @onready var electros_display: HFlowContainer = $Control/Electros
 @onready var spoons_display: HFlowContainer = $Control/Spoons
@@ -38,10 +39,10 @@ var active_save : String = "_1"
 
 
 func _ready() -> void:
-	for child in hearts_display.get_children():
-		if child is HeartGUI:
-			hearts.append( child )
-			child.visible = false
+	for c in hearts_display.get_children():
+		if c is HeartGUI:
+			hearts.append( c )
+			c.visible = false
 			
 	for c in electros_display.get_children():
 		if c is ElectroGUI:

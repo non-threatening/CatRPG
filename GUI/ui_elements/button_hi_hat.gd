@@ -1,10 +1,10 @@
 class_name ButtonHiHat extends Button
 
 const HI_HAT__10_ = preload("uid://u7bfr1mauqbt")
-const CLAP__2_ = preload("uid://bgmimlxly3wpv")
+const KICK__7_ = preload("uid://bgdpmxn86hpae")
 
 @export var focus_sound : AudioStream = HI_HAT__10_
-@export var pressed_sound : AudioStream = CLAP__2_
+@export var pressed_sound : AudioStream = KICK__7_
 
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 func on_focus_entered() -> void:
 	PauseMenu.play_audio( focus_sound )
 	var tween_entered = create_tween()
-	tween_entered.tween_property( self, "scale", Vector2( 1.1, 1.1 ), 0.2 )
+	tween_entered.tween_property( self, "scale", Vector2( 1.125, 1.125 ), 0.2 )
 
 
 func on_focus_exited() -> void:

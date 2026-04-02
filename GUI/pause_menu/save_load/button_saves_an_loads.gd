@@ -1,4 +1,4 @@
-extends ButtonHiHat
+class_name SaveAnLoads extends ButtonHiHat
 
 @onready var label: Label = $Label
 @onready var rich_text_label: RichTextLabel = $RichTextLabel

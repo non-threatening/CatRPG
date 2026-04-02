@@ -11,6 +11,7 @@ const TOM__9_ = preload("uid://b55lwwli8jahd")
 var is_paused : bool = false
 var save_dict : Dictionary
 
+@onready var control: Control = $Control
 @onready var audio_stream_player: AudioStreamPlayer = $Control/AudioStreamPlayer
 @onready var tab_container: TabContainer = $Control/TabContainer
 @onready var button_quit: Button = $Control/TabContainer/System/Button_Quit
@@ -24,10 +25,11 @@ var save_dict : Dictionary
 
 @onready var dialog: ConfirmationDialog = $Control/ConfirmationDialog
 @onready var rich_text_label: RichTextLabel = $Control/ConfirmationDialog/RichTextLabel
+@onready var color_rect: ColorRect = $ColorRect2
 
 
 func _ready() -> void:
-	hide_pause_menu()
+	hide()
 	button_quit.pressed.connect( _on_quit_pressed )
 	save_button.pressed.connect( _save_dialog_open_pressed )
 	load_button.pressed.connect( _load_dialog_open_pressed )
@@ -50,9 +52,11 @@ func _on_canceled() -> void:
 
 
 func show_pause_menu() -> void:
+	color_rect.hide()
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()
 	visible = true
+	control.show()
 	is_paused = true
 	tab_container.current_tab = 0
 	shown.emit()
@@ -68,16 +72,23 @@ func show_pause_menu() -> void:
 func hide_pause_menu() -> void:
 	get_tree().paused = false
 	TimeSystem.time_tick.resume()
-	visible = false
 	is_paused = false
+	control.hide()
 	popup_panel_saves.hide()
 	popup_panel_loads.hide()
+	await get_tree().create_timer(1).timeout
+	hide()
 	hidden.emit()
 
 
 func _on_quit_pressed() -> void:
-	##TODO: confirmation
+	rich_text_label.text = str( "Quit for realsies?")
+	dialog.confirmed.connect( _quit_game )
+	dialog.popup_centered()
+	
+func _quit_game() -> void:
 	get_tree().quit()
+
 
 func _save_dialog_open_pressed() -> void:
 	popup_panel_saves.popup_centered()
@@ -101,10 +112,8 @@ func _on_save_confirmed( _number ) -> void:
 	SaveManager.save_game( _number )
 	PlayerHud.active_save = _number
 	disconnect_confirm()
-	##TODO: put saving progress indicator; for show
-	#await get_tree().create_timer(1).timeout
+	color_rect.show()
 	hide_pause_menu()
-	pass
 
 
 func on_load_pressed( _number ) -> void:

@@ -30,29 +30,30 @@ func _ready() -> void:
 
 
 func _on_visible_changed() -> void:
-	button_cancel.grab_focus()
-	
-	if PauseMenu.save_dict.has("_1") and PauseMenu.save_dict["_1"] != "":
-		rich_text_label_1.text = PauseMenu.save_dict["_1"]
-	else:
-		rich_text_label_1.text = "Save one empty"
+	if visible == true:
+		button_cancel.grab_focus()
+		
+		if PauseMenu.save_dict.has("_1") and PauseMenu.save_dict["_1"] != "":
+			rich_text_label_1.text = PauseMenu.save_dict["_1"]
+		else:
+			rich_text_label_1.text = "Save one empty"
 
-	if PauseMenu.save_dict.has("_2"):
-		rich_text_label_2.text = PauseMenu.save_dict["_2"]
-	else:
-		rich_text_label_2.text = "Save two empty"
+		if PauseMenu.save_dict.has("_2"):
+			rich_text_label_2.text = PauseMenu.save_dict["_2"]
+		else:
+			rich_text_label_2.text = "Save two empty"
 
-	if PauseMenu.save_dict.has("_3"):
-		rich_text_label_3.text = PauseMenu.save_dict["_3"]
-	else:
-		rich_text_label_3.text = "Save three empty"
+		if PauseMenu.save_dict.has("_3"):
+			rich_text_label_3.text = PauseMenu.save_dict["_3"]
+		else:
+			rich_text_label_3.text = "Save three empty"
 
-	if PauseMenu.save_dict.has("_4"):
-		rich_text_label_4.text = PauseMenu.save_dict["_4"]
-	else:
-		rich_text_label_4.text = "Save four empty"
+		if PauseMenu.save_dict.has("_4"):
+			rich_text_label_4.text = PauseMenu.save_dict["_4"]
+		else:
+			rich_text_label_4.text = "Save four empty"
 
-	if PauseMenu.save_dict.has("_5"):
-		rich_text_label_5.text = PauseMenu.save_dict["_5"]
-	else:
-		rich_text_label_5.text = "Save five empty"
+		if PauseMenu.save_dict.has("_5"):
+			rich_text_label_5.text = PauseMenu.save_dict["_5"]
+		else:
+			rich_text_label_5.text = "Save five empty"
