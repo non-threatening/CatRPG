@@ -58,7 +58,7 @@ func _set_random_motion_amount() -> void:
 
 
 func _set_random_color() -> void:
-	var color_range1 : float = fmod( randf_range( (270.0/360.0), 1.0 ) + 50.0/360.0, 1.0 )
+	var color_range1 : float = fmod( randf_range( (290.0/360.0), 1.0 ) + 50.0/360.0, 1.0 )
 	var color1 = Color.from_hsv(
 		color_range1, 
 		randf_range( 0.6, 0.8 ), 

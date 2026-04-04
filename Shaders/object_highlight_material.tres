@@ -3,7 +3,8 @@
 [ext_resource type="Shader" uid="uid://jfmsso6ra02b" path="res://Items/Keys/highlight.gdshader" id="1_ihpvp"]
 
 [sub_resource type="Gradient" id="Gradient_13fqu"]
-colors = PackedColorArray(0.5, 1, 0.5, 1, 0, 1, 0, 1)
+offsets = PackedFloat32Array(0.4099099, 1)
+colors = PackedColorArray(0.82, 1, 0.82, 1, 0, 1, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_105h4"]
 gradient = SubResource("Gradient_13fqu")

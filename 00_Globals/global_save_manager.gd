@@ -168,7 +168,6 @@ func load_game( _number ) -> void:
 		"hour": current_save.time.hour,
 		"minute": current_save.time.minute,
 		"moon": current_save.time.moon,
-		#"month": current_save.time.month,
 		"year": current_save.time.year
 	})
 	

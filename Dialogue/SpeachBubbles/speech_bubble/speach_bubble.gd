@@ -151,10 +151,8 @@ func apply_dialogue_line() -> void:
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
 
-	
-	##TODO: load controller icon from tag like, [#icon=interact]
-	
-	# Or use tags, maybe better.. if cat use [1]
+
+	#use tags.. 
 	var emotion : String = ""
 	if not dialogue_line.tags.is_empty():
 		emotion = ( "_" + dialogue_line.get_tag_value("mood") )

@@ -790,7 +790,7 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 0.6369852
+energy = 1.4281858
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")
