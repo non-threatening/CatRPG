@@ -5,11 +5,26 @@
 [ext_resource type="AudioStream" uid="uid://cuun6qkdi8yqe" path="res://title_scene/audio/menu_focus.wav" id="3_1a1kh"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Maps/Levels/player_spawn.tscn" id="4_2sy4f"]
 [ext_resource type="AudioStream" uid="uid://btpvg5ust0ng8" path="res://title_scene/audio/menu_select.wav" id="4_wgj1g"]
+[ext_resource type="Shader" uid="uid://e0qbtnkfl2ip" path="res://Maps/shadows.gdshader" id="5_fp78m"]
 [ext_resource type="Material" uid="uid://dmn4nkwj8cf3p" path="res://title_scene/title_grass.tres" id="5_lj5tl"]
 [ext_resource type="Script" uid="uid://cw12wo4re7mt4" path="res://GUI/ui_elements/button_hi_hat.gd" id="6_fkwea"]
 [ext_resource type="PackedScene" uid="uid://cknrd4sbx4hht" path="res://title_scene/splash_screen.tscn" id="7_fkwea"]
 [ext_resource type="Shader" uid="uid://bh26fn50skl4i" path="res://zz_test/0-TestLevels/fog01.gdshader" id="9_lj5tl"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="9_svbj5"]
+
+[sub_resource type="Gradient" id="Gradient_1falw"]
+colors = PackedColorArray(0.085332714, 0.36719292, 0.56600034, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xyq50"]
+gradient = SubResource("Gradient_1falw")
+fill_to = Vector2(0.31196582, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0tql"]
+shader = ExtResource("5_fp78m")
+shader_parameter/color = Color(0, 0, 0.34, 0.1254902)
+shader_parameter/angle = 249.7670118639325
+shader_parameter/max_dist = 66.666003166635
+shader_parameter/gradientTexture = SubResource("GradientTexture2D_xyq50")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_svbj5"]
 noise_type = 2
@@ -26,7 +41,7 @@ resource_local_to_scene = true
 shader = ExtResource("9_lj5tl")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_fp78m")
 shader_parameter/density = 0.25
-shader_parameter/speed = Vector2(-0.05, -0.025)
+shader_parameter/speed = Vector2(-0.025, 0.013)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fkwea"]
 noise_type = 2
@@ -44,7 +59,7 @@ resource_local_to_scene = true
 shader = ExtResource("9_lj5tl")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_31yvb")
 shader_parameter/density = 0.25
-shader_parameter/speed = Vector2(0.05, 0.025)
+shader_parameter/speed = Vector2(-0.013, -0.025)
 
 [node name="TitleScene" type="Node2D" unique_id=846321229]
 position = Vector2(0, 62)
@@ -53,8 +68,13 @@ music = ExtResource("2_fkwea")
 button_focus_audio = ExtResource("3_1a1kh")
 button_press_audio = ExtResource("4_wgj1g")
 
+[node name="LightingShadows" type="Polygon2D" parent="." unique_id=846452192]
+material = SubResource("ShaderMaterial_e0tql")
+position = Vector2(0.024922293, 20.988869)
+scale = Vector2(1.0041537, 1.3385301)
+polygon = PackedVector2Array(0, -62, 1920, -62, 1915.9918, 834.50586, -6, 836)
+
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=925673454]
-modulate = Color(0.20152658, 0.20152658, 0.20152658, 1)
 z_index = -1
 material = ExtResource("5_lj5tl")
 offset_top = -60.0
@@ -80,10 +100,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -200.0
-offset_right = 320.0
-offset_bottom = 200.0
+offset_left = -480.0
+offset_top = -299.0
+offset_right = 480.0
+offset_bottom = 301.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.019607844, 0.05882353, 0.7529412)
@@ -103,6 +123,11 @@ text = "CAT GAME"
 scroll_active = false
 horizontal_alignment = 1
 
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=1579607295]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
 [node name="ButtonNew" type="Button" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=2041726241]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -120,6 +145,7 @@ script = ExtResource("6_fkwea")
 metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="SplashScreen" parent="CanvasLayer" unique_id=396004961 instance=ExtResource("7_fkwea")]
+visible = false
 offset_bottom = 149.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=136731331]
@@ -127,7 +153,7 @@ z_index = 1
 offset_top = -60.0
 offset_right = 1920.0
 offset_bottom = 1140.0
-color = Color(0, 0, 0, 0.5019608)
+color = Color(0, 0.009666657, 0.29, 0.627451)
 
 [node name="PlayerSpawn" parent="." unique_id=986617841 instance=ExtResource("4_2sy4f")]
 visible = false
@@ -135,8 +161,8 @@ position = Vector2(960, 540)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1597530515]
 autoplay = true
-max_polyphony = 4
-bus = &"Music"
+max_polyphony = 8
+bus = &"Effects"
 
 [node name="Flowers" type="Node2D" parent="." unique_id=1928154124]
 y_sort_enabled = true
@@ -315,7 +341,7 @@ position = Vector2(36, 34)
 position = Vector2(15, 62)
 
 [node name="Flower31" parent="Flowers2" unique_id=1909206283 instance=ExtResource("9_svbj5")]
-position = Vector2(-68, 79)
+position = Vector2(730, -38)
 
 [node name="Flower32" parent="Flowers2" unique_id=1106383036 instance=ExtResource("9_svbj5")]
 position = Vector2(-157, 25)
@@ -480,7 +506,7 @@ material = SubResource("ShaderMaterial_fkwea")
 offset_top = 2.0
 offset_right = 1920.0
 offset_bottom = 1202.0
-color = Color(0.22666645, 0, 0.68, 1)
+color = Color(1, 1, 1, 0.2509804)
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="." unique_id=412119136]
 layer = 1
@@ -493,4 +519,4 @@ material = SubResource("ShaderMaterial_svbj5")
 offset_top = 2.0
 offset_right = 1920.0
 offset_bottom = 1202.0
-color = Color(0.22666645, 0, 0.68, 1)
+color = Color(1, 1, 1, 0.2509804)

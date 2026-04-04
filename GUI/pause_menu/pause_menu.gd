@@ -12,7 +12,6 @@ var is_paused : bool = false
 var save_dict : Dictionary
 
 @onready var control: Control = $Control
-@onready var audio_stream_player: AudioStreamPlayer = $Control/AudioStreamPlayer
 @onready var tab_container: TabContainer = $Control/TabContainer
 @onready var button_quit: Button = $Control/TabContainer/System/Button_Quit
 @onready var item_description: Label = $Control/TabContainer/Inventory/ItemDescription
@@ -25,12 +24,11 @@ var save_dict : Dictionary
 
 @onready var dialog: ConfirmationDialog = $Control/ConfirmationDialog
 @onready var rich_text_label: RichTextLabel = $Control/ConfirmationDialog/RichTextLabel
-@onready var color_rect: ColorRect = $ColorRect2
 
 
 func _ready() -> void:
 	hide()
-	button_quit.pressed.connect( _on_quit_pressed )
+	button_quit.pressed.connect( _on_quit_pressed, CONNECT_ONE_SHOT )
 	save_button.pressed.connect( _save_dialog_open_pressed )
 	load_button.pressed.connect( _load_dialog_open_pressed )
 	dialog.canceled.connect( _on_canceled )
@@ -39,24 +37,23 @@ func _ready() -> void:
 
 
 func _on_tab_change( _t ) -> void:
-	play_audio( TOM__9_ )
+	AudioManager.play_ui( TOM__9_ )
 
 
 func _on_confirmed() -> void:
 	await get_tree().process_frame
-	play_audio( HI_HAT__33_ )
+	AudioManager.play_ui( HI_HAT__33_ )
 
 func _on_canceled() -> void:
 	await get_tree().process_frame
-	play_audio( KICK__7_ )
+	AudioManager.play_ui( KICK__7_ )
 
 
 func show_pause_menu() -> void:
-	color_rect.hide()
+	AudioManager.play_ui( HI_HAT__33_ )
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()
 	visible = true
-	control.show()
 	is_paused = true
 	tab_container.current_tab = 0
 	shown.emit()
@@ -73,10 +70,8 @@ func hide_pause_menu() -> void:
 	get_tree().paused = false
 	TimeSystem.time_tick.resume()
 	is_paused = false
-	control.hide()
 	popup_panel_saves.hide()
 	popup_panel_loads.hide()
-	await get_tree().create_timer(1).timeout
 	hide()
 	hidden.emit()
 
@@ -112,7 +107,6 @@ func _on_save_confirmed( _number ) -> void:
 	SaveManager.save_game( _number )
 	PlayerHud.active_save = _number
 	disconnect_confirm()
-	color_rect.show()
 	hide_pause_menu()
 
 
@@ -199,6 +193,6 @@ func change_tab( _i : int = 1 ) -> void:
 	prints( "change_tab" )
 	pass
 #
-func play_audio( audio : AudioStream ) -> void:
-	audio_stream_player.stream = audio
-	audio_stream_player.play()
+#func play_audio( audio : AudioStream ) -> void:
+	#audio_stream_player.stream = audio
+	#audio_stream_player.play()

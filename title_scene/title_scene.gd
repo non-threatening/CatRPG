@@ -16,7 +16,8 @@ func _ready() -> void:
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()
 	PlayerManager.player.hide()
-	PlayerHud.visible = false
+	splash_screen.show()
+	PlayerHud.hide()
 	PauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	if SaveManager.get_save_file( PlayerHud.active_save ) == null:
@@ -40,12 +41,12 @@ func setup_title_screen() -> void:
 
 
 func start_game() -> void:
-	play_audio( button_press_audio )
+	AudioManager.play_ui( button_press_audio )
 	LevelManager.load_new_level( START_LEVEL, "", Vector2.ZERO )
 
 
 func load_game() -> void:
-	play_audio( button_press_audio )
+	AudioManager.play_ui( button_press_audio )
 	SaveManager.load_game( PlayerHud.active_save )
 	
 	

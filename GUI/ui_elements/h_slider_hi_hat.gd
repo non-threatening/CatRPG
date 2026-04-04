@@ -8,4 +8,4 @@ func _ready() -> void:
 	
 func _on_value_changed( _t ) -> void:
 	prints( _t )
-	PauseMenu.play_audio( HI_HAT__10_ )
+	AudioManager.play_ui( HI_HAT__10_ )

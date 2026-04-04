@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func on_focus_entered() -> void:
-	PauseMenu.play_audio( focus_sound )
+	AudioManager.play_ui( focus_sound )
 	var tween_entered = create_tween()
 	tween_entered.tween_property( self, "scale", Vector2( 1.125, 1.125 ), 0.2 )
 
@@ -27,4 +27,4 @@ func on_focus_exited() -> void:
 
 func on_button_up() -> void:
 	await get_tree().process_frame
-	PauseMenu.play_audio( pressed_sound )
+	AudioManager.play_ui( pressed_sound )
