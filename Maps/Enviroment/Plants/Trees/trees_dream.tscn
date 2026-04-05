@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://bc7f06w1326e"]
+[gd_scene format=3 uid="uid://b1t068xhgk1jd"]
 
-[ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees.tres" id="2_ndlp4"]
-[ext_resource type="Script" uid="uid://dg2utqdot7mxt" path="res://Maps/Enviroment/Plants/Trees/trees.gd" id="2_t8ti7"]
-[ext_resource type="Texture2D" uid="uid://ck1on0t25qmd8" path="res://Maps/Enviroment/Plants/Trees/sprites/tree.png" id="3_ndlp4"]
+[ext_resource type="Script" uid="uid://ciliranxsf3ke" path="res://Maps/Enviroment/Plants/Trees/trees_node.gd" id="1_g88or"]
+[ext_resource type="Material" uid="uid://pww5hwrd41gd" path="res://Maps/Enviroment/Plants/Trees/trees_dream.tres" id="2_g88or"]
+[ext_resource type="Texture2D" uid="uid://ck1on0t25qmd8" path="res://Maps/Enviroment/Plants/Trees/sprites/tree.png" id="3_hp0sg"]
+[ext_resource type="Script" uid="uid://cnoxfd5hjq3rb" path="res://Maps/Enviroment/Plants/Trees/trees_dream.gd" id="4_g88or"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgwk"]
 radius = 35.99996
@@ -14,18 +15,19 @@ polygon = PackedVector2Array(138, -402.8, 81, -436.66666, 26.200012, -457.6, -31
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndlp4"]
 radius = 520.5535
 
-[node name="Trees" type="StaticBody2D" unique_id=627641849]
+[node name="TreesDream" type="StaticBody2D" unique_id=627641849]
 collision_layer = 16
 collision_mask = 0
+script = ExtResource("1_g88or")
 
 [node name="TreeSprite" type="Sprite2D" parent="." unique_id=257443767]
 y_sort_enabled = true
-material = ExtResource("2_ndlp4")
+material = ExtResource("2_g88or")
 position = Vector2(0, -1)
 scale = Vector2(2, 2)
-texture = ExtResource("3_ndlp4")
+texture = ExtResource("3_hp0sg")
 offset = Vector2(0, -210)
-script = ExtResource("2_t8ti7")
+script = ExtResource("4_g88or")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1250747908]
 position = Vector2(7, -4)

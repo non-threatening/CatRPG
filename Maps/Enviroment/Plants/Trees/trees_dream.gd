@@ -1,4 +1,4 @@
-class_name Trees extends Node2D
+class_name TreesDream extends Node2D
 
 const png_dir : String = "res://Maps/Enviroment/Plants/Trees/sprites/"
 var packed_array = ResourceLoader.list_directory( png_dir )
@@ -16,12 +16,6 @@ func _ready() -> void:
 	_set_random_scale()
 	_set_random_motion_amount()
 	_set_steps()
-
-
-#func _tree() -> void:
-	#material.set_shader_parameter( "color1", Color( 0.35, 0.57, 0.17, 1.0 ) )
-	#material.set_shader_parameter( "color2", Color( 0.49, 0.48, 0.10, 1.0 ) )
-	#material.set_shader_parameter( "color3", Color( 0.37, 0.21, 0.02, 1.0 ) )
 
 
 func get_shuffled_tree():

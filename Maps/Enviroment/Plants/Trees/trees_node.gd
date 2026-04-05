@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var trees: StaticBody2D = $"."
-@onready var tree: Trees = $TreeSprite
+@onready var tree: TreesDream = $TreeSprite
 @onready var area_2d: Area2D = $Area2D
 
 var placement : Vector2
