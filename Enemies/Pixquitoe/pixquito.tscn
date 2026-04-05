@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ba5e5f3bpk8i3"]
+[gd_scene format=3 uid="uid://ba5e5f3bpk8i3"]
 
 [ext_resource type="Script" uid="uid://b8214atadhq7u" path="res://Enemies/Pixquitoe/pixquitoe.gd" id="1_mk43a"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_eaod3"]
@@ -273,7 +273,7 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxyrx"]
 radius = 256.12497
 
-[node name="Pixquito" type="CharacterBody2D"]
+[node name="Pixquito" type="CharacterBody2D" unique_id=2067127968]
 collision_layer = 256
 collision_mask = 16
 motion_mode = 1
@@ -281,98 +281,95 @@ script = ExtResource("1_mk43a")
 audio = ExtResource("2_rxyrx")
 hp = 1
 
-[node name="HurtBox" parent="." instance=ExtResource("2_eaod3")]
+[node name="HurtBox" parent="." unique_id=692372949 instance=ExtResource("2_eaod3")]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=248104019]
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(0.940365, 0.167688, 0.443471, 0.286275)
 
-[node name="HitBox" parent="." instance=ExtResource("3_vl4f0")]
+[node name="HitBox" parent="." unique_id=1844471743 instance=ExtResource("3_vl4f0")]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=178736355]
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(1, 0, 0, 0.392157)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1636197304]
 texture = SubResource("GradientTexture2D_dd26p")
 
-[node name="AttackHurtBox" parent="Sprite2D" instance=ExtResource("2_eaod3")]
+[node name="AttackHurtBox" parent="Sprite2D" unique_id=662771961 instance=ExtResource("2_eaod3")]
 visible = false
 position = Vector2(0, 11)
 collision_mask = 258
 monitoring = false
 damage = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox" unique_id=340987046]
 position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(0.940365, 0.167688, 0.443471, 0.286275)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759112407]
 visible = false
 rotation = 1.5708
 shape = SubResource("CircleShape2D_mk43a")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_3of0s")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=884045020]
+libraries/ = SubResource("AnimationLibrary_3of0s")
 
-[node name="EnemyStateMachine" type="Node" parent="."]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1791815813]
 script = ExtResource("8_6c7gn")
 
-[node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_idle_state")]
+[node name="Idle" type="Node" parent="EnemyStateMachine" unique_id=1973295748 node_paths=PackedStringArray("after_idle_state")]
 script = ExtResource("9_8yj1t")
 state_duration_min = 0.7
 state_duration_max = 0.7
 after_idle_state = NodePath("../Wander")
 
-[node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+[node name="Wander" type="Node" parent="EnemyStateMachine" unique_id=1514654323 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_mk43a")
 next_state = NodePath("../Idle")
 curve = SubResource("Curve_rxyrx")
 
-[node name="Destroy" type="Node" parent="EnemyStateMachine"]
+[node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=2069427877]
 script = ExtResource("12_1vg0v")
 drops = Array[ExtResource("13_cmxhe")]([SubResource("Resource_ts4pi")])
 
-[node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
+[node name="Chase" type="Node" parent="EnemyStateMachine" unique_id=457456520 node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
 script = ExtResource("14_mk43a")
 chase_speed = 420.0
 vision_area = NodePath("../../VisionArea")
 attack_area = NodePath("../../Sprite2D/AttackHurtBox")
 next_state = NodePath("../Idle")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-volume_db = -15.0
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1769909525]
 autoplay = true
 max_distance = 1250.0
 attenuation = 2.000001
 bus = &"Effects"
 
-[node name="VisionArea" parent="." instance=ExtResource("18_wd6qg")]
+[node name="VisionArea" parent="." unique_id=1397545232 instance=ExtResource("18_wd6qg")]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" unique_id=1588101088]
 shape = SubResource("CircleShape2D_yuuiu")
 debug_color = Color(0.9751809, 0, 0.38230178, 0)
 
-[node name="Pathfinder" parent="." instance=ExtResource("19_eu3tq")]
+[node name="Pathfinder" parent="." unique_id=1642812572 instance=ExtResource("19_eu3tq")]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1669172298]
 color = Color(0.25, 1, 0, 1)
 energy = 3.64
 texture = SubResource("GradientTexture2D_wru2s")
 
-[node name="ChaseDetect" type="Area2D" parent="."]
+[node name="ChaseDetect" type="Area2D" parent="." unique_id=1130922832]
 collision_layer = 0
 collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("14_wru2s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseDetect"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseDetect" unique_id=1438998374]
 shape = SubResource("CircleShape2D_rxyrx")
 debug_color = Color(0, 0.5950001, 0.7, 0)

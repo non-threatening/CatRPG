@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://f6hapagaurf5"]
 
 [ext_resource type="Script" uid="uid://b7gl0klev5pvn" path="res://title_scene/title_scene.gd" id="1_uvhto"]
-[ext_resource type="AudioStream" uid="uid://bwhkacy01vu21" path="res://title_scene/audio/ToyPianoScale_opening.wav" id="2_fkwea"]
+[ext_resource type="AudioStream" uid="uid://omw2heh4i84x" path="res://title_scene/audio/ToyPianoScale_opening.ogg" id="2_svbj5"]
 [ext_resource type="AudioStream" uid="uid://cuun6qkdi8yqe" path="res://title_scene/audio/menu_focus.wav" id="3_1a1kh"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Maps/Levels/player_spawn.tscn" id="4_2sy4f"]
 [ext_resource type="AudioStream" uid="uid://btpvg5ust0ng8" path="res://title_scene/audio/menu_select.wav" id="4_wgj1g"]
@@ -64,7 +64,7 @@ shader_parameter/speed = Vector2(-0.013, -0.025)
 [node name="TitleScene" type="Node2D" unique_id=846321229]
 position = Vector2(0, 62)
 script = ExtResource("1_uvhto")
-music = ExtResource("2_fkwea")
+music = ExtResource("2_svbj5")
 button_focus_audio = ExtResource("3_1a1kh")
 button_press_audio = ExtResource("4_wgj1g")
 
@@ -506,7 +506,7 @@ material = SubResource("ShaderMaterial_fkwea")
 offset_top = 2.0
 offset_right = 1920.0
 offset_bottom = 1202.0
-color = Color(1, 1, 1, 0.2509804)
+color = Color(1, 1, 1, 0.3764706)
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="." unique_id=412119136]
 layer = 1
@@ -519,4 +519,4 @@ material = SubResource("ShaderMaterial_svbj5")
 offset_top = 2.0
 offset_right = 1920.0
 offset_bottom = 1202.0
-color = Color(1, 1, 1, 0.2509804)
+color = Color(1, 1, 1, 0.3764706)

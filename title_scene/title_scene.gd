@@ -8,7 +8,6 @@ const START_LEVEL : String = "res://Maps/Grass_shader_test_map.tscn"
 
 @onready var button_new: Button = $CanvasLayer/Control/ColorRect/VBox/ButtonNew
 @onready var button_continue: Button = $CanvasLayer/Control/ColorRect/VBox/ButtonContinue
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var splash_screen: Control = $CanvasLayer/SplashScreen
 
 
@@ -36,13 +35,13 @@ func setup_title_screen() -> void:
 	button_new.pressed.connect( start_game )
 	button_continue.pressed.connect( load_game )
 	button_new.grab_focus()
-	button_new.focus_entered.connect( play_audio.bind( button_focus_audio ) )
-	button_continue.focus_entered.connect( play_audio.bind( button_focus_audio ) )
+	button_new.focus_entered.connect( AudioManager.play_ui.bind( button_focus_audio ) )
+	button_continue.focus_entered.connect( AudioManager.play_ui.bind( button_focus_audio ) )
 
 
 func start_game() -> void:
 	AudioManager.play_ui( button_press_audio )
-	LevelManager.load_new_level( START_LEVEL, "", Vector2.ZERO )
+	LevelManager.load_new_level( START_LEVEL, "LevelTransitionEnter", Vector2.ZERO )
 
 
 func load_game() -> void:
@@ -55,8 +54,3 @@ func exit_title_screen() -> void:
 	PlayerHud.visible = true
 	PauseMenu.process_mode = Node.PROCESS_MODE_ALWAYS
 	queue_free()
-	
-	
-func play_audio( _a : AudioStream ) -> void:
-	audio_stream_player.stream = _a
-	audio_stream_player.play()

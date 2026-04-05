@@ -11,8 +11,9 @@ func init() -> void:
 
 func enter() -> void:
 	player.animation_player.play( "death" )
-	audio.stream = exhaust_audio
-	audio.play()
+	#audio.stream = exhaust_audio
+	#audio.play()
+	AudioManager.play_ui( exhaust_audio )
 	PlayerHud.show_game_over_screen()
 	AudioManager.play_music( null ) # Cuts BG music
 	pass

@@ -28,6 +28,8 @@
 [ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="23_a6xma"]
 [ext_resource type="Texture2D" uid="uid://c1mn6ochpknba" path="res://Maps/Enviroment/Plants/Trees/sprites/DeadTree.png" id="24_0lun4"]
 [ext_resource type="Texture2D" uid="uid://b01fd223ndm5l" path="res://GUI/pause_menu/inventory/sprites/crow-silhouette.png" id="27_xa65b"]
+[ext_resource type="Shader" uid="uid://dcnqvjkwrjcuk" path="res://Player/BirdFriend/bird_friend_perched.gdshader" id="27_xf8yu"]
+[ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="28_li6oa"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Maps/Levels/level_transition.tscn" id="29_70lcl"]
 [ext_resource type="PackedScene" uid="uid://fnb335xp2rg4" path="res://Maps/Enviroment/objects/terminal_interface.tscn" id="31_g0pye"]
 [ext_resource type="PackedScene" uid="uid://cajy2xj3ggn37" path="res://Maps/shop_stone.tscn" id="31_srkr2"]
@@ -55,25 +57,25 @@ size = Vector2(1203, 67)
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
 radius = 31.0161
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fwua"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmcjt"]
 resource_local_to_scene = true
 shader = ExtResource("23_a6xma")
 shader_parameter/center = Vector2(0.45, 0.35)
 shader_parameter/size = 1.7650000838375
 shader_parameter/squishness = Vector2(0.5, 1)
-shader_parameter/color1 = Color(0.35989, 0.58, 0.17979999, 1)
-shader_parameter/color2 = Color(0.49, 0.48354834, 0.10289999, 1)
+shader_parameter/color1 = Color(0.44494456, 0.3766588, 0.23648185, 1)
+shader_parameter/color2 = Color(0.49, 0.3149067, 0.1617, 1)
 shader_parameter/color3 = Color(0.37, 0.21114667, 0.029599994, 1)
-shader_parameter/step1 = 0.0
-shader_parameter/step2 = 0.18000000855
-shader_parameter/step3 = 0.2750000130625
+shader_parameter/step1 = 0.010000000475
+shader_parameter/step2 = 0.10000000475
+shader_parameter/step3 = 0.3250000154375
 shader_parameter/amplitude = 5.0
 shader_parameter/frequency = 500.0
 shader_parameter/speed = 0.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgwk"]
 radius = 35.99996
-height = 138.00002
+height = 284.00024
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_etgwk"]
 polygon = PackedVector2Array(138, -402.8, 81, -436.66666, 26.200012, -457.6, -31.600006, -454, -99.7, -418, -138, -389.99997, -173, -320, -196, -240, -184, -168.6, -155, -120, -121, -90.100006, -121, -82.79999, -100, -66.66667, -55, -53.333332, -41, -13.333336, -16, 40.799988, -16, 42.899994, 9, 50, 37, 46.666664, 65, 30, 79, -36.66667, 98, -83.333336, 130, -100, 163, -126.666664, 188.1, -178, 193, -256.66666, 192, -266.66666, 193, -300, 182, -349.1, 182, -353.1, 160, -386.66666, 138, -397.2)
@@ -83,6 +85,12 @@ radius = 520.5535
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yqcrc"]
 radius = 62.297672
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6xma"]
+shader = ExtResource("27_xf8yu")
+shader_parameter/x = 0.5
+shader_parameter/y = 1.0
+shader_parameter/time_scale = 2.666
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xa65b"]
 radius = 153.0
@@ -134,7 +142,7 @@ offset_bottom = 800.0
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1419245456]
 
 [node name="PlayerSpawn" parent="." unique_id=804620083 instance=ExtResource("5_g0pye")]
-position = Vector2(1497, -201)
+position = Vector2(2059, 139)
 
 [node name="Grass" type="Node2D" parent="." unique_id=1339518940]
 y_sort_enabled = true
@@ -686,14 +694,14 @@ collision_mask = 0
 
 [node name="TreeSprite" type="Sprite2D" parent="Quest[102]_BFComesWith/Trees" unique_id=257443767]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_0fwua")
-scale = Vector2(2, 2)
+material = SubResource("ShaderMaterial_xmcjt")
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("24_0lun4")
 offset = Vector2(0, -210)
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quest[102]_BFComesWith/Trees" unique_id=1250747908]
-position = Vector2(7, -4)
+position = Vector2(-63, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_etgwk")
 debug_color = Color(1, 0, 0, 0)
@@ -729,8 +737,17 @@ npc_resource = ExtResource("14_srkr2")
 shape = SubResource("CircleShape2D_yqcrc")
 debug_color = Color(0.37905112, 0.47461665, 1, 0)
 
+[node name="BirdFriendSprite" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" unique_id=1618396618]
+material = SubResource("ShaderMaterial_a6xma")
+position = Vector2(225, -397.00003)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("28_li6oa")
+hframes = 2
+region_rect = Rect2(7, 81, 102, 42)
+
 [node name="Sprite2D" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" unique_id=1967215626]
-position = Vector2(115, -511)
+visible = false
+position = Vector2(60, -426.00003)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("27_xa65b")
 
@@ -790,7 +807,7 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 1.4281858
+energy = 0.321532
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")
@@ -835,3 +852,11 @@ push_speed = 300.0
 
 [node name="PushableStatue" parent="." unique_id=110020231 instance=ExtResource("37_1qe5l")]
 position = Vector2(1764, -52)
+
+[node name="LevelTransitionEnter" parent="." unique_id=2022780888 instance=ExtResource("29_70lcl")]
+position = Vector2(309, 438)
+portal_dir = 1
+level = "uid://ly7wguh1ufuy"
+target_transition_area = "LevelTransitionEnter"
+size = 1
+side = 3

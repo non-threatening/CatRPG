@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://tggihnqvract" path="res://GUI/player_hud/spoons_gui.tscn" id="4_ki6p8"]
 [ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="4_yhjvm"]
 [ext_resource type="Script" uid="uid://c1bq8ta118edn" path="res://GUI/player_hud/notifications.gd" id="6_5bkpt"]
+[ext_resource type="Script" uid="uid://cw12wo4re7mt4" path="res://GUI/ui_elements/button_hi_hat.gd" id="8_6xefh"]
 [ext_resource type="AudioStream" uid="uid://sksn752uya8u" path="res://GUI/player_hud/notification.wav" id="8_scbx3"]
 [ext_resource type="Script" uid="uid://lise7q52eo28" path="res://GUI/player_hud/stacked_notifications.gd" id="8_terqw"]
 [ext_resource type="PackedScene" uid="uid://rp5basnb2nrj" path="res://GUI/player_hud/stacked_notification.tscn" id="9_scbx3"]
@@ -42,6 +43,9 @@ region = Rect2(128, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ea3vn"]
 atlas = ExtResource("4_5bkpt")
 region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xolfj"]
+bg_color = Color(0, 0, 0, 0.5019608)
 
 [sub_resource type="Animation" id="Animation_oghrr"]
 length = 0.001
@@ -155,7 +159,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.5),
 "update": 0,
-"values": [Vector2(597.5, 270)]
+"values": [Vector2(448, 270)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -212,7 +216,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -230,9 +234,9 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(3, 4),
-"transitions": PackedFloat32Array(1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(128, 384), Vector2(128, 196)]
+"values": [Vector2(448, 600), Vector2(448, 253)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -244,7 +248,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(3, 4),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(196, 422), Vector2(196, 384)]
+"values": [Vector2(510, 1200), Vector2(510, 533)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -809,6 +813,7 @@ text = "99"
 horizontal_alignment = 1
 
 [node name="GameOver" type="Control" parent="Control" unique_id=2102015974]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -828,17 +833,14 @@ color = Color(0, 0, 0, 0.8)
 
 [node name="Label" type="Label" parent="Control/GameOver" unique_id=284058360]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -362.5
-offset_top = -270.0
+offset_top = 270.0
 offset_right = 661.4995
-offset_bottom = -90.999756
+offset_bottom = 449.0008
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_font_sizes/font_size = 160
 text = "GAME OVER"
 horizontal_alignment = 1
@@ -852,20 +854,60 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -450.0
 offset_top = -81.0
-offset_right = 450.0005
-offset_bottom = 175.00006
+offset_right = 450.00098
+offset_bottom = 175.00153
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_3m3x0")
+theme_override_constants/separation = 16
 
-[node name="ContinueButton" type="Button" parent="Control/GameOver/VBoxContainer" unique_id=67228890]
+[node name="ContinueButton" type="Button" parent="Control/GameOver/VBoxContainer" unique_id=2015446242]
+custom_minimum_size = Vector2(480, 80)
+layout_mode = 2
+theme = ExtResource("2_3m3x0")
+script = ExtResource("8_6xefh")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
+
+[node name="Label" type="Label" parent="Control/GameOver/VBoxContainer/ContinueButton" unique_id=1358037179]
+custom_minimum_size = Vector2(480, 80)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_xolfj")
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TitleButton" type="Button" parent="Control/GameOver/VBoxContainer" unique_id=1627228590]
+custom_minimum_size = Vector2(480, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "continue"
+script = ExtResource("8_6xefh")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
-[node name="TitleButton" type="Button" parent="Control/GameOver/VBoxContainer" unique_id=143731824]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "back to title"
+[node name="Label" type="Label" parent="Control/GameOver/VBoxContainer/TitleButton" unique_id=2029075956]
+custom_minimum_size = Vector2(480, 80)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_xolfj")
+text = "Back to Title"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="FadeToBlack" type="ColorRect" parent="Control/GameOver" unique_id=1804318580]
 layout_mode = 1
@@ -989,6 +1031,7 @@ libraries/ = SubResource("AnimationLibrary_ki6p8")
 
 [node name="CenterNotification" type="Control" parent="Control" unique_id=344031722]
 process_mode = 3
+visible = false
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0

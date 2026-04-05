@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 signal DirectionChanged( new_direction: Vector2 )
 signal player_damaged( hurt_box : HurtBox )
+signal revived( bool )
 
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 
@@ -9,7 +10,7 @@ var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
 var invulnerable : bool = false
-var hp : int = 6
+var hp : int = 1
 var max_hp : int = 6
 var spoons : int = 3
 var max_capacity : int = 6
@@ -201,7 +202,7 @@ func pickup_item( _t : Throwable ) -> void:
 	
 	
 func revive_player() -> void:
-	print("revived")
+	revived.emit( true )
 	update_hp( 99 )
 	state_machine.change_state( idle )
 

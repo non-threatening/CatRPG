@@ -54,7 +54,6 @@ func _ready() -> void:
 			spoons.append( c )
 			c.visible = false
 			
-			
 	hide_game_over_screen()
 	continue_button.focus_entered.connect( play_audio.bind( button_focus_audio ) )
 	continue_button.pressed.connect( load_game )
@@ -65,7 +64,6 @@ func _ready() -> void:
 	LevelManager.level_loaded.connect( hide_loading_screen )
 	
 	hide_boss_health()
-	
 	update_ability_ui( 0 )
 	
 	PauseMenu.shown.connect( _on_show_menu )
@@ -90,7 +88,6 @@ func hide_loading_screen() -> void:
 	electros_display.show()
 	spoons_display.show()
 	time.show()
-
 
 
 ##	Electro Display
@@ -161,6 +158,7 @@ func load_game() -> void:
 func title_screen() -> void:
 	play_audio( button_select_audio )
 	await fade_to_black()
+	
 	LevelManager.load_new_level( "res://title_scene/title_scene.tscn", "", Vector2.ZERO )
 	
 
@@ -234,15 +232,16 @@ func _on_hide_menu() -> void:
 	pass
 
 func show_game_over_screen() -> void:
-	game_over.visible = true
+	game_over.show()
+	TimeSystem.time_tick.pause()
 	game_over.mouse_filter = Control.MOUSE_FILTER_STOP
 	
 	var can_continue : bool = SaveManager.get_save_file( active_save ) != null
 	continue_button.visible = can_continue
 	
 	animation_player.play("show_game_over")
-	await animation_player.animation_finished
 	
+	await animation_player.animation_finished
 	if can_continue == true:
 		continue_button.grab_focus()
 	else:

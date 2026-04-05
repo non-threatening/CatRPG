@@ -3,6 +3,8 @@ extends Sprite2D
 const PLAYER = preload("uid://b4d5u50y4e3og")
 const PLAYER_LOKTIN = preload("uid://b3iybtj0bph5k")
 
+var revived : bool = false
+
 @onready var player : Player = $".."
 @onready var sprite: Sprite2D = $"."
 @onready var shadow_sprite: Sprite2D = $ShadowSprite
@@ -12,11 +14,18 @@ const PLAYER_LOKTIN = preload("uid://b3iybtj0bph5k")
 
 
 func _ready() -> void:
+	PlayerManager.player.revived.connect( _is_revived )
 	LevelManager.level_loaded.connect( _check_level )
 	player.DirectionChanged.connect( _on_direction_changed )
-	
-	
+
+
+func _is_revived( _r : bool ) -> void:
+	prints( "_r:", _r )
+	revived = _r
+
+
 func _check_level() -> void:
+	await tree_entered
 	var thing = get_tree().get_current_scene().name
 	match thing:
 		"TheLobby":

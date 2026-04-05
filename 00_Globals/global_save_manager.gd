@@ -209,7 +209,6 @@ func update_time() -> void:
 	current_save.time.hour =  TimeSystem.time_tick.get_time_unit("hour")
 	current_save.time.minute =  TimeSystem.time_tick.get_time_unit("minute")
 	current_save.time.moon =  TimeSystem.time_tick.get_time_unit("moon")
-	#current_save.time.month =  TimeSystem.time_tick.get_time_unit("month")
 	current_save.time.year =  TimeSystem.time_tick.get_time_unit("year")
 
 

@@ -6,5 +6,5 @@ class_name ItemEffectHeal extends ItemEffect
 
 func use() -> void:
 	PlayerManager.player.update_hp( heal_amount )
-	PauseMenu.play_audio( audio )
+	AudioManager.play_effect( audio )
 	
