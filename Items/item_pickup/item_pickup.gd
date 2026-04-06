@@ -6,7 +6,9 @@ signal picked_up
 @export var item_data : ItemData : set  = _set_item_data
 @export var item_count : int = 1 : set = _set_item_count
 @export var item_persists : bool = true
+@export var light_on : bool = false
 
+@onready var point_light: PointLight2D = $PointLight2D
 @onready var area_2d: Area2D = $Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -21,6 +23,9 @@ var collected : bool = false
 func _ready() -> void:
 	_update_texture()
 	_update_count_label()
+	point_light.visible = light_on
+	if light_on:
+		pulse_light()
 	if Engine.is_editor_hint():
 		return
 	area_2d.body_entered.connect( _on_body_entered )
@@ -28,7 +33,16 @@ func _ready() -> void:
 	if item_persists == true:
 		persistant_data_picked_up.data_loaded.connect( _on_data_loaded )
 		_set_item_existance()
-	
+
+
+func pulse_light() -> void:
+	var en : float = randf_range( 1.5, 3.5 )
+	var tween : Tween = create_tween()
+	tween.tween_property( point_light, "energy", en, 0.666 )
+	await tree_entered
+	await get_tree().create_timer(1).timeout
+	pulse_light()
+
 
 func _set_item_existance() -> void:
 	collected = persistant_data_picked_up.value
@@ -36,12 +50,12 @@ func _set_item_existance() -> void:
 		item_pickup.queue_free()
 	else:
 		item_pickup.show()
-	
-		
+
+
 func _on_data_loaded() -> void:
 	collected = persistant_data_picked_up.value
 	pass
-	
+
 
 func _physics_process(delta: float) -> void:
 	var collision_info = move_and_collide( velocity * delta )
