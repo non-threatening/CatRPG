@@ -10,7 +10,6 @@ var effect_players : Array[ AudioStreamPlayer ]
 var ui_bus : String = "UI"
 var ui_player_count : int = 8
 var ui_players : Array[ AudioStreamPlayer ]
-
 var music_fade_duration : float = 0.666
 
 
@@ -33,6 +32,7 @@ func _ready() -> void:
 		add_child( ui_player )
 		ui_player.bus = ui_bus
 		ui_players.append( ui_player )
+
 
 
 func play_effect( _audio : AudioStream ) -> void:
@@ -58,7 +58,6 @@ func play_ui( _audio : AudioStream ) -> void:
 func play_music( _audio : AudioStream ) -> void:
 	if _audio == music_players[ current_music_player ].stream:
 		return ## don't change the music if it's the same
-
 	current_music_player += 1
 	if current_music_player > 1:
 		current_music_player = 0

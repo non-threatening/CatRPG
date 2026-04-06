@@ -6,3 +6,4 @@
 offset_right = 187.0
 offset_bottom = 47.0
 script = ExtResource("1_j0bqy")
+pressed_sound_delay = 0.0
