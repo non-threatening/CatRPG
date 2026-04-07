@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://c66auswqqqfp2" path="res://GUI/pause_menu/scripts/pause_menu_time.gd" id="24_imbmt"]
 [ext_resource type="Theme" uid="uid://bmf171trkq62" path="res://GUI/pause_menu_stuff_theme.tres" id="25_f46m6"]
 [ext_resource type="PackedScene" uid="uid://rh7jg47r5dfh" path="res://GUI/pause_menu/save_load/button_loads.tscn" id="26_ylgvk"]
+[ext_resource type="PackedScene" uid="uid://cg6j64vd6ka33" path="res://GUI/pause_menu/ach_display_button.tscn" id="28_n4l8e"]
 [ext_resource type="Theme" uid="uid://nmpesfiox7l3" path="res://materials/PauseMenuPanels.tres" id="29_f46m6"]
 [ext_resource type="Script" uid="uid://bfp1bteey43ld" path="res://GUI/pause_menu/save_load/button_saves_an_loads.gd" id="29_vifo2"]
 
@@ -86,6 +87,7 @@ bg_color = Color(0, 0, 0, 0.5019608)
 [node name="PauseMenu" type="CanvasLayer" unique_id=281541399]
 process_mode = 3
 script = ExtResource("1_xyt8q")
+metadata/_edit_vertical_guides_ = [360.0, 396.0]
 
 [node name="Control" type="Control" parent="." unique_id=2006461755]
 layout_mode = 3
@@ -136,7 +138,7 @@ grow_vertical = 2
 theme_override_constants/tab_separation = 10
 theme_override_font_sizes/font_size = 48
 tab_alignment = 1
-current_tab = 2
+current_tab = 3
 
 [node name="Inventory" type="Control" parent="Control/TabContainer" unique_id=1459924720]
 visible = false
@@ -496,6 +498,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="System" type="Control" parent="Control/TabContainer" unique_id=2116072026]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_hio0w")
 metadata/_tab_index = 2
@@ -650,7 +653,6 @@ text = "year 1 Day 100 06:00"
 vertical_alignment = 2
 
 [node name="Stuff" type="Control" parent="Control/TabContainer" unique_id=727843018]
-visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("25_f46m6")
@@ -663,66 +665,87 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -324.0
+offset_left = -616.0
 offset_top = 78.0
-offset_right = 324.0
-offset_bottom = 568.0
+offset_right = 676.0
+offset_bottom = 873.0
 grow_horizontal = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Stuff/ScrollContainer" unique_id=1571487593]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Stuff/ScrollContainer" unique_id=1418618595]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer" unique_id=1571487593]
 clip_contents = true
 custom_minimum_size = Vector2(640, 200)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DisplayStats" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=1257143786 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1257143786 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats2" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=544345938 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats2" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=544345938 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats3" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=759074456 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats3" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=759074456 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats4" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=409658686 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats4" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=409658686 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats5" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=213291106 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats5" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=213291106 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats6" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=1471666968 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats6" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1471666968 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats7" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=1572852280 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats7" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1572852280 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats8" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=18729349 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats8" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=18729349 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats9" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=1264323625 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats9" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1264323625 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats10" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=2061374416 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats10" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=2061374416 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats11" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=274742342 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats11" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=274742342 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats12" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=1620960344 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats12" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1620960344 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats13" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=507845278 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats13" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=507845278 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats14" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=782831017 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats14" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=782831017 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats15" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=297300352 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats15" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=297300352 instance=ExtResource("21_5wmam")]
 layout_mode = 2
 
-[node name="DisplayStats16" parent="Control/TabContainer/Stuff/ScrollContainer/VBoxContainer" unique_id=1857774331 instance=ExtResource("21_5wmam")]
+[node name="DisplayStats16" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1857774331 instance=ExtResource("21_5wmam")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer" unique_id=860274607]
+clip_contents = true
+custom_minimum_size = Vector2(640, 200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DisplayAch" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=570682189 instance=ExtResource("28_n4l8e")]
+layout_mode = 2
+
+[node name="DisplayAch2" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=351908116 instance=ExtResource("28_n4l8e")]
+layout_mode = 2
+
+[node name="DisplayAch3" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=333977897 instance=ExtResource("28_n4l8e")]
+layout_mode = 2
+
+[node name="DisplayAch4" parent="Control/TabContainer/Stuff/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=2096469149 instance=ExtResource("28_n4l8e")]
 layout_mode = 2
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control" unique_id=1846072849]

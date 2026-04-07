@@ -50,6 +50,7 @@ var current_save : Dictionary = {
 		censored = false
 	},
 	stats = {},
+	achievements = {},
 	qvars = {}
 }
 
@@ -115,6 +116,7 @@ func save_game( _number ) -> void:
 	update_quest_data()
 	update_options_data()
 	update_stats()
+	update_achievements()
 	update_qvars()
 	
 	var file := FileAccess.open( SAVE_PATH + _number + "_save.sav", FileAccess.WRITE )
@@ -153,6 +155,9 @@ func load_game( _number ) -> void:
 	
 	var s : Dictionary = StatsManager.stats
 	s.stats = current_save.stats
+	
+	var a : Dictionary = StatsManager.achievements
+	a.achievements = current_save.achievements
 	
 	var qv : Dictionary = QuestVars.qvars
 	qv.qvars = current_save.qvars
@@ -259,6 +264,9 @@ func update_quest_data() -> void:
 
 func update_stats() -> void:
 	current_save.stats = StatsManager.stats
+	
+func update_achievements() -> void:
+	current_save.achievements = StatsManager.achievements
 	
 func update_qvars() -> void:
 	current_save.qvars = QuestVars.qvars
