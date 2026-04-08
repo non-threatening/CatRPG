@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxp6nsydpp02j"]
+[gd_scene format=3 uid="uid://cxp6nsydpp02j"]
 
 [ext_resource type="Script" uid="uid://mbsarhpox6qb" path="res://Dialogue/SpeachBubbles/terminal_bubble/terminal_bubble.gd" id="1_6jqwh"]
 [ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeachBubbles/portraits/cat.png" id="2_df5e2"]
@@ -7,14 +7,14 @@
 [ext_resource type="Material" uid="uid://dr3lpovuk6pj" path="res://Maps/Worlds/Klardraumland/crt_shader.tres" id="6_7afn2"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="6_ntj65"]
 
-[node name="TerminalBubble" type="CanvasLayer"]
+[node name="TerminalBubble" type="CanvasLayer" unique_id=1398945237]
 process_mode = 3
 layer = 100
 script = ExtResource("1_6jqwh")
 next_action = &"interact"
 skip_action = &"attack"
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1236015835]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0.1254902, 0.7529412)
 
-[node name="Portrait" type="TextureRect" parent="."]
+[node name="Portrait" type="TextureRect" parent="." unique_id=1291223232]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(250, 250)
@@ -33,7 +33,7 @@ offset_bottom = 474.0
 scale = Vector2(2, 2)
 texture = ExtResource("2_df5e2")
 
-[node name="Bubble" type="Control" parent="."]
+[node name="Bubble" type="Control" parent="." unique_id=1665240380]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -43,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_g5gxr")
 
-[node name="MarginContainer" type="MarginContainer" parent="Bubble"]
+[node name="MarginContainer" type="MarginContainer" parent="Bubble" unique_id=3051314]
 custom_minimum_size = Vector2(768, 480)
 layout_mode = 1
 anchors_preset = 8
@@ -58,26 +58,26 @@ offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect2" type="ColorRect" parent="Bubble/MarginContainer"]
+[node name="ColorRect2" type="ColorRect" parent="Bubble/MarginContainer" unique_id=563710682]
 layout_mode = 2
 color = Color(0.12591085, 0.12591085, 0.12591082, 1)
 
-[node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer"]
+[node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer" unique_id=1186453867]
 self_modulate = Color(0, 0, 0, 0.87058824)
 clip_children = 2
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer" unique_id=997471782]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 48.0
 offset_right = 712.0
 offset_bottom = 204.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer" unique_id=566646192]
 layout_mode = 2
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1169801371]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -87,14 +87,14 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_0fht5")]
+[node name="DialogueLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=895538260 instance=ExtResource("5_0fht5")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 42
 text = "Dialogue..."
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" unique_id=1173386459 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 315.0
@@ -106,25 +106,25 @@ theme_override_constants/separation = 0
 script = ExtResource("6_ntj65")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu"]
+[node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu" unique_id=2113488703]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 text = "~ Yes"
 flat = true
 alignment = 0
 
-[node name="ResponseExample2" type="Button" parent="Bubble/ResponsesMenu"]
+[node name="ResponseExample2" type="Button" parent="Bubble/ResponsesMenu" unique_id=250558774]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 text = "~ No"
 flat = true
 alignment = 0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1707081470]
 max_polyphony = 5
 bus = &"Effects"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=576721772]
 material = ExtResource("6_7afn2")
 anchors_preset = 8
 anchor_left = 0.5

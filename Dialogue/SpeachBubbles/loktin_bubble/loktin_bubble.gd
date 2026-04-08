@@ -139,7 +139,7 @@ func apply_dialogue_line() -> void:
 	
 	
 	var character : Resource
-	var character_path : String = "res://npc/00_npcs/%s.tres" % ( dialogue_line.character.to_snake_case() )
+	var character_path : String = "res://npc/resources/%s.tres" % ( dialogue_line.character.to_snake_case() )
 	if ResourceLoader.exists( character_path ):
 		character = load( character_path )
 		audio_file = load( character.talk_blip.resource_path )

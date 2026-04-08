@@ -1,0 +1,5 @@
+~ goodbyes
+Bird Friend: [[Good night cat. I'll be around tomorrow.|Again I will fly to my roost and leave you to your own devices.|I will dream of your safe passage]]
+#do NpcManager
+do NpcManager.bf_away.emit()
+=> END

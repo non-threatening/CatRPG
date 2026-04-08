@@ -2,7 +2,8 @@ extends Node
 
 @warning_ignore_start("unused_signal")
 signal bf_npc_status()
-signal bf_away
+signal bf_away # triggered in dialog
+signal bf_arrive
 
 const BF_REPEATABLES = preload("uid://cfyfqaq8el1xq")
 
@@ -11,7 +12,6 @@ const SPEACH_BUBBLE = preload("uid://c0u3mmda127cd")
 const TERMINAL_BUBBLE = preload("uid://cxp6nsydpp02j")
 
 var speech_bubble : Node
-
 var bf_awake : bool = true
 
 
@@ -34,7 +34,7 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 					bye_bye_bird_friend()
 				16:
 					bird_friend_awake()
-				17:
+				18:
 					bye_bye_bird_friend()
 				20:
 					bird_friend_awake()
@@ -43,25 +43,29 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 
 
 func bye_bye_bird_friend() -> void:
-	bf_awake = false
-	if PlayerHud.current_friend == 1:
-		_start_dialog( SPEACH_BUBBLE, BF_REPEATABLES, "goodbyes" )
-		PlayerHud.update_ability_ui( 0 ) # NONE
-		prints("Bird Friend goes away")
-	else:
-		bf_npc_status.emit( bf_awake, null )
+	if StatsManager.achievements.have_bird_friend:
+		if PlayerHud.current_friend == 1:
+			_start_dialog( SPEACH_BUBBLE, BF_REPEATABLES, "goodbyes" )
+			PlayerHud.update_ability_ui( 0 ) # NONE
+		else:
+			bf_awake = false
+			bf_npc_status.emit( bf_awake, null )
 		
 
 func bird_friend_awake() -> void:
-	if PlayerHud.current_friend != 1:
-		var location : String
-		bf_awake = true
-		#	Every three days
-		if int( (TimeSystem.day + 3 ) / 3.0 ) % 3 == 0:
-			location = "GrassTestMap"
-		else:
-			location = "GrassTestMap"
-		bf_npc_status.emit( bf_awake, location )
+	if StatsManager.achievements.have_bird_friend:
+		if PlayerHud.current_friend != 1:
+			var location : String
+			bf_awake = true
+			#	Every three days
+			var day : int = int( (TimeSystem.day + 3 ) / 3.0 ) % 3 == 0
+			match day:
+				0:
+					location = "GrassTestMap"
+				_:
+					location = "GrassTestMap"
+			bf_npc_status.emit( bf_awake, location )
+
 
 
 func _start_dialog( bubble, resourse, cue) -> void:

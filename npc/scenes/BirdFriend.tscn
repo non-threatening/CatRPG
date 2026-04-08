@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="3_dbsq7"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="3_onuem"]
 [ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="6_na0oq"]
+[ext_resource type="Script" uid="uid://dm47ewpkcnfpm" path="res://npc/scenes/to_and_fro.gd" id="7_6nhij"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xp5l"]
 radius = 30.999996
@@ -175,3 +176,6 @@ libraries/ = SubResource("AnimationLibrary_wuxkc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Indicator2D" unique_id=1620572916]
 shape = SubResource("CapsuleShape2D_o6cys")
+
+[node name="ToAndFro" type="Node" parent="." unique_id=461166531]
+script = ExtResource("7_6nhij")

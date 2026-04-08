@@ -39,164 +39,10 @@ shader_parameter/new_color = Color(0, 0, 0, 1)
 radius = 15.0
 height = 66.0
 
-[sub_resource type="Animation" id="Animation_liud0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_eaba7"]
-resource_name = "fly_down"
-length = 0.4
-loop_mode = 2
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.142857, 0.3),
-"transitions": PackedFloat32Array(-0.5, -0.5, -0.5),
-"update": 0,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.5708]
-}
-
-[sub_resource type="Animation" id="Animation_fsrdm"]
-resource_name = "fly_side"
-length = 0.5
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.35),
-"transitions": PackedFloat32Array(2, 2, 2),
-"update": 0,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_04fcm"]
-resource_name = "fly_up"
-length = 0.4
-loop_mode = 2
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.142857, 0.3),
-"transitions": PackedFloat32Array(-0.5, -0.5, -0.5),
-"update": 0,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.5708]
-}
-
-[sub_resource type="Animation" id="Animation_10wdi"]
-resource_name = "perched"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.785398]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gvjm"]
-_data = {
-&"RESET": SubResource("Animation_liud0"),
-&"fly_down": SubResource("Animation_eaba7"),
-&"fly_side": SubResource("Animation_fsrdm"),
-&"fly_up": SubResource("Animation_04fcm"),
-&"perched": SubResource("Animation_10wdi")
-}
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gvjm"]
 radius = 41.0122
 
-[node name="Bird Friend" type="Node2D" unique_id=10719448]
+[node name="BirdFriendFlying" type="Node2D" unique_id=10719448]
 script = ExtResource("1_u1d2d")
 metadata/_edit_horizontal_guides_ = [11.0]
 
@@ -219,9 +65,6 @@ position = Vector2(0, -8)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fsrdm")
 debug_color = Color(0.960808, 0.185322, 0.300608, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1666098140]
-libraries/ = SubResource("AnimationLibrary_0gvjm")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=993458420]
 stream = ExtResource("5_sxc80")

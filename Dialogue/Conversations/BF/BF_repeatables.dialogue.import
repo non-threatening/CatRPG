@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cfyfqaq8el1xq"
+path="res://.godot/imported/BF_repeatables.dialogue-ce405b7217c58f5d24801a1717cbc11b.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/BF/BF_repeatables.dialogue"
+dest_files=["res://.godot/imported/BF_repeatables.dialogue-ce405b7217c58f5d24801a1717cbc11b.tres"]
+
+[params]
+
+defaults=true

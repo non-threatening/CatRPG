@@ -18,7 +18,6 @@ var bird_instance : BirdFriendFlying = null
 @onready var grapple: State_Grapple = $"../StateMachine/Grapple"
 
 
-
 func _ready() -> void:
 	player = PlayerManager.player
 	PlayerHud.update_arrow_count( player.arrow_count )
@@ -82,11 +81,8 @@ func bird_leaving() -> void:
 		return
 	var _b = BIRD.instantiate() as BirdFriendFlying
 	player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
-	_b.global_position = player.global_position + Vector2( 0, -100.0 )
-	
-	var throw_direction = player.direction
-	if throw_direction == Vector2.ZERO:
-		throw_direction = player.cardinal_direction
+	_b.global_position = player.global_position + Vector2( 0, -200 )
+	var throw_direction = Vector2( pow(-1, randi() % 2), randf() * -0.666 )
 	_b.leave( throw_direction )
 	bird_instance = _b
 
@@ -97,7 +93,7 @@ func bird_ability() -> void:
 	var _b = BIRD.instantiate() as BirdFriendFlying
 	player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
 	_b.global_position = player.global_position + Vector2( 0, -100.0 )
-	
+	##TODO: aiming function
 	var throw_direction = player.direction
 	if throw_direction == Vector2.ZERO:
 		throw_direction = player.cardinal_direction
