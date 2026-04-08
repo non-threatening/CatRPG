@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AGimpSuitForBirdFriend" load_steps=7 format=3 uid="uid://cv1gxg7lomu62"]
+[gd_resource type="Resource" script_class="AGimpSuitForBirdFriend" format=3 uid="uid://cv1gxg7lomu62"]
 
 [ext_resource type="Script" uid="uid://bvqtnrn5xgsi0" path="res://Items/scripts/item_data.gd" id="1_n58w1"]
 [ext_resource type="Resource" uid="uid://ct24774noeydi" path="res://Items/ability_bird.tres" id="2_al0qv"]
@@ -21,7 +21,7 @@ steps = Array[ExtResource("4_rjpe7")]([SubResource("Resource_ch6qy"), SubResourc
 reward = Dictionary[ExtResource("1_n58w1"), int]({
 ExtResource("2_al0qv"): 1
 })
-xp = 27
+xp = 5
 achievement = "ACH_MEET_BF"
 id = 102
 quest_name = "[102]a_gimp_suit_for_bird_friend"

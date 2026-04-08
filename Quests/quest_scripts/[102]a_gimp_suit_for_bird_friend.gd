@@ -21,6 +21,8 @@ func update(_args: Dictionary = {}) -> void:
 	elif suit_given == true:
 		PlayerManager.INVETORY_DATA.use_item( quest_item, 1 )
 		Shortcuts.complete_quest( "[102]a_gimp_suit_for_bird_friend" )
+		
 		StatsManager.stats.friends_made += 1
+		StatsManager.achievements.have_bird_friend = 1
 		
 	updated.emit()

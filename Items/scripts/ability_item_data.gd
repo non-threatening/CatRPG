@@ -1,4 +1,4 @@
 class_name AbilityItemData extends ItemData
 
-enum Type { BIRD, GRAPPLE, ARROW, BOMB }
+enum Type { NONE, BIRD, GRAPPLE, ARROW, BOMB }
 @export var type : Type = Type.BIRD

@@ -1,6 +1,6 @@
-class_name BirdFriend extends Node2D
+class_name BirdFriendFlying extends Node2D
 
-enum State { INACTIVE, THROW, RETURN, PERCHED }
+enum State { INACTIVE, THROW, RETURN, PERCHED, LEAVE }
 
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 
@@ -13,17 +13,19 @@ var frame_offest : int = 0
 var anim_stop : bool = false
 
 @export var frame_rate : float = 0.09
-@export var acceleration : float = 500.0
-@export var max_speed : float = 666.0
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var acceleration : float = 666.0
+@export var max_speed : float = 1000.0
+#@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 
 func _ready() -> void:
 	hide()
 	state = State.INACTIVE
 	player = PlayerManager.player
+	visible_on_screen_notifier_2d.screen_exited.connect( _exit_screen )
 
 
 func _physics_process(delta: float) -> void:
@@ -40,12 +42,19 @@ func _physics_process(delta: float) -> void:
 		position += direction * speed * delta
 		if global_position.distance_to( player.global_position ) <= 45: 
 			state = State.PERCHED
-		if global_position.distance_to( player.global_position ) <= 200: 
+		#Stop flapping when close enough
+		if global_position.distance_to( player.global_position ) <= 400: 
 			anim_stop = true
+	elif state == State.LEAVE:
+		speed += 10 * delta
+		position += direction * speed * delta
 	elif state == State.PERCHED:
 		perched()
-		pass
 
+func _exit_screen() -> void:
+	if state == State.LEAVE:
+		queue_free()
+	
 
 func flap_animation() -> void:
 	sprite.frame = 2 + frame_offest
@@ -67,6 +76,15 @@ func perched() -> void:
 	player.show_bird_friend()
 	queue_free() 
 
+
+func leave( throw_direction : Vector2 ) -> void:
+	direction = throw_direction
+	speed = max_speed
+	state = State.LEAVE
+	update_animation()
+	flap_animation()
+	visible = true
+	player.hide_bird_friend()
 	
 func throw( throw_direction : Vector2 ) -> void:
 	direction = throw_direction

@@ -1,9 +1,11 @@
-[gd_scene format=3 uid="uid://dajuqkayd03fp"]
+[gd_scene format=3 uid="uid://qdco4f7buclm"]
 
-[ext_resource type="Script" uid="uid://bovbv6m0thrps" path="res://npc/scripts/npc.gd" id="1_2xp5l"]
-[ext_resource type="Texture2D" uid="uid://jnoa5oe7m7oo" path="res://Player/BirdFriend/sprites/Crowfly_three_x_three.png" id="2_3i1kj"]
-[ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="3_3i1kj"]
-[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="4_o6cys"]
+[ext_resource type="Script" uid="uid://dc0ybpkb4k73q" path="res://npc/scenes/bird_friend.gd" id="1_f87gl"]
+[ext_resource type="Script" uid="uid://bovbv6m0thrps" path="res://npc/scripts/npc.gd" id="1_vw0p8"]
+[ext_resource type="Resource" uid="uid://dlkbc8pb4nscr" path="res://npc/resources/bird_friend.tres" id="2_dbsq7"]
+[ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="3_dbsq7"]
+[ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="3_onuem"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="6_na0oq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xp5l"]
 radius = 30.999996
@@ -138,33 +140,38 @@ _data = {
 radius = 30.0
 height = 96.0
 
-[node name="Npc" type="CharacterBody2D" unique_id=1368147389]
+[node name="BirdFriend" type="Node2D" unique_id=122702968]
+script = ExtResource("1_f87gl")
+
+[node name="Npc" type="CharacterBody2D" parent="." unique_id=1368147389]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_2xp5l")
+script = ExtResource("1_vw0p8")
+h_frames = 2
+v_frames = 1
+npc_resource = ExtResource("2_dbsq7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1092295362]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=1092295362]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2xp5l")
 debug_color = Color(0, 0.6, 0.7019608, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=506831746]
+[node name="Sprite2D" type="Sprite2D" parent="Npc" unique_id=506831746]
 position = Vector2(0, -19)
-texture = ExtResource("2_3i1kj")
-hframes = 3
-vframes = 3
+texture = ExtResource("3_dbsq7")
+hframes = 2
 
-[node name="ShadowSprite" type="Sprite2D" parent="Sprite2D" unique_id=101874028]
+[node name="ShadowSprite" type="Sprite2D" parent="Npc/Sprite2D" unique_id=101874028]
 modulate = Color(0.0980392, 0.0509804, 0.458824, 0.537255)
 show_behind_parent = true
 position = Vector2(2.38419e-07, 19)
 scale = Vector2(0.75, 0.875)
-texture = ExtResource("3_3i1kj")
+texture = ExtResource("3_onuem")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1390787620]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Npc" unique_id=1390787620]
 libraries/ = SubResource("AnimationLibrary_wuxkc")
 
-[node name="Indicator2D" parent="." unique_id=497168644 instance=ExtResource("4_o6cys")]
+[node name="Indicator2D" parent="Npc" unique_id=497168644 instance=ExtResource("6_na0oq")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Indicator2D" unique_id=1620572916]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Indicator2D" unique_id=1620572916]
 shape = SubResource("CapsuleShape2D_o6cys")

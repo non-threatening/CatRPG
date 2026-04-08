@@ -7,6 +7,12 @@ var time_display : String
 
 var time_gate : bool = false
 
+var day : int = 1
+var minute : int = 0
+var hour : int = 0
+var year : int = 0
+
+
 func _ready() -> void:
 	# Create and initialize TimeTick
 	time_tick = TimeTick.new()
@@ -59,8 +65,10 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 				var tens = new_value % 10 
 				if tens == 0:
 					var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
-					var day = TimeSystem.time_tick.get_time_unit("day")
-					var year = TimeSystem.time_tick.get_time_unit("year")
+					minute = TimeSystem.time_tick.get_time_unit("minute")
+					hour = TimeSystem.time_tick.get_time_unit("hour")
+					day = TimeSystem.time_tick.get_time_unit("day")
+					year = TimeSystem.time_tick.get_time_unit("year")
 					if year != 0:
 						var show_year : String = str( "Year ", year ) 
 						time_display = str( show_year, "  Day %d  %s" % [day, formatted])

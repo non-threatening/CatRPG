@@ -4,11 +4,11 @@ const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
 const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 
 var abilities : Array[ String ] = [
-	"", "", "", "" ## "BIRD", "GRAPPLE", "BOW", "BOMB"
+	"", "", "", "", "" ## "BIRD", "GRAPPLE", "BOW", "BOMB"
 	]
 var selected_ability = 0
 var player : Player
-var bird_instance : BirdFriend = null
+var bird_instance : BirdFriendFlying = null
 
 @onready var state_machine: PlayerStateMachine = $"../StateMachine"
 @onready var lift: State_Lift = $"../StateMachine/Lift"
@@ -26,7 +26,10 @@ func _ready() -> void:
 	setup_abilities()
 	SaveManager.game_loaded.connect( _on_game_loaded )
 	PlayerManager.INVETORY_DATA.ability_acquired.connect( _on_ability_acquired )
+	NpcManager.bf_away.connect( _fly_bird_friend )
 	
+func _fly_bird_friend() -> void:
+	bird_leaving()
 	
 func setup_abilities( select_index : int = 0 ) -> void:
 	PauseMenu.update_ability_items( abilities )
@@ -40,12 +43,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability"):
 		match selected_ability:
 			0:
-				bird_ability()
+				none_ability()
 			1:
-				grapple_ability()
+				bird_ability()
 			2:
-				bow_ability()
+				grapple_ability()
 			3:
+				bow_ability()
+			4:
 				bomb_ability()
 				
 	elif event.is_action_pressed("switch_ability"):
@@ -56,26 +61,42 @@ func _unhandled_input(event: InputEvent) -> void:
 func toggle_ability() -> void:
 	if abilities.count( "" ) == abilities.size():
 		return
-	selected_ability = wrapi( selected_ability + 1, 0, 4 )
+	selected_ability = wrapi( selected_ability + 1, 0, 5 )
 	while abilities[ selected_ability ] == "":
-		selected_ability = wrapi( selected_ability + 1, 0, 4 )
+		selected_ability = wrapi( selected_ability + 1, 0, 5 )
 	PlayerHud.update_ability_ui( selected_ability )
 	
 	await get_tree().process_frame
-	if selected_ability == 0:
+	if selected_ability == 1:
 		player.show_bird_friend()
 	else:
 		player.hide_bird_friend()
 	pass
 
+func none_ability() -> void:
+	pass
+
+
+func bird_leaving() -> void:
+	if bird_instance != null:
+		return
+	var _b = BIRD.instantiate() as BirdFriendFlying
+	player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
+	_b.global_position = player.global_position + Vector2( 0, -100.0 )
+	
+	var throw_direction = player.direction
+	if throw_direction == Vector2.ZERO:
+		throw_direction = player.cardinal_direction
+	_b.leave( throw_direction )
+	bird_instance = _b
+
 
 func bird_ability() -> void:
 	if bird_instance != null:
 		return
-	
-	var _b = BIRD.instantiate() as BirdFriend
+	var _b = BIRD.instantiate() as BirdFriendFlying
 	player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
-	_b.global_position = player.global_position + Vector2( 0, -50 )
+	_b.global_position = player.global_position + Vector2( 0, -100.0 )
 	
 	var throw_direction = player.direction
 	if throw_direction == Vector2.ZERO:
@@ -126,14 +147,16 @@ func _on_game_loaded() -> void:
 
 func _on_ability_acquired( _ability : AbilityItemData ) -> void:
 	print( "Give Ability: ",  _ability.type )
-	#"BIRD", "GRAPPLE", "BOW", "BOMB"
+	#"NONE", "BIRD", "GRAPPLE", "BOW", "BOMB"
 	match _ability.type:
+		_ability.Type.NONE:
+			abilities[0] = "NONE"
 		_ability.Type.BIRD:
-			abilities[0] = "BIRD"
+			abilities[1] = "BIRD"
 		_ability.Type.GRAPPLE:
-			abilities[1] = "GRAPPLE"
+			abilities[2] = "GRAPPLE"
 		_ability.Type.ARROW:
-			abilities[2] = "ARROW"
+			abilities[3] = "ARROW"
 		_ability.Type.BOMB:
-			abilities[3] = "BOMB"
+			abilities[4] = "BOMB"
 	setup_abilities( selected_ability )

@@ -7,6 +7,7 @@ var hearts : Array[ HeartGUI ] = []
 var electros : Array[ ElectroGUI ] = []
 var spoons : Array[ SpoonsGUI ] = []
 var active_save : String = "_1"
+var current_friend : int
 
 @onready var loading_screen: TextureRect = $LoadingScreen
 @onready var time_label: Label = $Control/HudTime/TimeLabel
@@ -64,7 +65,7 @@ func _ready() -> void:
 	LevelManager.level_loaded.connect( hide_loading_screen )
 	
 	hide_boss_health()
-	update_ability_ui( 0 )
+	update_ability_ui( 2 )
 	
 	PauseMenu.shown.connect( _on_show_menu )
 	PauseMenu.hidden.connect( _on_hide_menu )
@@ -201,6 +202,8 @@ func update_ability_items( items : Array[ String ] ) -> void:
 
 
 func update_ability_ui( ability_index: int ) -> void:
+	prints("update ability ui:", ability_index )
+	current_friend = ability_index
 	var _items : Array[ Node ] = ability_items.get_children()
 	for a in _items:
 		a.self_modulate = Color( 1,1,1,0 )
