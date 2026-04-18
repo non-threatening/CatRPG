@@ -27,7 +27,7 @@ func bird_arriving() -> void:
 	bird_friend.add_sibling( _b ) # make it a sibling so its at the same Z
 	_b.toggle_item_magent()
 	var bf_position = bird_friend.global_position
-	_b.position = Vector2( pow(-1, randi() % 2) * 1250, -400 ) + bf_position
+	_b.position = Vector2( pow(-1, randi() % 2) * 1250, (randi() % 500 + 100) * -1 ) + bf_position
 	var direction = _b.global_position.direction_to( bf_position )
 	_b.arrive( direction, bf_position )
 	bird_instance = _b

@@ -26,34 +26,37 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 			match new_value:
 				5:
 					bird_friend_awake()
-				17:
+				18:
+					match TimeSystem.moon:
+						0, 1, 2, 6, 7:
+							bye_bye_bird_friend()
+				19:
 					match TimeSystem.moon:
 						3, 4, 5:
 							bye_bye_bird_friend()
-				13:
-					bye_bye_bird_friend()
-				16:
-					bird_friend_awake()
-				18:
-					bye_bye_bird_friend()
-				20:
-					bird_friend_awake()
 				_:
 					pass
 
 
 func bye_bye_bird_friend() -> void:
 	if StatsManager.achievements.have_bird_friend:
+		await get_tree().create_timer( randi() % 20 ).timeout
 		if PlayerHud.current_friend == 1:
-			_start_dialog( SPEACH_BUBBLE, BF_REPEATABLES, "goodbyes" )
-			PlayerHud.update_ability_ui( 0 ) # NONE
+			## make sure bird friend is sitting on the player
+			if PlayerManager.player.bird_friend_sprite.visible == true:
+				_start_dialog( SPEACH_BUBBLE, BF_REPEATABLES, "goodbyes" )
+				PlayerHud.update_ability_ui( 0 ) # NONE
+			else:
+				await get_tree().create_timer( 1 ).timeout
+				bye_bye_bird_friend()
 		else:
 			bf_awake = false
 			bf_npc_status.emit( bf_awake, null )
-		
+
 
 func bird_friend_awake() -> void:
 	if StatsManager.achievements.have_bird_friend:
+		await get_tree().create_timer( randi() % 20 ).timeout
 		if PlayerHud.current_friend != 1:
 			var location : String
 			bf_awake = true

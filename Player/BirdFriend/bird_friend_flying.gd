@@ -14,26 +14,34 @@ var anim_stop : bool = false
 var _bf_position
 
 var frame_rate : float = 0.09
-
 var acceleration : float = 400.0
 var max_speed : float = 666.0
+
+var previous_position : Vector2 = Vector2.ZERO
+var bf_radius : float = 0.0
+var twirl_frequency : float = 2.5
+var twirl_time : float = 0.0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var item_magnet: ItemMagnet = $ItemMagnet
+@onready var line_2d: Line2D = $Sprite2D/Line2D
 
 
 func _ready() -> void:
 	hide()
 	state = State.INACTIVE
 	player = PlayerManager.player
+	bf_radius = (sprite.texture.get_size().x / sprite.get_hframes()) * 0.5
+	previous_position = global_position
 	visible_on_screen_notifier_2d.screen_exited.connect( _exit_screen )
 
 
 func _exit_screen() -> void:
-	queue_free()
-	
+	if state == State.LEAVE:
+		queue_free()
+
 
 func _physics_process(delta: float) -> void:
 	if state == State.THROW:
@@ -44,13 +52,13 @@ func _physics_process(delta: float) -> void:
 			update_animation()
 			## TODO: only update animation after state changes
 	elif state == State.RETURN:
-		direction = global_position.direction_to( player.global_position + Vector2( 0, -40 ) )
+		direction = global_position.direction_to( player.global_position + Vector2( 0, -100 ) )
 		speed += acceleration * delta
 		position += direction * speed * delta
-		if global_position.distance_to( player.global_position ) <= 45: 
+		if global_position.distance_to( player.global_position ) <= 110: 
 			state = State.PERCHED
 		#Stop flapping when close enough
-		if global_position.distance_to( player.global_position ) <= 400: 
+		if global_position.distance_to( player.global_position ) <= 500: 
 			anim_stop = true
 			
 	elif state == State.LEAVE:
@@ -59,17 +67,33 @@ func _physics_process(delta: float) -> void:
 		
 	elif state == State.ARRIVE:
 		direction = global_position.direction_to( _bf_position )
-		speed += acceleration * delta
+		speed += acceleration * delta * 0.35
 		position += direction * speed * delta
 		if global_position.distance_to( _bf_position ) <= 45: 
 			state = State.ARRIVED
 		if global_position.distance_to( _bf_position ) <= 200: 
 			anim_stop = true
-			
 	elif state == State.ARRIVED:
 		arrived()
 	elif state == State.PERCHED: # on cat
+		
 		perched()
+	
+	
+	var rad : float = 5
+	var current_position = global_position
+	var trail_dir = ( current_position - previous_position ).normalized()
+	#prints( "trail_dir", trail_dir, bf_radius )
+	
+	twirl_time += delta * twirl_frequency
+	var twirl_offset = Vector2( cos( twirl_time ) * rad, sin( twirl_time ) * rad )
+	
+	line_2d.add_point( ( current_position - bf_radius * trail_dir ) )
+	if line_2d.points.size() > 32:
+		line_2d.remove_point( 0 )
+		
+	previous_position = current_position
+
 
 
 func flap_animation() -> void:
