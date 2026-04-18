@@ -138,7 +138,7 @@ grow_vertical = 2
 theme_override_constants/tab_separation = 10
 theme_override_font_sizes/font_size = 48
 tab_alignment = 1
-current_tab = 3
+current_tab = 1
 
 [node name="Inventory" type="Control" parent="Control/TabContainer" unique_id=1459924720]
 visible = false
@@ -428,7 +428,6 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Quest" type="Control" parent="Control/TabContainer" unique_id=467120250]
-visible = false
 layout_mode = 2
 script = ExtResource("4_3yxpl")
 metadata/_tab_index = 1
@@ -497,11 +496,16 @@ layout_mode = 2
 [node name="ListSummary5" parent="Control/TabContainer/Quest/ScrollContainer2/QuestList/VBoxContainer" unique_id=865642588 instance=ExtResource("5_gtmg6")]
 layout_mode = 2
 
+[node name="Map" type="Control" parent="Control/TabContainer" unique_id=62417068]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
 [node name="System" type="Control" parent="Control/TabContainer" unique_id=2116072026]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_hio0w")
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="SaveButton" type="Button" parent="Control/TabContainer/System" unique_id=1971816885]
 layout_mode = 0
@@ -652,12 +656,21 @@ theme_override_font_sizes/font_size = 32
 text = "year 1 Day 100 06:00"
 vertical_alignment = 2
 
+[node name="Label" type="Label" parent="Control/TabContainer/System" unique_id=92114996]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 181.0
+offset_right = 642.0
+offset_bottom = 221.0
+text = "Press 'a' to activate your friend's speacial talent."
+
 [node name="Stuff" type="Control" parent="Control/TabContainer" unique_id=727843018]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("25_f46m6")
 script = ExtResource("20_awacl")
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Stuff" unique_id=1672807869]
 custom_minimum_size = Vector2(640, 0)
