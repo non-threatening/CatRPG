@@ -7,7 +7,7 @@
 [ext_resource type="Shader" uid="uid://bkqm4tb0ry7p5" path="res://Items/item_pickup/ItemPickup.gdshader" id="4_m27qk"]
 [ext_resource type="Texture2D" uid="uid://bnviobmca7lp0" path="res://Items/sprites/flute.png" id="5_y6ru5"]
 [ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="7_2vl3s"]
-[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="7_me7sg"]
+[ext_resource type="FontFile" uid="uid://c2hn6qh1v3axu" path="res://GUI/fonts/NotoSans-Regular.ttf" id="7_me7sg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vggup"]
 radius = 19.6469
@@ -123,7 +123,7 @@ offset_right = 64.0
 offset_bottom = 41.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_me7sg")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 28
 text = "99"
 horizontal_alignment = 1
 
