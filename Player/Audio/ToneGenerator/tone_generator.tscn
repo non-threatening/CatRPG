@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://38bq26xw57sx"]
+[gd_scene format=3 uid="uid://38bq26xw57sx"]
 
 [ext_resource type="Script" uid="uid://bjtg4tjmgljfw" path="res://Player/Audio/ToneGenerator/tone_generator.gd" id="1_m8e7j"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_8tsrq"]
 
-[node name="ToneGenerator" type="Node2D"]
+[node name="ToneGenerator" type="Node2D" unique_id=247592678]
 script = ExtResource("1_m8e7j")
 
-[node name="Player" type="AudioStreamPlayer" parent="."]
+[node name="Player" type="AudioStreamPlayer" parent="." unique_id=1596146524]
 stream = SubResource("AudioStreamGenerator_8tsrq")
+volume_db = -30.507
 autoplay = true
 max_polyphony = 5
+bus = &"Effects"

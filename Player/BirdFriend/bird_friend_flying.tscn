@@ -61,6 +61,7 @@ position = Vector2(0, -16)
 texture = ExtResource("2_v1ro0")
 hframes = 3
 vframes = 3
+frame = 1
 
 [node name="Line2D" type="Line2D" parent="Sprite2D" unique_id=526963944]
 top_level = true
@@ -87,6 +88,8 @@ stream = ExtResource("5_sxc80")
 max_polyphony = 2
 
 [node name="ItemMagnet" parent="." unique_id=509330764 instance=ExtResource("6_h68xt")]
+show_behind_parent = true
+position = Vector2(-5, 13)
 magnet_strength = 5.0
 play_magnet_audio = true
 

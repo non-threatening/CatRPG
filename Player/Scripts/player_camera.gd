@@ -2,9 +2,9 @@ class_name PlayerCamera extends Camera2D
 
 
 @export_range( 0, 2, 0.05, "or_greater" ) var shake_power : float = 1.0 # how quick it starts
-@export var shake_max_offset : float = 10.0 # max shake in pixels
-@export var shake_decay : float = 4.0 # how quick it stops
-var shake_trauma : float = 0.0
+@export var shake_max_offset : float = 32.0 # max shake in pixels
+@export var shake_decay : float = 8.0 # how quick it stops
+var shake_trauma : float = 1.0
 
 
 

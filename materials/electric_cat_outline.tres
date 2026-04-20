@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://dseieaacosrk5"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dseieaacosrk5"]
 
 [ext_resource type="Shader" uid="uid://b2o32xd6mdvfk" path="res://materials/shadow_electric.gdshader" id="1_lyad6"]
 [ext_resource type="Texture2D" uid="uid://deedgn2nkas38" path="res://materials/cat_silouette.png" id="2_kylvl"]
@@ -10,8 +10,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 frequency = 0.0115
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6rsu2"]
-color_ramp = SubResource("Gradient_4u18v")
 noise = SubResource("FastNoiseLite_dt8p2")
+color_ramp = SubResource("Gradient_4u18v")
 
 [sub_resource type="Gradient" id="Gradient_kvckn"]
 colors = PackedColorArray(0.169392, 0.411524, 1, 1, 1, 1, 1, 1)
@@ -21,8 +21,8 @@ noise_type = 2
 frequency = 0.0067
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dhbic"]
-color_ramp = SubResource("Gradient_kvckn")
 noise = SubResource("FastNoiseLite_b5ie3")
+color_ramp = SubResource("Gradient_kvckn")
 
 [resource]
 shader = ExtResource("1_lyad6")

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cdg71unoleefe"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cdg71unoleefe"]
 
 [ext_resource type="Shader" uid="uid://h3o53wd5hdq3" path="res://materials/panel_blur.gdshader" id="1_44npf"]
 

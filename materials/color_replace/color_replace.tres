@@ -1,9 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqab3b8rkqyd"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bqab3b8rkqyd"]
 
 [ext_resource type="Shader" uid="uid://btj07hvby1q3q" path="res://materials/color_replace/color_replace.gdshader" id="1_8v167"]
 
 [resource]
 shader = ExtResource("1_8v167")
 shader_parameter/target_color = Color(1, 1, 1, 1)
-shader_parameter/replace_color = Color(0, 0.113333225, 0.68, 0)
+shader_parameter/replace_color = Color(0.8509804, 0, 0, 1)
 shader_parameter/tolerance = 0.5050000239875

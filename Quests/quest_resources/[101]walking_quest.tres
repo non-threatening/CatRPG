@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvqtnrn5xgsi0" path="res://Items/scripts/item_data.gd" id="1_jibmj"]
 [ext_resource type="Resource" uid="uid://cka3ihtojpidd" path="res://Items/stone.tres" id="2_fmsrv"]
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="3_fmsrv"]
 [ext_resource type="Script" uid="uid://cfvjrsna3s1xa" path="res://Quests/scripts/base_quest.gd" id="3_uxay6"]
 [ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quests/scripts/quest_step.gd" id="4_23fqh"]
 
@@ -29,7 +30,8 @@ metadata/_custom_type_script = "uid://cvm36y7b4aids"
 script = ExtResource("3_uxay6")
 steps = Array[ExtResource("4_23fqh")]([SubResource("Resource_nvjpd"), SubResource("Resource_jd147"), SubResource("Resource_v882s"), SubResource("Resource_u46x5")])
 reward = Dictionary[ExtResource("1_jibmj"), int]({
-ExtResource("2_fmsrv"): 10
+ExtResource("2_fmsrv"): 10,
+ExtResource("3_fmsrv"): 25
 })
 xp = 5
 achievement = null

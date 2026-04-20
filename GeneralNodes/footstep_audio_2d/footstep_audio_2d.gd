@@ -1,8 +1,8 @@
 class_name FootstepAudio2D extends AudioStreamPlayer2D
 
-var stream_randomizer: AudioStreamRandomizer
 @export var footstep_varients : Array[ AudioStream ]
 
+var stream_randomizer: AudioStreamRandomizer
 
 func _ready() -> void:
 	stream_randomizer = stream

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_t22hv"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="2_5tx25"]
+[ext_resource type="Shader" uid="uid://bxw5ivw22852d" path="res://Maps/Grass_shader_test_map.gdshader" id="2_26whl"]
 [ext_resource type="Script" uid="uid://d00db08v22b4c" path="res://Maps/lighting_shadows.gd" id="3_4uvlv"]
 [ext_resource type="Material" uid="uid://t7e014hmcmxq" path="res://Maps/Enviroment/Plants/grass_area.tres" id="4_4uvlv"]
 [ext_resource type="Material" uid="uid://c57u3p620us0u" path="res://Maps/shadows.tres" id="4_70lcl"]
@@ -44,6 +45,54 @@
 [ext_resource type="PackedScene" uid="uid://dfcwjey80ry5k" path="res://Maps/pushable_reflector.tscn" id="39_l156c"]
 [ext_resource type="Script" uid="uid://bayu8sq37l1ij" path="res://interactables/dungeon/scripts/pushable_statue.gd" id="40_k0o0t"]
 [ext_resource type="PackedScene" uid="uid://qdco4f7buclm" path="res://npc/scenes/BirdFriend.tscn" id="45_li6oa"]
+[ext_resource type="Texture2D" uid="uid://bxfyt6vkjdevh" path="res://Maps/textures/Dirt_01.png" id="45_xmcjt"]
+[ext_resource type="AudioStream" uid="uid://bgdpmxn86hpae" path="res://Audio/UsedSamples/kick (7).ogg" id="47_0lun4"]
+[ext_resource type="AudioStream" uid="uid://b55lwwli8jahd" path="res://Audio/UsedSamples/tom (9).ogg" id="48_26whl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fwua"]
+shader = ExtResource("2_26whl")
+
+[sub_resource type="Environment" id="Environment_0lun4"]
+background_mode = 3
+glow_enabled = true
+adjustment_enabled = true
+adjustment_brightness = 0.37
+adjustment_saturation = 0.0
+
+[sub_resource type="Shader" id="Shader_wmkbj"]
+code = "shader_type canvas_item;
+
+// Noise texture
+uniform sampler2D noise_texture: repeat_enable, filter_nearest;
+
+void vertex() {
+}
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = vec4(texture(noise_texture, UV) * color);
+}"
+
+[sub_resource type="Gradient" id="Gradient_a6xma"]
+offsets = PackedFloat32Array(0.14619882, 0.34502923, 0.8128655, 1)
+colors = PackedColorArray(0.004360718, 0.076509945, 0.15094218, 0.38039216, 0.16800001, 0.17653333, 0.2, 0.5019608, 0.16470589, 0.25882354, 0.07058824, 0.827451, 0.27450982, 0.36862746, 0, 0.2509804)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0lun4"]
+noise_type = 3
+seed = 3
+frequency = 0.0083
+fractal_type = 2
+cellular_distance_function = 2
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_765h2"]
+noise = SubResource("FastNoiseLite_0lun4")
+color_ramp = SubResource("Gradient_a6xma")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26whl"]
+shader = SubResource("Shader_wmkbj")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_765h2")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5fwb"]
 radius = 73.552704
@@ -118,10 +167,104 @@ size = Vector2(280, 126)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yr5mt"]
 size = Vector2(276, 127.00004)
 
+[sub_resource type="Animation" id="Animation_0fwua"]
+resource_name = "new_animation"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("47_0lun4")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("48_26whl")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("47_0lun4")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("48_26whl")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("47_0lun4")
+}],
+"times": PackedFloat32Array(0, 2, 3, 4.1, 5.9666667)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_451xv"]
+_data = {
+&"new_animation": SubResource("Animation_0fwua")
+}
+
 [node name="GrassTestMap" type="Node2D" unique_id=1650074484]
 y_sort_enabled = true
 script = ExtResource("1_t22hv")
-metadata/_edit_vertical_guides_ = [2699.0]
+metadata/_edit_vertical_guides_ = [2699.0, 4440.0]
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=155363681]
+material = SubResource("ShaderMaterial_0fwua")
+offset_left = 2035.0
+offset_top = 238.0
+offset_right = 2075.0
+offset_bottom = 278.0
+color = Color(1, 0, 0, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1971026647]
+offset_left = 977.0
+offset_top = -297.0
+offset_right = 2897.0
+offset_bottom = 783.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=729363368]
+disable_3d = true
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=905753119]
+offset_left = 223.0
+offset_top = 114.0
+offset_right = 543.0
+offset_bottom = 279.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=883721433]
+environment = SubResource("Environment_0lun4")
+
+[node name="Ground" type="Node2D" parent="." unique_id=1941480815]
+position = Vector2(-2, -1246)
+
+[node name="TextureRect" type="TextureRect" parent="Ground" unique_id=930933126]
+modulate = Color(0.6283273, 0.40786263, 0.32183146, 1)
+z_index = -1
+use_parent_material = true
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 2051.0
+offset_bottom = 2047.0
+texture = ExtResource("45_xmcjt")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Ground" unique_id=487146320]
+z_index = -1
+material = SubResource("ShaderMaterial_26whl")
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2046.0
+offset_bottom = 2049.0
 
 [node name="LightingShadows" type="Polygon2D" parent="." unique_id=40614986]
 material = ExtResource("4_70lcl")
@@ -133,11 +276,31 @@ z_index = -1
 tile_map_data = PackedByteArray("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")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=527768629]
+visible = false
 z_index = -1
 material = ExtResource("4_4uvlv")
 offset_top = -225.0
 offset_right = 2655.0
 offset_bottom = 800.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2143268877]
+visible = false
+modulate = Color(1, 1, 1, 0.4862745)
+z_index = -1
+offset_left = -1.0
+offset_top = -227.0
+offset_right = 2656.0
+offset_bottom = 821.0
+texture = ExtResource("45_xmcjt")
+stretch_mode = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=470280933]
+position = Vector2(1922, -600)
+scale = Vector2(7.916447, 7.985929)
+color = Color(0.900908, 0.9876142, 0.8717987, 0.627451)
+texture = ExtResource("45_xmcjt")
+polygon = PackedVector2Array(92.45651, 68.31317, 68.07687, 79.082115, 47.107864, 96.36251, 36.74968, 112.01504, 29.746109, 120.41272, 27.907333, 133.4277, 19.567764, 153.06824, 10.237625, 175.5454, 39.500366, 175.5454, 45.213074, 156.84389, 50.265854, 134.42946, 59.487167, 115.896866, 74.013885, 99.49301, 92.20386, 85.844)
+uv = PackedVector2Array(502.27698, 7.725375, 409.9581, 48.50435, 330.55432, 113.94038, 291.3308, 173.21213, 265.4051, 190.85081, 257.8473, 254.2959, 223.40712, 311.67096, 174.1385, 413.1443, 307.1159, 411.72168, 323.3793, 342.96643, 342.51276, 258.08926, 377.43127, 187.91151, 432.43988, 125.79473, 501.32025, 74.109726)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1419245456]
 
@@ -399,7 +562,8 @@ position = Vector2(549, 19)
 [node name="Flowers2" type="Node2D" parent="." unique_id=1271646365]
 y_sort_enabled = true
 position = Vector2(370.99997, -166.99997)
-rotation = -0.044159446
+rotation = -0.04415945
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Flower5" parent="Flowers2" unique_id=1433643139 instance=ExtResource("7_qhnrh")]
 position = Vector2(351, 179)
@@ -562,17 +726,17 @@ item_data = ExtResource("9_qnxbr")
 light_on = true
 
 [node name="ItemPickup3" parent="Bling" unique_id=921932047 instance=ExtResource("8_v5bit")]
-position = Vector2(629.22534, 349.62244)
+position = Vector2(629.22534, 349.62256)
 item_data = ExtResource("9_qnxbr")
 light_on = true
 
 [node name="ItemPickup4" parent="Bling" unique_id=1509523348 instance=ExtResource("8_v5bit")]
-position = Vector2(1019.8528, 187.46733)
+position = Vector2(1019.8528, 187.46729)
 item_data = ExtResource("9_qnxbr")
 light_on = true
 
 [node name="ItemPickup5" parent="Bling" unique_id=1396907329 instance=ExtResource("8_v5bit")]
-position = Vector2(102.67179, 162)
+position = Vector2(334.67194, 161.64209)
 item_data = ExtResource("9_qnxbr")
 light_on = true
 
@@ -780,6 +944,7 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" unique_id=364518435]
 visible = false
+texture = ExtResource("28_li6oa")
 
 [node name="TerminalInterface" parent="." unique_id=2086907037 instance=ExtResource("31_g0pye")]
 position = Vector2(416, 100)
@@ -815,7 +980,7 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 0.8381229
+energy = 1.4249579
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")
@@ -868,3 +1033,8 @@ level = "uid://ly7wguh1ufuy"
 target_transition_area = "LevelTransitionEnter"
 size = 1
 side = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1366266351]
+libraries/ = SubResource("AnimationLibrary_451xv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=428850016]

@@ -27,10 +27,6 @@ func _is_opened() -> void:
 	is_opened = persistant_data_handler.value
 	if is_opened == true:
 		solved()
-		#freq_lock.queue_free()
-		#indicator_2d.queue_free()
-		#actionable_minigame.queue_free()
-		#sprite_2d.frame = 1
 
 
 ## Start trigger
@@ -50,8 +46,8 @@ func tune_freq() -> void:
 func solved() -> void:
 	if is_opened == false:
 		persistant_data_handler.set_value()
-	freq_lock.queue_free()
-	indicator_2d.queue_free()
-	actionable_minigame.queue_free()
-	sprite_2d.frame = 1
-	pass
+	#freq_lock.queue_free()
+	#indicator_2d.queue_free()
+	#actionable_minigame.queue_free()
+	#sprite_2d.frame = 1
+	tone_generator.stop()

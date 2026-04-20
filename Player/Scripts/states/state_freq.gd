@@ -24,6 +24,7 @@ var threshold_time : float = 4.0  # Time in seconds to hold
 var slop : float = 3.0
 var up_or_side : int = 0
 
+var flip : int = 0
 
 func _ready() -> void:
 	SignalBus.frequency_match.connect( frequency )
@@ -111,9 +112,14 @@ func exit() -> void:
 func process( _delta : float ) -> State:
 	if ( freq - slop ) <= deg and deg <= ( freq + slop ):
 		hold_time += _delta
-		prints("thinging", (hold_time * 0.85 ) / threshold_time + 0.15, _delta )
-		var wobble = randf()
-		glow_behind_rect.modulate = Color( 1.0, 1.0, 1.0, ((hold_time * 0.5 ) / threshold_time + 0.5) + wobble )
+		flip = flip + 1
+		var flop : int  = flip % 2
+		match flop:
+			0:
+				glow_behind_rect.modulate = Color( 1.0, 1.0, 1.0, (( hold_time * 0.5 ) / threshold_time + 0.3 ))
+			_:
+				glow_behind_rect.modulate = Color( 1.0, 1.0, 1.0, 0.0 )
+				
 		if hold_time >= threshold_time and not action_triggered:
 			action_triggered = true
 			harmonized()

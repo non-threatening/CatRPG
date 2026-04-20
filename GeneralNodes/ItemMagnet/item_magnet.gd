@@ -24,12 +24,9 @@ func _process( delta: float ) -> void:
 		# If it's close enough and the distance is greater than the speed (won't hit center of the magnet)
 		elif _item.global_position.distance_to( global_position ) > speeds[i]: 
 			speeds[i] += magnet_strength * delta
-			_item.position += _item.global_position.direction_to( global_position ) * speeds[i]
-			prints("elif:", _item.position )
-		# if the item is close to the center of the magnet, set item position to magnet position. when it's in the center it can't escape
+			_item.position += _item.global_position.direction_to( global_position ) * speeds[i] * 2
 		else: 
 			_item.position = global_position # stick item to magnet
-			prints("else:", _item.global_position )
 
 
 func _on_area_entered( _a : Area2D ) -> void:
