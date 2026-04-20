@@ -76,19 +76,18 @@ func _physics_process(delta: float) -> void:
 	elif state == State.ARRIVED:
 		arrived()
 	elif state == State.PERCHED: # on cat
-		
 		perched()
+		##throw and perched, on and off itempickiup collision shape
 	
 	
-	var rad : float = 5
-	var current_position = global_position
+	var rad : float = bf_radius * 0.125 ##=16
+	var current_position = global_position + Vector2( 0, -5 )
 	var trail_dir = ( current_position - previous_position ).normalized()
-	#prints( "trail_dir", trail_dir, bf_radius )
 	
 	twirl_time += delta * twirl_frequency
 	var twirl_offset = Vector2( cos( twirl_time ) * rad, sin( twirl_time ) * rad )
 	
-	line_2d.add_point( ( current_position - bf_radius * trail_dir ) )
+	line_2d.add_point( ( current_position - bf_radius * trail_dir ) + twirl_offset )
 	if line_2d.points.size() > 32:
 		line_2d.remove_point( 0 )
 		

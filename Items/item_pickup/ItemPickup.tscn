@@ -81,7 +81,6 @@ offset_bottom = 106.0
 color = Color(0.10938556, 0.33472294, 0.3023093, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=371443099]
-visible = false
 shape = SubResource("CircleShape2D_vggup")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1539994269]

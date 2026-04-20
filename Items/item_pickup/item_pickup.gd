@@ -3,6 +3,8 @@ class_name ItemPickup extends CharacterBody2D
 
 signal picked_up
 
+const ITEM_PICKUP = preload("uid://co0nsphnunane")
+
 @export var item_data : ItemData : set  = _set_item_data
 @export var item_count : int = 1 : set = _set_item_count
 @export var item_persists : bool = true
@@ -11,7 +13,6 @@ signal picked_up
 @onready var point_light: PointLight2D = $PointLight2D
 @onready var area_2d: Area2D = $Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var count_label: Label = %CountLabel
 
 @onready var persistant_data_picked_up: PersistantDataHandler = $PersistantDataHandler
@@ -80,35 +81,30 @@ func _on_body_entered( b ) -> void:
 
 func item_picked_up() -> void:
 	area_2d.body_entered.disconnect( _on_body_entered )
-	audio_stream_player_2d.play()
+	AudioManager.play_effect( ITEM_PICKUP )
 	picked_up.emit()
 	collected = true
 	persistant_data_picked_up.set_value()
-	await audio_stream_player_2d.finished
 	queue_free()
 	if item_count > 1:
 		PlayerHud.queue_stacked_notification( "You've got", str(NumberToWords.to_words(item_count).capitalize(), " ", item_data.name, "s") )
 	else:
 		PlayerHud.queue_stacked_notification( "You've got", str(NumberToWords.to_words(item_count).capitalize(), " ", item_data.name) )
-	pass
 
 
 func _set_item_data( value : ItemData ) -> void:
 	item_data = value
 	_update_texture()
-	pass
 	
 	
 func _update_texture() -> void:
 	if item_data and sprite_2d:
 		sprite_2d.texture = item_data.texture
-	pass
 
 
 func _set_item_count( value : int ) -> void:
 	item_count = value
 	_update_count_label()
-	pass
 
 
 func _update_count_label() -> void:
@@ -116,4 +112,3 @@ func _update_count_label() -> void:
 		count_label.text = ""
 		if item_count > 1:
 			count_label.text = str( item_count )
-	pass

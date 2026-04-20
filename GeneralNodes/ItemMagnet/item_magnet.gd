@@ -3,7 +3,7 @@ class_name ItemMagnet extends Area2D
 var items : Array[ ItemPickup ] = []
 var speeds : Array[ float ] = []
 
-@export var magnet_strength : float = 1.0
+@export var magnet_strength : float = 3.0
 @export var play_magnet_audio : bool = false
 
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -14,7 +14,7 @@ func _ready() -> void:
 	pass
 
 
-func _process(delta: float) -> void:
+func _process( delta: float ) -> void:
 	for i in range( items.size() - 1, -1, -1 ):
 		var _item = items[i]
 		if _item == null:
@@ -25,10 +25,11 @@ func _process(delta: float) -> void:
 		elif _item.global_position.distance_to( global_position ) > speeds[i]: 
 			speeds[i] += magnet_strength * delta
 			_item.position += _item.global_position.direction_to( global_position ) * speeds[i]
+			prints("elif:", _item.position )
 		# if the item is close to the center of the magnet, set item position to magnet position. when it's in the center it can't escape
 		else: 
-			_item.global_position = global_position # stick item to magnet
-	pass
+			_item.position = global_position # stick item to magnet
+			prints("else:", _item.global_position )
 
 
 func _on_area_entered( _a : Area2D ) -> void:
@@ -39,9 +40,6 @@ func _on_area_entered( _a : Area2D ) -> void:
 		_new_item.set_physics_process( false ) ## eliminate _physics_process in item_pickup.gd so that the items can pass through walls
 		if play_magnet_audio:
 			audio.play(0)
-		pass
-	
-	pass
 
 
 

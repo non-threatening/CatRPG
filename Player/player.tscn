@@ -52,8 +52,8 @@
 [ext_resource type="AudioStream" uid="uid://b8hbhokgsn50x" path="res://Player/Audio/grapple_chain.wav" id="44_dy65m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1kmt7"]
-radius = 29.0
-height = 242.0
+radius = 24.0
+height = 192.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4i3b"]
 radius = 35.0
@@ -267,18 +267,6 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Sprite2D:scale")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_32usv"]
@@ -2318,7 +2306,7 @@ tracks/3/keys = {
 resource_name = "walk_side"
 length = 1.000005
 loop_mode = 1
-step = 0.041666668
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2362,24 +2350,15 @@ tracks/3/path = NodePath("FootstepAudio2D")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.15),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"play_footstep"
+}, {
+"args": [],
+"method": &"play_footstep"
 }]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("Sprite2D:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_n3nwh"]
@@ -2502,7 +2481,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2.66666, 78.6667)]
+"values": [Vector2(105, -45)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2851,8 +2830,8 @@ shader_parameter/right_falloff = 0.2
 gradient = SubResource("Gradient_7v2uk")
 
 [sub_resource type="Gradient" id="Gradient_wvbyc"]
-offsets = PackedFloat32Array(0, 0.26589596, 0.716763, 1)
-colors = PackedColorArray(0.99999875, 0.99552196, 0.6923444, 0.60784316, 1, 0.84283334, 0.77, 0.5647059, 0.64, 1, 0.724, 0.13333334, 0, 1, 0.23333335, 0)
+offsets = PackedFloat32Array(0, 0.26589596, 0.7521008, 1)
+colors = PackedColorArray(0.99999875, 0.99552196, 0.6923444, 0.60784316, 1, 0.84283334, 0.77, 0.5019608, 0.64, 1, 0.724, 0.13333334, 0, 1, 0.23333335, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1kmt7"]
 gradient = SubResource("Gradient_wvbyc")
@@ -2959,11 +2938,11 @@ size = Vector2(249, 85)
 size = Vector2(92, 190)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o28un"]
-radius = 78.18561
+radius = 167.23587
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwjto"]
-radius = 28.000023
-height = 56.000046
+radius = 112.0
+height = 232.00003
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n471f"]
 radius = 17.0
@@ -3278,15 +3257,13 @@ script = ExtResource("1_t577b")
 metadata/_edit_vertical_guides_ = [173.0, -173.0]
 
 [node name="PlayerShapeHor" type="CollisionShape2D" parent="." unique_id=1090302026]
-visible = false
-position = Vector2(1, 30)
+position = Vector2(0, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_1kmt7")
 debug_color = Color(0, 0.63529414, 0.3764706, 0)
 
 [node name="PlayerShapeVert" type="CollisionShape2D" parent="." unique_id=994050475]
-visible = false
-position = Vector2(-1, 2)
+position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_c4i3b")
 debug_color = Color(0, 0.63529414, 0.3764706, 0)
 
@@ -3316,7 +3293,7 @@ vframes = 6
 script = ExtResource("4_i4o1l")
 
 [node name="AttackEffectSprite" type="Sprite2D" parent="Sprite2D" unique_id=1474284972]
-position = Vector2(2.66666, 78.6667)
+position = Vector2(105, -45)
 scale = Vector2(2, 2)
 texture = ExtResource("3_kkg45")
 hframes = 12
@@ -3349,7 +3326,6 @@ hframes = 8
 libraries/ = SubResource("AnimationLibrary_76lrf")
 
 [node name="HeldItem" type="Node2D" parent="Sprite2D" unique_id=521645410]
-visible = false
 show_behind_parent = true
 z_index = 1
 position = Vector2(0, 75)
@@ -3503,14 +3479,18 @@ debug_color = Color(0.87058824, 0.2627451, 0.58431375, 0.44705883)
 
 [node name="ItemMagnet" parent="Collisions" unique_id=1017194051 instance=ExtResource("18_b1ygp")]
 visible = false
-position = Vector2(-1, -2)
+position = Vector2(0, -19)
 scale = Vector2(0.831355, 0.831355)
+magnet_strength = 10.0
+play_magnet_audio = true
 
 [node name="ItemMagnetShape" type="CollisionShape2D" parent="Collisions/ItemMagnet" unique_id=1171035674]
+position = Vector2(0, -60.142784)
 shape = SubResource("CircleShape2D_o28un")
 debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="HitBox" parent="Collisions" unique_id=452791408 instance=ExtResource("13_urp6f")]
+visible = false
 position = Vector2(-1, -27)
 rotation = 1.5708
 collision_layer = 2
@@ -3557,6 +3537,7 @@ lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_gpjlu")
 
 [node name="RotatingInteractions" type="Node2D" parent="." unique_id=711833848]
+visible = false
 script = ExtResource("10_4cvxe")
 
 [node name="GrappleRayCast2D" type="RayCast2D" parent="RotatingInteractions" unique_id=599843456]
