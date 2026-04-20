@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://x22sx2i7146f"]
+[gd_scene format=3 uid="uid://x22sx2i7146f"]
 
 [ext_resource type="Texture2D" uid="uid://cwbbmmcrulba8" path="res://Tile Maps/Sprites/dungeon.png" id="1_vu78d"]
 [ext_resource type="Script" uid="uid://dlck23nlhp02u" path="res://Tile Maps/LevelTileMap.gd" id="2_5p2pt"]
@@ -327,7 +327,8 @@ physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_5p2pt")
 sources/4 = SubResource("TileSetAtlasSource_d4rb0")
 
-[node name="Dungeon01" type="TileMapLayer"]
+[node name="Dungeon01" type="TileMapLayer" unique_id=2124689047]
+position = Vector2(0, 1)
 tile_set = SubResource("TileSet_yu6fw")
 rendering_quadrant_size = 32
 script = ExtResource("2_5p2pt")

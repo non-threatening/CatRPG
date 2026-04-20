@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://diddnu4t7u02t"]
+[gd_scene format=3 uid="uid://diddnu4t7u02t"]
 
 [ext_resource type="Texture2D" uid="uid://b4nn7kelrpot5" path="res://Tile Maps/Sprites/Grass-01.png" id="1_ei577"]
 [ext_resource type="Texture2D" uid="uid://bs0c213ehn6i7" path="res://Tile Maps/Sprites/dungeon_entrance.png" id="2_aaxne"]
@@ -543,7 +543,7 @@ custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_i3id2")
 sources/1 = SubResource("TileSetAtlasSource_03fwb")
 
-[node name="Layer0" type="TileMapLayer" groups=["tilemaps"]]
+[node name="Layer0" type="TileMapLayer" unique_id=1960665029 groups=["tilemaps"]]
 use_parent_material = true
 position = Vector2(0, -1)
 tile_set = SubResource("TileSet_8r24n")
