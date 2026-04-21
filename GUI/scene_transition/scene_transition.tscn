@@ -1,21 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmeppcnrqh1g1"]
+[gd_scene format=3 uid="uid://dmeppcnrqh1g1"]
 
 [ext_resource type="Script" uid="uid://bf580j7sqm4je" path="res://GUI/scene_transition/scene_transition.gd" id="1_g0eyb"]
-
-[sub_resource type="Animation" id="Animation_ju5is"]
-resource_name = "default"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_iv0u0"]
 length = 0.001
@@ -32,9 +17,8 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_18lb8"]
-resource_name = "fade_in"
-length = 0.2
+[sub_resource type="Animation" id="Animation_ju5is"]
+resource_name = "default"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,7 +26,23 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.00110996, 0.2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_18lb8"]
+resource_name = "fade_in"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00110996, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -72,11 +72,11 @@ _data = {
 &"fade_out": SubResource("Animation_374bw")
 }
 
-[node name="SceneTransition" type="CanvasLayer"]
+[node name="SceneTransition" type="CanvasLayer" unique_id=189679789]
 process_mode = 3
 script = ExtResource("1_g0eyb")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1193093965]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,7 +84,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=830635745]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,7 +93,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
-libraries = {
-&"": SubResource("AnimationLibrary_cpvhw")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=733815230]
+libraries/ = SubResource("AnimationLibrary_cpvhw")

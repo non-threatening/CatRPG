@@ -8,7 +8,19 @@ class_name BirdFriend extends Node2D
 func _ready() -> void:
 	NpcManager.bf_npc_status.connect( _status )
 	NpcManager.bf_arrive.connect( _arrived )
-	bird_friend.hide()
+	LevelManager.level_loaded.connect( _on_level_loaded )
+
+
+func _on_level_loaded() -> void:
+	if StatsManager.achievements.have_bird_friend == 1:
+		await get_tree().create_timer( 0.7 ).timeout
+		if NpcManager.bf_awake == true:
+			bird_friend.modulate = Color( 1, 1, 1, 0 )
+			bird_friend.show()
+			var tween : Tween = create_tween()
+			tween.tween_property( bird_friend, "modulate", Color( 1, 1, 1, 1 ), 1.0 )
+	else:
+		bird_friend.hide()
 
 
 func _arrived() -> void:

@@ -29,11 +29,7 @@ func change_worlds(
 
 
 
-func load_new_level(
-		level_path : String,
-		_target_transition : String,
-		_position_offset : Vector2
-) -> void:
+func load_new_level( level_path : String, _target_transition : String, _position_offset : Vector2 ) -> void:
 	
 	get_tree().paused = true
 	TimeSystem.time_tick.pause()

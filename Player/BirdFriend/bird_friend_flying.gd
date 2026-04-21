@@ -73,20 +73,17 @@ func _physics_process(delta: float) -> void:
 			state = State.ARRIVED
 		if global_position.distance_to( _bf_position ) <= 200: 
 			anim_stop = true
-	elif state == State.ARRIVED:
+	elif state == State.ARRIVED: # in tree
 		arrived()
 	elif state == State.PERCHED: # on cat
 		perched()
-		##throw and perched, on and off itempickiup collision shape
 	
-	
+	## Trail
 	var rad : float = bf_radius * 0.125 ##=16
 	var current_position = global_position + Vector2( 0, -5 )
 	var trail_dir = ( current_position - previous_position ).normalized()
-	
 	twirl_time += delta * twirl_frequency
 	var twirl_offset = Vector2( cos( twirl_time ) * rad, sin( twirl_time ) * rad )
-	
 	line_2d.add_point( ( current_position - bf_radius * trail_dir ) + twirl_offset )
 	if line_2d.points.size() > 32:
 		line_2d.remove_point( 0 )
@@ -125,6 +122,7 @@ func leave( throw_direction : Vector2 ) -> void:
 	update_animation()
 	flap_animation()
 	visible = true
+	toggle_item_magent()
 	player.hide_bird_friend()
 	
 	
@@ -156,6 +154,7 @@ func update_animation() -> void:
 	flight_direction = DIR_4[ direction_id ]
 	frame_offest = anim_direction()
 	sprite.scale.x = -1 if flight_direction == Vector2.LEFT else 1
+	line_2d.clear_points()
 
 
 func anim_direction() -> int:
@@ -169,4 +168,3 @@ func anim_direction() -> int:
 
 func toggle_item_magent() -> void:
 	item_magnet.monitoring = false
-	pass
