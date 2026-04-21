@@ -17,13 +17,10 @@ var charging : bool = true
 @onready var dash: State_Dash = $"../Dash"
 @onready var idle: State_Idle = $"../Idle"
 
-#@onready var electro_shell_hurt_box: HurtBox = $"../../Sprite2D/ElectroShellHurtBox"
 @onready var electro_shell_hurt_box: HurtBox = $"../../Collisions/ElectroShellHurtBox"
 
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
 @onready var spin_effect_sprite_2d: Sprite2D = $"../../Sprite2D/SpinEffectSprite2D"
 @onready var spin_animation_player: AnimationPlayer = $"../../Sprite2D/SpinEffectSprite2D/AnimationPlayer"
-#@onready var gpu_particles_2d: GPUParticles2D = $"../../Sprite2D/ElectroShellHurtBox/GPUParticles2D"
 @onready var gpu_particles_2d: GPUParticles2D = $"../../Collisions/ChargeAttackHurtBox/GPUParticles2D"
 
 @onready var sprite_2d: Sprite2D = $"../../Sprite2D"
@@ -176,9 +173,7 @@ func get_spin_frame() -> float:
 			
 			
 func play_audio( _audio : AudioStream ) -> void:
-	audio_stream_player_2d.stream = _audio
-	audio_stream_player_2d.play()
-	pass
+	AudioManager.play_effect( _audio )
 
 
 func discharge() -> void:

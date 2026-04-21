@@ -12,7 +12,6 @@ var particles : ParticleProcessMaterial
 
 @onready var idle: State_Idle = $"../Idle"
 @onready var charge_attack_hurt_box: HurtBox = %ChargeAttackHurtBox
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
 @onready var spin_effect_sprite_2d: Sprite2D = $"../../Sprite2D/SpinEffectSprite2D"
 @onready var spin_animation_player: AnimationPlayer = $"../../Sprite2D/SpinEffectSprite2D/AnimationPlayer"
 @onready var gpu_particles_2d: GPUParticles2D = $"../../Collisions/ChargeAttackHurtBox/GPUParticles2D"
@@ -135,10 +134,7 @@ func charge_complete() -> void:
 	
 	
 func play_audio( _audio : AudioStream ) -> void:
-	audio_stream_player_2d.stream = _audio
-	audio_stream_player_2d.play()
-	pass
-
+	AudioManager.play_effect( _audio )
 
 
 

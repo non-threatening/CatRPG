@@ -3,7 +3,6 @@ class_name State_Freq extends State
 @export var harmonized_sound : AudioStream
 
 @onready var idle: State_Idle = $"../Idle"
-@onready var audio: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
 @onready var wave_control: Control = $"../../Sprite2D/WaveControl"
 @onready var tone_generator: ToneGenerator = $"../../Audio/ToneGenerator"
 @onready var texture_rect: TextureRect = $"../../Sprite2D/WaveControl/TextureRect"
@@ -81,9 +80,10 @@ func enter() -> void:
 
 
 func harmonized() -> void:
-	audio.stream = harmonized_sound ## The victory bell
-	audio.pitch_scale = randf_range( 0.9, 1.1 )
-	audio.play()
+	#audio.stream = harmonized_sound ## The victory bell
+	#audio.pitch_scale = randf_range( 0.9, 1.1 )
+	#audio.play()
+	AudioManager.play_effect( harmonized_sound )	
 	wave_control.hide()
 	tone_generator.stop()
 	tone_generator.process_sine = false
