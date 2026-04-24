@@ -23,13 +23,12 @@ func _ready() -> void:
 	add_player_instance()
 	await get_tree().create_timer(0.2).timeout
 	player_spawned = true
-	pass
-	
-	
+
+
 func add_player_instance() -> void:
 	player = PLAYER.instantiate()
 	add_child( player )
-	pass
+
 
 func set_health( hp: int, max_hp: int, es: int, max_es: int, spoons: int, max_capacity: int) -> void:
 	player.max_hp = max_hp
@@ -44,9 +43,8 @@ func set_health( hp: int, max_hp: int, es: int, max_es: int, spoons: int, max_ca
 func reward_xp( _xp : int ) -> void:
 	player.xp += _xp
 	check_for_level_advance()
-	pass
-	
-	
+
+
 func check_for_level_advance() -> void:
 	if player.level >= level_requirments.size(): #max level
 		return
@@ -57,35 +55,27 @@ func check_for_level_advance() -> void:
 		player.max_hp += 2
 		player_leveled_up.emit()
 		await get_tree().process_frame
-		PlayerHud.queue_notification( "Level Up!", NumberToWords.to_words( player.level ) )
+		PlayerHud.queue_notification( 
+			"Level Up!", 
+			str("Welcome to LEVEL ",  NumberToWords.to_words( player.level ).to_upper(), "!" )
+			)
 		check_for_level_advance()
-	pass
 
 
 func set_player_position( _new_pos : Vector2 ) -> void:
 	player.global_position = _new_pos
-	pass
-	
-	
-	
+
+
 func set_as_parent( _p : Node2D ) -> void:
 	if player.get_parent():
 		player.get_parent().remove_child( player )
 	_p.add_child( player )
-	pass	
-		
+
 
 ## Unparent the player from whatever node it's in
 func unparent_player( _p : Node2D ) -> void:
 	_p.remove_child( player )
-	pass
-	
-	
-	
-func play_audio( _audio : AudioStream ) -> void:
-	player.audio.stream = _audio
-	player.audio.play()
-	
+
 
 ## will emit this signal if in state that allows interactio
 func interact() -> void:

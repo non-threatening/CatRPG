@@ -43,9 +43,12 @@ script = ExtResource("2_65cc6")
 focus_accent_sound = null
 metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=901244862]
+[node name="RichTextLabel" type="RichTextLabel" parent="ListSummary" unique_id=901244862]
 custom_minimum_size = Vector2(380, 0)
-layout_mode = 2
+layout_mode = 0
+offset_top = -36.0
+offset_right = 400.0
+offset_bottom = 83.0
 theme = SubResource("Theme_dyp6n")
 theme_override_constants/strikethrough_alpha = 100
 theme_override_font_sizes/normal_font_size = 28

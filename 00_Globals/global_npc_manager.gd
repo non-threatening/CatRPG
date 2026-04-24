@@ -59,7 +59,7 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 
 func bye_bye_bird_friend() -> void:
 	await get_tree().create_timer( randi() % 20 ).timeout
-	if StatsManager.achievements.have_bird_friend:
+	if StatsManager.achievements.have_bird_friend == 1:
 		if PlayerHud.current_friend == 1:
 			## make sure bird friend is sitting on the player and we're not in a minigame
 			if PlayerManager.player.bird_friend_sprite.visible == true:

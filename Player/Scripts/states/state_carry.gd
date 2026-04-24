@@ -11,15 +11,9 @@ var throwable : Throwable
 @onready var held_item: Node2D = $"../../Sprite2D/HeldItem"
 
 
-	
-func init() -> void:
-	pass
-
-
 func enter() -> void:
 	player.update_animation( "carry" )
 	walking = false
-	pass
 	
 	
 func exit() -> void:
@@ -33,11 +27,8 @@ func exit() -> void:
 			throwable.throw_direction = throwable.throw_direction.rotated( PI )
 			throwable.drop()
 		else:
-			player.audio.stream = throw_audio
-			player.audio.play()
+			AudioManager.play_effect( throw_audio )
 			throwable.throw()
-		pass
-	pass
 	
 	
 func process( _delta : float ) -> State:
@@ -72,10 +63,3 @@ func handle_input( _event: InputEvent ) -> State:
 	if _event.is_action_pressed( "attack" ) or _event.is_action_pressed( "interact" ):
 		return idle # triggers exit
 	return null
-
-
-
-
-
-
-	

@@ -40,6 +40,7 @@ func _ready() -> void:
 
 func _exit_screen() -> void:
 	if state == State.LEAVE:
+		await get_tree().create_timer( 0.666 ).timeout
 		queue_free()
 
 
@@ -108,10 +109,14 @@ func flap_animation() -> void:
 
 func perched() -> void:
 	player.show_bird_friend()
+	sprite.self_modulate = Color( 1.0, 1.0, 1.0, 0.0 )
+	await get_tree().create_timer( 0.666 ).timeout
 	queue_free()
 	
 func arrived() -> void:
 	NpcManager.bf_arrive.emit()
+	sprite.self_modulate = Color( 1.0, 1.0, 1.0, 0.0 )
+	await get_tree().create_timer( 0.666 ).timeout
 	queue_free()
 
 

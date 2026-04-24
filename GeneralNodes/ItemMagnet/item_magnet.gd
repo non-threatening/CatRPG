@@ -3,7 +3,7 @@ class_name ItemMagnet extends Area2D
 var items : Array[ ItemPickup ] = []
 var speeds : Array[ float ] = []
 
-@export var magnet_strength : float = 3.0
+@export var magnet_strength : float = 1.0
 @export var play_magnet_audio : bool = false
 
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D

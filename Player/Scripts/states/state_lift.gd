@@ -13,14 +13,11 @@ func enter() -> void:
 	if start_anim_late == true:
 		player.animation_player.seek( 0.25 )
 	player.animation_player.animation_finished.connect( _state_complete )
-	player.audio.stream = lift_audio
-	player.audio.play()
-	pass
-	
+	AudioManager.play_effect( lift_audio )
+
 
 func exit() -> void:
 	start_anim_late = false
-	pass
 	
 	
 func process( _delta : float ) -> State:
@@ -32,13 +29,3 @@ func process( _delta : float ) -> State:
 func _state_complete( _a : String ) -> void:
 	player.animation_player.animation_finished.disconnect( _state_complete )
 	state_machine.change_state( carry )
-	pass
-
-
-
-
-
-
-
-
-	

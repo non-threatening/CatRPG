@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0jsono37lv7x"]
+[gd_scene format=3 uid="uid://c0jsono37lv7x"]
 
 [ext_resource type="Script" uid="uid://d2i8ox1eeeuhe" path="res://GeneralNodes/ItemMagnet/item_magnet.gd" id="1_5a3y3"]
 [ext_resource type="AudioStream" uid="uid://b8bjvx3cl47od" path="res://Player/Audio/catch.wav" id="2_ede5j"]
 
-[node name="ItemMagnet" type="Area2D"]
+[node name="ItemMagnet" type="Area2D" unique_id=1301098458]
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_5a3y3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1473101574]
 stream = ExtResource("2_ede5j")

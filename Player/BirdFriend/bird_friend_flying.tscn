@@ -6,35 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://u0jf84vk421d" path="res://Player/Audio/bird_flap.wav" id="5_sxc80"]
 [ext_resource type="PackedScene" uid="uid://c0jsono37lv7x" path="res://GeneralNodes/ItemMagnet/ItemMagnet.tscn" id="6_h68xt"]
 
-[sub_resource type="Shader" id="Shader_v1ro0"]
-code = "shader_type canvas_item;
-
-uniform vec4 new_color: source_color;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	vec4 input_color = texture( TEXTURE, UV );
-	// isolate blue pen
-	//if ( input_color.r > 0.01 && input_color.g > 0.01 && input_color.b > 0.1 && input_color.a > 0.5) {
-		//COLOR.rgb = new_color.rgb * input_color.rgb;
-	}
-
-
-//}
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eaba7"]
-shader = SubResource("Shader_v1ro0")
-shader_parameter/new_color = Color(0, 0, 0, 1)
-
 [sub_resource type="Curve" id="Curve_v1ro0"]
 _data = [Vector2(0, 0.66259533), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -56,7 +27,6 @@ metadata/_edit_horizontal_guides_ = [11.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1983463842]
 z_index = 1
-material = SubResource("ShaderMaterial_eaba7")
 position = Vector2(0, -16)
 texture = ExtResource("2_v1ro0")
 hframes = 3

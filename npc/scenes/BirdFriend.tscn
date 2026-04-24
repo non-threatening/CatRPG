@@ -165,7 +165,7 @@ hframes = 2
 [node name="ShadowSprite" type="Sprite2D" parent="Npc/Sprite2D" unique_id=101874028]
 modulate = Color(0.0980392, 0.0509804, 0.458824, 0.537255)
 show_behind_parent = true
-position = Vector2(2.38419e-07, 19)
+position = Vector2(5, 26)
 scale = Vector2(0.75, 0.875)
 texture = ExtResource("3_onuem")
 

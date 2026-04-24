@@ -92,7 +92,6 @@ func _process( _delta: float ) -> void:
 			time -= wait_time
 			bird_friend_sprite.frame = randi() % 2
 			wait_time = randi_range( 1, 5 )
-	pass
 
 
 func _physics_process( _delta: float ) -> void:
@@ -128,13 +127,12 @@ func set_direction() -> bool:
 		
 	cardinal_direction = new_dir
 	DirectionChanged.emit( new_dir )
-	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	sprite.scale.x = -0.666 if cardinal_direction == Vector2.LEFT else 0.666
 	return true
 
 
 func update_animation( state : String) -> void:
 	animation_player.play( state + "_" + anim_direction() )
-	pass
 
 
 func anim_direction() -> String:
@@ -149,7 +147,7 @@ func anim_direction() -> String:
 func show_bird_friend() -> void:
 	bird_friend_sprite.show()
 func hide_bird_friend() -> void:
-	bird_friend_sprite.hide()		
+	bird_friend_sprite.hide()
 
 
 func _take_damage( hurt_box : HurtBox ) -> void:
@@ -161,10 +159,8 @@ func _take_damage( hurt_box : HurtBox ) -> void:
 			dmg = clampi( dmg - defense - defense_bonus, 1, dmg )
 		update_hp( -dmg )
 		player_damaged.emit( hurt_box )
-		
-	pass
-	
-	
+
+
 func update_hp( delta : int ) -> void:
 	hp = clampi( hp + delta, 0, max_hp )
 	PlayerHud.update_hp( hp, max_hp )
@@ -186,7 +182,6 @@ func make_invulnerable( _duration : float = 1.0 ) -> void:
 	await get_tree().create_timer( _duration ).timeout
 	invulnerable = false
 	hit_box.monitoring = true
-	pass
 
 
 func start_freq() -> void:
@@ -196,9 +191,8 @@ func start_freq() -> void:
 func pickup_item( _t : Throwable ) -> void:
 	state_machine.change_state( lift )
 	carry.throwable = _t
-	pass
-	
-	
+
+
 func revive_player() -> void:
 	update_hp( 99 )
 	state_machine.change_state( idle )
@@ -213,7 +207,6 @@ func update_damage_values() -> void:
 func _on_player_leveled_up() -> void:
 	effect_animation_player.play( "level_up" )
 	update_hp( max_hp )
-	pass
 
 
 func _on_equipment_changed() -> void:
@@ -224,12 +217,8 @@ func _on_equipment_changed() -> void:
 func _set_arrow_count( value : int ) -> void:
 	arrow_count = value
 	PlayerHud.update_arrow_count( value )
-	pass
 
 
 func _set_bomb_count( value : int ) -> void:
 	bomb_count = value
 	PlayerHud.update_bomb_count( value )
-	pass
-	
-	
