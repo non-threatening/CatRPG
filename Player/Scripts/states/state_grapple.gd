@@ -57,7 +57,8 @@ func enter() -> void:
 	shoot_grapple()
 	
 	chain_audio_player.play()
-	play_audio( grapple_fire_audio)
+	#play_audio( grapple_fire_audio)
+	AudioManager.play_effect( grapple_fire_audio )
 	pass
 	
 	
@@ -142,14 +143,13 @@ func shoot_grapple() -> void:
 		tween.tween_callback( grapple_player )
 	else:
 		tween.tween_callback( return_grapple )
-	pass
 
 
 
 func grapple_player() -> void:
 	if tween:
 		tween.kill()
-	play_audio( grapple_stick_audio )
+	AudioManager.play_effect( grapple_stick_audio )
 	player.set_collision_mask_value( 4, false )
 	var tween_duration : float = collision_distance / grapple_speed
 	tween = create_tween()
@@ -178,7 +178,7 @@ func return_grapple() -> void:
 	if tween:
 		tween.kill()
 	if collision_type > 0:
-		play_audio( grapple_bounce_audio )
+		AudioManager.play_effect( grapple_bounce_audio )
 	var tween_duration : float = collision_distance / grapple_speed
 	tween = create_tween()
 	tween.tween_property(
@@ -193,10 +193,3 @@ func return_grapple() -> void:
 func grapple_finshed() -> void:
 	player.set_collision_mask_value( 4, true )
 	next_state = idle
-	
-	
-	
-func play_audio( audio : AudioStream ) -> void:
-	player.audio.stream = audio
-	player.audio.play()
-	pass

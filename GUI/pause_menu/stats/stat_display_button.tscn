@@ -1,14 +1,14 @@
-[gd_scene format=3 uid="uid://cg6j64vd6ka33"]
+[gd_scene format=3 uid="uid://ia11y5hkgfa8"]
 
-[ext_resource type="Script" uid="uid://btho3yywyvch4" path="res://GUI/pause_menu/ach_display_button.gd" id="1_qgbqq"]
+[ext_resource type="Script" uid="uid://bu6em2qvt1mvx" path="res://GUI/pause_menu/stats/stat_display_button.gd" id="1_etfwd"]
 
-[node name="DisplayAch" type="Button" unique_id=570682189]
+[node name="DisplayStats" type="Button" unique_id=570682189]
 custom_minimum_size = Vector2(350, 40)
 offset_right = 664.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
 size_flags_vertical = 0
-script = ExtResource("1_qgbqq")
+script = ExtResource("1_etfwd")
 
 [node name="Label" type="Label" parent="." unique_id=1247118337]
 layout_mode = 0

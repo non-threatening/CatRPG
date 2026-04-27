@@ -11,20 +11,21 @@ func _ready() -> void:
 
 
 func _on_visible_changed() -> void:
-	clear_list()
-	var info_list : Dictionary = StatsManager.stats
-	for key in info_list.keys():
-		var display : DisplayStats = STAT_DISPLAY_BUTTON.instantiate()
-		v_box_container.add_child( display )
-		display.initialize( key, info_list[key] )
-		
-	var ach_list : Dictionary = StatsManager.achievements
-	for key in ach_list.keys():
-		if ach_list[key] == 0:
-			return
-		var display : DisplayAch = ACH_DISPLAY_BUTTON.instantiate()
-		v_box_container_2.add_child( display )
-		display.initialize( key, ach_list[key] )
+	if visible == true:
+		clear_list()
+		var info_list : Dictionary = StatsManager.stats
+		for key in info_list.keys():
+			var display : DisplayStats = STAT_DISPLAY_BUTTON.instantiate()
+			v_box_container.add_child( display )
+			display.initialize( key, info_list[key] )
+			
+		var ach_list : Dictionary = StatsManager.achievements
+		for key in ach_list.keys():
+			if ach_list[key] == 0:
+				return
+			var display : DisplayAch = ACH_DISPLAY_BUTTON.instantiate()
+			v_box_container_2.add_child( display )
+			display.initialize( key, ach_list[key] )
 		
 
 func clear_list() -> void:

@@ -19,8 +19,7 @@ func enter() -> void:
 	if direction == Vector2.ZERO:
 		direction = player.cardinal_direction
 	if dash_audio:
-		player.audio.stream = dash_audio
-		player.audio.play()
+		AudioManager.play_effect( dash_audio )
 	effect_timer = 0
 	pass
 	
@@ -39,14 +38,6 @@ func process( _delta : float ) -> State:
 		effect_timer = effect_delay
 		spawn_effect()
 	return next_state ## Returning null means don't change state
-	
-	
-func physics( _delta : float ) -> State:
-	return null
-	
-	
-func handle_input( _event: InputEvent ) -> State:
-	return null
 
 
 func _on_animation_finished( _anim_name : String ) -> void:
