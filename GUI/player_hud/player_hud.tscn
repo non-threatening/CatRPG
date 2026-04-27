@@ -4,7 +4,6 @@
 [ext_resource type="Theme" uid="uid://k55p6k07lepe" path="res://GUI/pause_menu/PauseMenu_theme.tres" id="2_3m3x0"]
 [ext_resource type="PackedScene" uid="uid://dkynksfn5v5fw" path="res://GUI/player_hud/heart_gui.tscn" id="2_alx7a"]
 [ext_resource type="Texture2D" uid="uid://c5p00v0ot4ayk" path="res://GUI/player_hud/sprites/boss-hp.png" id="3_4b3j6"]
-[ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="4_5bkpt"]
 [ext_resource type="PackedScene" uid="uid://cio2ixu33svhj" path="res://GUI/player_hud/electro_gui.tscn" id="4_5nb4v"]
 [ext_resource type="PackedScene" uid="uid://tggihnqvract" path="res://GUI/player_hud/spoons_gui.tscn" id="4_ki6p8"]
 [ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="4_yhjvm"]
@@ -18,31 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dx6grwyk80lvg" path="res://GUI/player_hud/sprites/MoonPhases.png" id="11_ea3vn"]
 [ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees.tres" id="14_e1kye"]
 [ext_resource type="Script" uid="uid://c1wd58yhexfbi" path="res://GUI/player_hud/hud_time.gd" id="15_vdg2b"]
-
-[sub_resource type="Gradient" id="Gradient_rxq5y"]
-offsets = PackedFloat32Array(0, 0.436975, 0.731092)
-colors = PackedColorArray(0.866667, 1, 0.462745, 1, 1, 0.933333, 0, 0.317647, 1, 0.3, 0.3, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5bkpt"]
-gradient = SubResource("Gradient_rxq5y")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_scbx3"]
-atlas = ExtResource("4_5bkpt")
-region = Rect2(144, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bkpt"]
-atlas = ExtResource("4_5bkpt")
-region = Rect2(144, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_terqw"]
-atlas = ExtResource("4_5bkpt")
-region = Rect2(128, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ea3vn"]
-atlas = ExtResource("4_5bkpt")
-region = Rect2(128, 0, 16, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xolfj"]
 bg_color = Color(0, 0, 0, 0.5019608)
@@ -731,87 +705,6 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Abilities" type="Control" parent="Control" unique_id=945022469]
-visible = false
-anchors_preset = 0
-offset_left = 456.0
-offset_top = 144.0
-offset_right = 520.0
-offset_bottom = 208.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Abilities" unique_id=425451848]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer" unique_id=1611367323]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_5bkpt")
-
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer/TextureRect" unique_id=448901593]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture = SubResource("AtlasTexture_scbx3")
-stretch_mode = 3
-
-[node name="TextureRect2" type="TextureRect" parent="Control/Abilities/HBoxContainer" unique_id=714169066]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_5bkpt")
-
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer/TextureRect2" unique_id=1400215700]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture = SubResource("AtlasTexture_5bkpt")
-stretch_mode = 3
-
-[node name="TextureRect3" type="TextureRect" parent="Control/Abilities/HBoxContainer" unique_id=1508655540]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_5bkpt")
-
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer/TextureRect3" unique_id=1103380708]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture = SubResource("AtlasTexture_terqw")
-stretch_mode = 3
-
-[node name="ArrowCountLabel" type="Label" parent="Control/Abilities/HBoxContainer/TextureRect3" unique_id=1063119686]
-unique_name_in_owner = true
-layout_mode = 0
-offset_top = 46.0
-offset_right = 64.0
-offset_bottom = 87.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_yhjvm")
-theme_override_font_sizes/font_size = 42
-text = "99"
-horizontal_alignment = 1
-
-[node name="TextureRect4" type="TextureRect" parent="Control/Abilities/HBoxContainer" unique_id=1734784759]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_5bkpt")
-
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer/TextureRect4" unique_id=682057276]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture = SubResource("AtlasTexture_ea3vn")
-stretch_mode = 3
-
-[node name="BombCountLabel" type="Label" parent="Control/Abilities/HBoxContainer/TextureRect4/TextureRect" unique_id=1440072188]
-unique_name_in_owner = true
-layout_mode = 0
-offset_top = 46.0
-offset_right = 64.0
-offset_bottom = 87.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_yhjvm")
-theme_override_font_sizes/font_size = 42
-text = "99"
-horizontal_alignment = 1
-
 [node name="GameOver" type="Control" parent="Control" unique_id=2102015974]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -1031,7 +924,6 @@ libraries/ = SubResource("AnimationLibrary_ki6p8")
 
 [node name="CenterNotification" type="Control" parent="Control" unique_id=344031722]
 process_mode = 3
-visible = false
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0

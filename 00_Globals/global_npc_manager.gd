@@ -60,25 +60,32 @@ func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) ->
 func bye_bye_bird_friend() -> void:
 	await get_tree().create_timer( randi() % 20 ).timeout
 	if StatsManager.achievements.have_bird_friend == 1:
-		if PlayerHud.current_friend == 1:
+		if PauseMenu.current_friend == 1:
 			## make sure bird friend is sitting on the player and we're not in a minigame
 			if PlayerManager.player.bird_friend_sprite.visible == true:
 				if not str(PlayerManager.player.state_machine.current_state).contains( "freq" ):
 					_start_dialog( SPEACH_BUBBLE, BF_REPEATABLES, "goodbyes" )
-					PlayerHud.update_ability_ui( 0 ) # NONE
+					PauseMenu.update_ability_items( ["NONE", "", "", "", ""] )
+					PlayerManager.player.player_abilities.set_none_ability()
 				else:
-					await get_tree().create_timer( 1 ).timeout
-					bye_bye_bird_friend()
+					_bird_friend_loop()
+			else:
+				_bird_friend_loop()
 		else:
-			##	Then it's in the tree and flies away; bird_friend.gd
+			##	or else it's in the tree and flies away. -bird_friend.gd
 			bf_awake = false
 			bf_npc_status.emit( bf_awake, null )
+
+
+func _bird_friend_loop() -> void:
+	await get_tree().create_timer( 1 ).timeout
+	bye_bye_bird_friend()
 
 
 func bird_friend_awake() -> void:
 	await get_tree().create_timer( randi() % 20 ).timeout
 	if StatsManager.achievements.have_bird_friend:
-		if PlayerHud.current_friend != 1:
+		if PauseMenu.current_friend != 1:
 			var location : String
 			bf_awake = true
 			#	Every three days

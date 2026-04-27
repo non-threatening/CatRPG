@@ -7,28 +7,21 @@ var hearts : Array[ HeartGUI ] = []
 var electros : Array[ ElectroGUI ] = []
 var spoons : Array[ SpoonsGUI ] = []
 var active_save : String = "_1"
-var current_friend : int
 
+@onready var control: Control = $Control
 @onready var loading_screen: TextureRect = $LoadingScreen
+
+@onready var time: Control = $Control/HudTime
 @onready var time_label: Label = $Control/HudTime/TimeLabel
 
 @onready var hearts_display: HFlowContainer = $Control/Hearts
 @onready var electros_display: HFlowContainer = $Control/Electros
 @onready var spoons_display: HFlowContainer = $Control/Spoons
-@onready var time: Control = $Control/HudTime
 
 @onready var game_over : Control = $Control/GameOver
 @onready var continue_button: Button = $Control/GameOver/VBoxContainer/ContinueButton
 @onready var title_button: Button = $Control/GameOver/VBoxContainer/TitleButton
 @onready var animation_player: AnimationPlayer = $Control/GameOver/AnimationPlayer
-@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
-
-@onready var control: Control = $Control
-
-@onready var ability_items: HBoxContainer = $Control/Abilities/HBoxContainer
-@onready var arrow_count_label: Label = %ArrowCountLabel
-@onready var bomb_count_label: Label = %BombCountLabel
-
 
 @onready var boss_ui: Control = $Control/BossUI
 @onready var boss_hp_bar: TextureProgressBar = $Control/BossUI/TextureProgressBar
@@ -56,21 +49,24 @@ func _ready() -> void:
 			c.visible = false
 			
 	hide_game_over_screen()
-	continue_button.focus_entered.connect( play_audio.bind( button_focus_audio ) )
 	continue_button.pressed.connect( load_game )
-	title_button.focus_entered.connect( play_audio.bind( button_focus_audio ) )
+	continue_button.focus_entered.connect( _on_focus_entered )
+	title_button.focus_entered.connect( _on_focus_entered )
 	title_button.pressed.connect( title_screen )
 	LevelManager.level_load_started.connect( hide_game_over_screen )
 	LevelManager.level_load_started.connect( show_loading_screen )
 	LevelManager.level_loaded.connect( hide_loading_screen )
 	
 	hide_boss_health()
-	update_ability_ui( 2 )
-	
+
 	PauseMenu.shown.connect( _on_show_menu )
 	PauseMenu.hidden.connect( _on_hide_menu )
 	ShopMenu.shown.connect( _on_show_menu )
 	ShopMenu.hidden.connect( _on_hide_menu )
+
+
+func _on_focus_entered() -> void:
+	AudioManager.play_ui( button_focus_audio )
 
 
 func show_loading_screen() -> void:
@@ -89,6 +85,18 @@ func hide_loading_screen() -> void:
 	electros_display.show()
 	spoons_display.show()
 	time.show()
+
+
+##can queue notifictions from anywhere globaly
+func queue_notification( _title : String, _message : String ) -> void:
+	notificationUI.add_notification_to_queue( _title, _message )
+
+func queue_stacked_notification( _title : String, _message : String ) -> void:
+	stacked_notificationUI.add_notification_to_queue( _title, _message )
+
+func queue_center_notificationUI( _title : String, _message : String ) -> void:
+	center_notificationUI.add_notification_to_queue( _title, _message )
+	
 
 
 ##	Electro Display
@@ -129,7 +137,6 @@ func update_capacity( _max_cap : int ) -> void:
 			spoons[i].visible= false
 
 
-
 ## Heart displays
 func update_hp( _hp: int, _max_hp: int ) -> void:
 	update_max_hp( _max_hp )
@@ -150,16 +157,15 @@ func update_max_hp( _max_hp : int ) -> void:
 
 
 func load_game() -> void:
-	play_audio( button_select_audio )
+	AudioManager.play_ui( button_select_audio )
 	await fade_to_black()
 	SaveManager.load_game( active_save )
 	pass
 	
 
 func title_screen() -> void:
-	play_audio( button_select_audio )
+	AudioManager.play_ui( button_select_audio )
 	await fade_to_black()
-	
 	LevelManager.load_new_level( "res://title_scene/title_scene.tscn", "", Vector2.ZERO )
 	
 
@@ -170,69 +176,13 @@ func fade_to_black() -> bool:
 	return true
 
 
-func play_audio( _a : AudioStream ) -> void:
-	audio.stream = _a
-	audio.play()
-
-
-##can queue notifictions from anywhere globaly
-func queue_notification( _title : String, _message : String ) -> void:
-	notificationUI.add_notification_to_queue( _title, _message )
-	pass
-
-func queue_stacked_notification( _title : String, _message : String ) -> void:
-	stacked_notificationUI.add_notification_to_queue( _title, _message )
-	pass
-
-func queue_center_notificationUI( _title : String, _message : String ) -> void:
-	center_notificationUI.add_notification_to_queue( _title, _message )
-	pass
-
-
-
-func update_ability_items( items : Array[ String ] ) -> void:
-	var ability_item : Array[ Node ] = ability_items.get_children()
-	for i in ability_item.size():
-		if items[ i ] == "":
-			ability_item[ i ].hide()
-		else:
-			ability_item[ i ].show()
-	pass
-
-
-
-func update_ability_ui( ability_index: int ) -> void:
-	prints("update ability ui:", ability_index )
-	current_friend = ability_index
-	var _items : Array[ Node ] = ability_items.get_children()
-	for a in _items:
-		a.self_modulate = Color( 1,1,1,0 )
-		a.modulate = Color( 0.6, 0.6, 0.6, 0.8 )
-	_items[ ability_index ].self_modulate = Color( 1,1,1,1 )
-	_items[ ability_index ].modulate = Color( 1,1,1,1 )
-	play_audio( button_focus_audio )
-	pass
-
-
-func update_arrow_count( count : int ) -> void:
-	arrow_count_label.text = str( count )
-	pass
-
-
-func update_bomb_count( count : int ) -> void:
-	bomb_count_label.text = str( count )
-	pass
-	
-
-
 func _on_show_menu() -> void:
 	control.hide()
-	pass
 
 
 func _on_hide_menu() -> void:
 	control.show()
-	pass
+
 
 func show_game_over_screen() -> void:
 	game_over.show()
@@ -250,8 +200,6 @@ func show_game_over_screen() -> void:
 	else:
 		title_button.grab_focus()
 
-	
-	
 
 func hide_game_over_screen() -> void:
 	game_over.visible = false
@@ -267,9 +215,7 @@ func boss_show_health( boss_name : String ) -> void:
 
 func hide_boss_health() -> void:
 	boss_ui.visible = false
-	pass
 	
 	
 func update_boss_hp( hp : int, max_hp : int ) -> void:
 	boss_hp_bar.value = clampf( float(hp) / float(max_hp) * 100, 0, 100  )
-	pass

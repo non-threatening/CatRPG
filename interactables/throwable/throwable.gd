@@ -77,7 +77,7 @@ func drop() -> void:
 	PlayerManager.player.get_parent().call_deferred( "add_child", prop ) #Add it to scene tree
 	prop.position = PlayerManager.player.position
 	object_sprite.position.y = -50
-	vertical_velocity = -200 	# TODO: Make export var for differnt weghts, ballons
+	vertical_velocity = -200
 	throw_speed = 100
 	set_physics_process( true )
 	wall_detect.body_entered.connect( _on_body_entered )

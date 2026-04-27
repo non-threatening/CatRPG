@@ -11,6 +11,8 @@ const TOM__9_ = preload("uid://b55lwwli8jahd")
 var is_paused : bool = false
 var save_dict : Dictionary
 
+var current_friend : int
+
 @onready var control: Control = $Control
 @onready var tab_container: TabContainer = $Control/TabContainer
 @onready var button_quit: Button = $Control/TabContainer/System/Button_Quit
@@ -150,21 +152,24 @@ func focused_item_changed( slot : SlotData ) -> void:
 func update_item_description( new_text : String ) -> void:
 	item_description.text = new_text
 	
-func update_abilities_description( new_text : String ) -> void:
-	abilities_description.text = new_text
 
 
 func preview_stats( item : ItemData ) -> void:
 	preview_stats_changed.emit( item )
 
 
-func update_ability_items( items : Array[ String ] ) -> void:
+
+#func update_abilities_description( new_text : String ) -> void:
+	#abilities_description.text = new_text
+	
+func update_ability_items( items : Array ) -> void:
 	var item_buttons : Array[ Node ] = %AbilityGridContainer.get_children()
 	for i in item_buttons.size():
 		if items[ i ] == "":
 			item_buttons[ i ].hide()
 		else:
 			item_buttons[ i ].show()
+			current_friend = i
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -190,9 +195,3 @@ func change_tab( _i : int = 1 ) -> void:
 		tab_container.get_tab_count()
 		)
 	tab_container.get_tab_bar().grab_focus()
-	prints( "change_tab" )
-	pass
-#
-#func play_audio( audio : AudioStream ) -> void:
-	#audio_stream_player.stream = audio
-	#audio_stream_player.play()

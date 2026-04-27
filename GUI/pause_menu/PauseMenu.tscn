@@ -35,17 +35,17 @@
 [ext_resource type="Theme" uid="uid://nmpesfiox7l3" path="res://materials/PauseMenuPanels.tres" id="29_f46m6"]
 [ext_resource type="Script" uid="uid://bfp1bteey43ld" path="res://GUI/pause_menu/save_load/button_saves_an_loads.gd" id="29_vifo2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_awacl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1w5p"]
 atlas = ExtResource("6_hio0w")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5wmam"]
 atlas = ExtResource("6_hio0w")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1w5p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_awacl"]
 atlas = ExtResource("6_hio0w")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3yxpl"]
 atlas = ExtResource("8_mnpje")
@@ -138,10 +138,9 @@ grow_vertical = 2
 theme_override_constants/tab_separation = 10
 theme_override_font_sizes/font_size = 48
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Inventory" type="Control" parent="Control/TabContainer" unique_id=1459924720]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_hio0w")
 metadata/_tab_index = 0
@@ -157,6 +156,32 @@ offset_bottom = 349.0
 unique_name_in_owner = true
 layout_mode = 2
 columns = 2
+
+[node name="InventorySlotNONE" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=559717891]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "NONE!!!!!!!!!!!"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer/InventorySlotNONE" unique_id=974840727]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_d1w5p")
+stretch_mode = 3
+
+[node name="BombCountLabel" type="Label" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer/InventorySlotNONE" unique_id=252764370]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "99"
 
 [node name="InventorySlot" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=1230758654]
 custom_minimum_size = Vector2(128, 128)
@@ -175,22 +200,6 @@ offset_right = -34.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_iygof")
-stretch_mode = 3
-
-[node name="InventorySlot2" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=1116022612]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("6_320ax")
-description = "Grappling hook thing... can't think of a use right now.. Maybe a late game abilit with magents or something."
-
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer/InventorySlot2" unique_id=1427477722]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_awacl")
 stretch_mode = 3
 
 [node name="InventorySlot3" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=343174035]
@@ -218,6 +227,22 @@ offset_bottom = 57.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "99"
+
+[node name="InventorySlot2" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=1116022612]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "Grappling hook thing... can't think of a use right now.. Maybe a late game abilit with magents or something."
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer/InventorySlot2" unique_id=1427477722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_awacl")
+stretch_mode = 3
 
 [node name="InventorySlot4" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=464407785]
 custom_minimum_size = Vector2(128, 128)
@@ -428,6 +453,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Quest" type="Control" parent="Control/TabContainer" unique_id=467120250]
+visible = false
 layout_mode = 2
 script = ExtResource("4_3yxpl")
 metadata/_tab_index = 1

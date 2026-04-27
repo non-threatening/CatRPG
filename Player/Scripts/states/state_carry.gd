@@ -1,6 +1,6 @@
 class_name State_Carry extends State
 
-@export var move_speed : float = 300 # TODO: put a move_speed modifier option on the objects
+@export var move_speed : float = 300
 @export var throw_audio : AudioStream
 
 var walking : bool = false

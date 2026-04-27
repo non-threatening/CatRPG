@@ -14,9 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name_localized={
-"de": ""
-}
+config/name="Secret of CAT"
 run/main_scene="uid://f6hapagaurf5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://c257bwkqgjp38"
@@ -39,7 +37,6 @@ PauseMenu="*res://GUI/pause_menu/PauseMenu.tscn"
 EffectManager="*res://00_Globals/global_effect_manager.gd"
 ShopMenu="*res://GUI/shop_menu/shop_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-QuestSystem="*uid://b77kvbliweux5"
 Shortcuts="*res://Quests/scripts/quest_system_shortcuts.gd"
 QuestVars="*res://00_Globals/global_quest_vars.gd"
 NpcManager="*res://00_Globals/global_npc_manager.gd"
@@ -47,6 +44,7 @@ SteamController="*res://00_Globals/Steam/steam_controller.gd"
 StatsManager="*res://00_Globals/global_stats_manager.gd"
 SignalBus="*res://00_Globals/global_signal_bus.gd"
 SaveManager="*res://00_Globals/global_save_manager.gd"
+QuestSystem="*uid://b77kvbliweux5"
 
 [debug]
 

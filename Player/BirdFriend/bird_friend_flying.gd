@@ -152,9 +152,8 @@ func arrive( throw_direction : Vector2, bf_position ) -> void:
 
 
 func update_animation() -> void:
-	await get_tree().process_frame
-	await get_tree().process_frame
-	await get_tree().process_frame # wait an extra frame to process Return state and change direction
+	# wait an extra frame to process Return state and change direction
+	await get_tree().create_timer( 0.05 ).timeout
 	var direction_id : int = int( round( ( direction * 0.1 ).angle() / TAU * DIR_4.size() ) )
 	flight_direction = DIR_4[ direction_id ]
 	frame_offest = anim_direction()

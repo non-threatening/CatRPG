@@ -4,9 +4,9 @@ const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
 const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 
 var abilities : Array[ String ] = [
-	"", "", "", "", "" ## "BIRD", "GRAPPLE", "BOW", "BOMB"
+	"", "", "", "", "" ## "NONE", BIRD", "GRAPPLE", "BOW", "BOMB"
 	]
-var selected_ability = 0
+var selected_ability
 var player : Player
 var bird_instance : BirdFriendFlying = null
 
@@ -20,8 +20,6 @@ var bird_instance : BirdFriendFlying = null
 
 func _ready() -> void:
 	player = PlayerManager.player
-	PlayerHud.update_arrow_count( player.arrow_count )
-	PlayerHud.update_bomb_count( player.bomb_count )
 	setup_abilities()
 	SaveManager.game_loaded.connect( _on_game_loaded )
 	PlayerManager.INVETORY_DATA.ability_acquired.connect( _on_ability_acquired )
@@ -31,8 +29,7 @@ func _fly_bird_friend() -> void:
 	bird_leaving()
 	
 func setup_abilities( select_index : int = 0 ) -> void:
-	PauseMenu.update_ability_items( abilities )
-	PlayerHud.update_ability_items( abilities )
+	PauseMenu.update_ability_items( abilities ) ## this in npcManager
 	selected_ability = select_index - 1
 	toggle_ability()
 	pass
@@ -63,7 +60,6 @@ func toggle_ability() -> void:
 	selected_ability = wrapi( selected_ability + 1, 0, 5 )
 	while abilities[ selected_ability ] == "":
 		selected_ability = wrapi( selected_ability + 1, 0, 5 )
-	PlayerHud.update_ability_ui( selected_ability )
 	
 	await get_tree().process_frame
 	if selected_ability == 1:
@@ -72,7 +68,13 @@ func toggle_ability() -> void:
 		player.hide_bird_friend()
 	pass
 
+
+func set_none_ability() -> void:
+	selected_ability = 0
+
+
 func none_ability() -> void:
+	##TODO: long meow, hold down
 	pass
 
 
