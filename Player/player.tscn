@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bsh3myq2lhtf5" path="res://Player/Scripts/player.gd" id="1_t577b"]
 [ext_resource type="Material" uid="uid://ikl3qglhwxv3" path="res://Player/player.tres" id="2_1l10g"]
 [ext_resource type="Script" uid="uid://peawa8goqhyd" path="res://Player/Scripts/player_state_machine.gd" id="3_6mdjo"]
+[ext_resource type="Texture2D" uid="uid://3d43x5cnagdj" path="res://Player/Sprites/Player_Sprite_Master_NewNew.png" id="3_7x5p2"]
 [ext_resource type="Texture2D" uid="uid://dhn3ppn1oma2s" path="res://Player/Sprites/AttackSprite01.png" id="3_kkg45"]
-[ext_resource type="Texture2D" uid="uid://bqetda8jkyx5" path="res://Player/Sprites/Player_Sprite_Master.png" id="3_wvbyc"]
 [ext_resource type="Script" uid="uid://d3jhi642kbnhk" path="res://Player/Scripts/player_sprite.gd" id="4_i4o1l"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="4_svx73"]
 [ext_resource type="Script" uid="uid://b47djf80rcjo5" path="res://Player/Scripts/states/state_idle.gd" id="4_t8vup"]
@@ -38,7 +38,6 @@
 [ext_resource type="Script" uid="uid://6tr15mx0lxyq" path="res://Player/Scripts/states/state_electro_shell.gd" id="23_maysp"]
 [ext_resource type="AudioStream" uid="uid://ne6q0acunx70" path="res://Player/Audio/exhausted.wav" id="24_755ss"]
 [ext_resource type="Script" uid="uid://yxttc1bkcbek" path="res://Player/Scripts/states/state_dash.gd" id="27_c6x0f"]
-[ext_resource type="AudioStream" uid="uid://bsd4g0cistw3p" path="res://Player/Audio/level_up_jingle.wav" id="29_bbimk"]
 [ext_resource type="Script" uid="uid://c5qgvpcwm1prf" path="res://Player/Scripts/states/state_bow.gd" id="29_qs4pp"]
 [ext_resource type="Script" uid="uid://cmbg0jclkcxjw" path="res://Player/Scripts/states/state_grapple.gd" id="31_8ynux"]
 [ext_resource type="AudioStream" uid="uid://ce4tlj7lvl8vb" path="res://Player/Audio/grapple_fire.wav" id="32_ie76m"]
@@ -48,7 +47,6 @@
 [ext_resource type="Texture2D" uid="uid://b4vhkw38nugvr" path="res://Player/Sprites/grapple.png" id="39_f4lon"]
 [ext_resource type="PackedScene" uid="uid://38bq26xw57sx" path="res://Player/Audio/ToneGenerator/tone_generator.tscn" id="41_wvbyc"]
 [ext_resource type="Script" uid="uid://b62lmwn8ltte8" path="res://Player/collisions.gd" id="42_gvnt1"]
-[ext_resource type="AudioStream" uid="uid://ds076jmw3y5fy" path="res://Audio/Samples/808/snare (2).ogg" id="43_6eb1q"]
 [ext_resource type="AudioStream" uid="uid://b8hbhokgsn50x" path="res://Player/Audio/grapple_chain.wav" id="44_dy65m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1kmt7"]
@@ -2304,9 +2302,9 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_dx1an"]
 resource_name = "walk_side"
-length = 1.000005
+length = 1.0000042
 loop_mode = 1
-step = 0.5
+step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2317,7 +2315,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666, 0.5, 0.5833333, 0.6666667, 0.75, 0.8333333, 0.9166667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 9, 10]
+"values": [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2938,7 +2936,7 @@ size = Vector2(249, 85)
 size = Vector2(92, 190)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o28un"]
-radius = 167.23587
+radius = 95.0332
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwjto"]
 radius = 112.0
@@ -3075,40 +3073,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [Color(1, 1, 1, 1), Color(1, 0.513726, 1, 0.494118), Color(1, 1, 1, 0.494118), Color(1, 0.392157, 1, 1), Color(1, 0.513726, 1, 0.494118), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "audio"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Audio/AudioStreamPlayer2D")
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/outline_thickness")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("43_6eb1q")
-}],
-"times": PackedFloat32Array(0.0333333)
-}
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:material:shader_parameter/outline_thickness")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.0918458, 0.166667, 0.266667, 0.333333, 0.433333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 10.0, 0.0, 10.0, 0.0, 10.0, 0.0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Label:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -3206,21 +3189,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/AudioStreamPlayer2D")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"clips": [{
-"end_offset": 0.90719,
-"start_offset": 0.0,
-"stream": ExtResource("29_bbimk")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5tmop"]
 _data = {
@@ -3257,12 +3225,14 @@ script = ExtResource("1_t577b")
 metadata/_edit_vertical_guides_ = [173.0, -173.0]
 
 [node name="PlayerShapeHor" type="CollisionShape2D" parent="." unique_id=1090302026]
+visible = false
 position = Vector2(0, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_1kmt7")
 debug_color = Color(0, 0.63529414, 0.3764706, 0)
 
 [node name="PlayerShapeVert" type="CollisionShape2D" parent="." unique_id=994050475]
+visible = false
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_c4i3b")
 debug_color = Color(0, 0.63529414, 0.3764706, 0)
@@ -3286,7 +3256,8 @@ libraries/ = SubResource("AnimationLibrary_3pjbc")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=969619066]
 texture_filter = 2
 material = ExtResource("2_1l10g")
-texture = ExtResource("3_wvbyc")
+scale = Vector2(0.666, 0.666)
+texture = ExtResource("3_7x5p2")
 offset = Vector2(0, -104)
 hframes = 6
 vframes = 6
@@ -3343,7 +3314,7 @@ texture = ExtResource("4_svx73")
 
 [node name="BirdFriendSprite" type="Sprite2D" parent="Sprite2D" unique_id=1110330149]
 material = SubResource("ShaderMaterial_f4lon")
-position = Vector2(-41, -132)
+position = Vector2(-50, -145)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("12_iyprq")
 hframes = 2
@@ -3481,11 +3452,10 @@ debug_color = Color(0.87058824, 0.2627451, 0.58431375, 0.44705883)
 visible = false
 position = Vector2(0, -19)
 scale = Vector2(0.831355, 0.831355)
-magnet_strength = 10.0
 play_magnet_audio = true
 
 [node name="ItemMagnetShape" type="CollisionShape2D" parent="Collisions/ItemMagnet" unique_id=1171035674]
-position = Vector2(0, -60.142784)
+position = Vector2(0, -30)
 shape = SubResource("CircleShape2D_o28un")
 debug_color = Color(0, 0.595, 0.7, 0)
 
@@ -3566,9 +3536,6 @@ editor_draw_limits = true
 script = ExtResource("11_hfp0w")
 
 [node name="Audio" type="Node2D" parent="." unique_id=994178691]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio" unique_id=284582391]
-max_polyphony = 6
 
 [node name="ToneGenerator" parent="Audio" unique_id=1077312684 instance=ExtResource("41_wvbyc")]
 

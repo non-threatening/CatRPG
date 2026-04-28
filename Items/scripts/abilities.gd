@@ -23,17 +23,14 @@ func _ready() -> void:
 	setup_abilities()
 	SaveManager.game_loaded.connect( _on_game_loaded )
 	PlayerManager.INVETORY_DATA.ability_acquired.connect( _on_ability_acquired )
-	NpcManager.bf_away.connect( _fly_bird_friend )
+	NpcManager.bf_away.connect( _bird_leaving )
 	
-func _fly_bird_friend() -> void:
-	bird_leaving()
 	
 func setup_abilities( select_index : int = 0 ) -> void:
 	PauseMenu.update_ability_items( abilities ) ## this in npcManager
 	selected_ability = select_index - 1
 	toggle_ability()
-	pass
-	
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability"):
@@ -74,11 +71,11 @@ func set_none_ability() -> void:
 
 
 func none_ability() -> void:
-	##TODO: long meow, hold down
+	##TODO: Short meow. long meow on long press
 	pass
 
 
-func bird_leaving() -> void:
+func _bird_leaving() -> void:
 	if bird_instance != null:
 		return
 	var _b = BIRD.instantiate() as BirdFriendFlying
@@ -144,13 +141,16 @@ func _on_game_loaded() -> void:
 
 
 func _on_ability_acquired( _ability : AbilityItemData ) -> void:
-	print( "Give Ability: ",  _ability.type )
 	#"NONE", "BIRD", "GRAPPLE", "BOW", "BOMB"
 	match _ability.type:
 		_ability.Type.NONE:
 			abilities[0] = "NONE"
 		_ability.Type.BIRD:
-			abilities[1] = "BIRD"
+			if StatsManager.achievements.have_bird_friend:
+				abilities[1] = "BIRD"
+			else:
+				await get_tree().create_timer( 0.666 ).timeout
+				abilities[1] = "BIRD"
 		_ability.Type.GRAPPLE:
 			abilities[2] = "GRAPPLE"
 		_ability.Type.ARROW:

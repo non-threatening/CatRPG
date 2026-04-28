@@ -31,3 +31,15 @@ func bird_arriving() -> void:
 	var direction = _b.global_position.direction_to( bf_position )
 	_b.arrive( direction, bf_position )
 	bird_instance = _b
+
+func to_and_fro_back_to_cat() -> void:
+	prints("trigered in to and from back to cat")
+	if bird_instance != null:
+		return
+	var _b = BIRD.instantiate() as BirdFriendFlying
+	var bf_position = bird_friend.global_position
+	bird_friend.add_sibling( _b ) # make it a sibling so its at the same Z
+	_b.toggle_item_magent()
+	
+	_b.back_to_cat( bf_position )
+	pass

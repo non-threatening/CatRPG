@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="9_qnxbr"]
 [ext_resource type="Resource" uid="uid://b6b1kcavta3in" path="res://Items/a_gimp_suit.tres" id="10_xvh4v"]
 [ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="11_yr5mt"]
+[ext_resource type="Resource" uid="uid://cfyfqaq8el1xq" path="res://Dialogue/Conversations/BF/BF_repeatables.dialogue" id="12_26whl"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees.tscn" id="12_hxh2l"]
 [ext_resource type="Script" uid="uid://bovbv6m0thrps" path="res://npc/scripts/npc.gd" id="13_4uvlv"]
 [ext_resource type="Script" uid="uid://donxx42sa5o1g" path="res://npc/wolf_npc.gd" id="13_g0pye"]
@@ -93,6 +94,14 @@ seamless = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_26whl"]
 shader = SubResource("Shader_wmkbj")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_765h2")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0fwua"]
+radius = 156.0
+height = 504.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_451xv"]
+radius = 152.0
+height = 502.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5fwb"]
 radius = 73.552704
@@ -268,6 +277,7 @@ offset_bottom = 2049.0
 
 [node name="LightingShadows" type="Polygon2D" parent="." unique_id=40614986]
 material = ExtResource("4_70lcl")
+position = Vector2(15, 43)
 polygon = PackedVector2Array(-24, -252, 1591, -252, 1583, 836, -6, 836)
 script = ExtResource("3_4uvlv")
 
@@ -308,7 +318,29 @@ uv = PackedVector2Array(502.27698, 7.725375, 409.9581, 48.50435, 330.55432, 113.
 position = Vector2(2059, 139)
 
 [node name="BirdFriend" parent="." unique_id=122702968 instance=ExtResource("45_li6oa")]
-position = Vector2(1028, 42)
+z_index = 1
+position = Vector2(1472, 167)
+
+[node name="Indicator2D" parent="BirdFriend" unique_id=497168644 instance=ExtResource("15_t22hv")]
+monitorable = false
+y = -210
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdFriend/Indicator2D" unique_id=1140291749]
+position = Vector2(97, 12)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_0fwua")
+debug_color = Color(0, 0.5950001, 0.7, 0)
+
+[node name="ActionableDialog" parent="BirdFriend" unique_id=1564598805 instance=ExtResource("19_li6oa")]
+monitorable = false
+dialogue_resource = ExtResource("12_26whl")
+dialogue_start = "in_tree"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdFriend/ActionableDialog" unique_id=183751440]
+position = Vector2(96, 12)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_451xv")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="Grass" type="Node2D" parent="." unique_id=1339518940]
 y_sort_enabled = true
@@ -695,7 +727,7 @@ position = Vector2(-147, 215)
 position = Vector2(-288, 184)
 
 [node name="Flower48" parent="Flowers2" unique_id=228471380 instance=ExtResource("7_qhnrh")]
-position = Vector2(620.593, 240.919)
+position = Vector2(535.3029, 208.83456)
 
 [node name="Flower49" parent="Flowers2" unique_id=750014839 instance=ExtResource("7_qhnrh")]
 position = Vector2(507.59302, 372.919)
@@ -912,8 +944,7 @@ debug_color = Color(0.37905112, 0.47461665, 1, 0)
 
 [node name="BirdFriendSprite" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" unique_id=1618396618]
 material = SubResource("ShaderMaterial_a6xma")
-position = Vector2(225, -397.00003)
-scale = Vector2(1.5, 1.5)
+position = Vector2(227, -375)
 texture = ExtResource("28_li6oa")
 hframes = 2
 region_rect = Rect2(7, 81, 102, 42)
@@ -980,7 +1011,7 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 1.5648731
+energy = 0.95389104
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")

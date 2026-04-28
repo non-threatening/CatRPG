@@ -11,8 +11,6 @@ const TOM__9_ = preload("uid://b55lwwli8jahd")
 var is_paused : bool = false
 var save_dict : Dictionary
 
-var current_friend : int
-
 @onready var control: Control = $Control
 @onready var tab_container: TabContainer = $Control/TabContainer
 @onready var button_quit: Button = $Control/TabContainer/System/Button_Quit
@@ -169,7 +167,6 @@ func update_ability_items( items : Array ) -> void:
 			item_buttons[ i ].hide()
 		else:
 			item_buttons[ i ].show()
-			current_friend = i
 
 
 func _unhandled_input(event: InputEvent) -> void:

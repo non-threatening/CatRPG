@@ -120,6 +120,14 @@ func arrived() -> void:
 	queue_free()
 
 
+func back_to_cat( bf_position ) -> void:
+	position = bf_position
+	update_animation()
+	flap_animation()
+	visible = true
+	state = State.RETURN
+
+
 func leave( throw_direction : Vector2 ) -> void:
 	direction = throw_direction
 	speed = max_speed

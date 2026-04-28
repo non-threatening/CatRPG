@@ -30,6 +30,9 @@ var defense_bonus : int = 0
 var arrow_count : int = 25 : set = _set_arrow_count
 var bomb_count : int = 10 : set = _set_bomb_count
 
+var wait_time: float = 1.0
+var time: float = 0.0
+
 
 @onready var player_shape_vert: CollisionShape2D = $PlayerShapeVert
 @onready var player_shape_hor: CollisionShape2D = $PlayerShapeHor
@@ -64,10 +67,6 @@ func _ready() -> void:
 	PlayerManager.INVETORY_DATA.equipment_changed.connect( _on_equipment_changed )
 	PlayerManager.INVETORY_DATA.item_added_to_inventory.connect( _item_added )
 	PlayerManager.interact_pressed.connect( _interact_pressed )
-	pass
-
-var wait_time: float = 1.0
-var time: float = 0.0
 
 
 # Quest trigger
@@ -216,9 +215,9 @@ func _on_equipment_changed() -> void:
 
 func _set_arrow_count( value : int ) -> void:
 	arrow_count = value
-	PlayerHud.update_arrow_count( value )
+	#PlayerHud.update_arrow_count( value )
 
 
 func _set_bomb_count( value : int ) -> void:
 	bomb_count = value
-	PlayerHud.update_bomb_count( value )
+	#PlayerHud.update_bomb_count( value )
