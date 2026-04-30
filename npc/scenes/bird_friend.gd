@@ -20,6 +20,7 @@ func _ready() -> void:
 	actionable_dialog.monitorable = false
 	indicator_2d.monitorable = false
 
+
 func _on_level_loaded() -> void:
 	if StatsManager.achievements.have_bird_friend == 1:
 		await get_tree().create_timer( 1.2 ).timeout
@@ -41,13 +42,16 @@ func _arrived() -> void:
 
 
 func _back_to_cat() -> void:
-	prints("triggered in b_f.gd")
 	to_and_fro.to_and_fro_back_to_cat()
 	bird_friend.hide()
-	pass
+	PlayerManager.player.player_abilities.abilities = ["", "BIRD", "", "", ""]
+	PlayerManager.player.player_abilities.set_ability_number( 1 )
+	PauseMenu.update_ability_items( ["", "BIRD", "", "", ""] )
+
 
 ## Back and forth from tree
 func _status( awake, location ) -> void:
+	prints("bf awake, location:", awake, location)
 	if awake:
 		var current_scene = get_tree().get_current_scene().name
 		if location == current_scene:

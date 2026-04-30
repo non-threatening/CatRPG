@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="3_dbsq7"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="3_onuem"]
 [ext_resource type="Script" uid="uid://dm47ewpkcnfpm" path="res://npc/scenes/to_and_fro.gd" id="7_6nhij"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="7_lujc4"]
+[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://GeneralNodes/Actionables/actionable_dialog.tscn" id="8_5xjx1"]
+[ext_resource type="Resource" uid="uid://cfyfqaq8el1xq" path="res://Dialogue/Conversations/BF/BF_repeatables.dialogue" id="9_vo45r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xp5l"]
 radius = 22.589897
@@ -136,6 +139,14 @@ _data = {
 &"walk_up": SubResource("Animation_ocili")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xjx1"]
+radius = 156.0
+height = 504.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgkf"]
+radius = 152.0
+height = 502.0
+
 [node name="BirdFriend" type="Node2D" unique_id=122702968]
 script = ExtResource("1_f87gl")
 
@@ -170,3 +181,24 @@ libraries/ = SubResource("AnimationLibrary_wuxkc")
 
 [node name="ToAndFro" type="Node" parent="." unique_id=461166531]
 script = ExtResource("7_6nhij")
+
+[node name="Indicator2D" parent="." unique_id=497168644 instance=ExtResource("7_lujc4")]
+monitorable = false
+y = -210
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Indicator2D" unique_id=494143852]
+position = Vector2(97, 12)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_5xjx1")
+debug_color = Color(0, 0.5950001, 0.7, 0)
+
+[node name="ActionableDialog" parent="." unique_id=449322354 instance=ExtResource("8_5xjx1")]
+monitorable = false
+dialogue_resource = ExtResource("9_vo45r")
+dialogue_start = "in_tree"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableDialog" unique_id=1823922393]
+position = Vector2(96, 12)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_etgkf")
+debug_color = Color(0, 0.5950001, 0.7, 0)

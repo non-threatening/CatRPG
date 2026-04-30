@@ -24,7 +24,7 @@ var twirl_time : float = 0.0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+#@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var item_magnet: ItemMagnet = $ItemMagnet
 @onready var line_2d: Line2D = $Sprite2D/Line2D
 
@@ -35,13 +35,6 @@ func _ready() -> void:
 	player = PlayerManager.player
 	bf_radius = (sprite.texture.get_size().x / sprite.get_hframes()) * 0.5
 	previous_position = global_position
-	visible_on_screen_notifier_2d.screen_exited.connect( _exit_screen )
-
-
-func _exit_screen() -> void:
-	if state == State.LEAVE:
-		await get_tree().create_timer( 0.666 ).timeout
-		queue_free()
 
 
 func _physics_process(delta: float) -> void:
@@ -92,7 +85,6 @@ func _physics_process(delta: float) -> void:
 	previous_position = current_position
 
 
-
 func flap_animation() -> void:
 	sprite.frame = 2 + frame_offest
 	await get_tree().create_timer( frame_rate ).timeout
@@ -122,9 +114,10 @@ func arrived() -> void:
 
 func back_to_cat( bf_position ) -> void:
 	position = bf_position
+	speed = max_speed
+	visible = true
 	update_animation()
 	flap_animation()
-	visible = true
 	state = State.RETURN
 
 
@@ -137,6 +130,10 @@ func leave( throw_direction : Vector2 ) -> void:
 	visible = true
 	toggle_item_magent()
 	player.hide_bird_friend()
+	
+	##Queue free, when it leaves unseen
+	await get_tree().create_timer( 6.66 ).timeout
+	queue_free()
 	
 	
 func throw( throw_direction : Vector2 ) -> void:
@@ -160,7 +157,7 @@ func arrive( throw_direction : Vector2, bf_position ) -> void:
 
 
 func update_animation() -> void:
-	# wait an extra frame to process Return state and change direction
+	# wait an extra frame to process Return state and change direction, from Throw
 	await get_tree().create_timer( 0.05 ).timeout
 	var direction_id : int = int( round( ( direction * 0.1 ).angle() / TAU * DIR_4.size() ) )
 	flight_direction = DIR_4[ direction_id ]

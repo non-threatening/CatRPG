@@ -66,5 +66,3 @@ play_magnet_audio = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet" unique_id=1953066470]
 shape = SubResource("CircleShape2D_0gvjm")
 debug_color = Color(0.164706, 0.678431, 0.596078, 0.0941176)
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=363927346]
