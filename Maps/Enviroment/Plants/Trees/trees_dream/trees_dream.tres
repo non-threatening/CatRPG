@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://pww5hwrd41gd"]
 
-[ext_resource type="Shader" uid="uid://bqesrg18iwyem" path="res://Maps/Enviroment/Plants/Trees/trees_dream.gdshader" id="1_xh5qr"]
+[ext_resource type="Shader" uid="uid://bqesrg18iwyem" path="res://Maps/Enviroment/Plants/Trees/trees_dream/trees_dream.gdshader" id="1_xh5qr"]
 
 [resource]
 resource_local_to_scene = true

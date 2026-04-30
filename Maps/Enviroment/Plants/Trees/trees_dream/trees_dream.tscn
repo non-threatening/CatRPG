@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b1t068xhgk1jd"]
 
-[ext_resource type="Script" uid="uid://ciliranxsf3ke" path="res://Maps/Enviroment/Plants/Trees/trees_node.gd" id="1_g88or"]
-[ext_resource type="Material" uid="uid://pww5hwrd41gd" path="res://Maps/Enviroment/Plants/Trees/trees_dream.tres" id="2_g88or"]
+[ext_resource type="Script" uid="uid://ciliranxsf3ke" path="res://Maps/Enviroment/Plants/Trees/trees_dream/trees_node.gd" id="1_g88or"]
+[ext_resource type="Material" uid="uid://pww5hwrd41gd" path="res://Maps/Enviroment/Plants/Trees/trees_dream/trees_dream.tres" id="2_g88or"]
 [ext_resource type="Texture2D" uid="uid://ck1on0t25qmd8" path="res://Maps/Enviroment/Plants/Trees/sprites/tree.png" id="3_hp0sg"]
-[ext_resource type="Script" uid="uid://cnoxfd5hjq3rb" path="res://Maps/Enviroment/Plants/Trees/trees_dream.gd" id="4_g88or"]
+[ext_resource type="Script" uid="uid://cnoxfd5hjq3rb" path="res://Maps/Enviroment/Plants/Trees/trees_dream/trees_dream.gd" id="4_g88or"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgwk"]
 radius = 35.99996
