@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dik1pxuh46u4d"
-path="res://.godot/imported/cat_happy.png-f1001da52a6df0668631b265a351d639.ctex"
+uid="uid://b1ijog8w1q21f"
+path="res://.godot/imported/blured_panel.png-f4f39f3166bc7b4dc5fb520b0f8fb163.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogue/SpeachBubbles/portraits/cat_happy.png"
-dest_files=["res://.godot/imported/cat_happy.png-f1001da52a6df0668631b265a351d639.ctex"]
+source_file="res://Dialogue/SpeechBubbles/blured_panel.png"
+dest_files=["res://.godot/imported/blured_panel.png-f4f39f3166bc7b4dc5fb520b0f8fb163.ctex"]
 
 [params]
 

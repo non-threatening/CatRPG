@@ -1,5 +1,59 @@
 ~ start
+Cat:  Oh Hi
 
+Bird Friend: Caw!
+
+Cat: Can you talk?
+
+Bird Friend: Talk!
+
+Cat: ...
+
+Bird Friend: I talk.[wait=1][next=auto] 
+Bird Friend: Not much, but I talk.[wait=1][next=auto]
+Bird Friend: I talk to you[wait=1][next=auto]
+Bird Friend: I like bling bling[wait=1][next=auto]
+
+Cat: I can talk too
+Cat: Have you seen my Mom?
+
+Bird Friend: What's a Mom? [wait=1][next=auto]
+Bird Friend: what's a you?
+
+Cat: I'm Cat
+
+Bird Friend: Cant
+
+Cat: Caat
+
+Bird Friend: Caaaat
+
+Bird Friend: Cat. Never heard of it. You see bling?
+
+Cat: Then I guess you haven't seen anyone else like me?
+
+Bird Friend: bling is my thing
+
+Cat: ...
+
+Bird Friend: No no, I see the ground pounders.
+Bird Friend: I see you, I've seen you crash
+Bird Friend: I saw you crash 
+Bird Friend: I saw you make fire
+Bird Friend: Nothing good comes from fire
+
+Cat: It's big here
+
+Cat: I'm lost and scared without them..
+Cat: I can't find their smell, I've sniffed around, but there are too many smells
+
+Bird Friend: I saw them go that way, they flew to the other side of the forest
+Bird Friend: I didn't see where they crashed
+
+Cat: They crashed?
+
+Bird Friend: You crashed
+Bird Friend: I'm a much more elegant bird, and tend to land gracfully
 
 
 

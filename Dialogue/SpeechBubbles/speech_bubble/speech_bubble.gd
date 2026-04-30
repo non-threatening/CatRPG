@@ -95,9 +95,15 @@ func _ready() -> void:
 
 
 func _spoke( letter: String, letter_index: int, speed: float ) -> void:
-	if 'aeiouy1234567890'.contains( letter ):
+	##TODO: try every other vowel
+	#if 'aeiouyäöü1234567890'.contains( letter ):
+	if letter_index == 0:
 		audio_stream_player.stream = audio_file
-		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ))
+		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ) )
+		audio_stream_player.play()		
+	if ' '.contains( letter ):
+		audio_stream_player.stream = audio_file
+		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ) )
 		audio_stream_player.play()
 
 
@@ -168,10 +174,10 @@ func apply_dialogue_line() -> void:
 
 #	Narrator or not
 	if not dialogue_line.character.to_lower() == "narrator":
-		margin_container.position.y = 428
+		margin_container.position.y = 710
 		%DialogueLabel.horizontal_alignment = 0
 	else:
-		margin_container.position.y = 128
+		margin_container.position.y = 280
 		character_label.text = ""
 		%DialogueLabel.horizontal_alignment = 1
 		

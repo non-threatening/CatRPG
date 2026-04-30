@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgk4gbuvqhuny"
-path="res://.godot/imported/cat.png-016fe95b3a40c87bb99ff07219a03127.ctex"
+uid="uid://b8mukr7afp5o4"
+path="res://.godot/imported/blured_panel_white.png-d20c8704085aeec728d4a2219b78cad3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogue/SpeachBubbles/portraits/cat.png"
-dest_files=["res://.godot/imported/cat.png-016fe95b3a40c87bb99ff07219a03127.ctex"]
+source_file="res://Dialogue/SpeechBubbles/speech_bubble/blured_panel_white.png"
+dest_files=["res://.godot/imported/blured_panel_white.png-d20c8704085aeec728d4a2219b78cad3.ctex"]
 
 [params]
 

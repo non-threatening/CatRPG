@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://40nvpu1vn725"
-path="res://.godot/imported/chat_bubbles.svg-dcc7fcc927559e9a15cffd19bd48ff40.ctex"
+uid="uid://cgk4gbuvqhuny"
+path="res://.godot/imported/cat.png-a1e1d6cc726eecbccd12c33bdb0d1d5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogue/SpeachBubbles/chat_bubbles.svg"
-dest_files=["res://.godot/imported/chat_bubbles.svg-dcc7fcc927559e9a15cffd19bd48ff40.ctex"]
+source_file="res://Dialogue/SpeechBubbles/portraits/cat.png"
+dest_files=["res://.godot/imported/cat.png-a1e1d6cc726eecbccd12c33bdb0d1d5c.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

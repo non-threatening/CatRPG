@@ -1,5 +1,18 @@
+~ in_tree
+Bird Friend: [[Let's go!?|Should I jump on your back again?]]
+- [[Get on, let's go!|Yes!]]
+	do NpcManager.bf_return.emit()
+	=> END
+- Not now.
+	## do one CAW! audio only
+	=> END
+
 ~ goodbyes
 Bird Friend: [[Good night cat. I'll be around tomorrow.|Again I will fly to my roost and leave you to your own devices.|I will dream of your safe passage]]
 #do NpcManager
 do NpcManager.bf_away.emit()
+=> END
+~ goodbyes_tut
+Bird Friend: [[]]
+
 => END

@@ -1,8 +1,8 @@
-[gd_resource type="Theme" format=3 uid="uid://clw8ovvifpi63"]
+[gd_resource type="Theme" format=3 uid="uid://belqqulh7hauf"]
 
-[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="1_p5scn"]
-[ext_resource type="StyleBox" uid="uid://dkwvejalmw3bf" path="res://Dialogue/SpeachBubbles/terminal_bubble/style_box_speach_bubble.tres" id="2_cwdo8"]
-[ext_resource type="FontFile" uid="uid://cta00yqut7wdq" path="res://GUI/fonts/FtCairove-aYEjg.otf" id="2_scysb"]
+[ext_resource type="StyleBox" uid="uid://dkwvejalmw3bf" path="res://Dialogue/SpeechBubbles/terminal_bubble/style_box_speech_bubble.tres" id="1_tka4g"]
+[ext_resource type="FontFile" uid="uid://cta00yqut7wdq" path="res://GUI/fonts/FtCairove-aYEjg.otf" id="2_stpnp"]
+[ext_resource type="FontFile" uid="uid://dilug6jevwy4b" path="res://GUI/fonts/m5x7.ttf" id="3_ifhwq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xww3l"]
 content_margin_top = 3.0
@@ -44,7 +44,7 @@ corner_radius_bottom_left = 5
 Button/colors/font_color = Color(0.78849995, 0.95, 0.7911917, 1)
 Button/colors/font_focus_color = Color(0.646, 0.95, 0.6510667, 1)
 Button/font_sizes/font_size = 48
-Button/fonts/font = ExtResource("1_p5scn")
+Button/fonts/font = ExtResource("3_ifhwq")
 Button/styles/disabled = SubResource("StyleBoxFlat_xww3l")
 Button/styles/focus = SubResource("StyleBoxFlat_01dym")
 Button/styles/hover = SubResource("StyleBoxFlat_v87g4")
@@ -52,12 +52,11 @@ Button/styles/pressed = SubResource("StyleBoxFlat_bki1q")
 Label/colors/font_outline_color = Color(0.475803, 0.406988, 0, 1)
 Label/constants/outline_size = 5
 Label/font_sizes/font_size = 64
-PanelContainer/styles/panel = ExtResource("2_cwdo8")
-RichTextLabel/colors/default_color = Color(0.7882353, 0.9490196, 0.7921569, 1)
+PanelContainer/styles/panel = ExtResource("1_tka4g")
 RichTextLabel/font_sizes/bold_font_size = 48
 RichTextLabel/font_sizes/normal_font_size = 32
-RichTextLabel/fonts/bold_font = ExtResource("2_scysb")
-RichTextLabel/fonts/bold_italics_font = ExtResource("2_scysb")
-RichTextLabel/fonts/italics_font = ExtResource("2_scysb")
-RichTextLabel/fonts/normal_font = ExtResource("1_p5scn")
+RichTextLabel/fonts/bold_font = ExtResource("2_stpnp")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_stpnp")
+RichTextLabel/fonts/italics_font = ExtResource("2_stpnp")
+RichTextLabel/fonts/normal_font = ExtResource("3_ifhwq")
 VBoxContainer/constants/separation = 10

@@ -5,14 +5,14 @@ if is_quest_completed("[102]a_gimp_suit_for_bird_friend"):
 
 ## Quest line: A gimp suit for 
 elif not is_quest_completed("[102]a_gimp_suit_for_bird_friend") and not is_quest_active("[102]a_gimp_suit_for_bird_friend")
-	Bird Friend: [[Hi|Hello|Hey]], who are you? [#mood=happy]
+	Bird Friend: [[Hi|Hello|Hey]], who are you? [#mood=happy][wait=1][next=auto]
 	Cat: Hi [#mood=happy]
-	Cat: Wooooooooooooo {{ICON_ATTACK}}
+	Cat: Wooooooooooooo use {{ICON_ATTACK}} to attack
 	Bird Friend: I've lost my Gimp Suit. Could you look around for one. [#mood=happy]
 	- Totaly, I <3 gimp suits.
 		do start_quest("[102]a_gimp_suit_for_bird_friend")
 		do update_quest("[102]a_gimp_suit_for_bird_friend")
-		Bird Friend: nice. {{ICON_INTERACT}}
+		Bird Friend: nice.
 	- No way lady!
 		Bird Friend: I am your father.
 

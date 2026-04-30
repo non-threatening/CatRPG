@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rsvckalsylk"
-path="res://.godot/imported/blured_panel_white.png-b44d909f4280cd2c515c9a9ea6b671e1.ctex"
+path="res://.godot/imported/blured_panel_white.png-77619b667e646842da217cccd715a19a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogue/SpeachBubbles/loktin_bubble/blured_panel_white.png"
-dest_files=["res://.godot/imported/blured_panel_white.png-b44d909f4280cd2c515c9a9ea6b671e1.ctex"]
+source_file="res://Dialogue/SpeechBubbles/loktin_bubble/blured_panel_white.png"
+dest_files=["res://.godot/imported/blured_panel_white.png-77619b667e646842da217cccd715a19a.ctex"]
 
 [params]
 

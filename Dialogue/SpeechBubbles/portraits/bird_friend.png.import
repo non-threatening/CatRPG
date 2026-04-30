@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvlysahjf67y2"
-path="res://.godot/imported/narrator.png-805fed5d8cf84bb3d47ad1f7371170fe.ctex"
+uid="uid://drydd6souxdj7"
+path="res://.godot/imported/bird_friend.png-2b6fd10451e01ca78a002c952e1c3b92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogue/SpeachBubbles/portraits/narrator.png"
-dest_files=["res://.godot/imported/narrator.png-805fed5d8cf84bb3d47ad1f7371170fe.ctex"]
+source_file="res://Dialogue/SpeechBubbles/portraits/bird_friend.png"
+dest_files=["res://.godot/imported/bird_friend.png-2b6fd10451e01ca78a002c952e1c3b92.ctex"]
 
 [params]
 

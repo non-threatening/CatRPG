@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drydd6souxdj7"
-path="res://.godot/imported/bird_friend.png-5eb32406f242d9068323e7f4375e4ec1.ctex"
+uid="uid://40nvpu1vn725"
+path="res://.godot/imported/chat_bubbles.svg-7babda9d913ff383e9c57e222ba4ec59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogue/SpeachBubbles/portraits/bird_friend.png"
-dest_files=["res://.godot/imported/bird_friend.png-5eb32406f242d9068323e7f4375e4ec1.ctex"]
+source_file="res://Dialogue/SpeechBubbles/chat_bubbles.svg"
+dest_files=["res://.godot/imported/chat_bubbles.svg-7babda9d913ff383e9c57e222ba4ec59.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
