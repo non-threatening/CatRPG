@@ -65,9 +65,9 @@ func toggle_ability() -> void:
 		player.hide_bird_friend()
 	pass
 
-
-func set_none_ability() -> void:
-	selected_ability = 0
+	
+func set_ability_number( a : int ) -> void:
+	selected_ability = a
 
 
 func none_ability() -> void:
@@ -149,7 +149,7 @@ func _on_ability_acquired( _ability : AbilityItemData ) -> void:
 			if StatsManager.achievements.have_bird_friend:
 				abilities[1] = "BIRD"
 			else:
-				await get_tree().create_timer( 0.666 ).timeout
+				await get_tree().create_timer( 1.2 ).timeout
 				abilities[1] = "BIRD"
 		_ability.Type.GRAPPLE:
 			abilities[2] = "GRAPPLE"

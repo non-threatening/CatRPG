@@ -112,15 +112,21 @@ color = Color(0, 0.019607844, 0.05882353, 0.7529412)
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 600.0
-theme_override_constants/separation = 24
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=364987529]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 100
-text = "Secret of CAT"
+text = "Secret of MEoW"
 scroll_active = false
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=353051705]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "The Playtest / Demo"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=1579607295]

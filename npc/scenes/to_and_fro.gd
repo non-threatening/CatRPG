@@ -21,7 +21,6 @@ func bird_leaving_to_and_fro() -> void:
 
 
 func bird_arriving() -> void:
-	prints("bird_arriving:", bird_instance )
 	if bird_instance != null:
 		return
 	var _b = BIRD.instantiate() as BirdFriendFlying

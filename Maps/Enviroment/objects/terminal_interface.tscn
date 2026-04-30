@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fnb335xp2rg4"]
 
 [ext_resource type="Texture2D" uid="uid://bxcqdywq4tybk" path="res://Maps/Enviroment/Plants/isometric-modern-buildings-cartoon.png" id="1_6k2pf"]
-[ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="1_lix13"]
+[ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees/trees.gdshader" id="1_lix13"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://GeneralNodes/Actionables/actionable_dialog.tscn" id="2_ghq3x"]
 [ext_resource type="Resource" uid="uid://sp87haiqrb68" path="res://Dialogue/Conversations/world_transition.dialogue" id="3_lix13"]
 [ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="4_ghq3x"]

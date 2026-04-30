@@ -24,7 +24,6 @@ var twirl_time : float = 0.0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
-#@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var item_magnet: ItemMagnet = $ItemMagnet
 @onready var line_2d: Line2D = $Sprite2D/Line2D
 
@@ -44,7 +43,6 @@ func _physics_process(delta: float) -> void:
 		if speed <= 0:
 			state = State.RETURN
 			update_animation()
-			## TODO: only update animation after state changes
 	elif state == State.RETURN:
 		direction = global_position.direction_to( player.global_position + Vector2( 0, -100 ) )
 		speed += acceleration * delta

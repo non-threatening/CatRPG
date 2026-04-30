@@ -34,11 +34,12 @@ func _ready() -> void:
 		ui_players.append( ui_player )
 
 
-
-func play_effect( _audio : AudioStream ) -> void:
+## Play with AudioStream. Second var is pitch_scale; default = 1
+func play_effect( _audio : AudioStream, _pitch_scale : float = 1 ) -> void:
 	for player in effect_players:
 		if not player.playing:
 			player.stream = _audio
+			player.pitch_scale = _pitch_scale
 			player.play()
 			return
 	effect_players[0].stream = _audio

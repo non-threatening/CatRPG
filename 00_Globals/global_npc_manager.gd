@@ -66,8 +66,8 @@ func _standard_checks() -> bool:
 
 func _set_none() -> void:
 	PlayerManager.player.player_abilities.abilities = ["NONE", "", "", "", ""]
-	PlayerManager.player.player_abilities.set_none_ability()
 	PauseMenu.update_ability_items( ["NONE", "", "", "", ""] )
+	PlayerManager.player.player_abilities.set_ability_number( 0 )
 
 
 ## Bird Friend
@@ -79,7 +79,7 @@ func _bye_bird_friend_checks() -> bool:
 	return false
 
 func bye_bye_bird_friend() -> void:
-	await get_tree().create_timer( ( randi() + 1) % 18 ).timeout
+	#await get_tree().create_timer( ( randi() + 1) % 18 ).timeout
 	## If we have bird friend
 	if StatsManager.achievements.have_bird_friend == 1:
 		## If we have bird friend and she's is our current friend, then trigger dialog
@@ -93,18 +93,21 @@ func bye_bye_bird_friend() -> void:
 			bf_npc_status.emit( bf_awake, null )
 
 func bird_friend_awake() -> void:
-	await get_tree().create_timer( ( randi() + 1) % 18 ).timeout
+	#await get_tree().create_timer( ( randi() + 1) % 18 ).timeout
+	prints("Hello Bird Friend")
 	if StatsManager.achievements.have_bird_friend == 1:
 		if PlayerManager.player.player_abilities.selected_ability != 1:
+			prints("Hello selected")
 			var location : String
 			bf_awake = true
 			#	Every three days
 			var day : int = int( (TimeSystem.day + 3 ) / 3.0 ) % 3 == 0
 			match day:
 				0:
-					location = "GrassTestMap"
+					#location = "GrassTestMap"
+					location = "ArelCrashSite"
 				_:
-					location = "GrassTestMap"
+					location = "ArelCrashSite"
 			bf_npc_status.emit( bf_awake, location )
 
 

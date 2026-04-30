@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dm100xw332yew"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dm100xw332yew"]
 
-[ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees.gdshader" id="1_x4x2n"]
+[ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees/trees.gdshader" id="1_x4x2n"]
 
 [resource]
 shader = ExtResource("1_x4x2n")

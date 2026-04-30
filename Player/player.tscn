@@ -3013,7 +3013,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Label:visible")
+tracks/2/path = NodePath("LevelUpAnimation/Label:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -3025,7 +3025,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Label:position")
+tracks/3/path = NodePath("LevelUpAnimation/Label:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -3037,7 +3037,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Label:modulate")
+tracks/4/path = NodePath("LevelUpAnimation/Label:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -3049,7 +3049,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("GPUParticles2D:emitting")
+tracks/5/path = NodePath("LevelUpAnimation/GPUParticles2D:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -3071,7 +3071,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 0.513726, 1, 0.494118), Color(1, 1, 1, 0.494118), Color(1, 0.392157, 1, 1), Color(1, 0.513726, 1, 0.494118), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 0.19607843, 0.29411766, 0.49411765), Color(1, 1, 1, 0.494118), Color(1, 0.19607843, 0.29411766, 0.7529412), Color(1, 0.19607843, 0.29411766, 0.49411765), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3088,7 +3088,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Label:visible")
+tracks/2/path = NodePath("LevelUpAnimation/Label:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -3115,7 +3115,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:visible")
+tracks/1/path = NodePath("LevelUpAnimation/Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -3139,12 +3139,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1.6, 1.5, 0.8, 1), Color(1, 1, 1, 1)]
+"values": [Color(2.055, 1.9295098, 0.83931375, 1), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:visible")
+tracks/1/path = NodePath("LevelUpAnimation/Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -3156,19 +3156,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Label:position")
+tracks/2/path = NodePath("LevelUpAnimation/Label:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.6, 1),
 "transitions": PackedFloat32Array(-2, 2, 0.5),
 "update": 0,
-"values": [Vector2(-27, -50), Vector2(-27, -86), Vector2(-27, -76)]
+"values": [Vector2(-57, -165), Vector2(-57, -200), Vector2(-57, -190)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Label:modulate")
+tracks/3/path = NodePath("LevelUpAnimation/Label:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -3180,7 +3180,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/path = NodePath("LevelUpAnimation/GPUParticles2D:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -3198,20 +3198,20 @@ _data = {
 &"level_up": SubResource("Animation_iyprq")
 }
 
-[sub_resource type="Gradient" id="Gradient_f4lon"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+[sub_resource type="Gradient" id="Gradient_7x5p2"]
+colors = PackedColorArray(1, 0, 0, 0.1254902, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ynux"]
-gradient = SubResource("Gradient_f4lon")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6eb1q"]
+gradient = SubResource("Gradient_7x5p2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d30e8"]
 particle_flag_disable_z = true
 emission_shape = 1
-emission_sphere_radius = 50.0
+emission_sphere_radius = 79.66
 gravity = Vector3(0, -250, 0)
 scale_max = 4.0
-color = Color(0.81, 0.7398, 0.3888, 1)
-color_ramp = SubResource("GradientTexture1D_8ynux")
+color = Color(0.95000005, 1, 0, 1)
+color_initial_ramp = SubResource("GradientTexture1D_6eb1q")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy65m"]
 size = Vector2(21, 27)
@@ -3539,30 +3539,33 @@ script = ExtResource("11_hfp0w")
 
 [node name="ToneGenerator" parent="Audio" unique_id=1077312684 instance=ExtResource("41_wvbyc")]
 
-[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="." unique_id=41629610]
-libraries/ = SubResource("AnimationLibrary_5tmop")
-
 [node name="Abilities" type="Node" parent="." unique_id=802550838]
 script = ExtResource("17_pisgm")
 
-[node name="Label" type="Label" parent="." unique_id=321929804]
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="." unique_id=41629610]
+libraries/ = SubResource("AnimationLibrary_5tmop")
+
+[node name="LevelUpAnimation" type="Node2D" parent="." unique_id=1609396797]
+
+[node name="Label" type="Label" parent="LevelUpAnimation" unique_id=321929804]
 visible = false
-offset_left = -27.0
-offset_top = -96.0
-offset_right = 29.0
-offset_bottom = -79.0
+offset_left = -57.0
+offset_top = -190.0
+offset_right = 55.0
+offset_bottom = -157.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 0
+theme_override_font_sizes/font_size = 32
 text = "Level UP"
 horizontal_alignment = 1
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2056165625]
-position = Vector2(0, -1)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="LevelUpAnimation" unique_id=2056165625]
+z_index = 1
+position = Vector2(0, -96)
 emitting = false
-amount = 100
-lifetime = 0.75
+amount = 150
+lifetime = 0.67
 one_shot = true
-explosiveness = 0.25
+explosiveness = 0.4
 process_material = SubResource("ParticleProcessMaterial_d30e8")
 
 [node name="FootstepAudio2D" parent="." unique_id=1334638132 instance=ExtResource("34_j2n6q")]

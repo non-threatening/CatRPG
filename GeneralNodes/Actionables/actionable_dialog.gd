@@ -1,7 +1,7 @@
 extends Area2D
 
-const Bubble = preload("res://Dialogue/SpeachBubbles/speech_bubble/speach_bubble.tscn")
-const Terminal = preload("res://Dialogue/SpeachBubbles/terminal_bubble/terminal_bubble.tscn")
+const Bubble = preload("res://Dialogue/SpeechBubbles/speech_bubble/speech_bubble.tscn")
+const Terminal = preload("res://Dialogue/SpeechBubbles/terminal_bubble/terminal_bubble.tscn")
 const LOKTIN_BUBBLE = preload("uid://bym1e6q2jq1c2")
 
 var speech_bubble : Node
