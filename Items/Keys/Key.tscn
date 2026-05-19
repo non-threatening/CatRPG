@@ -16,6 +16,7 @@ script = ExtResource("1_g6guw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=765845175]
 material = ExtResource("2_13fqu")
+scale = Vector2(2, 2)
 texture = ExtResource("5_7lyhp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=544249864]

@@ -1,3 +1,12 @@
 ~ start
 Nar: 
 => END
+
+~ FreqLock
+Nar: You can interrupt of **DOORLOCK** by disrupting the frequency of its magnetic lock.
+
+Nar: Use {{ICON_RIGHT_STICK}} to tune your chip frequency 
+
+Nar: A lot of things in this world use a similar mag lock you can disrupt. Many a lot harder than this little doorlock
+
+**mark**

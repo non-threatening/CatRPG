@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnyi834tjq1"]
+[gd_scene format=3 uid="uid://cnyi834tjq1"]
 
 [ext_resource type="Script" uid="uid://b5q2f44qg0oio" path="res://Maps/Levels/player_spawn.gd" id="1_lyuil"]
-[ext_resource type="Texture2D" uid="uid://bqetda8jkyx5" path="res://Player/Sprites/Player_Sprite_Master.png" id="2_h14jq"]
+[ext_resource type="Texture2D" uid="uid://brmghi2fh5i6d" path="res://Player/Sprites/Player_Sprite_Master_TailOff.png" id="2_h14jq"]
 
-[node name="PlayerSpawn" type="Node2D"]
+[node name="PlayerSpawn" type="Node2D" unique_id=1050245168]
 script = ExtResource("1_lyuil")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1445264035]
 modulate = Color(0.995046, 0.912558, 0.955507, 0.658824)
 position = Vector2(0, -60)
+scale = Vector2(0.666, 0.666)
 texture = ExtResource("2_h14jq")
 hframes = 6
 vframes = 6

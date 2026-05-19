@@ -1,4 +1,6 @@
 ~ start
+Bird Friend: Caw!
+
 Cat:  Oh Hi
 
 Bird Friend: Caw!
@@ -9,10 +11,6 @@ Bird Friend: Talk!
 
 Cat: ...
 
-Bird Friend: I talk.[wait=1][next=auto] 
-Bird Friend: Not much, but I talk.[wait=1][next=auto]
-Bird Friend: I talk to you[wait=1][next=auto]
-Bird Friend: I like bling bling[wait=1][next=auto]
 
 Cat: I can talk too
 Cat: Have you seen my Mom?
