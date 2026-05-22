@@ -6,7 +6,6 @@ var attacking : bool = false
 @export_range( 1, 20, 0.5 ) var decelerate_speed : float = 5.0
 
 @onready var animation_player : AnimationPlayer = $"../../AnimationPlayer"
-@onready var attack_anim : AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AnimationPlayer"
 
 @onready var walk : State = $"../Walk"
 @onready var idle : State = $"../Idle"
@@ -15,8 +14,8 @@ var attacking : bool = false
 
 
 func enter() -> void:
+	player.paw_swipe()
 	player.update_animation("attack")
-	attack_anim.play( "attack_" + player.anim_direction() )
 	animation_player.animation_finished.connect( _end_attack )
 	
 	var pitch_scale : float = randf_range( 0.9, 1.1 )

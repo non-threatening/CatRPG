@@ -9,8 +9,8 @@ var direction : Vector2 = Vector2.DOWN
 var direction_name : String = "down"
 var do_behavior : bool = true
 
-@export var h_frames : int = 3 : set = _set_h_frames
-@export var v_frames : int = 3 : set = _set_v_frames
+#@export var h_frames : int = 3 : set = _set_h_frames
+#@export var v_frames : int = 3 : set = _set_v_frames
 @export var npc_resource : NPCResource : set = _set_npc_resourse
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -76,7 +76,8 @@ func setup_npc() -> void:
 	if npc_resource:
 		if sprite:
 			sprite.texture = npc_resource.sprite
-			sprite.hframes = h_frames
+			sprite.hframes = npc_resource.h_frames
+			#sprite.hframes = h_frames
 	pass
 
 
@@ -85,14 +86,14 @@ func _set_npc_resourse( _npc : NPCResource ) -> void:
 	setup_npc()
 	
 	
-func _set_h_frames( value : int ) -> void:
-	h_frames = value
-	if sprite:
-		sprite.hframes = h_frames
-	pass
-
-func _set_v_frames( value : int ) -> void:
-	v_frames = value
-	if sprite:
-		sprite.vframes = v_frames
-	pass
+#func _set_h_frames( value : int ) -> void:
+	#npc_resource.h_frames = value
+	#if sprite:
+		#sprite.hframes = npc_resource.h_frames
+	#pass
+#
+#func _set_v_frames( value : int ) -> void:
+	#npc_resource.v_frames = value
+	#if sprite:
+		#sprite.vframes = npc_resource.v_frames
+	#pass

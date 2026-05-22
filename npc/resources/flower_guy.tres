@@ -3,10 +3,22 @@
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="2_hpd5d"]
 [ext_resource type="Texture2D" uid="uid://dpc7qhim7qsyb" path="res://Player/BirdFriend/sprites/FlowerGuyCrow.png" id="3_hpd5d"]
 [ext_resource type="AudioStream" uid="uid://dppicop8bwemo" path="res://Dialogue/SpeechBubbles/voice_blip.wav" id="4_hpd5d"]
+[ext_resource type="AudioStream" uid="uid://dpx4ip4k4eqhq" path="res://Audio/Samples/15524__poissonmort__toy-piano-samplepack/d4-01.wav" id="4_igclx"]
+[ext_resource type="AudioStream" uid="uid://c5ol2d74tte0l" path="res://Audio/Samples/15524__poissonmort__toy-piano-samplepack/c4-02.wav" id="4_uch5l"]
+[ext_resource type="AudioStream" uid="uid://uo3bocrsmuvv" path="res://Audio/Samples/15524__poissonmort__toy-piano-samplepack/f4-03.wav" id="5_kia4v"]
+[ext_resource type="AudioStream" uid="uid://dsv674xx1l2f0" path="res://Audio/Samples/15524__poissonmort__toy-piano-samplepack/b3-01.wav" id="7_tcfwj"]
+[ext_resource type="AudioStream" uid="uid://cy8knjlyfa3vu" path="res://Audio/Samples/15524__poissonmort__toy-piano-samplepack/a3-01.wav" id="8_qipqe"]
+[ext_resource type="AudioStream" uid="uid://bpfl67ob7mc6u" path="res://Audio/Samples/15524__poissonmort__toy-piano-samplepack/e4-02.wav" id="9_57er4"]
+[ext_resource type="AudioStream" uid="uid://bxbjmqfidrlws" path="res://Audio/Samples/15524__poissonmort__toy-piano-samplepack/g3-03.wav" id="10_fon76"]
 
 [resource]
 script = ExtResource("2_hpd5d")
 npc_name = "Flower Guy"
 sprite = ExtResource("3_hpd5d")
+talk_blips = Array[AudioStream]([ExtResource("4_igclx"), ExtResource("4_uch5l"), ExtResource("5_kia4v"), ExtResource("7_tcfwj"), ExtResource("8_qipqe"), ExtResource("9_57er4"), ExtResource("10_fon76")])
 talk_blip = ExtResource("4_hpd5d")
+upgrades = Dictionary[String, int]({
+"dist": 1,
+"poops": 4
+})
 metadata/_custom_type_script = "uid://bmpteubp4v57k"

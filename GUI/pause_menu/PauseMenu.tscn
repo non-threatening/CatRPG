@@ -147,10 +147,10 @@ metadata/_tab_index = 0
 
 [node name="AbilityContainer" type="PanelContainer" parent="Control/TabContainer/Inventory" unique_id=814651154]
 layout_mode = 0
-offset_left = 816.0
-offset_top = 85.0
-offset_right = 1076.0
-offset_bottom = 349.0
+offset_left = 1242.0
+offset_top = 580.0
+offset_right = 1502.0
+offset_bottom = 844.0
 
 [node name="AbilityGridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/AbilityContainer" unique_id=630545538]
 unique_name_in_owner = true
@@ -174,15 +174,6 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_d1w5p")
 stretch_mode = 3
 
-[node name="BombCountLabel" type="Label" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer/InventorySlotNONE" unique_id=252764370]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 57.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "99"
-
 [node name="InventorySlot" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=1230758654]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -203,6 +194,7 @@ texture = ExtResource("5_iygof")
 stretch_mode = 3
 
 [node name="InventorySlot3" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=343174035]
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("6_320ax")
@@ -229,6 +221,7 @@ theme_override_font_sizes/font_size = 48
 text = "99"
 
 [node name="InventorySlot2" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=1116022612]
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("6_320ax")
@@ -245,6 +238,7 @@ texture = SubResource("AtlasTexture_awacl")
 stretch_mode = 3
 
 [node name="InventorySlot4" type="Button" parent="Control/TabContainer/Inventory/AbilityContainer/AbilityGridContainer" unique_id=464407785]
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("6_320ax")
@@ -273,10 +267,10 @@ text = "99"
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Inventory" unique_id=1079315646]
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 0
-offset_left = 68.0
-offset_top = 85.0
-offset_right = 420.0
-offset_bottom = 485.0
+offset_left = 805.0
+offset_top = 51.0
+offset_right = 1157.0
+offset_bottom = 451.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Inventory/ScrollContainer" unique_id=920540400]
 custom_minimum_size = Vector2(336, 268)
@@ -367,6 +361,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
+[node name="ItemDescription" type="Label" parent="Control/TabContainer/Inventory" unique_id=602354533]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 499.0
+offset_right = 1149.0
+offset_bottom = 623.0
+text = "ITEM DESCRIPTION"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="PanelContainer2" type="PanelContainer" parent="Control/TabContainer/Inventory" unique_id=1461601103]
 layout_mode = 0
 offset_left = 1301.0
@@ -426,31 +430,118 @@ layout_mode = 2
 
 [node name="Stats" parent="Control/TabContainer/Inventory" unique_id=1645255924 instance=ExtResource("8_vbpxr")]
 layout_mode = 0
-offset_left = 484.0
-offset_top = 85.0
-offset_right = 684.0
-offset_bottom = 329.0
-
-[node name="ItemDescription" type="Label" parent="Control/TabContainer/Inventory" unique_id=602354533]
-layout_mode = 0
-offset_left = 60.0
-offset_top = 533.0
-offset_right = 404.0
-offset_bottom = 657.0
-grow_horizontal = 2
-text = "ITEM DESCRIPTION"
-horizontal_alignment = 1
-autowrap_mode = 2
+offset_left = 476.0
+offset_top = 70.0
+offset_right = 719.0
+offset_bottom = 396.0
 
 [node name="AbilitiesDescription" type="Label" parent="Control/TabContainer/Inventory" unique_id=1225400252]
 layout_mode = 0
-offset_left = 814.0
-offset_top = 369.0
-offset_right = 1076.0
-offset_bottom = 493.0
+offset_left = 718.0
+offset_top = 471.0
+offset_right = 980.0
+offset_bottom = 612.0
 text = "This is Bird Friend. She likes to fly out to get things and pecking eyes out."
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="FriendsContainer" type="VBoxContainer" parent="Control/TabContainer/Inventory" unique_id=901871568]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 42.0
+offset_right = 412.0
+offset_bottom = 442.0
+
+[node name="InventorySlotNONE" type="Button" parent="Control/TabContainer/Inventory/FriendsContainer" unique_id=1679212836]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "NONE!!!!!!!!!!!"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/FriendsContainer/InventorySlotNONE" unique_id=1286162192]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_d1w5p")
+stretch_mode = 3
+
+[node name="InventorySlot" type="Button" parent="Control/TabContainer/Inventory/FriendsContainer" unique_id=1008540081]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "This is Bird Friend. She likes to fly out to get things and pecking eyes out."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Inventory/FriendsContainer/InventorySlot" unique_id=1316402677]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/FriendsContainer/InventorySlot/HBoxContainer" unique_id=1133304205]
+modulate = Color(0.369525, 0.45, 0.2835, 0.5019608)
+layout_mode = 2
+texture = ExtResource("5_iygof")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Inventory/FriendsContainer/InventorySlot/HBoxContainer" unique_id=1284646969]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/TabContainer/Inventory/FriendsContainer/InventorySlot/HBoxContainer/VBoxContainer" unique_id=29708699]
+layout_mode = 2
+text = "Level One"
+
+[node name="InventorySlot3" type="Button" parent="Control/TabContainer/Inventory/FriendsContainer" unique_id=58688488]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "Harness or a collar.. Maybe this is where the bird friends live;)"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/FriendsContainer/InventorySlot3" unique_id=361320192]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5wmam")
+stretch_mode = 3
+
+[node name="InventorySlot2" type="Button" parent="Control/TabContainer/Inventory/FriendsContainer" unique_id=2082501744]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "Grappling hook thing... can't think of a use right now.. Maybe a late game abilit with magents or something."
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/FriendsContainer/InventorySlot2" unique_id=1783312696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_awacl")
+stretch_mode = 3
+
+[node name="InventorySlot4" type="Button" parent="Control/TabContainer/Inventory/FriendsContainer" unique_id=490565855]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+script = ExtResource("6_320ax")
+description = "BOMB!"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Inventory/FriendsContainer/InventorySlot4" unique_id=1103543234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_d1w5p")
+stretch_mode = 3
 
 [node name="Quest" type="Control" parent="Control/TabContainer" unique_id=467120250]
 visible = false

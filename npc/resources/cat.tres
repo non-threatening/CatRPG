@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="1_rbpcg"]
 [ext_resource type="AudioStream" uid="uid://bcw1ihsfr3g1j" path="res://Audio/UsedSamples/hi hat (33).ogg" id="2_7pmhy"]
+[ext_resource type="AudioStream" uid="uid://bgmimlxly3wpv" path="res://Audio/UsedSamples/clap (2).ogg" id="3_h7lfi"]
+[ext_resource type="AudioStream" uid="uid://u7bfr1mauqbt" path="res://Audio/UsedSamples/hi hat (10).ogg" id="4_si4xw"]
 
 [resource]
 script = ExtResource("1_rbpcg")
+talk_blips = Array[AudioStream]([ExtResource("3_h7lfi"), ExtResource("4_si4xw"), ExtResource("2_7pmhy")])
 talk_blip = ExtResource("2_7pmhy")
 metadata/_custom_type_script = "uid://bmpteubp4v57k"

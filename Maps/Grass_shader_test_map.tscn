@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dul2wk6yslbpi" path="res://npc/npc_behavior_wander.tscn" id="21_70lcl"]
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
 [ext_resource type="Shader" uid="uid://c6n83nrhuenne" path="res://Maps/Enviroment/Plants/Trees/trees/trees.gdshader" id="23_a6xma"]
-[ext_resource type="Texture2D" uid="uid://c1mn6ochpknba" path="res://Maps/Enviroment/Plants/Trees/sprites/DeadTree.png" id="24_0lun4"]
+[ext_resource type="Texture2D" uid="uid://c1mn6ochpknba" path="res://Maps/Enviroment/Plants/Trees/sprites/dead/DeadTree.png" id="24_0lun4"]
 [ext_resource type="Shader" uid="uid://dcnqvjkwrjcuk" path="res://Player/BirdFriend/bird_friend_perched.gdshader" id="27_xf8yu"]
 [ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="28_li6oa"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Maps/Levels/level_transition.tscn" id="29_70lcl"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://c0md2j0sns1ox" path="res://Maps/Enviroment/objects/FreqLockButtonPanel.png" id="36_xa65b"]
 [ext_resource type="PackedScene" uid="uid://dsm1sxxrq3n7" path="res://GeneralNodes/Actionables/actionable_minigame.tscn" id="36_xvh4v"]
 [ext_resource type="PackedScene" uid="uid://c7qujggerj22o" path="res://interactables/dungeon/PushableStatue.tscn" id="37_1qe5l"]
+[ext_resource type="Material" uid="uid://bkxpp6yhp0v3i" path="res://Shaders/object_highlight_material.tres" id="37_26whl"]
 [ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://zz_test/Props/pot/pot.tscn" id="37_yr5mt"]
 [ext_resource type="PackedScene" uid="uid://cwis5wv0e7243" path="res://Items/Keys/Key.tscn" id="38_hxh2l"]
 [ext_resource type="PackedScene" uid="uid://dfcwjey80ry5k" path="res://Maps/pushable_reflector.tscn" id="39_l156c"]
@@ -48,6 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://bxfyt6vkjdevh" path="res://Maps/textures/Dirt_01.png" id="45_xmcjt"]
 [ext_resource type="AudioStream" uid="uid://bgdpmxn86hpae" path="res://Audio/UsedSamples/kick (7).ogg" id="47_0lun4"]
 [ext_resource type="AudioStream" uid="uid://b55lwwli8jahd" path="res://Audio/UsedSamples/tom (9).ogg" id="48_26whl"]
+[ext_resource type="PackedScene" uid="uid://dultpi7m1kr3m" path="res://Maps/Enviroment/Plants/Trees/trees/dead_trees.tscn" id="50_0fwua"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0fwua"]
 shader = ExtResource("2_26whl")
@@ -99,9 +101,6 @@ radius = 73.552704
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tx25"]
 size = Vector2(147, 101)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uvlv"]
-size = Vector2(1203, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5npb"]
 radius = 31.0161
@@ -277,7 +276,6 @@ z_index = -1
 tile_map_data = PackedByteArray("AAAoABkAAQAPAAcAAAAnABkAAQAPAAcAAAAmABkAAQAPAAcAAAAlABkAAQAPAAcAAAAkABkAAQAPAAcAAAAjABkAAQAPAAcAAAAiABkAAQAPAAcAAAAhABkAAQAPAAcAAAAgABkAAQAPAAcAAAAfABkAAQAPAAcAAAAeABkAAQAPAAcAAAAdABkAAQAPAAcAAAAcABkAAQAPAAcAAAAbABkAAQAPAAcAAAAaABkAAQAPAAcAAAAZABkAAQAPAAcAAAAYABkAAQAPAAcAAAAXABkAAQAPAAcAAAAWABkAAQAPAAcAAAAVABkAAQAPAAcAAAAUABkAAQAPAAcAAAATABkAAQAPAAcAAAASABkAAQAPAAcAAAARABkAAQAPAAcAAAAQABkAAQAPAAcAAAAPABkAAQAPAAcAAAAOABkAAQAPAAcAAAANABkAAQAPAAcAAAAMABkAAQAPAAcAAAALABkAAQAPAAcAAAAKABkAAQAPAAcAAAAJABkAAQAPAAcAAAAIABkAAQAPAAcAAAAHABkAAQAPAAcAAAAGABkAAQAPAAcAAAAFABkAAQAPAAcAAAAEABkAAQAPAAcAAAADABkAAQAPAAcAAAACABkAAQAPAAcAAAABABkAAQAPAAcAAAAAABkAAQAPAAcAAAD//xkAAQAPAAcAAAD//xgAAQAPAAcAAAD//xcAAQAPAAcAAAD//xYAAQAPAAcAAAD//xUAAQAPAAcAAAD//xQAAQAPAAcAAAD//xMAAQAPAAcAAAD//xIAAQAPAAcAAAD//xEAAQAPAAcAAAD//xAAAQAPAAcAAAD//w8AAQAPAAcAAAD//w4AAQAPAAcAAAD//w0AAQAPAAcAAAD//wwAAQAPAAcAAAD//wsAAQAPAAcAAAD//woAAQAPAAcAAAD//wkAAQAPAAcAAAD//wgAAQAPAAcAAAD//wcAAQAPAAcAAAD//wYAAQAPAAcAAAD//wUAAQAPAAcAAAD//wQAAQAPAAcAAAD//wMAAQAPAAcAAAD//wIAAQAPAAcAAAD//wEAAQAPAAcAAAD//wAAAQAPAAcAAAD/////AQAPAAcAAAD///7/AQAPAAcAAAD///3/AQAPAAcAAAD///z/AQAPAAcAAAD///v/AQAPAAcAAAD///r/AQAPAAcAAAD///n/AQAPAAcAAAD///j/AQAPAAcAAAAAAPj/AQAPAAcAAAABAPj/AQAPAAcAAAACAPj/AQAPAAcAAAADAPj/AQAPAAcAAAAEAPj/AQAPAAcAAAAFAPj/AQAPAAcAAAAGAPj/AQAPAAcAAAAHAPj/AQAPAAcAAAAIAPj/AQAPAAcAAAAJAPj/AQAPAAcAAAAKAPj/AQAPAAcAAAALAPj/AQAPAAcAAAAMAPj/AQAPAAcAAAANAPj/AQAPAAcAAAAOAPj/AQAPAAcAAAAPAPj/AQAPAAcAAAAQAPj/AQAPAAcAAAARAPj/AQAPAAcAAAASAPj/AQAPAAcAAAATAPj/AQAPAAcAAAAUAPj/AQAPAAcAAAAVAPj/AQAPAAcAAAAWAPj/AQAPAAcAAAAXAPj/AQAPAAcAAAAYAPj/AQAPAAcAAAAZAPj/AQAPAAcAAAAaAPj/AQAPAAcAAAAbAPj/AQAPAAcAAAAcAPj/AQAPAAcAAAAdAPj/AQAPAAcAAAAeAPj/AQAPAAcAAAAfAPj/AQAPAAcAAAAgAPj/AQAPAAcAAAAhAPj/AQAPAAcAAAAiAPj/AQAPAAcAAAAjAPj/AQAPAAcAAAAkAPj/AQAPAAcAAAAlAPj/AQAPAAcAAAAmAPj/AQAPAAcAAAAnAPj/AQAPAAcAAAApABkAAQAIAAcAAAAqABkAAQAIAAcAAAArABkAAQAIAAcAAAAsABkAAQAIAAcAAAAtABkAAQAIAAcAAAAuABkAAQAIAAcAAAAvABkAAQAIAAcAAAAwABkAAQAIAAcAAAAxABkAAQAIAAcAAAAyABkAAQAIAAcAAAAzABkAAQAIAAcAAAA0ABkAAQAIAAcAAAA1ABkAAQAIAAcAAAA2ABkAAQAIAAcAAAA3ABkAAQAIAAcAAAA4ABkAAQAIAAcAAAA5ABkAAQAIAAcAAAA6ABkAAQAIAAcAAAA7ABkAAQAIAAcAAAA8ABkAAQAIAAcAAAA9ABkAAQAIAAcAAAA+ABkAAQAIAAcAAAA/ABkAAQAIAAcAAABAABkAAQAIAAcAAABBABkAAQAIAAcAAABCABkAAQAIAAcAAABDABkAAQAIAAcAAABEABkAAQAIAAcAAABFABkAAQAIAAcAAABGABkAAQAIAAcAAABHABkAAQAIAAcAAABIABkAAQAIAAcAAABJABkAAQAIAAcAAABKABkAAQAIAAcAAABLABkAAQAIAAcAAABMABkAAQAIAAcAAABNABkAAQAIAAcAAABOABkAAQAIAAcAAABPABkAAQAIAAcAAABQABkAAQAIAAcAAABRABkAAQAIAAcAAABSABkAAQAIAAcAAABTABkAAQAIAAcAAABTAPn/AQAIAAcAAABTAPr/AQAIAAcAAABTAPv/AQAIAAcAAABTAPz/AQAIAAcAAABTAP3/AQAIAAcAAABTAP7/AQAIAAcAAABTAP//AQAIAAcAAABTAAAAAQAIAAcAAABTAAEAAQAIAAcAAABTAAIAAQAIAAcAAABTAAMAAQAIAAcAAABTAAQAAQAIAAcAAABTAAUAAQAIAAcAAABTAAYAAQAIAAcAAABTAAcAAQAIAAcAAABTAAgAAQAIAAcAAABTAAkAAQAIAAcAAABTAAoAAQAIAAcAAABTAAsAAQAIAAcAAABTAAwAAQAIAAcAAABTAA0AAQAIAAcAAABTAA4AAQAIAAcAAABTAA8AAQAIAAcAAABTABAAAQAIAAcAAABTABEAAQAIAAcAAABTABIAAQAIAAcAAABTABMAAQAIAAcAAABTABQAAQAIAAcAAABTABUAAQAIAAcAAABTABYAAQAIAAcAAABTABcAAQAIAAcAAABTABgAAQAIAAcAAAAoAPj/AQAPAAcAAABTAPj/AQAPAAcAAABTAOH/AQAPAAcAAAApAPf/BAAAAAQAAAAqAPf/BAAAAAQAAAAqAPb/BAAAAAQAAAArAPb/BAAAAAQAAAAsAPb/BAAAAAQAAAAsAPf/BAAAAAQAAAAtAPf/BAAAAAQAAAAuAPf/BAAAAAQAAAAvAPf/BAAAAAQAAAA4APf/BAAAAAQAAAA3APf/BAAAAAQAAAA2APf/BAAAAAQAAAA1APf/BAAAAAQAAAA0APf/BAAAAAQAAAAzAPf/BAAAAAQAAAAyAPf/BAAAAAQAAAAxAPf/BAAAAAQAAAAwAPf/BAAAAAQAAAA/APf/BAAAAAQAAABAAPf/BAAAAAQAAABBAPf/BAAAAAQAAABCAPf/BAAAAAQAAABDAPf/BAAAAAQAAABEAPf/BAAAAAQAAABFAPf/BAAAAAQAAABGAPf/BAAAAAQAAABHAPf/BAAAAAQAAABIAPf/BAAAAAQAAABJAPf/BAAAAAQAAABKAPf/BAAAAAQAAABLAPf/BAAAAAQAAABMAPf/BAAAAAQAAABNAPf/BAAAAAQAAABOAPf/BAAAAAQAAABPAPf/BAAAAAQAAABQAPf/BAAAAAQAAABRAPf/BAAAAAQAAABSAPf/BAAAAAQAAABSAPb/BAAAAAQAAABTAPb/BAAAAAQAAABTAPf/BAAAAAQAAAA=")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=527768629]
-visible = false
 z_index = -1
 material = ExtResource("4_4uvlv")
 offset_top = -225.0
@@ -285,7 +283,6 @@ offset_right = 2655.0
 offset_bottom = 800.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2143268877]
-visible = false
 modulate = Color(1, 1, 1, 0.4862745)
 z_index = -1
 offset_left = -1.0
@@ -779,17 +776,6 @@ wander_duration = 2.0
 [node name="Trees4" type="Node2D" parent="." unique_id=1851932272]
 y_sort_enabled = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Trees4" unique_id=318880384]
-z_index = -1
-position = Vector2(601, -183)
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees4/StaticBody2D" unique_id=1355941846]
-position = Vector2(0, -10.5)
-shape = SubResource("RectangleShape2D_4uvlv")
-debug_color = Color(1, 0, 0, 0)
-
 [node name="Trees2" parent="Trees4" unique_id=1797519077 instance=ExtResource("12_hxh2l")]
 position = Vector2(173, -59)
 
@@ -902,8 +888,6 @@ script = ExtResource("21_5tx25")
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("13_4uvlv")
-h_frames = 1
-v_frames = 1
 npc_resource = ExtResource("14_srkr2")
 
 [node name="PersistantDataHandler" parent="Quest[102]_BFComesWith/BFComesWithNPC" unique_id=1843175790 instance=ExtResource("11_yr5mt")]
@@ -946,6 +930,7 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Quest[102]_BFComesWith/BFComesWithNPC" unique_id=364518435]
 visible = false
 texture = ExtResource("28_li6oa")
+hframes = 2
 
 [node name="TerminalInterface" parent="." unique_id=2086907037 instance=ExtResource("31_g0pye")]
 position = Vector2(416, 100)
@@ -968,12 +953,13 @@ position = Vector2(1762, -174)
 [node name="MagicPortalGate" type="Sprite2D" parent="FrequencyMini" unique_id=1461131512]
 z_index = -2
 y_sort_enabled = true
-position = Vector2(617, -684)
-scale = Vector2(3, 3)
+position = Vector2(-136, -530)
+scale = Vector2(2, 2)
 texture = ExtResource("33_l156c")
 offset = Vector2(0, -250)
 
 [node name="Sprite2D" type="Sprite2D" parent="FrequencyMini" unique_id=1163814488]
+material = ExtResource("37_26whl")
 position = Vector2(0, -349)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("36_xa65b")
@@ -981,7 +967,7 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 0.6598174
+energy = 1.1548469
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")
@@ -998,7 +984,7 @@ position = Vector2(0, 1)
 pulse_hz = 330.0
 
 [node name="Indicator2D" parent="FrequencyMini" unique_id=976564604 instance=ExtResource("15_t22hv")]
-y = -492
+y = -540
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrequencyMini/Indicator2D" unique_id=396684117]
 shape = SubResource("RectangleShape2D_qnxbr")
@@ -1039,5 +1025,14 @@ side = 3
 libraries/ = SubResource("AnimationLibrary_451xv")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=428850016]
+
+[node name="DeadTrees" parent="." unique_id=2101668149 instance=ExtResource("50_0fwua")]
+position = Vector2(2304, 479)
+
+[node name="LevelTransitionCrashSite" parent="." unique_id=1251369083 instance=ExtResource("29_70lcl")]
+position = Vector2(2648, 21)
+level = "uid://dhk3ntna2hjqq"
+target_transition_area = "LevelTransitionTestMap"
+side = 1
 
 [editable path="BirdFriend"]

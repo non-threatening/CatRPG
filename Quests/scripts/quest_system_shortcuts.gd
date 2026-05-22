@@ -2,6 +2,7 @@ extends Node
 
 const ICON_INTERACT : String = "[img=48]res://GeneralNodes/controller_icon_interact.tres[/img]"
 const ICON_ATTACK : String = "[img=48]res://GeneralNodes/controller_icon_attack.tres[/img]"
+const ICON_RIGHT_STICK : String = "[img=48]res://GeneralNodes/controller_icon_right_stick.tres[/img]"
 
 const QUEST_PATH: String = "res://Quests/quest_resources/%s.tres"
 

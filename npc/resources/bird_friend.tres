@@ -2,11 +2,22 @@
 
 [ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="2_56uln"]
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="2_t0jrf"]
-[ext_resource type="AudioStream" uid="uid://bh2c1aeen51tw" path="res://Player/BirdFriend/audio/voice_kakaist-crow-sfx.wav" id="3_t0jrf"]
+[ext_resource type="AudioStream" uid="uid://dwv5s7fsa1dn4" path="res://npc/audio/bird_friend/crow_01.wav" id="4_gqnsk"]
+[ext_resource type="AudioStream" uid="uid://bpt276y26lwne" path="res://npc/audio/bird_friend/crow_02.wav" id="5_ds05m"]
+[ext_resource type="AudioStream" uid="uid://cy37oyn7v1xce" path="res://npc/audio/bird_friend/crow_03.wav" id="6_cotvs"]
+[ext_resource type="AudioStream" uid="uid://h0ejaed1rl1f" path="res://npc/audio/bird_friend/crow_04.wav" id="7_8x6n2"]
+[ext_resource type="AudioStream" uid="uid://djeaosxnojmte" path="res://npc/audio/bird_friend/crow_05.wav" id="8_flpf1"]
 
 [resource]
 script = ExtResource("2_t0jrf")
 npc_name = "Bird Friend"
 sprite = ExtResource("2_56uln")
-talk_blip = ExtResource("3_t0jrf")
+h_frames = 2
+v_frames = 1
+talk_blips = Array[AudioStream]([ExtResource("4_gqnsk"), ExtResource("5_ds05m"), ExtResource("6_cotvs"), ExtResource("7_8x6n2"), ExtResource("8_flpf1")])
+abilities = Dictionary[String, int]({
+"Attack": 0,
+"carry": 0,
+"distance": 0
+})
 metadata/_custom_type_script = "uid://bmpteubp4v57k"

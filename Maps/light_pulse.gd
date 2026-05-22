@@ -7,9 +7,9 @@ func _ready() -> void:
 	
 	
 func flicker() -> void:
-	energy = randf() * 1.4 + 0.3
-	
-	#scale = Vector2( 1, 1 ) * energy
-	await get_tree().create_timer( 0.1 ).timeout
-	flicker()
-	pass
+	if get_tree():
+		energy = randf() * 1.4 + 0.3
+		
+		#scale = Vector2( 1, 1 ) * energy
+		await get_tree().create_timer( 0.1 ).timeout
+		flicker()

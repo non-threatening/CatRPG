@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://csrhsyiqv7781" path="res://Maps/Levels/wrap_around_transition.tscn" id="8_jp6c1"]
 [ext_resource type="Script" uid="uid://cl8p050f11rpa" path="res://Maps/Worlds/Klardraumland/pixquito_spawner.gd" id="10_dx835"]
 [ext_resource type="Material" uid="uid://dm100xw332yew" path="res://Maps/Worlds/Klardraumland/tree_of_leaving.tres" id="11_usbqa"]
-[ext_resource type="Texture2D" uid="uid://c1mn6ochpknba" path="res://Maps/Enviroment/Plants/Trees/sprites/DeadTree.png" id="12_usbqa"]
+[ext_resource type="Texture2D" uid="uid://c1mn6ochpknba" path="res://Maps/Enviroment/Plants/Trees/sprites/dead/DeadTree.png" id="12_usbqa"]
 [ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="12_vum22"]
 [ext_resource type="Script" uid="uid://dg2utqdot7mxt" path="res://Maps/Enviroment/Plants/Trees/trees/trees.gd" id="13_1sp4d"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://GeneralNodes/Actionables/actionable_dialog.tscn" id="13_6ipnb"]

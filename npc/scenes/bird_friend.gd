@@ -24,6 +24,7 @@ func _ready() -> void:
 func _on_level_loaded() -> void:
 	if StatsManager.achievements.have_bird_friend == 1:
 		await get_tree().create_timer( 1.2 ).timeout
+		##	If BF is awake and 
 		if NpcManager.bf_awake == true and PlayerManager.player.player_abilities.selected_ability != 1:
 			bird_friend.modulate = Color( 1, 1, 1, 0 )
 			_arrived()

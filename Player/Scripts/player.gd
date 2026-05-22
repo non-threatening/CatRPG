@@ -53,6 +53,7 @@ var time: float = 0.0
 @onready var bird_friend_sprite: Sprite2D = $Sprite2D/BirdFriendSprite
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
 
+@onready var swipe_slash: SwipeSlash = $Sprite2D/AttackEffectSprite/SwipeSlash
 
 func _ready() -> void:
 	PlayerManager.player = self
@@ -129,6 +130,10 @@ func set_direction() -> bool:
 	sprite.scale.x = -0.666 if cardinal_direction == Vector2.LEFT else 0.666
 	return true
 
+
+func paw_swipe() -> void:
+	swipe_slash.swipe()
+	pass
 
 func update_animation( state : String) -> void:
 	animation_player.play( state + "_" + anim_direction() )

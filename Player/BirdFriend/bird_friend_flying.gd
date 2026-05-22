@@ -30,45 +30,51 @@ var twirl_time : float = 0.0
 
 func _ready() -> void:
 	hide()
-	state = State.INACTIVE
+	#state = State.INACTIVE
 	player = PlayerManager.player
 	bf_radius = (sprite.texture.get_size().x / sprite.get_hframes()) * 0.5
 	previous_position = global_position
 
 
 func _physics_process(delta: float) -> void:
-	if state == State.THROW:
-		speed -= acceleration * delta
-		position += direction * speed * delta
-		if speed <= 0:
-			state = State.RETURN
-			update_animation()
-	elif state == State.RETURN:
-		direction = global_position.direction_to( player.global_position + Vector2( 0, -100 ) )
-		speed += acceleration * delta
-		position += direction * speed * delta
-		if global_position.distance_to( player.global_position ) <= 110: 
-			state = State.PERCHED
-		#Stop flapping when close enough
-		if global_position.distance_to( player.global_position ) <= 500: 
-			anim_stop = true
+	match state:
+		State.THROW:
+			speed -= acceleration * delta
+			position += direction * speed * delta
+			if speed <= 0:
+				state = State.RETURN
+				update_direction()
+				
+		State.RETURN:
+			direction = global_position.direction_to( player.global_position + Vector2( 0, -100 ) )
+			speed += acceleration * delta
+			position += direction * speed * delta
+			if global_position.distance_to( player.global_position ) <= 110: 
+				state = State.PERCHED
+			#Stop flapping when close enough
+			if global_position.distance_to( player.global_position ) <= 500: 
+				anim_stop = true
+				
+		State.LEAVE:
+			speed += 10 * delta
+			position += direction * speed * delta
 			
-	elif state == State.LEAVE:
-		speed += 10 * delta
-		position += direction * speed * delta
-		
-	elif state == State.ARRIVE:
-		direction = global_position.direction_to( _bf_position )
-		speed += acceleration * delta * 0.35
-		position += direction * speed * delta
-		if global_position.distance_to( _bf_position ) <= 45: 
-			state = State.ARRIVED
-		if global_position.distance_to( _bf_position ) <= 200: 
-			anim_stop = true
-	elif state == State.ARRIVED: # in tree
-		arrived()
-	elif state == State.PERCHED: # on cat
-		perched()
+		State.ARRIVE:
+			direction = global_position.direction_to( _bf_position )
+			speed += acceleration * delta * 0.35
+			position += direction * speed * delta
+			if global_position.distance_to( _bf_position ) <= 45: 
+				state = State.ARRIVED
+			if global_position.distance_to( _bf_position ) <= 200: 
+				anim_stop = true
+				
+		State.ARRIVED: # in tree
+			arrived()
+			
+		State.PERCHED: # on cat
+			perched()
+		_:
+			pass
 	
 	## Trail
 	var rad : float = bf_radius * 0.125 ##=16
@@ -114,7 +120,7 @@ func back_to_cat( bf_position ) -> void:
 	position = bf_position
 	speed = max_speed
 	visible = true
-	update_animation()
+	update_direction()
 	flap_animation()
 	state = State.RETURN
 
@@ -123,12 +129,11 @@ func leave( throw_direction : Vector2 ) -> void:
 	direction = throw_direction
 	speed = max_speed
 	state = State.LEAVE
-	update_animation()
+	update_direction()
 	flap_animation()
 	visible = true
 	toggle_item_magent()
 	player.hide_bird_friend()
-	
 	##Queue free, when it leaves unseen
 	await get_tree().create_timer( 6.66 ).timeout
 	queue_free()
@@ -138,7 +143,7 @@ func throw( throw_direction : Vector2 ) -> void:
 	direction = throw_direction
 	speed = max_speed
 	state = State.THROW
-	update_animation()
+	update_direction()
 	flap_animation()
 	visible = true
 	player.hide_bird_friend()
@@ -149,12 +154,12 @@ func arrive( throw_direction : Vector2, bf_position ) -> void:
 	speed = max_speed
 	state = State.ARRIVE
 	_bf_position = bf_position
-	update_animation()
+	update_direction()
 	flap_animation()
 	visible = true
 
 
-func update_animation() -> void:
+func update_direction() -> void:
 	# wait an extra frame to process Return state and change direction, from Throw
 	await get_tree().create_timer( 0.05 ).timeout
 	var direction_id : int = int( round( ( direction * 0.1 ).angle() / TAU * DIR_4.size() ) )

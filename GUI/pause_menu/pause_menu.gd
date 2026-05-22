@@ -159,7 +159,8 @@ func preview_stats( item : ItemData ) -> void:
 
 #func update_abilities_description( new_text : String ) -> void:
 	#abilities_description.text = new_text
-	
+
+##TODO: here is where we get the friend info
 func update_ability_items( items : Array ) -> void:
 	var item_buttons : Array[ Node ] = %AbilityGridContainer.get_children()
 	for i in item_buttons.size():

@@ -102,6 +102,7 @@ func _spoke( letter: String, letter_index: int, speed: float ) -> void:
 		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ) )
 		audio_stream_player.play()		
 	if ' '.contains( letter ):
+		choose_audio_file()
 		audio_stream_player.stream = audio_file
 		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ) )
 		audio_stream_player.play()
@@ -133,7 +134,23 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
-	  
+
+
+func choose_audio_file() -> void:
+	##TODO: this for the friend attibutes/skills
+	var character : Resource
+	var character_path : String = "res://npc/resources/%s.tres" % ( dialogue_line.character.to_snake_case() )
+	if ResourceLoader.exists( character_path ):
+		character = load( character_path )
+		if character.talk_blips:
+			var r : int = randi() % character.talk_blips.size()
+			audio_file = load( character.talk_blips[ r ].resource_path )
+			pitch = character.pitch
+			
+	elif dialogue_line.character.to_snake_case() == "cat":
+		pitch = 1.0
+	pass
+	 
 
 ## Apply any changes to the bubble given a new [DialogueLine].
 func apply_dialogue_line() -> void:
@@ -143,20 +160,10 @@ func apply_dialogue_line() -> void:
 	bubble.focus_mode = Control.FOCUS_ALL
 	bubble.grab_focus()
 	
-	
-	var character : Resource
-	var character_path : String = "res://npc/resources/%s.tres" % ( dialogue_line.character.to_snake_case() )
-	if ResourceLoader.exists( character_path ):
-		character = load( character_path )
-		audio_file = load( character.talk_blip.resource_path )
-		pitch = character.pitch
-	elif dialogue_line.character.to_snake_case() == "cat":
-		pitch = 1.0
-
+	choose_audio_file()
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
-
 
 	#use tags.. 
 	var emotion : String = ""

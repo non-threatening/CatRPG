@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://dfbxisbyy3t35"]
+[gd_resource type="Resource" script_class="NPCResource" format=3 uid="uid://dfbxisbyy3t35"]
 
-[ext_resource type="Texture2D" uid="uid://dbvgg5qwy3w25" path="res://npc/sprites/portraits/portrait_placeholder.png" id="1_uk2ly"]
 [ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="1_ynxkf"]
 [ext_resource type="Texture2D" uid="uid://ry8hql7ssigy" path="res://npc/sprites/shopkeeper.png" id="3_7yjm8"]
+[ext_resource type="AudioStream" uid="uid://dppicop8bwemo" path="res://Dialogue/SpeechBubbles/voice_blip.wav" id="3_gs0nr"]
 
 [resource]
 script = ExtResource("1_ynxkf")
 npc_name = "Shopkeeper"
 sprite = ExtResource("3_7yjm8")
-portrait = ExtResource("1_uk2ly")
-dialog_audio_pitch = 1.8
+talk_blips = Array[AudioStream]([ExtResource("3_gs0nr")])
+abilities = Dictionary[String, int]({
+"Level": 1
+})
 metadata/_custom_type_script = "uid://bmpteubp4v57k"
