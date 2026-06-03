@@ -27,7 +27,7 @@ func play() -> void:
 
 func set_hz( hz : float ) -> void:
 	pulse_hz = hz * 4
-	prints( "hz", hz * 4 )
+	#prints( "hz", hz * 4 )
 	
 	
 func set_volume( vol : float = 0.5 ) -> void:

@@ -30,15 +30,13 @@ func bird_arriving() -> void:
 	var randy : float =  bf_position.y - ( randi() % 500 + 1000 )
 	var dims : Array[ Vector2 ] = LevelManager.current_tilemap_bounds
 	prints("dims", dims[1], dims[1][0], bf_position.y, randy )
+	
 	var l_or_r : int = randi() % 2
-
 	match l_or_r:
 		0:
 			_b.position = Vector2( -150, randy )
 		_:
 			_b.position = Vector2( dims[1][0] + 150, randy )
-	
-	#_b.position = Vector2( pow(-1, randi() % 2) * 1250, (randi() % 500 + 100) * -1 ) + bf_position
 	var direction = _b.global_position.direction_to( bf_position )
 	_b.arrive( direction, bf_position )
 	bird_instance = _b
@@ -50,7 +48,7 @@ func to_and_fro_back_to_cat() -> void:
 	var _b = BIRD.instantiate() as BirdFriendFlying
 	var bf_position = bird_friend.global_position
 	bird_friend.add_sibling( _b ) # make it a sibling so its at the same Z
-	_b.toggle_item_magent()
-	
+	_b.toggle_item_magent()	
+	EffectManager.landed( bf_position )
 	_b.back_to_cat( bf_position )
 	bird_instance = _b

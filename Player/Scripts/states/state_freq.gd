@@ -44,10 +44,8 @@ func enter() -> void:
 	##	Check if player is on the left or right. left = true
 	if PlayerManager.player.global_position.x - position.x <= 0:
 		player_side = true
-		prints("left")
 	else:
 		player_side = false
-		prints("right")
 	
 	
 	# Does the wave point up or to the side. 0 = Side
@@ -94,7 +92,7 @@ func handle_input( _event: InputEvent ) -> State:
 	if Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down"):
 		var direction = Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down")
 		deg = -0.5 * rad_to_deg( direction.angle() * 2) ## max deg 700; min
-		prints( "deg", deg )
+		#prints( "deg", deg )
 		if deg > 0:
 			texture_rect.material.set_shader_parameter( "wave_frequency", deg * 0.5 )
 			tone_generator.set_hz( deg )

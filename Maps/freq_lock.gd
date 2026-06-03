@@ -38,7 +38,7 @@ func tune_freq() -> void:
 	tone_generator.set_hz( frequency )
 	tone_generator.play()
 	SignalBus.frequency_match.emit( frequency, wave_pos, threshold_time, slop, up_or_side )
-	prints("Signal match", frequency*4, wave_pos, threshold_time, slop, up_or_side)
+	#prints("Signal match", frequency*4, wave_pos, threshold_time, slop, up_or_side)
 	## Enter the player state freq and start the game
 	PlayerManager.player.start_freq()
 

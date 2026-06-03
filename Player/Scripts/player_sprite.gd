@@ -9,6 +9,7 @@ const PLAYER_LOKTIN = preload("uid://b3iybtj0bph5k")
 @onready var bird_friend_sprite: Sprite2D = $BirdFriendSprite
 @onready var player_shape_hor: CollisionShape2D = $"../PlayerShapeHor"
 @onready var player_shape_vert: CollisionShape2D = $"../PlayerShapeVert"
+@onready var footprints: Node2D = $footprints
 
 var cur_dur
 
@@ -21,7 +22,7 @@ func _ready() -> void:
 func _check_level() -> void:
 	await tree_entered
 	var thing = get_tree().get_current_scene().name
-	prints(thing)
+	# prints("check level:", thing)
 	if thing.begins_with("arel"):
 		print("YES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		pass
@@ -30,11 +31,6 @@ func _check_level() -> void:
 			sprite.material.shader = PLAYER_LOKTIN
 		_:
 			sprite.material.shader = PLAYER
-
-
-#func _physics_process( _delta: float) -> void:
-	#
-	#pass
 
 
 func _on_direction_changed( new_dir : Vector2 ):
@@ -47,15 +43,21 @@ func _on_direction_changed( new_dir : Vector2 ):
 			
 			player_shape_vert.set_deferred( "disabled", false )
 			player_shape_hor.set_deferred( "disabled", true )
+			
+			footprints.rotation_degrees = 90
 		Vector2.UP:
 			bird_friend_sprite.position = Vector2( -10, -164 )
 			
 			player_shape_vert.set_deferred( "disabled", false )
 			player_shape_hor.set_deferred( "disabled", true )
+			
+			footprints.rotation_degrees = 90
 		Vector2.LEFT, Vector2.RIGHT:
 			bird_friend_sprite.position = Vector2( -50, -145 )
 			
 			player_shape_vert.set_deferred( "disabled", true )
 			player_shape_hor.set_deferred( "disabled", false )
+			
+			footprints.rotation = 0
 		_:
 			pass

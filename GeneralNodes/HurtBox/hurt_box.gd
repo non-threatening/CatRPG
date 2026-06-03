@@ -7,11 +7,9 @@ signal did_damage
 
 func _ready() -> void:
 	area_entered.connect( _area_entered )
-	pass
 
-	
+
 func _area_entered( a : Area2D ) -> void:
 	if a is HitBox:
 		did_damage.emit()
 		a.take_damage( self ) ## This cause damage every enter...
-		pass

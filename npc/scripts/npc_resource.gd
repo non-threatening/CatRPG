@@ -12,5 +12,3 @@ class_name NPCResource extends Resource
 
 @export var abilities : Dictionary[ String, int ]
 
-
-##TODO: Thought bubbles like stardew valley

@@ -49,7 +49,12 @@
 [ext_resource type="Texture2D" uid="uid://bxfyt6vkjdevh" path="res://Maps/textures/Dirt_01.png" id="45_xmcjt"]
 [ext_resource type="AudioStream" uid="uid://bgdpmxn86hpae" path="res://Audio/UsedSamples/kick (7).ogg" id="47_0lun4"]
 [ext_resource type="AudioStream" uid="uid://b55lwwli8jahd" path="res://Audio/UsedSamples/tom (9).ogg" id="48_26whl"]
-[ext_resource type="PackedScene" uid="uid://dultpi7m1kr3m" path="res://Maps/Enviroment/Plants/Trees/trees/dead_trees.tscn" id="50_0fwua"]
+[ext_resource type="Shader" uid="uid://c4qwogvwurrh2" path="res://Maps/watercolor_test.gdshader" id="50_0xcwq"]
+[ext_resource type="Texture2D" uid="uid://3d43x5cnagdj" path="res://Player/Sprites/Player_Sprite_Master_NewNew.png" id="51_451xv"]
+
+[sub_resource type="Environment" id="Environment_451xv"]
+adjustment_enabled = true
+adjustment_saturation = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0fwua"]
 shader = ExtResource("2_26whl")
@@ -58,7 +63,6 @@ shader = ExtResource("2_26whl")
 background_mode = 3
 glow_enabled = true
 adjustment_enabled = true
-adjustment_brightness = 0.37
 adjustment_saturation = 0.0
 
 [sub_resource type="Shader" id="Shader_wmkbj"]
@@ -207,10 +211,32 @@ _data = {
 &"new_animation": SubResource("Animation_0fwua")
 }
 
+[sub_resource type="Gradient" id="Gradient_451xv"]
+colors = PackedColorArray(0, 0, 0, 1, 0.3553146, 0.35531327, 0.35531288, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_451xv"]
+noise_type = 4
+frequency = 0.1055
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0xcwq"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_451xv")
+color_ramp = SubResource("Gradient_451xv")
+normalize = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oya04"]
+shader = ExtResource("50_0xcwq")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_0xcwq")
+shader_parameter/paper_texture_scale = 1.30300005863262
+shader_parameter/color3 = Color(0.7162579, 0.41263247, 0.041270755, 1)
+
 [node name="GrassTestMap" type="Node2D" unique_id=1650074484]
 y_sort_enabled = true
 script = ExtResource("1_t22hv")
 metadata/_edit_vertical_guides_ = [2699.0, 4440.0]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=821307573]
+environment = SubResource("Environment_451xv")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=155363681]
 material = SubResource("ShaderMaterial_0fwua")
@@ -306,6 +332,7 @@ uv = PackedVector2Array(502.27698, 7.725375, 409.9581, 48.50435, 330.55432, 113.
 position = Vector2(2059, 139)
 
 [node name="BirdFriend" parent="." unique_id=122702968 instance=ExtResource("45_li6oa")]
+visible = false
 z_index = 1
 position = Vector2(1472, 167)
 
@@ -745,7 +772,7 @@ item_data = ExtResource("9_qnxbr")
 light_on = true
 
 [node name="GimpSuit" parent="." unique_id=136731681 instance=ExtResource("8_v5bit")]
-position = Vector2(1693.7782, 380.12317)
+position = Vector2(812, 699)
 item_data = ExtResource("10_xvh4v")
 
 [node name="WolfNpc[101]" parent="." unique_id=1996720139 instance=ExtResource("15_k0o0t")]
@@ -967,7 +994,7 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 1.1548469
+energy = 1.5063797
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")
@@ -1014,20 +1041,27 @@ push_speed = 300.0
 position = Vector2(1764, -52)
 
 [node name="LevelTransitionEnter" parent="." unique_id=2022780888 instance=ExtResource("29_70lcl")]
-position = Vector2(1677, 14)
+position = Vector2(1855, 240)
 portal_dir = 1
 level = "uid://ly7wguh1ufuy"
 target_transition_area = "LevelTransitionEnter"
 size = 1
-side = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1366266351]
 libraries/ = SubResource("AnimationLibrary_451xv")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=428850016]
 
-[node name="DeadTrees" parent="." unique_id=2101668149 instance=ExtResource("50_0fwua")]
-position = Vector2(2304, 479)
+[node name="WatercolorTest" type="Sprite2D" parent="." unique_id=1024381972]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_oya04")
+position = Vector2(2309.9998, 289.99997)
+scale = Vector2(0.666, 0.666)
+texture = ExtResource("51_451xv")
+offset = Vector2(0, -210)
+hframes = 6
+vframes = 6
+frame = 9
 
 [node name="LevelTransitionCrashSite" parent="." unique_id=1251369083 instance=ExtResource("29_70lcl")]
 position = Vector2(2648, 21)

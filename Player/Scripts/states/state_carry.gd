@@ -43,14 +43,14 @@ func process( _delta : float ) -> State:
 	match player.direction:
 		Vector2.DOWN:
 			held_item.position = Vector2( -1.0, -12.0 )
-			held_item.rotation = 20.0
+			held_item.rotation_degrees = 20.0
 			held_item.show_behind_parent = false
 		Vector2.UP:
 			held_item.position = Vector2( 0.0, -20 )
 			held_item.show_behind_parent = true
 		Vector2.LEFT, Vector2.RIGHT:
 			held_item.position = Vector2( 47, -18 )
-			held_item.rotation = 0
+			held_item.rotation_degrees = 0
 			held_item.show_behind_parent = false
 		_:
 			pass

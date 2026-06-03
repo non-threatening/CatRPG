@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HitParticleSettings" format=3 uid="uid://b4mgslrcur25h"]
+
+[ext_resource type="Script" uid="uid://3vnlis2krcsj" path="res://00_Globals/global_effects/hit_particle_settings.gd" id="1_7h3cq"]
+
+[resource]
+script = ExtResource("1_7h3cq")
+count = 100
+metadata/_custom_type_script = "uid://3vnlis2krcsj"

@@ -1,20 +1,26 @@
 class_name State_Walk extends State
 
-@export var move_speed : float = 400.0
+@export var move_speed : float = 425.0
 
 @onready var idle : State = $"../Idle"
 @onready var attack: State = $"../Attack"
 @onready var dash : State = $"../Dash"
 
+@onready var gpu_particles_2d: GPUParticles2D = $"../../Sprite2D/footprints/GPUParticles2D"
+@onready var gpu_particles_2d_2: GPUParticles2D = $"../../Sprite2D/footprints/GPUParticles2D2"
 
 ## What happens when the player enters this State?
 func enter() -> void:
 	player.update_animation("walk")
+	gpu_particles_2d.emitting = true
+	gpu_particles_2d_2.emitting = true
 	pass
 	
 	
 ## When the player exits
 func exit() -> void:
+	gpu_particles_2d.emitting = false
+	gpu_particles_2d_2.emitting = false
 	pass
 	
 	

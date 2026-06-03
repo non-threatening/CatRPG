@@ -41,18 +41,19 @@ void vertex() {
 
 void fragment() {
 	vec4 input_color = texture( TEXTURE, UV );
-	//if ( input_color.r > 0.01 && input_color.g > 0.01 && input_color.b > 0.01 && input_color.a > 0.1) {
-		//COLOR.rgb = cover_color.rgb * input_color.rgb;
-	//}
-	//input_color = COLOR;
+	if ( input_color.r > 0.01 && input_color.g > 0.01 && input_color.b > 0.01 && input_color.a > 0.1) {
+		COLOR.rgb = cover_color.rgb * input_color.rgb;
+	}
+	input_color = COLOR;
+	
 	if ( input_color.r < 0.25 && input_color.g > 0.75 && input_color.b < 0.25 ) {
 		COLOR.rgba = eye_color.rgba;
 	}
 
-	//float outline_mask = has_solid_neighbor( TEXTURE, UV, TEXTURE_PIXEL_SIZE );
-	//float alpha_blend_factor = smoothstep( 0.0, alpha_threshold, COLOR.a );
-	//COLOR.rgb = mix( outline_color.rgb, COLOR.rgb, alpha_blend_factor );
-	//COLOR.a = max( COLOR.a, outline_mask );
+	float outline_mask = has_solid_neighbor( TEXTURE, UV, TEXTURE_PIXEL_SIZE );
+	float alpha_blend_factor = smoothstep( 0.0, alpha_threshold, COLOR.a );
+	COLOR.rgb = mix( outline_color.rgb, COLOR.rgb, alpha_blend_factor );
+	COLOR.a = max( COLOR.a, outline_mask );
 
 	//if ( alpha_threshold != 0.0 ){
 		//vec3 inverted = 1.0 - COLOR.rgb;

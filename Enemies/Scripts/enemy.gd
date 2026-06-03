@@ -74,7 +74,7 @@ func _take_damage( hurt_box : HurtBox ) -> void:
 	if invulnerable == true:
 		return
 	hp -= hurt_box.damage
-	PlayerManager.shake_camera()
+	EffectManager.shake_camera()
 	EffectManager.damage_text( hurt_box.damage, global_position + Vector2( 0, -50 ) )
 	if hp > 0:
 		enemy_damaged.emit( hurt_box )
