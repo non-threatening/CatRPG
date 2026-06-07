@@ -6,7 +6,14 @@ const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 var abilities : Array[ String ] = [
 	"", "", "", "", "" ## "NONE", BIRD", "GRAPPLE", "BOW", "BOMB"
 	]
-var selected_ability
+
+ # For NONE ability press duration
+var _ability_press_time := 0.0
+var _ability_pressing := false
+var _ability_long_press_fired := false
+const LONG_PRESS_THRESHOLD := 0.4
+
+var selected_ability : int = 0
 var player : Player
 var bird_instance : BirdFriendFlying = null
 
@@ -34,21 +41,38 @@ func setup_abilities( select_index : int = 0 ) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability"):
-		match selected_ability:
-			0:
-				none_ability()
-			1:
-				bird_ability()
-			2:
-				grapple_ability()
-			3:
-				bow_ability()
-			4:
-				bomb_ability()
-				
+			match selected_ability:
+				0:
+					_ability_press_time = 0.0
+					_ability_pressing = true
+					_ability_long_press_fired = false
+				1:
+					bird_ability()
+				2:
+					grapple_ability()
+				3:
+					bow_ability()
+				4:
+					bomb_ability()
+					
+	elif event.is_action_released("ability"):
+		if selected_ability == 0 and _ability_pressing:
+			if not _ability_long_press_fired:
+				none_ability(false) # short press only if long wasn't fired
+			_ability_pressing = false
+			_ability_long_press_fired = false
+			
 	elif event.is_action_pressed("switch_ability"):
 		toggle_ability()
-	pass
+
+	
+func _process(delta: float) -> void:
+	if _ability_pressing:
+		_ability_press_time += delta
+		if not _ability_long_press_fired and _ability_press_time >= LONG_PRESS_THRESHOLD:
+			none_ability(true)
+			_ability_long_press_fired = true
+
 
 
 func toggle_ability() -> void:
@@ -63,16 +87,19 @@ func toggle_ability() -> void:
 		player.show_bird_friend()
 	else:
 		player.hide_bird_friend()
-	pass
 
-	
+
 func set_ability_number( a : int ) -> void:
 	selected_ability = a
 
 
-func none_ability() -> void:
-	##TODO: Short meow. long meow on long press
-	pass
+func none_ability(is_long_press := false) -> void:
+	if is_long_press:
+	   # TODO: Play long meow
+		print("Long press: long meow")
+	else:
+		# TODO: Play short meow
+		print("Short press: short meow")
 
 
 func _bird_leaving() -> void:
