@@ -50,7 +50,7 @@
 [ext_resource type="AudioStream" uid="uid://bgdpmxn86hpae" path="res://Audio/UsedSamples/kick (7).ogg" id="47_0lun4"]
 [ext_resource type="AudioStream" uid="uid://b55lwwli8jahd" path="res://Audio/UsedSamples/tom (9).ogg" id="48_26whl"]
 [ext_resource type="Shader" uid="uid://c4qwogvwurrh2" path="res://Maps/watercolor_test.gdshader" id="50_0xcwq"]
-[ext_resource type="Texture2D" uid="uid://3d43x5cnagdj" path="res://Player/Sprites/Player_Sprite_Master_NewNew.png" id="51_451xv"]
+[ext_resource type="Texture2D" uid="uid://brmghi2fh5i6d" path="res://Player/Sprites/Player_Sprite_Master_TailOff.png" id="51_451xv"]
 
 [sub_resource type="Environment" id="Environment_451xv"]
 adjustment_enabled = true
@@ -211,29 +211,38 @@ _data = {
 &"new_animation": SubResource("Animation_0fwua")
 }
 
-[sub_resource type="Gradient" id="Gradient_451xv"]
-colors = PackedColorArray(0, 0, 0, 1, 0.3553146, 0.35531327, 0.35531288, 1)
+[sub_resource type="Gradient" id="Gradient_oya04"]
+colors = PackedColorArray(0, 0, 0, 1, 0.4249097, 1, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_451xv"]
-noise_type = 4
-frequency = 0.1055
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rdttf"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0xcwq"]
-generate_mipmaps = false
-noise = SubResource("FastNoiseLite_451xv")
-color_ramp = SubResource("Gradient_451xv")
-normalize = false
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ihcx1"]
+noise = SubResource("FastNoiseLite_rdttf")
+color_ramp = SubResource("Gradient_oya04")
+
+[sub_resource type="Gradient" id="Gradient_xn4qj"]
+offsets = PackedFloat32Array(0.39716312, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oie8b"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pg704"]
+noise = SubResource("FastNoiseLite_oie8b")
+color_ramp = SubResource("Gradient_xn4qj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oya04"]
 shader = ExtResource("50_0xcwq")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_0xcwq")
-shader_parameter/paper_texture_scale = 1.30300005863262
-shader_parameter/color3 = Color(0.7162579, 0.41263247, 0.041270755, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_ihcx1")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_pg704")
+shader_parameter/brightness = 2.5
+shader_parameter/time_scale = 1.0
+shader_parameter/x = 0.5
+shader_parameter/y = 0.5
 
 [node name="GrassTestMap" type="Node2D" unique_id=1650074484]
 y_sort_enabled = true
 script = ExtResource("1_t22hv")
 metadata/_edit_vertical_guides_ = [2699.0, 4440.0]
+metadata/_edit_horizontal_guides_ = [-108.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=821307573]
 environment = SubResource("Environment_451xv")
@@ -994,7 +1003,7 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 1.5063797
+energy = 0.43315116
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")
@@ -1055,13 +1064,13 @@ libraries/ = SubResource("AnimationLibrary_451xv")
 [node name="WatercolorTest" type="Sprite2D" parent="." unique_id=1024381972]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_oya04")
-position = Vector2(2309.9998, 289.99997)
+position = Vector2(2404, 292)
 scale = Vector2(0.666, 0.666)
 texture = ExtResource("51_451xv")
 offset = Vector2(0, -210)
 hframes = 6
 vframes = 6
-frame = 9
+frame = 7
 
 [node name="LevelTransitionCrashSite" parent="." unique_id=1251369083 instance=ExtResource("29_70lcl")]
 position = Vector2(2648, 21)

@@ -90,7 +90,7 @@ tilemaps="tilemaps with footstep sounds and stuff"
 theme/default_font_hinting=0
 theme/default_font_multichannel_signed_distance_field=true
 theme/default_font_generate_mipmaps=true
-theme/custom_font="uid://wk8osa2a2k1c"
+theme/custom_font="uid://c63g2n0bmlx53"
 
 [input]
 

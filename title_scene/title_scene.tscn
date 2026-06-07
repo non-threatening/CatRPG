@@ -8,7 +8,9 @@
 [ext_resource type="Shader" uid="uid://e0qbtnkfl2ip" path="res://Maps/shadows.gdshader" id="5_fp78m"]
 [ext_resource type="Material" uid="uid://dmn4nkwj8cf3p" path="res://title_scene/title_grass.tres" id="5_lj5tl"]
 [ext_resource type="Script" uid="uid://cw12wo4re7mt4" path="res://GUI/ui_elements/button_hi_hat.gd" id="6_fkwea"]
+[ext_resource type="FontFile" uid="uid://wk8osa2a2k1c" path="res://GUI/fonts/gapstown.small-ah.ttf" id="7_1falw"]
 [ext_resource type="PackedScene" uid="uid://cknrd4sbx4hht" path="res://title_scene/splash_screen.tscn" id="7_fkwea"]
+[ext_resource type="FontFile" uid="uid://c63g2n0bmlx53" path="res://GUI/fonts/notes-sans.free.otf" id="7_fp78m"]
 [ext_resource type="Shader" uid="uid://bh26fn50skl4i" path="res://zz_test/0-TestLevels/fog01.gdshader" id="9_lj5tl"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="9_svbj5"]
 
@@ -125,7 +127,14 @@ horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=353051705]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 28
+text = "The Playtest / Demo"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=1978292030]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_1falw")
+theme_override_font_sizes/font_size = 30
 text = "The Playtest / Demo"
 horizontal_alignment = 1
 
@@ -137,6 +146,7 @@ layout_mode = 2
 [node name="ButtonNew" type="Button" parent="CanvasLayer/Control/ColorRect/VBox" unique_id=2041726241]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("7_fp78m")
 theme_override_font_sizes/font_size = 32
 text = " New Game "
 script = ExtResource("6_fkwea")

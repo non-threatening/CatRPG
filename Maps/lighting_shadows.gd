@@ -44,21 +44,24 @@ func night_time() -> void:
 	## CavasModulate
 	minutes = hour * 60 + minute
 	darkness = fmod( remap( minutes, 1.0, 1440.0, 0.0, 360.0 ), 360 )
+	#day
 	if darkness >= 0 and darkness < 90:
 		if darkness <= 49:
 			canvas_modulate.color = Color.from_hsv(
 				222.0 / 360, 0.83933287004864, 1, 1
 			)
+			
 		elif darkness > 50:
 			canvas_modulate.color = Color.from_hsv(
 				222.0 / 360, ((darkness - 90) * -0.01) * 2, 1, 1
 			)
-		
+	#night
 	elif darkness > 270 and darkness < 360:
 		if darkness >= 313:
 			canvas_modulate.color = Color.from_hsv(
 				222.0 / 360, 0.83933287004864, 1, 1
 			)
+			#tranasition to morning
 		elif darkness < 312:
 			canvas_modulate.color = Color.from_hsv(
 				222.0 / 360, (darkness - 270) * 0.02, 1, 1
