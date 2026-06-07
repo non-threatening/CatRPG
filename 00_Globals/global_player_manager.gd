@@ -3,7 +3,6 @@ extends Node
 const PLAYER = preload("res://Player/player.tscn")
 const INVETORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/player_inventory.tres")
 
-signal camera_shook( trauma : float )
 @warning_ignore("unused_signal")
 signal interact_pressed ##(x) Only want dectection button to work when idle or walking, and within the area of interactables, activated from interactables
 signal player_leveled_up
@@ -81,7 +80,3 @@ func unparent_player( _p : Node2D ) -> void:
 func interact() -> void:
 	interact_handled = false
 	interact_pressed.emit()
-	
-	
-func shake_camera( trauma : float = 1 ) -> void:
-	camera_shook.emit( clampf( trauma, 0, 3) )

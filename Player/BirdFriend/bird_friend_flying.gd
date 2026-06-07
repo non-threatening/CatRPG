@@ -1,8 +1,9 @@
 class_name BirdFriendFlying extends Node2D
 
-enum State { INACTIVE, THROW, RETURN, PERCHED, LEAVE, ARRIVE, ARRIVED }
+enum State { THROW, RETURN, PERCHED, LEAVE, ARRIVE, ARRIVED }
 
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
+const BIRD_FRIEND = preload("uid://dlkbc8pb4nscr")
 
 var player : Player
 var direction : Vector2
@@ -14,6 +15,8 @@ var anim_stop : bool = false
 var _bf_position
 
 var frame_rate : float = 0.09
+
+var distance : int
 var acceleration : float = 400.0
 var max_speed : float = 666.0
 
@@ -27,13 +30,30 @@ var twirl_time : float = 0.0
 @onready var item_magnet: ItemMagnet = $ItemMagnet
 @onready var line_2d: Line2D = $Sprite2D/Line2D
 
+@onready var hurt_box: HurtBox = $Sprite2D/HurtBox
 
 func _ready() -> void:
 	hide()
-	#state = State.INACTIVE
+	set_distance()
 	player = PlayerManager.player
 	bf_radius = (sprite.texture.get_size().x / sprite.get_hframes()) * 0.5
 	previous_position = global_position
+	hurt_box.damage = 100
+
+
+func set_distance() -> void:
+	distance = NpcManager.npcs.bf_distance
+	match distance:
+		0:
+			max_speed = 555.0
+		1:
+			max_speed = 666.0
+		2:
+			max_speed = 777.0
+		3:
+			max_speed = 888.0
+		_:
+			pass	
 
 
 func _physics_process(delta: float) -> void:
@@ -41,6 +61,7 @@ func _physics_process(delta: float) -> void:
 		State.THROW:
 			speed -= acceleration * delta
 			position += direction * speed * delta
+			#position = position + Vector2( 0 , 150 )
 			if speed <= 0:
 				state = State.RETURN
 				update_direction()
@@ -78,7 +99,7 @@ func _physics_process(delta: float) -> void:
 	
 	## Trail
 	var rad : float = bf_radius * 0.125 ##=16
-	var current_position = global_position + Vector2( 0, -5 )
+	var current_position = global_position + Vector2( 0, 15 )
 	var trail_dir = ( current_position - previous_position ).normalized()
 	twirl_time += delta * twirl_frequency
 	var twirl_offset = Vector2( cos( twirl_time ) * rad, sin( twirl_time ) * rad )
@@ -90,6 +111,7 @@ func _physics_process(delta: float) -> void:
 
 
 func flap_animation() -> void:
+	EffectManager.poof_dust( sprite.global_position + Vector2( 0, -150) )
 	sprite.frame = 2 + frame_offest
 	await get_tree().create_timer( frame_rate ).timeout
 	audio.play()
@@ -106,19 +128,19 @@ func flap_animation() -> void:
 func perched() -> void:
 	player.show_bird_friend()
 	sprite.self_modulate = Color( 1.0, 1.0, 1.0, 0.0 )
-	await get_tree().create_timer( 0.666 ).timeout
+	EffectManager.landed( player.bird_friend_sprite.global_position )
 	queue_free()
 	
 func arrived() -> void:
 	NpcManager.bf_arrive.emit()
 	sprite.self_modulate = Color( 1.0, 1.0, 1.0, 0.0 )
-	await get_tree().create_timer( 0.666 ).timeout
+	EffectManager.landed( sprite.global_position + Vector2( 0, -150) )
 	queue_free()
 
 
 func back_to_cat( bf_position ) -> void:
 	position = bf_position
-	speed = max_speed
+	speed = 666
 	visible = true
 	update_direction()
 	flap_animation()
@@ -127,7 +149,7 @@ func back_to_cat( bf_position ) -> void:
 
 func leave( throw_direction : Vector2 ) -> void:
 	direction = throw_direction
-	speed = max_speed
+	speed = 666
 	state = State.LEAVE
 	update_direction()
 	flap_animation()
@@ -151,7 +173,7 @@ func throw( throw_direction : Vector2 ) -> void:
 
 func arrive( throw_direction : Vector2, bf_position ) -> void:
 	direction = throw_direction
-	speed = max_speed
+	speed = 666
 	state = State.ARRIVE
 	_bf_position = bf_position
 	update_direction()

@@ -12,8 +12,14 @@ var attacking : bool = false
 @onready var charge_attack: State = $"../ChargeAttack"
 @onready var hurt_box : HurtBox = %AttackHurtBox
 
+@export var particle_settings : HitParticleSettings
 
 func enter() -> void:
+	
+	EffectManager.poof_dust( PlayerManager.player.global_position )
+	#EffectManager.shake_camera()
+	#EffectManager.hit_particles( PlayerManager.player.global_position, Vector2(0, -1), particle_settings )
+	
 	player.paw_swipe()
 	player.update_animation("attack")
 	animation_player.animation_finished.connect( _end_attack )
