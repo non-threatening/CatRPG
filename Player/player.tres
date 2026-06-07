@@ -2,13 +2,25 @@
 
 [ext_resource type="Shader" uid="uid://b4d5u50y4e3og" path="res://Player/player.gdshader" id="1_0ebbv"]
 
+[sub_resource type="Gradient" id="Gradient_0ebbv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dd2v6"]
+noise_type = 4
+frequency = 0.008
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_si213"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_dd2v6")
+color_ramp = SubResource("Gradient_0ebbv")
+normalize = false
+
 [resource]
 shader = ExtResource("1_0ebbv")
-shader_parameter/outline_color = Color(0, 1, 0.95000005, 1)
-shader_parameter/outline_thickness = 0.0
-shader_parameter/alpha_threshold = 0.0
-shader_parameter/cover_color = Color(0.63, 0.40635, 0.18270001, 1)
-shader_parameter/eye_color = Color(2.121249, 1.8485242, 0, 1)
+shader_parameter/eye_color = Color(0, 0, 0, 1)
+shader_parameter/body_color = Color(0.8627451, 0.16078432, 0.7058824, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_si213")
+shader_parameter/paper_texture_scale = 6.000000281740119
 shader_parameter/x = 0.666
 shader_parameter/y = 2.0
 shader_parameter/time_scale = 2.666
