@@ -67,6 +67,7 @@ func _ready() -> void:
 	PlayerManager.player_leveled_up.connect( _on_player_leveled_up )
 	PlayerManager.INVETORY_DATA.equipment_changed.connect( _on_equipment_changed )
 	PlayerManager.INVETORY_DATA.item_added_to_inventory.connect( _item_added )
+	
 	PlayerManager.interact_pressed.connect( _interact_pressed )
 
 
@@ -111,6 +112,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		#PlayerManager.shake_camera()
 	if Input.is_action_pressed("test"): 
 		state_machine.change_state( state_electro_shell ) ## this should be in the respective states
+		
 
 
 

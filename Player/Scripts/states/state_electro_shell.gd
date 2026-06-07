@@ -18,22 +18,11 @@ var charging : bool = true
 @onready var idle: State_Idle = $"../Idle"
 
 @onready var electro_shell_hurt_box: HurtBox = $"../../Collisions/ElectroShellHurtBox"
-
-@onready var spin_effect_sprite_2d: Sprite2D = $"../../Sprite2D/SpinEffectSprite2D"
-@onready var spin_animation_player: AnimationPlayer = $"../../Sprite2D/SpinEffectSprite2D/AnimationPlayer"
-@onready var gpu_particles_2d: GPUParticles2D = $"../../Collisions/ChargeAttackHurtBox/GPUParticles2D"
-
 @onready var sprite_2d: Sprite2D = $"../../Sprite2D"
 
-
-
-
-func init() -> void:
-	gpu_particles_2d.emitting = false
-	particles = gpu_particles_2d.process_material as ParticleProcessMaterial
-	spin_effect_sprite_2d.visible = false
-	
-	## connect to minute time and disipate enery
+@onready var color_rect_5: ColorRect = $"../../Sprite2D/ColorRect5"
+@onready var color_rect_6: ColorRect = $"../../Sprite2D/ColorRect6"
+@onready var color_rect_7: ColorRect = $"../../Sprite2D/ColorRect7"
 
 
 func enter() -> void:
@@ -43,21 +32,16 @@ func enter() -> void:
 	walking = false
 	electro_shell_hurt_box.damage = 0
 	electro_shell_hurt_box.monitoring = true
-	
-	## do the shufffle
-	
-	gpu_particles_2d.emitting = true
-	gpu_particles_2d.amount = 15
-	gpu_particles_2d.explosiveness = 0
-	particles.initial_velocity_min = 10
-	particles.initial_velocity_max = 30
-	pass
+	color_rect_5.show()
+	color_rect_6.show()
+	color_rect_7.show()
 	
 	
 func exit() -> void:
 	electro_shell_hurt_box.set_deferred( "monitoring", false )
-	spin_effect_sprite_2d.visible = false
-	gpu_particles_2d.emitting = false
+	color_rect_5.hide()
+	color_rect_6.hide()
+	color_rect_7.hide()
 
 
 func process( _delta : float ) -> State:
@@ -67,6 +51,8 @@ func process( _delta : float ) -> State:
 			timer = 0
 			charge_complete()
 			player.update_electro_shell( 1 )
+			AudioManager.play_effect( sfx_charged )
+			EffectManager.vibrate_controller( 0.666, 0.0, 0.15)
 	
 	if disipation_timer > 0:
 		disipation_timer -= _delta
@@ -76,21 +62,22 @@ func process( _delta : float ) -> State:
 				disipation_timer = disipation_duration
 				if player.electro_shell == 0:
 					discharge()
-					
 
 
-	## change to an elif and have a different animation while charging
 	if is_attacking == false:
 		if player.direction == Vector2.ZERO: #not pushing in any direction
+			if charging == true:
+				player.update_animation( "charging" )
+			else:
+				player.update_animation( "charge" )
 			walking = false
-			player.update_animation( "charge" )  ## Needs to be the shuffle.. "charge is outside of this
+
 		elif player.set_direction() or walking == false: #if the direction has changed
 			walking = true
 			player.update_animation( "charge_walk" )
 
 	player.velocity = player.direction * move_speed
 	return null
-	
 
 
 func handle_input( _event: InputEvent ) -> State:
@@ -101,14 +88,15 @@ func handle_input( _event: InputEvent ) -> State:
 	if _event.is_action_pressed("test") and charging == false:
 		timer = charge_duration
 		charging = true
-	
 	if _event.is_action_pressed( "attack" ):
-		if player.level >= 2:
+		if player.level >= 1:
 			if is_attacking == false:
 				charge_attack()
 	elif _event.is_action_pressed( "interact" ):
 		PlayerManager.interact()
-	elif _event.is_action_pressed( "dash" ): 
+		
+	elif _event.is_action_pressed( "dash" ):
+		prints("charge", charging)
 		return dash
 	return null
 
@@ -129,73 +117,36 @@ func charge_complete() -> void:
 	if not electro_shell_hurt_box.did_damage.is_connected( shell_touch ):
 		electro_shell_hurt_box.did_damage.connect( shell_touch )
 	electro_shell_hurt_box.damage = 1 # Hurts enemy
-	
-	play_audio( sfx_charged )
-	gpu_particles_2d.amount = 50
-	gpu_particles_2d.explosiveness = 1
-	particles.initial_velocity_min = 50
-	particles.initial_velocity_max = 100
-	
-	await get_tree().create_timer( 0.5 ).timeout
-	gpu_particles_2d.amount = 10
-	gpu_particles_2d.explosiveness = 0
-	particles.initial_velocity_min = 10
-	particles.initial_velocity_max = 30
-	pass
-
 
 
 func charge_attack() -> void:
+	prints("charge attack:")
 	electro_shell_hurt_box.damage = 2
 	is_attacking = true
-	player.animation_player.play( "charge_attack" )
-	player.animation_player.seek( get_spin_frame() )
-	play_audio( sfx_spin )
-	spin_effect_sprite_2d.visible = true
-	spin_animation_player.play( "spin" )
 	
+	# Electro burst
+	player.animation_player.play( "electro_burst" )
+	AudioManager.play_effect( sfx_spin )
+	
+	await get_tree().create_timer(0.1).timeout	
+	EffectManager.vibrate_controller( 0.2, 0.666, 0.2 )
+	
+	await get_tree().create_timer(0.15).timeout
+	EffectManager.shake_camera( 1.2 )
+	
+##TODO: reduce volume of ambient sounds, and tween back up
+## then add the birds back one bird at a time with the bird bus
 	var _duration : float = player.animation_player.current_animation_length
 	player.make_invulnerable( _duration )
+	player.update_electro_shell( -1 )
 	
-	await get_tree().create_timer( _duration * 0.875 ).timeout
+	
+	await player.animation_player.animation_finished
 	discharge()
 
 
-func get_spin_frame() -> float:
-	var interval : float = 0.05 # distance between frames
-	match player.cardinal_direction:
-		Vector2.DOWN:
-			return interval * 0 ## always 0, the first frame
-		Vector2.UP:
-			return interval * 4 ## The fourth frame
-		_:
-			return interval * 6 ## frame facing right
-			
-			
-func play_audio( _audio : AudioStream ) -> void:
-	AudioManager.play_effect( _audio )
-
-
 func discharge() -> void:
-	sprite_2d.material.set_shader_parameter("outline_thickness", 0.0 )
-	sprite_2d.material.set_shader_parameter("alpha_threshold", 0.0 )
-	charging = true
 	state_machine.change_state( idle )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
+	await get_tree().process_frame
+	charging = true

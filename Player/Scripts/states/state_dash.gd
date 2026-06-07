@@ -5,6 +5,7 @@ class_name State_Dash extends State
 @export var dash_audio : AudioStream
 
 @onready var idle : State = $"../Idle"
+@onready var electro_shell: StateElectroShell = $"../ElectroShell"
 
 var direction : Vector2 = Vector2.ZERO
 var next_state : State = null
@@ -21,7 +22,6 @@ func enter() -> void:
 	if dash_audio:
 		AudioManager.play_effect( dash_audio )
 	effect_timer = 0
-	pass
 	
 	
 func exit() -> void:
@@ -41,27 +41,19 @@ func process( _delta : float ) -> State:
 
 
 func _on_animation_finished( _anim_name : String ) -> void:
-	next_state = idle
-	pass
+	if player.electro_shell >= 1:
+		next_state = electro_shell
+	else:
+		next_state = idle
 
 
 func spawn_effect() -> void:
 	var effect : Node2D = Node2D.new()
 	player.get_parent().add_child( effect )
 	effect.global_position = player.global_position - Vector2( 0, 0.1 )
-	#effect.modulate = Color( 1.5, 0.2, 1.25, 0.75 ) ## Currently no effect
-
-	#await get_tree().process_frame
-	#effect.material.set_shader_parameter( "shader_parameter/cover_color", Color( 1.5, 0.2, 1.25, 0.75 ) )
-	
-	
-	#var sprite_copy : Sprite2D = player.sprite.duplicate()
-	#effect.add_child( sprite_copy )
 	
 	var tween : Tween = create_tween()
 	tween.set_ease( Tween.EASE_OUT )
-	#tween.tween_property(effect, 'material:shader_parameter/cover_color', Color( 1.5, 0.2, 1.25, 0.75 ), 0.2)
-	tween.tween_property( effect, "modulate", Color( 1,0,1, 0.1 ), 0.2 ) ##TODO: No effect because of Material Shader..
-	#tween.tween_property( effect, "ShaderParameter/color..." )
+	tween.tween_property( effect, "modulate", Color( 1,0,1, 0.1 ), 0.2 )
 	tween.chain().tween_callback( effect.queue_free )
 	pass
