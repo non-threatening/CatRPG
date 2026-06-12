@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://pg1ra34yso6k"
+path="res://.godot/imported/trebly_copy_paste_test.dialogue-7b149283dbe6827459a210a1e6a1de72.tres"
+
+[deps]
+
+source_file="res://Dialogue/trebly_copy_paste_test.dialogue"
+dest_files=["res://.godot/imported/trebly_copy_paste_test.dialogue-7b149283dbe6827459a210a1e6a1de72.tres"]
+
+[params]
+
+defaults=true

@@ -26,4 +26,10 @@ else
 		=> END
 	- No way
 		Cat: It's my GimpSuit now!!!!
+	- What's a gimpsuit?
+		=> whats_a_gimpsuit
+		
+~ whats_a_gimpsuit
+Cat: What's a gimpsuit?
+Bird Friend: It's my favorite outfit
 => END

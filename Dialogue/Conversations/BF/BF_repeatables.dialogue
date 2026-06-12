@@ -1,5 +1,5 @@
 ~ in_tree
-Bird Friend: [[Let's go!?|Should I jump on your back again?]]
+Bird Friend: [[Let's go!?|Should I jump on your back again?|Caw]]
 - [[Get on, let's go!|Yes!]]
 	do NpcManager.bf_return.emit()
 	=> END
@@ -8,7 +8,7 @@ Bird Friend: [[Let's go!?|Should I jump on your back again?]]
 	=> END
 
 ~ goodbyes
-Bird Friend: [[Good night cat. I'll be around tomorrow.|Again I will fly to my roost and leave you to your own devices.|I will dream of your safe passage]]
+Bird Friend: [[Good night cat. I'll be around tomorrow.|ah right. I'm out|I will dream of your safe passage|]]
 #do NpcManager
 do NpcManager.bf_away.emit()
 => END

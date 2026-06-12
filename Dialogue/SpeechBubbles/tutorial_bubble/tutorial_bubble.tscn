@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://50omqkuvm833"]
+
+[ext_resource type="Script" uid="uid://dsvn6tb1p8hlh" path="res://Dialogue/SpeechBubbles/tutorial_bubble/tutorial_bubble.gd" id="1_gld4m"]
+[ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeechBubbles/portraits/cat.png" id="2_31ndm"]
+[ext_resource type="Texture2D" uid="uid://cbdqsy636dimm" path="res://Dialogue/SpeechBubbles/tutorial_bubble/background_placeholder.png" id="2_mg4gg"]
+[ext_resource type="Theme" uid="uid://ck36imtnnhi0i" path="res://Dialogue/SpeechBubbles/tutorial_bubble/tutorial_bubble.tres" id="3_0dcbb"]
+[ext_resource type="Texture2D" uid="uid://6tnuc2p8jk6v" path="res://Dialogue/SpeechBubbles/tutorial_bubble/blured_panel_white.png" id="4_hspji"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="5_qsa6d"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="6_tes8o"]
+[ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://GeneralNodes/controller_icon_interact.tres" id="7_e67nd"]
+[ext_resource type="PackedScene" uid="uid://b6hpk00yqnsax" path="res://Dialogue/SpeechBubbles/tutorial_bubble/right_stick_rotate.tscn" id="8_x16n4"]
+
+[node name="TutorialBubble" type="CanvasLayer" unique_id=1360327746]
+process_mode = 3
+script = ExtResource("1_gld4m")
+next_action = &"interact"
+skip_action = &"attack"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2055156369]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_mg4gg")
+
+[node name="Portrait" type="TextureRect" parent="." unique_id=302673411]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(250, 250)
+offset_left = 491.0
+offset_top = 373.0
+offset_right = 741.0
+offset_bottom = 623.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_31ndm")
+
+[node name="Bubble" type="Control" parent="." unique_id=891178929]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_0dcbb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Bubble" unique_id=1800983521]
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = 10.0
+offset_right = 480.00073
+offset_bottom = 401.9984
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer" unique_id=708482350]
+self_modulate = Color(0.36282945, 0.36282945, 0.36282945, 1)
+clip_children = 2
+layout_mode = 2
+texture = ExtResource("4_hspji")
+
+[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer" unique_id=1107000419]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 58.0
+offset_right = 794.0
+offset_bottom = 333.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer" unique_id=2101504098]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=358914435]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=2127673451]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1071894988]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "Character"
+fit_content = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1081869472 instance=ExtResource("5_qsa6d")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Rotate {{ICON_RIGHT_STICK}} to change the frequnecy wave to match the lock's (yellow) frequency and hack "
+
+[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1318723228]
+layout_mode = 2
+theme_override_constants/margin_left = 524
+
+[node name="TextureRect" type="TextureRect" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1578933542]
+layout_mode = 2
+texture = ExtResource("7_e67nd")
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" unique_id=1059512609 node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -240.0
+offset_right = 291.0
+offset_bottom = -167.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("6_tes8o")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu" unique_id=1253312560]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+text = "Response example"
+
+[node name="RightStickPanelContainer" type="TextureRect" parent="Bubble" unique_id=504456754]
+visible = false
+self_modulate = Color(0.4896224, 0.48962218, 0.48962206, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -142.0
+offset_top = 291.0
+offset_right = 142.0
+offset_bottom = 568.0
+grow_horizontal = 2
+texture = ExtResource("4_hspji")
+
+[node name="RightStickRotate" parent="Bubble/RightStickPanelContainer" unique_id=1982974739 instance=ExtResource("8_x16n4")]
+position = Vector2(144, 134)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=776240330]
+max_polyphony = 5
+bus = &"Effects"
+
+[node name="Timer" type="Timer" parent="." unique_id=497308853]
+
+[connection signal="gui_input" from="Bubble" to="." method="_on_bubble_gui_input"]
+[connection signal="response_selected" from="Bubble/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

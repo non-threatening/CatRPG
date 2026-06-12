@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b6hpk00yqnsax"]
+
+[ext_resource type="Script" uid="uid://4tbjo6rjv7iv" path="res://Dialogue/SpeechBubbles/tutorial_bubble/right_stick_rotate.gd" id="1_c5pmu"]
+[ext_resource type="Texture2D" uid="uid://cmam6afoqmg7n" path="res://Dialogue/SpeechBubbles/tutorial_bubble/RightStickSpriteSheet.png" id="1_smqxf"]
+
+[node name="RightStickRotate" type="Node2D" unique_id=1982974739]
+script = ExtResource("1_c5pmu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=845097920]
+texture = ExtResource("1_smqxf")
+hframes = 7
+
+[node name="Timer" type="Timer" parent="." unique_id=1039501500]
+process_mode = 3
+wait_time = 0.125
+autostart = true
