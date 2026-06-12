@@ -16,13 +16,14 @@ var charging : bool = true
 
 @onready var dash: State_Dash = $"../Dash"
 @onready var idle: State_Idle = $"../Idle"
-
 @onready var electro_shell_hurt_box: HurtBox = $"../../Collisions/ElectroShellHurtBox"
 @onready var sprite_2d: Sprite2D = $"../../Sprite2D"
-
+@onready var gpu_particles_2d: GPUParticles2D = $"../../Sprite2D/footprints/GPUParticles2D"
+@onready var gpu_particles_2d_2: GPUParticles2D = $"../../Sprite2D/footprints/GPUParticles2D2"
 @onready var color_rect_5: ColorRect = $"../../Sprite2D/ColorRect5"
 @onready var color_rect_6: ColorRect = $"../../Sprite2D/ColorRect6"
 @onready var color_rect_7: ColorRect = $"../../Sprite2D/ColorRect7"
+@onready var foot_smoke_particles_2d: GPUParticles2D = $"../../Sprite2D/FootSmokeParticles2D"
 
 
 func enter() -> void:
@@ -35,6 +36,11 @@ func enter() -> void:
 	color_rect_5.show()
 	color_rect_6.show()
 	color_rect_7.show()
+	color_rect_5.modulate = Color(1, 1, 1, 0)
+	color_rect_6.modulate = Color(1, 1, 1, 0)
+	color_rect_7.modulate = Color(1, 1, 1, 0)
+	#gpu_particles_2d.emitting = true
+	#gpu_particles_2d_2.emitting = true
 	
 	
 func exit() -> void:
@@ -42,6 +48,8 @@ func exit() -> void:
 	color_rect_5.hide()
 	color_rect_6.hide()
 	color_rect_7.hide()
+	gpu_particles_2d.emitting = false
+	gpu_particles_2d_2.emitting = false
 
 
 func process( _delta : float ) -> State:
@@ -53,7 +61,7 @@ func process( _delta : float ) -> State:
 			player.update_electro_shell( 1 )
 			AudioManager.play_effect( sfx_charged )
 			EffectManager.vibrate_controller( 0.666, 0.0, 0.15)
-	
+			
 	if disipation_timer > 0:
 		disipation_timer -= _delta
 		if disipation_timer <= 0:
@@ -66,8 +74,14 @@ func process( _delta : float ) -> State:
 
 	if is_attacking == false:
 		if player.direction == Vector2.ZERO: #not pushing in any direction
+			gpu_particles_2d.emitting = false
+			gpu_particles_2d_2.emitting = false
 			if charging == true:
-				player.update_animation( "charging" )
+				if player.electro_shell >= 1:
+					player.update_animation( "charge" )
+				else:
+					player.update_animation( "charging" )
+					foot_smoke_particles_2d.emitting = true
 			else:
 				player.update_animation( "charge" )
 			walking = false
@@ -75,6 +89,8 @@ func process( _delta : float ) -> State:
 		elif player.set_direction() or walking == false: #if the direction has changed
 			walking = true
 			player.update_animation( "charge_walk" )
+			gpu_particles_2d.emitting = true
+			gpu_particles_2d_2.emitting = true
 
 	player.velocity = player.direction * move_speed
 	return null
@@ -84,8 +100,10 @@ func handle_input( _event: InputEvent ) -> State:
 	if _event.is_action_released("test") and player.electro_shell <= 0:
 		discharge()
 	if _event.is_action_released("test") and player.electro_shell >= 1:
-		charging = false 
+		charging = false
+		foot_smoke_particles_2d.emitting = false
 	if _event.is_action_pressed("test") and charging == false:
+		walking = false
 		timer = charge_duration
 		charging = true
 	if _event.is_action_pressed( "attack" ):
@@ -96,7 +114,6 @@ func handle_input( _event: InputEvent ) -> State:
 		PlayerManager.interact()
 		
 	elif _event.is_action_pressed( "dash" ):
-		prints("charge", charging)
 		return dash
 	return null
 
@@ -140,13 +157,15 @@ func charge_attack() -> void:
 	player.make_invulnerable( _duration )
 	player.update_electro_shell( -1 )
 	
-	
 	await player.animation_player.animation_finished
 	discharge()
 
 
 func discharge() -> void:
 	state_machine.change_state( idle )
-	
+	color_rect_5.modulate = Color(1, 1, 1, 0)
+	color_rect_6.modulate = Color(1, 1, 1, 0)
+	color_rect_7.modulate = Color(1, 1, 1, 0)
+	foot_smoke_particles_2d.emitting = false
 	await get_tree().process_frame
 	charging = true

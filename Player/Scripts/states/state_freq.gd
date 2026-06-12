@@ -59,11 +59,11 @@ func enter() -> void:
 			glow_behind_rect.modulate = Color(1.0, 1.0, 1.0, 0.0)
 			player.animation_player.play( "idle_side" )
 			if player_side == true:
-				PlayerManager.set_player_position( position - Vector2( 337, 51 ) )
-				player.sprite.scale.x = 1
+				PlayerManager.set_player_position( position - Vector2( 263, -25 ) )
+				player.sprite.scale.x = 0.666
 			else:
-				PlayerManager.set_player_position( position - Vector2( -337, 51 ) )
-				player.sprite.scale.x = -1
+				PlayerManager.set_player_position( position - Vector2( -263, -25 ) )
+				player.sprite.scale.x = -0.666
 		1:
 			wave_control.position = Vector2( -76, -104 )
 			wave_control.rotation_degrees = -90
@@ -78,20 +78,18 @@ func enter() -> void:
 
 
 func harmonized() -> void:
-	#audio.stream = harmonized_sound ## The victory bell
-	#audio.pitch_scale = randf_range( 0.9, 1.1 )
-	#audio.play()
 	AudioManager.play_effect( harmonized_sound )	
 	wave_control.hide()
 	tone_generator.stop()
 	tone_generator.process_sine = false
+	#label_2.hide()
 	player.state_machine.change_state( idle )
 
 
 func handle_input( _event: InputEvent ) -> State:
 	if Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down"):
 		var direction = Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down")
-		deg = -0.5 * rad_to_deg( direction.angle() * 2) ## max deg 700; min
+		deg = -0.5 * rad_to_deg( direction.angle() ) + 30 ## max deg 700; min
 		#prints( "deg", deg )
 		if deg > 0:
 			texture_rect.material.set_shader_parameter( "wave_frequency", deg * 0.5 )
@@ -105,10 +103,12 @@ func exit() -> void:
 	animation.play("RESET")
 	action_triggered = false
 	SignalBus.frequecy_matched.emit()
+	SignalBus.freq_hold.emit( false )
 	
 	
 func process( _delta : float ) -> State:
 	if ( freq - slop ) <= deg and deg <= ( freq + slop ):
+		SignalBus.freq_hold.emit( true )
 		hold_time += _delta
 		flip = flip + 1
 		var flop : int  = flip % 2
@@ -122,6 +122,7 @@ func process( _delta : float ) -> State:
 			action_triggered = true
 			harmonized()
 	else:
+		SignalBus.freq_hold.emit( false )
 		hold_time = 0.0
 		glow_behind_rect.modulate = Color(1.0, 1.0, 1.0, 0.0)
 		action_triggered = false
