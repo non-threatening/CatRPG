@@ -51,7 +51,8 @@ var current_save : Dictionary = {
 	},
 	stats = {},
 	achievements = {},
-	qvars = {}
+	qvars = {},
+	npcs = {},
 }
 
 
@@ -118,6 +119,7 @@ func save_game( _number ) -> void:
 	update_stats()
 	update_achievements()
 	update_qvars()
+	update_npcs()
 	
 	var file := FileAccess.open( SAVE_PATH + _number + "_save.sav", FileAccess.WRITE )
 	var save_json = JSON.stringify( current_save )
@@ -144,6 +146,7 @@ func load_game( _number ) -> void:
 	
 	PlayerManager.set_player_position( Vector2( current_save.player.pos_x, current_save.player.pos_y ) )
 	PlayerManager.set_health( current_save.player.hp, current_save.player.max_hp, current_save.electro_shell, current_save.max_electro_shell, current_save.spoons, current_save.max_capacity )
+	
 
 	var p : Player = PlayerManager.player
 	p.level = current_save.player.level
@@ -161,6 +164,9 @@ func load_game( _number ) -> void:
 	
 	var qv : Dictionary = QuestVars.qvars
 	qv.qvars = current_save.qvars
+	
+	var n : Dictionary = NpcManager.npcs
+	n.npcs = current_save.npcs
 	
 	# Options Menu
 	master = current_save.options.master
@@ -271,7 +277,10 @@ func update_achievements() -> void:
 func update_qvars() -> void:
 	current_save.qvars = QuestVars.qvars
 
-
+func update_npcs() -> void:
+	current_save.npcs = NpcManager.npcs
+	
+	
 func add_persistant_value( value : String ) -> void:
 	if check_persistant_value( value ) == false:
 		current_save.persistance.append( value )

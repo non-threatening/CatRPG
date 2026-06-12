@@ -29,6 +29,7 @@
 [ext_resource type="Shader" uid="uid://cenq3c1oyr3a2" path="res://Maps/frequency_wave.gdshader" id="14_6rl0i"]
 [ext_resource type="Script" uid="uid://cvt3bp8tg6cp7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
 [ext_resource type="Texture2D" uid="uid://qpnsxqn5234n" path="res://Player/Sprites/footprint.png" id="16_c4i3b"]
+[ext_resource type="Texture2D" uid="uid://c8dvlqrdxu2kk" path="res://Player/Sprites/smoke_sheet.png" id="17_m6nl3"]
 [ext_resource type="Script" uid="uid://cp5m17gdo2qko" path="res://Items/scripts/abilities.gd" id="17_pisgm"]
 [ext_resource type="Script" uid="uid://b4v4enjcc4ffa" path="res://Player/Scripts/states/state_freq.gd" id="18_7x5p2"]
 [ext_resource type="PackedScene" uid="uid://c0jsono37lv7x" path="res://GeneralNodes/ItemMagnet/ItemMagnet.tscn" id="18_b1ygp"]
@@ -1401,6 +1402,42 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(243.9454, 252.956)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprite2D/ColorRect5:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprite2D/ColorRect6:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprite2D/ColorRect7:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_n471f"]
 resource_name = "charge_up"
@@ -1774,7 +1811,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.41666666, 0.5833334, 0.6666667, 0.75, 0.8333334, 0.9166667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.04, -0.017, -0.0365555557012558, -0.105, -0.09000011421740055, -0.08000019329809584, -0.07000026895183213, -0.060000343513489936, -0.050000420908439404]
+"values": [-0.04, -0.017, -0.0365555557012558, -0.105, -0.09000011421740055, -0.08000019329809584, -0.07000026895183213, -0.06000034351348993, -0.0500004209084394]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -2264,7 +2301,7 @@ tracks/12/keys = {
 
 [sub_resource type="Animation" id="Animation_c4i3b"]
 resource_name = "charging_side"
-length = 3.0000043
+length = 3.875
 step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2273,10 +2310,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.24000001, 0.48000002, 0.7200001, 0.96000004, 1.2000002, 1.44, 1.6800001, 1.9200001, 2.16, 2.4, 2.64, 2.88),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.24000001, 0.48000002, 0.7200001, 0.96000004, 1.2000002, 1.44, 1.6800001, 1.9200001, 2.16, 2.4, 2.64, 2.88, 3.125, 3.365, 3.605, 3.845),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [5, 11, 5, 11, 5, 11, 5, 11, 5, 11, 5, 11, 5]
+"values": [5, 11, 5, 11, 5, 11, 5, 11, 5, 11, 5, 11, 5, 5, 11, 5, 11]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2333,7 +2370,7 @@ tracks/5/path = NodePath("Sprite2D/ColorRect5:material:shader_parameter/brightne
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.8333333),
+"times": PackedFloat32Array(0, 3.7916667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 2.5]
@@ -2345,7 +2382,7 @@ tracks/6/path = NodePath("Sprite2D/ColorRect6:material:shader_parameter/brightne
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.8333333),
+"times": PackedFloat32Array(0, 3.7916667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 2.5]
@@ -2357,7 +2394,7 @@ tracks/7/path = NodePath("Sprite2D/ColorRect7:material:shader_parameter/brightne
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 2.8333333),
+"times": PackedFloat32Array(0, 3.7916667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 2.5]
@@ -2405,7 +2442,7 @@ tracks/11/path = NodePath("Sprite2D/ColorRect5:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 1.5416666),
+"times": PackedFloat32Array(0, 2.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -2417,7 +2454,7 @@ tracks/12/path = NodePath("Sprite2D/ColorRect6:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 2.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -2429,7 +2466,7 @@ tracks/13/path = NodePath("Sprite2D/ColorRect7:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 2.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -2816,7 +2853,7 @@ tracks/0/path = NodePath("Sprite2D/ColorRect5:material:shader_parameter/brightne
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.75, 0.9166667, 1),
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.75, 0.9583333, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [2.5, 4.8, 3.0, 0.0, 0.0, 2.5]
@@ -2948,7 +2985,7 @@ tracks/11/path = NodePath("Sprite2D/ColorRect5:size")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.91666675, 1),
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.9583333, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(268.76874, 268.76877), Vector2(60.06006, 57.057053), Vector2(1263.3157, 987.988), Vector2(1039.9875, 987.988), Vector2(268.76874, 268.76877)]
@@ -2960,7 +2997,7 @@ tracks/12/path = NodePath("Sprite2D/ColorRect5:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.91666675, 1),
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.9583333, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-67.567566, -268.76877), Vector2(-33.03303, -93.093094), Vector2(-634.1866, -654.6546), Vector2(-522.5225, -654.6546), Vector2(-67.567566, -268.76877)]
@@ -2972,7 +3009,7 @@ tracks/13/path = NodePath("Sprite2D/ColorRect5:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.9166667),
+"times": PackedFloat32Array(0, 0.9583333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -3023,7 +3060,7 @@ tracks/17/keys = {
 "times": PackedFloat32Array(0, 0.625, 0.9166667, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1.353256, 1.353256, 1.353256, 1), Color(1.3528494, 0, 0, 0.25), Color(1, 1, 1, 1)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
@@ -4056,7 +4093,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiql5"]
-radius = 66.75017
+radius = 152.48895
 
 [sub_resource type="Animation" id="Animation_sm0op"]
 length = 0.001
@@ -4241,6 +4278,10 @@ _data = {
 &"unfold": SubResource("Animation_wvbyc")
 }
 
+[sub_resource type="Curve" id="Curve_m6nl3"]
+_data = [Vector2(0, 0.32328767), 0.0, 0.0, 0, 0, Vector2(0.4983165, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.26095885), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Curve" id="Curve_c4i3b"]
 _data = [Vector2(0, 0.25842702), 0.0, 0.0, 0, 0, Vector2(0.03428571, 1), 0.0, 0.0, 0, 0, Vector2(0.24571428, 0.8988764), 0.0, 0.0, 0, 0, Vector2(0.90285707, 0.8988764), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
@@ -4371,6 +4412,28 @@ shader_parameter/brightness = 2.5
 shader_parameter/time_scale = 1.0
 shader_parameter/x = -0.04
 shader_parameter/y = 1.065
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8hx1r"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_8hx1r"]
+offsets = PackedFloat32Array(0, 0.5981735, 0.913242)
+colors = PackedColorArray(0.19607843, 0.19607843, 0.19607843, 1, 1, 1, 1, 1, 1, 1, 1, 0.5019608)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qas3k"]
+gradient = SubResource("Gradient_8hx1r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qas3k"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(90, 1, 1)
+gravity = Vector3(0, -98, 0)
+color_ramp = SubResource("GradientTexture1D_qas3k")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvbyc"]
 radius = 90.0
@@ -4671,7 +4734,7 @@ collision_mask = 24
 motion_mode = 1
 wall_min_slide_angle = 0.174533
 script = ExtResource("1_t577b")
-metadata/_edit_vertical_guides_ = [173.0, -173.0]
+metadata/_edit_vertical_guides_ = [146.0]
 
 [node name="PlayerShapeHor" type="CollisionShape2D" parent="." unique_id=1090302026]
 position = Vector2(-10, -1)
@@ -4777,7 +4840,7 @@ offset_left = 116.0
 offset_top = -196.0
 offset_right = 441.0
 offset_bottom = -16.0
-rotation = -0.87266463
+rotation = -0.66886944
 pivot_offset = Vector2(0, 90)
 
 [node name="TextureRect3" type="TextureRect" parent="Sprite2D/WaveControl" unique_id=246703096]
@@ -4805,6 +4868,13 @@ texture = SubResource("GradientTexture2D_gvnt1")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/WaveControl" unique_id=158744333]
 libraries/ = SubResource("AnimationLibrary_1kmt7")
 
+[node name="Line2D" type="Line2D" parent="Sprite2D/WaveControl" unique_id=2122098138]
+visible = false
+position = Vector2(47.28423, -137.51764)
+points = PackedVector2Array(-50.249756, 228.2282, 275.5093, 234.99196)
+width_curve = SubResource("Curve_m6nl3")
+joint_mode = 2
+
 [node name="footprints" type="Node2D" parent="Sprite2D" unique_id=431304624]
 rotation = 1.5707964
 
@@ -4826,14 +4896,12 @@ texture = ExtResource("16_c4i3b")
 lifetime = 12.0
 process_material = SubResource("ParticleProcessMaterial_uvbbp")
 
-[node name="electro_shell" type="Node2D" parent="Sprite2D" unique_id=2090508043]
-
 [node name="Tail" type="Line2D" parent="Sprite2D" unique_id=1713011063]
 material = SubResource("ShaderMaterial_1kmt7")
 position = Vector2(-79.579575, -87.08708)
 rotation = 4.4670525
 scale = Vector2(0.47599998, 0.66599995)
-points = PackedVector2Array(0, 0, 29, -0.6585439, 56, -2.03712, 81, -2.8211904, 104, -2.2537246, 125, -0.4265636, 144, 2.0223813, 161, 4.368192, 176, 6.112093, 189, 7.073916, 200, 7.3303857, 209, 7.0973964, 216, 6.624838, 221, 6.1307907, 224, 5.7730365, 225, 5.643787)
+points = PackedVector2Array(0, 0, 29, 0.32053685, 56, -0.7707544, 81, -2.5572963, 104, -3.899951, 125, -4.0443764, 144, -2.8948152, 161, -0.8471718, 176, 1.5317382, 189, 3.7600799, 200, 5.5557814, 209, 6.8340845, 216, 7.6455083, 221, 8.102693, 224, 8.321775, 225, 8.385032)
 width = 32.0
 texture = ExtResource("5_wvbyc")
 texture_mode = 2
@@ -4868,6 +4936,16 @@ offset_bottom = 274.5653
 rotation = -3.8177369
 pivot_offset = Vector2(140, 140)
 color = Color(0.24383882, 0.7532129, 1.314238, 1)
+
+[node name="FootSmokeParticles2D" type="GPUParticles2D" parent="Sprite2D" unique_id=1086374748]
+material = SubResource("CanvasItemMaterial_8hx1r")
+position = Vector2(0, 16.516516)
+emitting = false
+amount = 40
+texture = ExtResource("17_m6nl3")
+speed_scale = 2.0
+randomness = 0.32
+process_material = SubResource("ParticleProcessMaterial_qas3k")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1659053947]
 script = ExtResource("3_6mdjo")

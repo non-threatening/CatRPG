@@ -17,8 +17,7 @@ var attacking : bool = false
 func enter() -> void:
 	
 	EffectManager.poof_dust( PlayerManager.player.global_position )
-	#EffectManager.shake_camera()
-	#EffectManager.hit_particles( PlayerManager.player.global_position, Vector2(0, -1), particle_settings )
+	EffectManager.hit_particles( PlayerManager.player.global_position, Vector2(0, -1), particle_settings )
 	
 	player.paw_swipe()
 	player.update_animation("attack")

@@ -41,11 +41,13 @@ func setup_title_screen() -> void:
 
 func start_game() -> void:
 	AudioManager.play_ui( button_press_audio )
+	EffectManager.vibrate_controller( 0.666, 0.0, 0.15 )
 	LevelManager.load_new_level( START_LEVEL, "LevelTransitionEnter", Vector2.ZERO )
 
 
 func load_game() -> void:
 	AudioManager.play_ui( button_press_audio )
+	EffectManager.vibrate_controller( 0.666, 0.0, 0.15 )
 	SaveManager.load_game( PlayerHud.active_save )
 	
 	

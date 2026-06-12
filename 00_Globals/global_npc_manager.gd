@@ -15,6 +15,11 @@ const TERMINAL_BUBBLE = preload("uid://cxp6nsydpp02j")
 var speech_bubble : Node
 var bf_awake : bool = true
 
+var npcs = {
+	bf_level = 1,
+	bf_distance = 0
+}
+
 
 func _ready() -> void:
 	TimeSystem.time_tick.time_unit_changed.connect( _on_time_unit_changed )
@@ -99,11 +104,10 @@ func bird_friend_awake() -> void:
 			var location : String
 			bf_awake = true
 			#	Every three days
-			var day : int = int( (TimeSystem.day + 3 ) / 3.0 ) % 3 == 0
+			var day : int = int( TimeSystem.day + 3 ) % 3
 			match day:
 				0:
-					#location = "GrassTestMap"
-					location = "ArelCrashSite"
+					location = "GrassTestMap"
 				_:
 					location = "ArelCrashSite"
 			bf_npc_status.emit( bf_awake, location )

@@ -32,7 +32,7 @@ func _remove_bird_friend( _q : Quest ) -> void:
 			EffectManager.landed( bird_friend_sprite.global_position )
 			queue_free()
 			var _b = BIRD.instantiate() as BirdFriendFlying
-			var bf_position = Vector2( 1472, 167 )
+			var bf_position = Vector2( 1452, 1413 )
 			add_sibling( _b )
 			_b.toggle_item_magent()
 			_b.back_to_cat( bf_position )

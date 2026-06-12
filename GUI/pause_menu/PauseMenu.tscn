@@ -139,10 +139,9 @@ grow_vertical = 2
 theme_override_constants/tab_separation = 10
 theme_override_font_sizes/font_size = 48
 tab_alignment = 1
-current_tab = 4
+current_tab = 0
 
 [node name="Inventory" type="Control" parent="Control/TabContainer" unique_id=1459924720]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_hio0w")
 metadata/_tab_index = 0
@@ -273,6 +272,17 @@ offset_left = 555.0
 offset_top = 47.0
 offset_right = 855.0
 offset_bottom = 95.0
+text = "distance 1"
+script = ExtResource("24_ev0cl")
+metadata/_custom_type_script = "uid://cw12wo4re7mt4"
+
+[node name="distance2" type="Button" parent="Control/TabContainer/Inventory" unique_id=292218261]
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 0
+offset_left = 554.0
+offset_top = 107.0
+offset_right = 854.0
+offset_bottom = 155.0
 text = "distance 1"
 script = ExtResource("24_ev0cl")
 metadata/_custom_type_script = "uid://cw12wo4re7mt4"
@@ -800,6 +810,7 @@ offset_bottom = 221.0
 text = "Press 'a' to activate your friend's speacial talent."
 
 [node name="Stuff" type="Control" parent="Control/TabContainer" unique_id=727843018]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("25_f46m6")

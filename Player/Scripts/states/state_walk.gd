@@ -14,7 +14,6 @@ func enter() -> void:
 	player.update_animation("walk")
 	gpu_particles_2d.emitting = true
 	gpu_particles_2d_2.emitting = true
-	pass
 	
 	
 ## When the player exits

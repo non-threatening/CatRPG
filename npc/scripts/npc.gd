@@ -77,23 +77,8 @@ func setup_npc() -> void:
 		if sprite:
 			sprite.texture = npc_resource.sprite
 			sprite.hframes = npc_resource.h_frames
-			#sprite.hframes = h_frames
-	pass
 
 
 func _set_npc_resourse( _npc : NPCResource ) -> void:
 	npc_resource = _npc
 	setup_npc()
-	
-	
-#func _set_h_frames( value : int ) -> void:
-	#npc_resource.h_frames = value
-	#if sprite:
-		#sprite.hframes = npc_resource.h_frames
-	#pass
-#
-#func _set_v_frames( value : int ) -> void:
-	#npc_resource.v_frames = value
-	#if sprite:
-		#sprite.vframes = npc_resource.v_frames
-	#pass

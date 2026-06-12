@@ -22,3 +22,5 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("3_e517h")
+
+[node name="Timer" type="Timer" parent="." unique_id=789636768]

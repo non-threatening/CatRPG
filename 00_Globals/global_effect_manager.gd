@@ -7,9 +7,8 @@ const DUST_EFFECT = preload("uid://b3hacak0buk5o")
 const HIT_PARTICLES = preload("uid://clnqlpi0hkmrg")
 
 
-func vibrate_controller( _soft_motor : float = 0.666, _hard_motor : float = 0.0, _duration : float = 0.1 ) -> void:
+func vibrate_controller( _soft_motor : float = 0.666, _hard_motor : float = 0.0, _duration : float = 0.2 ) -> void:
 	Input.start_joy_vibration( 0, _soft_motor, _hard_motor, _duration )
-	#prints("controlller type:", ControllerIcons.get_joypad_type() )
 
 
 func shake_camera( trauma : float = 0.666 ) -> void:
