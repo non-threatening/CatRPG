@@ -2,10 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://qdco4f7buclm" path="res://npc/scenes/BirdFriend.tscn" id="1_3u0h5"]
 [ext_resource type="Script" uid="uid://cm0sr1e4patba" path="res://Maps/Worlds/Arel/arel_crash_site.gd" id="1_wmkbj"]
+[ext_resource type="AudioStream" uid="uid://c7dpv886lhcgd" path="res://Audio/ambient/soul_serenity_sounds-birds-chirping-241045.mp3" id="2_qqmea"]
+[ext_resource type="AudioStream" uid="uid://omgy3umpnbsa" path="res://Audio/ambient/freesound_community-birds-chirping-75156.mp3" id="3_fdyjh"]
 [ext_resource type="Texture2D" uid="uid://bxfyt6vkjdevh" path="res://Maps/textures/Dirt_01.png" id="3_t8v0w"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Maps/Levels/player_spawn.tscn" id="3_wmkbj"]
+[ext_resource type="AudioStream" uid="uid://dnia8g6g5ep1l" path="res://Audio/ambient/freesound_community-birds-chirping-67827.mp3" id="4_13rtt"]
 [ext_resource type="Material" uid="uid://c57u3p620us0u" path="res://Maps/shadows.tres" id="4_563ej"]
 [ext_resource type="Script" uid="uid://d00db08v22b4c" path="res://Maps/lighting_shadows.gd" id="5_765h2"]
+[ext_resource type="AudioStream" uid="uid://bxisr0rdbqx1w" path="res://Audio/ambient/freesound_community-049044_birds-chirping-01-75997.mp3" id="5_e48l1"]
+[ext_resource type="AudioStream" uid="uid://omw2heh4i84x" path="res://title_scene/audio/ToyPianoScale_opening.ogg" id="6_fdyjh"]
 [ext_resource type="PackedScene" uid="uid://cd2bvjokleydd" path="res://Tile Maps/tilemap_set.tscn" id="8_765h2"]
 [ext_resource type="PackedScene" uid="uid://bc7f06w1326e" path="res://Maps/Enviroment/Plants/Trees/trees/trees.tscn" id="8_ge0r2"]
 [ext_resource type="PackedScene" uid="uid://dultpi7m1kr3m" path="res://Maps/Enviroment/Plants/Trees/trees/dead_trees.tscn" id="8_yjblj"]
@@ -13,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://qa0w3rrfjc6h" path="res://Maps/Enviroment/Plants/Trees/sprites/dead/DeadTree_bottomfuzz.png" id="10_vba61"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Maps/Levels/level_transition.tscn" id="12_tws02"]
 [ext_resource type="Shader" uid="uid://bmspoa1vqk207" path="res://Maps/Worlds/Arel/fire.gdshader" id="13_spo20"]
+[ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="14_y87d2"]
+[ext_resource type="Resource" uid="uid://b2554sgvq3hdj" path="res://Items/gem.tres" id="15_8q6ty"]
 
 [sub_resource type="Shader" id="Shader_wmkbj"]
 code = "shader_type canvas_item;
@@ -81,6 +88,9 @@ shader_parameter/fire_color = SubResource("GradientTexture2D_y87d2")
 
 [node name="ArelCrashSite" type="Node2D" unique_id=15991253]
 script = ExtResource("1_wmkbj")
+ambients = Array[AudioStream]([ExtResource("2_qqmea"), ExtResource("3_fdyjh"), ExtResource("4_13rtt"), ExtResource("5_e48l1")])
+ambients_night = Array[AudioStream]([ExtResource("6_fdyjh")])
+track_amount = 3
 
 [node name="PlayerSpawn" parent="." unique_id=1647215625 instance=ExtResource("3_wmkbj")]
 position = Vector2(1638, 619)
@@ -281,7 +291,7 @@ position = Vector2(3391, 1150)
 rotation = -3.1415925
 scale = Vector2(1, -1)
 
-[node name="CollisionShape2D" parent="BirdFriend/Indicator2D" parent_id_path=PackedInt32Array(122702968, 497168644) index="1" unique_id=494143852]
+[node name="CollisionShape2D" parent="BirdFriend/Indicator2D" parent_id_path=PackedInt32Array(122702968, 497168644) index="2" unique_id=494143852]
 position = Vector2(-72, 141)
 
 [node name="CollisionShape2D" parent="BirdFriend/ActionableDialog" parent_id_path=PackedInt32Array(122702968, 449322354) index="0" unique_id=1823922393]
@@ -311,5 +321,9 @@ offset_left = 3289.0
 offset_top = 1172.0
 offset_right = 3489.0
 offset_bottom = 1462.0
+
+[node name="ItemPickup" parent="." unique_id=1413917274 instance=ExtResource("14_y87d2")]
+position = Vector2(3261, 1213)
+item_data = ExtResource("15_8q6ty")
 
 [editable path="BirdFriend"]

@@ -1,20 +1,35 @@
 extends Node
 
-var music_audio_player_count : int = 2
-var current_music_player : int = 0
-var music_players : Array[ AudioStreamPlayer ]
+##TODO: birdbus, multi layered randomized...
+
+var ambient_bus : String = "Ambient"
+var ambient_audio_player_count : int = 8
+var ambient_players : Array[ AudioStreamPlayer ]
+var current_ambient_player : int = 0
+var ambient_fade_duration : float = 0.666
+
+## Ambient track helpers: tracks are created/removed dynamically and can play concurrently
+
 var music_bus : String = "Music"
+var music_audio_player_count : int = 2
+var music_players : Array[ AudioStreamPlayer ]
+var current_music_player : int = 0
+var music_fade_duration : float = 0.666
+
 var effect_bus : String = "Effects"
 var effect_player_count : int = 8
 var effect_players : Array[ AudioStreamPlayer ]
+
 var ui_bus : String = "UI"
 var ui_player_count : int = 8
 var ui_players : Array[ AudioStreamPlayer ]
-var music_fade_duration : float = 0.666
 
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS ## Don't pause the music when we pause the game to change levels
+	## Don't pause the music when we pause the game to change levels
+	process_mode = Node.PROCESS_MODE_ALWAYS 
+	# Initialize ambient players container
+	ambient_players = []
 	for i in music_audio_player_count:
 		var audio_player = AudioStreamPlayer.new()
 		add_child( audio_player )
@@ -32,6 +47,67 @@ func _ready() -> void:
 		add_child( ui_player )
 		ui_player.bus = ui_bus
 		ui_players.append( ui_player )
+
+
+## Ambient track management
+func add_ambient( _audio : AudioStream, _volume_db : float = 0.0 ) -> AudioStreamPlayer:
+	if _audio == null:
+		return null
+	if _is_ambient_playing( _audio ):
+		return null
+	if ambient_players.size() >= ambient_audio_player_count:
+		return null
+	var player = AudioStreamPlayer.new()
+	add_child( player )
+	player.bus = ambient_bus
+	player.stream = _audio
+	# start muted and fade in
+	player.volume_db = -40
+	player.play()
+	ambient_players.append( player )
+	var tween : Tween = create_tween()
+	tween.tween_property( player, "volume_db", _volume_db, ambient_fade_duration )
+	return player
+
+func _is_ambient_playing( _audio : AudioStream ) -> bool:
+	for player in ambient_players:
+		if player.playing and player.stream == _audio:
+			return true
+	return false
+
+func remove_ambient( track ) -> void:
+	var player : AudioStreamPlayer = null
+	if typeof( track ) == TYPE_INT:
+		if track < 0 or track >= ambient_players.size():
+			return
+		player = ambient_players[ track ]
+	elif typeof(track) == TYPE_OBJECT and is_instance_valid(track) and track is AudioStreamPlayer:
+		if ambient_players.has( track ):
+			player = track
+		else:
+			return
+	else:
+		return
+
+	var tween : Tween = create_tween()
+	tween.tween_property( player, "volume_db", -40, ambient_fade_duration )
+	await tween.finished
+	if player.playing:
+		player.stop()
+	player.queue_free()
+	var idx = ambient_players.find( player )
+	if idx != -1:
+		ambient_players.remove_at( idx )
+
+func remove_all_ambients() -> void:
+	for player in ambient_players:
+		if player.playing:
+			var tween : Tween = create_tween()
+			tween.tween_property( player, "volume_db", -40, ambient_fade_duration )
+			await tween.finished
+			player.stop()
+		player.queue_free()
+	ambient_players.clear()
 
 
 ## Play with AudioStream. Second var is pitch_scale; default = 1
@@ -89,4 +165,3 @@ func fade_out( audio_player : AudioStreamPlayer) -> void:
 	#var current_player : AudioStreamPlayer = music_players[ current_music_player ]
 	#var tween : Tween = create_tween()
 	#tween.tween_property( current_player, "pitch_scale", _p, 0.666 )
-	#prints( current_player, _p )

@@ -1,10 +1,13 @@
 [gd_scene format=4 uid="uid://bwa3jdmpvxxvu"]
 
-[ext_resource type="Script" uid="uid://boixa41751yrr" path="res://Maps/Levels/scripts/level.gd" id="1_2g8rj"]
+[ext_resource type="Script" uid="uid://6rofi1qaewuf" path="res://Maps/Worlds/Klardraumland/the_lobby.gd" id="1_1sp4d"]
 [ext_resource type="PackedScene" uid="uid://x22sx2i7146f" path="res://Tile Maps/dungeon_01.tscn" id="1_gcgvm"]
 [ext_resource type="Shader" uid="uid://w4m68pkampei" path="res://Maps/Enviroment/Plants/Grid.gdshader" id="1_yb7pt"]
+[ext_resource type="AudioStream" uid="uid://bxisr0rdbqx1w" path="res://Audio/ambient/freesound_community-049044_birds-chirping-01-75997.mp3" id="2_sgpfs"]
 [ext_resource type="PackedScene" uid="uid://cnyi834tjq1" path="res://Maps/Levels/player_spawn.tscn" id="3_abty2"]
+[ext_resource type="AudioStream" uid="uid://dnia8g6g5ep1l" path="res://Audio/ambient/freesound_community-birds-chirping-67827.mp3" id="3_yh3wy"]
 [ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="4_abty2"]
+[ext_resource type="AudioStream" uid="uid://omgy3umpnbsa" path="res://Audio/ambient/freesound_community-birds-chirping-75156.mp3" id="4_jcmti"]
 [ext_resource type="PackedScene" uid="uid://ktsnmva7j1e8" path="res://Maps/Levels/level_transition.tscn" id="5_jc7gr"]
 [ext_resource type="Script" uid="uid://b43osbi7ukllb" path="res://Maps/Worlds/Klardraumland/beam_node.gd" id="6_8jkbr"]
 [ext_resource type="PackedScene" uid="uid://csrhsyiqv7781" path="res://Maps/Levels/wrap_around_transition.tscn" id="8_jp6c1"]
@@ -113,7 +116,9 @@ _data = {
 }
 
 [node name="TheLobby" type="Node2D" unique_id=1229895448]
-script = ExtResource("1_2g8rj")
+script = ExtResource("1_1sp4d")
+ambients = Array[AudioStream]([ExtResource("2_sgpfs"), ExtResource("3_yh3wy"), ExtResource("4_jcmti")])
+track_amount = 2
 
 [node name="Dungeon01" parent="." unique_id=1820401519 instance=ExtResource("1_gcgvm")]
 z_index = -1
