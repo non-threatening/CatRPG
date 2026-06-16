@@ -16,14 +16,21 @@ var charging : bool = true
 
 @onready var dash: State_Dash = $"../Dash"
 @onready var idle: State_Idle = $"../Idle"
-@onready var electro_shell_hurt_box: HurtBox = $"../../Collisions/ElectroShellHurtBox"
 @onready var sprite_2d: Sprite2D = $"../../Sprite2D"
 @onready var gpu_particles_2d: GPUParticles2D = $"../../Sprite2D/footprints/GPUParticles2D"
 @onready var gpu_particles_2d_2: GPUParticles2D = $"../../Sprite2D/footprints/GPUParticles2D2"
 @onready var color_rect_5: ColorRect = $"../../Sprite2D/ColorRect5"
 @onready var color_rect_6: ColorRect = $"../../Sprite2D/ColorRect6"
 @onready var color_rect_7: ColorRect = $"../../Sprite2D/ColorRect7"
+@onready var color_rect_8: ColorRect = $"../../Sprite2D/ColorRect8"
+@onready var color_rect_9: ColorRect = $"../../Sprite2D/ColorRect9"
 @onready var foot_smoke_particles_2d: GPUParticles2D = $"../../Sprite2D/FootSmokeParticles2D"
+
+# the hurt from the shell
+@onready var electro_shell_hurt_box: HurtBox = $"../../Collisions/ElectroShellHurtBox"
+# Hurt from the burst
+@onready var electro_burst_hurt_box: HurtBox = $"../../Collisions/ElectroBurstHurtBox"
+
 
 
 func enter() -> void:
@@ -33,14 +40,17 @@ func enter() -> void:
 	walking = false
 	electro_shell_hurt_box.damage = 0
 	electro_shell_hurt_box.monitoring = true
+	electro_burst_hurt_box.monitoring = false
 	color_rect_5.show()
 	color_rect_6.show()
 	color_rect_7.show()
+	color_rect_8.show()
+	color_rect_9.show()
 	color_rect_5.modulate = Color(1, 1, 1, 0)
 	color_rect_6.modulate = Color(1, 1, 1, 0)
 	color_rect_7.modulate = Color(1, 1, 1, 0)
-	#gpu_particles_2d.emitting = true
-	#gpu_particles_2d_2.emitting = true
+	color_rect_8.modulate = Color(1, 1, 1, 0)
+	color_rect_9.modulate = Color(1, 1, 1, 0)
 	
 	
 func exit() -> void:
@@ -48,6 +58,8 @@ func exit() -> void:
 	color_rect_5.hide()
 	color_rect_6.hide()
 	color_rect_7.hide()
+	color_rect_8.hide()
+	color_rect_9.hide()
 	gpu_particles_2d.emitting = false
 	gpu_particles_2d_2.emitting = false
 
@@ -128,6 +140,7 @@ func shell_touch() -> void:
 
 	
 func charge_complete() -> void:
+	foot_smoke_particles_2d.emitting = false
 	if player.electro_shell <= player.max_electro_shell and charging == true:
 		timer = charge_duration
 		
@@ -137,8 +150,7 @@ func charge_complete() -> void:
 
 
 func charge_attack() -> void:
-	prints("charge attack:")
-	electro_shell_hurt_box.damage = 2
+	electro_burst_hurt_box.monitoring = true
 	is_attacking = true
 	
 	# Electro burst
@@ -159,6 +171,7 @@ func charge_attack() -> void:
 	
 	await player.animation_player.animation_finished
 	discharge()
+	electro_burst_hurt_box.monitoring = false
 
 
 func discharge() -> void:
@@ -166,6 +179,8 @@ func discharge() -> void:
 	color_rect_5.modulate = Color(1, 1, 1, 0)
 	color_rect_6.modulate = Color(1, 1, 1, 0)
 	color_rect_7.modulate = Color(1, 1, 1, 0)
+	color_rect_8.modulate = Color(1, 1, 1, 0)
+	color_rect_9.modulate = Color(1, 1, 1, 0)
 	foot_smoke_particles_2d.emitting = false
 	await get_tree().process_frame
 	charging = true

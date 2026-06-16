@@ -11,6 +11,7 @@ const PLAYER_LOKTIN = preload("uid://b3iybtj0bph5k")
 @onready var player_shape_vert: CollisionShape2D = $"../PlayerShapeVert"
 @onready var footprints: Node2D = $footprints
 
+
 var cur_dur
 
 var minute : int = 0

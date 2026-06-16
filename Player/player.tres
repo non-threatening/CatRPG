@@ -7,6 +7,7 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_dd2v6"]
 noise_type = 4
 frequency = 0.008
+offset = Vector3(241.38, -1000, 0)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_si213"]
 width = 256

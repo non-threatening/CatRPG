@@ -102,7 +102,7 @@ func handle_input( _event: InputEvent ) -> State:
 func exit() -> void:
 	animation.play("RESET")
 	action_triggered = false
-	SignalBus.frequecy_matched.emit()
+	SignalBus.frequency_matched.emit()
 	SignalBus.freq_hold.emit( false )
 	
 	

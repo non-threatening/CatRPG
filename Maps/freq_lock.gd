@@ -10,7 +10,7 @@ const TUTORIAL_TEXT = preload("uid://bfb5fqf7fpinu")
 @onready var freq_lock: FreqLock = $"."
 @onready var indicator_2d: InteractIndicator = $"../Indicator2D"
 @onready var actionable_minigame: Area2D = $"../ActionableMinigame"
-@onready var persistant_data_handler: PersistantDataHandler = $PersistantDataHandler
+@onready var persistent_data_handler: PersistantDataHandler = $PersistantDataHandler
 @onready var tone_generator: ToneGenerator = $ToneGenerator
 @onready var sprite_2d: Sprite2D = $"../Sprite2D"
 @onready var reminder: Node2D = $"../TutorialRightStick/reminder"
@@ -26,8 +26,8 @@ var tutorial_bubble : Node
 
 
 func _ready() -> void:
-	persistant_data_handler.data_loaded.connect( _is_opened )
-	SignalBus.frequecy_matched.connect( solved )
+	persistent_data_handler.data_loaded.connect( _is_opened )
+	SignalBus.frequency_matched.connect( solved )
 	SignalBus.freq_tut_show_stick.connect( _right_stick_reminder )
 	SignalBus.freq_hold.connect( _hold )
 	_is_opened()
@@ -43,7 +43,7 @@ func _hold( _h ) -> void:
 
 ## Check if the this has already been unlocked
 func _is_opened() -> void:
-	is_opened = persistant_data_handler.value
+	is_opened = persistent_data_handler.value
 	if is_opened == true:
 		solved()
 
@@ -92,7 +92,7 @@ func _on_timeout() -> void:
 
 func solved() -> void:
 	if is_opened == false:
-		persistant_data_handler.set_value()
+		persistent_data_handler.set_value()
 	##HACK: this is only commented out for testing
 	#freq_lock.queue_free()
 	#indicator_2d.queue_free()
