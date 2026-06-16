@@ -8,7 +8,7 @@ class_name Throwable extends Area2D
 var picked_up : bool = false
 var prop : Node2D
 var throw_direction : Vector2
-var object_sprite : Sprite2D
+var object_sprite
 var vertical_velocity : float = 0
 var ground_height : float = 0
 var animation_player : AnimationPlayer
@@ -23,13 +23,16 @@ func _ready() -> void:
 	prop = get_parent()
 	setup_collision_boxes()
 	
-	#object_sprite = prop.get_node( "Sprite2D" )
-	object_sprite = prop.find_child( "Sprite2D" )
+	if prop.find_child( "Sprite2DBW" ) is Sprite2DBW:
+		object_sprite = prop.find_child( "Sprite2DBW" )
+		
+	if prop.find_child( "Sprite2D" ) is Sprite2D:
+		object_sprite = prop.find_child( "Sprite2D" )
+	
 	ground_height = object_sprite.position.y
 	animation_player = prop.find_child( "AnimationPlayer" )
 	
 	set_physics_process( false )
-	
 	
 	
 func _physics_process( delta: float ) -> void:
@@ -38,8 +41,6 @@ func _physics_process( delta: float ) -> void:
 		hit_ground()
 	vertical_velocity += gravity_strength * delta
 	prop.position += throw_direction * throw_speed * delta
-	pass
-
 
 
 func player_interact() -> void:
@@ -67,9 +68,6 @@ func throw() -> void:
 	hurt_box.set_deferred( "monitoring", true )
 	hurt_box.did_damage.connect( did_damage )
 	wall_detect.body_entered.connect( _on_body_entered )
-	
-	#wall_detect.set_deferred( "monitoring", true )
-	pass
 
 
 func drop() -> void:
@@ -83,15 +81,12 @@ func drop() -> void:
 	wall_detect.body_entered.connect( _on_body_entered )
 
 
-
 func destroy() -> void:
 	set_physics_process( false )
 	if animation_player:
 		animation_player.play("destroy")
 		await animation_player.animation_finished
 	prop.queue_free()
-	pass
-
 
 
 func disable_collisions( _node : Node ) -> void:
@@ -107,18 +102,15 @@ func disable_collisions( _node : Node ) -> void:
 
 func _on_area_enter( _a : Area2D ) -> void:
 	PlayerManager.interact_pressed.connect( player_interact )
-	pass
 
 
 func _on_area_exit( _a : Area2D ) -> void:
 	PlayerManager.interact_pressed.disconnect( player_interact )
-	pass
 	
 	
 func _on_body_entered( _n : Node2D) -> void:
 	if _n is TileMapLayer: ##! Only destroys on tilemaps objects
 		did_damage()
-	pass
 
 
 func setup_collision_boxes() -> void:
@@ -131,7 +123,6 @@ func setup_collision_boxes() -> void:
 			_col.debug_color = Color( 1, 0, 0, 1 ) #add a debug color to see it's different
 			var _col_2 : CollisionShape2D = c.duplicate()
 			wall_detect.add_child( _col_2 )
-	pass
 
 
 func hit_ground() -> void: ## To override in objects inherriting, lke Bomb 
@@ -140,4 +131,3 @@ func hit_ground() -> void: ## To override in objects inherriting, lke Bomb
 
 func did_damage() -> void:
 	destroy()
-	pass

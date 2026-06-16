@@ -5,17 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dmj07u3lguye8" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_ManyPetals_Stem.png" id="6_rjoxa"]
 [ext_resource type="Material" uid="uid://ct1qgfawmdse2" path="res://Maps/Enviroment/Plants/Flowers/flower.tres" id="7_q6xlj"]
 
-[sub_resource type="Gradient" id="Gradient_s7pb4"]
-colors = PackedColorArray(0, 0, 0, 0.27058825, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qyvkd"]
-gradient = SubResource("Gradient_s7pb4")
-width = 42
-height = 21
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_px1lc"]
 polygon = PackedVector2Array(-15.015015, -42.042034, -24.024023, -33.033028, -3.003003, -28.528528, 19.51952, -31.531523, 12.012012, -45.045036)
 
@@ -31,22 +20,6 @@ scale = Vector2(0.666, 0.666)
 texture = ExtResource("6_rjoxa")
 offset = Vector2(0, -32)
 script = ExtResource("2_sd35e")
-
-[node name="ShadowSprite" type="Sprite2D" parent="Flower" unique_id=834572141]
-visible = false
-z_index = -1
-position = Vector2(0, 30)
-rotation = -3.14159
-scale = Vector2(2, 2)
-texture = SubResource("GradientTexture2D_qyvkd")
-
-[node name="ShadowSpriteGreen" type="Sprite2D" parent="Flower" unique_id=422288438]
-visible = false
-z_index = -1
-position = Vector2(0, 30)
-rotation = -3.14159
-scale = Vector2(2, 2)
-texture = SubResource("GradientTexture2D_qyvkd")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1121845371]
 modulate = Color(1, 1, 1, 0)

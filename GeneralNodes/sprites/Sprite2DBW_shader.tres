@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bhwebdxw1iw2c"]
+
+[ext_resource type="Shader" uid="uid://boaar5a5jscv" path="res://GeneralNodes/sprites/Sprite2DBW_shader.gdshader" id="1_n7slb"]
+
+[resource]
+shader = ExtResource("1_n7slb")
+shader_parameter/saturation = 1.0

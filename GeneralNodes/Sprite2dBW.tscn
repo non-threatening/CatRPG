@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://12aelmww1hjv"]
+
+[ext_resource type="Script" uid="uid://dslsyb356v2dw" path="res://GeneralNodes/sprite_2d_bw.gd" id="1_ddubo"]
+[ext_resource type="Material" uid="uid://bhwebdxw1iw2c" path="res://GeneralNodes/sprites/Sprite2DBW_shader.tres" id="1_pamfh"]
+[ext_resource type="Texture2D" uid="uid://pt54v2law2p7" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flower_14.png" id="2_m1l2g"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=987292048]
+material = ExtResource("1_pamfh")
+texture = ExtResource("2_m1l2g")
+script = ExtResource("1_ddubo")

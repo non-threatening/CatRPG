@@ -1,13 +1,9 @@
-class_name Flower extends Node2D
+class_name Mushroom extends Node2D
 
-const FLOWER_DREAM = preload("uid://c5ovupdrrtgpr")
-const FLOWER_MATERIAL = preload("uid://bbj3feg1ntecx")
-const png_dir : String = "res://Maps/Enviroment/Plants/Flowers/sprites/"
+const png_dir : String = "res://Maps/Enviroment/mushrooms/sprites/"
 var packed_array = ResourceLoader.list_directory( png_dir )
 var images : Array[ String ]
 var images_full = []
-
-#var saturation : float = 1.0
 
 
 func _ready() -> void:
@@ -17,21 +13,14 @@ func _ready() -> void:
 	images.shuffle()
 	get_shuffled_flower()
 	_set_time_scale()
-	_set_random_scale()
-	
-	var is_lobby = get_tree().get_current_scene().name
-	if is_lobby == "TheLobby":
-		material.shader = FLOWER_DREAM
-	else:
-		material.shader = FLOWER_MATERIAL
-		_set_random_color()
-		
+	_set_random_color()
 	_set_random_motion_amount()
+	_set_random_scale()
 
 
 func desat( _value ) -> void:
 	material.set_shader_parameter( "saturation", _value )
-
+	
 
 func get_shuffled_flower():
 	if images.is_empty():
@@ -41,14 +30,13 @@ func get_shuffled_flower():
 	var texture = load( png_dir + random_flower )
 	self.texture = texture
 
-
 func _set_time_scale() -> void:
 	var set_time = randf_range( 4.0, 5.0)
 	material.set_shader_parameter( "time_scale", set_time )
 
 
 func _set_random_scale() -> void:
-	var rand = randf_range( 0.48, 0.8 )
+	var rand = randf_range( 0.48, 1.0 )
 	var new_scale = Vector2( rand, rand )
 	var flip = randi() % 2
 	self.flip_h = flip
@@ -56,17 +44,20 @@ func _set_random_scale() -> void:
 
 
 func _set_random_motion_amount() -> void:
-	var x = randf_range( 3.0, 5.0 )
-	var y = randf_range( 2.5, 3.5 )
+	var x = randf_range( 0.9, 1.1 )
+	var y = randf_range( 2.5, 35 )
 	material.set_shader_parameter( "x", x )
 	material.set_shader_parameter( "y", y )
 
 
 func _set_random_color() -> void:
-	var color_range1 : float = fmod( randf_range( (290.0/360.0), 1.0 ) + 50.0/360.0, 1.0 )
+	#var color_range1 : float = fmod( randf_range( (290.0/360.0), 1.0 ) + 50.0/360.0, 1.0 )
+	var color_range1 : float = randf()
+	prints("c range", color_range1)
 	var color1 = Color.from_hsv(
-		color_range1, 
+		color_range1,
 		randf_range( 0.6, 0.8 ), 
 		randf_range( 0.8, 1.0 )
 	)
 	material.set_shader_parameter( "color1", color1 )
+	prints("c 1", color1)

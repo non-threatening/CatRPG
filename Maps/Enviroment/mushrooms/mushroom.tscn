@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://7h7u2h48gy6i"]
+
+[ext_resource type="Material" uid="uid://ssqolcdnkw2k" path="res://Maps/Enviroment/mushrooms/mushroom_shader.tres" id="1_n28x8"]
+[ext_resource type="Script" uid="uid://c74cn16orl7cl" path="res://Maps/Enviroment/mushrooms/mushroom.gd" id="1_o8lsr"]
+[ext_resource type="Texture2D" uid="uid://dlrky7qf0amhp" path="res://Maps/Enviroment/mushrooms/sprites/mushroom_triple.png" id="1_rq84e"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n28x8"]
+polygon = PackedVector2Array(33, 10, 45, -1, 8, 1, 24, 10)
+
+[node name="Mushroom" type="Node2D" unique_id=2145084085]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=857035897]
+material = ExtResource("1_n28x8")
+texture = ExtResource("1_rq84e")
+offset = Vector2(0, -16)
+script = ExtResource("1_o8lsr")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D" unique_id=1070512661]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-28, 0)
+occluder = SubResource("OccluderPolygon2D_n28x8")

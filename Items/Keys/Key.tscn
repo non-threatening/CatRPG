@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://vatv7fbwptv0" path="res://Items/Keys/key.gd" id="1_g6guw"]
 [ext_resource type="Material" uid="uid://bkxpp6yhp0v3i" path="res://Shaders/object_highlight_material.tres" id="2_13fqu"]
+[ext_resource type="Texture2D" uid="uid://bicu8rrmlxkwk" path="res://zz_test/Props/Sprites/Props.png" id="3_105h4"]
 [ext_resource type="PackedScene" uid="uid://dmgx3mwihecmn" path="res://interactables/throwable/throwable.tscn" id="4_q52b1"]
-[ext_resource type="Texture2D" uid="uid://bnviobmca7lp0" path="res://Items/sprites/flute.png" id="5_7lyhp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3r5co"]
 size = Vector2(26, 18)
@@ -14,10 +14,11 @@ size = Vector2(32, 28)
 [node name="Key" type="Node2D" unique_id=1652423653]
 script = ExtResource("1_g6guw")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=765845175]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490986673]
 material = ExtResource("2_13fqu")
 scale = Vector2(2, 2)
-texture = ExtResource("5_7lyhp")
+texture = ExtResource("3_105h4")
+hframes = 16
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=544249864]
 position = Vector2(0, -11)
@@ -35,3 +36,7 @@ throw_speed = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Throwable" unique_id=620553808]
 shape = SubResource("RectangleShape2D_oun8e")
 debug_color = Color(0.644785, 0.523035, 0.00659372, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=438796105]
+wait_time = 6.66
+autostart = true
