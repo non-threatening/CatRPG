@@ -26,6 +26,7 @@ func _ready() -> void:
 	splash_screen.finished.connect( setup_title_screen )
 	LevelManager.level_load_started.connect( exit_title_screen )
 	
+	
 	await get_tree().create_timer( 0.666 ).timeout
 	AudioManager.play_music( music )
 

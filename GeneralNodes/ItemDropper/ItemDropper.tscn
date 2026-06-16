@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkh5sq2tvflu" path="res://GeneralNodes/ItemDropper/item_dropper.gd" id="1_ncqb6"]
 [ext_resource type="AudioStream" uid="uid://cgk0n3gase0ry" path="res://GeneralNodes/ItemDropper/dungeon_discovery.wav" id="2_j17rb"]
-[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="2_ojlm4"]
+[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistent_data_handler.tscn" id="2_ojlm4"]
 [ext_resource type="FontFile" uid="uid://c2hn6qh1v3axu" path="res://GUI/fonts/NotoSans-Regular.ttf" id="2_yvwri"]
 
 [node name="ItemDropper" type="Node2D" unique_id=242883251]

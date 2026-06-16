@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bayu8sq37l1ij" path="res://interactables/dungeon/scripts/pushable_statue.gd" id="1_8jcbb"]
 [ext_resource type="Texture2D" uid="uid://dge6x70cjvhjp" path="res://interactables/dungeon/dungeon_props.png" id="2_ixl6b"]
 [ext_resource type="AudioStream" uid="uid://xh5ubp2fet0y" path="res://interactables/dungeon/push_stone.wav" id="3_ixl6b"]
-[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="4_alwy5"]
+[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistent_data_handler.tscn" id="4_alwy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b56n4"]
 size = Vector2(48, 22.5)

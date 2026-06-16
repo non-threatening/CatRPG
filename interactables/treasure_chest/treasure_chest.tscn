@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://wiimkrtixagf" path="res://interactables/treasure_chest/treasure-chest.png" id="2_x87k5"]
 [ext_resource type="Texture2D" uid="uid://beuue5mgapph3" path="res://Items/sprites/items.png" id="3_fjmvg"]
 [ext_resource type="AudioStream" uid="uid://dpit41htjj5we" path="res://interactables/treasure_chest/treasure-open.wav" id="4_x87k5"]
-[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="5_fjmvg"]
+[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistent_data_handler.tscn" id="5_fjmvg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_icwpr"]
 shader = ExtResource("2_0epee")

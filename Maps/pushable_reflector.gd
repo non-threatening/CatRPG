@@ -10,13 +10,13 @@ var on_target : bool = false
 var bounce_point : Vector2
 
 @onready var audio : AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var persistant_data_handler: PersistantDataHandler = $PersistantDataHandler
+@onready var persistent_data_handler: PersistantDataHandler = $PersistantDataHandler
 @onready var ray_cast: RayCast2D = $RayCast2D
 
 
 func _ready() -> void:
 	# Set the location if saved
-	if persistant_data_handler.value == true:
+	if persistent_data_handler.value == true:
 		position = persistent_location
 
 
@@ -28,9 +28,9 @@ func _physics_process( _delta: float ) -> void:
 		var y_is_on : bool = abs( position.y - persistent_location.y ) < 6 + target_location_size.y
 		if x_is_on and y_is_on and on_target == false:
 			on_target = true
-			persistant_data_handler.set_value()
+			persistent_data_handler.set_value()
 		elif ( x_is_on == false or y_is_on == false ) and on_target == true:
-			persistant_data_handler.remove_value()
+			persistent_data_handler.remove_value()
 			on_target = false
 	
 	if ray_cast.is_colliding():

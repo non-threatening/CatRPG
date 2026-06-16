@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b1w34lfwpwoq7" path="res://materials/color_change/Gunpowder.png" id="2_0rtob"]
 [ext_resource type="Texture2D" uid="uid://dge6x70cjvhjp" path="res://interactables/dungeon/dungeon_props.png" id="3_iei42"]
 [ext_resource type="AudioStream" uid="uid://xh5ubp2fet0y" path="res://interactables/dungeon/push_stone.wav" id="4_pk0ly"]
-[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistant_data_handler.tscn" id="5_8gf72"]
+[ext_resource type="PackedScene" uid="uid://dsr4km8yl6k28" path="res://GeneralNodes/PresistantDataHandler/persistent_data_handler.tscn" id="5_8gf72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efmbv"]
 size = Vector2(42, 40)

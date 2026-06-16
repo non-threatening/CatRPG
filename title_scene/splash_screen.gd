@@ -2,7 +2,6 @@ extends Control
 
 signal finished
 
-#@onready var rich_text_label: RichTextLabel = $RichTextLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var texture_rect: TextureRect = $TextureRect
 
