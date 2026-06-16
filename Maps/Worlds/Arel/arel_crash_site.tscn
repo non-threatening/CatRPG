@@ -20,6 +20,8 @@
 [ext_resource type="Shader" uid="uid://bmspoa1vqk207" path="res://Maps/Worlds/Arel/fire.gdshader" id="13_spo20"]
 [ext_resource type="PackedScene" uid="uid://ii2b5gvv4utb" path="res://Items/item_pickup/ItemPickup.tscn" id="14_y87d2"]
 [ext_resource type="Resource" uid="uid://b2554sgvq3hdj" path="res://Items/gem.tres" id="15_8q6ty"]
+[ext_resource type="PackedScene" uid="uid://bxqg5sydukmrm" path="res://zz_test/Props/pot/pot.tscn" id="21_13rtt"]
+[ext_resource type="PackedScene" uid="uid://cwis5wv0e7243" path="res://Items/Keys/Key.tscn" id="22_e48l1"]
 
 [sub_resource type="Shader" id="Shader_wmkbj"]
 code = "shader_type canvas_item;
@@ -325,5 +327,12 @@ offset_bottom = 1462.0
 [node name="ItemPickup" parent="." unique_id=1413917274 instance=ExtResource("14_y87d2")]
 position = Vector2(3261, 1213)
 item_data = ExtResource("15_8q6ty")
+
+[node name="Pot" parent="." unique_id=1984991226 instance=ExtResource("21_13rtt")]
+position = Vector2(2387.96, 962.4686)
+scale = Vector2(2, 2)
+
+[node name="Key" parent="." unique_id=1652423653 instance=ExtResource("22_e48l1")]
+position = Vector2(3019, 1293)
 
 [editable path="BirdFriend"]

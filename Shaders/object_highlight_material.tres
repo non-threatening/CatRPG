@@ -13,6 +13,8 @@ uniform bool is_horizontal = false; //changes direction from vertical to horizon
 
 uniform float gd_time = 0;
 
+uniform float saturation = 1.0;
+
 void fragment() {
 	// set up base parameters
 	vec4 old_color = COLOR;
@@ -34,6 +36,9 @@ void fragment() {
 	new_color = mix(old_color, new_color, vec4(texture(vertical_gradient, vec2(current_time))));
 	// apply the color to the texture
 	COLOR.rgb = mix(old_color.rgb, new_color.rgb, vec3(effect_distance * highlight_strength));
+	
+	COLOR.rgb = mix(vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114))), COLOR.rgb, saturation);
+	COLOR.a = COLOR.a;
 }"
 
 [sub_resource type="Gradient" id="Gradient_13fqu"]
@@ -46,9 +51,10 @@ gradient = SubResource("Gradient_13fqu")
 [resource]
 shader = SubResource("Shader_whoxn")
 shader_parameter/color_gradient = SubResource("GradientTexture1D_105h4")
-shader_parameter/size_effect = 0.050000075251060316
+shader_parameter/size_effect = 0.05000007525106031
 shader_parameter/speed = 1.0
 shader_parameter/highlight_strength = 1.6990002707025005
 shader_parameter/color_mode_toggle = false
 shader_parameter/is_horizontal = false
 shader_parameter/gd_time = 0.0
+shader_parameter/saturation = 1.0

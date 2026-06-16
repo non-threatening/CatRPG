@@ -36,18 +36,15 @@ func _init_ambient_track_scheduler() -> void:
 		my_world = str(wt)
 
 	if prev_world != "" and prev_world != my_world:
-		print("[Level] world changed from ", prev_world, " to ", my_world, "; removing old ambients before starting new track")
 		await AudioManager.remove_all_ambients()
 		active_ambient_players.clear()
 		add_ambient_track()
 	else:
 		# same world type: use current ambient players as the active replacement pool
 		if AudioManager.ambient_players.size() > 0:
-			print("[Level] same world type (", my_world, "); reusing ", AudioManager.ambient_players.size(), " existing ambient players")
 			active_ambient_players = AudioManager.ambient_players.duplicate()
 		# if no existing ambients, start one immediately
 		elif AudioManager.ambient_players.size() == 0:
-			print("[Level] no existing ambients, starting first ambient for world ", my_world)
 			add_ambient_track()
 
 	# connect to minute ticks to add/rotate tracks over time
@@ -68,10 +65,9 @@ func _get_time_based_ambients() -> Array:
 			current_ambients = ambients_night
 		else:
 			current_ambients = ambients
-	var time_name : String = "day"
+	var _time_name : String = "day"
 	if _is_night_time():
-		time_name = "night"
-	print("[Level] using ", current_ambients.size(), " ambient streams for ", time_name)
+		_time_name = "night"
 	return current_ambients
 
 func _get_day_ambients() -> Array:
@@ -113,20 +109,16 @@ func add_ambient_track() -> void:
 		return
 	if active_ambient_players.size() >= track_amount:
 		var oldest = active_ambient_players.pop_front()
-		print("[Level] replacing oldest ambient player with a new track")
 		AudioManager.remove_ambient( oldest )
 	var next_ambient = _next_ambient()
 	if next_ambient == null:
-		print("[Level] no unique ambient available; skipping duplicate playback")
 		return
-	print("[Level] adding ambient track: ", next_ambient)
 	var player = AudioManager.add_ambient( next_ambient )
 	if player:
 		active_ambient_players.append( player )
 
 func _on_level_time_unit_changed(unit_name: String, new_value: int, old_value: int) -> void:
 	if unit_name == "hour" and new_value % ambient_track_interval == 0:
-		print("[Level] hour tick ", new_value, " reached; scheduling ambient replacement")
 		add_ambient_track()
 
 func _exit_tree() -> void:

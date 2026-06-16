@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://v5dboj6jx3yw"]
+[gd_scene format=3 uid="uid://v5dboj6jx3yw"]
 
 [ext_resource type="Script" uid="uid://dlqf7lyw00h77" path="res://Enemies/Scripts/enemy.gd" id="1_845vs"]
 [ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_nwpu3"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://ckbuq8824f5qe" path="res://Enemies/Scripts/states/enemy_state_stun.gd" id="11_1cb36"]
 [ext_resource type="Script" uid="uid://c4tg0vnp4nujr" path="res://Enemies/Scripts/states/enemy_state_destroy.gd" id="12_eur6s"]
 [ext_resource type="Script" uid="uid://bdfvfjhvnnpf5" path="res://Enemies/Scripts/drop_data.gd" id="13_7fl77"]
-[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/gem.tres" id="14_802uj"]
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="14_802uj"]
 [ext_resource type="Resource" uid="uid://t10cw0avup8v" path="res://Items/apple.tres" id="15_y0n4n"]
 [ext_resource type="Texture2D" uid="uid://dalyj6duug8yd" path="res://Enemies/Slime/destroy.png" id="17_h4j8q"]
 [ext_resource type="Script" uid="uid://bai3apwyf33vo" path="res://Enemies/Scripts/states/enemy_state_chase.gd" id="17_y1860"]
@@ -788,8 +788,6 @@ _data = {
 [sub_resource type="Resource" id="Resource_ts4pi"]
 script = ExtResource("13_7fl77")
 item = ExtResource("14_802uj")
-probability = 100.0
-min_amount = 1
 max_amount = 4
 metadata/_custom_type_script = "uid://bdfvfjhvnnpf5"
 
@@ -797,8 +795,6 @@ metadata/_custom_type_script = "uid://bdfvfjhvnnpf5"
 script = ExtResource("13_7fl77")
 item = ExtResource("15_y0n4n")
 probability = 33.0
-min_amount = 1
-max_amount = 1
 metadata/_custom_type_script = "uid://bdfvfjhvnnpf5"
 
 [sub_resource type="Animation" id="Animation_mmn81"]
@@ -861,34 +857,34 @@ _data = {
 &"destroy": SubResource("Animation_gorp7")
 }
 
-[node name="Cockroach" type="CharacterBody2D"]
+[node name="Cockroach" type="CharacterBody2D" unique_id=1558605701]
 collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_845vs")
 hp = 5
 
-[node name="HurtBox" parent="." instance=ExtResource("2_nwpu3")]
+[node name="HurtBox" parent="." unique_id=293255055 instance=ExtResource("2_nwpu3")]
 position = Vector2(-1, -7)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=483255675]
 position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(0.940365, 0.167688, 0.443471, 0.286275)
 
-[node name="HitBox" parent="." instance=ExtResource("3_omr2o")]
+[node name="HitBox" parent="." unique_id=408613329 instance=ExtResource("3_omr2o")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=900441076]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(1, 0, 0, 0.392157)
 
-[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+[node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=815474491]
 modulate = Color(0.576471, 0.372549, 0.0980392, 0.611765)
 position = Vector2(0, 1)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_8x5xp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=346786675]
 position = Vector2(0, -14)
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
@@ -896,77 +892,73 @@ texture = ExtResource("5_cq4gq")
 hframes = 8
 vframes = 3
 
-[node name="AttackHurtBox" parent="Sprite2D" instance=ExtResource("2_nwpu3")]
+[node name="AttackHurtBox" parent="Sprite2D" unique_id=32573533 instance=ExtResource("2_nwpu3")]
 position = Vector2(0, 11)
 collision_mask = 258
 monitoring = false
 damage = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox" unique_id=2104730292]
 position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(0.940365, 0.167688, 0.443471, 0.286275)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1977096361]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mjfjn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_3of0s")
-}
-autoplay = "idle_down"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=683730629]
+libraries/ = SubResource("AnimationLibrary_3of0s")
+autoplay = &"idle_down"
 
-[node name="EnemyStateMachine" type="Node" parent="."]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1446670642]
 script = ExtResource("8_4cwd5")
 
-[node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_idle_state")]
+[node name="Idle" type="Node" parent="EnemyStateMachine" unique_id=1351420335 node_paths=PackedStringArray("after_idle_state")]
 script = ExtResource("9_bfqry")
 state_duration_max = 3.0
 after_idle_state = NodePath("../Wander")
 
-[node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+[node name="Wander" type="Node" parent="EnemyStateMachine" unique_id=54661066 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_v5ud5")
 wander_speed = 100.0
 state_animation_duration = 0.7
 next_state = NodePath("../Idle")
 
-[node name="Stun" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+[node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=2092076522 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1cb36")
 next_state = NodePath("../Chase")
 
-[node name="Destroy" type="Node" parent="EnemyStateMachine"]
+[node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=2091911145]
 script = ExtResource("12_eur6s")
 drops = Array[ExtResource("13_7fl77")]([SubResource("Resource_ts4pi"), SubResource("Resource_2vvwu")])
 
-[node name="Flee" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "next_state")]
+[node name="Flee" type="Node" parent="EnemyStateMachine" unique_id=611157912 node_paths=PackedStringArray("vision_area", "next_state")]
 script = ExtResource("18_t7gqc")
 vision_area = NodePath("../../VisionArea")
 next_state = NodePath("../Idle")
 
-[node name="Chase" type="Node" parent="EnemyStateMachine"]
+[node name="Chase" type="Node" parent="EnemyStateMachine" unique_id=2117794929]
 script = ExtResource("17_y1860")
 state_aggro_duration = 5.0
 ignore_flee = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1110635291]
 max_polyphony = 4
 
-[node name="DestroyEffectSprite" type="Sprite2D" parent="."]
+[node name="DestroyEffectSprite" type="Sprite2D" parent="." unique_id=1534068612]
 visible = false
 position = Vector2(-1, -7)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_h4j8q")
 hframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffectSprite"]
-libraries = {
-&"": SubResource("AnimationLibrary_ljnrh")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffectSprite" unique_id=223764656]
+libraries/ = SubResource("AnimationLibrary_ljnrh")
 
-[node name="VisionArea" parent="." instance=ExtResource("18_l3q7r")]
+[node name="VisionArea" parent="." unique_id=1125602510 instance=ExtResource("18_l3q7r")]
 position = Vector2(0, -6)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea" unique_id=463456001]
 modulate = Color(0.911, 0.596, 0.993, 0.265)
 polygon = PackedVector2Array(-64, -58, 0, -98, 64, -58, 128, 134, 0, 326, -128, 134)

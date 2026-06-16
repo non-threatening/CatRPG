@@ -11,7 +11,6 @@ func update(_args: Dictionary = {}) -> void:
 		have_suit = true
 
 	
-	
 	if not Shortcuts.get_quest_property( 102, "steps" )[0].completed:
 		if Shortcuts.get_item_quantity( quest_item ) >= 1:
 			complete_step( 0 )

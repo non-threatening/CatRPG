@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="BaseQuestResource" format=3 uid="uid://cob2rfvnqdc1r"]
+
+[ext_resource type="Script" uid="uid://bvqtnrn5xgsi0" path="res://Items/scripts/item_data.gd" id="1_mvmg6"]
+[ext_resource type="Script" uid="uid://cfvjrsna3s1xa" path="res://Quests/scripts/base_quest.gd" id="2_d7350"]
+[ext_resource type="Resource" uid="uid://b8asi4egl7gsr" path="res://Items/bling.tres" id="2_o33cu"]
+[ext_resource type="Script" uid="uid://cvm36y7b4aids" path="res://Quests/scripts/quest_step.gd" id="3_o33cu"]
+
+[sub_resource type="Resource" id="Resource_y55rg"]
+script = ExtResource("3_o33cu")
+title = "Make your first forest friend"
+metadata/_custom_type_script = "uid://cvm36y7b4aids"
+
+[sub_resource type="Resource" id="Resource_d7350"]
+script = ExtResource("3_o33cu")
+metadata/_custom_type_script = "uid://cvm36y7b4aids"
+
+[resource]
+script = ExtResource("2_d7350")
+steps = Array[ExtResource("3_o33cu")]([SubResource("Resource_y55rg"), null, null, null, SubResource("Resource_d7350")])
+reward = Dictionary[ExtResource("1_mvmg6"), int]({
+ExtResource("2_o33cu"): 10
+})
+xp = 5
+achievement = "FIVE_FOREST_FRIENDS"
+id = 200
+quest_name = "Make Five Forest Friends"
+quest_description = "Meet five new animals in the forest and learn some new things about what is going on"
+quest_objective = "Get to know some of the others in the forest"
+metadata/_custom_type_script = "uid://cfvjrsna3s1xa"

@@ -155,7 +155,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerSpawn" parent="." unique_id=401777246 instance=ExtResource("3_abty2")]
-position = Vector2(-3502, -2258)
+position = Vector2(711, -94)
 
 [node name="LevelTransition" parent="." unique_id=1520320096 instance=ExtResource("5_jc7gr")]
 portal_dir = 1

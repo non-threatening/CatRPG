@@ -12,3 +12,4 @@ class_name NPCResource extends Resource
 
 @export var abilities : Dictionary[ String, int ]
 
+@export_enum( "Forest",	"Terminal" ) var friend_type: int = 0

@@ -5,8 +5,6 @@ var moon : int = 0
 var moon_phase : String = "New Moon"
 var time_display : String
 
-# var time_gate : bool = false
-
 var day : int = 1
 var minute : int = 0
 var hour : int = 0
@@ -34,8 +32,7 @@ func _ready() -> void:
 	
 	# Connect to signals
 	time_tick.time_unit_changed.connect(_on_time_unit_changed)
-	LevelManager.level_loaded.connect( _on_game_loaded )
-	LevelManager.level_load_started.connect( _on_load_started )
+
 	
 	##	66.6 is about 10 minutes every 9 seconds; 56 seconds =  1 hour
 	##	One day game time is about 21.2 minutes; one day = 1344 seconds
@@ -53,17 +50,8 @@ func _ready() -> void:
 	})
 
 
-func _on_load_started() -> void:
-	time_gate = false
-func _on_game_loaded() -> void:
-	time_gate = true
-
-
 func _on_time_unit_changed(unit_name: String, new_value: int, old_value: int) -> void:
-	#if time_gate == true:
 	if LevelManager.level_loaded:
-	#if SaveManager.game_loaded:
-	##TODO: if game loaded
 		match unit_name:
 			"minute":
 				var tens = new_value % 10 
