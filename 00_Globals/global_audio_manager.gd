@@ -1,26 +1,18 @@
 extends Node
 
-##TODO: birdbus, multi layered randomized...
-
-var ambient_bus : String = "Ambient"
 var ambient_audio_player_count : int = 8
 var ambient_players : Array[ AudioStreamPlayer ]
 var current_ambient_player : int = 0
 var ambient_fade_duration : float = 0.666
 
-## Ambient track helpers: tracks are created/removed dynamically and can play concurrently
-
-var music_bus : String = "Music"
 var music_audio_player_count : int = 2
 var music_players : Array[ AudioStreamPlayer ]
 var current_music_player : int = 0
-var music_fade_duration : float = 0.666
+var music_fade_duration : float = 1.8
 
-var effect_bus : String = "Effects"
 var effect_player_count : int = 8
 var effect_players : Array[ AudioStreamPlayer ]
 
-var ui_bus : String = "UI"
 var ui_player_count : int = 8
 var ui_players : Array[ AudioStreamPlayer ]
 
@@ -33,19 +25,19 @@ func _ready() -> void:
 	for i in music_audio_player_count:
 		var audio_player = AudioStreamPlayer.new()
 		add_child( audio_player )
-		audio_player.bus = music_bus
+		audio_player.bus = &"Music"
 		music_players.append( audio_player )
 	
 	for i in effect_player_count:
 		var effect_player = AudioStreamPlayer.new()
 		add_child( effect_player )
-		effect_player.bus = effect_bus
+		effect_player.bus = &"Effects"
 		effect_players.append( effect_player )
 
 	for i in ui_player_count:
 		var ui_player = AudioStreamPlayer.new()
 		add_child( ui_player )
-		ui_player.bus = ui_bus
+		ui_player.bus = &"UI"
 		ui_players.append( ui_player )
 
 
@@ -59,9 +51,8 @@ func add_ambient( _audio : AudioStream, _volume_db : float = 0.0 ) -> AudioStrea
 		return null
 	var player = AudioStreamPlayer.new()
 	add_child( player )
-	player.bus = ambient_bus
+	player.bus = &"Ambient"
 	player.stream = _audio
-	# start muted and fade in
 	player.volume_db = -40
 	player.play()
 	ambient_players.append( player )
@@ -84,10 +75,10 @@ func remove_ambient( track ) -> void:
 	elif typeof(track) == TYPE_OBJECT and is_instance_valid(track) and track is AudioStreamPlayer:
 		if ambient_players.has( track ):
 			player = track
-		else:
-			return
-	else:
-		return
+		#else:
+			#return
+	#else:
+		#return
 
 	var tween : Tween = create_tween()
 	tween.tween_property( player, "volume_db", -40, ambient_fade_duration )
