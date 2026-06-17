@@ -2,7 +2,7 @@ class_name EnemyStateStun extends EnemyState
 
 
 @export var anim_name : String = "stun"
-@export var knockback_speed : float = 200.0
+@export var knockback_speed : float = 800.0
 @export var decelrate_speed : float = 10.0
 
 @export_category( "AI" )

@@ -7,8 +7,24 @@ const DUST_EFFECT = preload("uid://b3hacak0buk5o")
 const HIT_PARTICLES = preload("uid://clnqlpi0hkmrg")
 
 
-func vibrate_controller( _soft_motor : float = 0.666, _hard_motor : float = 0.0, _duration : float = 0.2 ) -> void:
-	Input.start_joy_vibration( 0, _soft_motor, _hard_motor, _duration )
+
+var is_on_steam_deck : bool = Steam.isSteamRunningOnSteamDeck()
+
+func vibrate_controller( _soft : float = 0.666, _hard : float = 0.0, _duration : float = 0.2 ) -> void:
+	if is_on_steam_deck == true:
+		_soft = 1.0
+		_hard = 1.0
+	Input.start_joy_vibration( 0, _soft, _hard, _duration )
+	
+	print( "is steamdeck: ", is_on_steam_deck )
+
+
+#func is_steam_deck() -> bool:
+	#if OS.get_name() == "Linux" or OS.get_name() == "FreeBSD":
+		#var screen_size: Vector2i = DisplayServer.screen_get_size()
+		#if screen_size == Vector2i(1280, 800) or screen_size == Vector2i(1280, 720):
+			#return true
+	#return false
 
 
 func shake_camera( trauma : float = 0.666 ) -> void:

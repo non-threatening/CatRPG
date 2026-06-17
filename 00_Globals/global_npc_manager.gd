@@ -15,10 +15,6 @@ const TERMINAL_BUBBLE = preload("uid://cxp6nsydpp02j")
 var speech_bubble : Node
 var bf_awake : bool = true
 
-var npcs = {
-	bf_level = 1,
-	bf_distance = 0
-}
 
 
 func _ready() -> void:

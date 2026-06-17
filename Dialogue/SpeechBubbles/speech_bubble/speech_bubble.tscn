@@ -43,9 +43,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 490.0
+offset_left = 525.0
 offset_top = -372.0
-offset_right = -470.0
+offset_right = -505.0
 offset_bottom = -95.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -58,10 +58,10 @@ texture = ExtResource("3_tr0jp")
 
 [node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer" unique_id=1107000419]
 layout_mode = 0
-offset_left = 170.0
+offset_left = 136.0
 offset_top = 58.0
-offset_right = 794.0
-offset_bottom = 214.0
+offset_right = 770.0
+offset_bottom = 225.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer" unique_id=2127673451]
 layout_mode = 2
@@ -81,6 +81,16 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+
+[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=59818837]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TextureRect" type="TextureRect" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1578933542]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_t1jep")
+expand_mode = 1
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" unique_id=1059512609 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
@@ -106,15 +116,6 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 text = "Response example"
-
-[node name="TextureRect" type="TextureRect" parent="Bubble" unique_id=1578933542]
-layout_mode = 0
-offset_left = 1251.0
-offset_top = 892.0
-offset_right = 1351.0
-offset_bottom = 992.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_t1jep")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=776240330]
 max_polyphony = 5

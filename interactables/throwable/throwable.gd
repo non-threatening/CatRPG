@@ -128,6 +128,5 @@ func setup_collision_boxes() -> void:
 func hit_ground() -> void: ## To override in objects inherriting, lke Bomb 
 	destroy()
 
-
 func did_damage() -> void:
 	destroy()
