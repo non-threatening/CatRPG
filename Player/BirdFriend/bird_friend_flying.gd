@@ -42,7 +42,7 @@ func _ready() -> void:
 
 
 func set_distance() -> void:
-	distance = NpcManager.npcs.bf_distance
+	distance = StatsManager.npcs_stats.bf_distance
 	match distance:
 		0:
 			max_speed = 555.0

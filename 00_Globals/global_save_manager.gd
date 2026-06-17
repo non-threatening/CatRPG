@@ -42,7 +42,7 @@ var current_save : Dictionary = {
 	persistance = [],
 	quest_data = [],
 	pool_state = [],
-	abilities = [ "", "", "", "", "" ],
+	friends = [ "", "", "", "", "" ],
 	options = {
 		master = 0.5,
 		music = 0.5,
@@ -52,7 +52,7 @@ var current_save : Dictionary = {
 	stats = {},
 	achievements = {},
 	qvars = {},
-	npcs = {},
+	npcs_stats = {},
 }
 
 
@@ -165,8 +165,9 @@ func load_game( _number ) -> void:
 	var qv : Dictionary = QuestVars.qvars
 	qv.qvars = current_save.qvars
 	
-	var n : Dictionary = NpcManager.npcs
-	n.npcs = current_save.npcs
+	
+	var n : Dictionary = StatsManager.npcs_stats
+	n.npcs_stats = current_save.npcs_stats
 	
 	# Options Menu
 	master = current_save.options.master
@@ -246,7 +247,7 @@ func update_player_data() -> void:
 	current_save.player.defense = p.defense
 	current_save.player.arrow_count = p.arrow_count
 	current_save.player.bomb_count = p.bomb_count
-	current_save.abilities = p.player_abilities.abilities
+	current_save.friends = p.player_friends.friends
 	
 	
 func update_scene_path() -> void:
@@ -278,7 +279,7 @@ func update_qvars() -> void:
 	current_save.qvars = QuestVars.qvars
 
 func update_npcs() -> void:
-	current_save.npcs = NpcManager.npcs
+	current_save.npcs_stats = StatsManager.npcs_stats
 	
 	
 func add_persistant_value( value : String ) -> void:

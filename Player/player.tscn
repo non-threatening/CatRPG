@@ -30,7 +30,7 @@
 [ext_resource type="Script" uid="uid://cvt3bp8tg6cp7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
 [ext_resource type="Texture2D" uid="uid://qpnsxqn5234n" path="res://Player/Sprites/footprint.png" id="16_c4i3b"]
 [ext_resource type="Texture2D" uid="uid://c8dvlqrdxu2kk" path="res://Player/Sprites/smoke_sheet.png" id="17_m6nl3"]
-[ext_resource type="Script" uid="uid://cp5m17gdo2qko" path="res://Items/scripts/abilities.gd" id="17_pisgm"]
+[ext_resource type="Script" uid="uid://cp5m17gdo2qko" path="res://Items/scripts/friend_abilities.gd" id="17_pisgm"]
 [ext_resource type="Script" uid="uid://b4v4enjcc4ffa" path="res://Player/Scripts/states/state_freq.gd" id="18_7x5p2"]
 [ext_resource type="PackedScene" uid="uid://c0jsono37lv7x" path="res://GeneralNodes/ItemMagnet/ItemMagnet.tscn" id="18_b1ygp"]
 [ext_resource type="AudioStream" uid="uid://dpit41htjj5we" path="res://interactables/treasure_chest/treasure-open.wav" id="19_6eb1q"]

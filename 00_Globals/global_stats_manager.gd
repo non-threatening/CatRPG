@@ -1,6 +1,16 @@
 extends Node
 
 
+var achievements = {
+	have_bird_friend = 0,
+	five_forest_friends = 0
+}
+
+var npcs_stats = {
+	bf_level = 1,
+	bf_distance = 0
+}
+
 var stats = {
 	friends_made = 0,
 	quests_completed = 0,
@@ -10,9 +20,6 @@ var stats = {
 	butts_sniffed = 0,
 }
 
-var achievements = {
-	have_bird_friend = 0
-}
 
 
 var knowledge = {
@@ -38,11 +45,13 @@ var knowledge = {
 func _ready() -> void:
 	SaveManager.game_loaded.connect( _on_game_loaded )
 
+
 func _on_game_loaded() -> void:
-	stats = SaveManager.current_save.stats
 	achievements = SaveManager.current_save.achievements
+	stats = SaveManager.current_save.stats
+	npcs_stats = SaveManager.current_save.npcs_stats
 	#knowledge = SaveManager.current_save.knowledge
-##TODO: move npcs here
+
 
 func enemy_stat_count( victim ) -> void:
 	stats.enemies_defeated += 1

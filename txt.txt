@@ -1,1 +1,0 @@
-Give each speach bubble a different look for each character

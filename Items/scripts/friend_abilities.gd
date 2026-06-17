@@ -1,9 +1,9 @@
-class_name PlayerAbilities extends Node
+class_name FriendAbilities extends Node
 
 const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
 const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 
-var abilities : Array[ String ] = [
+var friends : Array[ String ] = [
 	"", "", "", "", "" ## "NONE", BIRD", "GRAPPLE", "BOW", "BOMB"
 	]
 
@@ -13,7 +13,7 @@ var _ability_pressing := false
 var _ability_long_press_fired := false
 const LONG_PRESS_THRESHOLD := 0.4
 
-var selected_ability : int = 0
+var selected_friend : int = 0
 var player : Player
 var bird_instance : BirdFriendFlying = null
 
@@ -27,21 +27,21 @@ var bird_instance : BirdFriendFlying = null
 
 func _ready() -> void:
 	player = PlayerManager.player
-	setup_abilities()
+	setup_friends()
 	SaveManager.game_loaded.connect( _on_game_loaded )
-	PlayerManager.INVETORY_DATA.ability_acquired.connect( _on_ability_acquired )
+	PlayerManager.INVETORY_DATA.friend_acquired.connect( _on_friend_acquired )
 	NpcManager.bf_away.connect( _bird_leaving )
 	
 	
-func setup_abilities( select_index : int = 0 ) -> void:
-	PauseMenu.update_ability_items( abilities ) ## this in npcManager
-	selected_ability = select_index - 1
-	toggle_ability()
+func setup_friends( select_index : int = 0 ) -> void:
+	PauseMenu.update_friend_items( friends ) ## this in npcManager
+	selected_friend = select_index - 1
+	toggle_friend()
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability"):
-			match selected_ability:
+			match selected_friend:
 				0:
 					_ability_press_time = 0.0
 					_ability_pressing = true
@@ -56,14 +56,14 @@ func _unhandled_input(event: InputEvent) -> void:
 					bomb_ability()
 					
 	elif event.is_action_released("ability"):
-		if selected_ability == 0 and _ability_pressing:
+		if selected_friend == 0 and _ability_pressing:
 			if not _ability_long_press_fired:
 				none_ability(false) # short press only if long wasn't fired
 			_ability_pressing = false
 			_ability_long_press_fired = false
 			
 	elif event.is_action_pressed("switch_ability"):
-		toggle_ability()
+		toggle_friend()
 
 	
 func _process(delta: float) -> void:
@@ -75,22 +75,22 @@ func _process(delta: float) -> void:
 
 
 
-func toggle_ability() -> void:
-	if abilities.count( "" ) == abilities.size():
+func toggle_friend() -> void:
+	if friends.count( "" ) == friends.size():
 		return
-	selected_ability = wrapi( selected_ability + 1, 0, 5 )
-	while abilities[ selected_ability ] == "":
-		selected_ability = wrapi( selected_ability + 1, 0, 5 )
+	selected_friend = wrapi( selected_friend + 1, 0, 5 )
+	while friends[ selected_friend ] == "":
+		selected_friend = wrapi( selected_friend + 1, 0, 5 )
 	
 	await get_tree().process_frame
-	if selected_ability == 1:
+	if selected_friend == 1:
 		player.show_bird_friend()
 	else:
 		player.hide_bird_friend()
 
 
-func set_ability_number( a : int ) -> void:
-	selected_ability = a
+func set_friend_number( a : int ) -> void:
+	selected_friend = a
 
 
 func none_ability(is_long_press := false) -> void:
@@ -160,28 +160,28 @@ func grapple_ability() -> void:
 
 
 func _on_game_loaded() -> void:
-	var new_abilities = SaveManager.current_save.abilities
-	abilities.clear()
-	for i in new_abilities:
-		abilities.append( i )
-	setup_abilities()
+	var new_friends = SaveManager.current_save.friends
+	friends.clear()
+	for i in new_friends:
+		friends.append( i )
+	setup_friends()
 
 
-func _on_ability_acquired( _ability : AbilityItemData ) -> void:
+func _on_friend_acquired( _friend : FriendItemData ) -> void:
 	#"NONE", "BIRD", "GRAPPLE", "BOW", "BOMB"
-	match _ability.type:
-		_ability.Type.NONE:
-			abilities[0] = "NONE"
-		_ability.Type.BIRD:
+	match _friend.type:
+		_friend.Type.NONE:
+			friends[0] = "NONE"
+		_friend.Type.BIRD:
 			if StatsManager.achievements.have_bird_friend:
-				abilities[1] = "BIRD"
+				friends[1] = "BIRD"
 			else:
 				await get_tree().create_timer( 1.2 ).timeout
-				abilities[1] = "BIRD"
-		_ability.Type.GRAPPLE:
-			abilities[2] = "GRAPPLE"
-		_ability.Type.ARROW:
-			abilities[3] = "ARROW"
-		_ability.Type.BOMB:
-			abilities[4] = "BOMB"
-	setup_abilities( selected_ability )
+				friends[1] = "BIRD"
+		_friend.Type.GRAPPLE:
+			friends[2] = "GRAPPLE"
+		_friend.Type.ARROW:
+			friends[3] = "ARROW"
+		_friend.Type.BOMB:
+			friends[4] = "BOMB"
+	setup_friends( selected_friend )

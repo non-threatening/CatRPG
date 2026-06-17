@@ -2,7 +2,7 @@ class_name InventoryData extends Resource
 
 signal equipment_changed
 signal item_added_to_inventory
-signal ability_acquired( ability : AbilityItemData )
+signal friend_acquired( ability : FriendItemData )
 
 @export var slots : Array[ SlotData ]
 var equipment_slot_count : int = 4
@@ -23,8 +23,8 @@ func equipment_slots() -> Array[ SlotData ]:
 
 
 func add_item( item : ItemData, count : int = 1 ) -> bool:
-	if item is AbilityItemData:
-		ability_acquired.emit( item )
+	if item is FriendItemData:
+		friend_acquired.emit( item )
 		return true
 		
 	for s in slots:
@@ -47,8 +47,8 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 
 
 func add_item_quest_reward( item : ItemData, count : int = 1 ) -> bool:
-	if item is AbilityItemData:
-		ability_acquired.emit( item )
+	if item is FriendItemData:
+		friend_acquired.emit( item )
 		return true
 		
 	for s in slots:

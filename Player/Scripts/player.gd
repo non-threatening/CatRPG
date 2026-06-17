@@ -46,7 +46,7 @@ var time: float = 0.0
 @onready var held_item: Node2D = $Sprite2D/HeldItem
 @onready var carry: State_Carry = $StateMachine/Carry
 @onready var idle: State_Idle = $StateMachine/Idle
-@onready var player_abilities: PlayerAbilities = $Abilities
+@onready var player_friends: FriendAbilities = $Abilities
 @onready var state_electro_shell: StateElectroShell = $StateMachine/ElectroShell
 @onready var state_freq: State_Freq = $StateMachine/freq
 

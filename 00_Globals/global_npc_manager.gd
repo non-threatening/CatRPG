@@ -66,9 +66,9 @@ func _standard_checks() -> bool:
 	return false
 
 func _set_none() -> void:
-	PlayerManager.player.player_abilities.abilities = ["NONE", "", "", "", ""]
-	PauseMenu.update_ability_items( ["NONE", "", "", "", ""] )
-	PlayerManager.player.player_abilities.set_ability_number( 0 )
+	PlayerManager.player.player_friends.friends = ["NONE", "", "", "", ""]
+	PauseMenu.update_friend_items( ["NONE", "", "", "", ""] )
+	PlayerManager.player.player_friends.set_friend_number( 0 )
 
 
 ## Bird Friend
@@ -84,7 +84,7 @@ func bye_bye_bird_friend() -> void:
 	## If we have bird friend
 	if StatsManager.achievements.have_bird_friend == 1:
 		## If we have bird friend and she's is our current friend, then trigger dialog
-		if PlayerManager.player.player_abilities.selected_ability == 1:
+		if PlayerManager.player.player_friends.selected_friend == 1:
 			if _bye_bird_friend_checks():
 				_start_dialog( SPEACH_BUBBLE, BF_REPEATABLES, "goodbyes" )
 				_set_none()
@@ -96,7 +96,7 @@ func bye_bye_bird_friend() -> void:
 func bird_friend_awake() -> void:
 	await get_tree().create_timer( ( randi() + 1) % 18 ).timeout
 	if StatsManager.achievements.have_bird_friend == 1:
-		if PlayerManager.player.player_abilities.selected_ability != 1:
+		if PlayerManager.player.player_friends.selected_friend != 1:
 			var location : String
 			bf_awake = true
 			#	Every three days

@@ -10,6 +10,6 @@ class_name NPCResource extends Resource
 @export var talk_blips : Array[ AudioStream ]
 @export_range( 0.5, 1.8, 0.02 ) var pitch : float = 1.0
 
-@export var abilities : Dictionary[ String, int ]
+@export var friends : Dictionary[ String, int ]
 
 @export_enum( "Forest",	"Terminal" ) var friend_type: int = 0

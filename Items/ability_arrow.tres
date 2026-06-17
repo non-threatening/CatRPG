@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="AbilityItemData" format=3 uid="uid://p3om8hv0rf28"]
+[gd_resource type="Resource" script_class="FriendItemData" format=3 uid="uid://p3om8hv0rf28"]
 
 [ext_resource type="Script" uid="uid://c5fpu6ww87ydn" path="res://Items/item_effects/item_effect.gd" id="1_yo4lw"]
-[ext_resource type="Script" uid="uid://oomaujsdmce8" path="res://Items/scripts/ability_item_data.gd" id="2_0bphp"]
+[ext_resource type="Script" uid="uid://oomaujsdmce8" path="res://Items/scripts/friend_item_data.gd" id="2_0bphp"]
 [ext_resource type="Texture2D" uid="uid://qjxdd4dnq6v2" path="res://Player/Sprites/ability-icons.png" id="3_24ta5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qndx"]

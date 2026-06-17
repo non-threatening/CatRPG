@@ -25,7 +25,7 @@ func _on_level_loaded() -> void:
 	if StatsManager.achievements.have_bird_friend == 1:
 		await get_tree().create_timer( 1.2 ).timeout
 		##	If BF is awake and 
-		if NpcManager.bf_awake == true and PlayerManager.player.player_abilities.selected_ability != 1:
+		if NpcManager.bf_awake == true and PlayerManager.player.player_friends.selected_friend != 1:
 			bird_friend.modulate = Color( 1, 1, 1, 0 )
 			_arrived()
 			var tween : Tween = create_tween()
@@ -45,9 +45,9 @@ func _arrived() -> void:
 func _back_to_cat() -> void:
 	to_and_fro.to_and_fro_back_to_cat()
 	bird_friend.hide()
-	PlayerManager.player.player_abilities.abilities = ["", "BIRD", "", "", ""]
-	PlayerManager.player.player_abilities.set_ability_number( 1 )
-	PauseMenu.update_ability_items( ["", "BIRD", "", "", ""] )
+	PlayerManager.player.player_friends.friends = ["", "BIRD", "", "", ""]
+	PlayerManager.player.player_friends.set_friend_number( 1 )
+	PauseMenu.update_friend_items( ["", "BIRD", "", "", ""] )
 
 
 ## Back and forth from tree
