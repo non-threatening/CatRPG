@@ -10,7 +10,6 @@ polygon = PackedVector2Array(-15.015015, -42.042034, -24.024023, -33.033028, -3.
 
 [node name="Flower" type="Node2D" unique_id=1495846864]
 y_sort_enabled = true
-position = Vector2(0, -7)
 script = ExtResource("1_q6xlj")
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=265141847]

@@ -16,7 +16,11 @@ func _ready() -> void:
 	_set_random_scale()
 	_set_random_motion_amount()
 	_set_steps()
+	SignalBus.desaturate.connect( desat )
 
+
+func desat( _value ) -> void:
+	material.set_shader_parameter( "saturation", _value )
 
 #func _tree() -> void:
 	#material.set_shader_parameter( "color1", Color( 0.35, 0.57, 0.17, 1.0 ) )

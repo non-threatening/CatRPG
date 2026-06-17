@@ -18,6 +18,7 @@ uniform float amplitude = 0.1;
 uniform float frequency = 1.0;
 uniform float speed = 1.0;
 
+uniform float saturation = 1.0;
 
 void fragment() {
 	vec4 input_color = texture( TEXTURE, UV );
@@ -26,6 +27,9 @@ void fragment() {
 		vec4 color = mix(color1, color2, smoothstep(step1*size, step2*size, dist));
 		color = mix(color, color3, smoothstep(step2*size, step3*size, dist));
 		COLOR = color * input_color.rgba;
+		
+	COLOR.rgb = mix(vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114))), COLOR.rgb, saturation);
+	//COLOR.a = COLOR.a;		
 	}
 }
 

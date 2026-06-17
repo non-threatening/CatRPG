@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b88dqhxikp2c8"]
+
+[ext_resource type="Shader" uid="uid://csitf8kvraxur" path="res://Maps/textures/grass_layer_shader_material.gdshader" id="1_bh2eo"]
+
+[sub_resource type="Gradient" id="Gradient_t8v0w"]
+offsets = PackedFloat32Array(0.2982456, 0.50877196, 0.8479532, 1)
+colors = PackedColorArray(0.004360718, 0.076509945, 0.15094218, 0.38039216, 0.17177433, 0.18022859, 0.20383337, 0.2784314, 0.20940502, 0.31, 0.1271, 1, 0.59521425, 0, 0.10812365, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_563ej"]
+noise_type = 3
+seed = 3
+frequency = 0.0083
+fractal_type = 2
+cellular_distance_function = 2
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_765h2"]
+noise = SubResource("FastNoiseLite_563ej")
+color_ramp = SubResource("Gradient_t8v0w")
+seamless = true
+
+[resource]
+shader = ExtResource("1_bh2eo")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_765h2")
+shader_parameter/saturation = 1.0
