@@ -53,6 +53,7 @@ var current_save : Dictionary = {
 	achievements = {},
 	qvars = {},
 	npcs_stats = {},
+	knowledge = {},
 }
 
 
@@ -120,6 +121,7 @@ func save_game( _number ) -> void:
 	update_achievements()
 	update_qvars()
 	update_npcs()
+	update_knowledge()
 	
 	var file := FileAccess.open( SAVE_PATH + _number + "_save.sav", FileAccess.WRITE )
 	var save_json = JSON.stringify( current_save )
@@ -145,8 +147,15 @@ func load_game( _number ) -> void:
 	await LevelManager.level_load_started
 	
 	PlayerManager.set_player_position( Vector2( current_save.player.pos_x, current_save.player.pos_y ) )
-	PlayerManager.set_health( current_save.player.hp, current_save.player.max_hp, current_save.electro_shell, current_save.max_electro_shell, current_save.spoons, current_save.max_capacity )
-	
+
+	PlayerManager.set_health( 
+		current_save.player.hp,
+		current_save.player.max_hp,
+		current_save.electro_shell,
+		current_save.max_electro_shell,
+		current_save.spoons, 
+		current_save.max_capacity
+		)
 
 	var p : Player = PlayerManager.player
 	p.level = current_save.player.level
@@ -165,9 +174,11 @@ func load_game( _number ) -> void:
 	var qv : Dictionary = QuestVars.qvars
 	qv.qvars = current_save.qvars
 	
-	
 	var n : Dictionary = StatsManager.npcs_stats
 	n.npcs_stats = current_save.npcs_stats
+	
+	var k : Dictionary = StatsManager.knowledge
+	k.knowledge = current_save.knowledge
 	
 	# Options Menu
 	master = current_save.options.master
@@ -187,7 +198,6 @@ func load_game( _number ) -> void:
 	var formatted = TimeSystem.time_tick.get_formatted_time_padded(["hour", "minute"], ":")
 	var day = TimeSystem.time_tick.get_time_unit("day")
 	PlayerHud.time_label.text = ("Day %d %s" % [day, formatted])
-	
 	
 	PlayerManager.INVETORY_DATA.parse_save_data( current_save.items )
 	
@@ -211,9 +221,6 @@ func load_game( _number ) -> void:
 		if q.quest_name:
 			Shortcuts.update_quest( q.quest_name )
 	game_loaded.emit()
-	pass
-	
-
 
 
 func update_time() -> void:
@@ -280,7 +287,9 @@ func update_qvars() -> void:
 
 func update_npcs() -> void:
 	current_save.npcs_stats = StatsManager.npcs_stats
-	
+
+func update_knowledge() -> void:
+	current_save.knowledge = StatsManager.knowledge
 	
 func add_persistant_value( value : String ) -> void:
 	if check_persistant_value( value ) == false:
