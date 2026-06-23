@@ -9,7 +9,7 @@ signal bf_return
 const BF_REPEATABLES = preload("uid://cfyfqaq8el1xq")
 
 const LOKTIN_BUBBLE = preload("uid://bym1e6q2jq1c2")
-const SPEACH_BUBBLE = preload("uid://c0u3mmda127cd")
+const SPEECH_BUBBLE = preload("uid://c0u3mmda127cd")
 const TERMINAL_BUBBLE = preload("uid://cxp6nsydpp02j")
 
 var speech_bubble : Node
@@ -81,20 +81,19 @@ func _bye_bird_friend_checks() -> bool:
 
 func bye_bye_bird_friend() -> void:
 	await get_tree().create_timer( ( randi() + 1) % 18 ).timeout
-	## If we have bird friend
-	if StatsManager.achievements.have_bird_friend == 1:
-		## If we have bird friend and she's is our current friend, then trigger dialog
-		if PlayerManager.player.player_friends.selected_friend == 1:
-			if _bye_bird_friend_checks():
-				_start_dialog( SPEACH_BUBBLE, BF_REPEATABLES, "goodbyes" )
-				_set_none()
-		else:
-			##	or else it's in the tree and flies away. -bird_friend.gd
-			bf_awake = false
-			bf_npc_status.emit( bf_awake, null )
+	## If we have bird friend and she's is our current friend, then trigger dialog
+	if PlayerManager.player.player_friends.selected_friend == 1:
+		if _bye_bird_friend_checks():
+			_start_dialog( SPEECH_BUBBLE, BF_REPEATABLES, "goodbyes" )
+			_set_none()
+	else:
+		##	or else it's in the tree and flies away. -bird_friend.gd
+		bf_awake = false
+		bf_npc_status.emit( bf_awake, null )
 
 func bird_friend_awake() -> void:
 	await get_tree().create_timer( ( randi() + 1) % 18 ).timeout
+	##	flies back to the tree if we're friends and it's not the selected friend
 	if StatsManager.achievements.have_bird_friend == 1:
 		if PlayerManager.player.player_friends.selected_friend != 1:
 			var location : String

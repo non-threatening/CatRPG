@@ -1,7 +1,9 @@
 @tool
 class_name LevelTransition extends Area2D
 
-signal  entered_from_here
+
+const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
+var bird_instance : BirdFriendFlying = null
 
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
@@ -19,7 +21,9 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 	set( _v ):
 		side = _v
 		_update_area()
+		
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var level_transition: LevelTransition = $"."
 
 
 
@@ -33,6 +37,7 @@ func _ready() -> void:
 	
 	await LevelManager.level_loaded # defer until loaded
 	
+	# if Only In
 	if portal_dir == 1:
 		return
 	monitoring = true
@@ -40,8 +45,7 @@ func _ready() -> void:
 
 
 func _player_entered( _p : Node2D ) -> void: ## _p not actually used
-	LevelManager.load_new_level( level, target_transition_area, get_offset()  )
-	pass
+	LevelManager.load_new_level( level, target_transition_area, get_offset() )
 
 
 
@@ -49,9 +53,24 @@ func _place_player() -> void:
 	if name != LevelManager.target_transition: # check if the placement not from level_trans, eg. player_spawn
 		return
 	PlayerManager.set_player_position( global_position + LevelManager.position_offset )
-	entered_from_here.emit()
+
+	## If the player throws the bird and then transitons levels, we need the bird to fly back.
+	if bird_instance != null:
+		return
+	if PlayerManager.player.player_friends.selected_friend == 1:
+		if PlayerManager.player.bird_friend_sprite.visible == false: ## in throw state
+			await get_tree().create_timer( 1.332 ).timeout
+			var _b = BIRD.instantiate() as BirdFriendFlying
+			var bf_position = PlayerManager.player.bird_friend_sprite.position
+			level_transition.add_child( _b ) # needs to be in the tree
+			_b.toggle_item_magent()
+			#EffectManager.landed( bf_position )
+			_b.back_to_cat( bf_position )
+			bird_instance = _b
+			
 
 
+var bird_offset : Vector2 = Vector2.ZERO
 
 func get_offset() -> Vector2:
 	var offset : Vector2 = Vector2.ZERO
@@ -63,16 +82,22 @@ func get_offset() -> Vector2:
 		else:
 			offset.y = player_pos.y - global_position.y
 		offset.x = 64
+		bird_offset.x = -666
 		if side == SIDE.LEFT:
 			offset.x *= -1
+			bird_offset.x *= -1
+		bird_offset.y = offset.y
 	else:
 		if center_player == true:
 			offset.x = 0
 		else:
 			offset.x = player_pos.x - global_position.x
 		offset.y = 64
+		bird_offset.y = -666
 		if side == SIDE.TOP:
 			offset.y *= -1
+			bird_offset.y *= -1
+		bird_offset.x = offset.x
 	return offset
 
 
