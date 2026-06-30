@@ -139,19 +139,20 @@ grow_vertical = 2
 theme_override_constants/tab_separation = 10
 theme_override_font_sizes/font_size = 48
 tab_alignment = 1
-current_tab = 0
+current_tab = 4
 
 [node name="Inventory" type="Control" parent="Control/TabContainer" unique_id=1459924720]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_hio0w")
 metadata/_tab_index = 0
 
 [node name="AbilityContainer" type="PanelContainer" parent="Control/TabContainer/Inventory" unique_id=814651154]
 layout_mode = 0
-offset_left = 1242.0
-offset_top = 580.0
-offset_right = 1502.0
-offset_bottom = 844.0
+offset_left = -168.0
+offset_top = 121.0
+offset_right = 92.0
+offset_bottom = 385.0
 
 [node name="AbilityGridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/AbilityContainer" unique_id=630545538]
 unique_name_in_owner = true
@@ -391,10 +392,10 @@ stretch_mode = 3
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Inventory" unique_id=1079315646]
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 0
-offset_left = 822.0
-offset_top = 161.0
-offset_right = 1174.0
-offset_bottom = 561.0
+offset_left = 959.0
+offset_top = 246.0
+offset_right = 1311.0
+offset_bottom = 646.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Inventory/ScrollContainer" unique_id=920540400]
 custom_minimum_size = Vector2(336, 268)
@@ -563,10 +564,10 @@ offset_bottom = 449.0
 
 [node name="AbilitiesDescription" type="Label" parent="Control/TabContainer/Inventory" unique_id=1225400252]
 layout_mode = 0
-offset_left = 718.0
-offset_top = 471.0
-offset_right = 980.0
-offset_bottom = 612.0
+offset_left = 570.0
+offset_top = 267.0
+offset_right = 832.0
+offset_bottom = 432.0
 text = "This is Bird Friend. She likes to fly out to get things and pecking eyes out."
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -810,7 +811,6 @@ offset_bottom = 221.0
 text = "Press 'a' to activate your friend's speacial talent."
 
 [node name="Stuff" type="Control" parent="Control/TabContainer" unique_id=727843018]
-visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("25_f46m6")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://csj7808b8skod"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://csj7808b8skod"]
 
 [ext_resource type="Script" uid="uid://c5fpu6ww87ydn" path="res://Items/item_effects/item_effect.gd" id="1_tdgsu"]
 [ext_resource type="Script" uid="uid://bvqtnrn5xgsi0" path="res://Items/scripts/item_data.gd" id="2_u6d1n"]
@@ -13,6 +13,4 @@ script = ExtResource("2_u6d1n")
 name = "Dungeon Key"
 description = "Looks like a keycard. This probably opens something."
 texture = SubResource("AtlasTexture_y1yal")
-cost = 10
-effects = Array[ExtResource("1_tdgsu")]([])
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"

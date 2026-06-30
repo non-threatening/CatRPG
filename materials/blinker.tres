@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_a3oxr")
-shader_parameter/speed = 7.0
+shader_parameter/speed = 13.0

@@ -1,11 +1,11 @@
 @tool
 class_name LevelTransition extends Area2D
 
-
-const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
-var bird_instance : BirdFriendFlying = null
-
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
+const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
+
+var bird_instance : BirdFriendFlying = null
+var bird_offset : Vector2 = Vector2.ZERO
 
 @export_enum( "In and Out", "Only In", "Only Out" ) var portal_dir : int = 0
 @export_file( "*.tscn" ) var level
@@ -31,14 +31,11 @@ func _ready() -> void:
 	_update_area()
 	if Engine.is_editor_hint():
 		return
-	
 	monitoring = false # Set to false if so player doesn't trigger transition area on new level 
 	_place_player()
 	
-	await LevelManager.level_loaded # defer until loaded
-	
-	# if Only In
-	if portal_dir == 1:
+	await LevelManager.level_loaded
+	if portal_dir == 1: # if only in 
 		return
 	monitoring = true
 	body_entered.connect( _player_entered )
@@ -48,10 +45,10 @@ func _player_entered( _p : Node2D ) -> void: ## _p not actually used
 	LevelManager.load_new_level( level, target_transition_area, get_offset() )
 
 
-
 func _place_player() -> void:
 	if name != LevelManager.target_transition: # check if the placement not from level_trans, eg. player_spawn
 		return
+		
 	PlayerManager.set_player_position( global_position + LevelManager.position_offset )
 
 	## If the player throws the bird and then transitons levels, we need the bird to fly back.
@@ -62,15 +59,11 @@ func _place_player() -> void:
 			await get_tree().create_timer( 1.332 ).timeout
 			var _b = BIRD.instantiate() as BirdFriendFlying
 			var bf_position = PlayerManager.player.bird_friend_sprite.position
-			level_transition.add_child( _b ) # needs to be in the tree
+			level_transition.add_child( _b ) # needs to be in the scene tree
 			_b.toggle_item_magent()
-			#EffectManager.landed( bf_position )
 			_b.back_to_cat( bf_position )
 			bird_instance = _b
-			
 
-
-var bird_offset : Vector2 = Vector2.ZERO
 
 func get_offset() -> Vector2:
 	var offset : Vector2 = Vector2.ZERO

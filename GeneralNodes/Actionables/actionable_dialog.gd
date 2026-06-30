@@ -10,7 +10,6 @@ var speech_bubble : Node
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
 
-##TODO: put the indicator in a speech bubble above the character
 
 func action() -> void:
 	match bubble:
