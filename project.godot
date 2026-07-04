@@ -78,7 +78,8 @@ folder_colors={
 "res://GUI/": "orange",
 "res://Maps/": "teal",
 "res://Player/": "green",
-"res://Quests/": "pink"
+"res://Quests/": "pink",
+"res://npc/": "purple"
 }
 
 [global_group]
@@ -217,6 +218,7 @@ locale/test="de"
 2d_physics/layer_4="GrappleObstacles"
 2d_physics/layer_5="Walls"
 2d_physics/layer_6="GrapplePoints"
+2d_physics/layer_8="Knockbacks"
 2d_physics/layer_9="Enemy"
 2d_physics/layer_10="Enemy2Enemy"
 2d_physics/layer_11="Spawn Detect"

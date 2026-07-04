@@ -28,6 +28,7 @@ var bird_instance : BirdFriendFlying = null
 func _ready() -> void:
 	player = PlayerManager.player
 	setup_friends()
+	set_friend_number( 0 )
 	SaveManager.game_loaded.connect( _on_game_loaded )
 	PlayerManager.INVETORY_DATA.friend_acquired.connect( _on_friend_acquired )
 	NpcManager.bf_away.connect( _bird_leaving )
@@ -41,27 +42,27 @@ func setup_friends( select_index : int = 0 ) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability"):
-			match selected_friend:
-				0:
-					_ability_press_time = 0.0
-					_ability_pressing = true
-					_ability_long_press_fired = false
-				1:
-					bird_ability()
-				2:
-					grapple_ability()
-				3:
-					bow_ability()
-				4:
-					bomb_ability()
-					
+		_ability_press_time = 0.0
+		_ability_pressing = true
+		_ability_long_press_fired = false
+
 	elif event.is_action_released("ability"):
-		if selected_friend == 0 and _ability_pressing:
+		if _ability_pressing:
 			if not _ability_long_press_fired:
-				none_ability(false) # short press only if long wasn't fired
-			_ability_pressing = false
-			_ability_long_press_fired = false
-			
+				match selected_friend:
+					0:
+						none_ability( false ) # short press only if long wasn't fired
+					1:
+						bird_ability( false )
+					2:
+						grapple_ability()
+					3:
+						bow_ability()
+					4:
+						bomb_ability()
+				_ability_pressing = false
+				_ability_long_press_fired = false
+				
 	elif event.is_action_pressed("switch_ability"):
 		toggle_friend()
 
@@ -69,8 +70,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if _ability_pressing:
 		_ability_press_time += delta
+		## trigger the long press events
 		if not _ability_long_press_fired and _ability_press_time >= LONG_PRESS_THRESHOLD:
-			none_ability(true)
+			match selected_friend:
+				0:
+					none_ability(true)
+				1:
+					bird_ability( true )
 			_ability_long_press_fired = true
 
 
@@ -95,11 +101,27 @@ func set_friend_number( a : int ) -> void:
 
 func none_ability(is_long_press := false) -> void:
 	if is_long_press:
-	   # TODO: Play long meow
+	   # TODO: Play long meow mewwwwwwwwwwww
 		print("Long press: long meow")
 	else:
 		# TODO: Play short meow
 		print("Short press: short meow")
+
+
+func bird_ability( is_long_press : bool = false ) -> void:
+	if bird_instance != null:
+		return
+	if is_long_press:
+		prints("long bird")
+	else:
+		var _b = BIRD.instantiate() as BirdFriendFlying
+		player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
+		_b.global_position = player.global_position + Vector2( 0, -100.0 )
+		var throw_direction = player.direction
+		if throw_direction == Vector2.ZERO:
+			throw_direction = player.cardinal_direction
+		_b.throw( throw_direction )
+		bird_instance = _b
 
 
 func _bird_leaving() -> void:
@@ -111,22 +133,6 @@ func _bird_leaving() -> void:
 	var throw_direction = Vector2( pow(-1, randi() % 2), randf() * -0.666 )
 	_b.leave( throw_direction )
 	bird_instance = _b
-
-
-func bird_ability() -> void:
-	if bird_instance != null:
-		return
-	var _b = BIRD.instantiate() as BirdFriendFlying
-	player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
-	_b.global_position = player.global_position + Vector2( 0, -100.0 )
-	##TODO: aiming function
-	var throw_direction = player.direction
-	if throw_direction == Vector2.ZERO:
-		throw_direction = player.cardinal_direction
-		
-	_b.throw( throw_direction )
-	bird_instance = _b
-	pass
 
 
 func bow_ability() -> void:

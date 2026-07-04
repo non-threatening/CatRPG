@@ -38,7 +38,6 @@ func _ready() -> void:
 func _hold( _h ) -> void:
 	prints("_h", _h )
 	label_2.visible = _h
-	
 
 
 ## Check if the this has already been unlocked

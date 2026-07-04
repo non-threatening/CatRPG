@@ -71,6 +71,7 @@ button_focus_audio = ExtResource("3_1a1kh")
 button_press_audio = ExtResource("4_wgj1g")
 
 [node name="LightingShadows" type="Polygon2D" parent="." unique_id=846452192]
+visible = false
 material = SubResource("ShaderMaterial_e0tql")
 position = Vector2(0.024922293, 20.988869)
 scale = Vector2(1.0041537, 1.3385301)
@@ -79,8 +80,9 @@ polygon = PackedVector2Array(0, -62, 1920, -62, 1915.9918, 834.50586, -6, 836)
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=925673454]
 z_index = -1
 material = ExtResource("5_lj5tl")
+offset_left = -44.0
 offset_top = -60.0
-offset_right = 1920.0
+offset_right = 1956.0
 offset_bottom = 1140.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=223758034]
@@ -162,12 +164,16 @@ metadata/_custom_type_script = "uid://cw12wo4re7mt4"
 
 [node name="SplashScreen" parent="CanvasLayer" unique_id=396004961 instance=ExtResource("7_fkwea")]
 visible = false
-offset_bottom = 149.0
+offset_left = -39.0
+offset_top = -84.0
+offset_right = 41.0
+offset_bottom = 65.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=136731331]
 z_index = 1
+offset_left = -44.0
 offset_top = -60.0
-offset_right = 1920.0
+offset_right = 1956.0
 offset_bottom = 1140.0
 color = Color(0, 0.009666657, 0.29, 0.627451)
 
@@ -519,10 +525,11 @@ follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer" unique_id=1811714338]
 material = SubResource("ShaderMaterial_fkwea")
+offset_left = -36.0
 offset_top = 2.0
-offset_right = 1920.0
+offset_right = 1964.0
 offset_bottom = 1202.0
-color = Color(1, 1, 1, 0.3764706)
+color = Color(1, 0, 0, 0.34509805)
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="." unique_id=412119136]
 layer = 1
@@ -532,7 +539,8 @@ follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground2/ParallaxLayer" unique_id=2041989485]
 material = SubResource("ShaderMaterial_svbj5")
+offset_left = -38.0
 offset_top = 2.0
-offset_right = 1920.0
+offset_right = 1962.0
 offset_bottom = 1202.0
-color = Color(1, 1, 1, 0.3764706)
+color = Color(1, 0, 0, 0.34509805)

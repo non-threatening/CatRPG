@@ -43,9 +43,12 @@ func _init_ambient_track_scheduler() -> void:
 		# same world type: use current ambient players as the active replacement pool
 		if AudioManager.ambient_players.size() > 0:
 			active_ambient_players = AudioManager.ambient_players.duplicate()
-		# if no existing ambients, start one immediately
+		# if no existing ambients, start them immediately
 		elif AudioManager.ambient_players.size() == 0:
-			add_ambient_track()
+			for _t in track_amount:
+				prints( "add ambient", _t )
+				add_ambient_track()
+				#_t == _t + 1 
 
 	# connect to minute ticks to add/rotate tracks over time
 	if TimeSystem.time_tick and not _ambient_tick_connected:

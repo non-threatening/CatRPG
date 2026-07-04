@@ -39,6 +39,7 @@ func frequency( _freq, _wave_pos, _thresh, _slop, _up_or_side ) -> void:
 	texture_rect_3.material.set_shader_parameter( "wave_frequency", freq * 0.5 )
 	up_or_side = _up_or_side
 
+
 ################# Start #####
 func enter() -> void:
 	##	Check if player is on the left or right. left = true
@@ -46,6 +47,8 @@ func enter() -> void:
 		player_side = true
 	else:
 		player_side = false
+
+	PlayerManager.player.velocity = Vector2.ZERO
 	
 	
 	# Does the wave point up or to the side. 0 = Side

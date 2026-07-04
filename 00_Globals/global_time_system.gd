@@ -37,13 +37,14 @@ func _ready() -> void:
 	##	66.6 is about 10 minutes every 9 seconds; 56 seconds =  1 hour
 	##	One day game time is about 21.2 minutes; one day = 1344 seconds
 	##	21.2 x 365 = 128 hours = 1 year
-	#time_tick.set_time_scale(66.6) 
+	#time_tick.set_time_scale(66.6)
+	#time_tick.set_time_scale( 666 )
 	time_tick.set_time_scale(6666.6) 
 
 	## New game
 	time_tick.set_time_units({
 		"day": 1,
-		"hour": 8,
+		"hour": 20,
 		"minute": 0,
 		"moon": 0,
 		"year": 0

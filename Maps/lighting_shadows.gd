@@ -8,6 +8,9 @@ var thing : int = 0
 var tens : int = 0
 var darkness : float = 0.0
 
+var dark_cover : Color = Color(0.502, 0.69, 1.0, 1.0)
+var clear_cover : Color = Color(1.0, 1.0, 1.0, 1.0)
+
 @onready var canvas_modulate: CanvasModulate = $"../CanvasModulate"
 
 
@@ -47,16 +50,25 @@ func night_time() -> void:
 	if darkness >= 0 and darkness < 120:
 		if darkness <= 69:
 			SignalBus.desaturate.emit( 0.0 )
+			canvas_modulate.color = dark_cover
 		# Getting light out
 		elif darkness > 70:
-			SignalBus.desaturate.emit( (((darkness - 90) * -0.01) * 2 - 1.0) * -1.0 - 0.60041695621959 )
+			var sun_rising : float  = (((darkness - 90) * -0.01) * 2 - 1.0) * -1.0 - 0.60041695621959
+			SignalBus.desaturate.emit( sun_rising )
+			#prints("sun risiing:", sun_rising )
+			canvas_modulate.color = dark_cover.lerp( clear_cover, sun_rising )
 	# All day
 	elif darkness >= 121 and darkness <= 269:
 		SignalBus.desaturate.emit( 1.0 )
+		canvas_modulate.color = clear_cover
 	# Night
 	elif darkness > 270 and darkness < 360:
 		if darkness >= 313:
 			SignalBus.desaturate.emit( 0.0 )
+			canvas_modulate.color = dark_cover
 	# Getting dark
 		elif darkness < 312:
-			SignalBus.desaturate.emit( remap(  ((darkness - 270) * 0.02 -1.0) * -1.0, 0.16, 1, 0.0, 1 ))
+			var sun_setting : float = remap(  ((darkness - 270) * 0.02 -1.0) * -1.0, 0.16, 1, 0.0, 1 )
+			SignalBus.desaturate.emit( sun_setting )
+			#prints( "setting:", sun_setting )
+			canvas_modulate.color = dark_cover.lerp( clear_cover, sun_setting )

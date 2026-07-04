@@ -1,12 +1,14 @@
 @icon( "res://npc/icons/npc.svg" )
 class_name BirdFriend extends Node2D
 
+#@export
+
 var wait_time: float = 1.0
 var time: float = 0.0
 
 @onready var bird_friend: BirdFriend = $"."
 @onready var to_and_fro: Node = $ToAndFro
-@onready var sprite_2d: Sprite2D = $Npc/Sprite2D
+@onready var sprite: Sprite2D = $Npc/Sprite2D
 
 @onready var indicator_2d: InteractIndicator = $Indicator2D
 @onready var actionable_dialog: Area2D = $ActionableDialog
@@ -67,5 +69,5 @@ func _process( _delta: float ) -> void:
 		time += _delta
 		if time >= wait_time:
 			time -= wait_time
-			sprite_2d.frame = randi() % 2
+			sprite.frame = randi() % 2
 			wait_time = randi_range( 1, 5 )

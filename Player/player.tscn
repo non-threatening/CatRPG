@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://38bq26xw57sx" path="res://Player/Audio/ToneGenerator/tone_generator.tscn" id="41_wvbyc"]
 [ext_resource type="Script" uid="uid://b62lmwn8ltte8" path="res://Player/collisions.gd" id="42_gvnt1"]
 [ext_resource type="AudioStream" uid="uid://b8hbhokgsn50x" path="res://Player/Audio/grapple_chain.wav" id="44_dy65m"]
+[ext_resource type="Script" uid="uid://bfw287788dvkc" path="res://Player/knockbacks.gd" id="49_8hx1r"]
 [ext_resource type="Script" uid="uid://bikr1c4yorc0s" path="res://Player/line_2d.gd" id="51_gvnt1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1kmt7"]
@@ -5064,10 +5065,10 @@ radius = 56.0
 height = 264.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvbyc"]
-size = Vector2(249, 85)
+size = Vector2(162, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pisgm"]
-size = Vector2(92, 190)
+size = Vector2(54, 190)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o28un"]
 radius = 95.0332
@@ -5106,6 +5107,14 @@ radius = 89.106674
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6nl3"]
 radius = 409.9405
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6nl3"]
+radius = 26.0
+height = 134.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8hx1r"]
+radius = 26.0
+height = 98.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n471f"]
 shader = ExtResource("13_o28un")
@@ -5357,7 +5366,7 @@ collision_mask = 24
 motion_mode = 1
 wall_min_slide_angle = 0.174533
 script = ExtResource("1_t577b")
-metadata/_edit_vertical_guides_ = [146.0]
+metadata/_edit_horizontal_guides_ = [-97.0]
 
 [node name="PlayerShapeHor" type="CollisionShape2D" parent="." unique_id=1090302026]
 position = Vector2(-10, -1)
@@ -5368,7 +5377,7 @@ debug_color = Color(0, 0.63529414, 0.3764706, 0)
 [node name="PlayerShapeVert" type="CollisionShape2D" parent="." unique_id=994050475]
 position = Vector2(-1, -39)
 shape = SubResource("CapsuleShape2D_c4i3b")
-debug_color = Color(0, 0.63529414, 0.3764706, 0)
+debug_color = Color(0.9289368, 0.11943971, 0.56414574, 0)
 
 [node name="Direction" type="Marker2D" parent="." unique_id=143128290]
 visible = false
@@ -5524,7 +5533,7 @@ material = SubResource("ShaderMaterial_1kmt7")
 position = Vector2(-79.579575, -87.08708)
 rotation = 4.4670525
 scale = Vector2(0.47599998, 0.66599995)
-points = PackedVector2Array(0, 0, 29, 0.61377376, 56, -0.15799373, 81, -1.9575226, 104, -3.7309723, 125, -4.5645843, 144, -4.1144166, 161, -2.5786343, 176, -0.43716985, 189, 1.813246, 200, 3.8155048, 209, 5.3921094, 216, 6.5110598, 221, 7.224428, 224, 7.610319, 225, 7.7311854)
+points = PackedVector2Array(0, 0, 29, 0.11706047, 56, 1.4811368, 81, 2.9972644, 104, 3.5735698, 125, 2.7757695, 144, 0.8536106, 161, -1.5886067, 176, -3.948147, 189, -5.8313446, 200, -7.0964394, 209, -7.794714, 216, -8.079901, 221, -8.12969, 224, -8.09464, 225, -8.071884)
 width = 32.0
 texture = ExtResource("5_wvbyc")
 texture_mode = 2
@@ -5678,7 +5687,7 @@ monitorable = false
 script = ExtResource("14_lfmf2")
 
 [node name="CollisionShapeHorizontal" type="CollisionShape2D" parent="Collisions/PushArea" unique_id=1754794432]
-position = Vector2(1.5, 15.5)
+position = Vector2(-8, -1.5)
 shape = SubResource("RectangleShape2D_wvbyc")
 
 [node name="CollisionShapeVertical" type="CollisionShape2D" parent="Collisions/PushArea" unique_id=1607590601]
@@ -5729,6 +5738,7 @@ lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_gpjlu")
 
 [node name="ElectroShellHurtBox" parent="Collisions" unique_id=672093479 instance=ExtResource("10_q6j84")]
+visible = false
 collision_mask = 256
 monitoring = false
 
@@ -5738,6 +5748,7 @@ shape = SubResource("CircleShape2D_maysp")
 debug_color = Color(1, 0, 1, 0)
 
 [node name="ElectroBurstHurtBox" parent="Collisions" unique_id=799591835 instance=ExtResource("10_q6j84")]
+visible = false
 scale = Vector2(0.666, 0.666)
 collision_mask = 256
 damage = 5
@@ -5747,6 +5758,20 @@ position = Vector2(-4.5045047, -160.66066)
 scale = Vector2(1, 0.8)
 shape = SubResource("CircleShape2D_m6nl3")
 debug_color = Color(1, 0, 0.69803923, 0)
+
+[node name="Knockbacks" type="Area2D" parent="Collisions" unique_id=1760128173]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("49_8hx1r")
+
+[node name="CollisionShape2DH" type="CollisionShape2D" parent="Collisions/Knockbacks" unique_id=1478748119]
+position = Vector2(-4, -6)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_m6nl3")
+
+[node name="CollisionShape2DV" type="CollisionShape2D" parent="Collisions/Knockbacks" unique_id=133913864]
+position = Vector2(-1, -48)
+shape = SubResource("CapsuleShape2D_8hx1r")
 
 [node name="RotatingInteractions" type="Node2D" parent="." unique_id=711833848]
 visible = false
