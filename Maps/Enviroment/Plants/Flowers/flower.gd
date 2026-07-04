@@ -7,7 +7,8 @@ var packed_array = ResourceLoader.list_directory( png_dir )
 var images : Array[ String ]
 var images_full = []
 
-#var saturation : float = 1.0
+var x : float = 0
+var y : float = 0
 
 
 func _ready() -> void:
@@ -27,6 +28,7 @@ func _ready() -> void:
 		_set_random_color()
 		
 	_set_random_motion_amount()
+
 
 
 func desat( _value ) -> void:
@@ -56,8 +58,8 @@ func _set_random_scale() -> void:
 
 
 func _set_random_motion_amount() -> void:
-	var x = randf_range( 3.0, 5.0 )
-	var y = randf_range( 2.5, 3.5 )
+	x = randf_range( 3.0, 5.0 )
+	y = randf_range( 2.5, 3.5 )
 	material.set_shader_parameter( "x", x )
 	material.set_shader_parameter( "y", y )
 

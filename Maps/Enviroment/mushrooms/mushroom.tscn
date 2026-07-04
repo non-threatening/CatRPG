@@ -1,8 +1,44 @@
 [gd_scene format=3 uid="uid://7h7u2h48gy6i"]
 
-[ext_resource type="Material" uid="uid://ssqolcdnkw2k" path="res://Maps/Enviroment/mushrooms/mushroom_shader.tres" id="1_n28x8"]
 [ext_resource type="Script" uid="uid://c74cn16orl7cl" path="res://Maps/Enviroment/mushrooms/mushroom.gd" id="1_o8lsr"]
 [ext_resource type="Texture2D" uid="uid://dlrky7qf0amhp" path="res://Maps/Enviroment/mushrooms/sprites/mushroom_triple.png" id="1_rq84e"]
+
+[sub_resource type="Shader" id="Shader_n28x8"]
+code = "shader_type canvas_item;
+
+uniform float x = 1.0;
+uniform float y = 3.0;
+uniform vec4 color1 : source_color;
+//uniform vec4 stem_color: source_color;
+uniform float time_scale = 5.0;
+
+uniform float saturation = 1.0;
+
+void vertex() {
+	if ( VERTEX.y < -10.0 ) {
+		VERTEX.x += sin( 0.5 * TIME * time_scale ) * x;
+		VERTEX.y += sin( 0.3 * TIME * time_scale ) * y;
+	}
+}
+
+void fragment() {
+	vec4 input_color = texture( TEXTURE, UV );
+	// isolate blue pen
+	if ( input_color.r > 0.01 && input_color.g > 0.01 && input_color.b > 0.1 && input_color.a > 0.01 ) {
+		COLOR.rgb = color1.rgb * input_color.rgb;
+	}
+
+    COLOR.rgb = mix(vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114))), COLOR.rgb, saturation);
+	COLOR.a = COLOR.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1v5p"]
+shader = SubResource("Shader_n28x8")
+shader_parameter/x = 1.0
+shader_parameter/y = 3.0
+shader_parameter/color1 = Color(0.48235294, 0.34901962, 0, 1)
+shader_parameter/time_scale = 5.0
+shader_parameter/saturation = 1.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n28x8"]
 polygon = PackedVector2Array(33, 10, 45, -1, 8, 1, 24, 10)
@@ -10,7 +46,7 @@ polygon = PackedVector2Array(33, 10, 45, -1, 8, 1, 24, 10)
 [node name="Mushroom" type="Node2D" unique_id=2145084085]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=857035897]
-material = ExtResource("1_n28x8")
+material = SubResource("ShaderMaterial_y1v5p")
 texture = ExtResource("1_rq84e")
 offset = Vector2(0, -16)
 script = ExtResource("1_o8lsr")

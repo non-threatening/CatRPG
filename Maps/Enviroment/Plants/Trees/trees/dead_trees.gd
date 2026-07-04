@@ -5,7 +5,6 @@ var packed_array = ResourceLoader.list_directory( png_dir )
 var images : Array[ String ]
 var images_full = []
 
-#@onready var area_2d : Area2D = $"../Area2D"
 @onready var tree_sprite: Sprite2D = $TreeSprite
 @onready var area_2d: Area2D = $Area2D
 

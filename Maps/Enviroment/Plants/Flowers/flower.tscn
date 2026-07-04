@@ -8,8 +8,13 @@
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_px1lc"]
 polygon = PackedVector2Array(-15.015015, -42.042034, -24.024023, -33.033028, -3.003003, -28.528528, 19.51952, -31.531523, 12.012012, -45.045036)
 
-[node name="Flower" type="Node2D" unique_id=1495846864]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2k0l"]
+radius = 13.928389
+
+[node name="Flower" type="StaticBody2D" unique_id=688026888]
 y_sort_enabled = true
+collision_layer = 128
+collision_mask = 0
 script = ExtResource("1_q6xlj")
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=265141847]
@@ -25,3 +30,7 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(2, 41.999996)
 scale = Vector2(0.666, 0.666)
 occluder = SubResource("OccluderPolygon2D_px1lc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960003366]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_c2k0l")
