@@ -10,15 +10,10 @@
 
 [resource]
 script = ExtResource("2_t0jrf")
-npc_name = "Bird Friend"
+npc_name = "BirdFriend"
 sprite = ExtResource("2_56uln")
 h_frames = 2
 v_frames = 1
 talk_blips = Array[AudioStream]([ExtResource("4_gqnsk"), ExtResource("5_ds05m"), ExtResource("6_cotvs"), ExtResource("7_8x6n2"), ExtResource("8_flpf1")])
-abilities = Dictionary[String, int]({
-"attack": 0,
-"carry": 0,
-"distance": 0,
-"level": 0
-})
+bubble_offset = 35.0
 metadata/_custom_type_script = "uid://bmpteubp4v57k"

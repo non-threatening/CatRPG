@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="4_o6cys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xp5l"]
-radius = 30.999996
-height = 112.000046
+radius = 16.0
+height = 80.0
 
 [sub_resource type="Animation" id="Animation_o6cys"]
 length = 0.001

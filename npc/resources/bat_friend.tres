@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NPCResource" format=3 uid="uid://bymges7wbqeln"]
+
+[ext_resource type="Script" uid="uid://bmpteubp4v57k" path="res://npc/scripts/npc_resource.gd" id="1_agwlk"]
+[ext_resource type="Texture2D" uid="uid://bufgvypp7tog1" path="res://npc/scenes/Bat/bat.png" id="2_n4uh4"]
+
+[resource]
+script = ExtResource("1_agwlk")
+npc_name = "Bat Friend"
+sprite = ExtResource("2_n4uh4")
+h_frames = 1
+metadata/_custom_type_script = "uid://bmpteubp4v57k"
