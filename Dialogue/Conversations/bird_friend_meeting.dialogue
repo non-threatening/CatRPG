@@ -1,14 +1,14 @@
 ~ start
 if is_quest_completed("[102]a_gimp_suit_for_bird_friend"):
 	Bird Friend: That was cool how you found my Gimpsuit Cat
-	Cat: It was so much greasier than I though possible
+	Player: It was so much greasier than I though possible
 
 ## Quest line: A gimp suit for 
 elif not is_quest_completed("[102]a_gimp_suit_for_bird_friend") and not is_quest_active("[102]a_gimp_suit_for_bird_friend")
-	Bird Friend: [[Hi|Hello|Hey]], who are you? [#mood=happy][wait=1][next=auto]
-	Cat: Hi [#mood=happy]
-	Cat: Wooooooooooooo use {{ICON_ATTACK}} to attack
-	Bird Friend: I've lost my Gimp Suit. Could you look around for one. [#mood=happy]
+	Bird Friend: [[Hi|Hello|Hey]], who are you?
+	Player: one two three four five six seven eight nine ten etttone two three four five six seven eight nine ten ettt thing thing [#mood=happy]
+	Player: Wooooooooooooo use {{ICON_ATTACK}} to attack
+	Bird Friend: I've lost my Gimp Suit. Could you look around for one.
 	- Totaly, I <3 gimp suits.
 		do start_quest("[102]a_gimp_suit_for_bird_friend")
 		do update_quest("[102]a_gimp_suit_for_bird_friend")
@@ -25,11 +25,11 @@ else
 		do update_quest("[102]a_gimp_suit_for_bird_friend")
 		=> END
 	- No way
-		Cat: It's my GimpSuit now!!!!
+		Player: It's my GimpSuit now!!!!
 	- What's a gimpsuit?
 		=> whats_a_gimpsuit
 		
 ~ whats_a_gimpsuit
-Cat: What's a gimpsuit?
+Player: What's a gimpsuit?
 Bird Friend: It's my favorite outfit
 => END

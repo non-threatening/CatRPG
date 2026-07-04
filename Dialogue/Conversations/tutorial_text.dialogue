@@ -3,11 +3,11 @@ Tut:
 => END
 
 ~ freq_tutorial
-Tut: You can use your [wave amp=5 freq=5][color=f06060]collar[/color][/wave] to vibe the frequency of this doors magnetic lock
+Tut: You can use your [wave amp=5 freq=5][color=f06060]collar[/color][/wave] to vibe the frequency of this door's magnetic lock
 
 do SignalBus.freq_tut_show_stick.emit( "show" )
 
-Tut: Rotate the right analog stick {{ICON_RIGHT_STICK}} to change the frequnecy wave to match (vibe) with the lock's (yellow) frequency and HOLD it long enough
+Tut: Rotate the right analog stick {{ICON_RIGHT_STICK}} to change the frequnecy wave to match (vibe) with the lock's (yellow) frequency and HOLD it long enough to pop
 
 do SignalBus.freq_tut_show_stick.emit( "hide" )
 

@@ -68,11 +68,11 @@ var audio_file : AudioStream
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
 
-@onready var margin_container: MarginContainer = $Bubble/MarginContainer
+@onready var panel: Panel = $Bubble/Panel
+@onready var bubble_pointer: Sprite2D = $Bubble/Panel/MarginContainerBubble/VBoxContainer/Sprite2D
+@onready var margin_container_bubble: MarginContainer = $Bubble/Panel/MarginContainerBubble
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-
-#@onready var texture_rect: TextureRect = $Bubble/TextureRect
 
 
 func _ready() -> void:
@@ -140,30 +140,75 @@ func choose_audio_file() -> void:
 	##TODO: this for the friend attibutes/skills
 	var character : Resource
 	var character_path : String = "res://npc/resources/%s.tres" % ( dialogue_line.character.to_snake_case() )
+	prints("chaacter path:", character_path )
 	if ResourceLoader.exists( character_path ):
 		character = load( character_path )
 		if character.talk_blips:
 			var r : int = randi() % character.talk_blips.size()
 			audio_file = load( character.talk_blips[ r ].resource_path )
 			pitch = character.pitch
-			
-	elif dialogue_line.character.to_snake_case() == "cat":
-		pitch = 1.0
-	pass
-	 
+
+
 
 ## Apply any changes to the bubble given a new [DialogueLine].
 func apply_dialogue_line() -> void:
-	mutation_cooldown.stop()
+	var character : Resource
+	var character_path : String = "res://npc/resources/%s.tres" % ( dialogue_line.character.to_snake_case() )
+	var bubble_offset : float = 0
+	if ResourceLoader.exists( character_path ):
+		character = load( character_path )
+		bubble_offset = character.bubble_offset
+		bubble_pointer.scale.x = 1
+		
+		## If it's the playable
+		if character_path == "res://npc/resources/player.tres":
+			var player_dir = PlayerManager.player.cardinal_direction
+			match player_dir:
+				Vector2.LEFT:
+					bubble_offset = -75
+					bubble_pointer.scale.x = -1
+				Vector2.RIGHT:
+					bubble_offset = 75
+					bubble_pointer.scale.x = 1
+				Vector2.UP, Vector2.DOWN:
+					bubble_offset = 0
 
+	margin_container_bubble.size.y = 110
+	var dude = dialogue_line.character.to_pascal_case()
+	if get_parent().get_node( dude ):
+		var pos : Vector2 =  get_parent().get_node( dude ).get_global_transform_with_canvas().get_origin()
+		var v_frames : float = get_parent().get_node( dude ).sprite.vframes
+		var sprite_height : float = get_parent().get_node( dude ).sprite.texture.get_height()
+		var sprite_scale : float = get_parent().get_node( dude ).sprite.scale.y
+		panel.position =  Vector2( pos ) + Vector2( -320 + bubble_offset, -160 -50 - ( ( sprite_height / v_frames ) * sprite_scale ) )
+		
+		var text_length :  float = dialogue_line.text.length()
+		match true:
+			_ when text_length < 52:
+				panel.size.y = 132
+				panel.position.y = panel.position.y + 28
+				margin_container_bubble.size.y = 110
+				bubble_pointer.position.y = 118
+				dialogue_label.custom_minimum_size.y = 62
+			_ when text_length > 53 && text_length < 106:
+				panel.size.y = 160
+				margin_container_bubble.size.y = 138
+				bubble_pointer.position.y = 146
+				dialogue_label.custom_minimum_size.y = 92
+			_:
+				panel.size.y = 188
+				panel.position.y = panel.position.y - 28
+				margin_container_bubble.size.y = 166
+				bubble_pointer.position.y = 176
+				dialogue_label.custom_minimum_size.y = 122
+	else:
+		prints( "_N O O O O P_" )
+	mutation_cooldown.stop()
 	is_waiting_for_input = false
 	bubble.focus_mode = Control.FOCUS_ALL
 	bubble.grab_focus()
 	
 	choose_audio_file()
-
-	character_label.visible = not dialogue_line.character.is_empty()
-	character_label.text = tr(dialogue_line.character, "dialogue")
 
 	#use tags.. 
 	var emotion : String = ""
@@ -177,17 +222,6 @@ func apply_dialogue_line() -> void:
 		portrait.texture = load( portrait_path )
 	else:
 		portrait.texture = null
-
-
-#	Narrator or not
-	if not dialogue_line.character.to_lower() == "narrator":
-		margin_container.position.y = 710
-		%DialogueLabel.horizontal_alignment = 0
-	else:
-		margin_container.position.y = 280
-		character_label.text = ""
-		%DialogueLabel.horizontal_alignment = 1
-		
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

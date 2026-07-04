@@ -2,18 +2,27 @@
 
 [ext_resource type="Script" uid="uid://bm4oe7er3ffwr" path="res://Dialogue/SpeechBubbles/speech_bubble/speech_bubble.gd" id="1_suubk"]
 [ext_resource type="Theme" uid="uid://bpsv0tvfru4e2" path="res://Dialogue/SpeechBubbles/speech_bubble/speech_bubble.tres" id="2_suubk"]
+[ext_resource type="Texture2D" uid="uid://cbdqsy636dimm" path="res://Dialogue/SpeechBubbles/tutorial_bubble/background_placeholder.png" id="2_u3pc0"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_l6g6q"]
-[ext_resource type="Texture2D" uid="uid://b8mukr7afp5o4" path="res://Dialogue/SpeechBubbles/speech_bubble/blured_panel_white.png" id="3_tr0jp"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_t1jep"]
 [ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeechBubbles/portraits/cat.png" id="6_l6g6q"]
 [ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://GeneralNodes/controller_icon_interact.tres" id="7_t1jep"]
+[ext_resource type="StyleBox" uid="uid://ct7neug04nuq3" path="res://GUI/StyleBoxBluePanel.tres" id="9_4q13g"]
+[ext_resource type="Texture2D" uid="uid://b0scjwo3xbv7p" path="res://Dialogue/SpeechBubbles/speech_bubble/bubble_point.png" id="9_30tyw"]
 
 [node name="SpeachBubble" type="CanvasLayer" unique_id=1360327746]
 process_mode = 3
 script = ExtResource("1_suubk")
 next_action = &"interact"
-skip_action = &"attack"
+skip_action = &"interact"
 metadata/_edit_vertical_guides_ = [671.0, 1252.0]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1562986830]
+visible = false
+offset_right = 1280.0
+offset_bottom = 767.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_u3pc0")
 
 [node name="Portrait" type="TextureRect" parent="." unique_id=302673411]
 unique_name_in_owner = true
@@ -31,66 +40,9 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_suubk")
-
-[node name="MarginContainer" type="MarginContainer" parent="Bubble" unique_id=1800983521]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 525.0
-offset_top = -372.0
-offset_right = -505.0
-offset_bottom = -95.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="PanelContainer" type="TextureRect" parent="Bubble/MarginContainer" unique_id=708482350]
-self_modulate = Color(0, 0, 0, 0.93333334)
-clip_children = 2
-layout_mode = 2
-texture = ExtResource("3_tr0jp")
-
-[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer" unique_id=1107000419]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 58.0
-offset_right = 770.0
-offset_bottom = 225.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer" unique_id=2127673451]
-layout_mode = 2
-
-[node name="CharacterLabel" type="RichTextLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1071894988]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.501961)
-layout_mode = 2
-mouse_filter = 1
-bbcode_enabled = true
-text = "Character"
-fit_content = true
-scroll_active = false
-
-[node name="DialogueLabel" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1081869472 instance=ExtResource("3_l6g6q")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-text = "Dialogue..."
-
-[node name="MarginContainer" type="MarginContainer" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=59818837]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="TextureRect" type="TextureRect" parent="Bubble/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1578933542]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("7_t1jep")
-expand_mode = 1
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" unique_id=1059512609 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
@@ -116,6 +68,55 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 text = "Response example"
+
+[node name="Panel" type="Panel" parent="Bubble" unique_id=1235524522]
+layout_mode = 0
+offset_top = 336.0
+offset_right = 640.0
+offset_bottom = 496.0
+pivot_offset_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = ExtResource("9_4q13g")
+
+[node name="MarginContainerBubble" type="MarginContainer" parent="Bubble/Panel" unique_id=1872548596]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 14.0
+offset_right = 585.0
+offset_bottom = 124.00003
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/Panel/MarginContainerBubble" unique_id=1784858798]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Bubble/Panel/MarginContainerBubble/VBoxContainer" unique_id=790814014]
+position = Vector2(265, 146)
+texture = ExtResource("9_30tyw")
+offset = Vector2(57, 0)
+
+[node name="DialogueLabel" parent="Bubble/Panel/MarginContainerBubble/VBoxContainer" unique_id=1081869472 instance=ExtResource("3_l6g6q")]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 24
+text = "one two three four five six seven eight nine ten etttt"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Bubble/Panel/MarginContainerBubble/VBoxContainer" unique_id=350202790]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TextureRect" type="TextureRect" parent="Bubble/Panel/MarginContainerBubble/VBoxContainer/MarginContainer" unique_id=713141352]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("7_t1jep")
+expand_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=776240330]
 max_polyphony = 5

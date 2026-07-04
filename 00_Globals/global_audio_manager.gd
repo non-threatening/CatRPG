@@ -75,11 +75,10 @@ func remove_ambient( track ) -> void:
 	elif typeof(track) == TYPE_OBJECT and is_instance_valid(track) and track is AudioStreamPlayer:
 		if ambient_players.has( track ):
 			player = track
-		#else:
-			#return
-	#else:
-		#return
-
+		else:
+			return
+	else:
+		return
 	var tween : Tween = create_tween()
 	tween.tween_property( player, "volume_db", -40, ambient_fade_duration )
 	await tween.finished
