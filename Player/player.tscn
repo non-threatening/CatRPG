@@ -5439,6 +5439,7 @@ hframes = 8
 libraries/ = SubResource("AnimationLibrary_76lrf")
 
 [node name="HeldItem" type="Node2D" parent="Sprite2D" unique_id=521645410]
+visible = false
 show_behind_parent = true
 z_index = 1
 position = Vector2(0, 75)
@@ -5533,7 +5534,7 @@ material = SubResource("ShaderMaterial_1kmt7")
 position = Vector2(-79.579575, -87.08708)
 rotation = 4.4670525
 scale = Vector2(0.47599998, 0.66599995)
-points = PackedVector2Array(0, 0, 29, 0.11706047, 56, 1.4811368, 81, 2.9972644, 104, 3.5735698, 125, 2.7757695, 144, 0.8536106, 161, -1.5886067, 176, -3.948147, 189, -5.8313446, 200, -7.0964394, 209, -7.794714, 216, -8.079901, 221, -8.12969, 224, -8.09464, 225, -8.071884)
+points = PackedVector2Array(0, 0, 29, -0.8275168, 56, -2.0989883, 81, -2.517276, 104, -1.5253376, 125, 0.5758553, 144, 3.0408647, 161, 5.1545625, 176, 6.5018935, 189, 7.0053916, 200, 6.8254614, 209, 6.228077, 216, 5.482231, 221, 4.8047495, 224, 4.3434463, 225, 4.1809425)
 width = 32.0
 texture = ExtResource("5_wvbyc")
 texture_mode = 2
@@ -5660,6 +5661,7 @@ grapple_stick_audio = ExtResource("33_dy65m")
 grapple_bounce_audio = ExtResource("34_maysp")
 
 [node name="Collisions" type="Node2D" parent="." unique_id=182349947]
+visible = false
 script = ExtResource("42_gvnt1")
 
 [node name="InteractX" type="Area2D" parent="Collisions" unique_id=2065546692]
@@ -5760,6 +5762,7 @@ shape = SubResource("CircleShape2D_m6nl3")
 debug_color = Color(1, 0, 0.69803923, 0)
 
 [node name="Knockbacks" type="Area2D" parent="Collisions" unique_id=1760128173]
+visible = false
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("49_8hx1r")
@@ -5768,10 +5771,12 @@ script = ExtResource("49_8hx1r")
 position = Vector2(-4, -6)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m6nl3")
+debug_color = Color(0.57254905, 0.54901963, 0.21176471, 0.18431373)
 
 [node name="CollisionShape2DV" type="CollisionShape2D" parent="Collisions/Knockbacks" unique_id=133913864]
 position = Vector2(-1, -48)
 shape = SubResource("CapsuleShape2D_8hx1r")
+debug_color = Color(0.57254905, 0.54901963, 0.21176471, 0.18431373)
 
 [node name="RotatingInteractions" type="Node2D" parent="." unique_id=711833848]
 visible = false

@@ -8,7 +8,7 @@ class_name NPCResource extends Resource
 #@export var portrait : Texture
 
 @export var talk_blips : Array[ AudioStream ]
-@export_range( 0.5, 1.8, 0.02 ) var pitch : float = 1.0
+@export_range( -2.5, 2.8, 0.02 ) var pitch : float = 1.0
 
 @export var bubble_offset : float = 0
 

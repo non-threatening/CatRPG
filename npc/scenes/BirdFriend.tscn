@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://dlkbc8pb4nscr" path="res://npc/resources/bird_friend.tres" id="2_dbsq7"]
 [ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="3_dbsq7"]
 [ext_resource type="Texture2D" uid="uid://jp0vagpenapt" path="res://Player/Sprites/Shadow.png" id="3_onuem"]
+[ext_resource type="Shader" uid="uid://dcnqvjkwrjcuk" path="res://Player/BirdFriend/bird_friend_perched.gdshader" id="4_vo45r"]
 [ext_resource type="Script" uid="uid://dm47ewpkcnfpm" path="res://npc/scenes/to_and_fro.gd" id="7_6nhij"]
 [ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="7_lujc4"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://GeneralNodes/Actionables/actionable_dialog.tscn" id="8_5xjx1"]
@@ -13,6 +14,12 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xp5l"]
 radius = 22.589897
 height = 86.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etgkf"]
+shader = ExtResource("4_vo45r")
+shader_parameter/x = 0.5
+shader_parameter/y = 1.0
+shader_parameter/time_scale = 2.666
 
 [sub_resource type="Animation" id="Animation_o6cys"]
 length = 0.001
@@ -163,6 +170,7 @@ shape = SubResource("CapsuleShape2D_2xp5l")
 debug_color = Color(0, 0.6, 0.7019608, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Npc" unique_id=506831746]
+material = SubResource("ShaderMaterial_etgkf")
 position = Vector2(0, -19)
 texture = ExtResource("3_dbsq7")
 hframes = 2

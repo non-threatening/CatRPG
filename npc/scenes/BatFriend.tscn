@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dxs2hkkmveq4p"]
+
+[ext_resource type="Script" uid="uid://cyvddfi8atdei" path="res://npc/scenes/bat_friend.gd" id="1_88q7s"]
+[ext_resource type="Script" uid="uid://bovbv6m0thrps" path="res://npc/scripts/npc.gd" id="2_fbq15"]
+[ext_resource type="Resource" uid="uid://dlkbc8pb4nscr" path="res://npc/resources/bird_friend.tres" id="3_86abj"]
+[ext_resource type="Material" uid="uid://dpne0qa4qwb3n" path="res://npc/shaders/bat_shader_material.tres" id="4_88q7s"]
+[ext_resource type="Texture2D" uid="uid://bufgvypp7tog1" path="res://npc/sprites/bat.png" id="4_j8tpa"]
+[ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="7_x5rs3"]
+[ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://GeneralNodes/Actionables/actionable_dialog.tscn" id="8_5dg4k"]
+[ext_resource type="Resource" uid="uid://b8f7b6bx6l2pn" path="res://Dialogue/Conversations/meeting_bat_friend.dialogue" id="8_j8tpa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xp5l"]
+radius = 15.0
+height = 74.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xjx1"]
+radius = 156.0
+height = 504.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgkf"]
+radius = 152.0
+height = 502.0
+
+[node name="BatFriend" type="Node2D" unique_id=122702968]
+script = ExtResource("1_88q7s")
+
+[node name="Npc" type="CharacterBody2D" parent="." unique_id=1368147389]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_fbq15")
+npc_resource = ExtResource("3_86abj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=1092295362]
+visible = false
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_2xp5l")
+debug_color = Color(0, 0.6, 0.7019608, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Npc" unique_id=506831746]
+z_index = 1
+y_sort_enabled = true
+material = ExtResource("4_88q7s")
+position = Vector2(-6, -133)
+texture = ExtResource("4_j8tpa")
+offset = Vector2(0, 25)
+
+[node name="ToAndFro" type="Node" parent="." unique_id=461166531]
+
+[node name="Indicator2D" parent="." unique_id=497168644 instance=ExtResource("7_x5rs3")]
+position = Vector2(0, -50)
+monitorable = false
+y = -210
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Indicator2D" unique_id=494143852]
+position = Vector2(0, 121)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_5xjx1")
+debug_color = Color(0, 0.5950001, 0.7, 0)
+
+[node name="ActionableDialog" parent="." unique_id=449322354 instance=ExtResource("8_5dg4k")]
+position = Vector2(0, -50)
+dialogue_resource = ExtResource("8_j8tpa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableDialog" unique_id=1823922393]
+position = Vector2(0, 121)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_etgkf")
+debug_color = Color(0, 0.5950001, 0.7, 0)

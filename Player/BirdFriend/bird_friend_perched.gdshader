@@ -2,7 +2,6 @@ shader_type canvas_item;
 
 uniform float x = 0.5;
 uniform float y = 1.0;
-//uniform vec4 new_color: source_color;
 uniform float time_scale = 2.666;
 
 void vertex() {

@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dpne0qa4qwb3n"]
+
+[ext_resource type="Shader" uid="uid://begr2p3qpvjw0" path="res://npc/shaders/bat_shader_material.gdshader" id="1_jsx6w"]
+
+[sub_resource type="Gradient" id="Gradient_jsx6w"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kkq2k"]
+noise_type = 4
+offset = Vector3(-63.49, 62.5, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n3i3h"]
+noise = SubResource("FastNoiseLite_kkq2k")
+color_ramp = SubResource("Gradient_jsx6w")
+
+[resource]
+shader = ExtResource("1_jsx6w")
+shader_parameter/eye_color = Color(1.6519369, 0.73192626, 0.25605875, 1)
+shader_parameter/body_color = Color(0, 0, 0, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_n3i3h")
+shader_parameter/paper_texture_scale = 0.23800000804512
+shader_parameter/x = 1.5
+shader_parameter/y = 0.25
+shader_parameter/time_scale = 2.666
