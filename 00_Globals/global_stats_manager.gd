@@ -3,6 +3,7 @@ extends Node
 # steam
 var achievements : Dictionary = {
 	have_bird_friend = 0,
+	have_bat_friend = 0,
 	five_forest_friends = 0,
 }
 
@@ -12,9 +13,9 @@ var npcs_stats : Dictionary = {
 }
 
 var stats : Dictionary = {
-	friends_made = 0,
+	friends_made = 666,
 	quests_completed = 0,
-	enemies_defeated = 0,
+	enemies_defeated = 86,
 	pixquitoes_killed = 0,
 	steam_achievements = 0,
 }

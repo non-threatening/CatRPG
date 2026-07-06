@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b8f7b6bx6l2pn"
+path="res://.godot/imported/meeting_bat_friend.dialogue-29d1bd21cc7da7ebf966ff7bc7a6e70d.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/meeting_bat_friend.dialogue"
+dest_files=["res://.godot/imported/meeting_bat_friend.dialogue-29d1bd21cc7da7ebf966ff7bc7a6e70d.tres"]
+
+[params]
+
+defaults=true

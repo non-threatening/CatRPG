@@ -32,5 +32,7 @@ scale = Vector2(0.666, 0.666)
 occluder = SubResource("OccluderPolygon2D_px1lc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960003366]
+visible = false
 position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_c2k0l")
+debug_color = Color(0.9254902, 0, 0, 0)

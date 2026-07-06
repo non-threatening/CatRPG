@@ -46,9 +46,8 @@ func _init_ambient_track_scheduler() -> void:
 		# if no existing ambients, start them immediately
 		elif AudioManager.ambient_players.size() == 0:
 			for _t in track_amount:
-				prints( "add ambient", _t )
 				add_ambient_track()
-				#_t == _t + 1 
+
 
 	# connect to minute ticks to add/rotate tracks over time
 	if TimeSystem.time_tick and not _ambient_tick_connected:

@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Secret of CAT"
+config/name="Secret of MEW"
 run/main_scene="uid://f6hapagaurf5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://c257bwkqgjp38"

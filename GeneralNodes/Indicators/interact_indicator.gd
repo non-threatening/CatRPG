@@ -1,4 +1,3 @@
-@tool
 class_name InteractIndicator extends Area2D
 
 @export var x : int = -50 : set = _set_x

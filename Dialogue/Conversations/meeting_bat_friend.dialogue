@@ -1,0 +1,11 @@
+~ start
+Bat Friend: [[Hi|Hello|Howdy]], this is some dialogue.
+Bat Friend: Here are some choices.
+- First one
+	Bat Friend: You picked the first one.
+- Second one
+	Bat Friend: You picked the second one.
+- Start again => start
+- End the conversation => END
+Bat Friend: For more information see the online documentation.
+=> END

@@ -99,12 +99,12 @@ func _spoke( letter: String, letter_index: int, speed: float ) -> void:
 	#if 'aeiouyäöü1234567890'.contains( letter ):
 	if letter_index == 0:
 		audio_stream_player.stream = audio_file
-		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ) )
+		#audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ) )
 		audio_stream_player.play()		
 	if ' '.contains( letter ):
 		choose_audio_file()
 		audio_stream_player.stream = audio_file
-		audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ) )
+		#audio_stream_player.set_pitch_scale( pitch * randf_range( 0.9, 1.1 ) )
 		audio_stream_player.play()
 
 
@@ -190,12 +190,13 @@ func apply_dialogue_line() -> void:
 				margin_container_bubble.size.y = 110
 				bubble_pointer.position.y = 118
 				dialogue_label.custom_minimum_size.y = 62
-			_ when text_length > 53 && text_length < 106:
+			_ when text_length > 53 && text_length < 104:
 				panel.size.y = 160
 				margin_container_bubble.size.y = 138
 				bubble_pointer.position.y = 146
 				dialogue_label.custom_minimum_size.y = 92
 			_:
+				##text_length > 156 && < 208
 				panel.size.y = 188
 				panel.position.y = panel.position.y - 28
 				margin_container_bubble.size.y = 166

@@ -25,6 +25,7 @@
 [ext_resource type="Shader" uid="uid://blaurlyplpx3l" path="res://Maps/Grass_shad_testing.gdshader" id="14_034v1"]
 [ext_resource type="Resource" uid="uid://dlkbc8pb4nscr" path="res://npc/resources/bird_friend.tres" id="14_srkr2"]
 [ext_resource type="PackedScene" uid="uid://bhhvqu8fmuoe6" path="res://GeneralNodes/Indicators/indicator.tscn" id="15_t22hv"]
+[ext_resource type="PackedScene" uid="uid://dxs2hkkmveq4p" path="res://npc/scenes/BatFriend.tscn" id="16_xn4qj"]
 [ext_resource type="PackedScene" uid="uid://bh407scmjjww1" path="res://GeneralNodes/Actionables/actionable_dialog.tscn" id="19_li6oa"]
 [ext_resource type="Script" uid="uid://0hlam00jvvrf" path="res://Maps/[102]bf_comes_with.gd" id="21_5tx25"]
 [ext_resource type="Resource" uid="uid://dtau07wi54xbh" path="res://Dialogue/Conversations/bird_friend_meeting.dialogue" id="23_26whl"]
@@ -259,7 +260,11 @@ position = Vector2(-25, 1246)
 [node name="PlayerSpawn" parent="." unique_id=804620083 instance=ExtResource("5_g0pye")]
 position = Vector2(2034, 1385)
 
-[node name="BirdFriend" parent="." unique_id=122702968 instance=ExtResource("45_li6oa")]
+[node name="BatFriend" parent="." unique_id=122702968 instance=ExtResource("16_xn4qj")]
+z_index = 1
+position = Vector2(1100, 1700)
+
+[node name="BirdFriend" parent="." unique_id=553727885 instance=ExtResource("45_li6oa")]
 z_index = 1
 position = Vector2(1452, 1413)
 
@@ -838,7 +843,7 @@ hframes = 2
 
 [node name="LightPulse" type="PointLight2D" parent="FrequencyMini/Sprite2D" unique_id=1698523879]
 scale = Vector2(0.5, 0.5)
-energy = 1.6232708
+energy = 0.87237215
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xf8yu")
 script = ExtResource("36_j6e1k")
@@ -902,7 +907,7 @@ theme_override_font_sizes/font_size = 64
 text = "VIBING"
 
 [node name="Pot" parent="." unique_id=1202134638 instance=ExtResource("37_yr5mt")]
-position = Vector2(1077, 1623)
+position = Vector2(761, 1523)
 
 [node name="Key" parent="." unique_id=1687426962 instance=ExtResource("38_hxh2l")]
 position = Vector2(2104, 1836)
