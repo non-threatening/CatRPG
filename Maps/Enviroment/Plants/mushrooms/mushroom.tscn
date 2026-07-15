@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7h7u2h48gy6i"]
 
-[ext_resource type="Script" uid="uid://c74cn16orl7cl" path="res://Maps/Enviroment/mushrooms/mushroom.gd" id="1_o8lsr"]
-[ext_resource type="Texture2D" uid="uid://dlrky7qf0amhp" path="res://Maps/Enviroment/mushrooms/sprites/mushroom_triple.png" id="1_rq84e"]
+[ext_resource type="Script" uid="uid://c74cn16orl7cl" path="res://Maps/Enviroment/Plants/mushrooms/mushroom.gd" id="1_o8lsr"]
+[ext_resource type="Texture2D" uid="uid://dlrky7qf0amhp" path="res://Maps/Enviroment/Plants/mushrooms/sprites/mushroom_triple.png" id="1_rq84e"]
 
 [sub_resource type="Shader" id="Shader_n28x8"]
 code = "shader_type canvas_item;

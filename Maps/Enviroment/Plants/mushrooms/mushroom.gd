@@ -1,6 +1,7 @@
 class_name Mushroom extends Node2D
 
-const png_dir : String = "res://Maps/Enviroment/mushrooms/sprites/"
+const png_dir : String = "res://Maps/Enviroment/Plants/mushrooms/sprites/"
+
 var packed_array = ResourceLoader.list_directory( png_dir )
 var images : Array[ String ]
 var images_full = []
@@ -27,8 +28,8 @@ func get_shuffled_flower():
 		images = images_full.duplicate()
 		images.shuffle()
 	var random_flower = images.pop_front()
-	var texture = load( png_dir + random_flower )
-	self.texture = texture
+	var img = load( png_dir + random_flower )
+	self.texture = img
 
 func _set_time_scale() -> void:
 	var set_time = randf_range( 4.0, 5.0)
