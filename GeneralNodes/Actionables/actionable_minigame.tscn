@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g7b0o2v2f7wg" path="res://GeneralNodes/Actionables/actionable_minigame.gd" id="1_eet6t"]
 
-[node name="ActionableMinigame" type="Area2D"]
+[node name="ActionableMinigame" type="Area2D" unique_id=1286978492]
 collision_layer = 4096
 collision_mask = 0
 script = ExtResource("1_eet6t")
