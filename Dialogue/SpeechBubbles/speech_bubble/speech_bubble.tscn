@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cbdqsy636dimm" path="res://Dialogue/SpeechBubbles/tutorial_bubble/background_placeholder.png" id="2_u3pc0"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_l6g6q"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_t1jep"]
-[ext_resource type="Texture2D" uid="uid://cgk4gbuvqhuny" path="res://Dialogue/SpeechBubbles/portraits/cat.png" id="6_l6g6q"]
 [ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://GeneralNodes/controller_icon_interact.tres" id="7_t1jep"]
 [ext_resource type="StyleBox" uid="uid://ct7neug04nuq3" path="res://GUI/StyleBoxBluePanel.tres" id="9_4q13g"]
 [ext_resource type="Texture2D" uid="uid://b0scjwo3xbv7p" path="res://Dialogue/SpeechBubbles/speech_bubble/bubble_point.png" id="9_30tyw"]
@@ -23,16 +22,6 @@ offset_right = 1280.0
 offset_bottom = 767.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_u3pc0")
-
-[node name="Portrait" type="TextureRect" parent="." unique_id=302673411]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 250)
-offset_left = 491.0
-offset_top = 373.0
-offset_right = 741.0
-offset_bottom = 623.0
-scale = Vector2(2, 2)
-texture = ExtResource("6_l6g6q")
 
 [node name="Bubble" type="Control" parent="." unique_id=891178929]
 unique_name_in_owner = true
