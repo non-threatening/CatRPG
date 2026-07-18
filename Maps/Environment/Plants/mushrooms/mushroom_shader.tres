@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ssqolcdnkw2k"]
+
+[ext_resource type="Shader" uid="uid://dv06jm3v3knk5" path="res://Maps/Environment/Plants/mushrooms/mushroom_shader.gdshader" id="1_t75xs"]
+
+[resource]
+shader = ExtResource("1_t75xs")
+shader_parameter/x = 1.0
+shader_parameter/y = 3.0
+shader_parameter/color1 = Color(0.48235294, 0.34901962, 0, 1)
+shader_parameter/time_scale = 5.0
+shader_parameter/progress = 0.0

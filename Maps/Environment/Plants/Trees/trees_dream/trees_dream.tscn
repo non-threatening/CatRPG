@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b1t068xhgk1jd"]
+
+[ext_resource type="Script" uid="uid://ciliranxsf3ke" path="res://Maps/Environment/Plants/Trees/trees_dream/trees_node.gd" id="1_g88or"]
+[ext_resource type="Material" uid="uid://pww5hwrd41gd" path="res://Maps/Environment/Plants/Trees/trees_dream/trees_dream.tres" id="2_g88or"]
+[ext_resource type="Texture2D" uid="uid://ck1on0t25qmd8" path="res://Maps/Environment/Plants/Trees/sprites/trees/tree.png" id="3_hp0sg"]
+[ext_resource type="Script" uid="uid://cnoxfd5hjq3rb" path="res://Maps/Environment/Plants/Trees/trees_dream/trees_dream.gd" id="4_g88or"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etgwk"]
+radius = 35.99996
+height = 138.00002
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_etgwk"]
+polygon = PackedVector2Array(138, -402.8, 81, -436.66666, 26.200012, -457.6, -31.600006, -454, -99.7, -418, -138, -389.99997, -173, -320, -196, -240, -184, -168.6, -155, -120, -121, -90.100006, -121, -82.79999, -100, -66.66667, -55, -53.333332, -41, -13.333336, -16, 40.799988, -16, 42.899994, 9, 50, 37, 46.666664, 65, 30, 79, -36.66667, 98, -83.333336, 130, -100, 163, -126.666664, 188.1, -178, 193, -256.66666, 192, -266.66666, 193, -300, 182, -349.1, 182, -353.1, 160, -386.66666, 138, -397.2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndlp4"]
+radius = 520.5535
+
+[node name="TreesDream" type="StaticBody2D" unique_id=627641849]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_g88or")
+
+[node name="TreeSprite" type="Sprite2D" parent="." unique_id=257443767]
+y_sort_enabled = true
+material = ExtResource("2_g88or")
+position = Vector2(0, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hp0sg")
+offset = Vector2(0, -210)
+script = ExtResource("4_g88or")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1250747908]
+position = Vector2(7, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_etgwk")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1450649895]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(6, 36)
+scale = Vector2(1, 0.3)
+occluder = SubResource("OccluderPolygon2D_etgwk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1006811543]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=664881766]
+visible = false
+position = Vector2(0, -136)
+shape = SubResource("CircleShape2D_ndlp4")
+debug_color = Color(2.4065375e-07, 0.6413922, 0.32999834, 0)

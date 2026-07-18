@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d4kyp8h2r0x61"]
+
+[ext_resource type="Shader" uid="uid://c5ovupdrrtgpr" path="res://Maps/Environment/Plants/Flowers/flower_dream_material.gdshader" id="1_yddvh"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_yddvh")
+shader_parameter/x = 4.0
+shader_parameter/y = 3.0
+shader_parameter/time_scale = 4.831378575564267
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(80, 0.5)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 3
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)

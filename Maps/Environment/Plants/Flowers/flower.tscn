@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bll4i550rlr37"]
+
+[ext_resource type="Script" uid="uid://b2pjcwktbjus3" path="res://Maps/Environment/Plants/Flowers/flower_node.gd" id="1_q6xlj"]
+[ext_resource type="Script" uid="uid://btat3ybgx0y38" path="res://Maps/Environment/Plants/Flowers/flower.gd" id="2_sd35e"]
+[ext_resource type="PackedScene" uid="uid://c6s5rtcendc2v" path="res://GeneralNodes/WalkOnBy/walk_on_by.tscn" id="5_nwwxw"]
+[ext_resource type="Texture2D" uid="uid://dmj07u3lguye8" path="res://Maps/Environment/Plants/Flowers/sprites/Flowers_ManyPetals_Stem.png" id="6_rjoxa"]
+[ext_resource type="Material" uid="uid://ct1qgfawmdse2" path="res://Maps/Environment/Plants/Flowers/flower.tres" id="7_q6xlj"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_px1lc"]
+polygon = PackedVector2Array(-15.015015, -42.042034, -24.024023, -33.033028, -3.003003, -28.528528, 19.51952, -31.531523, 12.012012, -45.045036)
+
+[node name="Flower" type="StaticBody2D" unique_id=688026888]
+y_sort_enabled = true
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_q6xlj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=607416719]
+y_sort_enabled = true
+material = ExtResource("7_q6xlj")
+scale = Vector2(0.666, 0.666)
+texture = ExtResource("6_rjoxa")
+offset = Vector2(0, -32)
+script = ExtResource("2_sd35e")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1121845371]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(2, 41.999996)
+scale = Vector2(0.666, 0.666)
+occluder = SubResource("OccluderPolygon2D_px1lc")
+
+[node name="WalkOnBy" parent="." unique_id=1368380486 instance=ExtResource("5_nwwxw")]

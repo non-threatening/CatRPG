@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://5h5o8u7phvqv"]
+
+[ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Environment/Plants/Flowers/flower.tscn" id="1_ws3p3"]
+
+[node name="Flowers" type="Node"]
+
+[node name="Flower2" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(424, 558)
+
+[node name="Flower3" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(342, 620)
+
+[node name="Flower4" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(527, 589)
+
+[node name="Flower5" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(548, 590)
+
+[node name="Flower6" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(498, 591)
+
+[node name="Flower7" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(756, 524)
+
+[node name="Flower8" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(578, 590)
+
+[node name="Flower9" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(560, 605)
+
+[node name="Flower10" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(528, 620)
+
+[node name="Flower11" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(478, 600)
+
+[node name="Flower12" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(456, 573)
+
+[node name="Flower13" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(433, 581)
+
+[node name="Flower14" parent="." instance=ExtResource("1_ws3p3")]
+position = Vector2(452, 603)
