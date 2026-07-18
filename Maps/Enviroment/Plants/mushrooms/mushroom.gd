@@ -6,6 +6,8 @@ var packed_array = ResourceLoader.list_directory( png_dir )
 var images : Array[ String ]
 var images_full = []
 
+var x : float = 0
+var y : float = 0
 
 func _ready() -> void:
 	SignalBus.desaturate.connect( desat )
@@ -45,14 +47,13 @@ func _set_random_scale() -> void:
 
 
 func _set_random_motion_amount() -> void:
-	var x = randf_range( 0.9, 1.1 )
-	var y = randf_range( 2.5, 35 )
+	x = randf_range( 0.9, 1.1 )
+	y = randf_range( 10, 15 )
 	material.set_shader_parameter( "x", x )
 	material.set_shader_parameter( "y", y )
 
 
 func _set_random_color() -> void:
-	#var color_range1 : float = fmod( randf_range( (290.0/360.0), 1.0 ) + 50.0/360.0, 1.0 )
 	var color_range1 : float = randf()
 	var color1 = Color.from_hsv(
 		color_range1,

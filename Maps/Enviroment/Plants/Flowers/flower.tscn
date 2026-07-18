@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b2pjcwktbjus3" path="res://Maps/Enviroment/Plants/Flowers/flower_node.gd" id="1_q6xlj"]
 [ext_resource type="Script" uid="uid://btat3ybgx0y38" path="res://Maps/Enviroment/Plants/Flowers/flower.gd" id="2_sd35e"]
+[ext_resource type="PackedScene" uid="uid://c6s5rtcendc2v" path="res://GeneralNodes/WalkOnBy/walk_on_by.tscn" id="5_nwwxw"]
 [ext_resource type="Texture2D" uid="uid://dmj07u3lguye8" path="res://Maps/Enviroment/Plants/Flowers/sprites/Flowers_ManyPetals_Stem.png" id="6_rjoxa"]
 [ext_resource type="Material" uid="uid://ct1qgfawmdse2" path="res://Maps/Enviroment/Plants/Flowers/flower.tres" id="7_q6xlj"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_px1lc"]
 polygon = PackedVector2Array(-15.015015, -42.042034, -24.024023, -33.033028, -3.003003, -28.528528, 19.51952, -31.531523, 12.012012, -45.045036)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_c2k0l"]
-radius = 13.928389
 
 [node name="Flower" type="StaticBody2D" unique_id=688026888]
 y_sort_enabled = true
@@ -17,7 +15,7 @@ collision_layer = 128
 collision_mask = 0
 script = ExtResource("1_q6xlj")
 
-[node name="Flower" type="Sprite2D" parent="." unique_id=265141847]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=607416719]
 y_sort_enabled = true
 material = ExtResource("7_q6xlj")
 scale = Vector2(0.666, 0.666)
@@ -31,8 +29,4 @@ position = Vector2(2, 41.999996)
 scale = Vector2(0.666, 0.666)
 occluder = SubResource("OccluderPolygon2D_px1lc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960003366]
-visible = false
-position = Vector2(0, 9)
-shape = SubResource("CircleShape2D_c2k0l")
-debug_color = Color(0.9254902, 0, 0, 0)
+[node name="WalkOnBy" parent="." unique_id=1368380486 instance=ExtResource("5_nwwxw")]

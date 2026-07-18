@@ -1,4 +1,4 @@
-class_name Flower extends Node2D
+class_name Flower extends Sprite2D
 
 const FLOWER_DREAM = preload("uid://c5ovupdrrtgpr")
 const FLOWER_MATERIAL = preload("uid://bbj3feg1ntecx")
@@ -16,7 +16,7 @@ func _ready() -> void:
 	images = Array( Array(packed_array), TYPE_STRING, "", null )
 	images_full = images.duplicate()
 	images.shuffle()
-	get_shuffled_flower()
+	get_shuffled_png()
 	_set_time_scale()
 	_set_random_scale()
 	
@@ -35,13 +35,13 @@ func desat( _value ) -> void:
 	material.set_shader_parameter( "saturation", _value )
 
 
-func get_shuffled_flower():
+func get_shuffled_png():
 	if images.is_empty():
 		images = images_full.duplicate()
 		images.shuffle()
 	var random_flower = images.pop_front()
-	var texture = load( png_dir + random_flower )
-	self.texture = texture
+	var img = load( png_dir + random_flower )
+	self.texture = img
 
 
 func _set_time_scale() -> void:
