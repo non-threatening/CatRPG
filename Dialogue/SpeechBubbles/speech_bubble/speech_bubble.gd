@@ -47,9 +47,10 @@ var dialogue_line: DialogueLine:
 ## A cooldown timer for delaying the bubble hide when encountering a mutation.
 var mutation_cooldown: Timer = Timer.new()
 
-
+var got_dude
 var pitch : float = 1.0
 var audio_file : AudioStream
+var has_pending_responses: bool = false
 
 
 ## The base bubble anchor
@@ -62,8 +63,11 @@ var audio_file : AudioStream
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
 @onready var panel: Panel = $Bubble/Panel
+@onready var panel_responses: Panel = $Bubble/PanelResponses
 @onready var bubble_pointer: Sprite2D = $Bubble/Panel/MarginContainerBubble/VBoxContainer/Sprite2D
+@onready var bubble_pointer_responses: Sprite2D = $Bubble/PanelResponses/MarginContainerBubbleResp/VBoxContainer/Sprite2D
 @onready var margin_container_bubble: MarginContainer = $Bubble/Panel/MarginContainerBubble
+@onready var margin_container_bubble_resp: MarginContainer = $Bubble/PanelResponses/MarginContainerBubbleResp
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
@@ -151,10 +155,9 @@ func apply_dialogue_line() -> void:
 		bubble_pointer.scale.x = 1
 		
 		var dude = dialogue_line.character.to_pascal_case()
-		prints( "dude:", dude )
 		if dialogue_line.get_tag_value("location") == "cat":
-			
-			var got_dude = PlayerManager.player.bird_friend_sprite
+			# if it's on the cat, we use the bird_friend_sprite
+			got_dude = PlayerManager.player.bird_friend_sprite
 			var pos : Vector2 =  got_dude.get_global_transform_with_canvas().get_origin()
 			panel.position = Vector2( pos ) + Vector2( -345, -270 )
 			bubble_pointer.scale.x = -1
@@ -168,13 +171,19 @@ func apply_dialogue_line() -> void:
 					Vector2.RIGHT:
 						bubble_offset = 75
 						bubble_pointer.scale.x = 1
-			if get_parent().get_node( dude ):
-				var got_dude = get_parent().get_node( dude )
-				var pos : Vector2 =  got_dude.get_global_transform_with_canvas().get_origin()
-				var v_frames : float = got_dude.sprite.vframes
-				var sprite_height : float = got_dude.sprite.texture.get_height()
-				var sprite_scale : float = got_dude.sprite.scale.y
-				panel.position =  Vector2( pos ) + Vector2( -320 + bubble_offset, -160 -50 - ( ( sprite_height / v_frames ) * sprite_scale ) )
+					Vector2.UP, Vector2.DOWN:
+						bubble_offset = 0
+				got_dude = PlayerManager.player
+			else:
+				# if it's not the player or on the cat, get the dude from the tree
+				if get_parent().get_node( dude ):
+					got_dude = get_parent().get_node( dude )
+			prints("got dude:", got_dude )
+			var pos : Vector2 =  got_dude.get_global_transform_with_canvas().get_origin()
+			var v_frames : float = got_dude.sprite.vframes
+			var sprite_height : float = got_dude.sprite.texture.get_height()
+			var sprite_scale : float = got_dude.sprite.scale.y
+			panel.position =  Vector2( pos ) + Vector2( -320 + bubble_offset, -160 -50 - ( ( sprite_height / v_frames ) * sprite_scale ) )
 		
 	var text_length :  float = dialogue_line.text.length()
 	match true:
@@ -208,6 +217,7 @@ func apply_dialogue_line() -> void:
 	dialogue_label.dialogue_line = dialogue_line
 
 	responses_menu.hide()
+	panel_responses.hide()
 	responses_menu.responses = dialogue_line.responses
 
 	# Show our bubble
@@ -221,8 +231,55 @@ func apply_dialogue_line() -> void:
 
 	# Wait for input
 	if dialogue_line.responses.size() > 0:
-		bubble.focus_mode = Control.FOCUS_NONE
-		responses_menu.show()
+		var got_response_dude = PlayerManager.player
+		var player_dir = got_response_dude.cardinal_direction
+		match player_dir:
+			Vector2.LEFT:
+				bubble_offset = -75
+				bubble_pointer_responses.scale.x = -1
+			Vector2.RIGHT:
+				bubble_offset = 75
+				bubble_pointer_responses.scale.x = 1
+			Vector2.UP, Vector2.DOWN:
+				bubble_offset = 0
+		var pos : Vector2 =  got_response_dude.get_global_transform_with_canvas().get_origin()
+		var v_frames : float = got_response_dude.sprite.vframes
+		var sprite_height : float = got_response_dude.sprite.texture.get_height()
+		var sprite_scale : float = got_response_dude.sprite.scale.y
+		panel_responses.position =  Vector2( pos ) + Vector2( -320 + bubble_offset, -160 -50 - ( ( sprite_height / v_frames ) * sprite_scale ) )
+
+		var lines : int = dialogue_line.responses.size()
+		match lines:
+			1:
+				panel_responses.size.y = 132
+				panel_responses.position.y = panel_responses.position.y + 28
+				margin_container_bubble_resp.size.y = 110
+				bubble_pointer.position.y = 118
+				dialogue_label.custom_minimum_size.y = 62
+			2:
+				panel_responses.size.y = 160
+				margin_container_bubble_resp.size.y = 138
+				bubble_pointer_responses.position.y = 146
+				responses_menu.custom_minimum_size.y = 92
+			3:
+				panel_responses.size.y = 188
+				panel_responses.position.y = panel_responses.position.y - 28
+				margin_container_bubble_resp.size.y = 166
+				bubble_pointer_responses.position.y = 176
+				responses_menu.custom_minimum_size.y = 122
+			4:
+				panel_responses.size.y = 216
+				panel_responses.position.y = panel_responses.position.y - 56
+				margin_container_bubble_resp.size.y = 194
+				bubble_pointer_responses.position.y = 206
+				responses_menu.custom_minimum_size.y = 152
+
+		has_pending_responses = true  
+		is_waiting_for_input = true  
+		bubble.focus_mode = Control.FOCUS_ALL  
+		bubble.grab_focus()
+		
+		
 	elif dialogue_line.time != "":
 		var time = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
 		await get_tree().create_timer(time).timeout
@@ -264,6 +321,15 @@ func _on_bubble_gui_input(event: InputEvent) -> void:
 			return
 
 	if not is_waiting_for_input: return
+	
+	if has_pending_responses:  
+		has_pending_responses = false  
+		bubble.focus_mode = Control.FOCUS_NONE  
+		responses_menu.show()
+		panel_responses.show()
+		panel.hide()
+		return
+	
 	if dialogue_line.responses.size() > 0: return
 
 	# When there are no response options the bubble itself is the clickable thing
@@ -277,6 +343,7 @@ func _on_bubble_gui_input(event: InputEvent) -> void:
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
+	panel.show()
 
 
 #endregion

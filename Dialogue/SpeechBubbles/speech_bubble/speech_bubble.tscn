@@ -2,12 +2,25 @@
 
 [ext_resource type="Script" uid="uid://bm4oe7er3ffwr" path="res://Dialogue/SpeechBubbles/speech_bubble/speech_bubble.gd" id="1_suubk"]
 [ext_resource type="Theme" uid="uid://bpsv0tvfru4e2" path="res://Dialogue/SpeechBubbles/speech_bubble/speech_bubble.tres" id="2_suubk"]
-[ext_resource type="Texture2D" uid="uid://cbdqsy636dimm" path="res://Dialogue/SpeechBubbles/tutorial_bubble/background_placeholder.png" id="2_u3pc0"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_l6g6q"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_t1jep"]
 [ext_resource type="Texture2D" uid="uid://bciruypxmhsg" path="res://GeneralNodes/controller_icon_interact.tres" id="7_t1jep"]
+[ext_resource type="Script" uid="uid://brlne3747upyu" path="res://Dialogue/SpeechBubbles/speech_bubble/response_example.gd" id="8_u3emc"]
 [ext_resource type="StyleBox" uid="uid://ct7neug04nuq3" path="res://GUI/StyleBoxBluePanel.tres" id="9_4q13g"]
 [ext_resource type="Texture2D" uid="uid://b0scjwo3xbv7p" path="res://Dialogue/SpeechBubbles/speech_bubble/bubble_point.png" id="9_30tyw"]
+[ext_resource type="Texture2D" uid="uid://dhgf7gq8alya5" path="res://Dialogue/SpeechBubbles/speech_bubble/bubble_bubble.png" id="9_u3pc0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjaxn"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3emc"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Theme" id="Theme_u3pc0"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.57254905, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_bjaxn")
+Button/styles/normal = SubResource("StyleBoxFlat_u3emc")
 
 [node name="SpeachBubble" type="CanvasLayer" unique_id=1360327746]
 process_mode = 3
@@ -15,13 +28,6 @@ script = ExtResource("1_suubk")
 next_action = &"interact"
 skip_action = &"interact"
 metadata/_edit_vertical_guides_ = [671.0, 1252.0]
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1562986830]
-visible = false
-offset_right = 1280.0
-offset_bottom = 767.0
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_u3pc0")
 
 [node name="Bubble" type="Control" parent="." unique_id=891178929]
 unique_name_in_owner = true
@@ -32,31 +38,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_suubk")
-
-[node name="ResponsesMenu" type="VBoxContainer" parent="Bubble" unique_id=1059512609 node_paths=PackedStringArray("response_template")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -290.0
-offset_top = -240.0
-offset_right = 291.0
-offset_bottom = -167.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 2
-alignment = 1
-script = ExtResource("4_t1jep")
-response_template = NodePath("ResponseExample")
-
-[node name="ResponseExample" type="Button" parent="Bubble/ResponsesMenu" unique_id=1253312560]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
-text = "Response example"
 
 [node name="Panel" type="Panel" parent="Bubble" unique_id=1235524522]
 layout_mode = 0
@@ -107,9 +88,54 @@ size_flags_vertical = 8
 texture = ExtResource("7_t1jep")
 expand_mode = 1
 
+[node name="PanelResponses" type="Panel" parent="Bubble" unique_id=1038652002]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 340.0
+offset_right = 1310.0
+offset_bottom = 500.0
+pivot_offset_ratio = Vector2(0.5, 1)
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("9_4q13g")
+
+[node name="MarginContainerBubbleResp" type="MarginContainer" parent="Bubble/PanelResponses" unique_id=210351367]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 28.0
+offset_right = 588.0
+offset_bottom = 138.00003
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bubble/PanelResponses/MarginContainerBubbleResp" unique_id=792775621]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Bubble/PanelResponses/MarginContainerBubbleResp/VBoxContainer" unique_id=1059512609 node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("4_t1jep")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Bubble/PanelResponses/MarginContainerBubbleResp/VBoxContainer/ResponsesMenu" unique_id=1253312560]
+layout_mode = 2
+theme = SubResource("Theme_u3pc0")
+theme_override_font_sizes/font_size = 24
+text = "Response example
+Seond thing to say goes here"
+script = ExtResource("8_u3emc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bubble/PanelResponses/MarginContainerBubbleResp/VBoxContainer" unique_id=1466815262]
+position = Vector2(265, 146)
+texture = ExtResource("9_u3pc0")
+offset = Vector2(57, 0)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=776240330]
 max_polyphony = 5
 bus = &"Effects"
 
 [connection signal="gui_input" from="Bubble" to="." method="_on_bubble_gui_input"]
-[connection signal="response_selected" from="Bubble/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[connection signal="response_selected" from="Bubble/PanelResponses/MarginContainerBubbleResp/VBoxContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
