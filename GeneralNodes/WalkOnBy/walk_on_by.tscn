@@ -2,15 +2,7 @@
 
 [ext_resource type="Script" uid="uid://baejeif8e2p61" path="res://Maps/Environment/Plants/Flowers/walk_on_by.gd" id="1_nhu53"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c2k0l"]
-radius = 13.928389
-
 [node name="WalkOnBy" type="StaticBody2D" unique_id=1368380486]
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("1_nhu53")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=139814988]
-position = Vector2(0, 9)
-shape = SubResource("CircleShape2D_c2k0l")
-debug_color = Color(0.9254902, 0, 0, 0)
