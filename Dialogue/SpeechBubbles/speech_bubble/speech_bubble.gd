@@ -7,8 +7,6 @@ extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
-#@onready var portrait: TextureRect = %Portrait
-
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -254,25 +252,31 @@ func apply_dialogue_line() -> void:
 				panel_responses.size.y = 132
 				panel_responses.position.y = panel_responses.position.y + 28
 				margin_container_bubble_resp.size.y = 110
-				bubble_pointer.position.y = 118
+				bubble_pointer_responses.position.y = 128
 				dialogue_label.custom_minimum_size.y = 62
 			2:
 				panel_responses.size.y = 160
 				margin_container_bubble_resp.size.y = 138
-				bubble_pointer_responses.position.y = 146
+				bubble_pointer_responses.position.y = 156
 				responses_menu.custom_minimum_size.y = 92
 			3:
 				panel_responses.size.y = 188
 				panel_responses.position.y = panel_responses.position.y - 28
 				margin_container_bubble_resp.size.y = 166
-				bubble_pointer_responses.position.y = 176
+				bubble_pointer_responses.position.y = 186
 				responses_menu.custom_minimum_size.y = 122
 			4:
 				panel_responses.size.y = 216
 				panel_responses.position.y = panel_responses.position.y - 56
 				margin_container_bubble_resp.size.y = 194
-				bubble_pointer_responses.position.y = 206
+				bubble_pointer_responses.position.y = 216
 				responses_menu.custom_minimum_size.y = 152
+			5:
+				panel_responses.size.y = 244
+				panel_responses.position.y = panel_responses.position.y - 84
+				margin_container_bubble_resp.size.y = 222
+				bubble_pointer_responses.position.y = 246
+				responses_menu.custom_minimum_size.y = 182
 
 		has_pending_responses = true  
 		is_waiting_for_input = true  
