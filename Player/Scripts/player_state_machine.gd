@@ -6,7 +6,6 @@ var current_state : State
 var next_state : State
 
 
-
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -54,7 +53,7 @@ func change_state( new_state : State ) -> void:
 		
 	prev_state = current_state
 	current_state = new_state
-	# prints("State:", current_state)
+	#prints("State:", current_state)
 	current_state.enter()
 	
 	

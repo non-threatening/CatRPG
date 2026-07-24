@@ -23,7 +23,9 @@
 [ext_resource type="Script" uid="uid://bu3onimwydj4g" path="res://Player/Scripts/player_camera.gd" id="11_hfp0w"]
 [ext_resource type="Shader" uid="uid://dcnqvjkwrjcuk" path="res://Player/BirdFriend/bird_friend_perched.gdshader" id="11_iyprq"]
 [ext_resource type="Texture2D" uid="uid://cvt1hmlqk7dst" path="res://Player/BirdFriend/sprites/Perched_2Frames_160x80led.png" id="12_iyprq"]
+[ext_resource type="Material" uid="uid://dpne0qa4qwb3n" path="res://npc/shaders/bat_shader_material.tres" id="12_ntwt4"]
 [ext_resource type="PackedScene" uid="uid://diwhn2m7d15dk" path="res://Player/swipe/swipe_slash.tscn" id="13_6eb1q"]
+[ext_resource type="Texture2D" uid="uid://cfbvxkd06fwdy" path="res://npc/sprites/bat-concept_01.png" id="13_kdg72"]
 [ext_resource type="Shader" uid="uid://b4d5u50y4e3og" path="res://Player/player.gdshader" id="13_o28un"]
 [ext_resource type="PackedScene" uid="uid://c3ovyjwujdxmf" path="res://GeneralNodes/HitBox/hit_box.tscn" id="13_urp6f"]
 [ext_resource type="Shader" uid="uid://cenq3c1oyr3a2" path="res://Maps/frequency_wave.gdshader" id="14_6rl0i"]
@@ -5458,11 +5460,19 @@ texture = ExtResource("4_svx73")
 [node name="BirdFriendSprite" type="Sprite2D" parent="Sprite2D" unique_id=1110330149]
 visible = false
 material = SubResource("ShaderMaterial_f4lon")
-position = Vector2(-66.06607, -150.15016)
+position = Vector2(-50, -145)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("12_iyprq")
 hframes = 2
 region_rect = Rect2(7, 81, 102, 42)
+
+[node name="BatFriendSprite" type="Sprite2D" parent="Sprite2D" unique_id=865528981]
+visible = false
+show_behind_parent = true
+material = ExtResource("12_ntwt4")
+position = Vector2(-40, -140)
+scale = Vector2(1, -1)
+texture = ExtResource("13_kdg72")
 
 [node name="WaveControl" type="Control" parent="Sprite2D" unique_id=66399363]
 visible = false
@@ -5534,7 +5544,7 @@ material = SubResource("ShaderMaterial_1kmt7")
 position = Vector2(-79.579575, -87.08708)
 rotation = 4.4670525
 scale = Vector2(0.47599998, 0.66599995)
-points = PackedVector2Array(0, 0, 29, -0.8275168, 56, -2.0989883, 81, -2.517276, 104, -1.5253376, 125, 0.5758553, 144, 3.0408647, 161, 5.1545625, 176, 6.5018935, 189, 7.0053916, 200, 6.8254614, 209, 6.228077, 216, 5.482231, 221, 4.8047495, 224, 4.3434463, 225, 4.1809425)
+points = PackedVector2Array(0, 0, 29, -1.0792414, 56, -1.4656147, 81, -0.44634104, 104, 1.6170082, 125, 3.8197508, 144, 5.344671, 161, 5.799484, 176, 5.227169, 189, 3.9377313, 200, 2.3169923, 209, 0.6971652, 216, -0.69517493, 221, -1.7351469, 224, -2.3692167, 225, -2.5814023)
 width = 32.0
 texture = ExtResource("5_wvbyc")
 texture_mode = 2

@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://b1y8m1dxfykkn" path="res://00_Globals/Steam/steam_avatar.gd" id="10_terqw"]
 [ext_resource type="Script" uid="uid://b0gebxkvo3w7x" path="res://GUI/player_hud/center_notification.gd" id="10_w5viu"]
 [ext_resource type="Texture2D" uid="uid://dx6grwyk80lvg" path="res://GUI/player_hud/sprites/MoonPhases.png" id="11_ea3vn"]
-[ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Enviroment/Plants/Trees/trees/trees.tres" id="14_e1kye"]
+[ext_resource type="Material" uid="uid://d03lb2njjjlgp" path="res://Maps/Environment/Plants/Trees/trees/trees.tres" id="14_e1kye"]
 [ext_resource type="Script" uid="uid://c1wd58yhexfbi" path="res://GUI/player_hud/hud_time.gd" id="15_vdg2b"]
 [ext_resource type="FontFile" uid="uid://dm3liq86qx5sa" path="res://GUI/fonts/gapstown.small-ah-bold.ttf" id="16_6xefh"]
 

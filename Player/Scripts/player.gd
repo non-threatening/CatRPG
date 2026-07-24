@@ -51,6 +51,7 @@ var time: float = 0.0
 @onready var state_freq: State_Freq = $StateMachine/freq
 
 @onready var bird_friend_sprite: Sprite2D = $Sprite2D/BirdFriendSprite
+@onready var bat_friend_sprite: Sprite2D = $Sprite2D/BatFriendSprite
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
 
 @onready var swipe_slash: SwipeSlash = $Sprite2D/AttackEffectSprite/SwipeSlash
@@ -153,6 +154,11 @@ func show_bird_friend() -> void:
 	bird_friend_sprite.show()
 func hide_bird_friend() -> void:
 	bird_friend_sprite.hide()
+	
+func show_bat_friend() -> void:
+	bat_friend_sprite.show()
+func hide_bat_friend() -> void:
+	bat_friend_sprite.hide()
 
 
 func _take_damage( hurt_box : HurtBox ) -> void:

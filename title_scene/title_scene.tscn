@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cknrd4sbx4hht" path="res://title_scene/splash_screen.tscn" id="7_fkwea"]
 [ext_resource type="FontFile" uid="uid://c63g2n0bmlx53" path="res://GUI/fonts/notes-sans.free.otf" id="7_fp78m"]
 [ext_resource type="Shader" uid="uid://bh26fn50skl4i" path="res://zz_test/0-TestLevels/fog01.gdshader" id="9_lj5tl"]
-[ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Enviroment/Plants/Flowers/flower.tscn" id="9_svbj5"]
+[ext_resource type="PackedScene" uid="uid://bll4i550rlr37" path="res://Maps/Environment/Plants/Flowers/flower.tscn" id="9_svbj5"]
 
 [sub_resource type="Gradient" id="Gradient_1falw"]
 colors = PackedColorArray(0.085332714, 0.36719292, 0.56600034, 1, 1, 1, 1, 1)

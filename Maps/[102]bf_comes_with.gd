@@ -22,6 +22,9 @@ func _set_bird_visibility() -> void:
 		show()
 	else:
 		queue_free()
+	if StatsManager.achievements.have_bird_friend == 1:
+		queue_free()
+		
 	
 	
 func _remove_bird_friend( _q : Quest ) -> void:

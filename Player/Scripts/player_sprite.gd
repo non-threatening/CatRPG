@@ -7,16 +7,17 @@ const PLAYER_LOKTIN = preload("uid://b3iybtj0bph5k")
 @onready var sprite: Sprite2D = $"."
 @onready var shadow_sprite: Sprite2D = $ShadowSprite
 @onready var bird_friend_sprite: Sprite2D = $BirdFriendSprite
+@onready var bat_friend_sprite: Sprite2D = $BatFriendSprite
+@onready var tail: Line2D = $Tail
+
 @onready var player_shape_hor: CollisionShape2D = $"../PlayerShapeHor"
 @onready var player_shape_vert: CollisionShape2D = $"../PlayerShapeVert"
 @onready var footprints: Node2D = $footprints
 
-
-var cur_dur
-
 var minute : int = 0
 var hour : int = 0
 var minutes : int = 0
+
 
 func _ready() -> void:
 	LevelManager.level_loaded.connect( _check_level )
@@ -83,30 +84,44 @@ func _check_level() -> void:
 
 
 func _on_direction_changed( new_dir : Vector2 ):
-	bird_friend_sprite.show_behind_parent = false
-	cur_dur = new_dir
 	match new_dir:
 		Vector2.DOWN:
+			player_shape_vert.set_deferred( "disabled", false )
+			player_shape_hor.set_deferred( "disabled", true )
+			
 			bird_friend_sprite.position = Vector2( -8, -153 )
 			bird_friend_sprite.show_behind_parent = true
 			
-			player_shape_vert.set_deferred( "disabled", false )
-			player_shape_hor.set_deferred( "disabled", true )
+			bat_friend_sprite.position = Vector2( -6, -135 )
+			bat_friend_sprite.show_behind_parent = true
 			
+			tail.hide()
 			footprints.rotation_degrees = 90
+			
 		Vector2.UP:
-			bird_friend_sprite.position = Vector2( -10, -164 )
-			
 			player_shape_vert.set_deferred( "disabled", false )
 			player_shape_hor.set_deferred( "disabled", true )
 			
-			footprints.rotation_degrees = 90
-		Vector2.LEFT, Vector2.RIGHT:
-			bird_friend_sprite.position = Vector2( -50, -145 )
+			bird_friend_sprite.position = Vector2( -10, -164 )
+			bird_friend_sprite.show_behind_parent = false
 			
+			bat_friend_sprite.position = Vector2( 1.5, -162 )
+			bat_friend_sprite.show_behind_parent = false
+			
+			tail.show()
+			footprints.rotation_degrees = 90
+			
+		Vector2.LEFT, Vector2.RIGHT:
 			player_shape_vert.set_deferred( "disabled", true )
 			player_shape_hor.set_deferred( "disabled", false )
 			
+			bird_friend_sprite.position = Vector2( -50, -145 )
+			bird_friend_sprite.show_behind_parent = false
+			
+			bat_friend_sprite.position = Vector2( -40, -140 )
+			bat_friend_sprite.show_behind_parent = true
+			
+			tail.show()
 			footprints.rotation = 0
 		_:
 			pass
