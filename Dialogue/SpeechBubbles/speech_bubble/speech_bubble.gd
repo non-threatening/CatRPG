@@ -146,10 +146,12 @@ func choose_audio_file() -> void:
 func apply_dialogue_line() -> void:
 	var character : Resource
 	var character_path : String = "res://npc/resources/%s.tres" % ( dialogue_line.character.to_snake_case() )
-	var bubble_offset : float = 0
+	var bubble_offset_x : float = 0
+	var bubble_offset_y : float = 0
 	if ResourceLoader.exists( character_path ):
 		character = load( character_path )
-		bubble_offset = character.bubble_offset
+		bubble_offset_x = character.bubble_offset_x
+		bubble_offset_y = character.bubble_offset_y
 		bubble_pointer.scale.x = 1
 		
 		var dude = dialogue_line.character.to_pascal_case()
@@ -164,27 +166,27 @@ func apply_dialogue_line() -> void:
 				var player_dir = PlayerManager.player.cardinal_direction
 				match player_dir:
 					Vector2.LEFT:
-						bubble_offset = -75
+						bubble_offset_x = -75
 						bubble_pointer.scale.x = -1
 					Vector2.RIGHT:
-						bubble_offset = 75
+						bubble_offset_x = 75
 						bubble_pointer.scale.x = 1
 					Vector2.UP, Vector2.DOWN:
-						bubble_offset = 0
+						bubble_offset_x = 0
 				got_dude = PlayerManager.player
 			else:
 				# if it's not the player or on the cat, get the dude from the tree
 				if get_parent().get_node( dude ):
 					got_dude = get_parent().get_node( dude )
-			prints("got dude:", got_dude )
 			var pos : Vector2 =  got_dude.get_global_transform_with_canvas().get_origin()
 			var v_frames : float = got_dude.sprite.vframes
 			var sprite_height : float = got_dude.sprite.texture.get_height()
 			var sprite_scale : float = got_dude.sprite.scale.y
-			panel.position =  Vector2( pos ) + Vector2( -320 + bubble_offset, -160 -50 - ( ( sprite_height / v_frames ) * sprite_scale ) )
+			panel.position =  Vector2( pos ) + Vector2( -320 + bubble_offset_x, -210 - ( ( sprite_height / v_frames ) * sprite_scale ) + bubble_offset_y )
 		
 	var text_length :  float = dialogue_line.text.length()
 	match true:
+		##TODO: subtract BBCode text from length
 		_ when text_length < 52:
 			panel.size.y = 132
 			panel.position.y = panel.position.y + 28
@@ -233,18 +235,18 @@ func apply_dialogue_line() -> void:
 		var player_dir = got_response_dude.cardinal_direction
 		match player_dir:
 			Vector2.LEFT:
-				bubble_offset = -75
-				bubble_pointer_responses.scale.x = -1
-			Vector2.RIGHT:
-				bubble_offset = 75
+				bubble_offset_x = 40
 				bubble_pointer_responses.scale.x = 1
+			Vector2.RIGHT:
+				bubble_offset_x = 75
+				bubble_pointer_responses.scale.x = -1
 			Vector2.UP, Vector2.DOWN:
-				bubble_offset = 0
+				bubble_offset_x = 0
 		var pos : Vector2 =  got_response_dude.get_global_transform_with_canvas().get_origin()
 		var v_frames : float = got_response_dude.sprite.vframes
 		var sprite_height : float = got_response_dude.sprite.texture.get_height()
 		var sprite_scale : float = got_response_dude.sprite.scale.y
-		panel_responses.position =  Vector2( pos ) + Vector2( -320 + bubble_offset, -160 -50 - ( ( sprite_height / v_frames ) * sprite_scale ) )
+		panel_responses.position = Vector2( pos ) + Vector2( -380 + bubble_offset_x, -200 - ( ( sprite_height / v_frames ) * sprite_scale ) )
 
 		var lines : int = dialogue_line.responses.size()
 		match lines:

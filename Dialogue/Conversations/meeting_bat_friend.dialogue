@@ -1,11 +1,43 @@
 ~ start
-Bat Friend: [[Hi|Hello|Howdy]], this is some dialogue.
-Bat Friend: Here are some choices.
-- First one
-	Bat Friend: You picked the first one.
-- Second one
+#Bat Friend: [[Hi|Hello|Howdy]], this is some dialogue.
+Bat Friend: Are you from MEW?
+Player: mew?
+#Bat Friend: I won't feed on you. 
+#Bat Friend: Your blood's not clean.
+#Bat Friend: [color=#00000088][speed=0.666]you're not clean[/color]
+#Bat Friend: don't mean to be mean
+#Bat Friend: too much weird shit.. that place
+#
+#Player: My family is in there. They flew in.
+#Bat Friend: If you got out
+#Bat Friend: Why can't you got in
+##Bat Friend: You should probably forget about them
+##Bat Friend: Find a new family
+
+Player: You're upside down
+Bat Friend: No.
+~ on_paws
+Bat Friend: You are standing on your feet
+
+- I have feet?
+	Bat Friend: Yes
+	=> has_paws
+	~ has_paws
+- I has paws
+	Bat Friend: claws in the paws
+	Bat Friend: gives me pause
+- What?
+	=> on_paws
+
+## Check that there is no current friend
+Bat Friend: Do you want me to ride on your back and talk shit?
+- Yes
+	do Steam.setAchievement( "ACH_MEET_BAT" )
+	do Steam.storeStats()
+	do StatsManager.achievements.have_bat_friend = 1
+	do StatsManager.stats.friends_made += 1
+	do NpcManager.bat_return.emit()
+- No
 	Bat Friend: You picked the second one.
-- Start again => start
-- End the conversation => END
-Bat Friend: For more information see the online documentation.
+
 => END

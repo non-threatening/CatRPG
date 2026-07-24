@@ -1,8 +1,8 @@
 ~ in_tree
 if PlayerManager.player.player_friends.selected_friend == 0:
-	Bird Friend: [[Let's go!?|Should I jump on your back again?|Caw]]
+	Bat Friend: [[Let's go!?|again? again?|Sqee]]
 	- [[Get on, let's go!|Yes!]]
-		do NpcManager.bf_return.emit()
+		do NpcManager.bat_return.emit()
 	- Not now.
 	=> END
 else:
@@ -11,8 +11,9 @@ else:
 
 
 ~ goodbyes
-Bird Friend: [#location=cat] [[Good night cat. I'll be around tomorrow.|ah right. I'm out.|I will dream|Caw]]
-do NpcManager.bf_away.emit()
+Bat Friend: [#location=cat] [[Good morning cat.|ah right. I got blood to suck|I will dream|Squeep]]
+do NpcManager.bat_away.emit()
+do NpcManager.set_none()
 => END
 ~ goodbyes_tut
 Bird Friend: [[]]

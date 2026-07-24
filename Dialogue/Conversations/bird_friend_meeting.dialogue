@@ -8,6 +8,7 @@ elif not is_quest_completed("[102]a_gimp_suit_for_bird_friend") and not is_quest
 	Bird Friend: [[Hi|Hello|Hey]], who are you?
 	Player: one two three four five six seven eight nine ten etttone two three four five six seven eight nine ten ettt thing thing [#mood=happy]
 	Player: Wooooooooooooo use {{ICON_ATTACK}} to attack
+	~ can_you_look_gimpsuit
 	Bird Friend: I've lost my Gimp Suit. Could you look around for one.
 	- Totaly, I <3 gimp suits.
 		do start_quest("[102]a_gimp_suit_for_bird_friend")
@@ -15,10 +16,13 @@ elif not is_quest_completed("[102]a_gimp_suit_for_bird_friend") and not is_quest
 		Bird Friend: nice.
 	- No way lady!
 		Bird Friend: I am your father.
+	- What?
+		=> can_you_look_gimpsuit
 
 elif  get_quest_property( 102, "have_suit" ) == false
 	Bird Friend: Have you found the Gimp Suit?
 else
+	~ can_i_have_gimpsuit
 	Bird Friend: Nice Can I have the gimpsuit
 	- OK
 		do QuestSystem.set_quest_property( 102, "suit_given", true)
@@ -26,8 +30,8 @@ else
 		=> END
 	- No way
 		Player: It's my GimpSuit now!!!!
-	- What's a gimpsuit?
-		=> whats_a_gimpsuit
+	- What ?
+		=> can_i_have_gimpsuit
 		
 ~ whats_a_gimpsuit
 Player: What's a gimpsuit?

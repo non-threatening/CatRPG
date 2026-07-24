@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://biewkjvvfbx8j"
+path="res://.godot/imported/BAT_Repeatables.dialogue-72fc8e5ba98d71d00a37123d8a0cedba.tres"
+
+[deps]
+
+source_file="res://Dialogue/Conversations/BAT_Repeatables.dialogue"
+dest_files=["res://.godot/imported/BAT_Repeatables.dialogue-72fc8e5ba98d71d00a37123d8a0cedba.tres"]
+
+[params]
+
+defaults=true
