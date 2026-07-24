@@ -15,4 +15,7 @@ sprite = ExtResource("2_n4uh4")
 h_frames = 1
 v_frames = 1
 talk_blips = Array[AudioStream]([ExtResource("3_xfq68"), ExtResource("5_ktojv"), ExtResource("6_jdmil"), ExtResource("7_ade8x"), ExtResource("8_lwk5n")])
+pitch = 2.8
+bubble_offset_x = 6.0
+bubble_offset_y = 60.0
 metadata/_custom_type_script = "uid://bmpteubp4v57k"

@@ -1,8 +1,6 @@
 @icon( "res://npc/icons/npc.svg" )
 class_name BirdFriend extends Node2D
 
-#@export
-
 var wait_time: float = 1.0
 var time: float = 0.0
 
@@ -47,9 +45,9 @@ func _arrived() -> void:
 func _back_to_cat() -> void:
 	to_and_fro.to_and_fro_back_to_cat()
 	bird_friend.hide()
-	PlayerManager.player.player_friends.friends = ["", "BIRD", "", "", ""]
+	PlayerManager.player.player_friends.friends = ["", "BIRD", "", "", "", ""]
 	PlayerManager.player.player_friends.set_friend_number( 1 )
-	PauseMenu.update_friend_items( ["", "BIRD", "", "", ""] )
+	PauseMenu.update_friend_items( ["", "BIRD", "", "", "", ""] )
 
 
 ## Back and forth from tree

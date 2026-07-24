@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FriendItemData" format=3 uid="uid://dv0yar6cn8cg"]
+
+[ext_resource type="Script" uid="uid://c5fpu6ww87ydn" path="res://Items/item_effects/item_effect.gd" id="1_jfwlo"]
+[ext_resource type="Script" uid="uid://oomaujsdmce8" path="res://Items/scripts/friend_item_data.gd" id="2_sxjrn"]
+[ext_resource type="Texture2D" uid="uid://beuue5mgapph3" path="res://Items/sprites/items.png" id="3_jfwlo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxjrn"]
+atlas = ExtResource("3_jfwlo")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+script = ExtResource("2_sxjrn")
+type = 5
+name = "Bat Friend"
+texture = SubResource("AtlasTexture_sxjrn")
+cost = 0
+metadata/_custom_type_script = "uid://oomaujsdmce8"

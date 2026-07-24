@@ -1,21 +1,23 @@
 class_name FriendAbilities extends Node
 
 const BIRD = preload("res://Player/BirdFriend/bird_friend_flying.tscn")
+const BAT = preload("uid://bffvlgkldgyc")
 const BOMB = preload( "res://interactables/bomb/bomb.tscn" )
 
 var friends : Array[ String ] = [
-	"", "", "", "", "" ## "NONE", BIRD", "GRAPPLE", "BOW", "BOMB"
+	"", "", "", "", "", "" ## "NONE", BIRD", "GRAPPLE", "BOW", "BOMB", "BAT"
 	]
 
  # For NONE ability press duration
+const LONG_PRESS_THRESHOLD := 0.4
 var _ability_press_time := 0.0
 var _ability_pressing := false
 var _ability_long_press_fired := false
-const LONG_PRESS_THRESHOLD := 0.4
 
 var selected_friend : int = 0
 var player : Player
 var bird_instance : BirdFriendFlying = null
+var bat_instance : BatFriendFlying = null
 
 @onready var state_machine: PlayerStateMachine = $"../StateMachine"
 @onready var lift: State_Lift = $"../StateMachine/Lift"
@@ -31,7 +33,6 @@ func _ready() -> void:
 	set_friend_number( 0 )
 	SaveManager.game_loaded.connect( _on_game_loaded )
 	PlayerManager.INVETORY_DATA.friend_acquired.connect( _on_friend_acquired )
-	NpcManager.bf_away.connect( _bird_leaving )
 	
 	
 func setup_friends( select_index : int = 0 ) -> void:
@@ -60,13 +61,15 @@ func _unhandled_input(event: InputEvent) -> void:
 						bow_ability()
 					4:
 						bomb_ability()
+					5:
+						bat_ability()
 				_ability_pressing = false
 				_ability_long_press_fired = false
 				
 	elif event.is_action_pressed("switch_ability"):
 		toggle_friend()
 
-	
+
 func _process(delta: float) -> void:
 	if _ability_pressing:
 		_ability_press_time += delta
@@ -74,25 +77,31 @@ func _process(delta: float) -> void:
 		if not _ability_long_press_fired and _ability_press_time >= LONG_PRESS_THRESHOLD:
 			match selected_friend:
 				0:
-					none_ability(true)
+					none_ability( true )
 				1:
 					bird_ability( true )
+				5:
+					bat_ability( true )
 			_ability_long_press_fired = true
 
 
-
+##TODO: won't need this later
 func toggle_friend() -> void:
 	if friends.count( "" ) == friends.size():
 		return
-	selected_friend = wrapi( selected_friend + 1, 0, 5 )
+	selected_friend = wrapi( selected_friend + 1, 0, 6 )
 	while friends[ selected_friend ] == "":
-		selected_friend = wrapi( selected_friend + 1, 0, 5 )
+		selected_friend = wrapi( selected_friend + 1, 0, 6 )
 	
 	await get_tree().process_frame
-	if selected_friend == 1:
-		player.show_bird_friend()
-	else:
-		player.hide_bird_friend()
+	player.hide_bat_friend()
+	player.hide_bird_friend()
+	match selected_friend:
+		1:
+			player.show_bird_friend()
+		5:
+			player.show_bat_friend()
+	
 
 
 func set_friend_number( a : int ) -> void:
@@ -108,6 +117,22 @@ func none_ability(is_long_press := false) -> void:
 		print("Short press: short meow")
 
 
+func bat_ability( is_long_press : bool = false ) -> void:
+	if bat_instance != null:
+		return
+	if is_long_press:
+		prints("long press bat")
+	else:
+		var _b = BAT.instantiate() as BatFriendFlying
+		player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
+		_b.global_position = player.global_position + Vector2( 0, -100.0 )
+		var throw_direction = player.direction
+		if throw_direction == Vector2.ZERO:
+			throw_direction = player.cardinal_direction
+		_b.throw( throw_direction )
+		bat_instance = _b
+
+	
 func bird_ability( is_long_press : bool = false ) -> void:
 	if bird_instance != null:
 		return
@@ -122,17 +147,6 @@ func bird_ability( is_long_press : bool = false ) -> void:
 			throw_direction = player.cardinal_direction
 		_b.throw( throw_direction )
 		bird_instance = _b
-
-
-func _bird_leaving() -> void:
-	if bird_instance != null:
-		return
-	var _b = BIRD.instantiate() as BirdFriendFlying
-	player.add_sibling( _b ) # make it a sibling of the player node so its at the same Z
-	_b.global_position = player.global_position + Vector2( 0, -200 )
-	var throw_direction = Vector2( pow(-1, randi() % 2), randf() * -0.666 )
-	_b.leave( throw_direction )
-	bird_instance = _b
 
 
 func bow_ability() -> void:
@@ -174,7 +188,7 @@ func _on_game_loaded() -> void:
 
 
 func _on_friend_acquired( _friend : FriendItemData ) -> void:
-	#"NONE", "BIRD", "GRAPPLE", "BOW", "BOMB"
+	#"NONE", "BIRD", "GRAPPLE", "BOW", "BOMB", "BAT"
 	match _friend.type:
 		_friend.Type.NONE:
 			friends[0] = "NONE"
@@ -190,4 +204,11 @@ func _on_friend_acquired( _friend : FriendItemData ) -> void:
 			friends[3] = "ARROW"
 		_friend.Type.BOMB:
 			friends[4] = "BOMB"
+		_friend.Type.BAT:
+			if StatsManager.achievements.have_bat_friend:
+				friends[5] = "BAT"
+			else:
+				await get_tree().create_timer( 1.2 ).timeout
+				friends[5] = "BAT"
+				
 	setup_friends( selected_friend )

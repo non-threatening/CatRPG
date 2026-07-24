@@ -10,7 +10,8 @@ class_name NPCResource extends Resource
 @export var talk_blips : Array[ AudioStream ]
 @export_range( -2.5, 2.8, 0.02 ) var pitch : float = 1.0
 
-@export var bubble_offset : float = 0
+@export var bubble_offset_x : float = 0
+@export var bubble_offset_y : float = 0
 
 @export var friends : Dictionary[ String, int ]
 

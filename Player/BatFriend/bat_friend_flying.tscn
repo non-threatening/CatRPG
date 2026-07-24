@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bffvlgkldgyc"]
+
+[ext_resource type="Script" uid="uid://blrxw8pa0su7d" path="res://Player/BatFriend/bat_friend_flying.gd" id="1_btvd0"]
+[ext_resource type="Material" uid="uid://dpne0qa4qwb3n" path="res://npc/shaders/bat_shader_material.tres" id="2_yq6cd"]
+[ext_resource type="Texture2D" uid="uid://cf2wsbwora2aq" path="res://Player/BatFriend/sprites/FlowerGuyCrow.png" id="3_1qvd8"]
+[ext_resource type="PackedScene" uid="uid://cig0bia23axha" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="3_s2t74"]
+[ext_resource type="AudioStream" uid="uid://u0jf84vk421d" path="res://Player/Audio/bird_flap.wav" id="4_3qns7"]
+[ext_resource type="PackedScene" uid="uid://c0jsono37lv7x" path="res://GeneralNodes/ItemMagnet/ItemMagnet.tscn" id="5_ao8y2"]
+
+[sub_resource type="Curve" id="Curve_v1ro0"]
+_data = [Vector2(0, 0.66259533), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_v1ro0"]
+offsets = PackedFloat32Array(0, 0.67094016, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.61, 0.74000007, 1, 0.1254902, 0.61, 0.74000007, 1, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsrdm"]
+radius = 15.0
+height = 66.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gvjm"]
+radius = 41.0122
+
+[node name="BatFriendFlying" type="Node2D" unique_id=10719448]
+y_sort_enabled = true
+script = ExtResource("1_btvd0")
+metadata/_edit_horizontal_guides_ = [11.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1311675526]
+y_sort_enabled = true
+material = ExtResource("2_yq6cd")
+position = Vector2(0, 100)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("3_1qvd8")
+offset = Vector2(0, -150)
+hframes = 3
+vframes = 3
+
+[node name="Line2D" type="Line2D" parent="Sprite2D" unique_id=526963944]
+visible = false
+top_level = true
+width = 16.0
+width_curve = SubResource("Curve_v1ro0")
+gradient = SubResource("Gradient_v1ro0")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="HurtBox" parent="Sprite2D" unique_id=1704851125 instance=ExtResource("3_s2t74")]
+position = Vector2(0, -120)
+scale = Vector2(1.5015, 1.5015)
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox" unique_id=1860785356]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fsrdm")
+debug_color = Color(0.960808, 0.185322, 0.300608, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=993458420]
+stream = ExtResource("4_3qns7")
+max_polyphony = 2
+
+[node name="ItemMagnet" parent="." unique_id=509330764 instance=ExtResource("5_ao8y2")]
+show_behind_parent = true
+position = Vector2(-5, 13)
+magnet_strength = 5.0
+play_magnet_audio = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet" unique_id=1953066470]
+shape = SubResource("CircleShape2D_0gvjm")
+debug_color = Color(0.164706, 0.678431, 0.596078, 0.0941176)
+
+[node name="Timer" type="Timer" parent="." unique_id=544258588]
+wait_time = 0.4

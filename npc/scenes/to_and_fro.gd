@@ -7,6 +7,10 @@ var bird_instance : BirdFriendFlying = null
 @onready var bird_friend: BirdFriend = $".."
 
 
+func _ready() -> void:
+		NpcManager.bf_away.connect( _bird_leaving )
+
+
 func bird_leaving_to_and_fro() -> void:
 	if bird_instance != null:
 		return
@@ -51,4 +55,15 @@ func to_and_fro_back_to_cat() -> void:
 	_b.toggle_item_magent()	
 	EffectManager.landed( bf_position )
 	_b.back_to_cat( bf_position )
+	bird_instance = _b
+
+
+func _bird_leaving() -> void:
+	if bird_instance != null:
+		return
+	var _b = BIRD.instantiate() as BirdFriendFlying
+	bird_friend.add_sibling( _b ) # make it a sibling of the bird_friend node so its at the same Z
+	_b.global_position = bird_friend.global_position + Vector2( 0, -200 )
+	var throw_direction = Vector2( pow(-1, randi() % 2), randf() * -0.666 )
+	_b.leave( throw_direction )
 	bird_instance = _b

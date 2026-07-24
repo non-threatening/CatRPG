@@ -9,5 +9,5 @@ script = ExtResource("1_5ujwg")
 name = "Bling"
 description = "Yummers !"
 texture = ExtResource("3_saay3")
-cost = 1
+cost = 0
 metadata/_custom_type_script = "uid://bvqtnrn5xgsi0"
